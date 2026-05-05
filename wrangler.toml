@@ -1,0 +1,16 @@
+# Cloudflare Pages project for the KYE Protocol™ landing.
+#
+# Deploy locally:
+#   wrangler pages deploy public/site --project-name kye-protocol
+#
+# CI deploy via .github/workflows/deploy-cloudflare-pages.yml. Required
+# secrets: CF_API_TOKEN (with Pages:Edit), CF_ACCOUNT_ID.
+#
+# Cloudflare Pages reads:
+#   - /functions/_middleware.js   — request/response interception
+#   - /_headers                   — static response-header rules
+#   - /_redirects                 — static redirect rules (none today)
+# in the deployed asset root, which is `public/site`.
+name = "kye-protocol"
+compatibility_date = "2026-05-05"
+pages_build_output_dir = "."

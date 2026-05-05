@@ -1,0 +1,129 @@
+# KYE Protocol™ — Know Your Entity™
+
+> The open contract layer for identity, authority, scope, state and audit
+> across humans, businesses, AI agents, services, models, tools and
+> workflows. Unifies KYC, KYB and KYA. Apache License 2.0.
+
+KYE Protocol™ answers, for every action, the question:
+**who acted, on whose behalf, with what authority, under what scope, with what evidence?**
+
+It is a contract — vocabulary, schemas, OpenAPI, conformance fixtures —
+not a vendor product. A bank, payments processor, healthcare system or AI
+lab adopts the contract; multiple vendors may implement it.
+
+## v1.0 ships
+
+- 15 normative profiles: Core, Gateway, Federation, Credentials,
+  Attestation, Signals, Transparency, Conformance, Treasury, Custody,
+  Healthcare, Telemetry, Capability, Recovery, Payments
+- 3 payment overlays: kye-payments-eu-1.0, kye-payments-card-1.0,
+  kye-payments-high-assurance-1.0
+- 112 OpenAPI operations across 87+ runtime endpoints
+- 28 JSON Schemas (JSON Schema 2020-12) with 31 validated examples
+- 37 black-box conformance fixtures
+- 173 control mappings: SOC 2, ISO 27001:2022, PCI DSS 4.0, PSD2/PSD3,
+  DORA, NIS2, EU AI Act, NIST 800-207, HIPAA
+- 6-dimension state composition matrix with 10 illegal compositions
+  and 5 break-glass entry conditions (state-composition-matrix.md)
+- RFC 7807 problem+json error envelope with KYE-specific extensions
+- Wire-protocol version negotiation: Accept-Version + URN segment
+- Cascade atomicity contract: caller-visible all-or-nothing guarantee
+  with idempotent retry and signed cascade_summary
+- Cryptographic agility: Accept-Crypto-Suite negotiation; opaque suite
+  names; algorithms remain in patent track
+- Quantitative SLA tiers (Tier-1 Bank / Tier-2 / Tier-3) with p50, p99,
+  throughput, cascade latency targets
+- Capability profile MCP subset: gating per MCP operation, sampling
+  budgets, tool versioning, dependency DAG resolution, supply-chain
+  attestation
+- Recovery m-of-n approval semantics with reject-wins, ordered/unordered
+  pools, and offline-verifiable proofs
+- Federation multi-region: replication topology, 6 conflict-resolution
+  rules, 18-month key archival floor
+- Credentials selective disclosure (SD-JWT, BBS+) and GDPR right-to-
+  erasure flow
+- Telemetry: redaction MUST, OTLP + CloudEvents 1.0 exports,
+  per-decision-class sampling floors
+- Payments post-execution lifecycle: hold, release, reversed, disputed,
+  charged_back, dispute_resolved, settled, ISO 20022 alignment
+- Reference Gateway (Node.js, no Express, zero runtime deps), 67/67 tests
+- TypeScript, Python, Go SDKs
+- OPA Rego + Cerbos policy bundles at parity (22 fixtures)
+
+## Six-dimension state model
+
+Every entity has six independent state dimensions, each transitioning
+independently and emitting its own signal class:
+
+- entity_state — provisional / active / suspended / quarantined / stopped / tombstoned
+- authority_state — none / scoped / elevated / break_glass / frozen
+- delegation_state — active / parent_revoked / self_revoked / expired / scope_violated
+- credential_state — none / valid / expired / revoked / signature_invalid
+- recovery_state — healthy / recovery_requested / recovery_decided / compromised / rotated
+- risk_state — nominal / elevated / watch / denylisted
+
+## Sectors covered
+
+Retail & commercial banking; payments & cards; healthcare & life
+sciences; capital markets & treasury; custody & digital-asset operators;
+insurance & underwriting; AI labs & agent platforms; public sector &
+defence; marketplaces & platforms.
+
+## URN format
+
+Every entity, delegation, signal, decision, credential, capability,
+recovery, audit event and proof bundle uses a single URN shape:
+
+  kye:<class>:<trust-domain>:<subclass>:<local>
+
+Examples:
+  kye:ent:acme.example:ai_agent:01JY3J1D4E5A7K3JQFK4E0Q1XZ
+  kye:del:acme.example:01JYDELEG0000000000000000A
+  kye:cap:acme.example:tool:01JYCAP00000000000000000A
+  kye:rec:acme.example:01JYREC00000000000000000A
+
+## Discovery
+
+- Site: https://kye-protocol.github.io
+- Whitepaper: https://kye-protocol.github.io/whitepaper.html
+- Legal & trademark: https://kye-protocol.github.io/legal.html
+- API catalog: https://kye-protocol.github.io/.well-known/api-catalog
+- MCP server card: https://kye-protocol.github.io/.well-known/mcp/server-card.json
+- Agent skills: https://kye-protocol.github.io/.well-known/agent-skills/index.json
+- OAuth authorisation server: https://kye-protocol.github.io/.well-known/oauth-authorization-server
+- OAuth protected resource: https://kye-protocol.github.io/.well-known/oauth-protected-resource
+- OpenID configuration: https://kye-protocol.github.io/.well-known/openid-configuration
+- Sitemap: https://kye-protocol.github.io/sitemap.xml
+- Source: https://github.com/KYE-Protocol
+
+## Repos
+
+- KYE-Protocol/app — root meta repo (this README)
+- KYE-Protocol/vocabulary — open vocabulary (Apache 2.0)
+- KYE-Protocol/id-format — URN format reference
+- KYE-Protocol/examples — example payloads (JSON, validated against schemas)
+- KYE-Protocol/Discussions — RFCs and Show & Tell
+- KYE-Protocol/.github — org profile, security policy, CONTRIBUTING
+
+## Trademark
+
+KYE™, KYE Protocol™ and Know Your Entity™ are trademarks of the KYE
+Protocol™ project. The marks identify the protocol as published.
+Conformant implementations may use them; forks may not. Trademark policy:
+https://kye-protocol.github.io/legal.html
+
+## Patent
+
+The vocabulary, URN format, JSON Schemas, OpenAPI specs, conformance
+pack, reference implementation, SDKs and policy bundles are open under
+Apache 2.0. Specific mechanism designs (decision algorithms, hash-chain
+construction, cascade ordering, attenuation propagation) sit in a
+separate patent track; they are not disclosed in the public repositories
+pre-filing. v2.0 moves the patent track to a royalty-free open standard
+(Linux Foundation / OpenWallet Foundation track).
+
+## License
+
+Apache License 2.0 unless an individual file specifies otherwise.
+
+— KYE Protocol™ project, 2026.

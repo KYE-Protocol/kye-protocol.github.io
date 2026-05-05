@@ -1,0 +1,131 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/server-card-v0.json",
+  "serverInfo": {
+    "name": "kye-protocol-reference",
+    "version": "1.0.0",
+    "vendor": "KYE Protocol",
+    "title": "KYE Protocol Reference Gateway",
+    "description": "Reference KYE Protocol Gateway exposing entity registration, delegations, capability grants, runtime authorize, audit chain, recovery flow, and webhook signing as MCP tools."
+  },
+  "transport": {
+    "type": "http",
+    "endpoint": "https://kye-protocol.github.io/mcp",
+    "_comment": "Live deployments substitute their own MCP transport URL. The reference deployment is illustrative."
+  },
+  "capabilities": {
+    "tools": {
+      "listChanged": true
+    },
+    "resources": {
+      "subscribe": true,
+      "listChanged": true
+    },
+    "prompts": {
+      "listChanged": false
+    },
+    "logging": {}
+  },
+  "tools": [
+    {
+      "name": "kye.register_entity",
+      "title": "Register entity",
+      "description": "Register a new entity (human, business, ai_agent, service, model, tool, workflow). Returns the entity URN.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["entity_type"],
+        "properties": {
+          "entity_type": { "type": "string", "enum": ["human", "business", "ai_agent", "service", "model", "tool", "workflow"] },
+          "display_name": { "type": "string" }
+        }
+      }
+    },
+    {
+      "name": "kye.create_delegation",
+      "title": "Create delegation",
+      "description": "Create a delegation: actor may act for subject, granted by delegator, within scope, for allowed_actions.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["actor_entity_id", "subject_entity_id", "delegator_entity_id", "allowed_actions"],
+        "properties": {
+          "actor_entity_id": { "type": "string" },
+          "subject_entity_id": { "type": "string" },
+          "delegator_entity_id": { "type": "string" },
+          "allowed_actions": { "type": "array", "items": { "type": "string" } },
+          "scope_id": { "type": "string" }
+        }
+      }
+    },
+    {
+      "name": "kye.authorize",
+      "title": "Runtime authorize",
+      "description": "Ask the PDP whether actor may take action. Returns a signed PolicyDecision with reason codes and obligations.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["actor_entity_id", "action"],
+        "properties": {
+          "actor_entity_id": { "type": "string" },
+          "action": { "type": "string" },
+          "subject_entity_id": { "type": "string" },
+          "delegation_id": { "type": "string" },
+          "context": { "type": "object" }
+        }
+      }
+    },
+    {
+      "name": "kye.invoke_capability",
+      "title": "Invoke capability",
+      "description": "Invoke a registered capability (skill / tool / mcp_tool / function / connector / playbook / model_profile). Gated by capability grants and runtime PDP.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["capability_id", "actor_entity_id"],
+        "properties": {
+          "capability_id": { "type": "string" },
+          "actor_entity_id": { "type": "string" },
+          "input": { "type": "object" }
+        }
+      }
+    },
+    {
+      "name": "kye.point_in_time_audit",
+      "title": "Point-in-time audit replay",
+      "description": "Replay audit chain up to a sequence or timestamp; returns event_type counts and entity_last_event snapshot.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "sequence": { "type": "integer" },
+          "before": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    {
+      "name": "kye.request_recovery",
+      "title": "Request recovery",
+      "description": "Open a recovery request for a subject entity. The decision step requires explicit approval.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["subject_entity_id"],
+        "properties": {
+          "subject_entity_id": { "type": "string" },
+          "reason_code": { "type": "string" }
+        }
+      }
+    },
+    {
+      "name": "kye.report_compromise",
+      "title": "Report compromise",
+      "description": "File a compromise report. Cascades atomic revocation across delegations, payment authorities, access rights, capability grants, break-glass grants.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["subject_entity_id"],
+        "properties": {
+          "subject_entity_id": { "type": "string" },
+          "severity": { "type": "string", "enum": ["low", "medium", "high", "critical"] }
+        }
+      }
+    }
+  ],
+  "documentation": [
+    { "href": "https://kye-protocol.github.io/whitepaper.html", "title": "Whitepaper" },
+    { "href": "https://kye-protocol.github.io/.well-known/api-catalog", "title": "API catalog" }
+  ]
+}

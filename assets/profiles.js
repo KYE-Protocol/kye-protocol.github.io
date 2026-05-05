@@ -20,7 +20,7 @@ export function initProfiles() {
     detail.innerHTML = `
       <div class="grid">
         <div>
-          <p style="font-size:11px;text-transform:uppercase;letter-spacing:0.16em;color:var(--accent-2);font-weight:600">${p.id}</p>
+          <p style="font-size:11px;text-transform:uppercase;letter-spacing:0.16em;color:var(--accent-2);font-weight:600">${p.id}${p.status ? ` &middot; ${p.status}` : ""}</p>
           <h3>${p.name}</h3>
           <p style="color:var(--text-muted);line-height:1.6">${p.description}</p>
           <p style="margin-top:18px;font-size:12px;color:var(--text-dim)">Adds vocabulary &amp; conformance &mdash; never new mechanism content into Core.</p>

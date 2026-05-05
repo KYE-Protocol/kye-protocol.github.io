@@ -1,0 +1,67 @@
+{
+  "$schema": "https://agentskills.io/schemas/index-v0.2.json",
+  "name": "kye-protocol",
+  "version": "1.0.0",
+  "description": "Skills exposing KYE Protocol — Know Your Entity — actions to AI agents.",
+  "skills": [
+    {
+      "name": "kye-register-entity",
+      "type": "tool",
+      "description": "Register a new entity (human, business, ai_agent, service, model, tool, workflow) and obtain its URN.",
+      "url": "https://kye-protocol.github.io/.well-known/agent-skills/skills/register-entity.json",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "kye-create-delegation",
+      "type": "tool",
+      "description": "Create a delegation from a delegator to an actor for a subject, scoped to allowed_actions.",
+      "url": "https://kye-protocol.github.io/.well-known/agent-skills/skills/create-delegation.json",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "kye-authorize",
+      "type": "tool",
+      "description": "Ask the PDP whether actor may take action. Returns a signed PolicyDecision with reason codes and obligations.",
+      "url": "https://kye-protocol.github.io/.well-known/agent-skills/skills/authorize.json",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "kye-invoke-capability",
+      "type": "tool",
+      "description": "Invoke a registered capability (skill / tool / mcp_tool / function / connector / playbook). Gated by capability grants.",
+      "url": "https://kye-protocol.github.io/.well-known/agent-skills/skills/invoke-capability.json",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "kye-point-in-time-audit",
+      "type": "tool",
+      "description": "Replay the audit chain up to a sequence or timestamp; returns counts and entity_last_event snapshot.",
+      "url": "https://kye-protocol.github.io/.well-known/agent-skills/skills/point-in-time-audit.json",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "kye-request-recovery",
+      "type": "tool",
+      "description": "Open a recovery request; signed proof on decide.",
+      "url": "https://kye-protocol.github.io/.well-known/agent-skills/skills/request-recovery.json",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "kye-report-compromise",
+      "type": "tool",
+      "description": "File a compromise report; cascade revocation across delegations, payment authorities, access rights, capability grants.",
+      "url": "https://kye-protocol.github.io/.well-known/agent-skills/skills/report-compromise.json",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "kye-rotate-keys",
+      "type": "tool",
+      "description": "Rotate Gateway signing keys. Requires a valid X-Break-Glass-Grant-Id header.",
+      "url": "https://kye-protocol.github.io/.well-known/agent-skills/skills/rotate-keys.json",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ],
+  "documentation": "https://kye-protocol.github.io/whitepaper.html",
+  "api_catalog": "https://kye-protocol.github.io/.well-known/api-catalog",
+  "mcp_server_card": "https://kye-protocol.github.io/.well-known/mcp/server-card.json"
+}

@@ -1,10 +1,11 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <script>(function(){try{var s=localStorage.getItem("kye-theme");if(s==="dark"||s==="light"){document.documentElement.setAttribute("data-theme",s);}}catch(e){}})();</script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>KYE Protocol&trade; — Whitepaper v1.0 | Know Your Entity&trade;</title>
-  <meta name="description" content="The KYE Protocol™ whitepaper: an open contract for identity, authority and audit across humans, businesses, AI agents, services, models and workflows. Unifies KYC, KYB and KYA. Reference Gateway, 3 SDKs, 26 conformance fixtures." />
+  <title>KYE Protocol™ — Whitepaper v1.0 | Know Your Entity™</title>
+  <meta name="description" content="The KYE Protocol™ whitepaper: an open contract for identity, authority and audit across humans, businesses, AI agents, services, models and workflows. Unifies KYC, KYB and KYA. Reference Gateway, 3 SDKs, 37 conformance fixtures, 173 control mappings, 15 normative profiles." />
   <link rel="canonical" href="https://kye-protocol.github.io/whitepaper.html" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
   <meta property="og:type" content="article" />
@@ -20,9 +21,9 @@
   <meta name="twitter:image" content="https://kye-protocol.github.io/og.svg" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%237c3aed'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://rsms.me" crossorigin>
-  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="styles.css?v=1777993139" />
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-  <link rel="stylesheet" href="./whitepaper.css" />
+  <link rel="stylesheet" href="whitepaper.css?v=1777993139" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -57,7 +58,7 @@
           <path d="M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
         </svg>
       </span>
-      <span>KYE Protocol<sup style="font-size:9px">&trade;</sup></span>
+      <span>KYE Protocol<span class="tm">™</span></span>
     </a>
     <nav class="nav-links">
       <a href="./">Home</a>
@@ -88,7 +89,7 @@
 
   <article class="wp-article">
     <p class="wp-meta">Whitepaper &middot; Version 1.0 &middot; April 2026 &middot; <a href="https://github.com/KYE-Protocol" target="_blank" rel="noopener">github.com/KYE-Protocol</a></p>
-    <h1>KYE Protocol<sup style="font-size:0.4em">&trade;</sup>: an open trust layer for the agentic economy</h1>
+    <h1>KYE Protocol<span class="tm">™</span>: an open trust layer for the agentic economy</h1>
     <p class="wp-lede">
       Cryptographic provenance for every action humans, businesses, AI agents, services, models and workflows take.
       One identity URN. One delegation chain. One decision vocabulary. One cascading audit bus.
@@ -97,7 +98,7 @@
 
     <h2 id="abstract">Abstract</h2>
     <p>The agentic stack &mdash; AI agents, models, tools, workflows acting autonomously on behalf of humans and businesses &mdash; is reaching production at a velocity that has outrun the identity, authorization and audit infrastructure beneath it. KYC verifies humans. KYB verifies businesses. KYA (just emerging in 2026 from Visa, Skyfire, Persona, Sumsub, Trulioo) verifies agents. Each layer is siloed; each verifies once, at registration; none answers <em>"is the answer still true 200 ms from now when the next call arrives?"</em></p>
-    <p><strong>KYE Protocol&trade;</strong> &mdash; <em>Know Your Entity&trade;</em> &mdash; is the open contract that unifies these layers. Every entity (human, business, agent, service, model, tool, workflow) shares one URN format. Every action is bound to a delegation chain with attenuable scope. Every decision is recorded with a standardised reason code. Every revocation cascades through the trust graph in milliseconds. Every audit event hash-links to the previous one. Every decision can be exported as a signed proof bundle a regulator can verify with public keys alone. The result: <em>provable</em> trust at the speed of agentic commerce.</p>
+    <p><strong>KYE Protocol<span class="tm">™</span></strong> &mdash; <em>Know Your Entity<span class="tm">™</span></em> &mdash; is the open contract that unifies these layers. Every entity (human, business, agent, service, model, tool, workflow) shares one URN format. Every action is bound to a delegation chain with attenuable scope. Every decision is recorded with a standardised reason code. Every revocation cascades through the trust graph in milliseconds. Every audit event hash-links to the previous one. Every decision can be exported as a signed proof bundle a regulator can verify with public keys alone. The result: <em>provable</em> trust at the speed of agentic commerce.</p>
 
     <h2 id="problem">1 &middot; Problem</h2>
     <p>Modern agentic workflows generate three classes of pain that legacy identity stacks cannot resolve.</p>
@@ -122,7 +123,7 @@
         <tr><td>Visa Trusted Agent / Skyfire / Persona KYA</td><td>Agent passport (AID), spend caps (TXG)</td><td>Vendor-specific, agent-only, no unified URN, no cascade</td></tr>
       </tbody>
     </table>
-    <p>Each of these solves a slice. None composes into a single contract that an auditor can read end-to-end. KYE Protocol&trade; is that contract layer; it does not replace these, it composes them.</p>
+    <p>Each of these solves a slice. None composes into a single contract that an auditor can read end-to-end. KYE Protocol<span class="tm">™</span> is that contract layer; it does not replace these, it composes them.</p>
 
     <h2 id="design">3 &middot; Design principles</h2>
     <ol class="wp-principles">
@@ -137,7 +138,7 @@
     </ol>
 
     <h2 id="model">4 &middot; Conceptual model</h2>
-    <p>KYE Protocol&trade; defines nine first-class records:</p>
+    <p>KYE Protocol<span class="tm">™</span> defines nine first-class records:</p>
     <ul class="wp-records">
       <li><code>Entity</code> &mdash; any actor or resource. Has a status, a lifecycle state, an immutable block, classification, assurance, optional sectoral profile.</li>
       <li><code>Delegation</code> &mdash; a record that <em>actor</em> may act for <em>subject</em>, granted by <em>delegator</em>, within <em>scope</em>, for <em>allowed_actions</em>.</li>
@@ -155,8 +156,23 @@
       <li><code>TransparencyReceipt</code> &mdash; signed receipt that a statement is included in the public log at a given index.</li>
     </ul>
 
+    <h3>4.1 Six-dimension state model</h3>
+    <p>An entity is not a single state. KYE Protocol<span class="tm">™</span> runtime evaluates authorization against six independent state dimensions:</p>
+    <ul class="wp-records">
+      <li><code>entity_state</code> &mdash; lifecycle of the actor itself (provisional, active, suspended, quarantined, stopped, tombstoned).</li>
+      <li><code>authority_state</code> &mdash; whether the actor currently holds any active authority (none, scoped, elevated, break_glass, frozen).</li>
+      <li><code>delegation_state</code> &mdash; integrity of the chain of delegations behind the actor (active, parent_revoked, self_revoked, expired, scope_violated).</li>
+      <li><code>credential_state</code> &mdash; verifiable credentials held by the actor (none, valid, expired, revoked, signature_invalid).</li>
+      <li><code>recovery_state</code> &mdash; whether the actor is healthy, mid-recovery, post-compromise, or rotated.</li>
+      <li><code>risk_state</code> &mdash; telemetry-derived posture that informs sPDP without changing identity (nominal, elevated, watch, denylisted).</li>
+    </ul>
+    <p>Each dimension transitions independently and emits its own signal class. &ldquo;Can this actor act now?&rdquo; is a single composed test against the six dimensions plus scope. The full vocabulary is open and pinned in the conformance pack.</p>
+
+    <h3>4.2 Cascade revocation</h3>
+    <p>Stop signals cascade atomically before the response returns. Revoking an entity propagates to its delegations (recursively through <code>parent_delegation_id</code>), payment authorities, access rights, capability grants, and recovery decisions. Each propagation step emits its own audit event with a shared <code>correlation_id</code>; downstream PDPs that subscribe to the bus invalidate caches on signal receipt. Compromise reports trigger the same cascade with an elevated reason class.</p>
+
     <h2 id="contract">5 &middot; Contract surface</h2>
-    <p>The Core OpenAPI specification publishes 57 endpoints across nine resource families: Entities, Delegations, Scopes, Access Rights, Credentials, Attestations, Runtime, Signals, Audit, Proof Bundles, Transparency, Federation, Webhooks, Conformance. Every endpoint is defined with a JSON Schema 2020-12 contract; every schema has at least one validated example. The Payments profile adds a sector PDP (sPDP) with currency / amount / rail / approval gating. Conformance fixtures &mdash; 26 in v1.0 &mdash; assert deterministic behaviour under happy and edge-case paths.</p>
+    <p>v1.0 publishes <strong>112 OpenAPI operations</strong> across the Core + Payments specs (87+ runtime endpoints in the reference Gateway), spanning resource families: Entities, Delegations, Scopes, Access Rights, Credentials, Attestations, Capabilities, Capability Grants, Runtime (authorize / invoke), Signals, Webhooks, Audit, Proof Bundles, Transparency, Federation, Recoveries, Break-Glass Grants, Compromise Reports, Keys, Conformance, plus the Payments families (Wallets, Payment Authorities, Payment Intents, Beneficiaries). 28 JSON Schema 2020-12 contracts with absolute <code>$id</code> URIs at <code>https://schemas.kye.dev/</code>; 31 example payloads pinned to schemas and validated in CI. <strong>37 conformance fixtures</strong> assert deterministic behaviour under happy paths and edge cases.</p>
     <p>Every state-changing endpoint accepts an <code>Idempotency-Key</code> header and returns the original response on replay; conflicting bodies under the same key return HTTP 409. Every state-changing endpoint emits an audit event whose <code>correlation_id</code> matches the originating request.</p>
 
     <h2 id="runtime">6 &middot; Reference runtime</h2>
@@ -171,17 +187,92 @@
     </ul>
     <p>The reference is illustrative. It does not implement the patent-track decision algorithm; conformant production Gateways are expected to substitute that mechanism while preserving the open contract surface.</p>
 
-    <h2 id="profiles">7 &middot; Sectoral profiles</h2>
-    <p>Profiles add sector-specific vocabulary and conformance fixtures to Core. v1.0 ships:</p>
+    <h2 id="profiles">7 &middot; Profiles &mdash; the full v1.0 inventory</h2>
+    <p>Profiles add vocabulary, schemas, endpoints, and conformance fixtures to Core. <strong>15 profiles ship as Normative draft v1.0:</strong></p>
+    <p><em>Base profiles:</em></p>
     <ul class="wp-records">
-      <li><strong>Federation</strong> &mdash; cross-trust-domain entity import with attenuated scope and origin metadata.</li>
-      <li><strong>Credentials</strong> &mdash; issue / verify / present / revoke with Ed25519 detached signatures.</li>
-      <li><strong>Attestation</strong> &mdash; SPIFFE / EAT / build-provenance bindings; explicit revocation; stale detection.</li>
-      <li><strong>Signals</strong> &mdash; pub/sub bus with subscribe / ack / replay. Webhook delivery is signed with replay-window enforcement and key rotation; the specific algorithm suite is not disclosed publicly.</li>
-      <li><strong>Transparency</strong> &mdash; append-only statement log + signed inclusion receipts.</li>
-      <li><strong>Payments</strong> &mdash; payment authorities, beneficiaries, intents; sPDP with currency / amount / rail / approval gating; PSD3-aligned obligations.</li>
+      <li><strong>KYE-Core</strong> &mdash; entity registration, delegations, scopes, credentials, attestations, runtime authorize / evaluate, audit chain, signal bus.</li>
+      <li><strong>KYE-Gateway</strong> &mdash; API surface, headers, idempotency, content types, signing, error envelopes; the contract any conformant implementation honours.</li>
+      <li><strong>KYE-Federation</strong> &mdash; cross-trust-domain entity import with attenuated scope and origin metadata; signed assertions; transferred entities preserve provenance.</li>
+      <li><strong>KYE-Credentials</strong> &mdash; issue / verify / present / revoke with Ed25519 detached signatures over canonical payloads.</li>
+      <li><strong>KYE-Attestation</strong> &mdash; SPIFFE / EAT / build-provenance bindings; explicit revocation; stale detection.</li>
+      <li><strong>KYE-Signals</strong> &mdash; pub/sub bus with subscribe / ack / replay; signed webhook delivery with replay-window enforcement and key rotation. The specific signing-suite vectors are part of the normative specification and are not published in this repository.</li>
+      <li><strong>KYE-Transparency</strong> &mdash; append-only statement log + signed inclusion receipts; verifiable with the gateway&rsquo;s public keys alone.</li>
+      <li><strong>KYE-Conformance</strong> &mdash; 37-fixture black-box pack + reporter; tests vendor stacks, internal stacks, and the reference Gateway with the same pack.</li>
+      <li><strong>KYE-Treasury</strong> &mdash; treasury authority chain (sweeps, rebalances, intercompany transfers, FX); reconciliation hooks bind state-changing intents back to authority + scope.</li>
+      <li><strong>KYE-Custody</strong> &mdash; asset custody chain of authority; workload attestation binds runtime, custody authority binds wallet, audit chain binds timeline.</li>
+      <li><strong>KYE-Healthcare</strong> &mdash; HIPAA-aligned overlay; binds the agent to consent credentials, attaches redaction obligations and external-send blocks.</li>
+      <li><strong>KYE-Telemetry</strong> &mdash; structured authorization-decision telemetry (policy, inputs, reason code, decision time, entity chain).</li>
+      <li><strong>KYE-Capability</strong> &mdash; skills / tools / MCP tools / functions / connectors / prompts / workflows / playbooks / runbooks / model_profiles; register, grant, invoke (allow / deny / require-approval / quarantine), supersede, revoke.</li>
+      <li><strong>KYE-Recovery</strong> &mdash; recovery requests, decisions, signed proofs, time-boxed break-glass grants, compromise reports; replaces ad-hoc admin reset.</li>
+      <li><strong>KYE-Payments</strong> &mdash; payment authorities, beneficiaries, intents; sPDP with currency / amount / rail / approval gating; PSD3-aligned obligations.</li>
     </ul>
-    <p>Profiles in design: Treasury, Custody, Healthcare, Payments-EU, Payments-Card, Payments-HighAssurance.</p>
+    <p><em>Payment overlays (jurisdictional):</em></p>
+    <ul class="wp-records">
+      <li><strong>kye-payments-eu-1.0</strong> &mdash; PSD2/PSD3 + DORA alignment.</li>
+      <li><strong>kye-payments-card-1.0</strong> &mdash; PCI DSS 4.0 alignment.</li>
+      <li><strong>kye-payments-high-assurance-1.0</strong> &mdash; ISO 20022 alignment for high-value flows.</li>
+    </ul>
+    <p>Sector overlays beyond these (healthcare-clinical / payer / research, 42 CFR Part 2) are intentional placeholders for v1.1.</p>
+
+    <h2 id="sectors">7.1 &middot; Sector coverage</h2>
+    <p>The 15 profiles compose into nine sector-ready bundles:</p>
+    <ul class="wp-records">
+      <li><strong>Retail &amp; commercial banking</strong> &mdash; Core + Payments + Treasury + Federation + Capability + Recovery.</li>
+      <li><strong>Payments &amp; cards</strong> &mdash; Core + Payments + Credentials + Signals + Telemetry.</li>
+      <li><strong>Healthcare &amp; life sciences</strong> &mdash; Core + Healthcare + Credentials + Capability + Telemetry.</li>
+      <li><strong>Capital markets &amp; treasury</strong> &mdash; Core + Treasury + Custody + Attestation + Transparency + Recovery.</li>
+      <li><strong>Custody &amp; digital-asset operators</strong> &mdash; Core + Custody + Attestation + Credentials + Recovery + Capability.</li>
+      <li><strong>Insurance &amp; underwriting</strong> &mdash; Core + Credentials + Federation + Capability + Telemetry.</li>
+      <li><strong>AI labs &amp; agent platforms</strong> &mdash; Core + Capability + Attestation + Signals + Recovery + Telemetry.</li>
+      <li><strong>Public sector &amp; defence</strong> &mdash; Core + Federation + Attestation + Transparency + Recovery.</li>
+      <li><strong>Marketplaces &amp; platforms</strong> &mdash; Core + Federation + Capability + Signals + Telemetry.</li>
+    </ul>
+
+    <h2 id="compliance">7.2 &middot; Compliance &amp; control mapping</h2>
+    <p>The compliance addendum (<code>private/specs/compliance/control-mappings.md</code>) ships <strong>173 control mappings</strong> across nine frameworks. Each row points to the specific KYE<span class="tm">™</span> artefact &mdash; endpoint, schema, profile section, or conformance fixture &mdash; that satisfies it. Frameworks covered:</p>
+    <ul class="wp-records">
+      <li>SOC 2 Trust Services Criteria 2017 (rev. 2022)</li>
+      <li>ISO/IEC 27001:2022 Annex A</li>
+      <li>PCI DSS 4.0</li>
+      <li>PSD2 + PSD3 / PSR</li>
+      <li>DORA (Digital Operational Resilience Act)</li>
+      <li>NIS2</li>
+      <li>EU AI Act (Title III high-risk system obligations)</li>
+      <li>NIST SP 800-207 (Zero-Trust Architecture)</li>
+      <li>HIPAA Security Rule</li>
+    </ul>
+    <p>The mapping is the audit-evidence skeleton an enterprise GRC team uses to certify a deployment.</p>
+
+    <h2 id="conformance">7.3 &middot; Conformance &amp; certification</h2>
+    <p>v1.0 ships a <strong>37-fixture black-box conformance pack</strong> covering registration, delegation, scope attenuation, lifecycle and stop-cascade, capability invoke (allow / deny-quarantined / require-approval), capability-grant cascade, recovery flow, state transitions (allowed / rejected), break-glass grants, compromise cascade, key rotation, point-in-time replay, payments allow / deny / approval, audit integrity, idempotency, federation transfer, transparency log append + receipt, signal cascade, webhook delivery, proof bundle export, workload attest. Fixtures speak only HTTP &mdash; any conformant implementation can be tested with the same pack regardless of language, runtime, or topology. The conformance reporter emits machine-readable evidence for the auditor (<code>conformance-report.json</code>, normative as of v1.0).</p>
+
+    <h2 id="addenda">7.4 &middot; Normative addenda (gap-closure register)</h2>
+    <p>An independent v1.0 normative review identified 15 gaps across blockers, important and polish classes. Each is closed at the spec contract level; the underlying mechanisms remain in the patent track.</p>
+    <h3>Blockers (5 / 5 closed)</h3>
+    <ul class="wp-records">
+      <li><strong>State-composition transition matrix</strong> &mdash; <code>private/specs/state/state-composition-matrix.md</code> publishes the 10 illegal compositions, 5 break-glass entry conditions and 3 terminal states across the 6-tuple state.</li>
+      <li><strong>Wire-protocol version negotiation</strong> &mdash; <code>kye-gateway-v1.md</code> §11: <code>Accept-Version</code> header, optional URN version segment, <code>/.well-known/kye::kye_supported_versions</code>, 18-month backward-compatibility floor.</li>
+      <li><strong>Cascade atomicity contract</strong> &mdash; <code>kye-gateway-v1.md</code> §12: caller-visible all-or-nothing guarantee, idempotent retry, signed <code>cascade_summary</code>. Algorithm remains patent-track.</li>
+      <li><strong>RFC 7807 problem+json error envelope</strong> &mdash; <code>kye-gateway-v1.md</code> §13 + <code>schemas/problem-detail.json</code>, with status-code map and reason-code pinning.</li>
+      <li><strong>MCP elicitation / sampling / versioning</strong> &mdash; <code>kye-capability-v1.md</code> §11: gating per MCP operation, sampling budgets, tool versioning rules.</li>
+    </ul>
+    <h3>Important (5 / 5 closed)</h3>
+    <ul class="wp-records">
+      <li><strong>Recovery m-of-n approval</strong> &mdash; <code>kye-recovery-v1.md</code> §11 (<code>approval_quorum</code>, ordered/unordered, reject-wins, window-expiry escalation).</li>
+      <li><strong>Conformance-report schema</strong> &mdash; promoted from v1.1 placeholder to v1.0 in <code>schemas/conformance-report.json</code>.</li>
+      <li><strong>Payments post-execution lifecycle</strong> &mdash; <code>kye-payments-v1.md</code> §12: 10 states (hold, release, reversed, disputed, charged_back, dispute_resolved, settled, &hellip;), 9 signal types, ISO 20022 message-class alignment.</li>
+      <li><strong>Telemetry redaction / sampling / export MUST</strong> &mdash; <code>kye-telemetry-v1.md</code> §9-10: redaction field list, per-decision-class sampling floors, OTLP and CloudEvents 1.0 exports.</li>
+      <li><strong>Quantitative SLA conformance tiers</strong> &mdash; <code>kye-gateway-v1.md</code> §15: Tier-1 Bank / Tier-2 Mid-market / Tier-3 Reference targets for p50, p99, throughput, cascade latency.</li>
+    </ul>
+    <h3>Polish (5 / 5 closed)</h3>
+    <ul class="wp-records">
+      <li><strong>Selective disclosure + GDPR right-to-erasure</strong> &mdash; <code>kye-credentials-v1.md</code> §9-10 (SD-JWT, BBS+, Article 17 erasure flow).</li>
+      <li><strong>Cryptographic agility</strong> &mdash; <code>kye-gateway-v1.md</code> §14: <code>Accept-Crypto-Suite</code> negotiation; opaque suite names; algorithms remain in patent track.</li>
+      <li><strong>Capability dependency + supply chain</strong> &mdash; <code>kye-capability-v1.md</code> §12-13: DAG resolution, supply-chain attestation MUST, <code>state=blocked_by_dependency</code> cascade.</li>
+      <li><strong>Multi-region geo-replication + conflict resolution</strong> &mdash; <code>kye-federation-v1.md</code> §10: replication topology metadata, 6 conflict-resolution rules, 18-month key archival floor.</li>
+      <li><strong>Vocabulary completeness</strong> &mdash; <code>public/vocabulary/payments-decision-codes.md</code>, <code>healthcare-break-glass-categories.md</code>, <code>signal-types.md</code>, <code>redaction-fields.md</code>.</li>
+    </ul>
 
     <h2 id="security">8 &middot; Security &amp; threat model</h2>
     <p>The reference implementation defends against:</p>
@@ -191,17 +282,20 @@
       <li><strong>Stale revocations</strong> &mdash; cascade machinery propagates atomically to dependent records before the response returns; downstream PDPs that subscribe to the bus invalidate caches on signal receipt.</li>
       <li><strong>Forged credentials</strong> &mdash; Ed25519 signatures verified against the gateway&rsquo;s published JWKS at <code>/.well-known/jwks.json</code>.</li>
       <li><strong>Approval timeout abuse</strong> &mdash; pending approvals carry a <code>required_by</code> deadline; the runtime expires them and emits a deny signal.</li>
+      <li><strong>Compromised actor</strong> &mdash; compromise reports trigger atomic cascade revocation across delegations, payment authorities, access rights, capability grants, and break-glass grants; recovery flow gates re-activation behind signed, time-boxed approvals.</li>
+      <li><strong>Lost or rotated keys</strong> &mdash; key rotation requires a valid <code>X-Break-Glass-Grant-Id</code>; appends a <code>key.rotated</code> entry to the audit chain; previous keys remain verifiable for a configurable retention window. The signing-suite construction is part of the normative specification and is not disclosed publicly.</li>
+      <li><strong>Forensic back-dating</strong> &mdash; point-in-time audit replay reconstructs entity / authority / state at any sequence or timestamp; investigators verify behaviour rather than reading current state.</li>
     </ul>
     <p>Out of scope for the reference: HSM-backed key custody, multi-tenant gateway hardening, transport-level mTLS configuration. These are deployment concerns; production Gateways must address them.</p>
 
     <h2 id="governance">9 &middot; Governance</h2>
     <p>Vocabulary, schemas, OpenAPI specs and reference Gateway behaviours are published openly under Apache License 2.0 in <a href="https://github.com/KYE-Protocol" target="_blank" rel="noopener">github.com/KYE-Protocol</a>. Specific mechanism designs (decision algorithms, hash-chain construction, cascade ordering, attenuation propagation) are intentional placeholders pre-filing in <code>private/mechanisms/</code> and are not disclosed publicly to preserve patent novelty. Conformant implementations may license the mechanism designs royalty-free for any conformant use; full terms are forthcoming with the Linux Foundation / OpenWallet Foundation track.</p>
-    <p>Trademark policy: KYE&trade;, KYE Protocol&trade;, and Know Your Entity&trade; refer to the protocol as published. Forks, modifications and unrelated projects must not use the marks to identify themselves.</p>
+    <p>Trademark policy: KYE<span class="tm">™</span>, KYE Protocol<span class="tm">™</span>, and Know Your Entity<span class="tm">™</span> refer to the protocol as published. Forks, modifications and unrelated projects must not use the marks to identify themselves.</p>
 
     <h2 id="roadmap">10 &middot; Roadmap</h2>
     <ul class="wp-records">
-      <li><strong>v1.1</strong> &mdash; Treasury, Custody, Healthcare profiles. Extended signal bus durability options.</li>
-      <li><strong>v1.2</strong> &mdash; Conformance certification programme. Independent test-vector runners.</li>
+      <li><strong>v1.1</strong> &mdash; Sector overlays: <code>kye-healthcare-clinical-1.0</code>, <code>kye-healthcare-payer-1.0</code>, <code>kye-healthcare-research-1.0</code>, 42 CFR Part 2. Extended signal-bus durability options. <code>conformance-report.json</code> + <code>conformance-fixture.json</code> schemas.</li>
+      <li><strong>v1.2</strong> &mdash; Conformance certification programme; independent test-vector runners; vendor self-attestation portal.</li>
       <li><strong>v2.0</strong> &mdash; Federation v2 with multi-hop attenuation and cross-jurisdiction proofs. Patent-track algorithms moved to royalty-free open standard.</li>
     </ul>
 
@@ -218,11 +312,11 @@
       <li>NIST. <a href="https://csrc.nist.gov/publications/detail/sp/800-207/final" target="_blank" rel="noopener">SP 800-207 Zero Trust Architecture</a>.</li>
     </ol>
 
-    <p class="wp-cite">Cite as: KYE Protocol Project. <em>KYE Protocol&trade;: an open trust layer for the agentic economy.</em> Whitepaper v1.0, April 2026. <code>https://kye-protocol.github.io/whitepaper.html</code></p>
+    <p class="wp-cite">Cite as: KYE Protocol<span class="tm">™</span> Project. <em>KYE Protocol<span class="tm">™</span>: an open trust layer for the agentic economy.</em> Whitepaper v1.0, April 2026. <code>https://kye-protocol.github.io/whitepaper.html</code></p>
   </article>
 </main>
 <footer class="footer"><div class="container footer-inner">
-  <div>&copy; <span id="year"></span> KYE Protocol<sup>&trade;</sup>. KYE<sup>&trade;</sup>, KYE Protocol<sup>&trade;</sup> and Know Your Entity<sup>&trade;</sup> are trademarks of the KYE Protocol<sup>&trade;</sup> project.</div>
+  <div>&copy; <span id="year"></span> KYE Protocol<span class="tm">™</span>. KYE<span class="tm">™</span>, KYE Protocol<span class="tm">™</span> and Know Your Entity<span class="tm">™</span> are trademarks of the KYE Protocol<span class="tm">™</span> project.</div>
   <div class="footer-links">
     <a href="./">Home</a>
     <a href="https://github.com/KYE-Protocol" target="_blank" rel="noopener">GitHub</a>

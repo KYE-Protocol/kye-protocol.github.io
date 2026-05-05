@@ -30,3 +30,30 @@ initVocabBrowser();
 initScrollTop();
 initQuickstart();
 initStarCta();
+
+/* WebMCP: expose KYE Protocol™ tools to AI agents via the browser. */
+import { initWebMcp } from "./assets/webmcp.js";
+initWebMcp();
+
+/* Theme toggle — persists to localStorage; works alongside @media
+   prefers-color-scheme (the toggle, when set, always wins). */
+(function initThemeToggle() {
+  const STORE_KEY = "kye-theme";
+  const root = document.documentElement;
+  const btn = document.querySelector("[data-theme-toggle]");
+  if (!btn) return;
+  function current() {
+    const explicit = root.getAttribute("data-theme");
+    if (explicit === "dark" || explicit === "light") return explicit;
+    return matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+  function apply(t) {
+    root.setAttribute("data-theme", t);
+    btn.setAttribute("aria-label", t === "dark" ? "Switch to light theme" : "Switch to dark theme");
+    btn.title = t === "dark" ? "Light mode" : "Dark mode";
+    try { localStorage.setItem(STORE_KEY, t); } catch (_) { /* ignore */ }
+  }
+  // Initial label/title
+  apply(current());
+  btn.addEventListener("click", () => apply(current() === "dark" ? "light" : "dark"));
+})();

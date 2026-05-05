@@ -1,0 +1,45 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://kye-protocol.github.io/",
+      "service-desc": [
+        {
+          "href": "https://github.com/KYE-Protocol/app/raw/main/private/specs/openapi/kye-core-v1.yaml",
+          "type": "application/yaml",
+          "title": "KYE Protocol Core OpenAPI v1.0"
+        },
+        {
+          "href": "https://github.com/KYE-Protocol/app/raw/main/private/specs/payments/openapi/kye-payments-v1.yaml",
+          "type": "application/yaml",
+          "title": "KYE Protocol Payments OpenAPI v1.0"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://kye-protocol.github.io/whitepaper.html",
+          "type": "text/html",
+          "title": "KYE Protocol Whitepaper v1.0"
+        },
+        {
+          "href": "https://github.com/KYE-Protocol/.github/blob/main/CONTRIBUTING.md",
+          "type": "text/markdown",
+          "title": "Contributing guide"
+        }
+      ],
+      "service-meta": [
+        {
+          "href": "https://kye-protocol.github.io/.well-known/kye",
+          "type": "application/json",
+          "title": "KYE Protocol discovery document (JWKS, profile list, conformance version)"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://kye-protocol.github.io/.well-known/health",
+          "type": "application/json",
+          "title": "Reference Gateway health"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "_comment": "RFC 9728 protected-resource metadata for the KYE Protocol reference Gateway. Conformant Gateways publish their own values.",
+  "resource": "https://kye-protocol.github.io",
+  "authorization_servers": [
+    "https://kye-protocol.github.io"
+  ],
+  "scopes_supported": [
+    "kye:entity:read",
+    "kye:entity:write",
+    "kye:delegation:read",
+    "kye:delegation:write",
+    "kye:capability:invoke",
+    "kye:audit:read",
+    "kye:audit:point-in-time",
+    "kye:recovery:request",
+    "kye:recovery:decide",
+    "kye:break-glass:request",
+    "kye:keys:rotate",
+    "kye:transparency:read",
+    "kye:transparency:write"
+  ],
+  "bearer_methods_supported": ["header"],
+  "resource_documentation": "https://kye-protocol.github.io/whitepaper.html",
+  "resource_signing_alg_values_supported": ["EdDSA", "ES256"]
+}

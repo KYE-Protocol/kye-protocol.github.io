@@ -2,3 +2,21 @@ User-agent: *
 Allow: /
 
 Sitemap: https://kye-protocol.github.io/sitemap.xml
+
+# Content Signals (https://contentsignals.org). KYE Protocol™ is an open
+# standard; we invite agents to read, link, and crawl the public surface
+# (vocabulary, schemas, OpenAPI, conformance fixtures, examples). Mechanism
+# content lives in private/ and is excluded by repository policy, not by
+# this file.
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+# Agent / API discovery (RFC 8288 link relations on the homepage; see
+# /_headers and /functions/_middleware.js for the HTTP Link headers).
+# api-catalog:        /.well-known/api-catalog            (RFC 9727)
+# oauth-authz-server: /.well-known/oauth-authorization-server (RFC 8414)
+# oauth-protected:    /.well-known/oauth-protected-resource    (RFC 9728)
+# openid-config:      /.well-known/openid-configuration        (OIDC Discovery)
+# mcp-server-card:    /.well-known/mcp/server-card.json        (MCP SEP-1649)
+# agent-skills:       /.well-known/agent-skills/index.json     (Agent-Skills v0.2)
+# llms-txt:           /llms.txt
+# sitemap:            /sitemap.xml

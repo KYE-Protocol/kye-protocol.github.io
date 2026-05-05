@@ -1,7 +1,7 @@
-/* KYE Protocol™ profile inventory. */
+/* KYE Protocol™ profile inventory — 15 normative profiles in v1.0. */
 export const PROFILES = [
   {
-    id: "kye-core-1.0", name: "Core",
+    id: "kye-core-1.0", name: "Core", status: "Normative v1.0",
     description: "The base contract. Entity registration, delegations, scopes, credentials, attestations, runtime authorize/evaluate/events, audit chain, signal bus.",
     endpoints: ["/v1/entities", "/v1/delegations", "/v1/runtime/authorize", "/v1/audit/events", "/v1/signals/publish"],
     terms: [
@@ -11,7 +11,17 @@ export const PROFILES = [
     ],
   },
   {
-    id: "kye-payments-1.0", name: "Payments",
+    id: "kye-gateway-1.0", name: "Gateway", status: "Normative v1.0",
+    description: "API surface, headers, idempotency, content types, signing, error envelopes. The contract every conformant Gateway implements regardless of vendor or runtime.",
+    endpoints: ["/.well-known/kye", "/v1/keys", "/v1/keys:rotate", "/v1/runtime/authorize"],
+    terms: [
+      { name: "Idempotency-Key", desc: "Header for safe replay of state-changing requests" },
+      { name: "X-Break-Glass-Grant-Id", desc: "Required for sensitive ops like key rotation" },
+      { name: "well-known/kye", desc: "Discovery document for JWKS, profile list, conformance version" },
+    ],
+  },
+  {
+    id: "kye-payments-1.0", name: "Payments", status: "Normative v1.0",
     description: "Sectoral overlay for payment intents, payment authorities, beneficiaries, wallets, and a sector PDP (sPDP) with currency / amount / rail / approval gating.",
     endpoints: ["/v1/wallets", "/v1/payment-authorities", "/v1/payment-intents", "/v1/payment-intents/{id}/authorize"],
     terms: [
@@ -21,7 +31,7 @@ export const PROFILES = [
     ],
   },
   {
-    id: "kye-federation-1.0", name: "Federation",
+    id: "kye-federation-1.0", name: "Federation", status: "Normative v1.0",
     description: "Cross-trust-domain entity portability with attenuated scope. JWKS exchange, signed assertions, transferred entities preserve provenance.",
     endpoints: ["/v1/federation/verify", "/v1/federation/transfer", "/v1/trust-domains"],
     terms: [
@@ -31,7 +41,7 @@ export const PROFILES = [
     ],
   },
   {
-    id: "kye-credentials-1.0", name: "Credentials",
+    id: "kye-credentials-1.0", name: "Credentials", status: "Normative v1.0",
     description: "Issue, verify, present and revoke verifiable credentials. Ed25519 detached signatures over canonical payloads. Verifier checks signature + status + expiry + revocation.",
     endpoints: ["/v1/credentials/issue", "/v1/credentials/verify", "/v1/credentials/present", "/v1/credentials/{id}/revoke"],
     terms: [
@@ -41,7 +51,7 @@ export const PROFILES = [
     ],
   },
   {
-    id: "kye-attestation-1.0", name: "Attestation",
+    id: "kye-attestation-1.0", name: "Attestation", status: "Normative v1.0",
     description: "Workload identity. SPIFFE / EAT / build-provenance bindings. Attestations have explicit revocation and stale detection.",
     endpoints: ["/v1/workloads/attest", "/v1/workloads/{entity_id}/attestations", "/v1/attestations/{id}/revoke"],
     terms: [
@@ -51,7 +61,7 @@ export const PROFILES = [
     ],
   },
   {
-    id: "kye-signals-1.0", name: "Signals",
+    id: "kye-signals-1.0", name: "Signals", status: "Normative v1.0",
     description: "Reactive bus. Subscribers register filters and ack delivery checkpoints. Replay supported. Signed webhook delivery with replay window + key rotation.",
     endpoints: ["/v1/signals/publish", "/v1/signals/subscribe", "/v1/signals/ack", "/v1/signals/replay", "/v1/webhooks"],
     terms: [
@@ -61,13 +71,83 @@ export const PROFILES = [
     ],
   },
   {
-    id: "kye-transparency-1.0", name: "Transparency",
+    id: "kye-transparency-1.0", name: "Transparency", status: "Normative v1.0",
     description: "Append-only statement log. Each append returns a signed receipt. External auditors can verify inclusion using only the gateway’s public keys.",
     endpoints: ["/v1/transparency/statements", "/v1/transparency/receipts/{id}", "/v1/transparency/verify"],
     terms: [
       { name: "transparency_statement", desc: "Canonicalised assertion submitted to the log" },
       { name: "transparency_receipt", desc: "Signed proof returned by the log" },
       { name: "log_index", desc: "Position in the transparency log" },
+    ],
+  },
+  {
+    id: "kye-conformance-1.0", name: "Conformance", status: "Normative v1.0",
+    description: "Black-box fixture pack + reporter. 40 deterministic scenarios that any conforming implementation must pass. The same pack tests vendors, internal stacks, and the reference Gateway.",
+    endpoints: ["/v1/conformance/run", "/v1/conformance/report", "/v1/conformance/version"],
+    terms: [
+      { name: "conformance_fixture", desc: "Single black-box scenario with request + expectation chain" },
+      { name: "conformance_report", desc: "Pass/fail evidence the auditor receives" },
+      { name: "conformance_version", desc: "Pinned fixture-pack version a deployment is certified against" },
+    ],
+  },
+  {
+    id: "kye-treasury-1.0", name: "Treasury", status: "Normative v1.0",
+    description: "Treasury authority chain — sweeps, rebalances, intercompany transfers, FX. Reconciliation hooks tie every state-changing intent back to its treasury authority + scope.",
+    endpoints: ["/v1/treasury/authorities", "/v1/treasury/intents", "/v1/treasury/reconcile"],
+    terms: [
+      { name: "treasury_authority", desc: "Bounded right to move funds within a treasury scope" },
+      { name: "treasury.rebalance", desc: "Action across owned wallets" },
+      { name: "reconciliation_event", desc: "Signal that ties intents back to settled state" },
+    ],
+  },
+  {
+    id: "kye-custody-1.0", name: "Custody", status: "Normative v1.0",
+    description: "Asset custody chain of authority. Workload attestation binds the runtime; custody authority binds the wallet; audit chain binds the timeline.",
+    endpoints: ["/v1/custody/wallets", "/v1/custody/authorities", "/v1/custody/withdraw"],
+    terms: [
+      { name: "custody_authority", desc: "Right to act on a custodied asset within scope" },
+      { name: "custody.withdraw", desc: "Action that removes assets from custody" },
+      { name: "asset_class", desc: "Asset taxonomy governed by the custody profile" },
+    ],
+  },
+  {
+    id: "kye-healthcare-1.0", name: "Healthcare", status: "Normative v1.0",
+    description: "HIPAA-aligned overlay. Binds an agent to consent credentials, attaches redaction obligations and external-send blocks, records the lot in the audit chain.",
+    endpoints: ["/v1/healthcare/consents", "/v1/healthcare/redactions", "/v1/healthcare/data-uses"],
+    terms: [
+      { name: "consent_credential", desc: "Verifiable consent issued by the patient or proxy" },
+      { name: "redaction.required", desc: "Obligation a downstream PEP must satisfy" },
+      { name: "external.send.block", desc: "Obligation forbidding egress beyond the trust domain" },
+    ],
+  },
+  {
+    id: "kye-telemetry-1.0", name: "Telemetry", status: "Normative v1.0",
+    description: "Authorisation decision telemetry. Every PDP decision emits a structured event with the policy, inputs, reason code, decision time, and the entity chain that produced it.",
+    endpoints: ["/v1/telemetry/decisions", "/v1/telemetry/stream"],
+    terms: [
+      { name: "policy_decision_id", desc: "URN that pins one decision to one record" },
+      { name: "decision_reason_code", desc: "Vocabulary-defined reason a decision came out the way it did" },
+      { name: "decision_latency_ms", desc: "Time from request to allow / deny / approval" },
+    ],
+  },
+  {
+    id: "kye-capability-1.0", name: "Capability", status: "Normative v1.0",
+    description: "Skills, tools, MCP tools, functions, connectors, prompts, workflows, playbooks, runbooks, model profiles, payment actions. Register, grant, invoke (allow / deny / require-approval / quarantine), supersede, revoke.",
+    endpoints: ["/v1/capabilities", "/v1/capability-grants", "/v1/runtime/invoke", "/v1/capabilities/{id}:quarantine"],
+    terms: [
+      { name: "capability_kind", desc: "skill / tool / mcp_tool / function / connector / playbook / model_profile / …" },
+      { name: "capability_grant", desc: "Grants an actor the right to invoke a capability within scope" },
+      { name: "capability.authority_revoked", desc: "Signal emitted when a grant is cascade-revoked" },
+    ],
+  },
+  {
+    id: "kye-recovery-1.0", name: "Recovery", status: "Normative v1.0",
+    description: "Recovery requests, decisions, signed proofs, break-glass grants, compromise reports. Replaces ad-hoc admin reset with an auditable, time-boxed, signed flow.",
+    endpoints: ["/v1/recoveries", "/v1/recoveries/{id}/decide", "/v1/break-glass-grants", "/v1/compromise-reports"],
+    terms: [
+      { name: "break_glass_grant", desc: "Time-boxed elevated authority, fully audited" },
+      { name: "compromise_report", desc: "Trigger for cascade revocation across delegations + capabilities + payment authorities" },
+      { name: "recovery_proof", desc: "Signed artefact proving an entity completed recovery" },
     ],
   },
 ];
