@@ -1727,3 +1727,147 @@ body { counter-reset: section-num; }
   border-color: var(--info-line);
 }
 .deployed-pill .dot { background: var(--info); box-shadow: 0 0 8px var(--info); }
+
+/* ============================================================
+   MOBILE RESPONSIVE — comprehensive fix pass for v1.0 sections
+   added after the original layout. Scoped here so they win in
+   the cascade and override earlier declarations.
+   ============================================================ */
+
+/* assurance-grid: 6 cards (was 4-col which orphaned rows) */
+.assurance-grid { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 1080px) { .assurance-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px)  { .assurance-grid { grid-template-columns: 1fr; gap: 10px; } }
+.assurance-card { padding: 18px 18px 16px; }
+.assurance-card .c { font-size: clamp(20px, 5vw, 26px); line-height: 1.1; }
+.assurance-card .b { font-size: 12.5px; }
+
+/* hero pills row: prevent overflow when deployed-pill + version-pill stack */
+.hero-pill, .version-pill, .deployed-pill {
+  max-width: 100%; box-sizing: border-box; white-space: nowrap;
+  text-overflow: ellipsis; overflow: hidden;
+}
+@media (max-width: 600px) {
+  .hero-pill, .version-pill, .deployed-pill {
+    margin-left: 0 !important; margin-top: 6px;
+    font-size: 10.5px;
+  }
+  .hero-pill { font-size: 11px; }
+}
+@media (max-width: 380px) {
+  .deployed-pill .dot ~ * , .version-pill { font-size: 10px; }
+}
+
+/* persona-select chip row: align label + 7 chips on narrow screens */
+@media (max-width: 600px) {
+  .persona-select { gap: 6px; row-gap: 6px; align-items: flex-start; }
+  .persona-select-label { width: 100%; margin-right: 0; margin-bottom: 2px; font-size: 11px; }
+  .persona-chip { font-size: 11.5px; padding: 5px 10px; }
+}
+
+/* sector-grid + state-grid: tighten on narrow screens (already 1-col at 600) */
+@media (max-width: 600px) {
+  .sector-card { padding: 18px; }
+  .sector-card h3 { font-size: 16px; }
+  .sector-card .sector-pain { font-size: 12.5px; }
+  .sector-card .prof-pill { font-size: 10.5px; padding: 3px 8px; }
+  .sector-card .sector-frameworks { font-size: 10.5px; }
+  .state-card { padding: 16px; gap: 8px; }
+  .state-card .state-h { font-size: 12px; padding: 3px 8px; }
+  .state-card .state-desc { font-size: 13px; }
+  .state-card .state-vals li code { font-size: 10.5px; padding: 2px 7px; }
+  .state-card .state-emit { font-size: 11px; }
+}
+
+/* what-card: ensure two-col gloss collapses cleanly */
+@media (max-width: 700px) {
+  .what-card { padding: 22px 22px 20px; }
+  .what-card .what-def { font-size: clamp(16px, 4vw, 20px); }
+  .what-card .what-def-gloss li {
+    grid-template-columns: 1fr !important; gap: 4px !important; padding: 12px 14px !important;
+  }
+  .what-card .what-def-gloss li strong { min-width: 0 !important; }
+}
+
+/* problem-solution cards: padding tighten */
+@media (max-width: 600px) {
+  .ps-card { padding: 22px 20px; }
+  .ps-h { font-size: 17px; }
+  .ps-list li { font-size: 13px; }
+}
+
+/* how-grid: tighten + outcomes list mobile */
+@media (max-width: 600px) {
+  .how-card { padding: 22px 20px; }
+  .how-card .how-h { font-size: 17px; }
+  .how-card .how-b { font-size: 13.5px; }
+  .how-outcomes li { font-size: 12px; line-height: 1.5; }
+  .how-pill { font-size: 10.5px; padding: 3px 8px; }
+}
+
+/* persona-card ROI bullets readable on mobile */
+@media (max-width: 600px) {
+  .persona-card { padding: 22px 20px; }
+  .persona-card h3 { font-size: 16px; }
+  .persona-card .pain { font-size: 12.5px; }
+  .persona-roi li { font-size: 11.5px; line-height: 1.45; }
+}
+
+/* compliance pill row: don't overflow */
+@media (max-width: 600px) {
+  .compliance-row { gap: 6px; }
+  .compliance-pill { font-size: 10.5px; padding: 4px 9px; }
+  .compliance-row .lbl { font-size: 10px; }
+}
+
+/* footer-grid: ensure 1-col on mobile breaks cleanly */
+@media (max-width: 600px) {
+  .footer-grid { padding: 28px 0 16px; gap: 18px; }
+  .footer-col h4 { font-size: 10.5px; margin-bottom: 10px; }
+  .footer-col a { font-size: 13px; }
+  .footer-bottom { font-size: 11.5px; padding: 14px 0; flex-direction: column; align-items: flex-start; gap: 8px; }
+  .footer-bottom > div { width: 100%; }
+}
+
+/* Nav: ensure theme-toggle stays visible on mobile + nav items don't crowd */
+@media (max-width: 700px) {
+  .nav-inner { gap: 6px; height: 56px; }
+  .nav-links { gap: 12px; }
+  .theme-toggle { width: 32px; height: 32px; margin-left: 4px; }
+  .theme-toggle svg { width: 16px; height: 16px; }
+  .nav-cta { padding: 6px 12px; font-size: 13px; }
+}
+@media (max-width: 480px) {
+  .nav-links { gap: 8px; font-size: 12.5px; }
+  .nav-cta { padding: 6px 10px; font-size: 12px; }
+}
+
+/* Hero h1 + lede sized for very narrow */
+@media (max-width: 380px) {
+  .hero h1 { font-size: 30px; line-height: 1.08; }
+  .hero p.lede { font-size: 14.5px; line-height: 1.5; }
+}
+
+/* Section eyebrow shouldn't be huge on mobile */
+@media (max-width: 600px) {
+  .eyebrow { font-size: 9.5px; padding: 3px 8px; }
+  .h-section { font-size: clamp(22px, 6vw, 30px); margin-bottom: 8px; }
+  .lede { font-size: 14.5px; line-height: 1.55; }
+}
+
+/* coverage / cmp tables — horizontal scroll on mobile */
+@media (max-width: 600px) {
+  .cmp th, .cmp td { padding: 9px 10px; font-size: 12px; }
+}
+
+/* Quickstart code block — narrower padding on mobile */
+@media (max-width: 480px) {
+  .qs-pane-wrap pre { padding: 14px 12px; font-size: 11px; line-height: 1.5; }
+  .qs-tab { padding: 9px 10px; font-size: 11.5px; }
+}
+
+/* Body min-width for very narrow screens */
+body { min-width: 320px; }
+
+/* Prevent horizontal scroll on the whole page */
+html, body { overflow-x: hidden; }
