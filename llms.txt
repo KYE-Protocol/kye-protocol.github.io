@@ -1,15 +1,19 @@
-# KYE Protocol™ — Know Your Entity™
+# KYE Protocol™ — The Entity Authority Protocol for AI Governance
 
-> The open contract layer for identity, authority, scope, state and audit
-> across humans, businesses, AI agents, services, models, tools and
-> workflows. Unifies KYC, KYB and KYA. Apache License 2.0.
+> KYE Protocol™ proves who or what is acting, on behalf of whom, using
+> which capability, under what authority, in what state, and with what
+> audit trail. The technical and evidentiary foundation for **Authority
+> Finality™** in AI-agent systems: a replayable proof layer for
+> accountability, compliance, dispute resolution, and legally defensible
+> audit trails.
 
-KYE Protocol™ answers, for every action, the question:
-**who acted, on whose behalf, with what authority, under what scope, with what evidence?**
+> KYE does not replace legal agreements, signatures, or regulatory
+> obligations — it provides the technical control and evidence layer
+> needed to support authority finality, accountability, and legally
+> defensible audit trails for agentic systems.
 
-It is a contract — vocabulary, schemas, OpenAPI, conformance fixtures —
-not a vendor product. A bank, payments processor, healthcare system or AI
-lab adopts the contract; multiple vendors may implement it.
+> Apache License 2.0.
+
 
 ## v1.0 ships
 

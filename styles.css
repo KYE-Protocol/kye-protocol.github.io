@@ -2276,3 +2276,54 @@ h4 { letter-spacing: -0.008em; font-weight: 600; }
   background: var(--accent) !important;
   color: var(--paper) !important;
 }
+
+/* === AUTHORITY FINALITY — category contrast plate === */
+.af-wrap {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 28px;
+}
+@media (max-width: 900px) { .af-wrap { grid-template-columns: 1fr; } }
+.af-card {
+  background: var(--surface-solid); border: 1px solid var(--rule);
+  border-radius: 10px; padding: 28px;
+  position: relative;
+}
+.af-card.af-then { border-color: var(--rule-strong); }
+.af-card.af-now  { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.af-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 4px 12px; border-radius: 4px;
+  font-family: var(--font-mono); font-size: 10.5px;
+  font-weight: 600; letter-spacing: 0.10em; text-transform: uppercase;
+  background: var(--paper-2); color: var(--ink-3);
+  border: 1px solid var(--rule);
+  margin-bottom: 14px;
+}
+.af-card.af-now .af-tag { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
+.af-h {
+  font-size: 22px; font-weight: 700; letter-spacing: -0.018em;
+  margin: 8px 0 16px; color: var(--ink);
+}
+.af-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.af-list li {
+  position: relative; padding-left: 22px;
+  font-size: 14px; line-height: 1.55; color: var(--text);
+}
+.af-list li::before {
+  content: ""; position: absolute; left: 0; top: 9px;
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--rule-strong);
+}
+.af-card.af-now .af-list li::before { background: var(--accent); }
+.af-card.af-now .af-list li strong  { color: var(--ink); }
+.af-foot {
+  margin-top: 24px; padding: 18px 22px;
+  background: var(--paper-2); border: 1px solid var(--rule); border-radius: 8px;
+  font-size: 14px; color: var(--text-muted); line-height: 1.65;
+  max-width: 900px;
+}
+@media (max-width: 600px) {
+  .af-card { padding: 22px 20px; }
+  .af-h { font-size: 19px; }
+  .af-list li { font-size: 13px; }
+  .af-foot { font-size: 13px; padding: 14px 16px; }
+}

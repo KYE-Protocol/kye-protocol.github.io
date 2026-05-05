@@ -4,8 +4,8 @@
   <script>(function(){try{var s=localStorage.getItem("kye-theme");if(s==="dark"||s==="light"){document.documentElement.setAttribute("data-theme",s);}}catch(e){}})();</script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>KYE Protocol™ — Identity, authority &amp; audit for every AI agent action | Know Your Entity™</title>
-  <meta name="description" content="KYE Protocol™ is the open identity, authority &amp; audit layer that unifies KYC, KYB and KYA (Know Your Agent) for the agentic era. One URN, one delegation chain, one decision vocabulary, one cascading audit bus — for humans, businesses, AI agents, services, models and workflows. 87+ endpoints, 3 SDKs, 37 conformance fixtures, 173 control mappings." />
+  <title>KYE Protocol™ — The Entity Authority Protocol for AI Governance | Authority Finality™</title>
+  <meta name="description" content="KYE Protocol™ is the Entity Authority Protocol for AI governance. It proves who or what is acting, on behalf of whom, using which capability, under what authority, in what state, and with what audit trail — establishing Authority Finality™ for AI-agent actions. Replayable evidence layer for accountability, compliance, dispute resolution, and legally defensible audit trails. 15 normative profiles · 87+ endpoints · 173 compliance control mappings · Apache 2.0." />
   <meta name="keywords" content="KYE Protocol, Know Your Entity, KYA, Know Your Agent, KYC for AI agents, agent identity protocol, AI agent verification, AI agent authorization, agentic commerce, Visa Trusted Agent alternative, Skyfire alternative, Persona KYA, Sumsub Agent Verification, Trulioo Digital Agent Passport, AI agent passport, AI agent identity, agent governance, agentic AI security, AI delegation protocol, AI audit chain, agent accountability, AI compliance, MCP alternative, A2A alternative, OAuth for AI, SPIFFE for agents, AI workload identity, AI signal bus, AI cascade revoke, AI governance protocol, AI runtime authorization, AI proof bundle, AI transparency log, agent identity verification, KYC KYB KYA unified" />
   <meta name="author" content="KYE Protocol" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
@@ -19,16 +19,16 @@
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="KYE Protocol™ — Identity, authority &amp; audit for every AI agent action" />
-  <meta property="og:description" content="Cryptographic provenance for every action humans, services and AI agents take. Open vocabulary, 87+-endpoint reference Gateway, 3 SDKs, 37 conformance fixtures, 15 normative profiles." />
+  <meta property="og:description" content="The Entity Authority Protocol for AI governance. Proves who or what is acting, on behalf of whom, using which capability, under what authority, in what state, and with what audit trail. Establishes Authority Finality™ for AI-agent actions." />
   <meta property="og:url" content="https://kye-protocol.github.io/" />
   <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
   <meta property="og:site_name" content="KYE Protocol" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="KYE Protocol™ — Know Your Entity™" />
-  <meta name="twitter:description" content="The open identity, authority &amp; audit layer for AI agents, services, humans." />
+  <meta name="twitter:description" content="The Entity Authority Protocol for AI governance. Establishes Authority Finality™ for AI-agent actions: proof of who or what acted, on whose behalf, using which capability, under what authority, in what state, with what audit trail." />
   <meta name="twitter:image" content="https://kye-protocol.github.io/og.svg" />
   <link rel="preconnect" href="https://rsms.me" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=1778008580" />
+  <link rel="stylesheet" href="styles.css?v=1778014204" />
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
   <script type="application/ld+json">
@@ -231,6 +231,7 @@
     </a>
     <nav class="nav-links" aria-label="Primary">
       <a href="#what">What</a>
+      <a href="#authority-finality">Authority</a>
       <a href="#how">How</a>
       <a href="#sectors">Sectors</a>
       <a href="#profiles">Profiles</a>
@@ -255,25 +256,18 @@
   <div class="hero-grid"></div>
   <div class="hero-bg"></div>
   <div class="container hero-inner">
-    <span class="hero-pill"><span class="dot"></span> v1.0 &middot; open standard &middot; entity authority protocol</span>
-    <a class="version-pill deployed-pill" href="https://github.com/KYE-Protocol/kye-protocol.github.io/commits/main" target="_blank" rel="noopener" aria-label="Latest production deploy"><span class="dot"></span> deployed 2026-05-05 19:16 UTC</a>
+    <span class="hero-pill"><span class="dot"></span> v1.0 &middot; open standard &middot; entity authority protocol for AI governance</span>
+    <a class="version-pill deployed-pill" href="https://github.com/KYE-Protocol/kye-protocol.github.io/commits/main" target="_blank" rel="noopener" aria-label="Latest production deploy"><span class="dot"></span> deployed 2026-05-05 20:50 UTC</a>
     <a class="version-pill" href="https://github.com/KYE-Protocol/app/releases" target="_blank" rel="noopener" aria-label="View v1.0 release notes on GitHub"><span class="dot"></span> v1.0.0 &middot; release notes</a>
     <h1 id="hero-title">
-      Your future customers and employees<br/>
-      <span class="accent">won&rsquo;t all be human.</span>
+      The <span class="accent">Entity Authority Protocol</span><br/>
+      for AI Governance.
     </h1>
     <p class="lede">
-      Agents, models, tools and workflows are about to outnumber the people in your systems.
-      <strong>KYE Protocol<span class="tm">™</span></strong> is the open standard that proves, for every action:
-      <em>who</em> acted (the actor URN),
-      <em>on whose behalf</em> (the human or business at the top of the delegation chain),
-      with <em>what authority</em> (the delegation it&rsquo;s exercising),
-      under <em>what scope</em> (the constraints and obligations attached),
-      <em>in what state</em> (six independent dimensions &mdash; lifecycle, authority, delegation, credential, recovery, risk &mdash; each transitioning on its own, never collapsed into one boolean),
-      with <em>what evidence</em> (the signed proof bundle a regulator can verify) &mdash;
-      across the <strong>entire ecosystem</strong> (humans, businesses, agents, services, models, tools, workflows)
-      and the <strong>entire lifecycle</strong> (register &rarr; delegate &rarr; authorize &rarr; audit &rarr; stop &rarr; recover).
-      <strong>Horizontally</strong> across vendors. <strong>Vertically</strong> across regulators.
+      <strong>KYE Protocol<span class="tm">™</span></strong> proves <em>who or what is acting</em>, <em>on behalf of whom</em>, using <em>which capability</em>, under <em>what authority</em>, <em>in what state</em>, and with <em>what audit trail</em> &mdash; for every action a human, business, AI agent, service, model, tool or workflow takes.
+    </p>
+    <p class="lede" style="margin-top:8px;color:var(--text-muted)">
+      The technical and evidentiary foundation for <strong>Authority Finality<span class="tm">™</span></strong>: a replayable proof layer for accountability, compliance, dispute resolution, and legally defensible audit trails in agentic systems.
     </p>
     <div class="hero-cta">
       <a href="#flow" class="btn btn-primary">See it in 90 seconds &rarr;</a>
@@ -340,6 +334,42 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- AUTHORITY FINALITY — the category-defining frame -->
+<section id="authority-finality" class="section" aria-labelledby="h-af">
+  <div class="container">
+    <span class="eyebrow">From access control to authority finality</span>
+    <h2 id="h-af" class="h-section">Traditional IAM answers <em>who logged in</em>. <span class="accent">KYE answers everything that comes after.</span></h2>
+    <p class="lede">Identity tells you the front door. <strong>KYE Protocol<span class="tm">™</span></strong> tells you what happened on the other side &mdash; who or what acted, who they acted for, what authority they had, what capability they used, what state they were in, and what evidence proves it. We call this <strong>Authority Finality<span class="tm">™</span></strong>: a replayable proof layer for AI-agent actions.</p>
+    <div class="af-wrap">
+      <article class="af-card af-then">
+        <span class="af-tag">Traditional IAM</span>
+        <h3 class="af-h">Access control</h3>
+        <ul class="af-list">
+          <li><strong>Who logged in</strong> &mdash; principal authentication.</li>
+          <li><strong>What scopes the token has</strong> &mdash; static permissions, frozen at issuance.</li>
+          <li>Audit log of <em>requests</em>, not decisions.</li>
+          <li>Revocation is best-effort across systems.</li>
+          <li>No language for delegation across humans &rarr; agents &rarr; tools.</li>
+          <li>No proof an external regulator can replay.</li>
+        </ul>
+      </article>
+      <article class="af-card af-now">
+        <span class="af-tag">KYE Protocol<span class="tm">™</span></span>
+        <h3 class="af-h">Authority Finality<span class="tm">™</span></h3>
+        <ul class="af-list">
+          <li><strong>Who or what is acting</strong> &mdash; one URN across humans, businesses, agents, services, models, tools, workflows.</li>
+          <li><strong>On behalf of whom</strong> &mdash; signed delegation chain back to a human or business at the top.</li>
+          <li><strong>Using which capability</strong> &mdash; first-class skills, tools, MCP tools, functions, connectors, playbooks, model_profiles.</li>
+          <li><strong>Under what authority</strong> &mdash; scope-bound, attenuable, revocable in milliseconds, recursively.</li>
+          <li><strong>In what state</strong> &mdash; six independent dimensions (lifecycle, authority, delegation, credential, recovery, risk).</li>
+          <li><strong>With what audit trail</strong> &mdash; signed proof bundle a regulator can verify with public keys alone.</li>
+        </ul>
+      </article>
+    </div>
+    <p class="af-foot">KYE does not replace legal agreements, signatures, or regulatory obligations. It provides the <strong>technical and evidentiary foundation</strong> for authority finality in AI-agent systems &mdash; accountability, compliance, dispute resolution, legally defensible audit trails.</p>
   </div>
 </section>
 
@@ -1370,6 +1400,10 @@ curl -X POST https://gw.example/v1/runtime/authorize \
     <h2 id="h-faq" class="h-section">Questions teams ask <span class="accent">on the first call</span>.</h2>
     <div class="faq-list">
       <details class="faq-item" open>
+        <summary>What is Authority Finality<span class="tm">™</span> and how is KYE different from IAM?</summary>
+        <p>Traditional IAM answers <em>who logged in</em>. <strong>KYE Protocol<span class="tm">™</span></strong> answers what happens after &mdash; <em>who or what is acting, on behalf of whom, using which capability, under what authority, in what state, and with what audit trail</em>. We call this Authority Finality<span class="tm">™</span>: a replayable proof layer for AI-agent actions. KYE does not replace legal agreements, signatures, or regulatory obligations &mdash; it provides the technical and evidentiary foundation for accountability, compliance, dispute resolution, and legally defensible audit trails in agentic systems.</p>
+      </details>
+      <details class="faq-item">
         <summary>What problem does KYE Protocol<span class="tm">™</span> actually solve?</summary>
         <p>Agentic systems are reaching production faster than identity, authorization and audit can keep up. Today an AI agent calls five services with five different identities; stop signals don&rsquo;t cross system boundaries; auditors can&rsquo;t reconstruct what happened. KYE Protocol<span class="tm">™</span> gives every actor &mdash; human, service, agent, model, tool, workflow &mdash; a single URN, one delegation chain, one decision vocabulary, one cascade and one append-only audit chain. So &ldquo;who acted, on whose behalf, with what authority, under what scope, with what evidence&rdquo; has the same answer in every system.</p>
       </details>
@@ -1559,7 +1593,7 @@ curl -X POST https://gw.example/v1/runtime/authorize \
   } });
   window.mermaid = mermaid;
 </script>
-<script type="module" src="main.js?v=1778008580"></script>
+<script type="module" src="main.js?v=1778014204"></script>
 </body>
 </html>
 
