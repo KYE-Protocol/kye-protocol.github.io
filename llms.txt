@@ -23,7 +23,7 @@ whitepaper.
 
 1. **Schema-first** — JSON Schema 2020-12 with absolute `$id` at
    `schemas.kye.dev`. OpenAPI, SDKs, validators, docs, and conformance
-   tests are derived from schemas, not hand-written. 32 schemas,
+   tests are derived from schemas, not hand-written. 46 schemas,
    39 validated examples.
 2. **Dictionary-first** — canonical vocabulary for entity types,
    lifecycle/authority/delegation/credential/recovery/risk states,
@@ -56,13 +56,13 @@ whitepaper.
 
 ## v1.0 ships
 
-- 15 normative profiles: Core, Gateway, Federation, Credentials,
+- 31 normative profiles: Core, Gateway, Federation, Credentials,
   Attestation, Signals, Transparency, Conformance, Treasury, Custody,
   Healthcare, Telemetry, Capability, Recovery, Payments
 - 3 payment overlays: kye-payments-eu-1.0, kye-payments-card-1.0,
   kye-payments-high-assurance-1.0
 - 112 OpenAPI operations across 87+ runtime endpoints
-- 28 JSON Schemas (JSON Schema 2020-12) with 31 validated examples
+- 46 JSON Schemas (JSON Schema 2020-12) with 39 validated examples
 - 37 black-box conformance fixtures
 - 173 control mappings: SOC 2, ISO 27001:2022, PCI DSS 4.0, PSD2/PSD3,
   DORA, NIS2, EU AI Act, NIST 800-207, HIPAA

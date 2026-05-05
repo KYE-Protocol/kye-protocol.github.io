@@ -57,7 +57,7 @@ chain, one decision vocabulary, one cascade, one append-only audit chain.
 
 ## v1.0 surface
 
-- 15 normative profiles: Core, Gateway, Federation, Credentials,
+- 31 normative profiles: Core, Gateway, Federation, Credentials,
   Attestation, Signals, Transparency, Conformance, Treasury, Custody,
   Healthcare, Telemetry, **Capability** (skills / tools / MCP / connectors
   / playbooks / model_profiles), **Recovery** (recovery requests,
@@ -66,7 +66,7 @@ chain, one decision vocabulary, one cascade, one append-only audit chain.
 - 3 payment overlays: EU (PSD2/3), Card (PCI DSS 4.0), High-Assurance
   (ISO 20022)
 - 112 OpenAPI operations across 87+ runtime endpoints
-- 28 JSON Schemas (JSON Schema 2020-12) with 31 validated examples
+- 46 JSON Schemas (JSON Schema 2020-12) with 39 validated examples
 - 37 black-box conformance fixtures (37/37 pass)
 - 173 control mappings: SOC 2, ISO 27001:2022, PCI DSS 4.0, PSD2/PSD3,
   DORA, NIS2, EU AI Act, NIST 800-207, HIPAA

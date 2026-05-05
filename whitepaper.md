@@ -97,7 +97,7 @@ emits its own audit event with a shared `correlation_id`.
 v1.0 publishes:
 
 - 112 OpenAPI operations across 87+ runtime endpoints
-- 28 JSON Schemas (JSON Schema 2020-12, absolute `$id`)
+- 46 JSON Schemas (JSON Schema 2020-12, absolute `$id`)
 - 31 validated example payloads
 - 37 black-box conformance fixtures
 
@@ -107,7 +107,7 @@ Credentials, Attestations, Capabilities, Capability Grants, Runtime
 Transparency, Federation, Recoveries, Break-Glass Grants, Compromise
 Reports, Keys, Conformance, plus Payments families.
 
-## 4. Profiles (15 normative)
+## 4. Profiles (31 normative)
 
 Core, Gateway, Federation, Credentials, Attestation, Signals,
 Transparency, Conformance, Treasury, Custody, Healthcare, Telemetry,

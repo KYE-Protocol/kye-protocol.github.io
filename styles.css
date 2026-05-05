@@ -2866,3 +2866,146 @@ html, body { background-color: var(--bg) !important; color: var(--text) !importa
   .arch-card .arch-h { font-size: 15px; }
   .arch-card .arch-b { font-size: 13px; }
 }
+
+/* ============================================================
+   §FINAL-2 — palette harmonised with diagrams + table unification.
+   The earlier indigo-800 (#3730a3) accent was darker than the diagram
+   palette (cascade visualizer + trust graph use #7c3aed + #6366f1).
+   Move accent to indigo-500 #6366f1 so text/buttons/pills harmonise
+   with the canvas-rendered visuals.
+   ============================================================ */
+
+/* Light theme — accent harmonised with diagrams */
+:root, :root[data-theme="light"] {
+  --accent:        #6366f1 !important;   /* indigo-500 — matches diagrams */
+  --accent-2:      #818cf8 !important;   /* indigo-400 — hover */
+  --accent-ink:    #4338ca !important;   /* indigo-700 — for prose links */
+  --accent-soft:   rgba(99, 102, 241, 0.10) !important;
+  --accent-line:   rgba(99, 102, 241, 0.22) !important;
+  --focus-ring:    0 0 0 3px rgba(99, 102, 241, 0.30) !important;
+}
+:root[data-theme="dark"] {
+  --accent:        #818cf8 !important;   /* indigo-400 — readable on dark */
+  --accent-2:      #a5b4fc !important;   /* indigo-300 */
+  --accent-ink:    #c7d2fe !important;   /* indigo-200 */
+  --accent-soft:   rgba(129, 140, 248, 0.16) !important;
+  --accent-line:   rgba(129, 140, 248, 0.32) !important;
+  --focus-ring:    0 0 0 3px rgba(165, 180, 252, 0.40) !important;
+}
+
+/* Brand mark stays graphite ink (light) / accent (dark) but the accent
+   now matches the diagrams. */
+.hero h1 .accent,
+.h-section .accent,
+.what-def .accent { color: var(--accent) !important; }
+
+/* ============================================================
+   TABLE + LIST FONT-SIZE UNIFICATION.
+   Every table, every nested list, every endpoint plate, every
+   compliance row, every comparison cell uses one of:
+   - 13px       (body text inside cells)
+   - 12px mono  (identifiers / endpoints / paths / pills)
+   No more 11.5 / 12 / 12.5 / 13 / 13.5 zoo.
+   ============================================================ */
+
+/* Comparison table */
+.cmp, .cmp th, .cmp td {
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+  vertical-align: middle;
+}
+.cmp th { font-family: var(--font-mono); font-size: 12px !important; letter-spacing: 0.04em; }
+.cmp .product-col .ver { font-size: 11px !important; }
+@media (max-width: 600px) {
+  .cmp, .cmp th, .cmp td { font-size: 12px !important; padding: 8px 9px !important; }
+  .cmp th { font-size: 11px !important; }
+}
+
+/* Profile detail — endpoint mono plate + terms list */
+.profile-detail .endpoints li {
+  font-family: var(--font-mono) !important;
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+}
+.profile-detail .terms li,
+.profile-detail .terms code,
+.profile-detail p {
+  font-size: 13px !important;
+  line-height: 1.55 !important;
+}
+.profile-detail .terms code { font-family: var(--font-mono) !important; font-size: 12px !important; }
+
+/* Compliance card lists */
+.cf-list, .cf-grid-list, .af-list, .ps-list, .what-def-gloss li,
+.persona-roi li, .state-card .state-desc, .state-card .state-emit {
+  font-size: 13px !important;
+  line-height: 1.55 !important;
+}
+.cf-list code, .af-list code, .state-card .state-vals li code {
+  font-family: var(--font-mono) !important;
+  font-size: 12px !important;
+}
+
+/* How-outcomes list */
+.how-outcomes li { font-size: 13px !important; line-height: 1.55 !important; }
+
+/* All pills (compliance, version, deployed, persona, prof, cov, how) */
+.compliance-pill, .version-pill, .deployed-pill, .persona-chip,
+.prof-pill, .cov-pill, .how-pill, .hero-pill {
+  font-family: var(--font-mono) !important;
+  font-size: 12px !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* Eyebrow plates — single rule */
+.eyebrow {
+  font-family: var(--font-mono) !important;
+  font-size: 11px !important;
+  letter-spacing: 0.16em !important;
+}
+
+/* Profile tabs */
+.profile-tab {
+  font-family: var(--font-mono) !important;
+  font-size: 12px !important;
+}
+
+/* Footer columns */
+.footer-col p, .footer-col a, .footer-col li { font-size: 13px !important; line-height: 1.55 !important; }
+.footer-col h4 { font-size: 11px !important; letter-spacing: 0.14em !important; }
+.footer-bottom { font-size: 12px !important; }
+
+/* Vocabulary list */
+.vocab-list li { font-size: 13px !important; }
+.vocab-list code { font-family: var(--font-mono) !important; font-size: 12px !important; }
+
+/* FAQ */
+.faq-item summary { font-size: 14px !important; }
+.faq-item p, .faq-item li { font-size: 13.5px !important; line-height: 1.6 !important; }
+
+/* Architecture cards */
+.arch-card .arch-h { font-size: 16px !important; }
+.arch-card .arch-b { font-size: 13px !important; line-height: 1.55 !important; }
+.arch-card .arch-path { font-family: var(--font-mono) !important; font-size: 11px !important; }
+.arch-card .arch-num { font-family: var(--font-mono) !important; font-size: 11px !important; }
+
+/* Sector cards */
+.sector-card h3 { font-size: 16px !important; }
+.sector-card .sector-pain { font-size: 13px !important; line-height: 1.55 !important; }
+.sector-card .sector-frameworks { font-family: var(--font-mono) !important; font-size: 11px !important; }
+
+/* Persona cards */
+.persona-card h3 { font-size: 16px !important; }
+.persona-card .pain { font-size: 13px !important; line-height: 1.55 !important; }
+.persona-card p { font-size: 13.5px !important; line-height: 1.6 !important; }
+
+/* Trust & assurance */
+.assurance-card .h { font-family: var(--font-mono) !important; font-size: 11px !important; letter-spacing: 0.1em !important; }
+.assurance-card .b { font-size: 13px !important; line-height: 1.5 !important; }
+
+/* Compliance row label */
+.compliance-row .lbl { font-family: var(--font-mono) !important; font-size: 11px !important; }
+
+/* CF disclaimer */
+.cf-disclaimer { font-size: 13px !important; line-height: 1.6 !important; }
+.cf-foot       { font-size: 13px !important; line-height: 1.6 !important; }

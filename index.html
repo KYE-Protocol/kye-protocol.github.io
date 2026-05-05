@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>KYE Protocol™ — The Entity Authority Protocol for AI Governance | Authority Finality™</title>
-  <meta name="description" content="KYE Protocol™ is the Entity Authority Protocol for AI governance. It proves who or what is acting, on behalf of whom, using which capability, under what authority, in what state, and with what audit trail — establishing Authority Finality™ for AI-agent actions. Replayable evidence layer for accountability, compliance, dispute resolution, and legally defensible audit trails. 15 normative profiles · 87+ endpoints · 173 compliance control mappings · Apache 2.0." />
+  <meta name="description" content="KYE Protocol™ is the Entity Authority Protocol for AI governance. It proves who or what is acting, on behalf of whom, using which capability, under what authority, in what state, and with what audit trail — establishing Authority Finality™ for AI-agent actions. Replayable evidence layer for accountability, compliance, dispute resolution, and legally defensible audit trails. 31 normative profiles · 87+ endpoints · 173 compliance control mappings · Apache 2.0." />
   <meta name="keywords" content="KYE Protocol, Know Your Entity, KYA, Know Your Agent, KYC for AI agents, agent identity protocol, AI agent verification, AI agent authorization, agentic commerce, Visa Trusted Agent alternative, Skyfire alternative, Persona KYA, Sumsub Agent Verification, Trulioo Digital Agent Passport, AI agent passport, AI agent identity, agent governance, agentic AI security, AI delegation protocol, AI audit chain, agent accountability, AI compliance, MCP alternative, A2A alternative, OAuth for AI, SPIFFE for agents, AI workload identity, AI signal bus, AI cascade revoke, AI governance protocol, AI runtime authorization, AI proof bundle, AI transparency log, agent identity verification, KYC KYB KYA unified" />
   <meta name="author" content="KYE Protocol" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
@@ -27,7 +27,7 @@
   <meta name="twitter:title" content="KYE Protocol™ — Entity Authority Protocol for AI Governance | Authority Finality™" />
   <meta name="twitter:description" content="Authority Finality™ for AI agents — replayable proof of who or what acted, on behalf of whom, using which capability, under what authority, in what state, with what audit trail." />
   <meta name="twitter:image" content="https://kye-protocol.github.io/og.svg" />
-  <link rel="stylesheet" href="styles.css?v=1778017609" />
+  <link rel="stylesheet" href="styles.css?v=1778017907" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -109,7 +109,7 @@
             "name": "Is KYE Protocol™ production-ready?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "v1.0 ships 15 normative profiles (Core, Gateway, Payments, Federation, Credentials, Attestation, Signals, Transparency, Conformance, Treasury, Custody, Healthcare, Telemetry, Capability, Recovery), 112 OpenAPI operations across 87+ runtime endpoints, 28 JSON Schemas with 31 validated examples, a reference Gateway, embedded PDP, PEP middleware, three SDKs (TypeScript / Python / Go), 37 conformance fixtures, and 173 compliance control mappings (SOC 2, ISO 27001:2022, PCI DSS 4.0, PSD2/PSD3, DORA, NIS2, EU AI Act, NIST 800-207, HIPAA). Apache 2.0."
+              "text": "v1.0 ships 31 normative profiles (Core, Gateway, Payments, Federation, Credentials, Attestation, Signals, Transparency, Conformance, Treasury, Custody, Healthcare, Telemetry, Capability, Recovery), 112 OpenAPI operations across 87+ runtime endpoints, 46 JSON Schemas with 39 validated examples, a reference Gateway, embedded PDP, PEP middleware, three SDKs (TypeScript / Python / Go), 37 conformance fixtures, and 173 compliance control mappings (SOC 2, ISO 27001:2022, PCI DSS 4.0, PSD2/PSD3, DORA, NIS2, EU AI Act, NIST 800-207, HIPAA). Apache 2.0."
             }
           },
           {
@@ -256,7 +256,7 @@
   <div class="hero-bg"></div>
   <div class="container hero-inner">
     <span class="hero-pill"><span class="dot"></span> v1.0 &middot; open standard &middot; entity authority protocol for AI governance</span>
-    <a class="version-pill deployed-pill" href="https://github.com/KYE-Protocol/kye-protocol.github.io/commits/main" target="_blank" rel="noopener" aria-label="Latest production deploy"><span class="dot"></span> deployed 2026-05-05 21:46 UTC</a>
+    <a class="version-pill deployed-pill" href="https://github.com/KYE-Protocol/kye-protocol.github.io/commits/main" target="_blank" rel="noopener" aria-label="Latest production deploy"><span class="dot"></span> deployed 2026-05-05 21:51 UTC</a>
     <a class="version-pill" href="https://github.com/KYE-Protocol/app/releases" target="_blank" rel="noopener" aria-label="View v1.0 release notes on GitHub"><span class="dot"></span> v1.0.0 &middot; release notes</a>
     <h1 id="hero-title">
       The <span class="accent">Entity Authority Protocol</span><br/>
@@ -1219,7 +1219,7 @@
         <div class="arch-num">1</div>
         <h3 class="arch-h">Schema-first</h3>
         <p class="arch-b">Every entity, authority grant, delegation, scope, capability manifest, validation result, audit event, evidence pack, and compliance mapping is a canonical JSON Schema 2020-12 with an absolute <code>$id</code> at <code>schemas.kye.dev</code>. OpenAPI, SDKs, validators, docs, and conformance tests are derived from these schemas &mdash; not hand-written.</p>
-        <code class="arch-path">private/specs/schemas/*.json &middot; 32 schemas &middot; 39 validated examples</code>
+        <code class="arch-path">private/specs/schemas/*.json &middot; 46 schemas &middot; 39 validated examples</code>
       </article>
 
       <article class="arch-card">
@@ -1614,7 +1614,7 @@ curl -X POST https://gw.example/v1/runtime/authorize \
       </details>
       <details class="faq-item">
         <summary>Is it production-ready?</summary>
-        <p>v1.0 ships <strong>15 normative profiles</strong>, 112 OpenAPI operations (87+ runtime endpoints), 28 JSON Schemas with 31 validated example payloads, a reference Gateway (67/67 unit tests), an embedded PDP library, a PEP middleware, three SDKs (TypeScript, Python, Go), <strong>37 conformance fixtures</strong> (37/37 pass), and <strong>173 control mappings</strong> across SOC 2, ISO 27001:2022, PCI DSS 4.0, PSD2/PSD3, DORA, NIS2, EU AI Act, NIST 800-207 and HIPAA. Profile contract is bank-grade today; reference implementation is pilot-grade (correctness-first, not throughput-tuned). Apache 2.0.</p>
+        <p>v1.0 ships <strong>31 normative profiles</strong>, 112 OpenAPI operations (87+ runtime endpoints), 46 JSON Schemas with 31 validated example payloads, a reference Gateway (67/67 unit tests), an embedded PDP library, a PEP middleware, three SDKs (TypeScript, Python, Go), <strong>37 conformance fixtures</strong> (37/37 pass), and <strong>173 control mappings</strong> across SOC 2, ISO 27001:2022, PCI DSS 4.0, PSD2/PSD3, DORA, NIS2, EU AI Act, NIST 800-207 and HIPAA. Profile contract is bank-grade today; reference implementation is pilot-grade (correctness-first, not throughput-tuned). Apache 2.0.</p>
       </details>
       <details class="faq-item">
         <summary>How do I verify a vendor&rsquo;s claim of KYE Protocol<span class="tm">™</span> conformance?</summary>
@@ -1790,7 +1790,7 @@ curl -X POST https://gw.example/v1/runtime/authorize \
   } });
   window.mermaid = mermaid;
 </script>
-<script type="module" src="main.js?v=1778017609"></script>
+<script type="module" src="main.js?v=1778017907"></script>
 </body>
 </html>
 

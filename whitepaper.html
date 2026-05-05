@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>KYE Protocol™ — Whitepaper v1.0 | Know Your Entity™</title>
-  <meta name="description" content="The KYE Protocol™ whitepaper: an open contract for identity, authority and audit across humans, businesses, AI agents, services, models and workflows. Unifies KYC, KYB and KYA. Reference Gateway, 3 SDKs, 37 conformance fixtures, 173 control mappings, 15 normative profiles." />
+  <meta name="description" content="The KYE Protocol™ whitepaper: an open contract for identity, authority and audit across humans, businesses, AI agents, services, models and workflows. Unifies KYC, KYB and KYA. Reference Gateway, 3 SDKs, 37 conformance fixtures, 173 control mappings, 31 normative profiles." />
   <link rel="canonical" href="https://kye-protocol.github.io/whitepaper.html" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
   <meta property="og:type" content="article" />
@@ -20,8 +20,8 @@
   <meta name="twitter:description" content="Authority Finality™ for AI agents — replayable proof of accountability, compliance, dispute resolution, legally defensible audit trails." />
   <meta name="twitter:image" content="https://kye-protocol.github.io/og.svg" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%237c3aed'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="styles.css?v=1778017609" />
-  <link rel="stylesheet" href="whitepaper.css?v=1778017609" />
+  <link rel="stylesheet" href="styles.css?v=1778017907" />
+  <link rel="stylesheet" href="whitepaper.css?v=1778017907" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -171,7 +171,7 @@
     <p>KYE Protocol<span class="tm">™</span> is <strong>schema-first, dictionary-first, profile-first, registry-first, API-first, SDK-first, evidence-first, and conformance-first</strong> — eight first-class principles, each non-negotiable. Canonical JSON Schemas drive OpenAPI, SDK code generation, validators, documentation, and conformance fixtures. Shared dictionaries (entity types, states, decisions, reason codes, capability kinds, side-effect levels, data classes, signal types) make implementations interoperable. Profiles keep Core small while letting domain extensions (Capability, Recovery, Payments, Healthcare, EU AI Act, ISO 42001, sector overlays) compose without modifying it. Registries make every object resolvable. The runtime API is decisioning-led, with <code>POST /v1/runtime/authorize</code> as the headline endpoint. SDKs in TypeScript, Python, and Go ship with schema types, signing/verification helpers, evidence-pack builders. Every adjudicated action produces a signed <code>evidence_pack</code> a regulator can verify with public keys alone. A 37-fixture black-box conformance pack tests vendor and reference implementations byte-for-byte the same.</p>
 
     <h2 id="contract">5 &middot; Contract surface</h2>
-    <p>v1.0 publishes <strong>112 OpenAPI operations</strong> across the Core + Payments specs (87+ runtime endpoints in the reference Gateway), spanning resource families: Entities, Delegations, Scopes, Access Rights, Credentials, Attestations, Capabilities, Capability Grants, Runtime (authorize / invoke), Signals, Webhooks, Audit, Proof Bundles, Transparency, Federation, Recoveries, Break-Glass Grants, Compromise Reports, Keys, Conformance, plus the Payments families (Wallets, Payment Authorities, Payment Intents, Beneficiaries). 28 JSON Schema 2020-12 contracts with absolute <code>$id</code> URIs at <code>https://schemas.kye.dev/</code>; 31 example payloads pinned to schemas and validated in CI. <strong>37 conformance fixtures</strong> assert deterministic behaviour under happy paths and edge cases.</p>
+    <p>v1.0 publishes <strong>112 OpenAPI operations</strong> across the Core + Payments specs (87+ runtime endpoints in the reference Gateway), spanning resource families: Entities, Delegations, Scopes, Access Rights, Credentials, Attestations, Capabilities, Capability Grants, Runtime (authorize / invoke), Signals, Webhooks, Audit, Proof Bundles, Transparency, Federation, Recoveries, Break-Glass Grants, Compromise Reports, Keys, Conformance, plus the Payments families (Wallets, Payment Authorities, Payment Intents, Beneficiaries). 28 JSON Schema 2020-12 contracts with absolute <code>$id</code> URIs at <code>https://schemas.kye.dev/</code>; 39 example payloads pinned to schemas and validated in CI. <strong>37 conformance fixtures</strong> assert deterministic behaviour under happy paths and edge cases.</p>
     <p>Every state-changing endpoint accepts an <code>Idempotency-Key</code> header and returns the original response on replay; conflicting bodies under the same key return HTTP 409. Every state-changing endpoint emits an audit event whose <code>correlation_id</code> matches the originating request.</p>
 
     <h2 id="runtime">6 &middot; Reference runtime</h2>
