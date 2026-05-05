@@ -120,11 +120,13 @@ https://kye-protocol.github.io/legal.html
 
 The vocabulary, URN format, JSON Schemas, OpenAPI specs, conformance
 pack, reference implementation, SDKs and policy bundles are open under
-Apache 2.0. Specific mechanism designs (decision algorithms, hash-chain
-construction, cascade ordering, attenuation propagation) sit in a
-separate patent track; they are not disclosed in the public repositories
-pre-filing. v2.0 moves the patent track to a royalty-free open standard
-(Linux Foundation / OpenWallet Foundation track).
+Apache 2.0. Specific mechanism designs sit in a separate patent track
+and are not disclosed in the public repositories pre-filing — algorithm
+details for decision evaluation, audit record linking, signal
+propagation, scope attenuation, and the signing-suite construction
+are deliberately omitted from public artefacts. v2.0 moves the patent
+track to a royalty-free open standard (Linux Foundation / OpenWallet
+Foundation track).
 
 ## License
 
