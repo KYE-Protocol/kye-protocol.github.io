@@ -24,7 +24,6 @@ evidence proves it. KYE does not replace legal agreements, signatures,
 or regulatory obligations; it provides the technical and evidentiary
 foundation for authority finality in AI-agent systems.
 
-
 ## Architecture (eight first-class principles)
 
 **Schema-first. Dictionary-first. Profile-first. Registry-first.

@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>KYE Protocol™ — Whitepaper v1.0 | Know Your Entity™</title>
-  <meta name="description" content="The KYE Protocol™ whitepaper: an open contract for identity, authority and audit across humans, businesses, AI agents, services, models and workflows. Unifies KYC, KYB and KYA. Reference Gateway, 3 SDKs, 37 conformance fixtures, 173 control mappings, 31 normative profiles." />
+  <meta name="description" content="The KYE Protocol™ whitepaper: an open contract for identity, authority and audit across humans, businesses, AI agents, services, models and workflows. Unifies KYC, KYB and KYA. Reference Gateway, 3 SDKs, 37 conformance fixtures, 173 control mappings, 34 normative profiles." />
   <link rel="canonical" href="https://kye-protocol.github.io/whitepaper.html" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
   <meta property="og:type" content="article" />
@@ -20,7 +20,7 @@
   <meta name="twitter:description" content="Authority Finality™ for AI agents — replayable proof of accountability, compliance, dispute resolution, legally defensible audit trails." />
   <meta name="twitter:image" content="https://kye-protocol.github.io/og.svg" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%237c3aed'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="styles.css?v=1778017907" />
+  <link rel="stylesheet" href="styles.css?v=1778023149" />
   <link rel="stylesheet" href="whitepaper.css?v=1778017907" />
   <script type="application/ld+json">
   {
@@ -66,7 +66,9 @@
   </div>
 </header>
 
-<main class="wp-main">
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<main id="main" class="wp-main">
   <aside class="wp-toc" aria-label="Table of contents">
     <div class="wp-toc-title">Contents</div>
     <ol>
@@ -122,18 +124,41 @@
     <p>Each of these solves a slice. None composes into a single contract that an auditor can read end-to-end. KYE Protocol<span class="tm">™</span> is that contract layer; it does not replace these, it composes them.</p>
 
     <h2 id="design">3 &middot; Design principles</h2>
+    <p>KYE Protocol<span class="tm">™</span> stands on <strong>16 protocol-core principles</strong> grouped in three tiers: six runtime-governance semantics that define what KYE <em>decides</em>, eight protocol-design disciplines that define how KYE <em>classifies and ships</em>, and two developer-adoption disciplines that define how KYE <em>reaches builders</em>. A separate commercial layer (KYE Cloud<span class="tm">™</span>) is SKU-first, metering-first, and never bleeds into the open protocol.</p>
+
+    <h3>3.1 Tier A &mdash; Runtime governance (what KYE decides)</h3>
     <ol class="wp-principles">
-      <li><strong>Entities are first-class.</strong> Humans, businesses, agents, services, models, tools, workflows are all <em>entities</em>. They share one URN, one lifecycle, one record format.</li>
-      <li><strong>Delegation is a graph, not a flag.</strong> Every action sits inside a chain: agent on behalf of business, business on behalf of human. The chain is queryable and revocable.</li>
-      <li><strong>Scope must attenuate, not extend.</strong> A delegated scope can only narrow what the parent permits. Attempts to extend are rejected at the contract layer.</li>
-      <li><strong>Decisions are vocabulary, not free-text.</strong> A small, fixed set of decision codes (allow_with_constraints, require_approval, deny, &hellip;) makes inter-system reasoning possible.</li>
-      <li><strong>Stop signals cascade.</strong> Revoking an entity revokes its delegations, payment authorities and access rights &mdash; recursively, atomically, with audit events emitted at each step.</li>
-      <li><strong>Audit is an append-only chain.</strong> Each event hash-links to the previous one. Tampering is detectable end-to-end with one verify call.</li>
-      <li><strong>Mechanism designs are private.</strong> The vocabulary, URN format, schemas and OpenAPI surface are open. The specific algorithms (decision evaluation, hash-chain construction, cascade ordering, attenuation propagation) sit behind the patent track and are not disclosed in public repositories.</li>
-      <li><strong>Profiles, not forks.</strong> Sectoral overlays add vocabulary and conformance fixtures. Core never shifts under adopters.</li>
+      <li><strong>Authority-first.</strong> KYE&rsquo;s centre is authority, not identity. Every action answers <em>who or what is acting, on behalf of whom, using which capability, under what authority, in what state, with what audit trail</em>. Core records: <code>KYEAuthorityGrant</code>, <code>KYEAuthorityScope</code>, <code>KYEDelegation</code>, <code>KYEActingOnBehalfOf</code>, <code>KYEAuthorityState</code>, <code>KYEAuthorityDecision</code>, <code>KYEAuthorityRevocation</code>, <code>KYEAuthorityEvidence</code>.</li>
+      <li><strong>State-first.</strong> Authority is meaningless without state. Every authorize call composes <code>entity_state</code>, <code>authority_state</code>, <code>delegation_state</code>, <code>credential_state</code>, <code>capability_state</code>, <code>payload_state</code>, <code>recovery_state</code>, <code>risk_state</code>. KYE is state-aware authority infrastructure.</li>
+      <li><strong>Decision-first.</strong> Runtime systems need an answer. <code>POST /v1/runtime/authorize</code> returns one of <code>allow</code> / <code>allow_with_constraints</code> / <code>require_approval</code> / <code>require_step_up</code> / <code>require_human_review</code> / <code>require_recovery</code> / <code>quarantine</code> / <code>deny</code> &mdash; with reason code, matched policies, obligations, evidence refs &mdash; in milliseconds.</li>
+      <li><strong>Evidence-first.</strong> KYE turns authority into evidence. Every decision produces a <code>policy_decision_id</code> binding to validation results, audit events, transparency receipts, signals, and a signed <code>evidence_pack</code> consumable by GRC, auditors, regulators, dispute panels.</li>
+      <li><strong>Audit-trail-first.</strong> No authority without audit. No audit without evidence. Every material change emits an append-only, hash-linked, timestamped, reason-coded, actor-bound, policy-bound, decision-bound audit event &mdash; exportable, replayable, externally verifiable.</li>
     </ol>
 
+    <h3>3.2 Tier B &mdash; Protocol design (how KYE classifies and ships)</h3>
+    <ol class="wp-principles" start="6">
+      <li><strong>Schema-first.</strong> JSON Schema 2020-12 with absolute <code>$id</code> at <code>schemas.kye.dev</code>. OpenAPI, SDKs, validators, docs, and conformance tests are derived from schemas, not hand-written.</li>
+      <li><strong>Dictionary-first.</strong> Canonical vocabulary for entity types, all state dimensions, decisions, reason codes, capability kinds, side-effect levels, data classes, signal types, redaction fields, taxonomies, graph types.</li>
+      <li><strong>Taxonomy-first.</strong> 16 V1 canonical taxonomies (entity_type, capability_type, action_type, resource_type, data_class, side_effect_level, risk_state, environment, decision, reason_code, evidence_type, compliance_framework, sector, jurisdiction + state taxonomies). Versioned, status-bound, mappable to framework controls.</li>
+      <li><strong>Metadata-first.</strong> Every KYE object carries a normative metadata block &mdash; <code>labels</code>, <code>classifications</code>, <code>ownership</code>, <code>lineage</code>, <code>compliance</code>. Field values draw from registered taxonomies. Metadata <em>influences decisions</em>; the runtime exposes it to the policy layer as <code>request.{actor,capability,resource,authority}.metadata</code>.</li>
+      <li><strong>Graph-first.</strong> Authority is relational. Every entity, delegation, capability, credential, policy, state, decision, and evidence object is a node; every authority relationship is a typed edge. Authority Graph<span class="tm">™</span>, Decision Map<span class="tm">™</span>, Evidence Graph<span class="tm">™</span>, Blast Radius Map<span class="tm">™</span>, Compliance Map<span class="tm">™</span>. Storage substrate is implementation choice.</li>
+      <li><strong>Profile-first.</strong> Core stays small. 33+ profiles add domain semantics; profiles never modify Core.</li>
+      <li><strong>Registry-first.</strong> Every object is resolvable. <code>/.well-known/kye</code> advertises versions, profiles, crypto suites, JWKS, dictionaries, taxonomies, metadata schemas, registries.</li>
+      <li><strong>Conformance-first.</strong> 37-fixture black-box pack that any conformant Gateway must pass. Vendor self-attestation via <code>conformance-report.json</code>.</li>
+    </ol>
+
+    <h3>3.3 Tier C &mdash; Developer adoption (how KYE reaches builders)</h3>
+    <ol class="wp-principles" start="14">
+      <li><strong>API-first.</strong> 112 OpenAPI operations across 87+ runtime endpoints across runtime, registry, taxonomy, metadata, and graph endpoints. <code>POST /v1/runtime/authorize</code> is the headline; <code>GET /v1/decisions/{id}/map</code> returns a Decision Map<span class="tm">™</span>.</li>
+      <li><strong>SDK-first.</strong> TypeScript, Python, Go SDKs ship with schema types, local validators, decision clients, signing/verification helpers, policy adapters, audit emitters, evidence-pack builders, taxonomy resolvers, metadata classifiers, graph traversal clients, decision-map renderers.</li>
+    </ol>
+    <p>Protocol-design corollaries that fall out of the 16 principles: <em>delegation is a graph, not a flag</em>; <em>scope must attenuate, not extend</em>; <em>stop signals cascade atomically</em>; <em>profiles, not forks</em>; <em>mechanism designs (decision evaluation, audit-record linking, signal propagation, scope attenuation, signing-suite construction, graph traversal) sit behind the patent track</em>.</p>
+
+    <h3>3.4 Commercial layer &mdash; KYE Cloud<span class="tm">™</span> (separate from the protocol)</h3>
+    <p>The open protocol stays vendor-neutral. The hosted product packages it commercially: <strong>SKU-first, metering-first, enterprise-pack-first, compliance-pack-first, BYOC / on-prem-first</strong>. KYE Cloud<span class="tm">™</span> SKUs include Hosted Registry, Validator API, Recovery Console, Evidence Packs, Compliance Profiles, Regulated-Sector Packs, Enterprise Deployment. SKU logic never enters Core objects (<code>KYEEntity</code>, <code>KYEAuthorityGrant</code>, <code>KYEAuditEvent</code>, <code>KYEStateTransition</code>).</p>
+
     <h2 id="model">4 &middot; Conceptual model</h2>
+    <p><strong>KYE governs acting entities, principal entities, capability entities, resource entities, credential entities, and evidence artefacts</strong> &mdash; and keeps them strictly distinct. Payloads are <em>evidence artefacts</em>, never authority-bearing entities; the <strong>KYE Payload Trust Profile<span class="tm">™</span></strong> binds signed payloads to entity authority, capability state, policy decisions, and replayable audit evidence.</p>
     <p>KYE Protocol<span class="tm">™</span> defines nine first-class records:</p>
     <ul class="wp-records">
       <li><code>Entity</code> &mdash; any actor or resource. Has a status, a lifecycle state, an immutable block, classification, assurance, optional sectoral profile.</li>
@@ -168,10 +193,10 @@
     <p>Stop signals cascade atomically before the response returns. Revoking an entity propagates to its delegations (recursively through <code>parent_delegation_id</code>), payment authorities, access rights, capability grants, and recovery decisions. Each propagation step emits its own audit event with a shared <code>correlation_id</code>; downstream PDPs that subscribe to the bus invalidate caches on signal receipt. Compromise reports trigger the same cascade with an elevated reason class.</p>
 
     <h2 id="architecture">4.3 &middot; Implementation architecture</h2>
-    <p>KYE Protocol<span class="tm">™</span> is <strong>schema-first, dictionary-first, profile-first, registry-first, API-first, SDK-first, evidence-first, and conformance-first</strong> — eight first-class principles, each non-negotiable. Canonical JSON Schemas drive OpenAPI, SDK code generation, validators, documentation, and conformance fixtures. Shared dictionaries (entity types, states, decisions, reason codes, capability kinds, side-effect levels, data classes, signal types) make implementations interoperable. Profiles keep Core small while letting domain extensions (Capability, Recovery, Payments, Healthcare, EU AI Act, ISO 42001, sector overlays) compose without modifying it. Registries make every object resolvable. The runtime API is decisioning-led, with <code>POST /v1/runtime/authorize</code> as the headline endpoint. SDKs in TypeScript, Python, and Go ship with schema types, signing/verification helpers, evidence-pack builders. Every adjudicated action produces a signed <code>evidence_pack</code> a regulator can verify with public keys alone. A 37-fixture black-box conformance pack tests vendor and reference implementations byte-for-byte the same.</p>
+    <p>KYE Protocol<span class="tm">™</span> stands on <strong>16 protocol-core principles</strong> in three tiers (see &sect;3 above). Tier A &mdash; runtime governance &mdash; defines what KYE <em>decides</em>: <em>authority-first, state-first, decision-first, policy-bound, evidence-first, audit-trail-first</em>. Tier B &mdash; protocol design &mdash; defines how KYE <em>classifies and ships</em>: <em>schema-first, dictionary-first, taxonomy-first, metadata-first, graph-first, profile-first, registry-first, conformance-first</em>. Tier C &mdash; developer adoption &mdash; defines how KYE <em>reaches builders</em>: <em>API-first, SDK-first</em>. A separate commercial layer (KYE Cloud<span class="tm">™</span>) is SKU-first, metering-first, dashboard-first, and never bleeds into the open protocol. Canonical JSON Schemas drive OpenAPI, SDK code generation, validators, documentation, and conformance fixtures. Shared dictionaries (entity types, states, decisions, reason codes, capability kinds, side-effect levels, data classes, signal types, taxonomies, graph types) make implementations interoperable. Versioned taxonomies (16 V1 canonical taxonomies) and a normative metadata model (labels, classifications, ownership, lineage, compliance) drive policy decisions at runtime. Profiles keep Core small while letting domain extensions (Capability, Recovery, Payments, Payload Trust, Taxonomy &amp; Metadata, Graph, Healthcare, EU AI Act, ISO 42001, sector overlays) compose without modifying it. Registries make every object resolvable. The runtime API is decisioning-led, with <code>POST /v1/runtime/authorize</code> as the headline endpoint and <code>GET /v1/decisions/{id}/map</code> returning a Decision Map<span class="tm">™</span> for every adjudication. SDKs in TypeScript, Python, and Go ship with schema types, signing/verification helpers, evidence-pack builders, taxonomy resolvers, metadata classifiers, graph traversal clients. Every adjudicated action produces a signed <code>evidence_pack</code> a regulator can verify with public keys alone. A 37-fixture black-box conformance pack tests vendor and reference implementations byte-for-byte the same.</p>
 
     <h2 id="contract">5 &middot; Contract surface</h2>
-    <p>v1.0 publishes <strong>112 OpenAPI operations</strong> across the Core + Payments specs (87+ runtime endpoints in the reference Gateway), spanning resource families: Entities, Delegations, Scopes, Access Rights, Credentials, Attestations, Capabilities, Capability Grants, Runtime (authorize / invoke), Signals, Webhooks, Audit, Proof Bundles, Transparency, Federation, Recoveries, Break-Glass Grants, Compromise Reports, Keys, Conformance, plus the Payments families (Wallets, Payment Authorities, Payment Intents, Beneficiaries). 28 JSON Schema 2020-12 contracts with absolute <code>$id</code> URIs at <code>https://schemas.kye.dev/</code>; 39 example payloads pinned to schemas and validated in CI. <strong>37 conformance fixtures</strong> assert deterministic behaviour under happy paths and edge cases.</p>
+    <p>v1.0 publishes <strong>112 OpenAPI operations</strong> across the Core + Payments specs (87+ runtime endpoints in the reference Gateway), spanning resource families: Entities, Delegations, Scopes, Access Rights, Credentials, Attestations, Capabilities, Capability Grants, Runtime (authorize / invoke), Signals, Webhooks, Audit, Proof Bundles, Transparency, Federation, Recoveries, Break-Glass Grants, Compromise Reports, Keys, Conformance, plus the Payments families (Wallets, Payment Authorities, Payment Intents, Beneficiaries). 42 JSON Schemas with absolute <code>$id</code> URIs at <code>https://schemas.kye.dev/</code>; 45 example payloads pinned to schemas and validated in CI. <strong>37 conformance fixtures</strong> assert deterministic behaviour under happy paths and edge cases.</p>
     <p>Every state-changing endpoint accepts an <code>Idempotency-Key</code> header and returns the original response on replay; conflicting bodies under the same key return HTTP 409. Every state-changing endpoint emits an audit event whose <code>correlation_id</code> matches the originating request.</p>
 
     <h2 id="runtime">6 &middot; Reference runtime</h2>
@@ -187,7 +212,7 @@
     <p>The reference is illustrative. It does not implement the patent-track decision algorithm; conformant production Gateways are expected to substitute that mechanism while preserving the open contract surface.</p>
 
     <h2 id="profiles">7 &middot; Profiles &mdash; the full v1.0 inventory</h2>
-    <p>Profiles add vocabulary, schemas, endpoints, and conformance fixtures to Core. <strong>15 profiles ship as Normative draft v1.0:</strong></p>
+    <p>Profiles add vocabulary, schemas, endpoints, and conformance fixtures to Core. <strong>18 base profiles ship as Normative draft v1.0:</strong></p>
     <p><em>Base profiles:</em></p>
     <ul class="wp-records">
       <li><strong>KYE-Core</strong> &mdash; entity registration, delegations, scopes, credentials, attestations, runtime authorize / evaluate, audit chain, signal bus.</li>
@@ -205,6 +230,9 @@
       <li><strong>KYE-Capability</strong> &mdash; skills / tools / MCP tools / functions / connectors / prompts / workflows / playbooks / runbooks / model_profiles; register, grant, invoke (allow / deny / require-approval / quarantine), supersede, revoke.</li>
       <li><strong>KYE-Recovery</strong> &mdash; recovery requests, decisions, signed proofs, time-boxed break-glass grants, compromise reports; replaces ad-hoc admin reset.</li>
       <li><strong>KYE-Payments</strong> &mdash; payment authorities, beneficiaries, intents; sPDP with currency / amount / rail / approval gating; PSD3-aligned obligations.</li>
+      <li><strong>KYE-Payload-Trust</strong> &mdash; payload artefacts as first-class evidence (not entities). Signed, hashed, replay-resistant request bytes carry state but never authority. 13 lifecycle + denial states; 10 deny reason codes.</li>
+      <li><strong>KYE-Taxonomy-&amp;-Metadata</strong> &mdash; 16 V1 canonical taxonomies plus a normative metadata model (labels, classifications, ownership, lineage, compliance). Metadata is not decorative; it influences runtime decisions and binds to compliance-framework controls.</li>
+      <li><strong>KYE-Graph</strong> &mdash; the Authority Graph<span class="tm">™</span> contract. Canonical node + edge schemas; Decision Map<span class="tm">™</span>, Evidence Graph<span class="tm">™</span>, Blast Radius Map<span class="tm">™</span>, Compliance Map<span class="tm">™</span> as first-class projections. Storage substrate (Postgres, Neo4j, Neptune, Memgraph, TigerGraph, ArangoDB, RDF) is implementation choice.</li>
     </ul>
     <p><em>Payment overlays (jurisdictional):</em></p>
     <ul class="wp-records">
@@ -317,7 +345,7 @@
   </article>
 </main>
 <footer class="footer"><div class="container footer-inner">
-  <div>&copy; <span id="year"></span> KYE Protocol<span class="tm">™</span>. KYE<span class="tm">™</span>, KYE Protocol<span class="tm">™</span> and Know Your Entity<span class="tm">™</span> are trademarks of the KYE Protocol<span class="tm">™</span> project.</div>
+  <div>&copy; <span id="year"></span> KYE Protocol<span class="tm">™</span>. KYE<span class="tm">™</span>, KYE Protocol<span class="tm">™</span>, Know Your Entity<span class="tm">™</span>, Authority Finality<span class="tm">™</span>, Authority Graph<span class="tm">™</span>, Decision Map<span class="tm">™</span>, Evidence Graph<span class="tm">™</span>, Blast Radius Map<span class="tm">™</span>, Compliance Map<span class="tm">™</span>, KYE Compliance Mapping Rail<span class="tm">™</span>, and KYE Cloud<span class="tm">™</span> are trademarks of the KYE Protocol<span class="tm">™</span> project.</div>
   <div class="footer-links">
     <a href="./">Home</a>
     <a href="https://github.com/KYE-Protocol" target="_blank" rel="noopener">GitHub</a>

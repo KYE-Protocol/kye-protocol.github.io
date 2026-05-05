@@ -14,55 +14,119 @@
 
 > Apache License 2.0.
 
-## Architecture (eight first-class principles)
+## Architecture (16 protocol-core principles + commercial layer)
 
-KYE Protocol™ is **schema-first, dictionary-first, profile-first,
-registry-first, API-first, SDK-first, evidence-first, and
-conformance-first**. Designed as an implementable protocol — not a
-whitepaper.
+KYE Protocol™ is **authority-first, state-first, decision-first,
+policy-bound, evidence-first, and audit-trail-first** at runtime —
+built on **schema-first, dictionary-first, taxonomy-first,
+metadata-first, graph-first, profile-first, registry-first, and
+conformance-first** protocol design — and reaches builders via
+**API-first** and **SDK-first** discipline. Designed as an
+implementable protocol — not a whitepaper.
 
-1. **Schema-first** — JSON Schema 2020-12 with absolute `$id` at
+### Tier A — Runtime governance (what KYE decides)
+
+1. **Authority-first** — KYE's centre is authority, not identity.
+   Every action answers *who or what is acting, on behalf of whom,
+   using which capability, under what authority, in what state, with
+   what audit trail*. Core records: `KYEAuthorityGrant`,
+   `KYEAuthorityScope`, `KYEDelegation`, `KYEActingOnBehalfOf`,
+   `KYEAuthorityState`, `KYEAuthorityDecision`,
+   `KYEAuthorityRevocation`, `KYEAuthorityEvidence`.
+2. **State-first** — authority is meaningless without state. Every
+   authorize call composes `entity_state`, `authority_state`,
+   `delegation_state`, `credential_state`, `capability_state`,
+   `payload_state`, `recovery_state`, `risk_state`. KYE is
+   state-aware authority infrastructure.
+3. **Decision-first** — runtime systems need an answer.
+   `POST /v1/runtime/authorize` returns
+   `allow` / `allow_with_constraints` / `require_approval` /
+   `require_step_up` / `require_human_review` / `require_recovery` /
+   `quarantine` / `deny` — with reason code, matched policies,
+   obligations, evidence refs — in ms.
+4. **Evidence-first** — KYE turns authority into evidence. Every
+   decision produces a `policy_decision_id` binding to validation
+   results, audit events, transparency receipts, signals, and a
+   signed `evidence_pack` consumable by GRC, auditors, regulators,
+   dispute panels.
+5. **Audit-trail-first** — no authority without audit. No audit
+   without evidence. Every material change emits an append-only,
+   hash-linked, timestamped, reason-coded, actor-bound, policy-bound,
+   decision-bound audit event — exportable, replayable.
+
+### Tier B — Protocol design (how KYE classifies and ships)
+
+6. **Schema-first** — JSON Schema 2020-12 with absolute `$id` at
    `schemas.kye.dev`. OpenAPI, SDKs, validators, docs, and conformance
-   tests are derived from schemas, not hand-written. 46 schemas,
-   39 validated examples.
-2. **Dictionary-first** — canonical vocabulary for entity types,
-   lifecycle/authority/delegation/credential/recovery/risk states,
-   decisions, reason codes, capability kinds, side-effect levels,
-   data classes, signal types, redaction fields. 11 dictionary files
-   in `public/vocabulary/`.
-3. **Profile-first** — Core stays small. 30+ profiles add domain
-   semantics (Capability, Recovery, Payments, Healthcare, EU AI Act,
-   ISO 42001, Defence, Energy, Manufacturing, Maritime, Logistics,
-   Aviation, &c.). Profiles never modify Core.
-4. **Registry-first** — every object is resolvable. `/.well-known/kye`
-   advertises supported versions, profiles, crypto suites, JWKS,
-   dictionaries, registries.
-5. **API-first** — runtime decisioning headline:
-   `POST /v1/runtime/authorize` answers *can this entity perform this
-   action, on behalf of this principal, using this capability, under
-   this scope, in this state?* in ms, with a signed decision.
-6. **SDK-first** — TypeScript / Python / Go SDKs ship with schema
-   types, local validators, decision clients, signing helpers,
-   verification helpers, policy adapters, audit emitters, evidence-pack
-   builders.
-7. **Evidence-first** — every decision produces a `policy_decision_id`
-   binding to validation results, audit events, transparency receipts,
-   signals, and a signed `evidence_pack` consumable by GRC, auditors,
-   regulators, dispute panels.
-8. **Conformance-first** — 37-fixture black-box pack that any conformant
-   Gateway must pass. Vendor self-attestation via `conformance-report.json`.
+   tests are derived from schemas, not hand-written. 42 schemas,
+   45 validated examples.
+7. **Dictionary-first** — canonical vocabulary for entity types, all
+   state dimensions, decisions, reason codes, capability kinds,
+   side-effect levels, data classes, signal types, redaction fields,
+   taxonomies, graph types. 15 dictionary files in `public/vocabulary/`.
+8. **Taxonomy-first** — 16 V1 canonical taxonomies (entity_type,
+   capability_type, action_type, resource_type, data_class,
+   side_effect_level, risk_state, environment, decision, reason_code,
+   evidence_type, compliance_framework, sector, jurisdiction +
+   2 state taxonomies). Versioned, status-bound, mappable to framework
+   controls.
+9. **Metadata-first** — every KYE object carries `labels`,
+   `classifications`, `ownership`, `lineage`, `compliance` blocks
+   whose values are drawn from registered taxonomies. Metadata
+   influences decisions; the runtime exposes it to the policy layer.
+10. **Graph-first** — *authority is relational.* Every entity,
+    delegation, capability, credential, policy, state, decision, and
+    evidence object is a node; every authority relationship is a
+    typed edge. Authority Graph™, Decision Map™, Evidence Graph™,
+    Blast Radius Map™, Compliance Map™. Storage substrate is
+    implementation choice (Postgres, Neo4j, Neptune, Memgraph,
+    TigerGraph, ArangoDB, RDF).
+11. **Profile-first** — Core stays small. 34 profiles add domain
+    semantics (Capability, Recovery, Payments, Payload Trust,
+    Taxonomy & Metadata, Graph, Healthcare, EU AI Act, ISO 42001,
+    Defence, Energy, Manufacturing, Maritime, Logistics, Aviation,
+    &c.). Profiles never modify Core.
+12. **Registry-first** — every object is resolvable. `/.well-known/kye`
+    advertises supported versions, profiles, crypto suites, JWKS,
+    dictionaries, taxonomies, metadata schemas, registries.
+13. **Conformance-first** — 37-fixture black-box pack any conformant
+    Gateway must pass. Vendor self-attestation via
+    `conformance-report.json`.
+
+### Tier C — Developer adoption (how KYE reaches builders)
+
+14. **API-first** — `POST /v1/runtime/authorize` is the headline; 130+
+    OpenAPI operations across runtime, registry, taxonomy, metadata,
+    and graph endpoints back it. `GET /v1/decisions/{id}/map` returns
+    a Decision Map™.
+15. **SDK-first** — TypeScript / Python / Go SDKs ship with schema
+    types, local validators, decision clients, signing helpers,
+    verification helpers, policy adapters, audit emitters,
+    evidence-pack builders, taxonomy resolvers, metadata classifiers,
+    graph traversal clients, decision-map renderers.
+
+### Commercial layer — KYE Cloud™ (separate from the protocol core)
+
+The open protocol stays vendor-neutral. The hosted product is
+**SKU-first, metering-first, enterprise-pack-first,
+compliance-pack-first, BYOC / on-prem-first**. SKUs include Hosted
+Registry, Validator API, Recovery Console, Evidence Packs, Compliance
+Profiles, Regulated-Sector Packs, Enterprise Deployment. **SKU logic
+never enters Core objects** (`KYEEntity`, `KYEAuthorityGrant`,
+`KYEAuditEvent`, `KYEStateTransition`).
 
 
 
 ## v1.0 ships
 
-- 31 normative profiles: Core, Gateway, Federation, Credentials,
+- 34 normative profiles: Core, Gateway, Federation, Credentials,
   Attestation, Signals, Transparency, Conformance, Treasury, Custody,
-  Healthcare, Telemetry, Capability, Recovery, Payments
+  Healthcare, Telemetry, Capability, Recovery, Payments, Payload Trust,
+  Taxonomy & Metadata, Graph
 - 3 payment overlays: kye-payments-eu-1.0, kye-payments-card-1.0,
   kye-payments-high-assurance-1.0
 - 112 OpenAPI operations across 87+ runtime endpoints
-- 46 JSON Schemas (JSON Schema 2020-12) with 39 validated examples
+- 42 JSON Schemas (JSON Schema 2020-12) with 45 validated examples
 - 37 black-box conformance fixtures
 - 173 control mappings: SOC 2, ISO 27001:2022, PCI DSS 4.0, PSD2/PSD3,
   DORA, NIS2, EU AI Act, NIST 800-207, HIPAA
@@ -167,6 +231,66 @@ are deliberately omitted from public artefacts. v2.0 moves the patent
 track to a royalty-free open standard (Linux Foundation / OpenWallet
 Foundation track).
 
+
+## Authority Graph™ + Decision Map™ (KYE Graph Profile™)
+
+KYE is **graph-first**. Authority is relational. Every entity,
+delegation, capability, credential, policy, state, decision, and
+evidence object is a node; every authority relationship is a typed
+edge.
+
+Trademarked graph projections:
+
+- **Authority Graph™** — who or what can act, for whom, using which
+  capability, under which scope, in which state.
+- **Decision Map™** — replayable graph of one decision: actor →
+  principal → delegation → capability → authority → scope → state →
+  policy → decision → audit → evidence. Returned by
+  `GET /v1/decisions/{id}/map`.
+- **Evidence Graph™** — decision ↔ authority grants ↔ capability
+  manifests ↔ payloads ↔ audit events ↔ evidence packs.
+- **Blast Radius Map™** — what breaks if a credential / capability /
+  entity is compromised.
+- **Compliance Map™** — projection from KYE objects to framework
+  controls (EU AI Act, ISO 42001, SOC 2, DORA, NIS2).
+
+Specific traversal algorithms sit behind the patent track. Storage
+substrate (Postgres, Neo4j, Neptune, Memgraph, TigerGraph, ArangoDB,
+RDF) is implementation choice.
+
+> KYE turns identity, authority, capability, state, policy, and
+> evidence into a traversable Authority Graph™.
+
+> Every KYE decision comes with a Decision Map™ — a replayable graph
+> showing who or what acted, for whom, using which capability, under
+> what authority, in what state, and with what evidence.
+
+## Entity vs. evidence taxonomy (KYE Payload Trust Profile™)
+
+KYE governs **acting entities, principal entities, capability entities,
+resource entities, credential entities, and evidence artefacts** — and
+keeps them strictly distinct.
+
+| Concept           | Role                            | Examples                                                  |
+|-------------------|---------------------------------|-----------------------------------------------------------|
+| Acting entity     | Who or what is acting           | AI agent, service, user, autonomous workflow              |
+| Principal entity  | On whose behalf                 | Organisation, business, natural person, deployer          |
+| Capability entity | Using which capability          | Skill, tool, MCP tool, function, connector, playbook, …   |
+| Resource entity   | Acting on which resource        | Wallet, dataset, document, vehicle, vessel, shipment      |
+| Credential entity | Carrying which proof            | Verifiable credential, attestation, key                   |
+| Evidence artefact | Recording the act               | **Payload artefact**, audit event, transparency receipt   |
+| Decision          | Authority result                | `policy_decision_id` — allow / require_approval / deny    |
+
+The **KYE Payload Trust Profile™** (`kye-payload-trust-1.0`) defines
+payload artefacts as signed, hashed, replay-resistant **evidence
+artefacts** that record or request an action by an acting entity, on
+behalf of a principal entity, using a capability entity. Payloads carry
+state but never authority. The runtime verifies them, binds the
+resulting policy decision back to the artefact, and emits replayable
+audit evidence. 13 lifecycle + denial states; 10 deny reason codes.
+
+> KYE binds signed payloads to entity authority, capability state,
+> policy decisions, and replayable audit evidence.
 
 ## Compliance frameworks (KYE Compliance Mapping Rail™)
 

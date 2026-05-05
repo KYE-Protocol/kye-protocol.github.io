@@ -29,7 +29,7 @@ export function initComparison() {
     th.scope = "col";
     if (p.ver) {
       const v = document.createElement("div");
-      v.style.cssText = "font-size:10px;color:var(--text-dim);font-weight:400;margin-top:2px";
+      v.style.cssText = "font-size:11px;color:var(--text-dim);font-weight:400;margin-top:2px";
       v.textContent = p.ver;
       th.appendChild(v);
     }

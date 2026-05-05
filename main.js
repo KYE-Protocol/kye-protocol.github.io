@@ -57,3 +57,21 @@ initWebMcp();
   apply(current());
   btn.addEventListener("click", () => apply(current() === "dark" ? "light" : "dark"));
 })();
+
+/* Audience toggle — All / Business / Technical. Persists to localStorage. */
+(function initAudienceToggle() {
+  const KEY = "kye-audience";
+  const buttons = document.querySelectorAll(".aud-btn[data-audience]");
+  if (!buttons.length) return;
+  function apply(aud) {
+    if (aud === "all") document.body.removeAttribute("data-audience");
+    else document.body.setAttribute("data-audience", aud);
+    buttons.forEach((b) => b.classList.toggle("is-active", b.dataset.audience === aud));
+    try { localStorage.setItem(KEY, aud); } catch (_) {}
+  }
+  let saved = "all";
+  try { saved = localStorage.getItem(KEY) || "all"; } catch (_) {}
+  if (!["all", "business", "technical"].includes(saved)) saved = "all";
+  apply(saved);
+  buttons.forEach((b) => b.addEventListener("click", () => apply(b.dataset.audience)));
+})();

@@ -150,4 +150,34 @@ export const PROFILES = [
       { name: "recovery_proof", desc: "Signed artefact proving an entity completed recovery" },
     ],
   },
+  {
+    id: "kye-taxonomy-metadata-1.0", name: "Taxonomy & Metadata", status: "Normative v1.0",
+    description: "Adds canonical taxonomies and metadata bindings — the classification layer authority decisions depend on. 16 V1 taxonomies (entity_type, capability_type, action_type, data_class, risk_state, sector, jurisdiction, decision, evidence_type, compliance_framework, …). Metadata bindings carry labels, classifications, ownership, lineage, and compliance refs — and influence policy decisions at runtime.",
+    endpoints: ["/v1/taxonomies", "/v1/taxonomies/{id}/terms", "/v1/taxonomy-mappings", "/v1/metadata-schemas", "/v1/metadata:validate", "/v1/metadata:classify", "/v1/metadata-bindings"],
+    terms: [
+      { name: "taxonomy_term", desc: "Canonical, versioned, status-bound classification term referenced by every KYE object" },
+      { name: "metadata_binding", desc: "Labels + classifications + ownership + lineage + compliance metadata block bound to any KYE subject URN" },
+      { name: "taxonomy_mapping", desc: "Versioned mapping from a taxonomy term to a compliance-framework control (EU AI Act, ISO 42001, SOC 2, DORA, …)" },
+    ],
+  },
+  {
+    id: "kye-graph-1.0", name: "Graph", status: "Normative v1.0",
+    description: "Adds the Authority Graph™ — a canonical node + edge contract for entities, capabilities, credentials, authority grants, delegations, policies, decisions, audit events, and evidence packs. Every decision returns a Decision Map™ (explainability), Evidence Graph™ (proof linkage), Blast Radius Map™ (compromise impact), and Compliance Map™ (framework projection). Storage substrate is implementation choice (Postgres, Neo4j, Neptune, Memgraph, TigerGraph, ArangoDB, RDF).",
+    endpoints: ["/v1/graph/nodes", "/v1/graph/edges", "/v1/graph/authority-path", "/v1/graph/delegation-path", "/v1/graph/capability-dependencies", "/v1/graph/blast-radius", "/v1/decisions/{id}/map", "/v1/graph:traverse"],
+    terms: [
+      { name: "graph_node", desc: "Canonical node wrapping a KYE object (entity, capability, credential, authority, decision, audit, evidence, taxonomy term, metadata schema)" },
+      { name: "graph_edge", desc: "Canonical edge type — owns, delegates_to, acts_on_behalf_of, uses_capability, governed_by_policy, produced_decision, included_in_evidence_pack, etc." },
+      { name: "decision_map", desc: "Per-decision graph projection returned by /v1/decisions/{id}/map — actor → principal → delegation → capability → authority → policy → decision → audit → evidence" },
+    ],
+  },
+  {
+    id: "kye-payload-trust-1.0", name: "Payload Trust", status: "Normative v1.0",
+    description: "Adds payload artefacts — signed, hashed, replay-resistant evidence artefacts that record or request an action. Payloads carry state but never authority. The runtime verifies them, binds the resulting policy decision back to the artefact, and emits replayable audit evidence.",
+    endpoints: ["/v1/payloads", "/v1/payloads/{id}", "/v1/payloads/{id}/verify", "/v1/payloads/{id}/bind-decision"],
+    terms: [
+      { name: "payload_artifact", desc: "First-class evidence artefact — not an entity — carrying signed request bytes plus integrity, freshness, decision_binding, audit blocks" },
+      { name: "payload_state", desc: "13 lifecycle + denial states (created, signed, submitted, received, verified, rejected, expired, replayed, tampered, bound_to_decision, executed, failed, archived)" },
+      { name: "payload_decision_binding_missing", desc: "Deny reason when an action is attempted without a successful bound_to_decision transition" },
+    ],
+  },
 ];
