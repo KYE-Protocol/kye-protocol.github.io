@@ -28,7 +28,7 @@
   <meta name="twitter:description" content="The open identity, authority &amp; audit layer for AI agents, services, humans." />
   <meta name="twitter:image" content="https://kye-protocol.github.io/og.svg" />
   <link rel="preconnect" href="https://rsms.me" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=1778008121" />
+  <link rel="stylesheet" href="styles.css?v=1778008580" />
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
   <script type="application/ld+json">
@@ -251,13 +251,12 @@
 
 <main id="main" role="main">
 
-<!-- HERO -->
 <section id="top" class="hero" aria-labelledby="hero-title">
   <div class="hero-grid"></div>
   <div class="hero-bg"></div>
   <div class="container hero-inner">
     <span class="hero-pill"><span class="dot"></span> v1.0 &middot; open standard &middot; entity authority protocol</span>
-    <a class="version-pill deployed-pill" href="https://github.com/KYE-Protocol/kye-protocol.github.io/commits/main" target="_blank" rel="noopener" aria-label="Latest production deploy"><span class="dot"></span> deployed 2026-05-05 19:08 UTC</a>
+    <a class="version-pill deployed-pill" href="https://github.com/KYE-Protocol/kye-protocol.github.io/commits/main" target="_blank" rel="noopener" aria-label="Latest production deploy"><span class="dot"></span> deployed 2026-05-05 19:16 UTC</a>
     <a class="version-pill" href="https://github.com/KYE-Protocol/app/releases" target="_blank" rel="noopener" aria-label="View v1.0 release notes on GitHub"><span class="dot"></span> v1.0.0 &middot; release notes</a>
     <h1 id="hero-title">
       Your future customers and employees<br/>
@@ -277,7 +276,7 @@
       <strong>Horizontally</strong> across vendors. <strong>Vertically</strong> across regulators.
     </p>
     <div class="hero-cta">
-      <a href="#why" class="btn btn-primary">See it in 90 seconds &rarr;</a>
+      <a href="#flow" class="btn btn-primary">See it in 90 seconds &rarr;</a>
       <a href="whitepaper.html" class="btn btn-secondary">Read the whitepaper</a>
       <a href="https://github.com/KYE-Protocol" target="_blank" rel="noopener" class="btn btn-ghost">Docs &amp; SDKs &rarr;</a>
     </div>
@@ -301,7 +300,6 @@
   </div>
 </section>
 
-<!-- WHAT / PROBLEM / SOLUTION / HOW -->
 <section id="what" class="section" aria-labelledby="h-what">
   <div class="container">
     <span class="eyebrow">What it is</span>
@@ -345,7 +343,6 @@
   </div>
 </section>
 
-<!-- PROBLEM / SOLUTION -->
 <section id="problem-solution" class="section alt" aria-labelledby="h-ps">
   <div class="container">
     <span class="eyebrow">Why it's needed</span>
@@ -381,316 +378,6 @@
   </div>
 </section>
 
-<!-- HOW IT WORKS (3 STEPS) -->
-<section id="how" class="section" aria-labelledby="h-how">
-  <div class="container">
-    <span class="eyebrow">How it works</span>
-    <h2 id="h-how" class="h-section">Three steps, every time. <span class="accent">Identify. Authorize. Prove.</span></h2>
-    <p class="lede">A KYE<span class="tm">™</span>-governed action is the same shape whether the actor is a human pressing a button, a service account hitting an API, or an AI agent running a tool. That uniformity is the whole point.</p>
-
-    <div class="how-grid">
-      <article class="how-card">
-        <div class="how-num">1</div>
-        <h3 class="how-h">Identify</h3>
-        <p class="how-b">Resolve who&rsquo;s acting, on whose behalf, and what they&rsquo;re acting against &mdash; using one URN format across every entity class.</p>
-        <div class="how-row">
-          <span class="how-pill">actor</span>
-          <span class="how-pill">principal</span>
-          <span class="how-pill">subject</span>
-          <span class="how-pill">resource</span>
-          <span class="how-pill">delegation_id</span>
-          <span class="how-pill">credential_id</span>
-        </div>
-      </article>
-
-      <article class="how-card">
-        <div class="how-num">2</div>
-        <h3 class="how-h">Authorize</h3>
-        <p class="how-b">Run the request through the PDP (or a low-latency embedded ePDP). Return a standard decision with reasons, obligations and stop conditions.</p>
-        <ul class="how-outcomes">
-          <li><span class="how-pill is-allow">allow_with_constraints</span> &mdash; your app proceeds. It MUST honour the obligations attached (e.g.&nbsp;<code>audit.emit</code>, <code>redaction.required</code>) and abort if a stop_condition fires before completion.</li>
-          <li><span class="how-pill is-approve">require_approval</span> &mdash; your app pauses, queues a human or system approver, and re-asks the PDP after the approval is recorded. The original request keeps the same <code>policy_decision_id</code>.</li>
-          <li><span class="how-pill is-deny">deny</span> &mdash; your app stops, surfaces the reason code (e.g.&nbsp;<code>scope_attenuation_violation</code>, <code>credential_revoked</code>) to the user, and emits an audit event. No retry without a new authority.</li>
-        </ul>
-      </article>
-
-      <article class="how-card">
-        <div class="how-num">3</div>
-        <h3 class="how-h">Prove</h3>
-        <p class="how-b">Append the action to the audit chain, emit signed signals to subscribers, and on demand export a signed proof bundle a regulator can verify with public keys alone.</p>
-        <div class="how-row">
-          <span class="how-pill">audit append</span>
-          <span class="how-pill">signal.publish</span>
-          <span class="how-pill">webhook (signed)</span>
-          <span class="how-pill">proof bundle</span>
-          <span class="how-pill">transparency receipt</span>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- QUICKSTART -->
-<section id="quickstart" class="section" aria-labelledby="h-quickstart">
-  <div class="container">
-    <span class="eyebrow">Quickstart &middot; ship in 5 minutes</span>
-    <h2 id="h-quickstart" class="h-section">Three SDKs. One <span class="accent">authorize call</span>.</h2>
-    <p class="lede">Pick a language. Drop in the SDK. Ask the gateway whether the action is allowed. Every response is a verifiable decision your auditors can replay.</p>
-    <div class="qs-card">
-      <div class="qs-tabs" role="tablist" aria-label="Quickstart language">
-        <button class="qs-tab is-on" role="tab" aria-selected="true"  data-qs="ts">TypeScript</button>
-        <button class="qs-tab"        role="tab" aria-selected="false" data-qs="py">Python</button>
-        <button class="qs-tab"        role="tab" aria-selected="false" data-qs="go">Go</button>
-        <button class="qs-tab"        role="tab" aria-selected="false" data-qs="curl">curl</button>
-      </div>
-      <div class="qs-pane-wrap" id="qs-pane-ts" role="tabpanel">
-        <button class="qs-copy" data-copy="ts" aria-label="Copy TypeScript example">copy</button>
-        <pre><span class="c">// npm i @kye/sdk</span>
-<span class="k">import</span> { KyeClient } <span class="k">from</span> <span class="s">"@kye/sdk"</span>;
-
-<span class="k">const</span> kye = <span class="k">new</span> <span class="u">KyeClient</span>({ baseUrl: <span class="s">"https://gw.example/v1"</span> });
-
-<span class="k">const</span> decision = <span class="k">await</span> kye.<span class="u">authorize</span>({
-  actor:               { entity_id: <span class="s">"kye:ent:acme:ai_agent:01J..."</span> },
-  acting_on_behalf_of: { delegation_id: <span class="s">"kye:del:acme:01J..."</span> },
-  action:              <span class="s">"document.render"</span>,
-});
-
-<span class="k">if</span> (decision.decision !== <span class="s">"allow_with_constraints"</span>) <span class="k">throw</span> <span class="k">new</span> <span class="u">Error</span>(decision.reasons.join(<span class="s">","</span>));
-
-<span class="c">// → { decision: "allow_with_constraints", obligations: ["audit.emit"],</span>
-<span class="c">//     stop_conditions: ["actor.stop_signal","delegation.revoked",...] }</span></pre>
-      </div>
-      <div class="qs-pane-wrap" id="qs-pane-py" role="tabpanel" hidden>
-        <button class="qs-copy" data-copy="py" aria-label="Copy Python example">copy</button>
-        <pre><span class="c"># pip install kye-sdk</span>
-<span class="k">from</span> kye_sdk <span class="k">import</span> KyeClient
-
-kye = KyeClient(base_url=<span class="s">"https://gw.example/v1"</span>)
-
-decision = kye.<span class="u">authorize</span>({
-    <span class="s">"actor"</span>:               {<span class="s">"entity_id"</span>: <span class="s">"kye:ent:acme:ai_agent:01J..."</span>},
-    <span class="s">"acting_on_behalf_of"</span>: {<span class="s">"delegation_id"</span>: <span class="s">"kye:del:acme:01J..."</span>},
-    <span class="s">"action"</span>:              <span class="s">"document.render"</span>,
-})
-
-<span class="k">assert</span> decision[<span class="s">"decision"</span>] == <span class="s">"allow_with_constraints"</span>, decision[<span class="s">"reasons"</span>]</pre>
-      </div>
-      <div class="qs-pane-wrap" id="qs-pane-go" role="tabpanel" hidden>
-        <button class="qs-copy" data-copy="go" aria-label="Copy Go example">copy</button>
-        <pre><span class="c">// go get github.com/kye-protocol/sdk-go</span>
-<span class="k">package</span> main
-
-<span class="k">import</span> (
-    <span class="s">"context"</span>
-    <span class="s">"github.com/kye-protocol/sdk-go/pkg/kye"</span>
-)
-
-<span class="k">func</span> main() {
-    c := kye.<span class="u">NewClient</span>(<span class="s">"https://gw.example"</span>)
-    d, err := c.<span class="u">Authorize</span>(context.Background(), kye.AuthorizeRequest{
-        Action: <span class="s">"document.render"</span>,
-        Actor:  kye.Actor{EntityID: <span class="s">"kye:ent:acme:ai_agent:01J..."</span>},
-    })
-    <span class="k">if</span> err != <span class="k">nil</span> { <span class="k">panic</span>(err) }
-    <span class="c">// d.Decision == "allow_with_constraints"</span>
-    _ = d
-}</pre>
-      </div>
-      <div class="qs-pane-wrap" id="qs-pane-curl" role="tabpanel" hidden>
-        <button class="qs-copy" data-copy="curl" aria-label="Copy curl example">copy</button>
-        <pre><span class="c"># Plain HTTP — no SDK required</span>
-curl -X POST https://gw.example/v1/runtime/authorize \
-  -H <span class="s">'content-type: application/json'</span> \
-  -H <span class="s">'idempotency-key: 8c4a-...'</span> \
-  -d <span class="s">'{
-    "actor":               { "entity_id": "kye:ent:acme:ai_agent:01J..." },
-    "acting_on_behalf_of": { "delegation_id": "kye:del:acme:01J..." },
-    "action":              "document.render"
-  }'</span>
-
-<span class="c"># → { "decision":"allow_with_constraints", "reasons":["delegation_active","scope_match"], ... }</span></pre>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- COVERAGE: ECOSYSTEM × LIFECYCLE -->
-<section id="coverage" class="section alt" aria-labelledby="h-coverage">
-  <div class="container">
-    <span class="eyebrow">Coverage</span>
-    <h2 id="h-coverage" class="h-section">One protocol. <span class="accent">Every actor, every action, every state.</span></h2>
-    <p class="lede">KYE Protocol<span class="tm">™</span> is deliberately scoped to the <strong>identity, authority, scope, state, and audit</strong> layer &mdash; not custody, not settlement, not a policy engine. That makes it horizontal across vendors and vertical across regulators.</p>
-
-    <div class="cov-wrap">
-      <div class="cov-card">
-        <h3>Horizontal &mdash; the whole ecosystem</h3>
-        <div class="sub">A single URN spans every entity class your stack already has.</div>
-        <div class="cov-row">
-          <span class="cov-pill">human</span>
-          <span class="cov-pill">business</span>
-          <span class="cov-pill">person</span>
-          <span class="cov-pill">team</span>
-          <span class="cov-pill">workload</span>
-          <span class="cov-pill">service_account</span>
-          <span class="cov-pill">api_client</span>
-          <span class="cov-pill">connector</span>
-          <span class="cov-pill">ai_agent</span>
-          <span class="cov-pill">model</span>
-          <span class="cov-pill">model_version</span>
-          <span class="cov-pill">tool</span>
-          <span class="cov-pill">mcp_tool</span>
-          <span class="cov-pill">workflow</span>
-          <span class="cov-pill">prompt</span>
-          <span class="cov-pill">capability</span>
-          <span class="cov-pill">wallet</span>
-          <span class="cov-pill">payment_authority</span>
-          <span class="cov-pill">credential</span>
-          <span class="cov-pill">attestation</span>
-          <span class="cov-pill">resource</span>
-          <span class="cov-pill">document</span>
-          <span class="cov-pill">dataset</span>
-          <span class="cov-pill">policy</span>
-        </div>
-      </div>
-      <div class="cov-card">
-        <h3>Vertical &mdash; the whole lifecycle</h3>
-        <div class="sub">Every governed phase of every entity, with controlled state transitions and replayable proof.</div>
-        <div class="cov-row">
-          <span class="cov-pill line">discover</span>
-          <span class="cov-pill line">register</span>
-          <span class="cov-pill line">verify</span>
-          <span class="cov-pill line">attest</span>
-          <span class="cov-pill line">delegate</span>
-          <span class="cov-pill line">scope</span>
-          <span class="cov-pill line">authorize</span>
-          <span class="cov-pill line">act</span>
-          <span class="cov-pill line">audit</span>
-          <span class="cov-pill line">replay</span>
-          <span class="cov-pill line">approve</span>
-          <span class="cov-pill line">attenuate</span>
-          <span class="cov-pill line">suspend</span>
-          <span class="cov-pill line">stop</span>
-          <span class="cov-pill line">quarantine</span>
-          <span class="cov-pill line">revoke</span>
-          <span class="cov-pill line">break-glass</span>
-          <span class="cov-pill line">recover</span>
-          <span class="cov-pill line">rotate</span>
-          <span class="cov-pill line">transfer</span>
-          <span class="cov-pill line">archive</span>
-          <span class="cov-pill line">tombstone</span>
-        </div>
-        <div class="cov-row" style="margin-top:18px">
-          <span class="cov-pill gov">SOC 2</span>
-          <span class="cov-pill gov">ISO 27001</span>
-          <span class="cov-pill gov">PCI DSS</span>
-          <span class="cov-pill gov">PSD2/PSD3</span>
-          <span class="cov-pill gov">DORA</span>
-          <span class="cov-pill gov">HIPAA</span>
-          <span class="cov-pill gov">EU AI Act</span>
-          <span class="cov-pill gov">NIS2</span>
-          <span class="cov-pill gov">NIST 800-207</span>
-        </div>
-        <div class="sub" style="margin-top:10px">Verticalised &mdash; sectoral profiles surface the controls auditors already ask for.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ROI / BENEFITS -->
-<section id="roi" class="section" aria-labelledby="h-roi">
-  <div class="container">
-    <span class="eyebrow">Why now &middot; ROI</span>
-    <h2 id="h-roi" class="h-section">The cost of <em>not</em> having KYE<span class="tm">™</span> is now <span class="accent">measurable</span>.</h2>
-    <p class="lede">Three forces are converging in 2026: agentic systems are reaching production, regulators are asking for proof of who acted, and KYC/KYB/KYA stacks don&rsquo;t answer it. KYE Protocol<span class="tm">™</span> is the cheapest way to get ahead of all three.</p>
-
-    <div class="roi-grid">
-      <div class="roi-card">
-        <div class="roi-num">93<span class="unit">%</span></div>
-        <div class="roi-h">Audit reconstruction time saved</div>
-        <p class="roi-b">Hash-linked, replayable audit chain answers &ldquo;who did this and why&rdquo; in seconds &mdash; not days of log archaeology across six tools.</p>
-      </div>
-      <div class="roi-card">
-        <div class="roi-num">10x</div>
-        <div class="roi-h">Faster incident containment</div>
-        <p class="roi-b">One stop signal cascades through delegations, payment authorities and access rights in milliseconds. No orphaned grant, no race condition.</p>
-      </div>
-      <div class="roi-card">
-        <div class="roi-num">&lt;1<span class="unit">ms</span></div>
-        <div class="roi-h">Embedded PDP decision latency</div>
-        <p class="roi-b">Local cached decisions for read paths and idempotent calls keep your agents fast even when the central PDP is far away.</p>
-      </div>
-      <div class="roi-card">
-        <div class="roi-num">$0</div>
-        <div class="roi-h">Vendor lock-in</div>
-        <p class="roi-b">Open vocabulary, open schemas, open OpenAPI, Apache 2.0 reference. Run it anywhere &mdash; cloud, on-prem, air-gapped, sovereign.</p>
-      </div>
-      <div class="roi-card">
-        <div class="roi-num">1</div>
-        <div class="roi-h">URN format across every system</div>
-        <p class="roi-b">Stop reconciling 14 ID systems across 14 vendors. One <code style="font-family:var(--font-mono);font-size:11.5px;color:var(--accent);background:var(--accent-soft);padding:2px 6px;border-radius:4px">kye:&lt;class&gt;:&lt;td&gt;:&lt;sub&gt;:&lt;local&gt;</code> across humans, agents, services, wallets.</p>
-      </div>
-      <div class="roi-card">
-        <div class="roi-num">7</div>
-        <div class="roi-h">Sectoral profiles, no rewrites</div>
-        <p class="roi-b">Federation, Credentials, Attestation, Signals, Transparency, Payments, Capability. Adopt only what you need; Core never shifts.</p>
-      </div>
-    </div>
-
-    <div class="card" style="margin-top:24px">
-      <div class="card-tag">Direct benefits</div>
-      <p class="card-sub" style="margin-top:8px;font-size:14px;line-height:1.7">
-        <strong>For platform &amp; security teams:</strong> kill identity sprawl. One URN, one delegation chain, one decision vocabulary, one audit chain across humans, agents, services and tools.<br/>
-        <strong>For compliance:</strong> stop instrumenting <em>for</em> compliance. KYE<span class="tm">™</span> artefacts <em>are</em> the compliance evidence &mdash; every decision is a hash-linked, signed proof an external auditor can verify with public keys alone.<br/>
-        <strong>For finance teams running agentic procurement:</strong> spend caps, beneficiary allowlists, dual approvals and dry-run gating, all enforced before money moves.<br/>
-        <strong>For risk teams:</strong> reactive bus &mdash; one signal revokes the chain. Cascading revoke means no orphaned grant after a compromise.<br/>
-        <strong>For engineers:</strong> Idempotency keys, JWKS, signed webhooks, three SDKs, 37 conformance fixtures, 173 control mappings. Drop in. Done.<br/>
-        <strong>For boards:</strong> a credible answer to &ldquo;what is your AI agent governance posture?&rdquo;
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- BEFORE / AFTER -->
-<section id="why" class="section" aria-labelledby="h-why">
-  <div class="container">
-    <span class="eyebrow">Why it matters</span>
-    <h2 id="h-why" class="h-section">Stop guessing what your agents did. <span class="accent">Prove it.</span></h2>
-    <p class="lede">
-      Today, one AI agent calls five services with five identities and zero shared policy. Stop signals stay inside their silo. Audits become archaeology.
-      With KYE Protocol<span class="tm">™</span>, the same agent gets one URN, one policy decision per action, one append-only record &mdash; and one signal that revokes the whole chain in milliseconds.
-    </p>
-
-    <div class="ba-wrap">
-      <div class="ba-side before">
-        <span class="ba-tag">Without KYE<span class="tm">™</span></span>
-        <div class="ba-title">Agents, models &amp; tools acting in the dark</div>
-        <div class="ba-sub">No shared ID, no shared policy, no audit. Stop signals don&rsquo;t cross system boundaries. Forensics are forensic guesses.</div>
-        <div class="ba-stage" id="ba-stage-before"></div>
-        <div class="ba-controls">
-          <button class="btn btn-secondary" id="ba-play">Play scenario &rarr;</button>
-          <button class="btn btn-ghost" id="ba-reset">Reset</button>
-        </div>
-      </div>
-
-      <div class="ba-arrow" aria-hidden="true">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </div>
-
-      <div class="ba-side after">
-        <span class="ba-tag">With KYE<span class="tm">™</span></span>
-        <div class="ba-title">Identity, decision, proof &mdash; on every call</div>
-        <div class="ba-sub">Same scenario routed through the protocol: PDP authorizes, audit chain captures, signal bus cascades, proof bundle exports.</div>
-        <div class="ba-stage" id="ba-stage-after"></div>
-        <div class="ba-controls">
-          <span class="card-tag" style="margin: 8px 0 0">▶ Plays in lockstep with the &ldquo;before&rdquo; pane</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BEYOND KYC / KYB / KYA -->
 <section id="evolution" class="section alt" aria-labelledby="h-evolution">
   <div class="container">
     <span class="eyebrow">Beyond KYC · KYB · KYA</span>
@@ -776,116 +463,68 @@ curl -X POST https://gw.example/v1/runtime/authorize \
   </div>
 </section>
 
-<!-- TRUST GRAPH -->
-<section id="graph" class="section alt" aria-labelledby="h-graph">
+<section id="cmp" class="section alt" aria-labelledby="h-cmp">
   <div class="container">
-    <span class="eyebrow">Interactive trust graph</span>
-    <h2 id="h-graph" class="h-section">See exactly <span class="accent">who can act for whom</span> &mdash; live.</h2>
-    <p class="lede">Every entity, every delegation, every scope, every resource grant in one queryable graph. Click a node for its full record. Drag, zoom, toggle layers. Revoke a delegation: watch the edge break and the dependent agent turn red. This is what your auditors get.</p>
-
-    <div class="tg-wrap">
-      <div class="tg-stage" id="tg-stage"></div>
-      <aside class="tg-side">
-        <div class="tg-info" id="tg-info">
-          <div class="label">Selected</div>
-          <h4 id="tg-info-title">— click a node —</h4>
-          <dl id="tg-info-meta"></dl>
-        </div>
-        <div>
-          <div class="label" style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-dim); margin-bottom: 8px;">Layers</div>
-          <div class="tg-controls" id="tg-controls">
-            <button class="tg-toggle is-on" data-layer="entity">Entities</button>
-            <button class="tg-toggle is-on" data-layer="delegation">Delegations</button>
-            <button class="tg-toggle is-on" data-layer="scope">Scopes</button>
-            <button class="tg-toggle is-on" data-layer="access_right">Access rights</button>
-          </div>
-        </div>
-        <div>
-          <div class="label" style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-dim); margin-bottom: 8px;">Legend</div>
-          <div class="tg-legend">
-            <div><span class="swatch" style="background:#6366f1"></span> AI agent</div>
-            <div><span class="swatch" style="background:#22d3ee"></span> Business / person</div>
-            <div><span class="swatch" style="background:#f59e0b"></span> Wallet / resource</div>
-            <div><span class="swatch" style="background:#10b981"></span> Scope / access right</div>
-            <div><span class="swatch" style="background:#ef4444"></span> Stopped / revoked</div>
-          </div>
-        </div>
-        <div class="tg-controls">
-          <button class="btn btn-secondary" id="tg-revoke" style="font-size:12px;padding:7px 12px">Revoke a delegation</button>
-          <button class="btn btn-ghost" id="tg-reset" style="font-size:12px;padding:7px 12px">Reset</button>
-        </div>
-      </aside>
+    <span class="eyebrow">Where it sits in your stack</span>
+    <h2 id="h-cmp" class="h-section">MCP and OAuth solve <em>parts</em>. KYE<span class="tm">™</span> solves the <span class="accent">whole identity-authority-audit problem</span>.</h2>
+    <p class="lede">MCP and A2A handle agent communication. OAuth and GNAP do human authorization. SPIFFE does workload identity. SCITT does transparency. KYE Protocol<span class="tm">™</span> is the contract layer that <em>composes</em> them &mdash; one URN, one delegation chain, one decision vocabulary, one cascade, one audit chain.</p>
+    <div class="cmp-scroll-wrap">
+      <div class="cmp-wrap">
+        <table class="cmp" id="cmp-table"></table>
+      </div>
+      <p style="font-size:12px;color:var(--text-dim);margin-top:10px">↔ scroll horizontally to see all columns</p>
     </div>
   </div>
 </section>
 
-<!-- CASCADE RIPPLE -->
-<section id="cascade" class="section alt" aria-labelledby="h-cascade">
+<section id="how" class="section" aria-labelledby="h-how">
   <div class="container">
-    <span class="eyebrow">Cascade visualizer</span>
-    <h2 id="h-cascade" class="h-section">Compromise an agent? <span class="accent">Stop it once. Stop it everywhere.</span></h2>
-    <p class="lede">A single signal on the KYE<span class="tm">™</span> bus propagates through every dependent delegation, payment authority and resource grant within milliseconds &mdash; revoke a parent and revocation walks down the entire delegation tree atomically. (Each child carries a <code style="font-family:var(--font-mono);font-size:13px;color:var(--accent);background:var(--accent-soft);padding:2px 6px;border-radius:4px">parent_delegation_id</code> the runtime follows.) No orphaned authority. No stale grant. No "we missed one".</p>
+    <span class="eyebrow">How it works</span>
+    <h2 id="h-how" class="h-section">Three steps, every time. <span class="accent">Identify. Authorize. Prove.</span></h2>
+    <p class="lede">A KYE<span class="tm">™</span>-governed action is the same shape whether the actor is a human pressing a button, a service account hitting an API, or an AI agent running a tool. That uniformity is the whole point.</p>
 
-    <div class="cascade-wrap">
-      <div class="cascade-stage" id="cascade-stage"></div>
-      <div class="cascade-feed">
-        <h4>Live signal feed</h4>
-        <ul id="cascade-feed-list"></ul>
-        <div class="cascade-controls">
-          <button class="btn btn-primary" id="cascade-fire">Stop the actor &rarr;</button>
-          <button class="btn btn-ghost" id="cascade-reset">Reset</button>
+    <div class="how-grid">
+      <article class="how-card">
+        <div class="how-num">1</div>
+        <h3 class="how-h">Identify</h3>
+        <p class="how-b">Resolve who&rsquo;s acting, on whose behalf, and what they&rsquo;re acting against &mdash; using one URN format across every entity class.</p>
+        <div class="how-row">
+          <span class="how-pill">actor</span>
+          <span class="how-pill">principal</span>
+          <span class="how-pill">subject</span>
+          <span class="how-pill">resource</span>
+          <span class="how-pill">delegation_id</span>
+          <span class="how-pill">credential_id</span>
         </div>
-      </div>
+      </article>
+
+      <article class="how-card">
+        <div class="how-num">2</div>
+        <h3 class="how-h">Authorize</h3>
+        <p class="how-b">Run the request through the PDP (or a low-latency embedded ePDP). Return a standard decision with reasons, obligations and stop conditions.</p>
+        <ul class="how-outcomes">
+          <li><span class="how-pill is-allow">allow_with_constraints</span> &mdash; your app proceeds. It MUST honour the obligations attached (e.g.&nbsp;<code>audit.emit</code>, <code>redaction.required</code>) and abort if a stop_condition fires before completion.</li>
+          <li><span class="how-pill is-approve">require_approval</span> &mdash; your app pauses, queues a human or system approver, and re-asks the PDP after the approval is recorded. The original request keeps the same <code>policy_decision_id</code>.</li>
+          <li><span class="how-pill is-deny">deny</span> &mdash; your app stops, surfaces the reason code (e.g.&nbsp;<code>scope_attenuation_violation</code>, <code>credential_revoked</code>) to the user, and emits an audit event. No retry without a new authority.</li>
+        </ul>
+      </article>
+
+      <article class="how-card">
+        <div class="how-num">3</div>
+        <h3 class="how-h">Prove</h3>
+        <p class="how-b">Append the action to the audit chain, emit signed signals to subscribers, and on demand export a signed proof bundle a regulator can verify with public keys alone.</p>
+        <div class="how-row">
+          <span class="how-pill">audit append</span>
+          <span class="how-pill">signal.publish</span>
+          <span class="how-pill">webhook (signed)</span>
+          <span class="how-pill">proof bundle</span>
+          <span class="how-pill">transparency receipt</span>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- DECISION DASHBOARD -->
-<section id="dash" class="section" aria-labelledby="h-dash">
-  <div class="container">
-    <span class="eyebrow">Live decision dashboard</span>
-    <h2 id="h-dash" class="h-section">What is your fleet doing <span class="accent">right now?</span></h2>
-    <p class="lede">Allow rate, deny rate, approval queue depth &mdash; in one view. The reference Gateway streams decisions to the bus; any dashboard, SIEM or Slack channel can subscribe. Counters below run a synthetic workload to show the shape.</p>
-
-    <div class="dash-wrap">
-      <div class="dash-card">
-        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-          <div>
-            <div class="card-tag">Decisions per minute</div>
-            <div class="card-h">Synthetic workload</div>
-          </div>
-          <div style="display:flex;gap:8px">
-            <button class="btn btn-secondary" id="dash-play" style="font-size:12px;padding:7px 12px">▶ Run</button>
-            <button class="btn btn-ghost" id="dash-pause" style="font-size:12px;padding:7px 12px">⏸ Pause</button>
-            <button class="btn btn-ghost" id="dash-clear" style="font-size:12px;padding:7px 12px">Clear</button>
-          </div>
-        </div>
-        <div class="dash-counters">
-          <div class="dash-counter"><div class="l">Total decisions</div><div class="v" id="ct-total">0</div><div class="delta up" id="ct-total-delta">+0</div></div>
-          <div class="dash-counter"><div class="l">Allow + AllowWithConstraints</div><div class="v" id="ct-allow">0</div><div class="delta up" id="ct-allow-delta">+0</div></div>
-          <div class="dash-counter"><div class="l">Require approval</div><div class="v" id="ct-approval">0</div><div class="delta up" id="ct-approval-delta">+0</div></div>
-          <div class="dash-counter"><div class="l">Deny</div><div class="v" id="ct-deny">0</div><div class="delta up" id="ct-deny-delta">+0</div></div>
-        </div>
-      </div>
-      <div class="dash-card">
-        <div class="card-tag">Distribution</div>
-        <div class="card-h">Outcome share</div>
-        <div class="donut-wrap">
-          <svg id="donut" width="240" height="240" viewBox="0 0 240 240" aria-hidden="true"></svg>
-          <div class="donut-center">
-            <div>
-              <div class="v" id="donut-center-v">0%</div>
-              <div class="l">Allow rate</div>
-            </div>
-          </div>
-        </div>
-        <div class="donut-legend" id="donut-legend"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- DECISION FLOW -->
 <section id="flow" class="section" aria-labelledby="h-flow">
   <div class="container">
     <span class="eyebrow">Decision walkthrough</span>
@@ -1034,145 +673,26 @@ curl -X POST https://gw.example/v1/runtime/authorize \
   </div>
 </section>
 
-<!-- PERSONAS -->
-<section id="who" class="section" aria-labelledby="h-who">
+<section id="cascade" class="section alt" aria-labelledby="h-cascade">
   <div class="container">
-    <span class="eyebrow">Who it's for</span>
-    <h2 id="h-who" class="h-section">Built for teams where <span class="accent">a wrong agent decision is a regulator visit</span>.</h2>
-    <p class="lede">If your agents touch money, identity, health data or anything regulators care about, you can&rsquo;t hand them an OAuth token and hope.</p>
-    <div class="persona-grid">
-      <article class="persona-card">
-        <div class="persona-icon" aria-hidden="true">🏦</div>
-        <h3>Banks &amp; payment platforms</h3>
-        <p class="pain">PSD3, FFIEC, RBI, MAS &mdash; every regulator now asks &ldquo;was the agent authorised, by whom, within what limit?&rdquo;</p>
-        <p>KYE Protocol<span class="tm">™</span> gives you a payment authority chain, scope-bound caps, sPDP gating, signed proof bundles for every auth. <strong>Use the Payments profile.</strong></p>
-        <ul class="persona-roi"><li>23 PSD3 / DORA / NIS2 controls evidenced from one chain</li><li>Audit-prep cycles &raquo; 2 days &rarr; minutes (signed proof bundles)</li><li>One contract across vendors &mdash; no per-vendor passport reconciliation</li></ul>
-      </article>
-      <article class="persona-card">
-        <div class="persona-icon" aria-hidden="true">🤖</div>
-        <h3>AI labs &amp; agent platforms</h3>
-        <p class="pain">Your agent does something destructive. The user asks you to prove it wasn&rsquo;t supposed to.</p>
-        <p>KYE Protocol<span class="tm">™</span> gives every action a <code>policy_decision_id</code>, a delegation chain back to a human, and a stop signal that revokes the agent everywhere at once.</p>
-        <ul class="persona-roi"><li>EU AI Act Title&nbsp;III obligations (record-keeping, human oversight, post-market monitoring) covered by Capability + Recovery + Telemetry</li><li>Compromise &rarr; cascade revoke across delegations, payment authorities, capability grants in one signal</li><li>Point-in-time replay reconstructs the agent&rsquo;s state at any past moment</li></ul>
-      </article>
-      <article class="persona-card">
-        <div class="persona-icon" aria-hidden="true">🏥</div>
-        <h3>Healthcare systems</h3>
-        <p class="pain">An AI triages a patient&rsquo;s record. HIPAA wants the consent chain. The hospital wants the redaction trace.</p>
-        <p>KYE Protocol<span class="tm">™</span> binds the agent to the consent credential, attaches <code>redaction.required</code> and <code>external.send.block</code> obligations, and records the lot in the audit chain.</p>
-        <ul class="persona-roi"><li>HIPAA Security Rule + Privacy Rule mapped to specific endpoints</li><li>Consent &rarr; obligation &rarr; audit event in one chain (no stitching)</li><li>Right-to-erasure satisfied by lifecycle <code>tombstoned</code> + Healthcare profile redactions</li></ul>
-      </article>
-      <article class="persona-card">
-        <div class="persona-icon" aria-hidden="true">💼</div>
-        <h3>Custodians &amp; treasury</h3>
-        <p class="pain">An autonomous treasury bot rebalances. Auditors need to see authority, scope, attestation, decision &mdash; not just &ldquo;the bot did it.&rdquo;</p>
-        <p>Combine the Custody and Attestation profiles. Workload attestation binds the runtime; payment authority binds the wallet; audit chain binds the timeline.</p>
-        <ul class="persona-roi"><li>Workload &rarr; wallet &rarr; transfer chain provable end-to-end</li><li>Recovery + break-glass replaces ad-hoc admin reset with a signed, time-boxed flow</li><li>Quarterly compromise drills are exercises, not incidents</li></ul>
-      </article>
-      <article class="persona-card">
-        <div class="persona-icon" aria-hidden="true">🏛️</div>
-        <h3>Regulators &amp; auditors</h3>
-        <p class="pain">You are asked to certify something built on six different vendors&rsquo; agent stacks.</p>
-        <p>Every conformant gateway exports the same proof bundle format. Verify signatures with public keys; replay the audit chain; re-derive the decision. <strong>One contract, every vendor.</strong></p>
-        <ul class="persona-roi"><li>37-fixture conformance pack the auditor runs unchanged against any vendor</li><li>173 control mappings (SOC&nbsp;2, ISO&nbsp;27001, PCI&nbsp;DSS&nbsp;4.0, PSD2/3, DORA, NIS2, EU&nbsp;AI&nbsp;Act, NIST&nbsp;800-207, HIPAA)</li><li>Evidence collection is a fetch, not an interview</li></ul>
-      </article>
-      <article class="persona-card">
-        <div class="persona-icon" aria-hidden="true">🛠️</div>
-        <h3>Platform teams</h3>
-        <p class="pain">Identity, authz, audit, signals, webhooks &mdash; six teams, six tools.</p>
-        <p>One PEP middleware. One ePDP cache. One signal bus. Wire your existing OAuth, SPIFFE, MCP and KYA vendors into the contract instead of replacing them.</p>
-        <ul class="persona-roi"><li>Six tools &rarr; one contract; team count holds, surface area shrinks</li><li>Idempotency, retry, dead-letter, replay handled at the protocol layer</li><li>Drop-in OPA Rego / Cerbos policy bundles &mdash; you keep your policy author</li></ul>
-      </article>
-    </div>
+    <span class="eyebrow">Cascade visualizer</span>
+    <h2 id="h-cascade" class="h-section">Compromise an agent? <span class="accent">Stop it once. Stop it everywhere.</span></h2>
+    <p class="lede">A single signal on the KYE<span class="tm">™</span> bus propagates through every dependent delegation, payment authority and resource grant within milliseconds &mdash; revoke a parent and revocation walks down the entire delegation tree atomically. (Each child carries a <code style="font-family:var(--font-mono);font-size:13px;color:var(--accent);background:var(--accent-soft);padding:2px 6px;border-radius:4px">parent_delegation_id</code> the runtime follows.) No orphaned authority. No stale grant. No "we missed one".</p>
 
-    <div class="logos-strip" aria-label="Reference adopters and design partners">
-      <p class="logos-strip-h"><strong>Design-partner logos coming soon.</strong></p>
-      <p class="logos-strip-b">Banking, payments, AI&nbsp;lab, healthcare and custody integrators are integrating against the v1.0 contract.</p>
-      <p class="logos-strip-cta">Want to be on this strip? <a href="https://github.com/KYE-Protocol/Discussions/discussions/categories/show-and-tell" target="_blank" rel="noopener">Drop a note in Show&nbsp;&amp;&nbsp;Tell &rarr;</a></p>
-    </div>
-  </div>
-</section>
-
-<!-- COMPARISON MATRIX -->
-<section id="cmp" class="section alt" aria-labelledby="h-cmp">
-  <div class="container">
-    <span class="eyebrow">Where it sits in your stack</span>
-    <h2 id="h-cmp" class="h-section">MCP and OAuth solve <em>parts</em>. KYE<span class="tm">™</span> solves the <span class="accent">whole identity-authority-audit problem</span>.</h2>
-    <p class="lede">MCP and A2A handle agent communication. OAuth and GNAP do human authorization. SPIFFE does workload identity. SCITT does transparency. KYE Protocol<span class="tm">™</span> is the contract layer that <em>composes</em> them &mdash; one URN, one delegation chain, one decision vocabulary, one cascade, one audit chain.</p>
-    <div class="cmp-scroll-wrap">
-      <div class="cmp-wrap">
-        <table class="cmp" id="cmp-table"></table>
-      </div>
-      <p style="font-size:12px;color:var(--text-dim);margin-top:10px">↔ scroll horizontally to see all columns</p>
-    </div>
-  </div>
-</section>
-
-<!-- URN PARSER -->
-<section id="urn" class="section" aria-labelledby="h-urn">
-  <div class="container">
-    <span class="eyebrow">Universal identity</span>
-    <h2 id="h-urn" class="h-section">One URN. Every record. <span class="accent">Every system.</span></h2>
-    <p class="lede">No more reconciling 14 ID systems across 14 vendors. Every entity, delegation, signal, decision, credential and proof bundle uses the same <code style="font-family:var(--font-mono);color:var(--accent);font-size:14px;background:var(--accent-soft);padding:2px 7px;border-radius:5px">kye:&lt;class&gt;:&lt;trust-domain&gt;:&lt;subclass&gt;:&lt;local&gt;</code> shape. Type below or click a sample to see the parser break it down.</p>
-    <div class="urn-samples" id="urn-samples">
-      <button class="urn-sample" data-sample="kye:ent:acme.example:ai_agent:01JY3J1D4E5A7K3JQFK4E0Q1XZ">Entity (AI agent)</button>
-      <button class="urn-sample" data-sample="kye:del:acme.example:01JYDELEG0000000000000000A">Delegation</button>
-      <button class="urn-sample" data-sample="kye:scp:acme.example:01JYFINANCEPROD000000000A">Scope</button>
-      <button class="urn-sample" data-sample="kye:cred:acme.example:01JYCRED00000000000000000A">Credential</button>
-      <button class="urn-sample" data-sample="kye:sig:acme.example:01JYSIGNAL00000000000000A">Signal</button>
-      <button class="urn-sample" data-sample="kye:pdc:acme.example:01JYPOLICY0000000000000A">Policy decision</button>
-      <button class="urn-sample" data-sample="kye:aud:acme.example:01JYAUDIT00000000000000A">Audit event</button>
-      <button class="urn-sample" data-sample="kye:pb:acme.example:01JYPROOF00000000000000A">Proof bundle</button>
-    </div>
-    <input id="urn-input" type="text" spellcheck="false" autocomplete="off" class="urn-input"
-      style="margin-top:18px"
-      placeholder="kye:ent:acme.example:ai_agent:01JY3J1D4E5A7K3JQFK4E0Q1XZ" />
-    <div id="urn-out" class="urn-out"></div>
-  </div>
-</section>
-
-<!-- PROFILES -->
-<section id="profiles" class="section alt" aria-labelledby="h-profiles">
-  <div class="container">
-    <span class="eyebrow">Profiles for every sector</span>
-    <h2 id="h-profiles" class="h-section">Banking, healthcare, custody &mdash; <span class="accent">no rewrites required</span>.</h2>
-    <p class="lede">Core handles 90% of the contract. The other 10% &mdash; payment caps, healthcare consent, custody attestation &mdash; is in profiles. Adopt only what you need. Each profile adds vocabulary and conformance fixtures; the Core surface never shifts under your feet.</p>
-    <div id="profile-tabs" class="profile-tabs"></div>
-    <div id="profile-detail" class="profile-detail"></div>
-  </div>
-</section>
-
-<!-- LIFECYCLE -->
-<section id="lifecycle" class="section" aria-labelledby="h-lifecycle">
-  <div class="container">
-    <span class="eyebrow">Lifecycle simulator</span>
-    <h2 id="h-lifecycle" class="h-section">Every entity has <span class="accent">15 well-defined states</span> &mdash; and only legal transitions.</h2>
-    <p class="lede">Click through them. Try an illegal move (the protocol blocks it). Stop, quarantine or revoke an entity and watch the cascade roll down to its delegations, payment authorities and resource grants.</p>
-    <div class="lc-wrap">
-      <div>
-        <div class="lc-card">
-          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--text-dim)">Current state</div>
-          <div id="lc-state" class="lc-state">&mdash;</div>
-          <div id="lc-status" class="lc-status">status: &mdash;</div>
-          <div style="margin-top:14px"><button id="lc-reset" class="btn btn-ghost" style="font-size:12px;padding:7px 12px">Reset entity</button></div>
-        </div>
-        <div class="lc-card lc-cascade" style="margin-top:14px">
-          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--text-dim)">Cascaded effects</div>
-          <ul id="lc-cascade-list"></ul>
-        </div>
-      </div>
-      <div>
-        <div id="lc-transitions" class="lc-transitions"></div>
-        <div class="lc-card" style="margin-top:18px">
-          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--text-dim);margin-bottom:8px">Signal log</div>
-          <ol id="lc-log" class="lc-log" style="list-style:none;padding:0;margin:0"></ol>
+    <div class="cascade-wrap">
+      <div class="cascade-stage" id="cascade-stage"></div>
+      <div class="cascade-feed">
+        <h4>Live signal feed</h4>
+        <ul id="cascade-feed-list"></ul>
+        <div class="cascade-controls">
+          <button class="btn btn-primary" id="cascade-fire">Stop the actor &rarr;</button>
+          <button class="btn btn-ghost" id="cascade-reset">Reset</button>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STATE MODEL -->
 <section id="state-model" class="section" aria-labelledby="h-state-model">
   <div class="container">
     <span class="eyebrow">State model &middot; six dimensions</span>
@@ -1232,7 +752,148 @@ curl -X POST https://gw.example/v1/runtime/authorize \
   </div>
 </section>
 
-<!-- SECTORS -->
+<section id="lifecycle" class="section" aria-labelledby="h-lifecycle">
+  <div class="container">
+    <span class="eyebrow">Lifecycle simulator</span>
+    <h2 id="h-lifecycle" class="h-section">Every entity has <span class="accent">15 well-defined states</span> &mdash; and only legal transitions.</h2>
+    <p class="lede">Click through them. Try an illegal move (the protocol blocks it). Stop, quarantine or revoke an entity and watch the cascade roll down to its delegations, payment authorities and resource grants.</p>
+    <div class="lc-wrap">
+      <div>
+        <div class="lc-card">
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--text-dim)">Current state</div>
+          <div id="lc-state" class="lc-state">&mdash;</div>
+          <div id="lc-status" class="lc-status">status: &mdash;</div>
+          <div style="margin-top:14px"><button id="lc-reset" class="btn btn-ghost" style="font-size:12px;padding:7px 12px">Reset entity</button></div>
+        </div>
+        <div class="lc-card lc-cascade" style="margin-top:14px">
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--text-dim)">Cascaded effects</div>
+          <ul id="lc-cascade-list"></ul>
+        </div>
+      </div>
+      <div>
+        <div id="lc-transitions" class="lc-transitions"></div>
+        <div class="lc-card" style="margin-top:18px">
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--text-dim);margin-bottom:8px">Signal log</div>
+          <ol id="lc-log" class="lc-log" style="list-style:none;padding:0;margin:0"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="urn" class="section" aria-labelledby="h-urn">
+  <div class="container">
+    <span class="eyebrow">Universal identity</span>
+    <h2 id="h-urn" class="h-section">One URN. Every record. <span class="accent">Every system.</span></h2>
+    <p class="lede">No more reconciling 14 ID systems across 14 vendors. Every entity, delegation, signal, decision, credential and proof bundle uses the same <code style="font-family:var(--font-mono);color:var(--accent);font-size:14px;background:var(--accent-soft);padding:2px 7px;border-radius:5px">kye:&lt;class&gt;:&lt;trust-domain&gt;:&lt;subclass&gt;:&lt;local&gt;</code> shape. Type below or click a sample to see the parser break it down.</p>
+    <div class="urn-samples" id="urn-samples">
+      <button class="urn-sample" data-sample="kye:ent:acme.example:ai_agent:01JY3J1D4E5A7K3JQFK4E0Q1XZ">Entity (AI agent)</button>
+      <button class="urn-sample" data-sample="kye:del:acme.example:01JYDELEG0000000000000000A">Delegation</button>
+      <button class="urn-sample" data-sample="kye:scp:acme.example:01JYFINANCEPROD000000000A">Scope</button>
+      <button class="urn-sample" data-sample="kye:cred:acme.example:01JYCRED00000000000000000A">Credential</button>
+      <button class="urn-sample" data-sample="kye:sig:acme.example:01JYSIGNAL00000000000000A">Signal</button>
+      <button class="urn-sample" data-sample="kye:pdc:acme.example:01JYPOLICY0000000000000A">Policy decision</button>
+      <button class="urn-sample" data-sample="kye:aud:acme.example:01JYAUDIT00000000000000A">Audit event</button>
+      <button class="urn-sample" data-sample="kye:pb:acme.example:01JYPROOF00000000000000A">Proof bundle</button>
+    </div>
+    <input id="urn-input" type="text" spellcheck="false" autocomplete="off" class="urn-input"
+      style="margin-top:18px"
+      placeholder="kye:ent:acme.example:ai_agent:01JY3J1D4E5A7K3JQFK4E0Q1XZ" />
+    <div id="urn-out" class="urn-out"></div>
+  </div>
+</section>
+
+<section id="profiles" class="section alt" aria-labelledby="h-profiles">
+  <div class="container">
+    <span class="eyebrow">Profiles for every sector</span>
+    <h2 id="h-profiles" class="h-section">Banking, healthcare, custody &mdash; <span class="accent">no rewrites required</span>.</h2>
+    <p class="lede">Core handles 90% of the contract. The other 10% &mdash; payment caps, healthcare consent, custody attestation &mdash; is in profiles. Adopt only what you need. Each profile adds vocabulary and conformance fixtures; the Core surface never shifts under your feet.</p>
+    <div id="profile-tabs" class="profile-tabs"></div>
+    <div id="profile-detail" class="profile-detail"></div>
+  </div>
+</section>
+
+<section id="coverage" class="section alt" aria-labelledby="h-coverage">
+  <div class="container">
+    <span class="eyebrow">Coverage</span>
+    <h2 id="h-coverage" class="h-section">One protocol. <span class="accent">Every actor, every action, every state.</span></h2>
+    <p class="lede">KYE Protocol<span class="tm">™</span> is deliberately scoped to the <strong>identity, authority, scope, state, and audit</strong> layer &mdash; not custody, not settlement, not a policy engine. That makes it horizontal across vendors and vertical across regulators.</p>
+
+    <div class="cov-wrap">
+      <div class="cov-card">
+        <h3>Horizontal &mdash; the whole ecosystem</h3>
+        <div class="sub">A single URN spans every entity class your stack already has.</div>
+        <div class="cov-row">
+          <span class="cov-pill">human</span>
+          <span class="cov-pill">business</span>
+          <span class="cov-pill">person</span>
+          <span class="cov-pill">team</span>
+          <span class="cov-pill">workload</span>
+          <span class="cov-pill">service_account</span>
+          <span class="cov-pill">api_client</span>
+          <span class="cov-pill">connector</span>
+          <span class="cov-pill">ai_agent</span>
+          <span class="cov-pill">model</span>
+          <span class="cov-pill">model_version</span>
+          <span class="cov-pill">tool</span>
+          <span class="cov-pill">mcp_tool</span>
+          <span class="cov-pill">workflow</span>
+          <span class="cov-pill">prompt</span>
+          <span class="cov-pill">capability</span>
+          <span class="cov-pill">wallet</span>
+          <span class="cov-pill">payment_authority</span>
+          <span class="cov-pill">credential</span>
+          <span class="cov-pill">attestation</span>
+          <span class="cov-pill">resource</span>
+          <span class="cov-pill">document</span>
+          <span class="cov-pill">dataset</span>
+          <span class="cov-pill">policy</span>
+        </div>
+      </div>
+      <div class="cov-card">
+        <h3>Vertical &mdash; the whole lifecycle</h3>
+        <div class="sub">Every governed phase of every entity, with controlled state transitions and replayable proof.</div>
+        <div class="cov-row">
+          <span class="cov-pill line">discover</span>
+          <span class="cov-pill line">register</span>
+          <span class="cov-pill line">verify</span>
+          <span class="cov-pill line">attest</span>
+          <span class="cov-pill line">delegate</span>
+          <span class="cov-pill line">scope</span>
+          <span class="cov-pill line">authorize</span>
+          <span class="cov-pill line">act</span>
+          <span class="cov-pill line">audit</span>
+          <span class="cov-pill line">replay</span>
+          <span class="cov-pill line">approve</span>
+          <span class="cov-pill line">attenuate</span>
+          <span class="cov-pill line">suspend</span>
+          <span class="cov-pill line">stop</span>
+          <span class="cov-pill line">quarantine</span>
+          <span class="cov-pill line">revoke</span>
+          <span class="cov-pill line">break-glass</span>
+          <span class="cov-pill line">recover</span>
+          <span class="cov-pill line">rotate</span>
+          <span class="cov-pill line">transfer</span>
+          <span class="cov-pill line">archive</span>
+          <span class="cov-pill line">tombstone</span>
+        </div>
+        <div class="cov-row" style="margin-top:18px">
+          <span class="cov-pill gov">SOC 2</span>
+          <span class="cov-pill gov">ISO 27001</span>
+          <span class="cov-pill gov">PCI DSS</span>
+          <span class="cov-pill gov">PSD2/PSD3</span>
+          <span class="cov-pill gov">DORA</span>
+          <span class="cov-pill gov">HIPAA</span>
+          <span class="cov-pill gov">EU AI Act</span>
+          <span class="cov-pill gov">NIS2</span>
+          <span class="cov-pill gov">NIST 800-207</span>
+        </div>
+        <div class="sub" style="margin-top:10px">Verticalised &mdash; sectoral profiles surface the controls auditors already ask for.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="sectors" class="section alt" aria-labelledby="h-sectors">
   <div class="container">
     <span class="eyebrow">Sectors</span>
@@ -1324,20 +985,117 @@ curl -X POST https://gw.example/v1/runtime/authorize \
   </div>
 </section>
 
-<!-- VOCABULARY -->
-<section id="vocab" class="section alt" aria-labelledby="h-vocab">
+<section id="who" class="section" aria-labelledby="h-who">
   <div class="container">
-    <span class="eyebrow">Shared vocabulary</span>
-    <h2 id="h-vocab" class="h-section">Two systems mean the <span class="accent">same thing</span> when they say <code style="font-family:var(--font-mono);font-size:0.7em;color:var(--accent);background:var(--accent-soft);padding:3px 9px;border-radius:6px;font-weight:500">allow_with_constraints</code>.</h2>
-    <p class="lede">70+ public terms covering entity types, actions, lifecycle states, decisions, signals, obligations, stop conditions and reason codes. Browse by category, search by name. Every term is in <a href="https://github.com/KYE-Protocol/vocabulary" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline;text-underline-offset:2px">KYE-Protocol/vocabulary</a>.</p>
-    <input id="vocab-q" type="search" placeholder="Search e.g. ai_agent, payment.initiate, allow_with_constraints" class="vocab-input" />
-    <div id="vocab-cats" class="vocab-cats"></div>
-    <div id="vocab-counts" class="vocab-counts"></div>
-    <div id="vocab-out" class="vocab-list"></div>
+    <span class="eyebrow">Who it's for</span>
+    <h2 id="h-who" class="h-section">Built for teams where <span class="accent">a wrong agent decision is a regulator visit</span>.</h2>
+    <p class="lede">If your agents touch money, identity, health data or anything regulators care about, you can&rsquo;t hand them an OAuth token and hope.</p>
+    <div class="persona-grid">
+      <article class="persona-card">
+        <div class="persona-icon" aria-hidden="true">🏦</div>
+        <h3>Banks &amp; payment platforms</h3>
+        <p class="pain">PSD3, FFIEC, RBI, MAS &mdash; every regulator now asks &ldquo;was the agent authorised, by whom, within what limit?&rdquo;</p>
+        <p>KYE Protocol<span class="tm">™</span> gives you a payment authority chain, scope-bound caps, sPDP gating, signed proof bundles for every auth. <strong>Use the Payments profile.</strong></p>
+        <ul class="persona-roi"><li>23 PSD3 / DORA / NIS2 controls evidenced from one chain</li><li>Audit-prep cycles &raquo; 2 days &rarr; minutes (signed proof bundles)</li><li>One contract across vendors &mdash; no per-vendor passport reconciliation</li></ul>
+      </article>
+      <article class="persona-card">
+        <div class="persona-icon" aria-hidden="true">🤖</div>
+        <h3>AI labs &amp; agent platforms</h3>
+        <p class="pain">Your agent does something destructive. The user asks you to prove it wasn&rsquo;t supposed to.</p>
+        <p>KYE Protocol<span class="tm">™</span> gives every action a <code>policy_decision_id</code>, a delegation chain back to a human, and a stop signal that revokes the agent everywhere at once.</p>
+        <ul class="persona-roi"><li>EU AI Act Title&nbsp;III obligations (record-keeping, human oversight, post-market monitoring) covered by Capability + Recovery + Telemetry</li><li>Compromise &rarr; cascade revoke across delegations, payment authorities, capability grants in one signal</li><li>Point-in-time replay reconstructs the agent&rsquo;s state at any past moment</li></ul>
+      </article>
+      <article class="persona-card">
+        <div class="persona-icon" aria-hidden="true">🏥</div>
+        <h3>Healthcare systems</h3>
+        <p class="pain">An AI triages a patient&rsquo;s record. HIPAA wants the consent chain. The hospital wants the redaction trace.</p>
+        <p>KYE Protocol<span class="tm">™</span> binds the agent to the consent credential, attaches <code>redaction.required</code> and <code>external.send.block</code> obligations, and records the lot in the audit chain.</p>
+        <ul class="persona-roi"><li>HIPAA Security Rule + Privacy Rule mapped to specific endpoints</li><li>Consent &rarr; obligation &rarr; audit event in one chain (no stitching)</li><li>Right-to-erasure satisfied by lifecycle <code>tombstoned</code> + Healthcare profile redactions</li></ul>
+      </article>
+      <article class="persona-card">
+        <div class="persona-icon" aria-hidden="true">💼</div>
+        <h3>Custodians &amp; treasury</h3>
+        <p class="pain">An autonomous treasury bot rebalances. Auditors need to see authority, scope, attestation, decision &mdash; not just &ldquo;the bot did it.&rdquo;</p>
+        <p>Combine the Custody and Attestation profiles. Workload attestation binds the runtime; payment authority binds the wallet; audit chain binds the timeline.</p>
+        <ul class="persona-roi"><li>Workload &rarr; wallet &rarr; transfer chain provable end-to-end</li><li>Recovery + break-glass replaces ad-hoc admin reset with a signed, time-boxed flow</li><li>Quarterly compromise drills are exercises, not incidents</li></ul>
+      </article>
+      <article class="persona-card">
+        <div class="persona-icon" aria-hidden="true">🏛️</div>
+        <h3>Regulators &amp; auditors</h3>
+        <p class="pain">You are asked to certify something built on six different vendors&rsquo; agent stacks.</p>
+        <p>Every conformant gateway exports the same proof bundle format. Verify signatures with public keys; replay the audit chain; re-derive the decision. <strong>One contract, every vendor.</strong></p>
+        <ul class="persona-roi"><li>37-fixture conformance pack the auditor runs unchanged against any vendor</li><li>173 control mappings (SOC&nbsp;2, ISO&nbsp;27001, PCI&nbsp;DSS&nbsp;4.0, PSD2/3, DORA, NIS2, EU&nbsp;AI&nbsp;Act, NIST&nbsp;800-207, HIPAA)</li><li>Evidence collection is a fetch, not an interview</li></ul>
+      </article>
+      <article class="persona-card">
+        <div class="persona-icon" aria-hidden="true">🛠️</div>
+        <h3>Platform teams</h3>
+        <p class="pain">Identity, authz, audit, signals, webhooks &mdash; six teams, six tools.</p>
+        <p>One PEP middleware. One ePDP cache. One signal bus. Wire your existing OAuth, SPIFFE, MCP and KYA vendors into the contract instead of replacing them.</p>
+        <ul class="persona-roi"><li>Six tools &rarr; one contract; team count holds, surface area shrinks</li><li>Idempotency, retry, dead-letter, replay handled at the protocol layer</li><li>Drop-in OPA Rego / Cerbos policy bundles &mdash; you keep your policy author</li></ul>
+      </article>
+    </div>
+
+    <div class="logos-strip" aria-label="Reference adopters and design partners">
+      <p class="logos-strip-h"><strong>Design-partner logos coming soon.</strong></p>
+      <p class="logos-strip-b">Banking, payments, AI&nbsp;lab, healthcare and custody integrators are integrating against the v1.0 contract.</p>
+      <p class="logos-strip-cta">Want to be on this strip? <a href="https://github.com/KYE-Protocol/Discussions/discussions/categories/show-and-tell" target="_blank" rel="noopener">Drop a note in Show&nbsp;&amp;&nbsp;Tell &rarr;</a></p>
+    </div>
   </div>
 </section>
 
-<!-- TRUST & ASSURANCE (enterprise / banking-grade) -->
+<section id="roi" class="section" aria-labelledby="h-roi">
+  <div class="container">
+    <span class="eyebrow">Why now &middot; ROI</span>
+    <h2 id="h-roi" class="h-section">The cost of <em>not</em> having KYE<span class="tm">™</span> is now <span class="accent">measurable</span>.</h2>
+    <p class="lede">Three forces are converging in 2026: agentic systems are reaching production, regulators are asking for proof of who acted, and KYC/KYB/KYA stacks don&rsquo;t answer it. KYE Protocol<span class="tm">™</span> is the cheapest way to get ahead of all three.</p>
+
+    <div class="roi-grid">
+      <div class="roi-card">
+        <div class="roi-num">93<span class="unit">%</span></div>
+        <div class="roi-h">Audit reconstruction time saved</div>
+        <p class="roi-b">Hash-linked, replayable audit chain answers &ldquo;who did this and why&rdquo; in seconds &mdash; not days of log archaeology across six tools.</p>
+      </div>
+      <div class="roi-card">
+        <div class="roi-num">10x</div>
+        <div class="roi-h">Faster incident containment</div>
+        <p class="roi-b">One stop signal cascades through delegations, payment authorities and access rights in milliseconds. No orphaned grant, no race condition.</p>
+      </div>
+      <div class="roi-card">
+        <div class="roi-num">&lt;1<span class="unit">ms</span></div>
+        <div class="roi-h">Embedded PDP decision latency</div>
+        <p class="roi-b">Local cached decisions for read paths and idempotent calls keep your agents fast even when the central PDP is far away.</p>
+      </div>
+      <div class="roi-card">
+        <div class="roi-num">$0</div>
+        <div class="roi-h">Vendor lock-in</div>
+        <p class="roi-b">Open vocabulary, open schemas, open OpenAPI, Apache 2.0 reference. Run it anywhere &mdash; cloud, on-prem, air-gapped, sovereign.</p>
+      </div>
+      <div class="roi-card">
+        <div class="roi-num">1</div>
+        <div class="roi-h">URN format across every system</div>
+        <p class="roi-b">Stop reconciling 14 ID systems across 14 vendors. One <code style="font-family:var(--font-mono);font-size:11.5px;color:var(--accent);background:var(--accent-soft);padding:2px 6px;border-radius:4px">kye:&lt;class&gt;:&lt;td&gt;:&lt;sub&gt;:&lt;local&gt;</code> across humans, agents, services, wallets.</p>
+      </div>
+      <div class="roi-card">
+        <div class="roi-num">7</div>
+        <div class="roi-h">Sectoral profiles, no rewrites</div>
+        <p class="roi-b">Federation, Credentials, Attestation, Signals, Transparency, Payments, Capability. Adopt only what you need; Core never shifts.</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:24px">
+      <div class="card-tag">Direct benefits</div>
+      <p class="card-sub" style="margin-top:8px;font-size:14px;line-height:1.7">
+        <strong>For platform &amp; security teams:</strong> kill identity sprawl. One URN, one delegation chain, one decision vocabulary, one audit chain across humans, agents, services and tools.<br/>
+        <strong>For compliance:</strong> stop instrumenting <em>for</em> compliance. KYE<span class="tm">™</span> artefacts <em>are</em> the compliance evidence &mdash; every decision is a hash-linked, signed proof an external auditor can verify with public keys alone.<br/>
+        <strong>For finance teams running agentic procurement:</strong> spend caps, beneficiary allowlists, dual approvals and dry-run gating, all enforced before money moves.<br/>
+        <strong>For risk teams:</strong> reactive bus &mdash; one signal revokes the chain. Cascading revoke means no orphaned grant after a compromise.<br/>
+        <strong>For engineers:</strong> Idempotency keys, JWKS, signed webhooks, three SDKs, 37 conformance fixtures, 173 control mappings. Drop in. Done.<br/>
+        <strong>For boards:</strong> a credible answer to &ldquo;what is your AI agent governance posture?&rdquo;
+      </p>
+    </div>
+  </div>
+</section>
+
 <section id="assurance" class="section" aria-labelledby="h-assurance">
   <div class="container">
     <span class="eyebrow">Trust &amp; assurance</span>
@@ -1424,7 +1182,188 @@ curl -X POST https://gw.example/v1/runtime/authorize \
   </div>
 </section>
 
-<!-- FAQ -->
+<section id="quickstart" class="section" aria-labelledby="h-quickstart">
+  <div class="container">
+    <span class="eyebrow">Quickstart &middot; ship in 5 minutes</span>
+    <h2 id="h-quickstart" class="h-section">Three SDKs. One <span class="accent">authorize call</span>.</h2>
+    <p class="lede">Pick a language. Drop in the SDK. Ask the gateway whether the action is allowed. Every response is a verifiable decision your auditors can replay.</p>
+    <div class="qs-card">
+      <div class="qs-tabs" role="tablist" aria-label="Quickstart language">
+        <button class="qs-tab is-on" role="tab" aria-selected="true"  data-qs="ts">TypeScript</button>
+        <button class="qs-tab"        role="tab" aria-selected="false" data-qs="py">Python</button>
+        <button class="qs-tab"        role="tab" aria-selected="false" data-qs="go">Go</button>
+        <button class="qs-tab"        role="tab" aria-selected="false" data-qs="curl">curl</button>
+      </div>
+      <div class="qs-pane-wrap" id="qs-pane-ts" role="tabpanel">
+        <button class="qs-copy" data-copy="ts" aria-label="Copy TypeScript example">copy</button>
+        <pre><span class="c">// npm i @kye/sdk</span>
+<span class="k">import</span> { KyeClient } <span class="k">from</span> <span class="s">"@kye/sdk"</span>;
+
+<span class="k">const</span> kye = <span class="k">new</span> <span class="u">KyeClient</span>({ baseUrl: <span class="s">"https://gw.example/v1"</span> });
+
+<span class="k">const</span> decision = <span class="k">await</span> kye.<span class="u">authorize</span>({
+  actor:               { entity_id: <span class="s">"kye:ent:acme:ai_agent:01J..."</span> },
+  acting_on_behalf_of: { delegation_id: <span class="s">"kye:del:acme:01J..."</span> },
+  action:              <span class="s">"document.render"</span>,
+});
+
+<span class="k">if</span> (decision.decision !== <span class="s">"allow_with_constraints"</span>) <span class="k">throw</span> <span class="k">new</span> <span class="u">Error</span>(decision.reasons.join(<span class="s">","</span>));
+
+<span class="c">// → { decision: "allow_with_constraints", obligations: ["audit.emit"],</span>
+<span class="c">//     stop_conditions: ["actor.stop_signal","delegation.revoked",...] }</span></pre>
+      </div>
+      <div class="qs-pane-wrap" id="qs-pane-py" role="tabpanel" hidden>
+        <button class="qs-copy" data-copy="py" aria-label="Copy Python example">copy</button>
+        <pre><span class="c"># pip install kye-sdk</span>
+<span class="k">from</span> kye_sdk <span class="k">import</span> KyeClient
+
+kye = KyeClient(base_url=<span class="s">"https://gw.example/v1"</span>)
+
+decision = kye.<span class="u">authorize</span>({
+    <span class="s">"actor"</span>:               {<span class="s">"entity_id"</span>: <span class="s">"kye:ent:acme:ai_agent:01J..."</span>},
+    <span class="s">"acting_on_behalf_of"</span>: {<span class="s">"delegation_id"</span>: <span class="s">"kye:del:acme:01J..."</span>},
+    <span class="s">"action"</span>:              <span class="s">"document.render"</span>,
+})
+
+<span class="k">assert</span> decision[<span class="s">"decision"</span>] == <span class="s">"allow_with_constraints"</span>, decision[<span class="s">"reasons"</span>]</pre>
+      </div>
+      <div class="qs-pane-wrap" id="qs-pane-go" role="tabpanel" hidden>
+        <button class="qs-copy" data-copy="go" aria-label="Copy Go example">copy</button>
+        <pre><span class="c">// go get github.com/kye-protocol/sdk-go</span>
+<span class="k">package</span> main
+
+<span class="k">import</span> (
+    <span class="s">"context"</span>
+    <span class="s">"github.com/kye-protocol/sdk-go/pkg/kye"</span>
+)
+
+<span class="k">func</span> main() {
+    c := kye.<span class="u">NewClient</span>(<span class="s">"https://gw.example"</span>)
+    d, err := c.<span class="u">Authorize</span>(context.Background(), kye.AuthorizeRequest{
+        Action: <span class="s">"document.render"</span>,
+        Actor:  kye.Actor{EntityID: <span class="s">"kye:ent:acme:ai_agent:01J..."</span>},
+    })
+    <span class="k">if</span> err != <span class="k">nil</span> { <span class="k">panic</span>(err) }
+    <span class="c">// d.Decision == "allow_with_constraints"</span>
+    _ = d
+}</pre>
+      </div>
+      <div class="qs-pane-wrap" id="qs-pane-curl" role="tabpanel" hidden>
+        <button class="qs-copy" data-copy="curl" aria-label="Copy curl example">copy</button>
+        <pre><span class="c"># Plain HTTP — no SDK required</span>
+curl -X POST https://gw.example/v1/runtime/authorize \
+  -H <span class="s">'content-type: application/json'</span> \
+  -H <span class="s">'idempotency-key: 8c4a-...'</span> \
+  -d <span class="s">'{
+    "actor":               { "entity_id": "kye:ent:acme:ai_agent:01J..." },
+    "acting_on_behalf_of": { "delegation_id": "kye:del:acme:01J..." },
+    "action":              "document.render"
+  }'</span>
+
+<span class="c"># → { "decision":"allow_with_constraints", "reasons":["delegation_active","scope_match"], ... }</span></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="graph" class="section alt" aria-labelledby="h-graph">
+  <div class="container">
+    <span class="eyebrow">Interactive trust graph</span>
+    <h2 id="h-graph" class="h-section">See exactly <span class="accent">who can act for whom</span> &mdash; live.</h2>
+    <p class="lede">Every entity, every delegation, every scope, every resource grant in one queryable graph. Click a node for its full record. Drag, zoom, toggle layers. Revoke a delegation: watch the edge break and the dependent agent turn red. This is what your auditors get.</p>
+
+    <div class="tg-wrap">
+      <div class="tg-stage" id="tg-stage"></div>
+      <aside class="tg-side">
+        <div class="tg-info" id="tg-info">
+          <div class="label">Selected</div>
+          <h4 id="tg-info-title">— click a node —</h4>
+          <dl id="tg-info-meta"></dl>
+        </div>
+        <div>
+          <div class="label" style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-dim); margin-bottom: 8px;">Layers</div>
+          <div class="tg-controls" id="tg-controls">
+            <button class="tg-toggle is-on" data-layer="entity">Entities</button>
+            <button class="tg-toggle is-on" data-layer="delegation">Delegations</button>
+            <button class="tg-toggle is-on" data-layer="scope">Scopes</button>
+            <button class="tg-toggle is-on" data-layer="access_right">Access rights</button>
+          </div>
+        </div>
+        <div>
+          <div class="label" style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-dim); margin-bottom: 8px;">Legend</div>
+          <div class="tg-legend">
+            <div><span class="swatch" style="background:#6366f1"></span> AI agent</div>
+            <div><span class="swatch" style="background:#22d3ee"></span> Business / person</div>
+            <div><span class="swatch" style="background:#f59e0b"></span> Wallet / resource</div>
+            <div><span class="swatch" style="background:#10b981"></span> Scope / access right</div>
+            <div><span class="swatch" style="background:#ef4444"></span> Stopped / revoked</div>
+          </div>
+        </div>
+        <div class="tg-controls">
+          <button class="btn btn-secondary" id="tg-revoke" style="font-size:12px;padding:7px 12px">Revoke a delegation</button>
+          <button class="btn btn-ghost" id="tg-reset" style="font-size:12px;padding:7px 12px">Reset</button>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="dash" class="section" aria-labelledby="h-dash">
+  <div class="container">
+    <span class="eyebrow">Live decision dashboard</span>
+    <h2 id="h-dash" class="h-section">What is your fleet doing <span class="accent">right now?</span></h2>
+    <p class="lede">Allow rate, deny rate, approval queue depth &mdash; in one view. The reference Gateway streams decisions to the bus; any dashboard, SIEM or Slack channel can subscribe. Counters below run a synthetic workload to show the shape.</p>
+
+    <div class="dash-wrap">
+      <div class="dash-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+          <div>
+            <div class="card-tag">Decisions per minute</div>
+            <div class="card-h">Synthetic workload</div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="btn btn-secondary" id="dash-play" style="font-size:12px;padding:7px 12px">▶ Run</button>
+            <button class="btn btn-ghost" id="dash-pause" style="font-size:12px;padding:7px 12px">⏸ Pause</button>
+            <button class="btn btn-ghost" id="dash-clear" style="font-size:12px;padding:7px 12px">Clear</button>
+          </div>
+        </div>
+        <div class="dash-counters">
+          <div class="dash-counter"><div class="l">Total decisions</div><div class="v" id="ct-total">0</div><div class="delta up" id="ct-total-delta">+0</div></div>
+          <div class="dash-counter"><div class="l">Allow + AllowWithConstraints</div><div class="v" id="ct-allow">0</div><div class="delta up" id="ct-allow-delta">+0</div></div>
+          <div class="dash-counter"><div class="l">Require approval</div><div class="v" id="ct-approval">0</div><div class="delta up" id="ct-approval-delta">+0</div></div>
+          <div class="dash-counter"><div class="l">Deny</div><div class="v" id="ct-deny">0</div><div class="delta up" id="ct-deny-delta">+0</div></div>
+        </div>
+      </div>
+      <div class="dash-card">
+        <div class="card-tag">Distribution</div>
+        <div class="card-h">Outcome share</div>
+        <div class="donut-wrap">
+          <svg id="donut" width="240" height="240" viewBox="0 0 240 240" aria-hidden="true"></svg>
+          <div class="donut-center">
+            <div>
+              <div class="v" id="donut-center-v">0%</div>
+              <div class="l">Allow rate</div>
+            </div>
+          </div>
+        </div>
+        <div class="donut-legend" id="donut-legend"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="vocab" class="section alt" aria-labelledby="h-vocab">
+  <div class="container">
+    <span class="eyebrow">Shared vocabulary</span>
+    <h2 id="h-vocab" class="h-section">Two systems mean the <span class="accent">same thing</span> when they say <code style="font-family:var(--font-mono);font-size:0.7em;color:var(--accent);background:var(--accent-soft);padding:3px 9px;border-radius:6px;font-weight:500">allow_with_constraints</code>.</h2>
+    <p class="lede">70+ public terms covering entity types, actions, lifecycle states, decisions, signals, obligations, stop conditions and reason codes. Browse by category, search by name. Every term is in <a href="https://github.com/KYE-Protocol/vocabulary" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline;text-underline-offset:2px">KYE-Protocol/vocabulary</a>.</p>
+    <input id="vocab-q" type="search" placeholder="Search e.g. ai_agent, payment.initiate, allow_with_constraints" class="vocab-input" />
+    <div id="vocab-cats" class="vocab-cats"></div>
+    <div id="vocab-counts" class="vocab-counts"></div>
+    <div id="vocab-out" class="vocab-list"></div>
+  </div>
+</section>
+
 <section id="faq" class="section alt" aria-labelledby="h-faq">
   <div class="container">
     <span class="eyebrow">FAQ</span>
@@ -1510,37 +1449,6 @@ curl -X POST https://gw.example/v1/runtime/authorize \
         <summary>How do I get involved?</summary>
         <p>Open a discussion in <a href="https://github.com/KYE-Protocol/Discussions/discussions" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">KYE-Protocol/Discussions</a> &mdash; ask a question, propose a profile RFC, share an integration. File issues against the relevant code repo. Watch the org for new profile drops.</p>
       </details>
-    </div>
-  </div>
-</section>
-
-<!-- REPOS -->
-<section class="section">
-  <div class="container">
-    <span class="eyebrow">Open repositories</span>
-    <h2 class="h-section">Read the source. <span class="accent">File the issue. Ship the integration.</span></h2>
-    <p class="lede">Apache 2.0. Drop in, fork, extend. The mechanism designs (decision algorithms, hash-chain construction) are in a private patent track; the vocabulary, ID format, schemas, examples and reference Gateway behaviours are open and stable.</p>
-    <div class="repo-grid">
-      <a class="repo-card" target="_blank" rel="noopener" href="https://github.com/KYE-Protocol/vocabulary">
-        <div class="repo-name">vocabulary</div>
-        <div class="repo-desc">Entity types, actions, lifecycle states, decisions, signal types.</div>
-      </a>
-      <a class="repo-card" target="_blank" rel="noopener" href="https://github.com/KYE-Protocol/id-format">
-        <div class="repo-name">id-format</div>
-        <div class="repo-desc">Canonical KYE<span class="tm">™</span> URN scheme + parsing rules.</div>
-      </a>
-      <a class="repo-card" target="_blank" rel="noopener" href="https://github.com/KYE-Protocol/examples">
-        <div class="repo-name">examples</div>
-        <div class="repo-desc">Validated JSON examples for every public schema.</div>
-      </a>
-      <a class="repo-card" target="_blank" rel="noopener" href="https://github.com/KYE-Protocol/Discussions/discussions">
-        <div class="repo-name">discussions <span style="font-size:10px;background:var(--accent-soft);color:var(--accent);padding:2px 6px;border-radius:4px;margin-left:4px;letter-spacing:0.04em;text-transform:uppercase;font-weight:600">community</span></div>
-        <div class="repo-desc">Q&amp;A, RFCs, profile proposals, integration help. Public.</div>
-      </a>
-      <a class="repo-card" target="_blank" rel="noopener" href="https://github.com/KYE-Protocol/.github">
-        <div class="repo-name">org profile</div>
-        <div class="repo-desc">Public-facing org profile, mission, governance.</div>
-      </a>
     </div>
   </div>
 </section>
@@ -1651,7 +1559,7 @@ curl -X POST https://gw.example/v1/runtime/authorize \
   } });
   window.mermaid = mermaid;
 </script>
-<script type="module" src="main.js?v=1778008121"></script>
+<script type="module" src="main.js?v=1778008580"></script>
 </body>
 </html>
 

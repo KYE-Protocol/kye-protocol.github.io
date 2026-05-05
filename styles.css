@@ -4,10 +4,16 @@
  * Surface lifts use real shadows + soft borders, not glow.
  */
 
+/* ============================================================
+   ENTERPRISE / PROTOCOL-GRADE PALETTE — defined at the top so it
+   wins the cascade. Marketing gradients, glass blur, and rainbow
+   stat numbers are explicitly disabled in §END of file.
+   ============================================================ */
+
 :root {
   /* Modern light theme: near-white + soft pastel mesh + clean surfaces */
-  --bg: #f8f9fc;
-  --surface: rgba(255, 255, 255, 0.78);
+  --bg: #fcfcfd;
+  --surface: #ffffff;
   --surface-solid: #ffffff;
   --surface-2: rgba(248, 249, 252, 0.92);
   --surface-3: #f1f3f9;
@@ -2152,4 +2158,121 @@ h4 { letter-spacing: -0.008em; font-weight: 600; }
   background: var(--paper-2);
   border: 1px solid var(--rule);
   border-radius: 6px;
+}
+
+/* ============================================================
+   §END — FINAL CASCADE OVERRIDE
+   Last block in the file so every previous rule is superseded.
+   Removes marketing chrome (multi-stop gradients, glass blur on
+   surfaces, rainbow text), restates enterprise palette, locks
+   identifiers to monospace.
+   ============================================================ */
+
+/* Kill every accent-grad gradient text in body content */
+.h-section .accent,
+.hero h1 .accent,
+.what-def .accent,
+.evo-card.kye h3,
+.assurance-card .c,
+.stat-num,
+.brand,
+.brand span {
+  background: none !important;
+  background-image: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+.h-section .accent,
+.hero h1 .accent,
+.what-def .accent { color: var(--accent) !important; }
+.assurance-card .c,
+.stat-num         { color: var(--ink, var(--text)) !important; font-feature-settings: "tnum"; }
+.evo-card.kye h3  { color: var(--accent) !important; }
+
+/* Kill glass blur on body surfaces (keep only on the sticky nav) */
+.what-card, .ps-card, .qs-card, .how-card, .persona-card, .sector-card,
+.state-card, .assurance-card, .evo-card, .repo-card, .what-row,
+.what-def-gloss li, .lc-card, .tg-info, .ba-stage, .cascade-stage,
+.dash-counter, .fl-card, .seq-stage, .urn-out, .vocab-list, .vocab-cats,
+.profile-detail, .qs-pane-wrap {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+/* Make every surface use the solid paper color */
+.what-card, .ps-card, .qs-card, .how-card, .persona-card, .sector-card,
+.state-card, .assurance-card, .evo-card, .repo-card, .what-row,
+.what-def-gloss li, .lc-card, .profile-detail {
+  background-color: var(--surface-solid) !important;
+  border: 1px solid var(--rule, var(--line)) !important;
+  box-shadow: 0 1px 0 var(--rule-soft, var(--line-soft)) !important;
+}
+:root[data-theme="dark"] .what-card,
+:root[data-theme="dark"] .ps-card,
+:root[data-theme="dark"] .qs-card,
+:root[data-theme="dark"] .how-card,
+:root[data-theme="dark"] .persona-card,
+:root[data-theme="dark"] .sector-card,
+:root[data-theme="dark"] .state-card,
+:root[data-theme="dark"] .assurance-card,
+:root[data-theme="dark"] .evo-card,
+:root[data-theme="dark"] .repo-card,
+:root[data-theme="dark"] .what-row,
+:root[data-theme="dark"] .what-def-gloss li,
+:root[data-theme="dark"] .lc-card,
+:root[data-theme="dark"] .profile-detail {
+  background-color: var(--surface-solid) !important;
+}
+
+/* Hero pill row: protocol-document marker line */
+.hero-pill {
+  background: var(--paper-2) !important;
+  color: var(--accent) !important;
+  border: 1px solid var(--rule) !important;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+
+/* Section background tint: alternate plates without thick fills */
+.section.alt {
+  background: var(--paper-2) !important;
+  border-top: 1px solid var(--rule) !important;
+  border-bottom: 1px solid var(--rule) !important;
+}
+
+/* Stronger hairline between every section */
+.section { border-top: 1px solid var(--rule, var(--line)) !important; }
+
+/* Buttons */
+.btn-primary {
+  background: var(--accent) !important;
+  color: white !important;
+  border: 1px solid var(--accent) !important;
+}
+.btn-secondary {
+  background: var(--surface-solid) !important;
+  color: var(--ink, var(--text)) !important;
+  border: 1px solid var(--rule-strong, var(--line-strong)) !important;
+}
+
+/* Identifiers across body */
+:where(p, li, dd, td, summary) code,
+:where(p, li, dd, td, summary) kbd {
+  font-family: var(--font-mono) !important;
+  background: var(--paper-2) !important;
+  color: var(--accent-ink, var(--accent)) !important;
+  border: 1px solid var(--rule, var(--line)) !important;
+  font-weight: 500 !important;
+}
+
+/* The brand mark in nav is graphite-on-paper, not gradient */
+.brand-mark {
+  background: var(--ink, var(--text)) !important;
+  color: var(--paper, var(--bg)) !important;
+}
+:root[data-theme="dark"] .brand-mark {
+  background: var(--accent) !important;
+  color: var(--paper) !important;
 }
