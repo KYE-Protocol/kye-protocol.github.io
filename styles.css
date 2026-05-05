@@ -2327,3 +2327,91 @@ h4 { letter-spacing: -0.008em; font-weight: 600; }
   .af-list li { font-size: 13px; }
   .af-foot { font-size: 13px; padding: 14px 16px; }
 }
+
+/* ============================================================
+   TM/® GLYPH — final size pass.
+   The earlier rules (0.62em body / 0.52em display) read too large
+   on dark surfaces and against monospace eyebrows. Tightened so
+   the mark sits visually like a Word-doc superscript.
+   ============================================================ */
+:root {
+  --tm-em: 0.55em;       /* default body */
+  --tm-rise: 0.42em;     /* baseline rise */
+  --tm-letterspacing: 0; /* no extra tracking */
+}
+/* Display heads (hero h1, section h2, lede): smaller mark, higher */
+.h-section, .lede, .what-def, .ps-h, h1, h2, .hero h1, .wp-article h1 {
+  --tm-em: 0.40em; --tm-rise: 0.62em;
+}
+/* h3 / h4 / h5 in cards: a touch smaller than body */
+h3, h4, h5, .ps-tag, .eyebrow {
+  --tm-em: 0.50em; --tm-rise: 0.50em;
+}
+/* Mono context (eyebrow plate, hero pill, version pill, code in prose):
+   render the mark at mono-cap-height proportional. */
+.eyebrow, .hero-pill, .version-pill, .deployed-pill, .compliance-pill,
+.qs-tab, .profile-tab, .prof-pill {
+  --tm-em: 0.62em; --tm-rise: 0.32em;
+}
+/* The wrapping span itself uses font-size:inherit by default; explicit
+   here so we can tune only the rise/scale via tokens. */
+.tm, .reg {
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  line-height: 1 !important;
+  font-size: var(--tm-em) !important;
+  vertical-align: var(--tm-rise) !important;
+  letter-spacing: var(--tm-letterspacing) !important;
+  margin-left: 0.04em;
+  margin-right: 0.02em;
+  position: relative;
+  font-feature-settings: "tnum" 0, "ss01" 0, "ss02" 0;
+}
+
+/* ============================================================
+   MOBILE NAV — horizontal-scroll instead of progressive-hide.
+   The previous rules hid items at each breakpoint, leaving the
+   user with no way to reach them. New rule: keep every item, let
+   the user swipe horizontally on narrow screens.
+   ============================================================ */
+@media (max-width: 1100px) {
+  /* override every progressive-hide rule */
+  .nav-links a[href*="Discussions"],
+  .nav-links a[href="#evolution"],
+  .nav-links a[href="#cmp"],
+  .nav-links a[href="#faq"],
+  .nav-links a[href="whitepaper.html"],
+  .nav-links a[href="#problem-solution"],
+  .nav-links a[href="#how"],
+  .nav-links a[href="#what"],
+  .nav-links a[href="#sectors"],
+  .nav-links a[href="#profiles"],
+  .nav-links a[href="#state-model"],
+  .nav-links a[href="#authority-finality"],
+  .nav-links a[href="#assurance"] {
+    display: inline-flex !important;
+  }
+  .nav-links {
+    overflow-x: auto;
+    overflow-y: hidden;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;        /* Firefox */
+    scroll-snap-type: x proximity;
+    mask-image: linear-gradient(to right, black 0, black calc(100% - 24px), transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black 0, black calc(100% - 24px), transparent 100%);
+    padding-right: 14px;
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a { white-space: nowrap; scroll-snap-align: start; flex-shrink: 0; }
+  .nav-links .nav-cta { flex-shrink: 0; }
+  .nav-links .theme-toggle { flex-shrink: 0; }
+}
+@media (max-width: 700px) {
+  .nav-inner { gap: 8px; }
+  .nav-links { gap: 14px; font-size: 13px; }
+  .nav-cta { padding: 6px 10px; font-size: 12.5px; }
+}
+@media (max-width: 480px) {
+  .nav-links { gap: 12px; font-size: 12.5px; padding-left: 4px; }
+}

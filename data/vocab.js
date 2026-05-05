@@ -1,6 +1,8 @@
 /* Public KYE Protocol™ vocabulary. Entity types, actions, lifecycle states,
  * decision codes, signal types, obligations, stop conditions, reason codes. */
 export const VOCAB = [
+  // KYE concepts
+  { category: "concept", name: "authority_finality", desc: "Replayable proof of who or what acted, on behalf of whom, using which capability, under what authority, in what state, and with what audit trail. Trademark of the KYE Protocol™ project." },
   // entity types
   { category: "entity_type", name: "ai_agent", desc: "Autonomous software actor; LLM agent, scripted bot, or hybrid." },
   { category: "entity_type", name: "model", desc: "Inference-time AI model (LLM, classifier, embedder)." },
