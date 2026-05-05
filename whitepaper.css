@@ -1,0 +1,102 @@
+/* KYE Protocol™ Whitepaper — typographic styles atop the main site theme. */
+
+.wp-body { background: var(--bg); }
+
+.wp-main {
+  max-width: 1200px; margin: 0 auto; padding: 64px 24px 96px;
+  display: grid; grid-template-columns: 240px 1fr; gap: 56px; align-items: start;
+}
+@media (max-width: 980px) { .wp-main { grid-template-columns: 1fr; gap: 32px; padding: 48px 20px 72px; } }
+@media (max-width: 600px) { .wp-main { padding: 32px 16px 56px; } }
+
+.wp-toc {
+  position: sticky; top: 88px;
+  background: rgba(255,255,255,0.78); border: 1px solid var(--line);
+  border-radius: var(--radius-2); padding: 18px 20px;
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  font-size: 13.5px;
+}
+.wp-toc-title {
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--text-dim); font-weight: 600; margin-bottom: 10px;
+}
+.wp-toc ol { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px; }
+.wp-toc a { color: var(--text-muted); text-decoration: none; transition: color .12s; }
+.wp-toc a:hover { color: var(--accent); }
+
+.wp-article {
+  background: rgba(255,255,255,0.78); border: 1px solid var(--line);
+  border-radius: var(--radius-3); padding: 56px 56px 72px;
+  box-shadow: var(--shadow-2);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+}
+@media (max-width: 700px) { .wp-article { padding: 36px 24px 48px; } }
+@media (max-width: 480px) { .wp-article { padding: 28px 18px 40px; } .wp-article h1 { font-size: 30px; } .wp-article h2 { font-size: 21px; margin-top: 40px; } .wp-article p, .wp-records li, .wp-principles li, .wp-refs li { font-size: 14.5px; } .wp-table { font-size: 13px; display: block; overflow-x: auto; } .wp-toc { position: static; padding: 14px 16px; } }
+
+.wp-meta {
+  font-size: 12px; color: var(--text-dim); letter-spacing: 0.04em; margin: 0 0 14px;
+}
+.wp-meta a { color: var(--accent); text-decoration: none; }
+.wp-meta a:hover { text-decoration: underline; }
+
+.wp-article h1 {
+  font-size: clamp(32px, 4.4vw, 44px); font-weight: 800;
+  letter-spacing: -0.025em; line-height: 1.1; margin: 0 0 22px;
+}
+.wp-article h2 {
+  font-size: 24px; font-weight: 700; letter-spacing: -0.02em;
+  margin: 56px 0 16px; color: var(--text);
+  padding-top: 24px; border-top: 1px solid var(--line);
+}
+.wp-article h3 {
+  font-size: 17px; font-weight: 600; letter-spacing: -0.01em;
+  margin: 28px 0 8px; color: var(--text);
+}
+.wp-lede {
+  font-size: 18.5px; line-height: 1.6; color: var(--text-muted);
+  margin: 0 0 12px;
+  border-left: 4px solid var(--accent);
+  padding: 4px 0 4px 20px;
+}
+.wp-article p { font-size: 15.5px; line-height: 1.78; color: var(--text-muted); margin: 0 0 14px; }
+.wp-article p strong { color: var(--text); }
+.wp-article p em { color: var(--text); font-style: italic; }
+.wp-article code {
+  font-family: var(--font-mono); font-size: 13px;
+  background: var(--accent-soft); color: var(--accent);
+  padding: 2px 6px; border-radius: 4px;
+}
+.wp-article a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+
+.wp-records, .wp-principles, .wp-refs {
+  margin: 0 0 14px; padding-left: 22px; line-height: 1.78; color: var(--text-muted);
+}
+.wp-records li, .wp-principles li, .wp-refs li { margin: 6px 0; font-size: 15px; }
+.wp-records li strong, .wp-principles li strong { color: var(--text); }
+.wp-principles { padding-left: 22px; }
+
+.wp-table {
+  width: 100%; border-collapse: separate; border-spacing: 0;
+  margin: 18px 0 22px; font-size: 14px;
+  background: var(--surface-3); border: 1px solid var(--line);
+  border-radius: var(--radius-2); overflow: hidden;
+}
+.wp-table th, .wp-table td { padding: 12px 14px; text-align: left; vertical-align: top; }
+.wp-table thead th {
+  background: rgba(124, 58, 237, 0.08); color: var(--text-dim);
+  font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.10em;
+  border-bottom: 1px solid var(--line-strong);
+}
+.wp-table tbody tr { border-top: 1px solid var(--line-soft); }
+.wp-table tbody tr:first-child { border-top: none; }
+.wp-table tbody td { color: var(--text-muted); }
+.wp-table tbody td:first-child { color: var(--text); font-weight: 500; }
+
+.wp-cite {
+  margin-top: 48px; padding: 16px 20px;
+  background: var(--accent-soft); border-radius: var(--radius-2);
+  font-size: 13px; color: var(--text-muted); border-left: 3px solid var(--accent);
+}
+.wp-cite code { background: transparent; padding: 0; color: var(--accent); }
