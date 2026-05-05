@@ -1871,3 +1871,285 @@ body { min-width: 320px; }
 
 /* Prevent horizontal scroll on the whole page */
 html, body { overflow-x: hidden; }
+
+/* ============================================================
+   ENTERPRISE / PROTOCOL-GRADE THEME — final polish pass.
+   Goals:
+     - RFC / W3C aesthetic: less gradient, more hairline, monospace
+       weight on identifiers, more whitespace.
+     - Confident heading hierarchy: bigger H1, tighter H2, mono H3
+       indices.
+     - Restrained palette: graphite text, single-accent violet,
+       neutral surfaces, no decorative gradients in body content.
+     - Tight rules between sections (1px hairline).
+     - Compliance-document body rhythm: max-width 72ch on prose,
+       baseline grid implied.
+   ============================================================ */
+
+:root {
+  /* Refined palette tokens (enterprise) */
+  --ink: #0b0f1c;
+  --ink-2: #1a2238;
+  --ink-3: #3b4567;
+  --paper: #fcfcfd;
+  --paper-2: #f6f7fa;
+  --rule: rgba(15, 23, 42, 0.10);
+  --rule-soft: rgba(15, 23, 42, 0.06);
+  --rule-strong: rgba(15, 23, 42, 0.16);
+  --accent-ink: #4c1d95;       /* deeper violet for serious surfaces */
+  /* Inherit, don't override existing tokens; map for clarity */
+}
+
+:root[data-theme="dark"] {
+  --ink: #eef1f9;
+  --ink-2: #d6dbeb;
+  --ink-3: #aab2cc;
+  --paper: #0a0e1a;
+  --paper-2: #11162a;
+  --rule: rgba(255,255,255,0.10);
+  --rule-soft: rgba(255,255,255,0.06);
+  --rule-strong: rgba(255,255,255,0.18);
+  --accent-ink: #c4b5fd;
+}
+
+/* Body rhythm — RFC-document line-height + measure */
+body {
+  font-feature-settings: "ss01","cv01","cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.lede, p.lede {
+  max-width: 72ch;
+}
+.section p:not(.lede):not(.what-b):not(.how-b):not(.sector-pain):not(.pain) {
+  max-width: 78ch;
+}
+
+/* Section: hairline rule above each, no thick borders */
+.section { border-top: 1px solid var(--rule-soft); }
+.section.alt { background: var(--paper-2); }
+
+/* Heading hierarchy — tighter tracking, more confident */
+.h-section {
+  letter-spacing: -0.024em;
+  font-weight: 700;
+  text-wrap: balance;
+}
+.h-section .accent {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  color: var(--accent) !important;
+}
+h3 { letter-spacing: -0.014em; font-weight: 650; }
+h4 { letter-spacing: -0.008em; font-weight: 600; }
+
+/* Eyebrow plate: monospace, small caps treatment, hairline border */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+  font-weight: 600;
+  background: var(--accent-soft);
+  border: 1px solid var(--rule);
+  padding: 4px 10px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+/* Card baseline — subtle elevation, no glass blur in body */
+.what-card, .ps-card, .how-card, .persona-card, .sector-card,
+.state-card, .assurance-card, .evo-card, .repo-card, .what-row,
+.what-def-gloss li {
+  background: var(--surface-solid);
+  border: 1px solid var(--rule);
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.what-card { box-shadow: 0 1px 0 var(--rule-soft); }
+
+/* Numeric stat treatment — monospace tabular figures, ink colour
+   (no gradient), accent only on hover */
+.assurance-card .c, .stat-num {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  color: var(--ink) !important;
+  -webkit-text-fill-color: var(--ink) !important;
+  font-feature-settings: "tnum";
+}
+:root[data-theme="dark"] .assurance-card .c,
+:root[data-theme="dark"] .stat-num {
+  color: var(--ink) !important;
+  -webkit-text-fill-color: var(--ink) !important;
+}
+
+/* Hero — protocol-document style, less marketing gradient */
+.hero h1 .accent {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  color: var(--accent) !important;
+}
+.hero p.lede { color: var(--ink-3); }
+
+/* Buttons — enterprise restraint */
+.btn-primary {
+  background: var(--accent);
+  color: white !important;
+  border-color: var(--accent);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+}
+.btn-primary:hover { background: var(--accent-2); border-color: var(--accent-2); }
+.btn-secondary {
+  background: var(--surface-solid);
+  color: var(--ink) !important;
+  border: 1px solid var(--rule-strong);
+}
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent) !important; }
+.btn-ghost {
+  background: transparent;
+  color: var(--ink-3) !important;
+  border: 1px solid transparent;
+}
+.btn-ghost:hover { color: var(--accent) !important; border-color: var(--rule); }
+
+/* Pills — single visual language */
+.hero-pill, .version-pill, .deployed-pill, .compliance-pill, .persona-chip,
+.prof-pill, .cov-pill, .how-pill {
+  border-radius: 6px;
+  font-feature-settings: "tnum";
+}
+
+/* Identifiers / code in prose — graphite ink on tinted plate */
+:where(p, li, dd, td, summary) code,
+:where(p, li, dd, td, summary) kbd {
+  background: var(--paper-2);
+  color: var(--ink-2);
+  border: 1px solid var(--rule);
+  font-weight: 500;
+}
+:root[data-theme="dark"] :where(p, li, dd, td, summary) code {
+  background: rgba(167,139,250,0.08);
+  color: var(--accent-2);
+}
+
+/* Footnotes / dim copy */
+.footer, .footer-bottom { background: var(--paper-2); }
+.footer-bottom { color: var(--ink-3); }
+.footer-col h4 { color: var(--ink-3); font-weight: 700; }
+
+/* Tables — RFC-style: hairline grid, no zebra unless data-heavy */
+.cmp {
+  border: 1px solid var(--rule);
+  border-collapse: collapse;
+}
+.cmp th, .cmp td {
+  border-bottom: 1px solid var(--rule-soft);
+}
+.cmp th {
+  background: var(--paper-2);
+  text-align: left;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+}
+
+/* Profile / capability tabs — protocol-document tab strip */
+.profile-tab {
+  font-family: var(--font-mono);
+  letter-spacing: -0.005em;
+  border-radius: 4px;
+}
+.profile-tab.is-active {
+  background: var(--ink);
+  color: var(--paper) !important;
+  border-color: var(--ink);
+  box-shadow: none;
+}
+:root[data-theme="dark"] .profile-tab.is-active {
+  background: var(--accent);
+  color: var(--paper) !important;
+  border-color: var(--accent);
+}
+
+/* Profile detail — monospaced endpoint plates */
+.profile-detail .endpoints li {
+  font-family: var(--font-mono);
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  font-size: 11.5px;
+  letter-spacing: -0.005em;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+/* "Trust & assurance" stat type — monospace pure */
+.assurance-card .h {
+  font-family: var(--font-mono);
+  letter-spacing: 0.1em;
+  font-size: 10.5px;
+  color: var(--ink-3);
+}
+
+/* Compliance pills — neutral by default, semantic on context */
+.compliance-pill {
+  background: var(--paper-2);
+  color: var(--ink);
+  border: 1px solid var(--rule-strong);
+  font-family: var(--font-mono);
+  font-weight: 500;
+}
+
+/* Brand mark in nav — graphite ink */
+.brand { color: var(--ink); }
+.brand-mark { background: var(--ink); color: var(--paper); }
+:root[data-theme="dark"] .brand-mark { background: var(--accent); color: var(--paper); }
+
+/* Subtle right-rail anchor styling */
+:where(p, li, dd, td, summary) > a:not(.btn):not(.nav-cta):not(.persona-chip):not(.prof-pill):not(.compliance-pill):not(.version-pill):not(.theme-toggle):not(.deployed-pill):not(.persona-chip) {
+  color: var(--accent-ink);
+  border-bottom-color: var(--rule-strong);
+}
+
+/* Quickstart card frame — RFC code-listing aesthetic */
+.qs-card {
+  border: 1px solid var(--rule-strong);
+  border-radius: 6px;
+  box-shadow: none;
+}
+.qs-tabs {
+  background: var(--paper-2);
+  border-bottom: 1px solid var(--rule);
+}
+
+/* What-card baseline */
+.what-card .what-def {
+  color: var(--ink);
+  font-weight: 500;
+}
+.what-card .what-def .accent {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  color: var(--accent) !important;
+}
+
+/* Section padding rhythm — more whitespace between protocol plates */
+.section { padding: 96px 0; }
+@media (max-width: 900px) { .section { padding: 64px 0; } }
+@media (max-width: 600px) { .section { padding: 48px 0; } }
+
+/* Subtler CT elements */
+.cov-pill { font-family: var(--font-mono); border-radius: 4px; }
+
+/* Logos strip */
+.logos-strip {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+}
