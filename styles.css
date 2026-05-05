@@ -2759,3 +2759,67 @@ html, body { background-color: var(--bg) !important; color: var(--text) !importa
 
 /* Scroll-bar tinting */
 * { scrollbar-color: var(--rule-strong) transparent; }
+
+/* === Compliance frameworks plate === */
+.cf-wrap {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 28px;
+}
+@media (max-width: 900px) { .cf-wrap { grid-template-columns: 1fr; } }
+.cf-card {
+  background: var(--paper) !important;
+  border: 1px solid var(--rule) !important;
+  border-radius: 8px !important;
+  padding: 28px;
+  box-shadow: var(--shadow-1) !important;
+}
+.cf-card.cf-aia { border-color: var(--accent) !important; box-shadow: 0 0 0 1px var(--accent) !important; }
+.cf-tag {
+  display: inline-flex; align-items: center;
+  padding: 4px 10px; border-radius: 4px;
+  font-family: var(--font-mono); font-size: 10.5px;
+  font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  background: var(--paper-2); color: var(--ink-3);
+  border: 1px solid var(--rule);
+  margin-bottom: 12px;
+}
+.cf-card.cf-aia .cf-tag { background: var(--accent-soft); color: var(--accent); border-color: var(--accent-line); }
+.cf-h {
+  font-size: 22px; font-weight: 700; letter-spacing: -0.018em;
+  margin: 0 0 12px; color: var(--ink);
+}
+.cf-b { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin: 0 0 14px; }
+.cf-list {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 6px;
+  font-size: 13.5px; color: var(--text);
+}
+.cf-list li { padding-left: 4px; }
+.cf-list code {
+  font-family: var(--font-mono); font-size: 12px;
+  background: var(--paper-2); color: var(--accent-ink);
+  border: 1px solid var(--rule); border-radius: 3px;
+  padding: 1px 6px; margin-right: 4px;
+}
+.cf-grid-list {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 8px;
+  font-size: 13.5px; color: var(--text-muted); line-height: 1.55;
+}
+.cf-grid-list strong { color: var(--ink); font-weight: 600; }
+.cf-foot {
+  margin: 16px 0 0; padding: 12px 14px;
+  background: var(--paper-2); border: 1px solid var(--rule);
+  border-radius: 6px; font-size: 13px; color: var(--text-muted); line-height: 1.6;
+}
+.cf-disclaimer {
+  margin: 24px auto 0; max-width: 80ch;
+  font-size: 13px; color: var(--text-dim); line-height: 1.65;
+  text-align: center; padding: 14px 18px;
+  background: var(--paper-2); border: 1px solid var(--rule); border-radius: 6px;
+}
+@media (max-width: 600px) {
+  .cf-card { padding: 20px; }
+  .cf-h { font-size: 18px; }
+  .cf-list { font-size: 12.5px; }
+  .cf-grid-list { font-size: 12.5px; }
+}

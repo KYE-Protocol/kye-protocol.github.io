@@ -128,6 +128,51 @@ are deliberately omitted from public artefacts. v2.0 moves the patent
 track to a royalty-free open standard (Linux Foundation / OpenWallet
 Foundation track).
 
+
+## Compliance frameworks (KYE Compliance Mapping Rail™)
+
+KYE is the operational evidence/control layer beneath these governance
+frameworks. The Compliance Mapping Rail™ (`schemas/compliance-mapping.json`)
+binds each control to the KYE runtime events that produce its evidence.
+
+- KYE-AIA Profile™ (EU AI Act, Regulation (EU) 2024/1689): 10 controls
+  (KYE-AIA-001..010) covering entity accountability, AI system registry,
+  capability manifest + risk classification, human-oversight gates,
+  runtime authority decision logs, technical documentation evidence
+  pack, corrective action trail, provider/deployer/operator role
+  mapping, high-risk workflow profile, post-market monitoring hooks.
+- ISO/IEC 42001 — AI management system inventory, responsibility,
+  risk/impact, lifecycle controls, oversight logs.
+- NIST AI RMF — Govern / Map / Measure / Manage evidence around
+  actors, risks, controls, decisions, lifecycle.
+- ISO 27001:2022, SOC 2, GDPR, DORA, NIS2, PCI DSS 4.0, HIPAA,
+  NIST 800-207.
+
+KYE does not replace these frameworks. It exports signed evidence
+packs mapped to them.
+
+## Sector profiles
+
+KYE supports the following sector profiles (each a normative draft v1.0
+in `private/specs/`):
+
+- KYE Defence Profile™
+- KYE Critical Infrastructure Profile™
+- KYE Energy Profile™
+- KYE Manufacturing Profile™
+- KYE Oil & Gas Profile™
+- KYE Mining Profile™
+- KYE Automotive Profile™
+- KYE Maritime & Shipping Profile™
+- KYE Logistics Profile™
+- KYE Aviation Profile™
+- KYE Healthcare Profile™
+- KYE Financial Services Profile™
+- KYE Public Sector Profile™
+
+Each profile composes with the EU AI Act profile (kye-aia-1.0) when
+AI systems or AI agents are involved.
+
 ## License
 
 Apache License 2.0 unless an individual file specifies otherwise.
