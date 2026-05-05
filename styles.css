@@ -2823,3 +2823,46 @@ html, body { background-color: var(--bg) !important; color: var(--text) !importa
   .cf-list { font-size: 12.5px; }
   .cf-grid-list { font-size: 12.5px; }
 }
+
+/* === Architecture principles plate (8-card grid) === */
+.arch-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 28px;
+}
+@media (max-width: 1080px) { .arch-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px)  { .arch-grid { grid-template-columns: 1fr; } }
+.arch-card {
+  background: var(--paper) !important;
+  border: 1px solid var(--rule) !important;
+  border-radius: 8px !important;
+  padding: 22px 22px 18px;
+  box-shadow: var(--shadow-1) !important;
+  display: flex; flex-direction: column; gap: 10px;
+  position: relative;
+}
+.arch-card .arch-num {
+  position: absolute; top: 14px; right: 16px;
+  font-family: var(--font-mono); font-size: 11px;
+  color: var(--ink-3); letter-spacing: 0.08em; font-weight: 600;
+  background: var(--paper-2); padding: 3px 8px; border-radius: 3px;
+  border: 1px solid var(--rule);
+}
+.arch-card .arch-h {
+  font-size: 16px; font-weight: 700; letter-spacing: -0.014em;
+  margin: 0 0 4px; color: var(--ink);
+}
+.arch-card .arch-b {
+  font-size: 13.5px; line-height: 1.55; color: var(--text-muted); margin: 0;
+}
+.arch-card .arch-path {
+  display: block; margin-top: auto; padding: 6px 9px;
+  font-family: var(--font-mono); font-size: 10.5px;
+  color: var(--accent-ink) !important;
+  background: var(--paper-2) !important;
+  border: 1px solid var(--rule) !important;
+  border-radius: 3px !important;
+}
+@media (max-width: 600px) {
+  .arch-card { padding: 18px; }
+  .arch-card .arch-h { font-size: 15px; }
+  .arch-card .arch-b { font-size: 13px; }
+}

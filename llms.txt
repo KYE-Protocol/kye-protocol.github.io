@@ -14,6 +14,45 @@
 
 > Apache License 2.0.
 
+## Architecture (eight first-class principles)
+
+KYE Protocol™ is **schema-first, dictionary-first, profile-first,
+registry-first, API-first, SDK-first, evidence-first, and
+conformance-first**. Designed as an implementable protocol — not a
+whitepaper.
+
+1. **Schema-first** — JSON Schema 2020-12 with absolute `$id` at
+   `schemas.kye.dev`. OpenAPI, SDKs, validators, docs, and conformance
+   tests are derived from schemas, not hand-written. 32 schemas,
+   39 validated examples.
+2. **Dictionary-first** — canonical vocabulary for entity types,
+   lifecycle/authority/delegation/credential/recovery/risk states,
+   decisions, reason codes, capability kinds, side-effect levels,
+   data classes, signal types, redaction fields. 11 dictionary files
+   in `public/vocabulary/`.
+3. **Profile-first** — Core stays small. 30+ profiles add domain
+   semantics (Capability, Recovery, Payments, Healthcare, EU AI Act,
+   ISO 42001, Defence, Energy, Manufacturing, Maritime, Logistics,
+   Aviation, &c.). Profiles never modify Core.
+4. **Registry-first** — every object is resolvable. `/.well-known/kye`
+   advertises supported versions, profiles, crypto suites, JWKS,
+   dictionaries, registries.
+5. **API-first** — runtime decisioning headline:
+   `POST /v1/runtime/authorize` answers *can this entity perform this
+   action, on behalf of this principal, using this capability, under
+   this scope, in this state?* in ms, with a signed decision.
+6. **SDK-first** — TypeScript / Python / Go SDKs ship with schema
+   types, local validators, decision clients, signing helpers,
+   verification helpers, policy adapters, audit emitters, evidence-pack
+   builders.
+7. **Evidence-first** — every decision produces a `policy_decision_id`
+   binding to validation results, audit events, transparency receipts,
+   signals, and a signed `evidence_pack` consumable by GRC, auditors,
+   regulators, dispute panels.
+8. **Conformance-first** — 37-fixture black-box pack that any conformant
+   Gateway must pass. Vendor self-attestation via `conformance-report.json`.
+
+
 
 ## v1.0 ships
 
@@ -135,8 +174,8 @@ KYE is the operational evidence/control layer beneath these governance
 frameworks. The Compliance Mapping Rail™ (`schemas/compliance-mapping.json`)
 binds each control to the KYE runtime events that produce its evidence.
 
-- KYE-AIA Profile™ (EU AI Act, Regulation (EU) 2024/1689): 10 controls
-  (KYE-AIA-001..010) covering entity accountability, AI system registry,
+- KYE EU AI Act Profile™ (EU AI Act, Regulation (EU) 2024/1689): 10 controls
+  (KYE-EUAIACT-001..010) covering entity accountability, AI system registry,
   capability manifest + risk classification, human-oversight gates,
   runtime authority decision logs, technical documentation evidence
   pack, corrective action trail, provider/deployer/operator role
@@ -170,7 +209,7 @@ in `private/specs/`):
 - KYE Financial Services Profile™
 - KYE Public Sector Profile™
 
-Each profile composes with the EU AI Act profile (kye-aia-1.0) when
+Each profile composes with the EU AI Act profile (kye-euaiact-1.0) when
 AI systems or AI agents are involved.
 
 ## License

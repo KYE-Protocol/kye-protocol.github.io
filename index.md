@@ -24,6 +24,17 @@ evidence proves it. KYE does not replace legal agreements, signatures,
 or regulatory obligations; it provides the technical and evidentiary
 foundation for authority finality in AI-agent systems.
 
+
+## Architecture (eight first-class principles)
+
+**Schema-first. Dictionary-first. Profile-first. Registry-first.
+API-first. SDK-first. Evidence-first. Conformance-first.**
+
+KYE is designed as an implementable protocol — canonical schemas,
+shared dictionaries, extensible profiles, resolvable registries,
+runtime APIs, developer SDKs, replayable evidence packs, and
+conformance tests.
+
 ## In one sentence
 
 KYE Protocol™ is the open contract that answers — for every action a
