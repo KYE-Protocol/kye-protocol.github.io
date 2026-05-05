@@ -2437,3 +2437,325 @@ h3, h4, h5, .ps-tag, .eyebrow {
 @media (max-width: 480px) {
   .nav-links { gap: 12px; font-size: 12.5px; padding-left: 4px; }
 }
+
+/* ============================================================
+   §FINAL — ENTERPRISE / PROTOCOL THEME PALETTE (definitive).
+   Replaces the marketing violet+pink with a restrained
+   slate-and-indigo palette. Single accent (indigo-700), single
+   ink scale, single rule scale. No gradients in body content.
+   ============================================================ */
+
+/* Light theme (definitive) */
+:root, :root[data-theme="light"] {
+  --bg:            #fbfbfd;
+  --paper:         #ffffff;
+  --paper-2:       #f4f5f8;
+  --paper-3:       #eceef3;
+  --surface:       #ffffff;
+  --surface-solid: #ffffff;
+  --surface-2:     #f4f5f8;
+  --surface-3:     #eceef3;
+  --rule:          rgba(15, 23, 42, 0.10);
+  --rule-soft:     rgba(15, 23, 42, 0.06);
+  --rule-strong:   rgba(15, 23, 42, 0.18);
+  --line:          rgba(15, 23, 42, 0.10);
+  --line-soft:     rgba(15, 23, 42, 0.06);
+  --line-strong:   rgba(15, 23, 42, 0.18);
+  --ink:           #0a1224;       /* slate-950 */
+  --ink-2:         #1f2a44;       /* slate-800 */
+  --ink-3:         #4a566f;       /* slate-600 */
+  --text:          #0a1224;
+  --text-muted:    #4a566f;
+  --text-dim:      #7c879a;
+  --accent:        #3730a3;       /* indigo-800 — enterprise accent */
+  --accent-2:      #4338ca;       /* indigo-700 */
+  --accent-ink:    #312e81;       /* indigo-900 — for prose links */
+  --accent-soft:   rgba(55, 48, 163, 0.10);
+  --accent-line:   rgba(55, 48, 163, 0.22);
+  --accent-grad:   #3730a3;       /* solid; was rainbow gradient */
+  --info:          #0369a1;
+  --info-soft:     rgba(3, 105, 161, 0.10);
+  --info-line:     rgba(3, 105, 161, 0.22);
+  --success:       #047857;
+  --success-soft:  rgba(4, 120, 87, 0.10);
+  --success-line:  rgba(4, 120, 87, 0.22);
+  --warning:       #b45309;
+  --warning-soft:  rgba(180, 83, 9, 0.10);
+  --warning-line:  rgba(180, 83, 9, 0.22);
+  --danger:        #b91c1c;
+  --danger-soft:   rgba(185, 28, 28, 0.10);
+  --danger-line:   rgba(185, 28, 28, 0.22);
+  --shadow-1:      0 1px 0 rgba(15, 23, 42, 0.05);
+  --shadow-2:      0 1px 0 rgba(15, 23, 42, 0.05), 0 4px 16px -8px rgba(15, 23, 42, 0.10);
+  --shadow-3:      0 1px 0 rgba(15, 23, 42, 0.05), 0 12px 32px -16px rgba(15, 23, 42, 0.16);
+  --focus-ring:    0 0 0 3px rgba(55, 48, 163, 0.30);
+  color-scheme:    light;
+}
+
+/* Dark theme (definitive) */
+:root[data-theme="dark"] {
+  --bg:            #0a0e1a;
+  --paper:         #0f1426;
+  --paper-2:       #131a30;
+  --paper-3:       #1a223b;
+  --surface:       #0f1426;
+  --surface-solid: #0f1426;
+  --surface-2:     #131a30;
+  --surface-3:     #1a223b;
+  --rule:          rgba(255, 255, 255, 0.10);
+  --rule-soft:     rgba(255, 255, 255, 0.05);
+  --rule-strong:   rgba(255, 255, 255, 0.18);
+  --line:          rgba(255, 255, 255, 0.10);
+  --line-soft:     rgba(255, 255, 255, 0.05);
+  --line-strong:   rgba(255, 255, 255, 0.18);
+  --ink:           #eef1f9;
+  --ink-2:         #c9d0e3;
+  --ink-3:         #94a0bf;
+  --text:          #eef1f9;
+  --text-muted:    #94a0bf;
+  --text-dim:      #6d7794;
+  --accent:        #818cf8;       /* indigo-400 readable on dark */
+  --accent-2:      #a5b4fc;       /* indigo-300 */
+  --accent-ink:    #c7d2fe;       /* indigo-200 — for prose links */
+  --accent-soft:   rgba(129, 140, 248, 0.14);
+  --accent-line:   rgba(129, 140, 248, 0.30);
+  --accent-grad:   #818cf8;
+  --info:          #38bdf8;
+  --info-soft:     rgba(56, 189, 248, 0.14);
+  --info-line:     rgba(56, 189, 248, 0.30);
+  --success:       #34d399;
+  --success-soft:  rgba(52, 211, 153, 0.14);
+  --success-line:  rgba(52, 211, 153, 0.30);
+  --warning:       #fbbf24;
+  --warning-soft:  rgba(251, 191, 36, 0.14);
+  --warning-line:  rgba(251, 191, 36, 0.30);
+  --danger:        #f87171;
+  --danger-soft:   rgba(248, 113, 113, 0.14);
+  --danger-line:   rgba(248, 113, 113, 0.30);
+  --shadow-1:      0 1px 0 rgba(0, 0, 0, 0.40);
+  --shadow-2:      0 1px 0 rgba(0, 0, 0, 0.40), 0 4px 16px -8px rgba(0, 0, 0, 0.55);
+  --shadow-3:      0 1px 0 rgba(0, 0, 0, 0.40), 0 12px 32px -16px rgba(0, 0, 0, 0.65);
+  --focus-ring:    0 0 0 3px rgba(165, 180, 252, 0.40);
+  color-scheme:    dark;
+}
+
+/* Force final palette to win body-wide */
+html, body { background-color: var(--bg) !important; color: var(--text) !important; }
+
+/* Brand mark — solid ink fill, no gradient */
+.brand-mark {
+  background: var(--ink) !important;
+  color: var(--paper) !important;
+  border-radius: 6px;
+}
+:root[data-theme="dark"] .brand-mark {
+  background: var(--accent) !important;
+  color: var(--paper) !important;
+}
+
+/* Hero accent text — solid ink, no gradient */
+.hero h1 .accent,
+.h-section .accent,
+.what-def .accent,
+.evo-card.kye h3 {
+  background: none !important;
+  background-image: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: var(--accent) !important;
+  color: var(--accent) !important;
+}
+
+/* Stat numbers — solid ink with mono digits */
+.stat-num, .assurance-card .c {
+  background: none !important;
+  background-image: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: var(--ink) !important;
+  color: var(--ink) !important;
+  font-feature-settings: "tnum";
+}
+
+/* Section.alt — paper-2 plate with hairlines */
+.section.alt {
+  background: var(--paper-2) !important;
+  border-top: 1px solid var(--rule) !important;
+  border-bottom: 1px solid var(--rule) !important;
+}
+
+/* Card baseline — flat paper, hairline border, micro-shadow only */
+.what-card, .ps-card, .qs-card, .how-card, .persona-card, .sector-card,
+.state-card, .assurance-card, .evo-card, .repo-card, .what-row,
+.what-def-gloss li, .lc-card, .profile-detail, .af-card, .faq-item, .logos-strip {
+  background: var(--paper) !important;
+  border: 1px solid var(--rule) !important;
+  box-shadow: var(--shadow-1) !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  border-radius: 8px !important;
+}
+.what-row, .what-def-gloss li { background: var(--paper-2) !important; }
+
+/* Eyebrow — mono small caps on tinted plate, hairline border */
+.eyebrow {
+  font-family: var(--font-mono) !important;
+  font-size: 10.5px !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+  color: var(--accent-ink) !important;
+  background: var(--accent-soft) !important;
+  border: 1px solid var(--accent-line) !important;
+  padding: 4px 10px !important;
+  border-radius: 4px !important;
+  display: inline-block !important;
+}
+
+/* Headings — tighter tracking, ink colour */
+.h-section, h1, h2 {
+  letter-spacing: -0.024em;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* Buttons — restrained */
+.btn-primary {
+  background: var(--accent) !important;
+  color: white !important;
+  border: 1px solid var(--accent) !important;
+  font-weight: 500;
+  border-radius: 6px !important;
+}
+.btn-primary:hover { background: var(--accent-2) !important; border-color: var(--accent-2) !important; }
+.btn-secondary {
+  background: var(--paper) !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--rule-strong) !important;
+  border-radius: 6px !important;
+}
+.btn-secondary:hover { border-color: var(--accent) !important; color: var(--accent) !important; }
+.btn-ghost {
+  background: transparent !important;
+  color: var(--ink-3) !important;
+  border: 1px solid transparent !important;
+  border-radius: 6px !important;
+}
+.btn-ghost:hover { color: var(--accent) !important; border-color: var(--rule) !important; }
+
+/* Pills — hairline + mono */
+.hero-pill, .version-pill, .deployed-pill, .compliance-pill, .persona-chip,
+.prof-pill, .cov-pill, .how-pill {
+  border-radius: 4px !important;
+  font-family: var(--font-mono) !important;
+  font-feature-settings: "tnum";
+}
+.hero-pill {
+  background: var(--paper-2) !important;
+  color: var(--accent) !important;
+  border: 1px solid var(--rule) !important;
+}
+.version-pill, .deployed-pill {
+  background: var(--paper-2) !important;
+  color: var(--ink-3) !important;
+  border: 1px solid var(--rule) !important;
+}
+.deployed-pill { color: var(--success) !important; border-color: var(--success-line) !important; background: var(--success-soft) !important; }
+.compliance-pill {
+  background: var(--paper-2) !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--rule-strong) !important;
+}
+.persona-chip {
+  background: var(--paper) !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--rule) !important;
+}
+.persona-chip:hover { border-color: var(--accent) !important; color: var(--accent) !important; }
+.prof-pill {
+  background: var(--accent-soft) !important;
+  color: var(--accent) !important;
+  border-color: var(--accent-line) !important;
+}
+
+/* Inline code — mono on tinted plate */
+:where(p, li, dd, td, summary) code,
+:where(p, li, dd, td, summary) kbd {
+  font-family: var(--font-mono) !important;
+  background: var(--paper-2) !important;
+  color: var(--accent-ink) !important;
+  border: 1px solid var(--rule) !important;
+  font-weight: 500 !important;
+  border-radius: 3px !important;
+  padding: 1px 6px !important;
+}
+
+/* Profile tabs — protocol-doc tab strip */
+.profile-tab {
+  font-family: var(--font-mono) !important;
+  border-radius: 4px !important;
+  background: var(--paper-2) !important;
+  color: var(--ink-3) !important;
+  border: 1px solid var(--rule) !important;
+}
+.profile-tab.is-active {
+  background: var(--ink) !important;
+  color: var(--paper) !important;
+  border-color: var(--ink) !important;
+}
+:root[data-theme="dark"] .profile-tab.is-active {
+  background: var(--accent) !important;
+  color: var(--paper) !important;
+  border-color: var(--accent) !important;
+}
+
+/* Endpoint plates — mono RFC look */
+.profile-detail .endpoints li {
+  font-family: var(--font-mono) !important;
+  background: var(--paper-2) !important;
+  border: 1px solid var(--rule) !important;
+  color: var(--ink) !important;
+  border-radius: 4px !important;
+  padding: 7px 11px !important;
+  font-size: 11.5px !important;
+}
+
+/* Tables — RFC hairline grid */
+.cmp {
+  border: 1px solid var(--rule);
+  border-collapse: collapse;
+  background: var(--paper);
+}
+.cmp th {
+  background: var(--paper-2);
+  color: var(--ink);
+  font-weight: 600;
+  border-bottom: 2px solid var(--rule-strong);
+}
+.cmp td { border-bottom: 1px solid var(--rule-soft); }
+
+/* Hero gradients — neutralise */
+.hero-bg { display: none !important; }
+.hero-grid { opacity: 0.10 !important; }
+
+/* Footer — paper-2 plate */
+.footer { background: var(--paper-2) !important; border-top: 1px solid var(--rule); }
+.footer-bottom { color: var(--ink-3); }
+
+/* Authority Finality plate — make the active card stand out cleanly */
+.af-card.af-now { border-color: var(--accent) !important; box-shadow: 0 0 0 1px var(--accent) !important; }
+.af-card.af-now .af-tag { background: var(--accent-soft) !important; color: var(--accent) !important; border-color: var(--accent-line) !important; }
+.af-card.af-then .af-tag { background: var(--paper-2) !important; color: var(--ink-3) !important; border-color: var(--rule) !important; }
+
+/* Inline links in prose — protocol-doc style */
+:where(p, li, dd, td, summary) > a:not(.btn):not(.nav-cta):not(.persona-chip):not(.prof-pill):not(.compliance-pill):not(.version-pill):not(.theme-toggle):not(.deployed-pill) {
+  color: var(--accent-ink) !important;
+  text-decoration: none !important;
+  border-bottom: 1px dashed currentColor !important;
+}
+:where(p, li, dd, td, summary) > a:not(.btn):hover { border-bottom-style: solid !important; }
+
+/* Selection */
+::selection { background: var(--accent-soft); color: var(--ink); }
+
+/* Scroll-bar tinting */
+* { scrollbar-color: var(--rule-strong) transparent; }
