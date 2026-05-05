@@ -18,7 +18,7 @@
   <meta name="twitter:description" content="The board / CIO / risk / compliance / legal view of KYE Protocol™." />
   <meta name="twitter:image" content="https://kye-protocol.github.io/og.svg" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%237c3aed'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="styles.css?v=1778023149" />
+  <link rel="stylesheet" href="styles.css?v=1778025210" />
 </head>
 <body class="biz-body">
 <header class="nav">
@@ -34,8 +34,10 @@
     <nav class="nav-links" aria-label="Primary">
       <a href="./">Home (technical)</a>
       <a href="#why">Why it matters</a>
+      <a href="#exec">Exec summary</a>
+      <a href="#roi">ROI</a>
       <a href="#audiences">Who it&rsquo;s for</a>
-      <a href="#outcomes">Outcomes</a>
+      <a href="#timeline">Timeline</a>
       <a href="#compliance">Compliance</a>
       <a href="#sectors">Sectors</a>
       <a href="#faq">FAQ</a>
@@ -83,6 +85,50 @@
     <h2 id="h-why" class="h-section">Three things have changed at once.</h2>
     <p class="lede">First, AI agents now book payments, sign documents, move money, triage health records, and trade. Second, regulators (EU AI Act, DORA, NIS2, PSD3, FFIEC, MAS, RBI) all now ask <em>who or what acted, on whose authority, within which limits</em>. Third, the existing identity, authorisation, and audit infrastructure was built for humans pressing buttons &mdash; not for software acting autonomously on someone else&rsquo;s behalf.</p>
     <p class="lede" style="margin-top:12px">The result is a gap. When something goes wrong, you cannot prove what your AI agents were allowed to do. KYE Protocol<span class="tm">™</span> closes that gap with one open contract that every gateway, vendor, and regulator can verify the same way.</p>
+  </div>
+</section>
+
+<section id="exec" class="section" aria-labelledby="h-exec">
+  <div class="container">
+    <span class="eyebrow">Executive summary</span>
+    <h2 id="h-exec" class="h-section">In 60 seconds.</h2>
+    <ul class="biz-list">
+      <li><strong>What:</strong> KYE Protocol<span class="tm">™</span> is an open standard (Apache 2.0) that turns every action a human, business, or AI agent takes into <em>signed, replayable evidence</em> a regulator, court, auditor, or dispute panel can verify with public keys alone.</li>
+      <li><strong>Why now:</strong> AI agents now move money, sign documents, triage health records, and trade autonomously. Regulators (EU AI Act, DORA, NIS2, PSD3, NIST AI RMF, ISO 42001) demand a chain of authority &mdash; not an OAuth token.</li>
+      <li><strong>How it ships:</strong> 34 normative profiles, 42 JSON Schemas with 45 validated examples, 173+ control mappings across 13 frameworks, three reference SDKs (TypeScript / Python / Go), 37 black-box conformance fixtures, vendor-neutral.</li>
+      <li><strong>Where it fits:</strong> on top of your existing identity / authorization / audit stack &mdash; not instead of it. Keep Okta, SPIFFE, Cerbos, OPA, your SIEM. KYE wires them into one open contract that produces a single decision and a single audit chain.</li>
+      <li><strong>What it gives the board:</strong> defensible accountability for every AI-agent action. <strong>Authority Finality<span class="tm">™</span></strong>: replayable proof of who or what acted, on whose authority, within what limits, in what state, and with what audit trail.</li>
+      <li><strong>What it gives auditors:</strong> a Decision Map<span class="tm">™</span> per decision, an Evidence Graph<span class="tm">™</span> linking decisions to authority grants and capability manifests, a Blast Radius Map<span class="tm">™</span> for compromise impact, a Compliance Map<span class="tm">™</span> to framework controls.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="roi" class="section alt" aria-labelledby="h-roi">
+  <div class="container">
+    <span class="eyebrow">Return on adoption</span>
+    <h2 id="h-roi" class="h-section">What changes the day after you adopt KYE.</h2>
+    <ul class="biz-list">
+      <li><strong>Audit prep: weeks &rarr; minutes.</strong> Auditors fetch a signed evidence pack from a URL. Verify with public keys. No interviews, no log archaeology, no spreadsheet reconciliation. KYE Compliance Mapping Rail<span class="tm">™</span> binds every runtime event to the control it satisfies.</li>
+      <li><strong>Incident response: hours &rarr; milliseconds.</strong> Compromised credential? One stop signal cascades through every delegation, payment authority, capability grant, and active session. Before you revoke, see the Blast Radius Map<span class="tm">™</span> &mdash; what breaks, what stays safe, what needs migration.</li>
+      <li><strong>Vendor diligence: months &rarr; afternoon.</strong> Every conformant gateway exports the same evidence-pack format. Run the 37-fixture conformance pack against any vendor stack &mdash; pass / fail in minutes, byte-for-byte the same as the reference Gateway.</li>
+      <li><strong>Regulator engagement: defensive &rarr; proactive.</strong> Hand the regulator a signed evidence pack mapped to their control framework (SOC 2, ISO 27001, PCI DSS 4.0, PSD3, DORA, NIS2, EU AI Act, ISO 42001, NIST AI RMF, GDPR, FedRAMP, NIST CSF, HIPAA, NIST 800-207). 13 frameworks, one evidence layer.</li>
+      <li><strong>Cross-vendor disputes: reconstructed &rarr; replayable.</strong> When two vendors disagree about who authorised what, you don&rsquo;t reconcile two log formats. You replay the same signed audit chain.</li>
+      <li><strong>Board reporting: narrative &rarr; numbers.</strong> Every decision has a reason code from a fixed vocabulary. Roll up the numbers; report the deltas; explain the spikes.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="timeline" class="section" aria-labelledby="h-tl">
+  <div class="container">
+    <span class="eyebrow">Adoption timeline</span>
+    <h2 id="h-tl" class="h-section">A 90-day path to live evidence.</h2>
+    <ul class="biz-list">
+      <li><strong>Days 1&ndash;14 &middot; Inventory.</strong> Register your existing AI agents, capabilities, and credentials as KYE entities. Each gets a URN, a metadata binding, and a sector / jurisdiction / risk classification. Your existing IDs continue to work alongside.</li>
+      <li><strong>Days 15&ndash;30 &middot; Wire the gateway.</strong> Stand up the reference Gateway (or a vendor implementation) in shadow mode. Every API call your stack makes is mirrored to the Gateway, which produces a Decision Map<span class="tm">™</span>. Nothing is enforced yet &mdash; you read the maps and tune.</li>
+      <li><strong>Days 31&ndash;60 &middot; Enforce on tier-2 actions.</strong> Move payment-prepare, capability invocation, and external send through the Gateway as the source of truth. Tier-1 (move-money, irreversible) actions still go through your existing path; the Gateway records the evidence.</li>
+      <li><strong>Days 61&ndash;90 &middot; Ship the audit story.</strong> Hand auditors the evidence-pack URL. Run the 37-fixture conformance pack against your deployment. Publish the conformance report. Map the controls. Close the audit cycle in days, not months.</li>
+      <li><strong>Day 91+ &middot; Cascade-on-compromise.</strong> The compromise drill stops being a fire drill. One stop signal; cascade revoke; signed proof of recovery. Authority Finality<span class="tm">™</span> is operational.</li>
+    </ul>
   </div>
 </section>
 

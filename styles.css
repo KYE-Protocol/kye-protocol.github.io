@@ -3405,3 +3405,212 @@ summary:focus-visible {
 }
 .float-cta:hover { background: var(--accent-2); transform: translateY(-2px); transition: transform .15s ease, background .15s ease; }
 @media (max-width: 480px) { .float-cta { right: 14px; bottom: 14px; padding: 9px 13px; font-size: 12px; } }
+
+/* ============================================================
+   §FINAL-6 — Universal typographic enforcement (last-word, v3).
+   The §FINAL-3 block targeted named card classes. §FINAL-6
+   broadens the net: every <h3> inside any .section, every <p>
+   and every <li> inside any card-shaped block, every tag pill,
+   every eyebrow — ALL get the canonical scale, no exceptions.
+   This eliminates the residual "ps-card vs why-card" feel.
+   ============================================================ */
+
+/* Single CSS custom-property scale (used by overrides below) */
+:root {
+  --fs-display:    clamp(40px, 6vw, 72px);
+  --fs-h2:         clamp(28px, 4vw, 38px);
+  --fs-h3-card:    17px;
+  --fs-body-card:  14px;
+  --fs-body:       16px;
+  --fs-eyebrow:    11px;
+  --fs-pill:       11px;
+  --fs-mono:       12px;
+  --lh-h:          1.35;
+  --lh-body:       1.6;
+}
+
+/* Every section H3 (regardless of card class) */
+.section h3,
+.section .section h3 {
+  font-size: var(--fs-h3-card) !important;
+  line-height: var(--lh-h) !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.005em !important;
+}
+
+/* Every card body — paragraph, list item, list-item strong, list-item code */
+.section .ps-list li,        .section .ps-list li strong,
+.section .af-list li,        .section .af-list li strong,
+.section .why-card p,        .section .why-card p strong,
+.section .why-card li,
+.section .ag-card p,         .section .ag-card p strong,
+.section .arch-card p,       .section .arch-card p strong,
+.section .what-card p,       .section .what-card li,
+.section .persona-card p,    .section .persona-card li,
+.section .sector-card p,
+.section .ps-card p,         .section .ps-card li,
+.section .af-card p,         .section .af-card li,
+.section .cf-card p,         .section .cf-card li,
+.section .evo-card p,        .section .evo-card li,
+.section .qs-card p,         .section .qs-card li,
+.section .how-card p,        .section .how-card li,
+.section .ba-side p,         .section .ba-side li {
+  font-size: var(--fs-body-card) !important;
+  line-height: var(--lh-body) !important;
+}
+
+/* Every tag pill */
+.section .ps-tag,
+.section .af-tag,
+.section .ag-tag,
+.section .evo-tag,
+.section .ba-tag,
+.section .def-tag,
+.section .cf-tag,
+.section .why-card span:first-child,
+.section .persona-card span:first-child {
+  font-size: var(--fs-pill) !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+}
+
+/* Inline code inside any card body */
+.section .ps-list li code,
+.section .af-list li code,
+.section .arch-card p code, .section .arch-b code,
+.section .ag-card p code,   .section .ag-b code,
+.section .why-card p code,  .section .why-out code,
+.section .what-card p code, .section .what-card li code {
+  font-family: var(--font-mono) !important;
+  font-size: var(--fs-mono) !important;
+  background: var(--paper-2) !important;
+  border: 1px solid var(--rule) !important;
+  padding: 1px 5px !important;
+  border-radius: 4px !important;
+}
+
+/* Every <strong> inside a card body — keep the size, just bold weight */
+.section .ps-card  strong,
+.section .af-card  strong,
+.section .ag-card  strong,
+.section .why-card strong,
+.section .arch-card strong,
+.section .what-card strong,
+.section .persona-card strong,
+.section .sector-card strong,
+.section .evo-card strong,
+.section .cf-card strong,
+.section .qs-card strong,
+.section .how-card strong {
+  font-size: inherit !important;
+  font-weight: 600 !important;
+}
+
+/* Every section eyebrow + lede (defensive — already in FINAL-3 but tightened here) */
+.section .eyebrow,
+section .eyebrow {
+  font-size: var(--fs-eyebrow) !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+}
+.section p.lede,
+section  p.lede {
+  font-size: var(--fs-body) !important;
+  line-height: 1.65 !important;
+}
+.hero p.lede {
+  font-size: 18px !important;
+  line-height: 1.55 !important;
+}
+
+/* Mobile sweep — 16px h3, 13px card body, 15px lede */
+@media (max-width: 600px) {
+  :root {
+    --fs-h3-card:   16px;
+    --fs-body-card: 13px;
+    --fs-body:      15px;
+  }
+  .hero p.lede { font-size: 16px !important; }
+}
+
+/* Comparison table — last-word: tbody td matches card body, header pill style */
+.cmp tbody td,
+.cmp .product-col {
+  font-size: var(--fs-body-card) !important;
+  line-height: var(--lh-body) !important;
+}
+.cmp thead th,
+.cmp .product-col .ver {
+  font-size: var(--fs-pill) !important;
+  letter-spacing: 0.10em !important;
+}
+
+/* ============================================================
+   §FINAL-7 — Comparison table inner consistency.
+   The .cmp tbody td cells have mixed weights (600/500/400) for
+   yes/partial/no, and the prefix glyphs (●/◐/○) render at
+   different visual densities. Unify to one weight, one size,
+   one tabular layout. The COLOR of yes/partial/no still
+   differentiates them — weight no longer.
+   ============================================================ */
+
+.cmp                         { font-variant-numeric: tabular-nums !important; }
+
+.cmp tbody td.cell-yes,
+.cmp tbody td.cell-partial,
+.cmp tbody td.cell-no {
+  font-size: var(--fs-body-card) !important;
+  font-weight: 500 !important;
+  line-height: var(--lh-body) !important;
+  letter-spacing: 0 !important;
+}
+
+.cmp .cell-yes::before,
+.cmp .cell-partial::before,
+.cmp .cell-no::before {
+  display: inline-block;
+  font-size: 12px !important;
+  width: 12px;
+  text-align: center;
+  margin-right: 4px;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+/* Row header (left-most "Capability" column entries) — same body size */
+.cmp tbody th,
+.cmp tbody th.product-col {
+  font-size: var(--fs-body-card) !important;
+  font-weight: 600 !important;
+  line-height: var(--lh-body) !important;
+  text-align: left !important;
+  white-space: normal !important;
+}
+
+/* Header cells — uppercase pill style with consistent letter-spacing */
+.cmp thead th {
+  font-size: var(--fs-pill) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.10em !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+}
+
+/* The version label inside a header cell (rendered as a child <div>) */
+.cmp thead th div {
+  font-size: 11px !important;
+  letter-spacing: 0.04em !important;
+  text-transform: none !important;
+  font-weight: 400 !important;
+  margin-top: 2px;
+}
+
+/* The tabular caption */
+.cmp + caption,
+.cmp caption,
+.cmp-wrap caption {
+  font-size: var(--fs-eyebrow) !important;
+  letter-spacing: 0.04em !important;
+}
