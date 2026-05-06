@@ -352,21 +352,11 @@ export function initFlowViz() {
       io.observe(host);
     }
 
-    // Re-render on resize (debounced) so the SVG fits new widths.
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        const wasState = state;
-        const wasCursor = cursor;
-        renderFlow(host, flow);
-        // Re-bind: simplest is to re-init the entire viz; recursive call.
-        // Avoid infinite loop by checking flag.
-        if (!host.dataset.fvReinit) {
-          host.dataset.fvReinit = '1';
-          initFlowViz();
-        }
-      }, 200);
-    }, { once: true });
+    // No resize re-render. The SVG has viewBox + preserveAspectRatio so
+    // it scales fluidly. A previous version re-rendered the host on
+    // resize, but on mobile the address-bar collapse / orientation /
+    // soft-keyboard fire 'resize' mid-play, which wiped innerHTML and
+    // detached every live event listener — making the controls feel
+    // frozen until a browser refresh.
   });
 }

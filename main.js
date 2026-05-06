@@ -13,7 +13,7 @@ import { initLifecycleSim } from "./assets/lifecycle-sim.js?v=1778880000";
 import { initVocabBrowser } from "./assets/vocab-browser.js?v=1778880000";
 import { initScrollTop }    from "./assets/scroll-top.js?v=1778880000";
 import { initQuickstart, initStarCta } from "./assets/quickstart.js?v=1778880000";
-import { initFlowViz }    from "./assets/flow-viz.js?v=1778900000";
+import { initFlowViz }    from "./assets/flow-viz.js?v=1778910000";
 
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
