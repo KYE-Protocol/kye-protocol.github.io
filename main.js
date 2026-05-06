@@ -15,6 +15,7 @@ import { initScrollTop }    from "./assets/scroll-top.js?v=1778880000";
 import { initQuickstart, initStarCta } from "./assets/quickstart.js?v=1778880000";
 import { initFlowViz }    from "./assets/flow-viz.js?v=1778910000";
 import { initAgentPurchaseSim } from "./assets/agent-purchase-sim.js?v=1778940000";
+import { initRoleRouter } from "./assets/role-router.js?v=1778950000";
 
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -39,6 +40,7 @@ initQuickstart();
 initStarCta();
 initFlowViz();
 initAgentPurchaseSim();
+initRoleRouter();
 
 /* WebMCP: expose KYE Protocol™ tools to AI agents via the browser. */
 import { initWebMcp } from "./assets/webmcp.js?v=1778880000";

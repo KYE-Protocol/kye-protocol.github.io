@@ -9211,3 +9211,81 @@ li > .fwk-list.sector-frameworks-badged {
 :root[data-theme="dark"] .aps-fs,
 :root[data-theme="dark"] .aps-decision-card,
 :root[data-theme="dark"] .aps-output-block { background: rgba(255,255,255,0.03); border-color: var(--line); }
+
+/* ============================================================
+   §FINAL-56 — "Choose your role" landing-page router
+   ============================================================ */
+.rr-host { display: block; }
+.rr-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+.rr-card {
+  background: var(--kye-color-paper);
+  border: 1px solid var(--kye-color-line);
+  border-radius: var(--kye-radius-3);
+  padding: 18px 18px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  cursor: pointer;
+  transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+.rr-card:hover {
+  border-color: var(--kye-color-brand);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(26, 135, 84, 0.10);
+}
+.rr-head { display: flex; align-items: center; gap: 10px; }
+.rr-ico {
+  font-size: 22px !important;
+  width: 22px;
+  color: var(--kye-color-brand);
+}
+.rr-label {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.005em;
+  color: var(--kye-color-text);
+}
+.rr-you {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--kye-color-text-muted);
+  flex: 1;
+}
+.rr-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+.rr-cta {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--kye-color-line);
+  background: transparent;
+  color: var(--kye-color-text-muted);
+  text-decoration: none;
+  transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+.rr-cta:hover {
+  background: var(--kye-color-paper-2);
+  color: var(--kye-color-text);
+  border-color: var(--kye-color-line);
+}
+.rr-cta.is-primary {
+  background: var(--kye-color-brand);
+  color: white;
+  border-color: var(--kye-color-brand);
+}
+.rr-cta.is-primary:hover { background: #166f44; border-color: #166f44; color: white; }
+:root[data-theme="dark"] .rr-card { background: var(--surface-solid); border-color: var(--line); }
+:root[data-theme="dark"] .rr-card:hover { border-color: var(--kye-color-brand); }
+:root[data-theme="dark"] .rr-cta { border-color: var(--line); }
