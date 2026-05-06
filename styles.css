@@ -4749,3 +4749,92 @@ header.nav { display: none !important; }   /* legacy nav hidden where top-bar pr
   display: flex; align-items: center; justify-content: center;
 }
 .hero-visual svg { width: 100%; height: 100%; }
+
+/* ============================================================
+   §FINAL-16 — Accent → Material 3 purple (unambiguously purple)
+                 + mobile top-bar overlap fix.
+   ============================================================ */
+
+:root {
+  --accent:        #6750A4 !important;   /* Material 3 default primary */
+  --accent-2:      #7E5DB3 !important;   /* hover lift */
+  --accent-soft:   rgba(103, 80, 164, 0.10) !important;
+  --accent-line:   rgba(103, 80, 164, 0.22) !important;
+  --accent-grad:   linear-gradient(120deg, #6750A4 0%, #6750A4 100%) !important;
+  --info:          #6750A4 !important;
+  --info-soft:     rgba(103, 80, 164, 0.10) !important;
+  --info-line:     rgba(103, 80, 164, 0.22) !important;
+}
+:root[data-theme="dark"] {
+  --accent:        #D0BCFF !important;   /* Material 3 light purple-200 */
+  --accent-2:      #B69DF8 !important;
+  --accent-soft:   rgba(208, 188, 255, 0.16) !important;
+  --accent-line:   rgba(208, 188, 255, 0.30) !important;
+  --accent-grad:   linear-gradient(120deg, #D0BCFF 0%, #D0BCFF 100%) !important;
+  --info:          #D0BCFF !important;
+  --info-soft:     rgba(208, 188, 255, 0.16) !important;
+  --info-line:     rgba(208, 188, 255, 0.30) !important;
+}
+
+/* Anywhere previous CSS still set a violet/indigo hex literal — neutralise to var(--accent) */
+.urn-tok-prefix,
+.urn-tok-class,
+.urn-tok-td,
+.urn-tok-sub {
+  color: var(--accent) !important;
+  background: var(--accent-soft) !important;
+}
+.urn-tok-local { color: var(--text-dim) !important; background: var(--paper-2) !important; }
+
+/* Favicon/logo inline SVGs use fill="%237c3aed" which is fine — outside DOM,
+   but the brand-mark SVG inside the page uses currentColor which now picks
+   up the new purple. Same for hero illustration. */
+
+/* ============================================================
+   Mobile top-bar overlap fix
+   On narrow viewports the GitHub CTA + theme toggle + drawer
+   button were colliding with the brand name and each other.
+   ============================================================ */
+@media (max-width: 900px) {
+  .top-bar-inner { gap: 12px; padding: 0 14px; }
+  .top-bar { height: 56px; }
+  .brand-name { display: none !important; }                /* logo only */
+  .top-bar .brand-mark { width: 28px; height: 28px; }
+  .tb-cta { padding: 8px 10px !important; }
+}
+@media (max-width: 760px) {
+  .top-bar-nav { display: none !important; }
+  .drawer-toggle { display: inline-flex !important; }
+  .top-bar-actions .audience-toggle { display: none !important; }
+  .top-bar-actions { gap: 4px; flex-shrink: 0; }
+  /* Hide GitHub CTA on mobile — drawer has its own GitHub link */
+  .top-bar .tb-cta { display: none !important; }
+  /* Theme + drawer fit comfortably */
+  .theme-toggle, .drawer-toggle {
+    width: 40px !important;
+    height: 40px !important;
+    margin: 0 !important;
+    flex-shrink: 0;
+  }
+  /* Brand left, drawer/theme right */
+  .top-bar-inner {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0 12px !important;
+  }
+}
+@media (max-width: 380px) {
+  .top-bar-inner { padding: 0 10px !important; gap: 8px !important; }
+  .theme-toggle, .drawer-toggle { width: 36px !important; height: 36px !important; }
+  .theme-toggle .ms, .drawer-toggle .ms { font-size: 20px !important; }
+}
+
+/* Drawer surface gets the GitHub link injected (since top-bar hides it on mobile).
+   The drawer auto-clones top-bar-nav; we add the GitHub link manually via JS too. */
+.top-bar-drawer .tb-link.tb-cta-mobile {
+  background: var(--accent) !important;
+  color: #fff !important;
+  margin-top: 8px;
+}
+:root[data-theme="dark"] .top-bar-drawer .tb-link.tb-cta-mobile { color: #1f2024 !important; }

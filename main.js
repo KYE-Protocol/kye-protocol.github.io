@@ -166,6 +166,14 @@ initWebMcp();
       });
       drawer.appendChild(clone);
     });
+    // Append a GitHub CTA inside the drawer (top-bar CTA is hidden on mobile)
+    const ghLink = document.createElement('a');
+    ghLink.href = 'https://github.com/KYE-Protocol';
+    ghLink.target = '_blank';
+    ghLink.rel = 'noopener';
+    ghLink.className = 'tb-link tb-cta-mobile';
+    ghLink.innerHTML = '<span class="ms">open_in_new</span><span class="lbl">GitHub</span>';
+    drawer.appendChild(ghLink);
     document.body.appendChild(drawer);
   }
   btn.addEventListener('click', () => {
