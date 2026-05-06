@@ -266,6 +266,31 @@ initWebMcp();
     strong.style.color         = meta.hue;
   }
 
+  // Step 1b — colour every [data-fwk] chip on frameworks.html (and
+  // anywhere else) using the same hue map. Looks up by content text
+  // first, then falls back to the data-fwk slug.
+  const SLUG_TO_HUE = Object.fromEntries(Object.values(FW).map(m => [m.slug, m.hue]));
+  for (const el of document.querySelectorAll('[data-fwk]')) {
+    if (el.dataset.fwkColoured || el.classList.contains('fwk-badge') === false && el.classList.contains('fwk-card') === false) {
+      // We only style fwk-badge chips here; fwk-cards just get a tinted left rail
+    }
+    if (el.dataset.fwkColoured) continue;
+    if (!el.classList.contains('fwk-badge')) continue;
+    const slug = el.dataset.fwk;
+    const hue  = SLUG_TO_HUE[slug] || FW[el.textContent.trim()]?.hue || '#5F6368';
+    el.dataset.fwkColoured = '1';
+    el.style.background    = `color-mix(in srgb, ${hue} 14%, transparent)`;
+    el.style.borderColor   = `color-mix(in srgb, ${hue} 32%, transparent)`;
+    el.style.color         = hue;
+    el.style.border        = el.style.border || '1px solid currentColor';
+  }
+  // Tint .fwk-card left border by its data-fwk slug
+  for (const card of document.querySelectorAll('.fwk-card[data-fwk]')) {
+    const slug = card.dataset.fwk;
+    const hue  = SLUG_TO_HUE[slug] || '#5F6368';
+    card.style.borderLeft = `4px solid ${hue}`;
+  }
+
   // Step 2 — replace dot-joined framework strings with split badges
   const SELECTORS = [
     '.sector-frameworks',

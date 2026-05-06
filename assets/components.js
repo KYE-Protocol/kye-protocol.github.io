@@ -101,6 +101,7 @@ export function kyeFooter({ links = [] } = {}) {
     { href: 'roadmap.html',    label: 'Roadmap' },
     { href: 'integrations.html', label: 'Integrations' },
     { href: 'compliance.html', label: 'Compliance' },
+    { href: 'frameworks.html', label: 'Frameworks' },
     { href: 'sectors.html',    label: 'Sectors' },
     { href: 'customers.html',  label: 'Customers' },
     { href: 'changelog.html',  label: 'Changelog' },
