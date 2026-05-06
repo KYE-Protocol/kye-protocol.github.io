@@ -7349,3 +7349,93 @@ code[data-code="misc"]      { --code-bg: rgba(63, 81, 181, 0.14)  !important; --
     border-color: rgba(95,99,104,0.30);
   }
 }
+
+/* ============================================================
+   §FINAL-38 — above/below-#who chrome split
+   ============================================================
+   User: 'WHO IT'S FOR and all collapsing headings below must be
+   different style than all collapsing headings higher on the
+   landing page'.
+
+   Implementation: uses the general-sibling combinator to match
+   every .section.collapsible from #who onwards. These get a
+   clean 'article numbered' chrome that overrides any §FINAL-34
+   / §FINAL-37 v1-v5 variant. Above-#who sections keep the v1-v5
+   mix. Net effect: a clear visual break at #who between the
+   upper 'product' chunk and the lower 'practitioner' chunk.
+   ============================================================ */
+
+/* RESET — neutralise the v1-v5 variants for #who and onwards */
+#who                  > details > summary,
+#who ~ .section.collapsible > details > summary {
+  /* drop all variant-specific decoration */
+  border-left: none !important;
+  border-top: none !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 22px 0 16px !important;
+  display: block !important;
+  position: relative;
+  border-bottom: 1px solid var(--line) !important;
+}
+#who                  > details > summary::before,
+#who ~ .section.collapsible > details > summary::before {
+  /* kill the §FINAL-37 v3 dot */
+  content: none !important;
+}
+
+/* Below-#who chrome: section number + uppercase eyebrow + plain h2 */
+#who                  > details > summary .eyebrow,
+#who ~ .section.collapsible > details > summary .eyebrow {
+  display: block !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 0 8px !important;
+  font-size: 11px !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+  color: var(--text-muted) !important;
+}
+#who                  > details > summary .h-section,
+#who ~ .section.collapsible > details > summary .h-section {
+  font-size: clamp(22px, 2.6vw, 28px) !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.005em !important;
+  margin: 0 !important;
+  line-height: 1.25 !important;
+}
+
+/* Per-section accent dot at the start of the eyebrow keeps the
+   one bit of identity (the section's hue) */
+#who                  > details > summary .eyebrow::before,
+#who ~ .section.collapsible > details > summary .eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--below-dot, currentColor);
+  margin-right: 10px;
+  vertical-align: 2px;
+}
+#who         > details > summary .eyebrow { --below-dot: #F57C00; color: #F57C00 !important; }
+#roi         > details > summary .eyebrow { --below-dot: #009688; color: #009688 !important; }
+#architecture > details > summary .eyebrow{ --below-dot: #455A64; color: #455A64 !important; }
+#compliance  > details > summary .eyebrow { --below-dot: #6D4C41; color: #6D4C41 !important; }
+#conformance > details > summary .eyebrow { --below-dot: #1A8754; color: #1A8754 !important; }
+#assurance   > details > summary .eyebrow { --below-dot: #3F51B5; color: #3F51B5 !important; }
+#quickstart  > details > summary .eyebrow { --below-dot: #0F5132; color: #0F5132 !important; }
+#faq         > details > summary .eyebrow { --below-dot: #5F6368; color: #5F6368 !important; }
+
+/* Caret returns to right-side */
+#who                  > details > summary .section-caret,
+#who ~ .section.collapsible > details > summary .section-caret {
+  position: absolute !important;
+  right: 0 !important;
+  top: 22px !important;
+  margin: 0 !important;
+  align-self: auto !important;
+}

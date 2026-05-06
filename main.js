@@ -243,15 +243,28 @@ initWebMcp();
     'IFRS':          { slug: 'ifrs',     hue: '#5D4037' },
     '42 CFR Part 2': { slug: 'cfr42',    hue: '#AD1457' },
   };
-  const blocks = document.querySelectorAll('.sector-frameworks');
+  // Selectors that should render their text content as framework badges.
+  // Anywhere a card lists compliance frameworks separated by ' · ' / ' | '
+  // / ' / ' / commas, this tagger transforms the inline string into
+  // individually-coloured chips.
+  const SELECTORS = [
+    '.sector-frameworks',
+    '.compliance-list',
+    '.fwk-list',
+    '[data-fwk-list]',
+  ];
+  const blocks = document.querySelectorAll(SELECTORS.join(','));
   if (!blocks.length) return;
   for (const el of blocks) {
     if (el.dataset.fwkBuilt) continue;
     const text = (el.textContent || '').trim();
     if (!text) continue;
-    // Split on · or | with optional surrounding whitespace
-    const parts = text.split(/\s*[·|]\s*/).map(s => s.trim()).filter(Boolean);
-    if (!parts.length) continue;
+    // Split on the most common separators used across the site
+    const parts = text
+      .split(/\s*[·|]\s*|(?:\s*,\s*)/)
+      .map(s => s.trim())
+      .filter(Boolean);
+    if (parts.length < 1) continue;
     el.innerHTML = '';
     el.dataset.fwkBuilt = '1';
     el.classList.add('sector-frameworks-badged');
