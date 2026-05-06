@@ -40,6 +40,7 @@ const NAV_ITEMS = [
   { id: 'readiness',        href: 'readiness.html',        label: 'Readiness',        icon: 'checklist',               color: '#1A8754' },
   { id: 'demos',            href: 'demos.html',            label: 'Demos',            icon: 'play_circle',             color: '#EA4335' },
   { id: 'whitepaper',       href: 'whitepaper.html',       label: 'Whitepaper',       icon: 'menu_book',               color: '#00838F' },
+  { id: 'engage',           href: 'engage.html',           label: 'Engage',           icon: 'handshake',               color: '#1A8754' },
 ];
 
 const TM_NOTICE_FULL =
@@ -156,6 +157,7 @@ const FOOTER_GROUPS = [
       { href: 'sitemap.html',   label: 'Sitemap' },
       { href: 'legal.html',     label: 'Legal' },
       { href: 'legal-faq.html', label: 'Legal FAQ' },
+      { href: 'engage.html',    label: 'Engagement model' },
       { href: '#',              label: 'Talk to us', attrs: 'data-contact-trigger' },
     ],
   },

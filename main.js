@@ -1,18 +1,18 @@
 /* KYE Protocol™ landing — orchestrator. */
-import { initHeroStats }    from "./assets/hero-stats.js?v=1778740000";
-import { mountKyeComponents } from "./assets/components.js?v=1778740000";
-import { initBeforeAfter }  from "./assets/before-after.js?v=1778740000";
-import { initTrustGraph }   from "./assets/trust-graph.js?v=1778740000";
-import { initDecisionFlow } from "./assets/decision-flow.js?v=1778740000";
-import { initCascadeViz }   from "./assets/cascade-viz.js?v=1778740000";
-import { initDashboard }    from "./assets/dashboard.js?v=1778740000";
-import { initComparison }   from "./assets/comparison.js?v=1778740000";
-import { initUrnParser }    from "./assets/urn-parser.js?v=1778740000";
-import { initProfiles }     from "./assets/profiles.js?v=1778740000";
-import { initLifecycleSim } from "./assets/lifecycle-sim.js?v=1778740000";
-import { initVocabBrowser } from "./assets/vocab-browser.js?v=1778740000";
-import { initScrollTop }    from "./assets/scroll-top.js?v=1778740000";
-import { initQuickstart, initStarCta } from "./assets/quickstart.js?v=1778740000";
+import { initHeroStats }    from "./assets/hero-stats.js?v=1778760000";
+import { mountKyeComponents } from "./assets/components.js?v=1778760000";
+import { initBeforeAfter }  from "./assets/before-after.js?v=1778760000";
+import { initTrustGraph }   from "./assets/trust-graph.js?v=1778760000";
+import { initDecisionFlow } from "./assets/decision-flow.js?v=1778760000";
+import { initCascadeViz }   from "./assets/cascade-viz.js?v=1778760000";
+import { initDashboard }    from "./assets/dashboard.js?v=1778760000";
+import { initComparison }   from "./assets/comparison.js?v=1778760000";
+import { initUrnParser }    from "./assets/urn-parser.js?v=1778760000";
+import { initProfiles }     from "./assets/profiles.js?v=1778760000";
+import { initLifecycleSim } from "./assets/lifecycle-sim.js?v=1778760000";
+import { initVocabBrowser } from "./assets/vocab-browser.js?v=1778760000";
+import { initScrollTop }    from "./assets/scroll-top.js?v=1778760000";
+import { initQuickstart, initStarCta } from "./assets/quickstart.js?v=1778760000";
 
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -37,7 +37,7 @@ initQuickstart();
 initStarCta();
 
 /* WebMCP: expose KYE Protocol™ tools to AI agents via the browser. */
-import { initWebMcp } from "./assets/webmcp.js?v=1778740000";
+import { initWebMcp } from "./assets/webmcp.js?v=1778760000";
 initWebMcp();
 
 /* Theme toggle — persists to localStorage; works alongside @media

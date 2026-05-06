@@ -8425,3 +8425,113 @@ p code[data-code], li code[data-code] {
 :root[data-theme="dark"] .cn-flow li {
   background: rgba(255,255,255,0.04);
 }
+
+/* ============================================================
+   §FINAL-49 — engage.html (engagement-model paths, working
+   groups, certification ladder)
+   ============================================================ */
+
+.eg-stages {
+  list-style: none;
+  margin: 14px 0 0; padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--kye-space-2);
+  counter-reset: eg;
+}
+.eg-stages li {
+  background: var(--kye-color-paper);
+  border: 1px solid var(--kye-color-line);
+  border-radius: var(--kye-radius-2);
+  padding: var(--kye-space-3);
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  grid-template-rows: auto auto;
+  gap: 4px 12px;
+  align-items: start;
+}
+.eg-stages li .eg-step {
+  grid-row: 1 / span 2;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--kye-color-brand);
+  color: white;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-weight: 700;
+  font-size: 12.5px;
+}
+.eg-stages li strong {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--kye-color-text);
+}
+.eg-stages li span:not(.eg-step) {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--kye-color-text-muted);
+}
+
+.eg-card {
+  background: var(--kye-color-paper);
+  border: 1px solid var(--kye-color-line);
+  border-radius: var(--kye-radius-3);
+  padding: var(--kye-space-4);
+  display: flex; flex-direction: column; gap: var(--kye-space-2);
+}
+.eg-who, .eg-want, .eg-do, .eg-out {
+  margin: 0;
+  font-size: var(--kye-type-small);
+  line-height: 1.6;
+  color: var(--kye-color-text);
+}
+.eg-who strong, .eg-want strong, .eg-do strong, .eg-out strong {
+  color: var(--kye-color-brand);
+  font-weight: 700;
+}
+.eg-questions, .eg-steps, .eg-pilot-list, .eg-pilot-deliv {
+  margin: 0; padding-left: 1.4em;
+  font-size: 13.5px; line-height: 1.6;
+  color: var(--kye-color-text);
+}
+.eg-questions li, .eg-steps li, .eg-pilot-list li, .eg-pilot-deliv li {
+  margin-bottom: 4px;
+}
+.eg-tier-list {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.eg-tier-list li {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 12px;
+  align-items: baseline;
+  background: var(--kye-color-paper-2);
+  padding: var(--kye-space-2) var(--kye-space-3);
+  border-radius: var(--kye-radius-2);
+  font-size: 13.5px; line-height: 1.55;
+}
+.eg-tier {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 30px; height: 24px;
+  border-radius: var(--kye-radius-1);
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-weight: 700;
+  font-size: 11px;
+  color: white;
+}
+.eg-tier-l1 { background: #5F6368; }
+.eg-tier-l2 { background: #1A73E8; }
+.eg-tier-l3 { background: #1A8754; }
+.eg-tier-l4 { background: #B47200; }
+@media (max-width: 520px) {
+  .eg-tier-list li { grid-template-columns: 1fr; }
+}
+:root[data-theme="dark"] .eg-stages li,
+:root[data-theme="dark"] .eg-card {
+  background: var(--surface-solid);
+  border-color: var(--line);
+}
+:root[data-theme="dark"] .eg-tier-list li {
+  background: rgba(255,255,255,0.04);
+}
