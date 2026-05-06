@@ -186,16 +186,21 @@ export function initFlowViz() {
       return;
     }
 
-    let timers = [];
+    // Single recurring tick. Only ONE setTimeout is ever in flight, so
+    // every control (play / pause / reset / speed / replay) just calls
+    // clearTimeout(tickTimer) and mutates state — no array of stale
+    // timers to track, no tangled scheduling.
+    let tickTimer = null;
     let speed = 1;
     let cursor = -1;
     let state  = 'idle'; // 'idle' | 'playing' | 'paused' | 'done'
-    let autoPlayed = false;
 
     // Hide all steps initially.
     stepNodes.forEach(n => n.classList.remove('is-on', 'is-done'));
 
-    function clearTimers() { timers.forEach(t => clearTimeout(t)); timers = []; }
+    function stagger() {
+      return reduced ? 60 : Math.max(220, 1600 / speed);
+    }
 
     function setStep(i, opts = {}) {
       cursor = i;
@@ -211,8 +216,38 @@ export function initFlowViz() {
       }
     }
 
+    function tick() {
+      if (state !== 'playing') return;
+      // Mark the current step as done before advancing.
+      if (cursor >= 0 && cursor < stepNodes.length) {
+        stepNodes[cursor].classList.add('is-done');
+      }
+      const next = cursor + 1;
+      if (next >= stepNodes.length) {
+        // Finished the run.
+        if (loopCb && loopCb.checked) {
+          cursor = -1;
+          stepNodes.forEach(n => n.classList.remove('is-on', 'is-done'));
+          tickTimer = setTimeout(tick, stagger());
+          return;
+        }
+        state = 'done';
+        host.classList.remove('fv-playing');
+        playLabel.textContent = 'Replay';
+        playIcon.textContent  = 'replay';
+        playBtn.setAttribute('aria-label', 'Replay flow');
+        return;
+      }
+      setStep(next);
+      tickTimer = setTimeout(tick, stagger());
+    }
+
+    function stop() {
+      if (tickTimer) { clearTimeout(tickTimer); tickTimer = null; }
+    }
+
     function reset() {
-      clearTimers();
+      stop();
       cursor = -1;
       stepNodes.forEach(n => n.classList.remove('is-on', 'is-done'));
       progressEl.textContent = `0 / ${stepNodes.length}`;
@@ -225,46 +260,27 @@ export function initFlowViz() {
       playBtn.setAttribute('aria-label', 'Play flow');
     }
 
-    function schedule(startAt = 0) {
-      clearTimers();
-      // Slower base stagger (1600ms at 1×) so each step is unmistakably
-      // on screen long enough to read the detail strip + see the active
-      // step pulse. 2× → 800ms · 4× → 400ms.
-      const baseStagger = reduced ? 0 : Math.max(220, 1600 / speed);
-      for (let i = startAt; i < stepNodes.length; i++) {
-        const delay = (i - startAt) * baseStagger;
-        timers.push(setTimeout(() => setStep(i), delay));
-        timers.push(setTimeout(() => stepNodes[i].classList.add('is-done'),
-          delay + baseStagger * 0.85));
-      }
-      timers.push(setTimeout(() => {
-        if (loopCb.checked) {
-          setTimeout(() => { reset(); play(); }, baseStagger);
-        } else {
-          state = 'done';
-          host.classList.remove('fv-playing');
-          playLabel.textContent = 'Replay';
-          playIcon.textContent  = 'replay';
-        }
-      }, (stepNodes.length - startAt) * baseStagger + 200));
-    }
-
     function play() {
-      if (state === 'done') reset();
+      stop();
+      // From done → start fresh. From paused → resume from current cursor.
+      if (state === 'done' || cursor >= stepNodes.length - 1) {
+        cursor = -1;
+        stepNodes.forEach(n => n.classList.remove('is-on', 'is-done'));
+      }
       state = 'playing';
       host.classList.add('fv-playing');
       playLabel.textContent = 'Pause';
       playIcon.textContent  = 'pause';
       playBtn.setAttribute('aria-label', 'Pause flow');
-      // Light up the first step IMMEDIATELY so the click is obviously
-      // doing something, even before the schedule's first timer fires.
-      const startIdx = cursor < 0 ? 0 : cursor;
-      setStep(startIdx);
-      schedule(startIdx + 1);
+      // Light up the next step IMMEDIATELY so the click is obviously
+      // doing something, then schedule the recurring tick.
+      const first = cursor + 1;
+      if (first < stepNodes.length) setStep(first);
+      tickTimer = setTimeout(tick, stagger());
     }
 
     function pause() {
-      clearTimers();
+      stop();
       state = 'paused';
       host.classList.remove('fv-playing');
       playLabel.textContent = 'Resume';
@@ -287,12 +303,11 @@ export function initFlowViz() {
           x.setAttribute('aria-checked', on ? 'true' : 'false');
         });
         // Always restart from the start at the new speed so the user
-        // SEES the speed change. Previously this only re-scheduled if
-        // already playing, which made the buttons feel locked when the
-        // flow was paused / done / idle.
-        clearTimers();
+        // SEES the speed change immediately, regardless of prior state.
+        stop();
         cursor = -1;
         stepNodes.forEach(n => n.classList.remove('is-on', 'is-done'));
+        state = 'idle';
         play();
       });
     });
@@ -323,11 +338,12 @@ export function initFlowViz() {
     // Auto-play removed — confused users when the animation finished
     // before they had read the controls. Pulse the play button briefly
     // when the host enters viewport so the user knows it's interactive.
+    let pulsed = false;
     if ('IntersectionObserver' in window && !reduced) {
       const io = new IntersectionObserver(entries => {
         for (const en of entries) {
-          if (en.isIntersecting && !autoPlayed) {
-            autoPlayed = true;
+          if (en.isIntersecting && !pulsed) {
+            pulsed = true;
             playBtn.classList.add('fv-pulse');
             setTimeout(() => playBtn.classList.remove('fv-pulse'), 2200);
           }
