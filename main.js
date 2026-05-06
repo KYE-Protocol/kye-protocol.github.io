@@ -187,3 +187,19 @@ initWebMcp();
     }
   });
 })();
+
+/* Material Symbols font-load gate — set html.ms-loaded once the icon
+   font is actually delivered. Until then, .ms spans stay invisible
+   so the literal ligature text ('play_circle' etc) never flashes. */
+(function gateMaterialSymbols() {
+  if (!document.fonts || !document.fonts.load) {
+    // Fallback: just show after a delay so the page works without the API
+    setTimeout(() => document.documentElement.classList.add('ms-loaded'), 800);
+    return;
+  }
+  document.fonts.load('24px "Material Symbols Outlined"', 'home').then(() => {
+    document.documentElement.classList.add('ms-loaded');
+  }).catch(() => {
+    /* font failed to load — keep .ms hidden, labels remain readable */
+  });
+})();

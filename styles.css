@@ -4838,3 +4838,63 @@ header.nav { display: none !important; }   /* legacy nav hidden where top-bar pr
   margin-top: 8px;
 }
 :root[data-theme="dark"] .top-bar-drawer .tb-link.tb-cta-mobile { color: #1f2024 !important; }
+
+/* ============================================================
+   §FINAL-17 — Google logo GREEN accent + Material font load gate.
+   User: "lets try google colours like google logo colours" +
+   "shitty purple". Pivoting to Google brand green #34A853 — NOT
+   blue, NOT purple. Distinct from --success (deeper #137333).
+   Plus a font-load gate so the Material Symbols ligature text
+   ('play_circle', 'dark_mode', etc) stays HIDDEN until the
+   Google Fonts CDN delivers the icon font.
+   ============================================================ */
+
+:root {
+  --accent:        #1A8754 !important;   /* Google brand green (medium-dark for contrast) */
+  --accent-2:      #137333 !important;   /* hover lift */
+  --accent-soft:   rgba(26, 135, 84, 0.10) !important;
+  --accent-line:   rgba(26, 135, 84, 0.22) !important;
+  --accent-grad:   linear-gradient(120deg, #1A8754 0%, #1A8754 100%) !important;
+  --info:          #1A8754 !important;
+  --info-soft:     rgba(26, 135, 84, 0.10) !important;
+  --info-line:     rgba(26, 135, 84, 0.22) !important;
+  /* Move success a bit darker so cell-yes still differentiates from accent */
+  --success:       #0F5132 !important;
+  --success-soft:  rgba(15, 81, 50, 0.10) !important;
+}
+:root[data-theme="dark"] {
+  --accent:        #81C995 !important;   /* Google green-200 for dark surfaces */
+  --accent-2:      #A8DAB5 !important;
+  --accent-soft:   rgba(129, 201, 149, 0.16) !important;
+  --accent-line:   rgba(129, 201, 149, 0.30) !important;
+  --accent-grad:   linear-gradient(120deg, #81C995 0%, #81C995 100%) !important;
+  --info:          #81C995 !important;
+  --info-soft:     rgba(129, 201, 149, 0.16) !important;
+  --info-line:     rgba(129, 201, 149, 0.30) !important;
+}
+
+/* Font-load gate — hide every <span class="ms"> until the Material
+   Symbols font has loaded. This eliminates the "play_circle dark_mode"
+   text-fallback flash the user reported. */
+.ms { visibility: hidden; }
+html.ms-loaded .ms { visibility: visible; }
+/* Reserve space so layout doesn't shift while waiting */
+.ms { display: inline-flex; width: 1em; min-width: 1em; height: 1em; }
+
+/* Always show labels in the drawer + on tablet so users have a
+   readable nav even if the icon font is blocked. */
+@media (max-width: 1100px) {
+  .tb-link .lbl { display: inline !important; }
+}
+
+/* Drawer link always shows label (independent of font load) */
+.top-bar-drawer .tb-link {
+  width: 100%;
+  justify-content: flex-start !important;
+  padding: 14px 18px !important;
+  border-radius: 12px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+.top-bar-drawer .tb-link .lbl { display: inline !important; }
