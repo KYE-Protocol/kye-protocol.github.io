@@ -384,23 +384,58 @@ initWebMcp();
         <h3 id="kye-contact-title">Talk to us</h3>
         <p class="kye-modal-sub">Send a note straight to the maintainers. Submitting opens your mail client &mdash; nothing leaves your machine until you press <em>send</em>.</p>
         <form data-contact-form>
-          <label for="kye-contact-name">Name</label>
-          <input type="text" id="kye-contact-name" name="name" autocomplete="name" required />
-          <label for="kye-contact-email">Email</label>
-          <input type="email" id="kye-contact-email" name="email" autocomplete="email" required />
-          <label for="kye-contact-org">Organisation <span style="font-weight:400;color:var(--text-dim)">(optional)</span></label>
-          <input type="text" id="kye-contact-org" name="organisation" autocomplete="organization" />
-          <label for="kye-contact-topic">Topic</label>
-          <select id="kye-contact-topic" name="topic">
-            <option value="general">General enquiry</option>
-            <option value="adoption">Adoption &mdash; integrating KYE Protocol&trade;</option>
-            <option value="sales">Speak to sales &mdash; KYE Cloud&trade; / cost</option>
-            <option value="trademark">Trademark policy</option>
-            <option value="patent">Patent licensing</option>
-            <option value="conformance">Conformance &amp; certification</option>
-            <option value="security">Security advisory</option>
-            <option value="partnership">Partnership / pilot</option>
-          </select>
+          <div class="kye-modal-grid">
+            <div>
+              <label for="kye-contact-name">Name</label>
+              <input type="text" id="kye-contact-name" name="name" autocomplete="name" required />
+            </div>
+            <div>
+              <label for="kye-contact-email">Email</label>
+              <input type="email" id="kye-contact-email" name="email" autocomplete="email" required />
+            </div>
+            <div>
+              <label for="kye-contact-org">Company</label>
+              <input type="text" id="kye-contact-org" name="organisation" autocomplete="organization" required />
+            </div>
+            <div>
+              <label for="kye-contact-phone">Contact number</label>
+              <input type="tel" id="kye-contact-phone" name="phone" autocomplete="tel" inputmode="tel" required />
+            </div>
+            <div>
+              <label for="kye-contact-position">Your role</label>
+              <select id="kye-contact-position" name="position" required>
+                <option value="" disabled selected>Select your role&hellip;</option>
+                <option value="board">Board / executive</option>
+                <option value="cio">CIO / CTO</option>
+                <option value="ciso">CISO / security lead</option>
+                <option value="risk">Risk officer</option>
+                <option value="compliance">Compliance / GRC</option>
+                <option value="legal">Legal / general counsel</option>
+                <option value="audit">Internal audit</option>
+                <option value="regulator">Regulator / supervisor</option>
+                <option value="architect">Architect / staff engineer</option>
+                <option value="engineer">Engineer / developer</option>
+                <option value="product">Product manager</option>
+                <option value="procurement">Procurement / vendor management</option>
+                <option value="founder">Founder / CEO</option>
+                <option value="researcher">Researcher / academic</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div>
+              <label for="kye-contact-topic">Topic</label>
+              <select id="kye-contact-topic" name="topic" required>
+                <option value="general">General enquiry</option>
+                <option value="adoption">Adoption &mdash; integrating KYE Protocol&trade;</option>
+                <option value="sales">Speak to sales &mdash; KYE Cloud&trade; / cost</option>
+                <option value="trademark">Trademark policy</option>
+                <option value="patent">Patent licensing</option>
+                <option value="conformance">Conformance &amp; certification</option>
+                <option value="security">Security advisory</option>
+                <option value="partnership">Partnership / pilot</option>
+              </select>
+            </div>
+          </div>
           <label for="kye-contact-message">Message</label>
           <textarea id="kye-contact-message" name="message" required></textarea>
           <label class="kye-modal-accept" for="kye-contact-accept">
@@ -455,14 +490,18 @@ initWebMcp();
     const name = (fd.get('name') || '').toString().trim();
     const email = (fd.get('email') || '').toString().trim();
     const org = (fd.get('organisation') || '').toString().trim();
+    const phone = (fd.get('phone') || '').toString().trim();
+    const position = (fd.get('position') || '').toString().trim();
     const topic = (fd.get('topic') || 'general').toString();
     const message = (fd.get('message') || '').toString().trim();
     const subject = `[KYE Protocol] ${topic} — ${name || 'enquiry'}`;
     const acceptedAt = new Date().toISOString();
     const body = [
       `From: ${name} <${email}>`,
-      org ? `Organisation: ${org}` : null,
-      `Topic: ${topic}`,
+      org      ? `Company: ${org}`         : null,
+      phone    ? `Phone:   ${phone}`       : null,
+      position ? `Role:    ${position}`    : null,
+      `Topic:   ${topic}`,
       '',
       message,
       '',

@@ -6864,3 +6864,171 @@ code[data-code="misc"]     { --code-bg: rgba(63, 81, 181, 0.10);  --code-fg: #30
    spread) from §FINAL-28 is sufficient on its own — no colour-
    temperature inversion needed.
    ============================================================ */
+
+/* ============================================================
+   §FINAL-34 — mobile dark-mode visibility, sector overflow, modal
+                grid, per-section accent rails on collapsed headers
+   ============================================================
+   User: 'mobile view: darkmode menu icon not visible many texts
+   sections not readable; sector cards have texts outside (Retail
+   & commercial banking, Automotive...); 2 sections still
+   identical style collapsing — each section must have its own
+   style; talk-to-us modal must have name/email/company/phone
+   compulsory + role dropdown'.
+   ============================================================ */
+
+/* === Mobile dark-mode top-bar icons must be visible === */
+:root[data-theme="dark"] .top-bar .drawer-toggle,
+:root[data-theme="dark"] .top-bar .theme-toggle {
+  background: rgba(255,255,255,0.08) !important;
+  border: 1px solid rgba(255,255,255,0.18) !important;
+  color: #EEF1F9 !important;
+}
+:root[data-theme="dark"] .top-bar .drawer-toggle svg,
+:root[data-theme="dark"] .top-bar .theme-toggle svg {
+  color: #EEF1F9 !important;
+  stroke: currentColor !important;
+}
+:root[data-theme="dark"] .top-bar .drawer-toggle svg line,
+:root[data-theme="dark"] .top-bar .drawer-toggle svg path {
+  stroke: #EEF1F9 !important;
+}
+:root[data-theme="dark"] .top-bar .tb-cta {
+  color: #EEF1F9 !important;
+  border-color: rgba(255,255,255,0.18) !important;
+}
+
+/* === Mobile dark-mode body-text contrast (defensive across new components) === */
+:root[data-theme="dark"] {
+  --text:       #F0F4FF;
+  --text-muted: #C9D0E2;
+  --text-dim:   #AAB2CC;
+}
+:root[data-theme="dark"] .lede,
+:root[data-theme="dark"] .section-body,
+:root[data-theme="dark"] .container p,
+:root[data-theme="dark"] .container li,
+:root[data-theme="dark"] .container td,
+:root[data-theme="dark"] .container dd { color: var(--text) !important; }
+:root[data-theme="dark"] .eyebrow      { color: #9AE6A8 !important; }
+:root[data-theme="dark"] .h-section,
+:root[data-theme="dark"] .h-section em { color: #FFFFFF !important; }
+
+/* === Sector card content must NEVER overflow === */
+.sector-card {
+  min-width: 0;
+  overflow: hidden;
+}
+.sector-card h3 {
+  word-wrap: anywhere;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+  line-height: 1.25;
+}
+.sector-card .sector-pain,
+.sector-card .sector-frameworks {
+  word-wrap: anywhere;
+  overflow-wrap: anywhere;
+}
+.sector-card .sector-profiles {
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+.sector-card .prof-pill {
+  max-width: 100%;
+  word-break: break-word;
+  white-space: normal;
+}
+@media (max-width: 600px) {
+  .sector-card { padding: 16px !important; }
+  .sector-card h3 { font-size: 15px !important; }
+  .sector-card .sector-pain { font-size: 12.5px !important; line-height: 1.5 !important; }
+  .sector-card .prof-pill { font-size: 10.5px !important; padding: 3px 7px !important; }
+  .sector-card .sector-frameworks { font-size: 10.5px !important; line-height: 1.5 !important; }
+}
+
+/* === Per-section accent rails on the collapsed <summary>
+        so each section has its own visual identity at a glance === */
+.section.collapsible > details > summary {
+  border-left: 4px solid transparent;
+  padding-left: 16px;
+  border-radius: 0 8px 8px 0;
+  transition: background .15s, border-color .15s;
+}
+#why                  > details > summary { border-left-color: #EA4335; }
+#what                 > details > summary { border-left-color: #1A73E8; }
+#authority-finality   > details > summary { border-left-color: #1A8754; }
+#authority-graph      > details > summary { border-left-color: #00838F; }
+#ps                   > details > summary { border-left-color: #B47200; }
+#evolution            > details > summary { border-left-color: #8E24AA; }
+#sectors              > details > summary { border-left-color: #3F51B5; }
+#who                  > details > summary { border-left-color: #F57C00; }
+#roi                  > details > summary { border-left-color: #009688; }
+#compliance           > details > summary { border-left-color: #6D4C41; }
+#assurance            > details > summary { border-left-color: #455A64; }
+#profiles             > details > summary { border-left-color: #C2185B; }
+#cmp                  > details > summary { border-left-color: #1565C0; }
+#faq                  > details > summary { border-left-color: #5F6368; }
+#quickstart           > details > summary { border-left-color: #0F5132; }
+#taxonomy             > details > summary { border-left-color: #00ACC1; }
+#payload-trust        > details > summary { border-left-color: #6750A4; }
+#governance-section   > details > summary { border-left-color: #4E342E; }
+
+/* matching tinted eyebrow per section so the headers no longer all
+   read identical */
+#why                  > details > summary .eyebrow { color: #EA4335; }
+#what                 > details > summary .eyebrow { color: #1A73E8; }
+#authority-finality   > details > summary .eyebrow { color: #1A8754; }
+#authority-graph      > details > summary .eyebrow { color: #00838F; }
+#ps                   > details > summary .eyebrow { color: #B47200; }
+#evolution            > details > summary .eyebrow { color: #8E24AA; }
+#sectors              > details > summary .eyebrow { color: #3F51B5; }
+#who                  > details > summary .eyebrow { color: #F57C00; }
+#roi                  > details > summary .eyebrow { color: #009688; }
+#compliance           > details > summary .eyebrow { color: #6D4C41; }
+#assurance            > details > summary .eyebrow { color: #455A64; }
+#profiles             > details > summary .eyebrow { color: #C2185B; }
+#cmp                  > details > summary .eyebrow { color: #1565C0; }
+#faq                  > details > summary .eyebrow { color: #5F6368; }
+#quickstart           > details > summary .eyebrow { color: #0F5132; }
+#taxonomy             > details > summary .eyebrow { color: #00ACC1; }
+#payload-trust        > details > summary .eyebrow { color: #6750A4; }
+
+/* === Contact modal: 2-column grid for the new fields === */
+.kye-modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 14px;
+  margin-bottom: 12px;
+}
+.kye-modal-grid > div { display: flex; flex-direction: column; }
+.kye-modal-grid label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin: 0 0 4px;
+}
+.kye-modal-grid input,
+.kye-modal-grid select {
+  width: 100%;
+  padding: 10px 12px;
+  font: inherit;
+  font-size: 14px;
+  background: var(--paper, #fff);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+@media (max-width: 480px) {
+  .kye-modal-grid { grid-template-columns: 1fr; }
+  .kye-modal { padding: 18px; }
+}
+
+:root[data-theme="dark"] .kye-modal-grid input,
+:root[data-theme="dark"] .kye-modal-grid select {
+  background: rgba(255,255,255,0.06) !important;
+  border-color: rgba(255,255,255,0.18) !important;
+  color: #F0F4FF !important;
+}
+:root[data-theme="dark"] .kye-modal-grid label { color: #C9D0E2 !important; }
