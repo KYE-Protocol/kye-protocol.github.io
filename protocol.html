@@ -15,7 +15,7 @@
   <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
   <meta property="og:url" content="https://kye-protocol.github.io/protocol.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="styles.css?v=1778680000" />
+  <link rel="stylesheet" href="styles.css?v=1778700000" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
 </head>
@@ -126,7 +126,8 @@
       <article class="how-card">
         <div class="how-num">2</div>
         <h3 class="how-h">Authorize</h3>
-        <p class="how-b">Run the request through the PDP (or a low-latency embedded ePDP). Return a standard decision with reasons, obligations and stop conditions.</p>
+        <p class="how-b">Run the request through the PDP (or the low-latency embedded ePDP, or a sector-specialised sPDP). Return a standard decision with reasons, obligations and stop conditions.</p>
+        <p class="how-b" style="margin-top:8px;font-size:13px;color:var(--text-muted)"><strong>PDP variants.</strong> <code data-code="endpoint">PDP</code> &mdash; central decision point. <code data-code="endpoint">ePDP</code> &mdash; embedded library, in-process, &lt; 1ms p99, ideal for hot paths. <code data-code="endpoint">sPDP</code> &mdash; sector PDP: a profile-aware variant that bakes in the constraints of a regulated rail (e.g. payments sPDP enforces PSD3 SCA obligations + amount caps + corridor whitelists before the policy bundle ever runs). Same wire contract, same evidence-pack output.</p>
         <ul class="how-outcomes">
           <li><span class="how-pill is-allow">allow_with_constraints</span> &mdash; your app proceeds. It MUST honour the obligations attached (e.g.&nbsp;<code>audit.emit</code>, <code>redaction.required</code>) and abort if a stop_condition fires before completion.</li>
           <li><span class="how-pill is-approve">require_approval</span> &mdash; your app pauses, queues a human or system approver, and re-asks the PDP after the approval is recorded. The original request keeps the same <code>policy_decision_id</code>.</li>
@@ -453,7 +454,7 @@
         <div class="arch-num">14</div>
         <h3 class="arch-h">Conformance-first</h3>
         <p class="arch-b">A protocol without conformance is marketing language. KYE<span class="tm">™</span> publishes a black-box fixture pack that any conformant Gateway must pass &mdash; the same pack tests vendor stacks, internal stacks, and the reference Gateway, byte-for-byte the same.</p>
-        <code class="arch-path">37 conformance fixtures &middot; 37/37 pass &middot; conformance-report.json normative</code>
+        <code class="arch-path">38 conformance fixtures &middot; 38/38 pass &middot; conformance-report.json normative</code>
       </article>
     </div>
 
@@ -502,6 +503,6 @@
 </main>
 <footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected by assets/components.js mountKyeComponents() --></footer>
 <button id="scroll-top" class="scroll-top" type="button" aria-label="Scroll to top" data-kye-scroll-top><!-- svg injected --></button>
-<script type="module" src="main.js?v=1778680000"></script>
+<script type="module" src="main.js?v=1778700000"></script>
 </body>
 </html>
