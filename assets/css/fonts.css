@@ -1,0 +1,29 @@
+
+/* ============================================================
+   SELF-HOSTED TTF FONTS — no external dependency.
+   Inter Variable (one TTF, all weights 100-900, italic axis present).
+   JetBrains Mono Regular for code/eyebrow/pill contexts.
+   ============================================================ */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('./assets/fonts/InterVariable.ttf') format('truetype-variations'),
+       url('./assets/fonts/InterVariable.ttf') format('truetype');
+  font-variation-settings: "wght" 400;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url('./assets/fonts/JetBrainsMono-Regular.ttf') format('truetype');
+}
+
+/* KYE Protocol™ landing — enterprise theme.
+ *
+ * Palette: deep navy + indigo accent + slate text. Typography: Inter system.
+ * Surface lifts use real shadows + soft borders, not glow.
+ */
+

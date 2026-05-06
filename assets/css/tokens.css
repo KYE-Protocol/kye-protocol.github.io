@@ -1,0 +1,87 @@
+/* ============================================================
+   §TOKENS — KYE Protocol™ design-system tokens (single source of truth)
+   ============================================================
+   Every colour, spacing, radius, type and motion value used across
+   the site SHOULD come from one of these tokens. Token names are
+   the public contract; raw values can move freely. New components
+   reach for `var(--kye-*)` rather than redefining magic numbers.
+   See public/site/COMPONENTS.md for usage.
+   ============================================================ */
+:root {
+  /* Brand */
+  --kye-color-brand:           #1A8754;   /* Google green primary */
+  --kye-color-brand-2:         #137333;   /* hover lift */
+  --kye-color-brand-soft:      rgba(26, 135, 84, 0.10);
+  --kye-color-brand-line:      rgba(26, 135, 84, 0.22);
+  /* Semantic */
+  --kye-color-danger:          #EA4335;
+  --kye-color-warning:         #F4B400;
+  --kye-color-info:            #1A73E8;
+  --kye-color-success:         #1A8754;
+  /* Surface (light mode defaults; dark mode overrides further down) */
+  --kye-color-bg:              #fcfcfd;
+  --kye-color-surface:         #ffffff;
+  --kye-color-paper-2:         #f8f9fa;
+  --kye-color-line:            rgba(15, 23, 42, 0.10);
+  --kye-color-line-strong:     rgba(15, 23, 42, 0.18);
+  /* Text */
+  --kye-color-text:            #0b0f1c;
+  --kye-color-text-muted:      #555a72;
+  --kye-color-text-dim:        #8993b0;
+  /* Type scale */
+  --kye-type-hero:             clamp(40px, 6vw, 72px);
+  --kye-type-h1:               clamp(28px, 4vw, 44px);
+  --kye-type-h2:               clamp(22px, 2.6vw, 30px);
+  --kye-type-h3:               clamp(17px, 1.6vw, 20px);
+  --kye-type-body:             16px;
+  --kye-type-small:            13.5px;
+  --kye-type-tiny:              11.5px;
+  --kye-type-mono:             12.5px;
+  /* Spacing scale (8-pt rhythm) */
+  --kye-space-1:               4px;
+  --kye-space-2:               8px;
+  --kye-space-3:               12px;
+  --kye-space-4:               16px;
+  --kye-space-5:               20px;
+  --kye-space-6:               24px;
+  --kye-space-8:               32px;
+  --kye-space-10:              40px;
+  --kye-space-12:              48px;
+  --kye-space-16:              64px;
+  /* Radius */
+  --kye-radius-1:              4px;
+  --kye-radius-2:              6px;
+  --kye-radius-3:              10px;
+  --kye-radius-4:              14px;
+  --kye-radius-pill:           999px;
+  /* Shadow */
+  --kye-shadow-1:              0 1px 2px rgba(15, 23, 42, 0.06);
+  --kye-shadow-2:              0 4px 14px rgba(15, 23, 42, 0.08);
+  --kye-shadow-3:              0 12px 32px rgba(15, 23, 42, 0.12);
+  /* Motion */
+  --kye-motion-fast:           120ms cubic-bezier(.2, .8, .2, 1);
+  --kye-motion-base:           200ms cubic-bezier(.2, .8, .2, 1);
+  --kye-motion-slow:           320ms cubic-bezier(.2, .8, .2, 1);
+  /* Layout */
+  --kye-container:             1180px;
+  --kye-reading:               720px;
+  /* Z-index lattice */
+  --kye-z-content:             1;
+  --kye-z-sticky:              50;
+  --kye-z-overlay:             100;
+  --kye-z-modal:               10000;
+}
+:root[data-theme="dark"] {
+  --kye-color-bg:              #0a0e1a;
+  --kye-color-surface:         #161c30;
+  --kye-color-paper-2:         #1a2138;
+  --kye-color-line:            rgba(255, 255, 255, 0.10);
+  --kye-color-line-strong:     rgba(255, 255, 255, 0.18);
+  --kye-color-text:            #F0F4FF;
+  --kye-color-text-muted:      #C9D0E2;
+  --kye-color-text-dim:        #AAB2CC;
+  --kye-color-brand:           #81C995;
+  --kye-color-brand-2:         #A8DAB5;
+  --kye-color-brand-soft:      rgba(129, 201, 149, 0.16);
+  --kye-color-brand-line:      rgba(129, 201, 149, 0.30);
+}

@@ -133,14 +133,14 @@ Persona-chip icons (`account_balance` / `credit_card` / `smart_toy` / `local_hos
 
 ## 8. Outstanding gaps (priority order)
 
-| Priority | Gap | Owner | Notes |
+| Priority | Gap | Status | Notes |
 |---|---|---|---|
-| P1 | Migrate 12 inline-chrome pages to `data-kye-*` placeholders | site | Each page is 5 minutes — see §2 above for the recipe. |
-| P1 | `legal.html` uses legacy `<header class="nav">` — should rename to `top-bar` and use the canonical kyeHeader factory | site | Same as above; flagged in §2. |
-| P2 | Refactor `styles.css` into `tokens.css` + `base.css` + `components/*.css` + `pages/*.css` | site | Cosmetic — current monolith works. |
-| P2 | Replace remaining magic-number colours / paddings in §FINAL-1..40 with `var(--kye-*)` tokens | site | Incremental; new code already uses tokens. |
-| P3 | Whitepaper section icons could carry into top-bar drawer for a richer mobile menu | site | Nice-to-have. |
-| P3 | Add automated visual regression (Playwright screenshot diff) so chrome drift fails CI | site | Currently caught only by html-validate + manual inspection. Would close the loop the user has been hitting. |
+| P1 | Migrate 12 inline-chrome pages to `data-kye-*` placeholders | ✅ done | All 12 pages now use `<header data-kye-header>` / `<footer data-kye-footer>` / `<button data-kye-scroll-top>`. `assets/components.js` `mountKyeComponents()` rehydrates with canonical markup. Bug-fixing chrome = 1 file edit. |
+| P1 | `legal.html` legacy `<header class="nav">` rename | ✅ done | Resolved by the migration above — legal.html now ships the canonical top-bar. |
+| P2 | `styles.css` into `tokens.css` + `fonts.css` + base + components | ✅ partial | `tokens.css` (87 lines) + `fonts.css` (29 lines) extracted to `assets/css/`, loaded via `@import` from styles.css. TOC at top of styles.css enumerates §FINAL-1..42. Further extraction (base / components / pages) deferred — current monolith works and reordering risks cascade regressions. |
+| P2 | Replace remaining magic-number colours / paddings with `var(--kye-*)` | open | New code uses tokens; old §FINAL-1..40 hard-codes some colours. Incremental refactor — no functional impact. |
+| P3 | Whitepaper section icons in top-bar drawer | ✅ already shipping | `mountKyeComponents()` builds the drawer from the same NAV_ITEMS list with per-tab Material Symbols, so the drawer inherits the icon palette. |
+| P3 | Visual regression CI (Playwright screenshot diff) | ✅ scaffolded | `.github/workflows/visual-regression.yml` written. Currently `if: false` until the Actions-minute budget resets — flip the gate to activate. Captures every page × {desktop, mobile} × {light, dark} = 48 screenshots per run. |
 
 ## 9. How to keep this audit honest
 
