@@ -152,6 +152,78 @@
   </div>
 </section>
 
+<section id="signals" class="section technical-only" aria-labelledby="h-signals">
+        <span class="eyebrow">Signed Signals &amp; Webhooks &middot; runtime, not registry</span>
+    <h2 id="h-signals" class="h-section">Every authority change, <span class="accent">delivered as a signed event</span>.</h2>
+  <div class="section-body"><div class="container">
+    <p class="lede">A registry is passive. KYE Protocol<span class="tm">™</span> is a <em>runtime authority layer</em> &mdash; when authority changes, downstream systems must know before the next request lands. The <strong>KYE Signal Bus<span class="tm">™</span></strong> emits signed, replayable events for every grant, revocation, state transition, decision, approval, recovery action and evidence-pack lifecycle. Subscribers verify with public keys alone, deduplicate by event id, and bind every signal back to the audit chain.</p>
+
+    <h3 class="arch-tier-h" style="margin-top:22px">Nine event families &middot; ~70 well-known types</h3>
+    <div class="prim-grid" style="margin-top:14px">
+      <div class="prim-card"><span class="ms">person</span><strong>Entity</strong><span><code data-code="field">created</code> &middot; <code data-code="field">verified</code> &middot; <code data-code="field">state_changed</code> &middot; <code data-code="field">suspended</code> &middot; <code data-code="field">quarantined</code> &middot; <code data-code="field">revoked</code> &middot; <code data-code="field">recovered</code> &middot; <code data-code="field">tombstoned</code></span></div>
+      <div class="prim-card"><span class="ms">verified_user</span><strong>Authority</strong><span><code data-code="field">granted</code> &middot; <code data-code="field">updated</code> &middot; <code data-code="field">limited</code> &middot; <code data-code="field">elevated</code> &middot; <code data-code="field">frozen</code> &middot; <code data-code="field">revoked</code> &middot; <code data-code="field">expired</code></span></div>
+      <div class="prim-card"><span class="ms">share</span><strong>Delegation</strong><span><code data-code="field">created</code> &middot; <code data-code="field">activated</code> &middot; <code data-code="field">expired</code> &middot; <code data-code="field">disputed</code> &middot; <code data-code="field">revoked</code></span></div>
+      <div class="prim-card"><span class="ms">extension</span><strong>Capability</strong><span><code data-code="field">registered</code> &middot; <code data-code="field">version_published</code> &middot; <code data-code="field">validated</code> &middot; <code data-code="field">deprecated</code> &middot; <code data-code="field">quarantined</code> &middot; <code data-code="field">revoked</code> &middot; <code data-code="field">invocation_allowed</code> &middot; <code data-code="field">invocation_denied</code></span></div>
+      <div class="prim-card"><span class="ms">balance</span><strong>Decision</strong><span><code data-code="field">created</code> &middot; <code data-code="field">allowed</code> &middot; <code data-code="field">denied</code> &middot; <code data-code="field">requires_approval</code> &middot; <code data-code="field">requires_step_up</code> &middot; <code data-code="field">quarantined</code> &middot; <code data-code="field">replayed</code> &middot; <code data-code="field">replay_mismatch</code></span></div>
+      <div class="prim-card"><span class="ms">credit_card</span><strong>Payments &amp; agent purchasing</strong><span><code data-code="field">payment_authority.granted</code> / <code data-code="field">revoked</code> &middot; <code data-code="field">purchase_authority.allowed</code> / <code data-code="field">denied</code> / <code data-code="field">requires_approval</code> &middot; <code data-code="field">card_token.bound</code> / <code data-code="field">unbound</code> / <code data-code="field">frozen</code></span></div>
+      <div class="prim-card"><span class="ms">key</span><strong>Recovery &amp; break-glass</strong><span><code data-code="field">recovery.requested</code> / <code data-code="field">approved</code> / <code data-code="field">rejected</code> / <code data-code="field">completed</code> &middot; <code data-code="field">break_glass.granted</code> / <code data-code="field">used</code> / <code data-code="field">expired</code> / <code data-code="field">revoked</code></span></div>
+      <div class="prim-card"><span class="ms">verified</span><strong>Evidence &amp; audit</strong><span><code data-code="field">audit.event_appended</code> &middot; <code data-code="field">integrity_check_passed</code> / <code data-code="field">failed</code> &middot; <code data-code="field">evidence_pack.generated</code> / <code data-code="field">signed</code> / <code data-code="field">verified</code> &middot; <code data-code="field">decision_map.generated</code></span></div>
+      <div class="prim-card"><span class="ms">workspace_premium</span><strong>Self-audit &amp; conformance</strong><span><code data-code="field">self_audit.started</code> / <code data-code="field">completed</code> / <code data-code="field">failed</code> &middot; <code data-code="field">conformance.self_test_passed</code> / <code data-code="field">failed</code> &middot; <code data-code="field">certification.issued</code> / <code data-code="field">revoked</code></span></div>
+    </div>
+
+    <h3 class="arch-tier-h" style="margin-top:26px">Canonical envelope &middot; one shape across every event</h3>
+    <p class="arch-b">Schema: <code data-code="path">https://schemas.kye.dev/signal.json</code>. Signing covers the full envelope; subscribers verify with the publisher's published JWKS.</p>
+<pre class="codeblock" style="margin-top:10px"><code>{
+  "schema_version":  "kye.webhook.v1",
+  "event_id":        "kye:event:01HX...",
+  "event_type":      "kye.authority.revoked",
+  "event_version":   "1.0",
+  "occurred_at":     "2026-05-06T21:30:00Z",
+  "tenant_id":       "tenant_acme",
+  "correlation_id":  "kye:corr:agent_purchase_001",
+  "causation_id":    "kye:event:01HX-prev...",
+  "actor_entity_id":     "kye:entity:agent:shopping_agent_456",
+  "principal_entity_id": "kye:entity:person:customer_123",
+  "subject_ref":     "kye:authority:grant:purchase_001",
+  "reason_code":     "principal_revoked_authority",
+  "data": { "previous_state": "active", "new_state": "revoked",
+            "affected_capabilities": ["kye:capability:payment_action:card_purchase"] },
+  "audit_ref":     "kye:audit:event_001",
+  "evidence_refs": ["kye:evidence-pack:authority_revocation_001"],
+  "delivery":  { "idempotency_key": "kye:event:01HX...", "replayable": true },
+  "signature": { "algorithm": "ed25519", "key_id": "kye:key:webhook_signing_001",
+                 "signature": "..." }
+}</code></pre>
+
+    <h3 class="arch-tier-h" style="margin-top:26px">Endpoints &middot; subscribe, manage, replay</h3>
+    <ul class="eg-pilot-deliv" style="margin-top:8px">
+      <li><code data-code="endpoint">POST /v1/webhook-endpoints</code> &middot; <code data-code="endpoint">GET</code> &middot; <code data-code="endpoint">PATCH</code> &middot; <code data-code="endpoint">DELETE</code> &mdash; manage subscriber endpoints + filter expressions</li>
+      <li><code data-code="endpoint">POST /v1/webhook-endpoints/{id}:test</code> &middot; <code data-code="endpoint">:rotate-secret</code> &mdash; synthetic-event smoke test, signing-key rotation</li>
+      <li><code data-code="endpoint">GET /v1/webhook-deliveries</code> &middot; <code data-code="endpoint">POST .../{id}:replay</code> &mdash; delivery log + per-delivery replay</li>
+      <li><code data-code="endpoint">GET /v1/events</code> &middot; <code data-code="endpoint">GET .../{id}</code> &middot; <code data-code="endpoint">POST .../{id}:replay</code> &middot; <code data-code="endpoint">GET /v1/event-types</code></li>
+      <li><code data-code="endpoint">POST /v1/signals</code> &middot; <code data-code="endpoint">POST /v1/signals/subscribe</code> &middot; <code data-code="endpoint">GET /v1/signals/replay</code> &middot; <code data-code="endpoint">GET /v1/signals/{id}</code> &mdash; KYE Signal Bus<span class="tm">™</span> publisher side</li>
+    </ul>
+
+    <h3 class="arch-tier-h" style="margin-top:26px">Delivery guarantees</h3>
+    <ul class="eg-pilot-deliv" style="margin-top:8px">
+      <li><strong>Signed</strong> &mdash; over the canonical envelope, with JWKS-based verification and no shared secrets. Conformance test vectors verified in CI; the signing construction itself is part of the patent track.</li>
+      <li><strong>Idempotent</strong> &mdash; subscribers dedup by <code data-code="field">event_id</code>; replays carry the same id.</li>
+      <li><strong>Retried</strong> &mdash; exponential backoff under a publisher-configured budget; per-subscriber retry policy.</li>
+      <li><strong>Dead-lettered</strong> &mdash; exhausted retries land in DLQ for operator-initiated replay.</li>
+      <li><strong>Replayable</strong> &mdash; ≥ 24-hour replay window via <code data-code="endpoint">/v1/signals/replay</code>; subscribers refetch missed events without involving the publisher.</li>
+      <li><strong>Audit-bound</strong> &mdash; every publish, delivery, and retry is recorded as an audit event linked via <code data-code="field">audit_ref</code> + <code data-code="field">evidence_refs</code>.</li>
+      <li><strong>Three transports</strong> &mdash; HTTPS webhook (REQUIRED), SSE / WebSocket (OPTIONAL), Kafka-compatible topic (OPTIONAL).</li>
+      <li><strong>SSF / CAEP boundary adapter</strong> &mdash; KYE event types translate to OpenID Shared Signals Framework + CAEP at trust-domain boundaries; lossless for the in-scope families.</li>
+    </ul>
+
+    <h3 class="arch-tier-h" style="margin-top:26px">OSS / commercial split</h3>
+    <p class="arch-b"><strong>Open (Apache 2.0):</strong> envelope schema, every event-family schema, error / reason codes, delivery-receipt format, verifier SDK (TypeScript / Python / Go), reference Gateway webhook handler + retry loop + DLQ + replay endpoint, conformance test vectors. <strong>Commercial (KYE Cloud<span class="tm">™</span>):</strong> managed signal bus (multi-region, multi-tenant, high-volume fanout), replay console, delivery analytics, subscriber-health monitor, sector-specific event packs, SIEM exports (Splunk / Datadog / Chronicle / Sentinel), EventBridge / Kafka / SNS / Pub/Sub connectors, SLA-backed delivery. The contract has to be open or KYE Protocol<span class="tm">™</span> isn't a protocol.</p>
+
+    <h3 class="arch-tier-h" style="margin-top:26px">Worked example &middot; agent-purchase revocation</h3>
+    <p class="arch-b">A customer revokes their shopping-agent's payment authority. One signed <code data-code="field">kye.authority.revoked</code> event fans out to five subscribers: <strong>bank</strong> freezes the agent card token; <strong>merchant platform</strong> blocks future agent purchases; <strong>agent runtime</strong> removes the <code data-code="field">payment_action.card_purchase</code> capability; <strong>SIEM</strong> opens an alert linked to the audit-chain ref; <strong>audit pipeline</strong> emits <code data-code="field">kye.evidence_pack.generated</code> for the regulator-facing pack. All five verify with the same public-key set; the regulator can replay the entire flow offline.</p>
+  </div></div>
+</section>
+
 <section id="state-model" class="section technical-only" aria-labelledby="h-state-model">
         <span class="eyebrow">State model &middot; six dimensions</span>
     <h2 id="h-state-model" class="h-section">An entity isn&rsquo;t one state. It&rsquo;s <span class="accent">six independent states</span>, all auditable.</h2>

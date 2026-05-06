@@ -59,6 +59,27 @@
   <p class="lede">Tier A &middot; Runtime governance: authority &middot; state &middot; decision &middot; policy-bound &middot; evidence &middot; audit-trail. Tier B &middot; Protocol design: schema &middot; dictionary &middot; taxonomy &middot; metadata &middot; graph &middot; profile &middot; registry &middot; conformance. Tier C &middot; Developer adoption: API &middot; SDK. Commercial layer (KYE Cloud<span class="tm">™</span>) is SKU-first, metering-first, dashboard-first &mdash; never bleeds into the open core.</p>
 </div></section>
 
+<section class="section technical-only" aria-labelledby="h-webhooks-dev">
+  <div class="container">
+    <h2 id="h-webhooks-dev" class="h-section">Subscribe to <span class="accent">signed signals</span> in 10 minutes.</h2>
+    <p class="lede">KYE Protocol<span class="tm">™</span> is event-driven. The KYE Signal Bus<span class="tm">™</span> emits signed, replayable events for every authority, decision, recovery and evidence-pack lifecycle. Build a verifier:</p>
+    <ol class="eg-steps" style="margin-top:14px">
+      <li>Install the SDK &mdash; <code data-code="path">npm i @kye-protocol/sdk</code> &middot; <code data-code="path">pip install kye-sdk</code> &middot; <code data-code="path">go get github.com/KYE-Protocol/sdk-go</code></li>
+      <li>Stand up a <code data-code="endpoint">POST</code> receiver that accepts the canonical JSON envelope (schema: <code data-code="path">https://schemas.kye.dev/signal.json</code>).</li>
+      <li>On receive: <code data-code="field">verifyWebhook(envelope, headers)</code> against the publisher's published JWKS. Multiple signing-suite bindings are supported per the conformance pack.</li>
+      <li>Deduplicate by <code data-code="field">event_id</code> using the SDK's idempotency helper or your store. Replays carry the same id.</li>
+      <li>Switch on <code data-code="field">event_type</code> &mdash; <code data-code="field">kye.authority.revoked</code>, <code data-code="field">kye.decision.requires_approval</code>, <code data-code="field">kye.capability.quarantined</code>, <code data-code="field">kye.evidence_pack.generated</code>, etc. (see <a href="protocol.html#signals" style="color:var(--accent);text-decoration:underline">9 event families</a>).</li>
+      <li>Ack with <code data-code="field">2xx</code> within the publisher's timeout. Anything else &rarr; retry with exponential backoff &rarr; eventual DLQ.</li>
+      <li>Subscribe via <code data-code="endpoint">POST /v1/webhook-endpoints</code> with your URL + filter expression + retry policy. Test via <code data-code="endpoint">:test</code>.</li>
+    </ol>
+    <p class="lede" style="margin-top:14px"><strong>Open contract:</strong> envelope schema, every event-family schema, verifier SDK, reference Gateway webhook handler + retry loop + DLQ + replay endpoint, conformance test vectors. <strong>Commercial (KYE Cloud<span class="tm">™</span>):</strong> managed signal bus, replay console, delivery analytics, SIEM exports, EventBridge / Kafka / SNS / Pub/Sub connectors, SLA-backed delivery.</p>
+    <div class="hero-cta" style="margin-top:14px">
+      <a href="protocol.html#signals" class="btn btn-primary"><span class="ms">send</span> Full signals reference &rarr;</a>
+      <a href="https://github.com/KYE-Protocol" target="_blank" rel="noopener" class="btn btn-secondary"><span class="ms">code</span> Verifier SDKs</a>
+    </div>
+  </div>
+</section>
+
 <section class="section"><div class="container" style="text-align:center">
   <h2 class="h-section">Get started.</h2>
   <p class="lede" style="margin:0 auto 24px">Schemas, OpenAPI, fixtures, SDKs &mdash; all in the public org.</p>
