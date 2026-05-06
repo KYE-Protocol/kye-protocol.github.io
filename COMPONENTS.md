@@ -63,7 +63,7 @@ See the `:root` block at the top of `styles.css`.
 
 ### Top-bar header
 ```html
-<header data-kye-header data-active="builders"></header>
+<header data-kye-header data-active="developers"></header>
 ```
 `mountKyeComponents()` injects the canonical top-bar markup with the brand
 mark, primary nav (8 audience tabs), GitHub CTA, theme toggle and drawer

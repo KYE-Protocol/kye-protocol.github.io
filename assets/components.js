@@ -16,7 +16,7 @@
  * placeholder — both work.
  *
  * Usage in a page:
- *   <header data-kye-header data-active="builders"></header>
+ *   <header data-kye-header data-active="developers"></header>
  *   <footer data-kye-footer></footer>
  *   <button data-kye-scroll-top></button>
  *   <!-- contact modal injected on first [data-contact-trigger] click -->
@@ -25,7 +25,7 @@
 const NAV_ITEMS = [
   { id: 'home',       href: './',              label: 'Home',       icon: 'home',            color: '#1A8754' },
   { id: 'protocol',   href: 'protocol.html',   label: 'Protocol',   icon: 'architecture',    color: '#00ACC1' },
-  { id: 'builders',   href: 'builders.html',   label: 'Builders',   icon: 'code',            color: '#1A73E8' },
+  { id: 'developers', href: 'developers.html', label: 'Developers', icon: 'code',            color: '#1A73E8' },
   { id: 'buyers',     href: 'buyers.html',     label: 'Buyers',     icon: 'business_center', color: '#B47200' },
   { id: 'auditors',   href: 'auditors.html',   label: 'Auditors',   icon: 'verified_user',   color: '#009688' },
   { id: 'compliance', href: 'compliance.html', label: 'Compliance', icon: 'rule',            color: '#1A73E8' },
