@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script>(function(){try{var s=localStorage.getItem("kye-theme");if(s==="dark"||s==="light"){document.documentElement.setAttribute("data-theme",s);}}catch(e){}})();</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KYE Protocol™ — Connector Hub™ | IPG · MPG · Checkout · MCP · IAM · SIEM · GRC · KYC/KYB/KYA</title>
+  <meta name="description" content="The KYE Connector Hub™. Plug KYE Protocol™ into payment gateways, internet/mobile payment gateways, checkout, shopping carts, wallets, MCP servers, agent runtimes, IAM, policy engines, SIEM, SOAR, GRC, and KYC/KYB/KYA providers. Open connector manifest schema; commercial managed connectors." />
+  <meta name="keywords" content="KYE connectors, IPG connector, MPG connector, checkout connector, MCP connector, IAM connector, SIEM connector, GRC connector, KYC KYB KYA connector, connector manifest, connector hub, OPA connector, Cerbos connector, AWS Cedar connector" />
+  <link rel="canonical" href="https://kye-protocol.github.io/connectors.html" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="KYE Protocol™ — Connector Hub™" />
+  <meta property="og:description" content="Plug KYE into payment gateways, checkouts, wallets, IAM, policy engines, SIEM, GRC, agent runtimes, KYC/KYB/KYA providers." />
+  <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
+  <meta property="og:url" content="https://kye-protocol.github.io/connectors.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css?v=1778940000" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="top-bar" role="banner" data-kye-header data-active="connectors"><!-- canonical chrome injected --></header>
+<main id="main" role="main">
+
+<section id="top" class="hero">
+  <div class="container hero-inner">
+    <span class="hero-pill"><span class="dot"></span> KYE Connector Hub<span class="tm">™</span> &middot; open contracts, paid runtime</span>
+    <h1 id="hero-title" style="margin-top:18px">Connect KYE to <span class="accent">the systems that already run your business</span>.</h1>
+    <p class="lede">Payment gateways, checkouts, wallets, MCP servers, agent runtimes, IAM, policy engines, SIEM, GRC, KYC/KYB/KYA providers, cloud event buses. The KYE Connector Hub<span class="tm">™</span> is one canonical manifest schema, 14 connector categories, and a public registry. Open contracts; commercial managed runtime.</p>
+    <div class="cn-quick" style="margin-top:18px">
+      <a href="#categories" class="cn-pill"><span class="ms">category</span> 14 categories</a>
+      <a href="#flagship"   class="cn-pill"><span class="ms">star</span> Flagship connectors</a>
+      <a href="#manifest"   class="cn-pill"><span class="ms">data_object</span> Manifest schema</a>
+      <a href="#dictionaries" class="cn-pill"><span class="ms">menu_book</span> Dictionaries</a>
+      <a href="#endpoints"  class="cn-pill"><span class="ms">api</span> Endpoints</a>
+      <a href="#events"     class="cn-pill"><span class="ms">send</span> Events</a>
+      <a href="#oss-paid"   class="cn-pill"><span class="ms">balance</span> OSS / paid</a>
+      <a href="#publish"    class="cn-pill"><span class="ms">publish</span> Publish a connector</a>
+    </div>
+  </div>
+</section>
+
+<section id="categories" class="section" aria-labelledby="h-cat">
+        <span class="eyebrow">14 categories</span>
+    <h2 id="h-cat" class="h-section">Six families, fourteen categories.</h2>
+  <div class="section-body"><div class="container">
+    <div class="prim-grid" style="margin-top:14px">
+      <div class="prim-card"><span class="ms">payments</span><strong>Payments &amp; commerce</strong><span><code data-code="field">internet_payment_gateway</code> &middot; <code data-code="field">mobile_payment_gateway</code> &middot; <code data-code="field">payment_gateway</code> &middot; <code data-code="field">checkout</code> &middot; <code data-code="field">shopping_cart</code> &middot; <code data-code="field">card_token</code> &middot; <code data-code="field">wallet</code> &middot; <code data-code="field">open_banking</code> &middot; <code data-code="field">merchant_risk</code> &middot; <code data-code="field">chargeback</code></span></div>
+      <div class="prim-card"><span class="ms">smart_toy</span><strong>AI &amp; agent runtime</strong><span><code data-code="field">mcp_server</code> &middot; <code data-code="field">agent_runtime</code> &middot; <code data-code="field">tool_gateway</code> &middot; <code data-code="field">capability_registry</code> &middot; <code data-code="field">model_registry</code> &middot; <code data-code="field">prompt_registry</code> &middot; <code data-code="field">workflow</code></span></div>
+      <div class="prim-card"><span class="ms">key</span><strong>Identity &amp; access</strong><span><code data-code="field">oauth_oidc</code> &middot; <code data-code="field">saml</code> &middot; <code data-code="field">scim</code> &middot; <code data-code="field">spiffe_spire</code> &middot; <code data-code="field">iam</code> &middot; <code data-code="field">pam</code> &middot; <code data-code="field">passkey</code> &middot; <code data-code="field">credential_issuer</code></span></div>
+      <div class="prim-card"><span class="ms">policy</span><strong>Policy &amp; governance</strong><span><code data-code="field">opa</code> &middot; <code data-code="field">cerbos</code> &middot; <code data-code="field">aws_cedar</code> &middot; <code data-code="field">grc</code> &middot; <code data-code="field">control_mapping</code> &middot; <code data-code="field">certification</code> &middot; <code data-code="field">self_audit</code></span></div>
+      <div class="prim-card"><span class="ms">manage_search</span><strong>Security &amp; observability</strong><span><code data-code="field">siem</code> &middot; <code data-code="field">soar</code> &middot; <code data-code="field">splunk</code> &middot; <code data-code="field">sentinel</code> &middot; <code data-code="field">datadog</code> &middot; <code data-code="field">cloudwatch</code> &middot; <code data-code="field">kafka</code> &middot; <code data-code="field">eventbridge</code> &middot; <code data-code="field">webhook</code></span></div>
+      <div class="prim-card"><span class="ms">badge</span><strong>Verification</strong><span><code data-code="field">kyc_provider</code> &middot; <code data-code="field">kyb_provider</code> &middot; <code data-code="field">kya_provider</code> &middot; <code data-code="field">agent_passport</code> &middot; <code data-code="field">credential_verification</code></span></div>
+    </div>
+  </div></div>
+</section>
+
+<section id="flagship" class="section alt" aria-labelledby="h-fl">
+        <span class="eyebrow">Flagship connectors</span>
+    <h2 id="h-fl" class="h-section">Three connectors that open the most doors.</h2>
+  <div class="section-body"><div class="container">
+    <div class="prim-grid" style="margin-top:14px">
+      <a href="agent-purchasing.html" class="prim-card"><span class="ms">credit_card</span><strong>IPG / MPG Connector</strong><span>Add KYE authority checks to internet and mobile payment gateways. Verify delegated agent authority, customer scope, payment-instrument state, merchant category, approval thresholds, and risk state before the gateway processes the payment. <em>KYE authorises the agent before the gateway processes the payment.</em></span><em>view payment connector &rarr;</em></a>
+      <a href="open-banking.html" class="prim-card"><span class="ms">shopping_cart</span><strong>Checkout Guard<span class="tm">™</span></strong><span>Detect agent-backed checkout flows and verify whether the agent is allowed to buy this basket, from this merchant, using this payment instrument, under this customer's limits. Per-checkout signed Decision Map<span class="tm">™</span> + evidence-pack delta.</span><em>explore checkout integration &rarr;</em></a>
+      <a href="mcp.html" class="prim-card"><span class="ms">smart_toy</span><strong>MCP Server &amp; Connector</strong><span>Expose KYE authority checks, schemas, dictionaries, Decision Maps<span class="tm">™</span>, and evidence packs to MCP-compatible agents, IDEs, and developer tools &mdash; while production enforcement stays inside the KYE Runtime Gateway.</span><em>explore MCP integration &rarr;</em></a>
+    </div>
+  </div></div>
+</section>
+
+<section id="manifest" class="section" aria-labelledby="h-man">
+        <span class="eyebrow">Connector manifest</span>
+    <h2 id="h-man" class="h-section">One canonical schema for every connector.</h2>
+  <div class="section-body"><div class="container">
+    <p class="lede">Every connector ships a <code data-code="field">kye.connector_manifest.v1</code> document. The manifest declares what the connector does, which profiles it supports, which integration points it exposes, what it subscribes to, what it publishes, what side effects it can produce, and how it authenticates. Schema: <code data-code="path">https://schemas.kye.dev/connector-manifest.json</code>.</p>
+<pre class="codeblock" style="margin-top:14px"><code>{
+  "schema_version": "kye.connector_manifest.v1",
+  "connector_id":   "kye:connector:ipg:example_gateway",
+  "name":           "Example IPG Connector",
+  "display_name":   "Example Internet Payment Gateway Connector",
+  "connector_type": "internet_payment_gateway",
+  "category":       "payments",
+  "version":        "1.0.0",
+  "publisher": {
+    "publisher_entity_id":  "kye:org:kye_protocol",
+    "maintainer_entity_ids": ["kye:user:maintainer_001"]
+  },
+  "description": "Adds KYE authority pre-checks to IPG flows.",
+  "supported_profiles": [
+    "kye.core.v1", "kye.payment_authority.v1",
+    "kye.agent_purchasing.v1", "kye.webhooks.v1", "kye.evidence.v1"
+  ],
+  "integration_points": [
+    { "name": "pre_authorisation_check", "direction": "outbound_to_kye",
+      "method": "POST", "path": "/v1/authority:decide", "required": true },
+    { "name": "payment_result_webhook",  "direction": "inbound_to_kye",
+      "method": "POST", "path": "/v1/events", "required": false }
+  ],
+  "capabilities": [
+    "agent_purchase_check", "payment_authority_check",
+    "basket_hash_binding", "merchant_category_scope",
+    "approval_threshold", "evidence_pack_generation"
+  ],
+  "auth": {
+    "auth_type": "api_key_or_oauth_client_credentials",
+    "supports_key_rotation": true,
+    "supports_mtls": true
+  },
+  "events": {
+    "subscribes_to": [
+      "kye.authority.revoked", "kye.decision.requires_approval",
+      "kye.payment_authority.revoked"
+    ],
+    "publishes": [
+      "kye.purchase_authority.allowed",
+      "kye.purchase_authority.denied",
+      "kye.purchase_authority.requires_approval"
+    ]
+  },
+  "risk": {
+    "risk_level":                    "high",
+    "side_effect_level":             "move_money",
+    "requires_signature_verification": true,
+    "requires_idempotency":          true,
+    "requires_audit_event":          true
+  },
+  "runtime": {
+    "deployment_modes":   ["hosted", "byoc", "on_prem"],
+    "supported_languages": ["typescript", "python", "go"]
+  },
+  "integrity": {
+    "manifest_hash":     "...",
+    "signature_required": true,
+    "signature_ref":     "kye:signature:connector_manifest_001"
+  },
+  "status":     "active",
+  "created_at": "2026-05-06T00:00:00Z",
+  "updated_at": "2026-05-06T00:00:00Z"
+}</code></pre>
+  </div></div>
+</section>
+
+<section id="dictionaries" class="section alt" aria-labelledby="h-dict">
+        <span class="eyebrow">Dictionaries</span>
+    <h2 id="h-dict" class="h-section">Stable enums, governed openly.</h2>
+  <div class="section-body"><div class="container">
+    <p class="lede">Five dictionaries underpin the manifest. Additions land via the <a href="working-groups.html#rfc">RFC process</a>; existing values never change semantics.</p>
+    <ul class="eg-pilot-deliv" style="margin-top:14px">
+      <li><strong><code data-code="field">connector_type</code></strong> &mdash; the 30+ types listed in the categories grid above (internet_payment_gateway, mcp_server, iam, opa, siem, kyc_provider, etc.).</li>
+      <li><strong><code data-code="field">connector_category</code></strong> &mdash; payments &middot; commerce &middot; agent_runtime &middot; identity &middot; policy &middot; security &middot; observability &middot; governance &middot; verification &middot; audit &middot; compliance &middot; developer_tools.</li>
+      <li><strong><code data-code="field">connector_status</code></strong> &mdash; draft &middot; submitted &middot; validating &middot; active &middot; deprecated &middot; quarantined &middot; revoked &middot; archived.</li>
+      <li><strong><code data-code="field">integration_point_type</code></strong> &mdash; pre_authorisation_check &middot; post_authorisation_event &middot; decision_request &middot; event_subscription &middot; webhook_receiver &middot; webhook_sender &middot; evidence_export &middot; audit_import &middot; policy_sync &middot; identity_sync &middot; capability_sync &middot; credential_binding &middot; approval_callback.</li>
+      <li><strong><code data-code="field">side_effect_level</code></strong> &mdash; read_only &middot; audit_only &middot; decision_only &middot; write_internal &middot; send_external_message &middot; execute_transaction &middot; move_money &middot; modify_authority &middot; admin_action &middot; destructive. Higher levels require stricter auth, idempotency, and audit guarantees.</li>
+    </ul>
+  </div></div>
+</section>
+
+<section id="endpoints" class="section" aria-labelledby="h-ep">
+        <span class="eyebrow">Endpoints</span>
+    <h2 id="h-ep" class="h-section">Register, install, monitor, replay.</h2>
+  <div class="section-body"><div class="container">
+    <p class="lede"><strong>Connector registry endpoints</strong> (publishers):</p>
+    <ul class="eg-pilot-deliv" style="margin-top:8px">
+      <li><code data-code="endpoint">POST   /v1/connectors</code> &middot; <code data-code="endpoint">GET /v1/connectors</code> &middot; <code data-code="endpoint">GET /v1/connectors/{id}</code> &middot; <code data-code="endpoint">PATCH</code></li>
+      <li><code data-code="endpoint">POST   /v1/connectors/{id}:validate</code> &middot; <code data-code="endpoint">:publish</code> &middot; <code data-code="endpoint">:deprecate</code> &middot; <code data-code="endpoint">:quarantine</code> &middot; <code data-code="endpoint">:revoke</code></li>
+    </ul>
+    <p class="lede" style="margin-top:14px"><strong>Connector installation endpoints</strong> (operators):</p>
+    <ul class="eg-pilot-deliv" style="margin-top:8px">
+      <li><code data-code="endpoint">POST   /v1/connector-installations</code> &middot; <code data-code="endpoint">GET</code> &middot; <code data-code="endpoint">GET .../{id}</code> &middot; <code data-code="endpoint">PATCH</code> &middot; <code data-code="endpoint">DELETE</code></li>
+      <li><code data-code="endpoint">POST   /v1/connector-installations/{id}:test</code> &middot; <code data-code="endpoint">:rotate-credentials</code></li>
+    </ul>
+    <p class="lede" style="margin-top:14px"><strong>Connector event endpoints</strong>:</p>
+    <ul class="eg-pilot-deliv" style="margin-top:8px">
+      <li><code data-code="endpoint">POST /v1/connectors/{id}/events</code> &middot; <code data-code="endpoint">GET /v1/connectors/{id}/events</code> &middot; <code data-code="endpoint">POST /v1/connectors/{id}:replay-events</code></li>
+    </ul>
+  </div></div>
+</section>
+
+<section id="events" class="section alt" aria-labelledby="h-ev">
+        <span class="eyebrow">Connector events</span>
+    <h2 id="h-ev" class="h-section">12 connector-lifecycle events.</h2>
+  <div class="section-body"><div class="container">
+    <p class="lede">Connector lifecycle events fan out via the <a href="protocol.html#signals">KYE Signal Bus<span class="tm">™</span></a>. Subscribers monitor connector health, gate installations behind validation, and receive credential-rotation prompts before signatures expire.</p>
+    <ul class="eg-pilot-deliv" style="margin-top:14px">
+      <li><code data-code="field">kye.connector.registered</code> &middot; <code data-code="field">validated</code> &middot; <code data-code="field">validation_failed</code> &middot; <code data-code="field">published</code></li>
+      <li><code data-code="field">kye.connector.deprecated</code> &middot; <code data-code="field">quarantined</code> &middot; <code data-code="field">revoked</code></li>
+      <li><code data-code="field">kye.connector.installed</code> &middot; <code data-code="field">installation_failed</code> &middot; <code data-code="field">health_degraded</code></li>
+      <li><code data-code="field">kye.connector.credential_rotation_required</code> &middot; <code data-code="field">event_replay_requested</code></li>
+    </ul>
+  </div></div>
+</section>
+
+<section id="oss-paid" class="section" aria-labelledby="h-oss">
+        <span class="eyebrow">OSS / paid split</span>
+    <h2 id="h-oss" class="h-section">Connector schemas open. <span class="accent">Connector runtime commercial.</span></h2>
+  <div class="section-body"><div class="container">
+    <table class="cmp-table" style="margin-top:14px">
+      <thead><tr><th></th><th>Open source &middot; Apache 2.0</th><th>KYE Cloud<span class="tm">™</span> &middot; commercial</th></tr></thead>
+      <tbody>
+        <tr><th>Schemas</th><td>Connector manifest schema, dictionaries (type / category / status / integration-point / side-effect), event schemas</td><td>Sector-specific connector packs (regulated-industry presets)</td></tr>
+        <tr><th>Reference connectors</th><td>Sample IPG, sample checkout, sample MCP, sample SIEM &mdash; full source, MIT/Apache licensed</td><td>Maintained production connectors with SLAs</td></tr>
+        <tr><th>Test harness</th><td>Local connector test harness, conformance fixtures, signature verifier</td><td>Continuous conformance monitoring, partner certification workflow</td></tr>
+        <tr><th>Hub</th><td>&mdash;</td><td>Managed Connector Hub<span class="tm">™</span> &middot; partner registry &middot; install / configure / monitor UI</td></tr>
+        <tr><th>Runtime</th><td>&mdash;</td><td>Enterprise connector engine &middot; high-volume routing &middot; per-tenant rate limits &middot; multi-region failover</td></tr>
+        <tr><th>Health</th><td>&mdash;</td><td>Connector health monitoring &middot; SLA dashboards &middot; alerting &middot; degraded-state automation</td></tr>
+        <tr><th>BYOC / on-prem</th><td>Self-hosted reference impl</td><td>BYOC / on-prem deployment automation, regulated-sector compliance packs</td></tr>
+      </tbody>
+    </table>
+    <p class="lede" style="margin-top:14px"><em>Why this split?</em> The schema must be open or the ecosystem doesn't grow. Anyone can author, test, and publish a connector against the manifest without depending on a hosted service. The managed runtime, health monitoring, hub UI, and SLA-backed connectors are where the operational moat sits and is part of the patent track.</p>
+  </div></div>
+</section>
+
+<section id="publish" class="section alt" aria-labelledby="h-pub">
+        <span class="eyebrow">Publish a connector</span>
+    <h2 id="h-pub" class="h-section">Five steps from idea to public registry.</h2>
+  <div class="section-body"><div class="container">
+    <ol class="rd-status">
+      <li class="rd-row rd-row-shipped"><span class="rd-tag">P1</span><strong>Author the manifest.</strong> Fill in <code data-code="field">connector_type</code>, supported profiles, integration points, capabilities, side-effect level, auth modes.</li>
+      <li class="rd-row rd-row-shipped"><span class="rd-tag">P2</span><strong>Run conformance.</strong> Local test harness validates the manifest, the integration points, and the event signatures.</li>
+      <li class="rd-row rd-row-shipped"><span class="rd-tag">P3</span><strong>Sign &amp; submit.</strong> <code data-code="endpoint">POST /v1/connectors</code> with the signed manifest. Programme runs <code data-code="endpoint">:validate</code>.</li>
+      <li class="rd-row rd-row-shipped"><span class="rd-tag">P4</span><strong>Programme review.</strong> Schema, behaviour, side-effect classification, auth, audit emission. ~5 working days.</li>
+      <li class="rd-row rd-row-shipped"><span class="rd-tag">P5</span><strong>Publish.</strong> <code data-code="endpoint">:publish</code> &mdash; connector lands in the public registry and the Connector Hub<span class="tm">™</span>.</li>
+    </ol>
+    <div class="hero-cta" style="margin-top:14px">
+      <a href="partners.html" class="btn btn-primary"><span class="ms">handshake</span> Partner programme &rarr;</a>
+      <a href="certification.html" class="btn btn-secondary"><span class="ms">workspace_premium</span> Certification</a>
+      <a href="https://github.com/KYE-Protocol" target="_blank" rel="noopener" class="btn btn-secondary"><span class="ms">code</span> Reference connectors</a>
+      <a href="#" class="btn btn-secondary" data-contact-trigger><span class="ms">forum</span> Talk to the programme</a>
+    </div>
+  </div></div>
+</section>
+
+<section id="next" class="section" aria-labelledby="h-next">
+        <span class="eyebrow">Adjacent reading</span>
+    <h2 id="h-next" class="h-section">Where to go next.</h2>
+  <div class="section-body"><div class="container">
+    <div class="hero-cta" style="margin-top:8px">
+      <a href="build.html" class="btn btn-primary"><span class="ms">construction</span> Build with KYE &rarr;</a>
+      <a href="mcp.html" class="btn btn-secondary"><span class="ms">smart_toy</span> MCP server</a>
+      <a href="protocol.html#signals" class="btn btn-secondary"><span class="ms">send</span> Signals &amp; webhooks</a>
+      <a href="integrations.html" class="btn btn-secondary"><span class="ms">extension</span> Composition with adjacent standards</a>
+      <a href="partners.html" class="btn btn-secondary"><span class="ms">handshake</span> Partner programme</a>
+    </div>
+  </div></div>
+</section>
+
+</main>
+<footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected --></footer>
+<button id="scroll-top" class="scroll-top" type="button" aria-label="Scroll to top" data-kye-scroll-top><!-- svg injected --></button>
+<script type="module" src="main.js?v=1778940000"></script>
+</body>
+</html>

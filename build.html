@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script>(function(){try{var s=localStorage.getItem("kye-theme");if(s==="dark"||s==="light"){document.documentElement.setAttribute("data-theme",s);}}catch(e){}})();</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KYE Protocol™ — Build with KYE | Runtime Authority API · SDKs · MCP · Connectors · Webhooks</title>
+  <meta name="description" content="Build authority-aware apps with KYE Protocol™. Runtime Authority API, three SDKs (TypeScript / Python / Go), KYE MCP Server, Connector Hub™, signed webhooks, Decision Maps™ and evidence packs — for agentic systems, payment flows, checkout, wallets, IAM, SIEM, GRC and enterprise workflows." />
+  <meta name="keywords" content="build with KYE, KYE SDK, KYE API, KYE MCP server, KYE connectors, agent purchasing app, checkout guard, payment authority gateway, CISO authority console, evidence pack viewer, partner toolkit" />
+  <link rel="canonical" href="https://kye-protocol.github.io/build.html" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="KYE Protocol™ — Build with KYE" />
+  <meta property="og:description" content="Add runtime authority, delegated permissions, state-aware decisions, signed webhooks, Decision Maps™ and evidence packs to your apps." />
+  <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
+  <meta property="og:url" content="https://kye-protocol.github.io/build.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css?v=1778940000" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="top-bar" role="banner" data-kye-header data-active="build"><!-- canonical chrome injected --></header>
+<main id="main" role="main">
+
+<section id="top" class="hero">
+  <div class="container hero-inner">
+    <span class="hero-pill"><span class="dot"></span> Build with KYE<span class="tm">™</span></span>
+    <h1 id="hero-title" style="margin-top:18px">Build <span class="accent">authority-aware apps</span> with KYE.</h1>
+    <p class="lede">KYE Protocol<span class="tm">™</span> is not just a specification &mdash; it's a <em>build surface</em>. Runtime Authority API, three SDKs, an MCP server, a connector framework, signed webhooks, Decision Maps<span class="tm">™</span>, and evidence packs. Add delegated authority, state-aware decisions, and replayable proof to AI agents, payment flows, checkout, wallets, IAM, SIEM, GRC, and enterprise workflows.</p>
+    <p class="lede" style="margin-top:8px;font-style:italic;color:var(--accent);font-weight:600">Open contracts. Paid operations.</p>
+    <div class="cn-quick" style="margin-top:18px">
+      <a href="#surface"     class="cn-pill"><span class="ms">apps</span> Six surfaces</a>
+      <a href="#products"    class="cn-pill"><span class="ms">store</span> What you can build</a>
+      <a href="#api"         class="cn-pill"><span class="ms">api</span> Runtime API</a>
+      <a href="#sdks"        class="cn-pill"><span class="ms">code</span> SDKs</a>
+      <a href="#mcp"         class="cn-pill"><span class="ms">smart_toy</span> MCP server</a>
+      <a href="#connectors"  class="cn-pill"><span class="ms">extension</span> Connectors</a>
+      <a href="#oss-paid"    class="cn-pill"><span class="ms">balance</span> OSS / paid</a>
+    </div>
+  </div>
+</section>
+
+<section id="surface" class="section" aria-labelledby="h-surface">
+        <span class="eyebrow">Six surfaces</span>
+    <h2 id="h-surface" class="h-section">Pick the surface that fits your stack.</h2>
+  <div class="section-body"><div class="container">
+    <div class="prim-grid" style="margin-top:14px">
+      <a href="#api" class="prim-card"><span class="ms">api</span><strong>Runtime Authority API</strong><span>Ask whether an entity can act before the action executes. <code data-code="endpoint">POST /v1/runtime/authorize</code> &mdash; allow / require_approval / require_step_up / quarantine / deny + reason code + obligations + evidence refs.</span><em>view decision endpoint &rarr;</em></a>
+      <a href="#sdks" class="prim-card"><span class="ms">code</span><strong>SDKs</strong><span>TypeScript, Python, Go. Schema types, validators, decision client, signing helpers, evidence-pack builder, taxonomy resolver, decision-map renderer, webhook verifier.</span><em>view SDKs &rarr;</em></a>
+      <a href="mcp.html" class="prim-card"><span class="ms">smart_toy</span><strong>KYE MCP Server<span class="tm">™</span></strong><span>Expose KYE schemas, decisions, Decision Maps<span class="tm">™</span> and evidence packs to MCP-compatible agents and developer tools &mdash; while production enforcement stays in the runtime gateway.</span><em>explore MCP server &rarr;</em></a>
+      <a href="connectors.html" class="prim-card"><span class="ms">extension</span><strong>Connector Hub<span class="tm">™</span></strong><span>Plug KYE into payment gateways, checkouts, wallets, IAM, policy engines, SIEM, GRC, agent runtimes, KYC/KYB/KYA. Open manifest schema; commercial managed connectors.</span><em>view connector hub &rarr;</em></a>
+      <a href="protocol.html#signals" class="prim-card"><span class="ms">send</span><strong>Signed Signals &amp; Webhooks</strong><span>9 event families, ~70 well-known event types, canonical envelope, signed deliveries, idempotent + replayable + dead-letter-safe.</span><em>view event reference &rarr;</em></a>
+      <a href="compliance-card.html" class="prim-card"><span class="ms">verified</span><strong>Evidence Packs</strong><span>Generate signed, replayable proof bundles. Public-key-verifiable offline. Bind decisions, audit chain, control mapping, and OSCAL projection in one artefact.</span><em>inspect evidence pack &rarr;</em></a>
+    </div>
+  </div></div>
+</section>
+
+<section id="products" class="section alt" aria-labelledby="h-prod">
+        <span class="eyebrow">What you can build</span>
+    <h2 id="h-prod" class="h-section">Six high-leverage starters &mdash; and 15 more.</h2>
+  <div class="section-body"><div class="container">
+    <p class="lede">These are the products with the strongest pull from regulated buyers right now. Each composes from the surfaces above.</p>
+    <ul class="eg-tier-list" style="margin-top:14px">
+      <li><span class="eg-tier eg-tier-l3">P1</span><strong>KYE Checkout Guard<span class="tm">™</span></strong> &mdash; for merchants and commerce platforms. Detect agent-backed checkout flows and verify whether the agent is allowed to buy <em>this</em> basket from <em>this</em> merchant using <em>this</em> instrument under the customer's limits. Composes: Runtime API + Webhooks + Evidence Packs.</li>
+      <li><span class="eg-tier eg-tier-l3">P2</span><strong>KYE Payment Authority Gateway<span class="tm">™</span></strong> &mdash; for banks, issuers, IPGs, MPGs, PSPs, agentic-payment platforms. Verify delegated payment authority before the gateway processes the transaction. Composes: Runtime API + Payments connector + Evidence Packs.</li>
+      <li><span class="eg-tier eg-tier-l3">P3</span><strong>KYE MCP Server<span class="tm">™</span></strong> &mdash; for agent developers and internal AI platforms. Expose KYE authority objects, schemas, decisions, and evidence to MCP clients safely. Composes: MCP Server + Read-only tools + Gated decision tools.</li>
+      <li><span class="eg-tier eg-tier-l3">P4</span><strong>KYE CISO Console</strong> &mdash; for security and risk teams. View every agent, credential, capability, delegation, state, and revocation path. Composes: Authority Graph<span class="tm">™</span> + Webhooks + Audit chain.</li>
+      <li><span class="eg-tier eg-tier-l3">P5</span><strong>KYE Evidence Viewer</strong> &mdash; for auditors and regulators. Replay decisions, verify evidence packs offline with public keys, map events to controls. Composes: Evidence Packs + OSCAL projection + Decision Maps<span class="tm">™</span>.</li>
+      <li><span class="eg-tier eg-tier-l3">P6</span><strong>KYE Partner Toolkit</strong> &mdash; for consultants, audit firms, SIs. Run authority mapping, readiness checks, conformance prep, pilot scoping. Composes: Readiness API + Conformance pack + Decision Maps<span class="tm">™</span>.</li>
+    </ul>
+    <p class="lede" style="margin-top:14px">Other strong starters: agent purchasing apps &middot; agent marketplace trust layers &middot; wallet authority consoles &middot; open-banking delegated-authority apps &middot; enterprise service-account authority maps &middot; GRC evidence automation &middot; SIEM authority-signal feeds &middot; certification portals &middot; tool-governance gateways &middot; capability registries &middot; sector profiles for healthcare / custody / telco / federal.</p>
+  </div></div>
+</section>
+
+<section id="api" class="section" aria-labelledby="h-api">
+        <span class="eyebrow">Runtime Authority API</span>
+    <h2 id="h-api" class="h-section">One call, before the action executes.</h2>
+  <div class="section-body"><div class="container">
+    <p class="lede">The decision endpoint is the single most important surface. Your app asks; KYE answers in milliseconds.</p>
+<pre class="codeblock" style="margin-top:14px"><code>POST /v1/runtime/authorize
+{
+  "actor_entity_id":     "kye:entity:agent:shopping_agent_456",
+  "principal_entity_id": "kye:entity:person:customer_123",
+  "subject":             "kye:capability:payment_action:card_purchase",
+  "resource":            { "merchant_id": "M-7104", "amount": 9999, "currency": "GBP" },
+  "scope":               { "instrument": "kye:card_token:tok_abc..." },
+  "policy_decision_id":  "kye:dec:01HX..."
+}
+
+→
+{
+  "decision":  "allow_with_constraints",
+  "reason":    "scope_within_attenuated_authority",
+  "obligations": [ { "type": "audit.emit", ... }, { "type": "redaction.required", ... } ],
+  "stop_conditions": [ "actor.stop_signal", "delegation.revoked", "scope.attenuated" ],
+  "evidence_refs":   [ "kye:evidence-pack:01HX..." ],
+  "decision_map_ref": "kye:decision_map:01HX..."
+}
+</code></pre>
+    <p class="lede" style="margin-top:14px">Eight decision codes are stable across versions: <code data-code="allow">allow</code>, <code data-code="allow">allow_with_constraints</code>, <code data-code="approve">require_approval</code>, <code data-code="approve">require_step_up</code>, <code data-code="approve">require_human_review</code>, <code data-code="approve">require_recovery</code>, <code data-code="deny">quarantine</code>, <code data-code="deny">deny</code>. Map to your own code-set via the conformance pack.</p>
+  </div></div>
+</section>
+
+<section id="sdks" class="section alt" aria-labelledby="h-sdks">
+        <span class="eyebrow">Three SDKs</span>
+    <h2 id="h-sdks" class="h-section">Same surface in TypeScript, Python, and Go.</h2>
+  <div class="section-body"><div class="container">
+    <ul class="eg-pilot-deliv" style="margin-top:14px">
+      <li><strong>TypeScript</strong> &mdash; <code data-code="path">npm install @kye-protocol/sdk</code> &middot; <a href="https://github.com/KYE-Protocol/sdk-typescript" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">github.com/KYE-Protocol/sdk-typescript</a></li>
+      <li><strong>Python</strong> &mdash; <code data-code="path">pip install kye-sdk</code> &middot; <a href="https://github.com/KYE-Protocol/sdk-python" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">github.com/KYE-Protocol/sdk-python</a></li>
+      <li><strong>Go</strong> &mdash; <code data-code="path">go get github.com/KYE-Protocol/sdk-go</code> &middot; <a href="https://github.com/KYE-Protocol/sdk-go" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">github.com/KYE-Protocol/sdk-go</a></li>
+    </ul>
+    <p class="lede" style="margin-top:14px">Each SDK ships: schema types &middot; local validators &middot; decision client &middot; signing helpers &middot; evidence-pack builder &middot; taxonomy resolver &middot; metadata classifier &middot; graph traversal client &middot; decision-map renderer &middot; webhook verifier &middot; idempotency helper &middot; replay client.</p>
+    <div class="hero-cta" style="margin-top:14px">
+      <a href="developers.html" class="btn btn-primary"><span class="ms">code</span> Developer quickstart &rarr;</a>
+      <a href="https://github.com/KYE-Protocol" target="_blank" rel="noopener" class="btn btn-secondary"><span class="ms">open_in_new</span> GitHub org</a>
+    </div>
+  </div></div>
+</section>
+
+<section id="mcp" class="section" aria-labelledby="h-mcp">
+        <span class="eyebrow">KYE MCP Server<span class="tm">™</span></span>
+    <h2 id="h-mcp" class="h-section">Make KYE available to MCP-compatible agents.</h2>
+  <div class="section-body"><div class="container">
+    <p class="lede">Expose KYE schemas, dictionaries, authority checks, Decision Maps<span class="tm">™</span>, and evidence packs through a controlled MCP interface &mdash; while production enforcement stays in the KYE Runtime Gateway, never in MCP.</p>
+    <p class="lede" style="margin-top:8px"><strong>The boundary:</strong> MCP is a developer / agent integration surface. The Runtime Gateway is the enforcement surface. Don't conflate.</p>
+    <div class="hero-cta" style="margin-top:14px">
+      <a href="mcp.html" class="btn btn-primary"><span class="ms">smart_toy</span> KYE MCP Server reference &rarr;</a>
+      <a href="protocol.html" class="btn btn-secondary"><span class="ms">architecture</span> Runtime Gateway</a>
+    </div>
+  </div></div>
+</section>
+
+<section id="connectors" class="section alt" aria-labelledby="h-conn">
+        <span class="eyebrow">Connector Framework</span>
+    <h2 id="h-conn" class="h-section">Plug KYE into the systems you already run.</h2>
+  <div class="section-body"><div class="container">
+    <p class="lede">A canonical connector manifest schema, 14 connector categories, and a hub for discovery. Open contracts &mdash; commercial runtime.</p>
+    <div class="prim-grid" style="margin-top:14px">
+      <div class="prim-card"><span class="ms">payments</span><strong>Payments &amp; commerce</strong><span>IPG &middot; MPG &middot; payment gateway &middot; checkout &middot; shopping cart &middot; card-token &middot; wallet &middot; open banking &middot; merchant-risk &middot; chargeback / dispute</span></div>
+      <div class="prim-card"><span class="ms">smart_toy</span><strong>AI &amp; agent runtime</strong><span>MCP &middot; agent runtime &middot; tool gateway &middot; capability registry &middot; model registry &middot; prompt registry &middot; workflow</span></div>
+      <div class="prim-card"><span class="ms">key</span><strong>Identity &amp; access</strong><span>OAuth/OIDC &middot; SAML &middot; SCIM &middot; SPIFFE/SPIRE &middot; IAM &middot; PAM &middot; passkey &middot; credential issuer</span></div>
+      <div class="prim-card"><span class="ms">policy</span><strong>Policy &amp; governance</strong><span>OPA &middot; Cerbos &middot; AWS Cedar &middot; GRC &middot; control mapping &middot; certification &middot; self-audit</span></div>
+      <div class="prim-card"><span class="ms">manage_search</span><strong>Security &amp; observability</strong><span>SIEM &middot; SOAR &middot; Splunk &middot; Microsoft Sentinel &middot; Datadog &middot; CloudWatch &middot; Kafka &middot; EventBridge &middot; webhook</span></div>
+      <div class="prim-card"><span class="ms">badge</span><strong>Verification</strong><span>KYC provider &middot; KYB provider &middot; KYA provider &middot; agent passport &middot; credential verification</span></div>
+    </div>
+    <div class="hero-cta" style="margin-top:14px">
+      <a href="connectors.html" class="btn btn-primary"><span class="ms">extension</span> Connector Hub<span class="tm">™</span> &rarr;</a>
+      <a href="integrations.html" class="btn btn-secondary"><span class="ms">extension</span> Composition with adjacent standards</a>
+    </div>
+  </div></div>
+</section>
+
+<section id="oss-paid" class="section" aria-labelledby="h-oss">
+        <span class="eyebrow">OSS / paid split</span>
+    <h2 id="h-oss" class="h-section">Open contracts. <span class="accent">Paid operations.</span></h2>
+  <div class="section-body"><div class="container">
+    <table class="cmp-table" style="margin-top:14px">
+      <thead><tr><th></th><th>Open source &middot; Apache 2.0</th><th>KYE Cloud<span class="tm">™</span> &middot; commercial</th></tr></thead>
+      <tbody>
+        <tr><th>Schemas &amp; dictionaries</th><td>Every entity / authority / decision / event / connector-manifest schema; reason codes; taxonomies</td><td>Sector-specific event packs and connector packs</td></tr>
+        <tr><th>SDKs</th><td>TypeScript / Python / Go &mdash; schema types, validators, signing helpers, webhook verifier, evidence-pack builder</td><td>SDK-bundled telemetry, advanced replay, hosted SDK distribution</td></tr>
+        <tr><th>MCP server</th><td>Skeleton + read-only tools + decision tools (gated)</td><td>Hosted MCP server, multi-tenant, audit-bound, SLA-backed</td></tr>
+        <tr><th>Connectors</th><td>Manifest schema, conformance tests, sample IPG / checkout / MCP connectors, local test harness</td><td>Managed connector hub, enterprise connector engine, regulated-sector connector packs, BYOC / on-prem installer</td></tr>
+        <tr><th>Reference runtime</th><td>Reference Gateway: PEP middleware, embedded ePDP, conformance runner</td><td>Managed runtime gateway, decision engine, state engine, graph engine, signal bus, evidence engine</td></tr>
+        <tr><th>Operator UI</th><td>&mdash;</td><td>SaaS dashboard, Decision Map<span class="tm">™</span> UI, Authority Graph<span class="tm">™</span> UI, Evidence Pack Pro, replay console, blast-radius event trace</td></tr>
+        <tr><th>Conformance</th><td>38 black-box fixtures, test vectors</td><td>Continuous conformance monitoring, certification workflow, partner registry</td></tr>
+      </tbody>
+    </table>
+    <p class="lede" style="margin-top:14px"><em>Why this split?</em> The contract has to be open or KYE Protocol<span class="tm">™</span> isn't a protocol &mdash; partners and developers must be able to implement, integrate, and verify without depending on a hosted service. The runtime engine that scales decisions and signal delivery, manages multi-tenant operations, computes downstream impact, and ships connectors with SLAs is the operational moat &mdash; and it sits behind a paid layer.</p>
+  </div></div>
+</section>
+
+<section id="next" class="section alt" aria-labelledby="h-next">
+        <span class="eyebrow">Adjacent reading</span>
+    <h2 id="h-next" class="h-section">Where to go next.</h2>
+  <div class="section-body"><div class="container">
+    <div class="hero-cta" style="margin-top:8px">
+      <a href="developers.html" class="btn btn-primary"><span class="ms">code</span> Developer quickstart &rarr;</a>
+      <a href="mcp.html" class="btn btn-secondary"><span class="ms">smart_toy</span> MCP server</a>
+      <a href="connectors.html" class="btn btn-secondary"><span class="ms">extension</span> Connectors</a>
+      <a href="protocol.html#signals" class="btn btn-secondary"><span class="ms">send</span> Signals &amp; webhooks</a>
+      <a href="partners.html" class="btn btn-secondary"><span class="ms">handshake</span> Partner programme</a>
+    </div>
+  </div></div>
+</section>
+
+</main>
+<footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected --></footer>
+<button id="scroll-top" class="scroll-top" type="button" aria-label="Scroll to top" data-kye-scroll-top><!-- svg injected --></button>
+<script type="module" src="main.js?v=1778940000"></script>
+</body>
+</html>

@@ -27,6 +27,9 @@ const NAV_ITEMS = [
   { id: 'protocol',         href: 'protocol.html',         label: 'Protocol',         icon: 'architecture',            color: '#00ACC1' },
   { id: 'concepts',         href: 'concepts.html',         label: 'Concepts',         icon: 'category',                color: '#00ACC1' },
   { id: 'developers',       href: 'developers.html',       label: 'Developers',       icon: 'code',                    color: '#1A73E8' },
+  { id: 'build',            href: 'build.html',            label: 'Build',            icon: 'construction',            color: '#1A8754' },
+  { id: 'mcp',              href: 'mcp.html',              label: 'MCP',              icon: 'smart_toy',               color: '#8E24AA' },
+  { id: 'connectors',       href: 'connectors.html',       label: 'Connectors',       icon: 'extension',               color: '#FF6D00' },
   { id: 'buyers',           href: 'buyers.html',           label: 'Buyers',           icon: 'business_center',         color: '#B47200' },
   { id: 'auditors',         href: 'auditors.html',         label: 'Auditors',         icon: 'verified_user',           color: '#009688' },
   { id: 'regulators',       href: 'regulators.html',       label: 'Regulators',       icon: 'gavel',                   color: '#8E24AA' },
@@ -157,6 +160,16 @@ const FOOTER_GROUPS = [
       { href: 'docs.html',      label: 'Docs hub' },
       { href: 'glossary.html',  label: 'Glossary' },
       { href: 'faq.html',       label: 'FAQ' },
+    ],
+  },
+  {
+    heading: 'Build',
+    items: [
+      { href: 'build.html',       label: 'Build with KYE' },
+      { href: 'developers.html',  label: 'Developer quickstart' },
+      { href: 'mcp.html',         label: 'KYE MCP Server' },
+      { href: 'connectors.html',  label: 'Connector Hub' },
+      { href: 'protocol.html#signals', label: 'Signals & webhooks' },
     ],
   },
   {
