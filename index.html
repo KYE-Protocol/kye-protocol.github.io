@@ -27,7 +27,7 @@
   <meta name="twitter:title" content="KYE Protocol™ — Entity Authority Protocol for AI Governance | Authority Finality™" />
   <meta name="twitter:description" content="Authority Finality™ for AI agents — replayable proof of who or what acted, on behalf of whom, using which capability, under what authority, in what state, with what audit trail." />
   <meta name="twitter:image" content="https://kye-protocol.github.io/og.svg" />
-  <link rel="stylesheet" href="styles.css?v=1778290000" />
+  <link rel="stylesheet" href="styles.css?v=1778300000" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
   <script type="application/ld+json">
@@ -111,7 +111,7 @@
             "name": "Is KYE Protocol™ production-ready?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "v1.0 ships 41 normative profiles (Core, Gateway, Payments, Federation, Credentials, Attestation, Signals, Transparency, Conformance, Treasury, Custody, Healthcare, Telemetry, Capability, Recovery), 186 OpenAPI operations across 87+ runtime endpoints, 55 JSON Schemas with 58 validated examples, a reference Gateway, embedded PDP, PEP middleware, three SDKs (TypeScript / Python / Go), 37 conformance fixtures, and 173 compliance control mappings (SOC 2, ISO 27001:2022, PCI DSS 4.0, PSD2/PSD3, DORA, NIS2, EU AI Act, NIST 800-207, HIPAA). Apache 2.0."
+              "text": "v1.0 ships 41 normative profiles (Core, Gateway, Payments, Federation, Credentials, Attestation, Signals, Transparency, Conformance, Treasury, Custody, Healthcare, Telemetry, Capability, Recovery), <span class="kye-num">186</span> OpenAPI operations across 87+ runtime endpoints, 55 JSON Schemas with 58 validated examples, a reference Gateway, embedded PDP, PEP middleware, three SDKs (TypeScript / Python / Go), 37 conformance fixtures, and 173 compliance control mappings (SOC 2, ISO 27001:2022, PCI DSS 4.0, PSD2/PSD3, DORA, NIS2, EU AI Act, NIST 800-207, HIPAA). Apache 2.0."
             }
           },
           {
@@ -584,12 +584,13 @@
     <h2 id="h-evolution" class="h-section">The trust stack you have was <span class="accent">built for a different era</span>.</h2>
   <div class="section-body" id="evolution-body">
     <div class="container">
-    <p class="lede">
-      <strong>KYC</strong> verified your customers in 1990. <strong>KYB</strong> verified your business counterparties in 2010.
-      <strong>KYA</strong> &mdash; Know Your Agent &mdash; just started shipping in 2026 (Visa Trusted Agent, Skyfire, Persona, Sumsub, Trulioo).
-      Each new layer is bolted on. Each is siloed. Each is point-in-time. Each is vendor-locked.
-      <strong>KYE Protocol<span class="tm">™</span></strong> is the open contract that finally unifies all four &mdash; and adds the things every previous layer missed: <em>continuous</em> verification, <em>cascading</em> revocation, and a <em>chain of delegation</em> that proves the human is still on the hook when the agent is the one acting.
-    </p>
+    <ol class="kye-timeline" aria-label="Trust-stack evolution timeline">
+      <li class="kt-step kt-step-legacy"><span class="kt-year">1990</span><strong class="kt-name">KYC</strong><span class="kt-sub">Know Your Customer</span><span class="kt-note">Verifies a human (AML / banking)</span></li>
+      <li class="kt-step kt-step-legacy"><span class="kt-year">2010</span><strong class="kt-name">KYB</strong><span class="kt-sub">Know Your Business</span><span class="kt-note">Verifies a business counterparty</span></li>
+      <li class="kt-step kt-step-emerging"><span class="kt-year">2026</span><strong class="kt-name">KYA</strong><span class="kt-sub">Know Your Agent</span><span class="kt-note">Visa Trusted Agent, Skyfire, Persona, Sumsub, Trulioo</span></li>
+      <li class="kt-step kt-step-kye"><span class="kt-year">now</span><strong class="kt-name">KYE Protocol<span class="tm">™</span></strong><span class="kt-sub">Know Your Entity</span><span class="kt-note">Unifies KYC + KYB + KYA + continuous verification + cascading revocation + chain of delegation</span></li>
+    </ol>
+    <p class="lede" style="margin-top:14px">Each previous layer is bolted on, siloed, point-in-time, vendor-locked. <strong>KYE Protocol<span class="tm">™</span></strong> is the open contract that finally unifies all four &mdash; and adds the things every previous layer missed: <em>continuous</em> verification, <em>cascading</em> revocation, and a <em>chain of delegation</em> that proves the human is still on the hook when the agent is the one acting.</p>
 
     <div class="evo-grid">
       <article class="evo-card legacy">
@@ -982,7 +983,7 @@
       </article>
       <article class="sector-card" data-sector="ai-labs">
         <div class="sector-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M20 9h2M20 15h2M2 9h2M2 15h2"/></svg></div>
-        <h3>AI labs &amp; agent platforms</h3>
+        <h3>AI labs &amp; autonomous agents</h3>
         <p class="sector-pain">Your agent does something destructive. The user asks you to prove it wasn&rsquo;t supposed to. Now do that for every agent on every tenant.</p>
         <div class="sector-profiles">
           <a href="#profiles" class="prof-pill">Core</a><a href="#profiles" class="prof-pill">Capability</a><a href="#profiles" class="prof-pill">Attestation</a><a href="#profiles" class="prof-pill">Signals</a><a href="#profiles" class="prof-pill">Recovery</a><a href="#profiles" class="prof-pill">Telemetry</a>
@@ -1111,7 +1112,7 @@
 
       <article class="who-story" data-who="ai-labs">
         <p class="who-story-num">Story 02</p>
-        <h3 class="who-story-h">AI labs &amp; agent platforms</h3>
+        <h3 class="who-story-h">AI labs &amp; autonomous agents</h3>
         <blockquote class="who-story-quote">Your agent does something destructive. The user asks you to prove it wasn&rsquo;t supposed to.</blockquote>
         <p class="who-story-body">KYE Protocol<span class="tm">™</span> gives every action a <code>policy_decision_id</code>, a delegation chain back to a human, and a stop signal that revokes the agent everywhere at once.</p>
         <p class="who-story-meta">EU AI Act Title&nbsp;III covered &nbsp;&middot;&nbsp; Cascade revoke across grants &nbsp;&middot;&nbsp; Point-in-time replay</p>
@@ -1153,7 +1154,7 @@
     <div class="logos-strip" aria-label="Reference adopters and design partners">
       <p class="logos-strip-h"><strong>Design-partner logos coming soon.</strong></p>
       <p class="logos-strip-b">Banking, payments, AI&nbsp;lab, healthcare and custody integrators are integrating against the v1.0 contract.</p>
-      <p class="logos-strip-cta">Want to be on this strip? <a href="https://github.com/KYE-Protocol/Discussions/discussions/categories/show-and-tell" target="_blank" rel="noopener">Drop a note in Show&nbsp;&amp;&nbsp;Tell &rarr;</a></p>
+      <p class="logos-strip-cta">Want to be on this strip? <a href="#" data-contact-trigger>Drop a note &mdash; tell us about your integration &rarr;</a></p>
     </div>
   </div>
   </div>
@@ -1331,8 +1332,8 @@
       <article class="arch-card">
         <div class="arch-num">15</div>
         <h3 class="arch-h">API-first</h3>
-        <p class="arch-b">Validation happens at runtime. The headline endpoint <code>POST /v1/runtime/authorize</code> answers <em>can this entity perform this action, on behalf of this principal, using this capability, under this scope, in this state?</em> &mdash; in milliseconds, with a signed decision. Graph queries (authority path, delegation path, capability dependencies, blast radius) are first-class. 186 OpenAPI operations across 87+ runtime endpoints.</p>
-        <code class="arch-path">186 OpenAPI operations across 87+ runtime endpoints &middot; redocly-lint clean</code>
+        <p class="arch-b">Validation happens at runtime. The headline endpoint <code>POST /v1/runtime/authorize</code> answers <em>can this entity perform this action, on behalf of this principal, using this capability, under this scope, in this state?</em> &mdash; in milliseconds, with a signed decision. Graph queries (authority path, delegation path, capability dependencies, blast radius) are first-class. <span class="kye-num">186</span> OpenAPI operations across 87+ runtime endpoints.</p>
+        <code class="arch-path"><span class="kye-num">186</span> OpenAPI operations across 87+ runtime endpoints &middot; redocly-lint clean</code>
       </article>
 
       <article class="arch-card">
@@ -1484,15 +1485,7 @@
 
     <div class="compliance-row">
       <span class="lbl">Mapped to</span>
-      <span class="compliance-pill">SOC 2</span>
-      <span class="compliance-pill">ISO 27001:2022</span>
-      <span class="compliance-pill">PCI DSS 4.0</span>
-      <span class="compliance-pill">PSD2 / PSD3</span>
-      <span class="compliance-pill">DORA</span>
-      <span class="compliance-pill">NIS2</span>
-      <span class="compliance-pill">EU AI Act</span>
-      <span class="compliance-pill">NIST 800-207</span>
-      <span class="compliance-pill">HIPAA</span>
+      <span class="fwk-list" data-fwk-list>SOC 2 &middot; ISO 27001:2022 &middot; PCI DSS 4.0 &middot; PSD2/PSD3 &middot; DORA &middot; NIS2 &middot; EU AI Act &middot; NIST 800-207 &middot; HIPAA</span>
     </div>
     <p style="margin-top:18px;font-size:13px;color:var(--text-dim)">
       KYE<span class="tm">™</span> produces evidence; certifications are the customer&rsquo;s. The repo ships a complete control-mapping document showing which KYE<span class="tm">™</span> artefact &mdash; entity record, delegation, scope, credential, attestation, audit event, proof bundle, signal, transparency receipt, capability grant, recovery proof, break-glass grant, compromise report, state transition &mdash; satisfies which control, with the exact endpoint to extract it.
@@ -1707,7 +1700,7 @@ curl -X POST https://gw.example/v1/runtime/authorize \
       </details>
       <details class="faq-item" data-faq-aud="buyer">
         <summary>Who is using this today?</summary>
-        <p>The reference implementation, conformance suite and SDKs are public on <a href="https://github.com/KYE-Protocol" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">github.com/KYE-Protocol</a>. Public adopters are listed on the org profile as they go live. Banking, payment, custody and AI lab integrators are encouraged to share their integrations in <a href="https://github.com/KYE-Protocol/Discussions/discussions/categories/show-and-tell" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">Show &amp; Tell</a>.</p>
+        <p>The reference implementation, conformance suite and SDKs are public on <a href="https://github.com/KYE-Protocol" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">github.com/KYE-Protocol</a>. Public adopters are listed on the org profile as they go live. Banking, payment, custody and AI lab integrators are encouraged to share their integrations in <a href="#" data-contact-trigger style="color:var(--accent);text-decoration:underline">share their integration with us</a>.</p>
       </details>
       <details class="faq-item" data-faq-aud="buyer auditor regulator">
         <summary>Is the protocol patented?</summary>
@@ -1846,7 +1839,7 @@ curl -X POST https://gw.example/v1/runtime/authorize \
   } });
   window.mermaid = mermaid;
 </script>
-<script type="module" src="main.js?v=1778290000"></script>
+<script type="module" src="main.js?v=1778300000"></script>
 </body>
 </html>
 
