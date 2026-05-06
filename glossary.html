@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script>(function(){try{var s=localStorage.getItem("kye-theme");if(s==="dark"||s==="light"){document.documentElement.setAttribute("data-theme",s);}}catch(e){}})();</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KYE Protocol™ — Glossary | Plain-English definitions of every protocol term</title>
+  <meta name="description" content="Plain-English definitions of every KYE Protocol™ term: Authority Graph™, Decision Map™, Authority Finality™, on-behalf-of, attenuation, cascade, evidence pack, ePDP, PEP / PDP, decision codes, profile, conformance ladder, KYE Compliance Mapping Rail™, and 40 more." />
+  <meta name="keywords" content="KYE Protocol glossary, AI agent governance terms, Authority Finality definition, Decision Map definition, evidence pack definition, on-behalf-of, ePDP, PDP, PEP, conformance terms" />
+  <link rel="canonical" href="https://kye-protocol.github.io/glossary.html" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="KYE Protocol™ — Glossary" />
+  <meta property="og:description" content="Plain-English definitions of every KYE Protocol™ term." />
+  <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
+  <meta property="og:url" content="https://kye-protocol.github.io/glossary.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css?v=1778930000" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="top-bar" role="banner" data-kye-header data-active="glossary"><!-- canonical chrome injected --></header>
+<main id="main" role="main">
+
+<section id="top" class="hero">
+  <div class="container hero-inner">
+    <span class="hero-pill"><span class="dot"></span> Glossary &middot; every term, in plain English</span>
+    <h1 id="hero-title" style="margin-top:18px">Every KYE Protocol<span class="tm">™</span> term, <span class="accent">in plain English</span>.</h1>
+    <p class="lede">Defined once, used consistently. Where the term is a trademark of the KYE Protocol<span class="tm">™</span> project, the ™ is shown; where it is a generic concept, it is not. Glossary anchors are stable URLs &mdash; link to <code data-code="path">glossary.html#authority-finality</code> in your own docs.</p>
+    <div class="cn-quick" style="margin-top:18px">
+      <a href="#core"      class="cn-pill"><span class="ms">architecture</span> Core protocol</a>
+      <a href="#runtime"   class="cn-pill"><span class="ms">bolt</span> Runtime</a>
+      <a href="#evidence"  class="cn-pill"><span class="ms">verified</span> Evidence</a>
+      <a href="#compliance" class="cn-pill"><span class="ms">rule</span> Compliance</a>
+      <a href="#programme" class="cn-pill"><span class="ms">workspace_premium</span> Programme</a>
+      <a href="#external"  class="cn-pill"><span class="ms">extension</span> External</a>
+    </div>
+  </div>
+</section>
+
+<section id="core" class="section" aria-labelledby="h-core">
+        <span class="eyebrow">Core protocol</span>
+    <h2 id="h-core" class="h-section">Identity, authority, and the chain.</h2>
+  <div class="section-body"><div class="container">
+    <dl class="what-def-gloss">
+      <li id="entity"><strong>Entity</strong><span>Anything the protocol can name and reason about: a human, a service, an AI agent, a model, a tool, a workflow. Every entity has a URN.</span></li>
+      <li id="urn"><strong>URN</strong><span>The canonical identifier format: <code data-code="urn">kye:&lt;class&gt;:&lt;trust-domain&gt;:&lt;subclass&gt;:&lt;local&gt;</code>. Stable, namespaced, human-readable. Defined in <code data-code="path">public/id-format/</code>.</span></li>
+      <li id="actor"><strong>Actor</strong><span>The entity actually performing an action. For an AI agent paying a merchant, the actor is the agent.</span></li>
+      <li id="principal"><strong>Principal</strong><span>The entity on whose behalf the actor is acting. For the same payment, the principal is the customer or business that delegated authority.</span></li>
+      <li id="on-behalf-of"><strong>on-behalf-of</strong><span>The relationship between actor and principal. A first-class object in the protocol &mdash; not a header, not a claim, an object with its own schema and endpoint.</span></li>
+      <li id="delegation"><strong>Delegation</strong><span>A signed grant from one entity to another. Carries the authority being delegated, the scope it can be exercised under, and any constraints. Delegations form chains.</span></li>
+      <li id="authority"><strong>Authority</strong><span>The protocol's noun for "what an entity is allowed to cause to happen." Authority binds a capability + scope + state to an actor + principal pair.</span></li>
+      <li id="capability"><strong>Capability</strong><span>The named verb in the action vocabulary &mdash; e.g., <code data-code="field">payment.initiate</code>, <code data-code="field">data.read</code>. Capabilities are first-class with their own schemas.</span></li>
+      <li id="scope"><strong>Scope</strong><span>The constraint set bounding an authority &mdash; amount cap, currency, corridor, time window, beneficiary allowlist, etc. Children inherit parent scope (attenuation rule).</span></li>
+      <li id="attenuation"><strong>Attenuation</strong><span>The rule that a child authority's scope must be a subset (&supe;) of its parent's. The chain only narrows; it never broadens.</span></li>
+      <li id="state"><strong>State</strong><span>The current lifecycle status of an entity / authority / payload &mdash; e.g., active, quarantined, suspended, revoked. The protocol enforces transitions.</span></li>
+      <li id="authority-graph"><strong>Authority Graph<span class="tm">™</span></strong><span>The protocol's view of entities + delegations + authorities + capabilities + scopes as a typed graph. Every relationship is a typed edge.</span></li>
+    </dl>
+  </div></div>
+</section>
+
+<section id="runtime" class="section alt" aria-labelledby="h-rt">
+        <span class="eyebrow">Runtime</span>
+    <h2 id="h-rt" class="h-section">Decision, enforcement, cascade.</h2>
+  <div class="section-body"><div class="container">
+    <dl class="what-def-gloss">
+      <li id="decision"><strong>Decision</strong><span>The runtime's verdict on a single requested action: allow, allow_with_constraints, require_approval, deny &mdash; plus a reason code.</span></li>
+      <li id="decision-codes"><strong>Decision codes</strong><span>The standard set: <code data-code="allow">allow_with_constraints</code>, <code data-code="approve">require_approval</code>, <code data-code="deny">deny</code>. Stable across versions; mappable to your own code-set via the conformance pack.</span></li>
+      <li id="decision-map"><strong>Decision Map<span class="tm">™</span></strong><span>The signed, replayable artefact emitted with every authorise call. Shows which inputs led to which decision; verifiable offline with public keys.</span></li>
+      <li id="pep"><strong>PEP &mdash; Policy Enforcement Point</strong><span>The component that intercepts an action and asks the PDP for a decision. Lives in your application; ships as a reference Express middleware.</span></li>
+      <li id="pdp"><strong>PDP &mdash; Policy Decision Point</strong><span>The component that evaluates the request against authorities + state + scope and returns a decision. Ships as the reference Gateway.</span></li>
+      <li id="epdp"><strong>ePDP &mdash; Edge PDP</strong><span>A locally-cached, offline-capable PDP for the bank/merchant edge. Walks the chain, verifies signatures, returns a decision in &lt; 1 ms.</span></li>
+      <li id="cascade"><strong>Cascade</strong><span>The propagation pattern applied when an upstream authority is revoked or quarantined; downstream-derived authorities become unusable before the originating request returns. Mechanism is part of the patent track.</span></li>
+      <li id="authority-finality"><strong>Authority Finality<span class="tm">™</span></strong><span>The protocol-level guarantee that a request's authority chain is verified before the action takes effect &mdash; not after. The technical and evidentiary foundation behind the entire protocol.</span></li>
+    </dl>
+  </div></div>
+</section>
+
+<section id="evidence" class="section" aria-labelledby="h-ev">
+        <span class="eyebrow">Evidence</span>
+    <h2 id="h-ev" class="h-section">Audit chain, packs, replay.</h2>
+  <div class="section-body"><div class="container">
+    <dl class="what-def-gloss">
+      <li id="audit-chain"><strong>Audit chain</strong><span>The append-only, hash-linked sequence of audit events the runtime emits. Every entity creation, delegation, authority grant, decision, and state transition lands here.</span></li>
+      <li id="evidence-pack"><strong>Evidence Pack</strong><span>A signed bundle of audit-chain entries + decision maps + signatures + public-key set, replayable end-to-end with public keys alone. The artefact a regulator or auditor verifies.</span></li>
+      <li id="evidence-graph"><strong>Evidence Graph<span class="tm">™</span></strong><span>The graph view across multiple evidence packs &mdash; how decisions, authorities, and audit events relate. Used for incident reconstruction and dispute resolution.</span></li>
+      <li id="blast-radius-map"><strong>Blast Radius Map<span class="tm">™</span></strong><span>The view of which downstream authorities and active sessions a single revocation or quarantine signal will reach. Pre-emit; helps operators choose the right action.</span></li>
+      <li id="proof-bundle"><strong>Proof bundle</strong><span>The transport format for an evidence pack: signed JSON over JWS, or COSE-Sign for embedded contexts.</span></li>
+      <li id="payload-state"><strong>Payload state</strong><span>The lifecycle status of a single payload: signed, verified, replayed, tampered. Defined in <code data-code="path">public/vocabulary/payload-states.md</code>.</span></li>
+      <li id="canonicalisation"><strong>Canonicalisation</strong><span>JCS (RFC 8785) canonical JSON form, used for hashing and signing. Ensures bit-exact reproducibility across implementations.</span></li>
+      <li id="ed25519"><strong>Ed25519</strong><span>The default signing primitive across credentials and proof bundles. Specified by the spec; alternatives are enumerated, not extensible.</span></li>
+    </dl>
+  </div></div>
+</section>
+
+<section id="compliance" class="section alt" aria-labelledby="h-cmp">
+        <span class="eyebrow">Compliance</span>
+    <h2 id="h-cmp" class="h-section">Mapping rail, OSCAL, frameworks.</h2>
+  <div class="section-body"><div class="container">
+    <dl class="what-def-gloss">
+      <li id="control-mapping"><strong>Control mapping</strong><span>The named link from a protocol artefact to a regulatory control &mdash; e.g., evidence pack &rarr; SOC&nbsp;2 CC7.2. 266 mappings across 13 frameworks.</span></li>
+      <li id="compliance-mapping-rail"><strong>KYE Compliance Mapping Rail<span class="tm">™</span></strong><span>The runtime channel through which evidence becomes per-framework projection. One signed evidence pack &rarr; many framework views.</span></li>
+      <li id="compliance-card"><strong>AI System Compliance Card<span class="tm">™</span></strong><span>The public-key-verifiable nutrition label for any AI system: which controls are evidenced, against which framework, with which signing keys.</span></li>
+      <li id="oscal"><strong>OSCAL</strong><span>NIST Open Security Controls Assessment Language. The protocol projects to OSCAL component-definition / SSP / assessment-results / POA&amp;M, so OSCAL-native auditors keep their workflow.</span></li>
+      <li id="profile"><strong>Profile</strong><span>A scoped overlay of the spec for a specific sector or use case &mdash; <code data-code="profile">kye-payments-1.0</code>, <code data-code="profile">kye-custody-1.0</code>, etc. 36 v1.0 profiles, 5 v1.1 preview.</span></li>
+      <li id="non-goals"><strong>Non-goals</strong><span>Things the protocol explicitly does NOT do &mdash; replace SCA, replace tokenisation, run fraud scoring, etc. Documented in the threat-model page.</span></li>
+    </dl>
+  </div></div>
+</section>
+
+<section id="programme" class="section" aria-labelledby="h-prog">
+        <span class="eyebrow">Programme</span>
+    <h2 id="h-prog" class="h-section">Conformance, certification, partner ladder.</h2>
+  <div class="section-body"><div class="container">
+    <dl class="what-def-gloss">
+      <li id="conformance-pack"><strong>Conformance pack</strong><span>The 38 black-box fixtures any implementation runs to demonstrate spec compliance. Reproducible on a laptop; deterministic outputs.</span></li>
+      <li id="kye-self-tested"><strong>KYE Self-Tested<span class="tm">™</span></strong><span>L1 of the conformance ladder. You run the fixtures locally and self-declare results.</span></li>
+      <li id="kye-self-attested"><strong>KYE Self-Attested<span class="tm">™</span></strong><span>L2. Signed self-attestation (Ed25519, JWS) bundled with fixture results.</span></li>
+      <li id="kye-conformant"><strong>KYE Conformant<span class="tm">™</span></strong><span>L3. Programme-reviewed conformance report + badge + registry listing.</span></li>
+      <li id="kye-certified"><strong>KYE Certified<span class="tm">™</span></strong><span>L4. Third-party-audited certification by an approved firm. Annual revalidation.</span></li>
+      <li id="kye-cloud"><strong>KYE Cloud<span class="tm">™</span></strong><span>The optional commercial layer: hosted Registry, Validator, Evidence Vault, Conformance Runner. The protocol works without it.</span></li>
+      <li id="rfc"><strong>RFC</strong><span>The four-stage process for landing changes: discussion &rarr; spec PR &rarr; conformance fixture &rarr; sign-off. Documented on the <a href="working-groups.html#rfc">working groups page</a>.</span></li>
+    </dl>
+  </div></div>
+</section>
+
+<section id="external" class="section alt" aria-labelledby="h-ext">
+        <span class="eyebrow">External standards we compose with</span>
+    <h2 id="h-ext" class="h-section">For reference, not redefinition.</h2>
+  <div class="section-body"><div class="container">
+    <dl class="what-def-gloss">
+      <li id="oauth"><strong>OAuth 2.0 / OIDC</strong><span>Human-centric authorisation + identity federation. KYE Protocol<span class="tm">™</span> composes; it does not replace.</span></li>
+      <li id="spiffe"><strong>SPIFFE / SPIRE</strong><span>Workload identity for services. Composes with KYE<span class="tm">™</span> entity URNs at the trust-domain boundary.</span></li>
+      <li id="mcp"><strong>MCP &mdash; Model Context Protocol</strong><span>Tool / agent communication protocol. KYE<span class="tm">™</span> capability profiles map onto MCP tools.</span></li>
+      <li id="kya"><strong>KYA &mdash; Know Your Agent</strong><span>The general industry term for agent attestation. KYE Protocol<span class="tm">™</span> is the open contract layer that makes KYA, KYC, and KYB interoperable.</span></li>
+      <li id="psd3"><strong>PSD3</strong><span>EU revised Payment Services Directive. KYE Protocol<span class="tm">™</span> open-banking profile binds delegated payment-initiation authority to PSD3 SCA + reporting obligations.</span></li>
+      <li id="dora"><strong>DORA</strong><span>EU Digital Operational Resilience Act. The protocol's audit chain + evidence packs satisfy DORA's incident-reconstruction obligations.</span></li>
+      <li id="eu-ai-act"><strong>EU AI Act</strong><span>The Union's horizontal AI regulation. The protocol provides evidence for high-risk-AI obligations; conformance is a customer obligation, not a protocol claim.</span></li>
+    </dl>
+  </div></div>
+</section>
+
+<section id="next" class="section" aria-labelledby="h-next">
+        <span class="eyebrow">Where to go next</span>
+    <h2 id="h-next" class="h-section">Adjacent reading.</h2>
+  <div class="section-body"><div class="container">
+    <div class="hero-cta" style="margin-top:8px">
+      <a href="concepts.html" class="btn btn-primary"><span class="ms">category</span> The 6 primitives &rarr;</a>
+      <a href="vocabulary.html" class="btn btn-secondary"><span class="ms">menu_book</span> Vocabulary</a>
+      <a href="protocol.html" class="btn btn-secondary"><span class="ms">architecture</span> Protocol</a>
+      <a href="whitepaper.html" class="btn btn-secondary"><span class="ms">menu_book</span> Whitepaper</a>
+      <a href="faq.html" class="btn btn-secondary"><span class="ms">help</span> FAQ</a>
+    </div>
+  </div></div>
+</section>
+
+</main>
+<footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected --></footer>
+<button id="scroll-top" class="scroll-top" type="button" aria-label="Scroll to top" data-kye-scroll-top><!-- svg injected --></button>
+<script type="module" src="main.js?v=1778930000"></script>
+</body>
+</html>

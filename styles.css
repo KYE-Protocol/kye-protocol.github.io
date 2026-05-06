@@ -2497,15 +2497,14 @@ h3, h4, h5, .ps-tag, .eyebrow {
   margin-left: 0.04em;
   margin-right: 0.02em;
   font-feature-settings: "tnum" 0, "ss01" 0, "ss02" 0;
-  /* Force ™/® to stay glued to the preceding word. Without this, narrow
-     containers (mobile use-case cards, narrow grid cells) sometimes
-     wrap "KYE" + "™" onto separate lines because the .tm's margin-left
-     creates a soft break opportunity. The U+2060 word-joiner inserted
-     via ::before tells the browser "do not break here". */
-  white-space: nowrap;
 }
-.tm::before, .reg::before {
-  content: "\2060";
+/* Non-breaking glue group injected by glueTrademarkSpans() in
+   components.js so the marked term + ™/® never wraps onto separate
+   lines on narrow viewports. The wrapper lifts the last word of the
+   preceding text node into a nowrap container alongside the .tm
+   element, so the line-break opportunity between them disappears. */
+.tm-glue {
+  white-space: nowrap;
 }
 
 /* ============================================================

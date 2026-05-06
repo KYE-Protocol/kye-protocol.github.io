@@ -43,6 +43,11 @@ const NAV_ITEMS = [
   { id: 'agent-purchasing', href: 'agent-purchasing.html', label: 'Agent purchasing', icon: 'credit_card',             color: '#F4B400' },
   { id: 'whitepaper',       href: 'whitepaper.html',       label: 'Whitepaper',       icon: 'menu_book',               color: '#00838F' },
   { id: 'engage',           href: 'engage.html',           label: 'Engage',           icon: 'handshake',               color: '#1A8754' },
+  { id: 'partners',         href: 'partners.html',         label: 'Partners',         icon: 'group_work',              color: '#1A8754' },
+  { id: 'certification',    href: 'certification.html',    label: 'Certification',    icon: 'workspace_premium',       color: '#B47200' },
+  { id: 'training',         href: 'training.html',         label: 'Training',         icon: 'school',                  color: '#1A73E8' },
+  { id: 'working-groups',   href: 'working-groups.html',   label: 'Working groups',   icon: 'groups',                  color: '#00ACC1' },
+  { id: 'glossary',         href: 'glossary.html',         label: 'Glossary',         icon: 'book_2',                  color: '#5F6368' },
 ];
 
 const TM_NOTICE_FULL =
@@ -150,7 +155,18 @@ const FOOTER_GROUPS = [
       { href: 'readiness.html', label: 'Readiness self-test' },
       { href: 'demos.html',     label: 'Demos' },
       { href: 'docs.html',      label: 'Docs hub' },
+      { href: 'glossary.html',  label: 'Glossary' },
       { href: 'faq.html',       label: 'FAQ' },
+    ],
+  },
+  {
+    heading: 'Programme',
+    items: [
+      { href: 'engage.html',          label: 'Engagement model' },
+      { href: 'partners.html',        label: 'Partners' },
+      { href: 'certification.html',   label: 'Certification' },
+      { href: 'training.html',        label: 'Training' },
+      { href: 'working-groups.html',  label: 'Working groups' },
     ],
   },
   {
@@ -161,7 +177,6 @@ const FOOTER_GROUPS = [
       { href: 'sitemap.html',   label: 'Sitemap' },
       { href: 'legal.html',     label: 'Legal' },
       { href: 'legal-faq.html', label: 'Legal FAQ' },
-      { href: 'engage.html',    label: 'Engagement model' },
       { href: '#',              label: 'Talk to us', attrs: 'data-contact-trigger' },
     ],
   },
@@ -236,5 +251,41 @@ export function mountKyeComponents() {
   const y = new Date().getFullYear();
   for (const el of document.querySelectorAll('[data-kye-year]')) {
     el.textContent = y;
+  }
+
+  // Glue ™/® to the preceding word so narrow viewports never wrap
+  // "KYE" + "<span class="tm">™</span>" onto separate lines. CSS-only
+  // fixes (margin-left, ::before word-joiner, white-space:nowrap on
+  // the .tm itself) don't work because the line-break opportunity sits
+  // BETWEEN the text node and the span — outside the span's reach.
+  // The reliable fix: at load time, wrap each .tm + the trailing
+  // chars of its preceding text node up to the last word boundary in
+  // a single .tm-glue span with white-space:nowrap.
+  glueTrademarkSpans();
+}
+
+function glueTrademarkSpans() {
+  for (const tm of document.querySelectorAll('.tm, .reg')) {
+    // Already wrapped in a glue span?
+    const parent = tm.parentNode;
+    if (!parent || parent.classList?.contains('tm-glue')) continue;
+    const prev = tm.previousSibling;
+    if (!prev || prev.nodeType !== 3) continue; // need a preceding text node
+    const text = prev.nodeValue;
+    if (!text) continue;
+    // Find the last word-boundary in the preceding text. Glue from
+    // there to the .tm element. Word-boundary = last whitespace, or
+    // start-of-text.
+    const m = text.match(/\S+\s*$/);
+    if (!m) continue;
+    const splitAt = m.index;
+    // Split the text node so we keep everything before the last word
+    // intact, and only re-parent the last word + the .tm.
+    const tail = prev.splitText(splitAt);
+    const glue = document.createElement('span');
+    glue.className = 'tm-glue';
+    parent.insertBefore(glue, tail);
+    glue.appendChild(tail);
+    glue.appendChild(tm);
   }
 }
