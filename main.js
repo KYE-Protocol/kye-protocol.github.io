@@ -308,7 +308,11 @@ initWebMcp();
    attribute based on the snippet's content. CSS handles the
    actual colour (see §FINAL-26). */
 (function initCodeSnippetColours() {
-  const codes = document.querySelectorAll('.wp-article code');
+  // Apply semantic colouring to every <code> on the page — landing,
+  // whitepaper, legal, audience pages. The landing has many <code>
+  // refs (URN samples, schema names, decision values) that previously
+  // stayed grey because the tagger only walked .wp-article.
+  const codes = document.querySelectorAll('code');
   if (!codes.length) return;
   for (const el of codes) {
     if (el.dataset.code) continue;

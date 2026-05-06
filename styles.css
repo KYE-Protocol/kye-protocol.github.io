@@ -6808,3 +6808,29 @@ footer.footer  .brand-mark svg path {
   border-color: rgba(255,255,255,0.18) !important;
   color: #EEF1F9 !important;
 }
+
+/* §FINAL-31 — code-snippet semantic colouring across every page
+   (landing, audience pages, etc) — not only .wp-article. */
+code[data-code] {
+  background: var(--code-bg, rgba(95, 99, 104, 0.10));
+  color: var(--code-fg, var(--text));
+  border: 1px solid transparent;
+  padding: 1px 6px;
+  border-radius: 5px;
+  font-size: 12.5px;
+  font-family: var(--font-mono, ui-monospace, monospace);
+}
+code[data-code="type"]      { --code-bg: rgba(124, 58, 237, 0.10); --code-fg: #6D28D9; }
+code[data-code="field"]     { --code-bg: rgba(0, 172, 193, 0.10);  --code-fg: #007C91; }
+code[data-code="endpoint"]  { --code-bg: rgba(26, 115, 232, 0.10); --code-fg: #1A73E8; }
+code[data-code="profile"]   { --code-bg: rgba(245, 124, 0, 0.10);  --code-fg: #C56000; }
+code[data-code="allow"]     { --code-bg: rgba(26, 135, 84, 0.12);  --code-fg: var(--accent); font-weight: 600; }
+code[data-code="deny"]      { --code-bg: rgba(234, 67, 53, 0.12);  --code-fg: #C5221F; font-weight: 600; }
+code[data-code="condition"] { --code-bg: rgba(244, 180, 0, 0.16);  --code-fg: #B47200; font-weight: 600; }
+:root[data-theme="dark"] code[data-code="type"]      { --code-bg: rgba(167, 139, 250, 0.18); --code-fg: #C4B5FD; }
+:root[data-theme="dark"] code[data-code="field"]     { --code-bg: rgba(0, 188, 212, 0.18);   --code-fg: #80DEEA; }
+:root[data-theme="dark"] code[data-code="endpoint"]  { --code-bg: rgba(66, 165, 245, 0.18);  --code-fg: #90CAF9; }
+:root[data-theme="dark"] code[data-code="profile"]   { --code-bg: rgba(255, 167, 38, 0.18);  --code-fg: #FFCC80; }
+:root[data-theme="dark"] code[data-code="allow"]     { --code-bg: rgba(129, 201, 149, 0.18); --code-fg: #A8DAB5; }
+:root[data-theme="dark"] code[data-code="deny"]      { --code-bg: rgba(244, 119, 110, 0.18); --code-fg: #FFAB91; }
+:root[data-theme="dark"] code[data-code="condition"] { --code-bg: rgba(255, 213, 79, 0.18);  --code-fg: #FFE082; }
