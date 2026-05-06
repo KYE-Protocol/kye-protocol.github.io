@@ -204,6 +204,69 @@ initWebMcp();
   });
 })();
 
+/* Compliance-framework badges inside sector cards.
+   Replaces every .sector-frameworks block (currently a dot-joined
+   string like "SOC 2 · ISO 27001 · PCI DSS 4.0") with individually-
+   coloured badges so the eye can scan frameworks at a glance. */
+(function initFrameworkBadges() {
+  const FW = {
+    'SOC 2':         { slug: 'soc2',     hue: '#1A73E8' },
+    'ISO 27001':     { slug: 'iso27001', hue: '#34A853' },
+    'ISO 27001:2022':{ slug: 'iso27001', hue: '#34A853' },
+    'ISO 42001':     { slug: 'iso42001', hue: '#0F9D58' },
+    'PCI DSS':       { slug: 'pcidss',   hue: '#F4B400' },
+    'PCI DSS 4.0':   { slug: 'pcidss',   hue: '#F4B400' },
+    'PSD2':          { slug: 'psd2',     hue: '#FF6D00' },
+    'PSD3':          { slug: 'psd3',     hue: '#FF6D00' },
+    'PSD2/3':        { slug: 'psd2',     hue: '#FF6D00' },
+    'PSD2/PSD3':     { slug: 'psd2',     hue: '#FF6D00' },
+    'DORA':          { slug: 'dora',     hue: '#1565C0' },
+    'NIS2':          { slug: 'nis2',     hue: '#3F51B5' },
+    'EU AI Act':     { slug: 'euaiact',  hue: '#EA4335' },
+    'HIPAA':         { slug: 'hipaa',    hue: '#D81B60' },
+    'GDPR':          { slug: 'gdpr',     hue: '#8E24AA' },
+    'NIST 800-207':  { slug: 'nist800',  hue: '#5F6368' },
+    'NIST AI RMF':   { slug: 'nistairmf', hue: '#455A64' },
+    'NIST CSF':      { slug: 'nistcsf',  hue: '#37474F' },
+    'FedRAMP':       { slug: 'fedramp',  hue: '#1A8754' },
+    'MiCA':          { slug: 'mica',     hue: '#C2185B' },
+    'FFIEC':         { slug: 'ffiec',    hue: '#0277BD' },
+    'RBI':           { slug: 'rbi',      hue: '#009688' },
+    'MAS':           { slug: 'mas',      hue: '#6750A4' },
+    'CRR3':          { slug: 'crr3',     hue: '#00838F' },
+    'IEC 62443':     { slug: 'iec62443', hue: '#6D4C41' },
+    'FAA':           { slug: 'faa',      hue: '#1565C0' },
+    'EASA':          { slug: 'easa',     hue: '#3949AB' },
+    'ICAO':          { slug: 'icao',     hue: '#1976D2' },
+    'IATA':          { slug: 'iata',     hue: '#0288D1' },
+    'IMO':           { slug: 'imo',      hue: '#00838F' },
+    'IFRS':          { slug: 'ifrs',     hue: '#5D4037' },
+    '42 CFR Part 2': { slug: 'cfr42',    hue: '#AD1457' },
+  };
+  const blocks = document.querySelectorAll('.sector-frameworks');
+  if (!blocks.length) return;
+  for (const el of blocks) {
+    if (el.dataset.fwkBuilt) continue;
+    const text = (el.textContent || '').trim();
+    if (!text) continue;
+    // Split on · or | with optional surrounding whitespace
+    const parts = text.split(/\s*[·|]\s*/).map(s => s.trim()).filter(Boolean);
+    if (!parts.length) continue;
+    el.innerHTML = '';
+    el.dataset.fwkBuilt = '1';
+    el.classList.add('sector-frameworks-badged');
+    for (const p of parts) {
+      const meta = FW[p] || { slug: 'misc', hue: '#5F6368' };
+      const span = document.createElement('span');
+      span.className = 'fwk-badge';
+      span.dataset.fwk = meta.slug;
+      span.style.setProperty('--fwk', meta.hue);
+      span.textContent = p;
+      el.appendChild(span);
+    }
+  }
+})();
+
 /* Whitepaper section icons + per-section pager + reading progress.
    Prefixes each <h2 id> in .wp-article with a coloured Material
    icon based on the section id. Builds a 'previous / next' pager

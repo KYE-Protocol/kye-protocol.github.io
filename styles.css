@@ -7032,3 +7032,101 @@ code[data-code="misc"]     { --code-bg: rgba(63, 81, 181, 0.10);  --code-fg: #30
   color: #F0F4FF !important;
 }
 :root[data-theme="dark"] .kye-modal-grid label { color: #C9D0E2 !important; }
+
+/* ============================================================
+   §FINAL-35 — defeat the legacy `!important` grey on code
+   ============================================================
+   The bare-`code` selector at line 3876 sets
+     background: var(--paper-3) !important;
+     color:      var(--text)    !important;
+   That !important wins over §FINAL-31 / §FINAL-32 / §FINAL-26
+   data-code rules, which is why every snippet still rendered
+   grey on the user's view despite the tagger correctly
+   assigning data-code attributes.
+
+   This block re-applies the data-code colours with !important so
+   the legacy rule is overridden. Same hue map as §FINAL-31/32,
+   plus the type/field/endpoint/profile/allow/deny/condition set
+   from §FINAL-26.
+   ============================================================ */
+code[data-code] {
+  background: var(--code-bg, rgba(95, 99, 104, 0.10)) !important;
+  color:      var(--code-fg, var(--text)) !important;
+  border:     1px solid transparent !important;
+  padding:    1px 6px !important;
+  border-radius: 5px !important;
+  font-size:  12.5px !important;
+  font-family: var(--font-mono, ui-monospace, monospace) !important;
+}
+code[data-code="type"]      { --code-bg: rgba(124, 58, 237, 0.14) !important; --code-fg: #6D28D9 !important; }
+code[data-code="field"]     { --code-bg: rgba(0, 172, 193, 0.14)  !important; --code-fg: #007C91 !important; }
+code[data-code="endpoint"]  { --code-bg: rgba(26, 115, 232, 0.14) !important; --code-fg: #1A73E8 !important; }
+code[data-code="profile"]   { --code-bg: rgba(245, 124, 0, 0.14)  !important; --code-fg: #C56000 !important; }
+code[data-code="urn"]       { --code-bg: rgba(216, 27, 96, 0.14)  !important; --code-fg: #C2185B !important; }
+code[data-code="package"]   { --code-bg: rgba(255, 87, 34, 0.14)  !important; --code-fg: #BF360C !important; }
+code[data-code="header"]    { --code-bg: rgba(56, 142, 60, 0.14)  !important; --code-fg: #2E7D32 !important; font-weight: 600 !important; }
+code[data-code="path"]      { --code-bg: rgba(96, 125, 139, 0.14) !important; --code-fg: #455A64 !important; }
+code[data-code="allow"]     { --code-bg: rgba(26, 135, 84, 0.16)  !important; --code-fg: #1A8754 !important; font-weight: 600 !important; }
+code[data-code="deny"]      { --code-bg: rgba(234, 67, 53, 0.16)  !important; --code-fg: #C5221F !important; font-weight: 600 !important; }
+code[data-code="condition"] { --code-bg: rgba(244, 180, 0, 0.20)  !important; --code-fg: #B47200 !important; font-weight: 600 !important; }
+code[data-code="misc"]      { --code-bg: rgba(63, 81, 181, 0.14)  !important; --code-fg: #303F9F !important; }
+
+:root[data-theme="dark"] code[data-code="type"]      { --code-bg: rgba(167, 139, 250, 0.22) !important; --code-fg: #C4B5FD !important; }
+:root[data-theme="dark"] code[data-code="field"]     { --code-bg: rgba(0, 188, 212, 0.22)   !important; --code-fg: #80DEEA !important; }
+:root[data-theme="dark"] code[data-code="endpoint"]  { --code-bg: rgba(66, 165, 245, 0.22)  !important; --code-fg: #90CAF9 !important; }
+:root[data-theme="dark"] code[data-code="profile"]   { --code-bg: rgba(255, 167, 38, 0.22)  !important; --code-fg: #FFCC80 !important; }
+:root[data-theme="dark"] code[data-code="urn"]       { --code-bg: rgba(244, 143, 177, 0.22) !important; --code-fg: #F8BBD0 !important; }
+:root[data-theme="dark"] code[data-code="package"]   { --code-bg: rgba(255, 138, 101, 0.22) !important; --code-fg: #FFAB91 !important; }
+:root[data-theme="dark"] code[data-code="header"]    { --code-bg: rgba(129, 199, 132, 0.22) !important; --code-fg: #A5D6A7 !important; }
+:root[data-theme="dark"] code[data-code="path"]      { --code-bg: rgba(176, 190, 197, 0.20) !important; --code-fg: #CFD8DC !important; }
+:root[data-theme="dark"] code[data-code="allow"]     { --code-bg: rgba(129, 201, 149, 0.22) !important; --code-fg: #A8DAB5 !important; }
+:root[data-theme="dark"] code[data-code="deny"]      { --code-bg: rgba(244, 119, 110, 0.22) !important; --code-fg: #FFAB91 !important; }
+:root[data-theme="dark"] code[data-code="condition"] { --code-bg: rgba(255, 213, 79, 0.22)  !important; --code-fg: #FFE082 !important; }
+:root[data-theme="dark"] code[data-code="misc"]      { --code-bg: rgba(159, 168, 218, 0.22) !important; --code-fg: #C5CAE9 !important; }
+
+/* ============================================================
+   §FINAL-36 — compliance-framework badges inside sector cards
+   ============================================================
+   User: 'inside cards under one protocol every regulated sector,
+   we add framework names as individual colour-coded badges not
+   pills'. Replaces the dot-joined string '.sector-frameworks'
+   with a row of per-framework coloured badges, each tinted to
+   its own hue (defined in main.js initFrameworkBadges).
+   ============================================================ */
+.sector-frameworks-badged {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 6px;
+  margin-top: 8px;
+  letter-spacing: normal;
+  font-size: 11px;
+}
+.fwk-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--fwk, #5F6368) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--fwk, #5F6368) 30%, transparent);
+  color: var(--fwk, #5F6368);
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  line-height: 1.3;
+}
+@supports not (background: color-mix(in srgb, red, blue)) {
+  /* Older browser fallback: solid soft tint via raw rgba on common
+     hues. Unsupported hues fall back to var(--fwk) at 100% but with
+     reduced opacity via box-shadow. */
+  .fwk-badge {
+    background: rgba(95, 99, 104, 0.12);
+    border-color: rgba(95, 99, 104, 0.30);
+  }
+}
+:root[data-theme="dark"] .fwk-badge {
+  background: color-mix(in srgb, var(--fwk, #9AA0A6) 22%, transparent);
+  border-color: color-mix(in srgb, var(--fwk, #9AA0A6) 45%, transparent);
+  color: color-mix(in srgb, var(--fwk, #9AA0A6) 70%, white);
+}
