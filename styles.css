@@ -9792,3 +9792,15 @@ li > .fwk-list.sector-frameworks-badged {
 :root[data-theme="dark"] .ep-action-btn,
 :root[data-theme="dark"] .ep-pack-card,
 :root[data-theme="dark"] .ep-output { background: var(--surface-solid); border-color: var(--line); }
+
+/* §FINAL-61 — top-bar group dividers */
+.top-bar-nav .tb-divider {
+  display: inline-block;
+  width: 1px;
+  height: 20px;
+  background: var(--kye-color-line);
+  margin: 0 8px;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+@media (max-width: 1100px) { .top-bar-nav .tb-divider { display: none; } }

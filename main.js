@@ -860,8 +860,8 @@ initWebMcp();
               <label for="kye-contact-topic">Topic <span class="kye-req" aria-label="required">*</span></label>
               <select id="kye-contact-topic" name="topic" required>
                 <option value="general">General enquiry</option>
-                <option value="adoption">Adoption &mdash; integrating KYE Protocol&trade;</option>
-                <option value="sales">Speak to sales &mdash; KYE Cloud&trade; / cost</option>
+                <option value="adoption">Adoption &mdash; integrating KYE Protocol&#8482;</option>
+                <option value="sales">Speak to sales &mdash; KYE Cloud&#8482; / cost</option>
                 <option value="trademark">Trademark policy</option>
                 <option value="patent">Patent licensing</option>
                 <option value="conformance">Conformance &amp; certification</option>
