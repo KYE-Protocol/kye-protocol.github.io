@@ -9856,3 +9856,73 @@ li > .fwk-list.sector-frameworks-badged {
   font-size: 15.5px;
   line-height: 1.55;
 }
+
+/* ============================================================
+   §FINAL-63 — runtime decision card overflow + landing-card
+   white-space tightening
+   ============================================================
+   Two reports:
+     - "runtime decision cards cut off out of frame" — the
+       agent-purchase simulator's decision badge and the
+       reason_code / obligations meta both overflowed when the
+       label was long (allow_with_constraints, basket_hash_binding,
+       merchant_category_pinned).
+     - "too much white space in cards wasting real estate on
+       landing" — the §FINAL-62 min-height that reserved 2 lines for
+       every prim-card title was over-defensive: short titles
+       ("SDKs", "Apps") inherited 2 lines of empty space.
+   Fixes:
+     - Decision badge wraps when long; meta code wraps inside its
+       grid cell.
+     - prim-card title min-height removed; prim-grid uses
+       grid-auto-rows: 1fr so all cards in a row match the tallest
+       card without forcing every title to reserve 2 lines.
+     - prim-card vertical padding tightened. */
+
+/* Decision card — clamp to host width, allow long labels to wrap */
+.aps-decision-card {
+  padding: 12px 14px;
+  min-width: 0;
+  overflow: hidden;
+}
+.aps-decision-badge {
+  display: inline-block;
+  max-width: 100%;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  font-size: 13.5px;
+  padding: 7px 12px;
+}
+.aps-decision-meta {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+@media (max-width: 520px) {
+  .aps-decision-meta { grid-template-columns: minmax(0, 1fr); }
+}
+.aps-decision-meta > div { min-width: 0; }
+.aps-decision-meta code {
+  display: inline-block;
+  max-width: 100%;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+.aps-meta-k { white-space: nowrap; }
+
+/* Landing prim-cards — tighten white space; equal-row heights via
+   grid-auto-rows so single-line titles don't reserve a phantom 2nd
+   line. */
+.prim-grid { grid-auto-rows: 1fr; }
+.prim-card {
+  padding: 14px 16px;       /* was var(--kye-space-3) ≈ 24px */
+  gap: 4px 12px;            /* same column gap, tighter row gap */
+}
+.prim-card strong {
+  min-height: 0;            /* drop the §FINAL-62 reservation */
+  line-height: 1.25;
+}
+.prim-card span {
+  line-height: 1.45;
+}
+.prim-card em { margin-top: 6px; }
