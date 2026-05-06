@@ -166,17 +166,25 @@ export function initFlowViz() {
     if (!flow) return;
 
     const { } = renderFlow(host, flow);
-    const svg          = host.querySelector('svg');
-    const stepNodes    = Array.from(svg.querySelectorAll('.fv-step'));
+    // Query EVERYTHING from the host element (not from the SVG) so SVG
+    // namespace quirks of innerHTML-injected SVG content don't trip us
+    // up. The .fv-step <g>s are still the same DOM nodes regardless of
+    // which ancestor we walk down from.
+    const stepNodes    = Array.from(host.querySelectorAll('.fv-step'));
     const playBtn      = host.querySelector('.fv-play');
     const playLabel    = host.querySelector('.fv-play-l');
-    const playIcon     = playBtn.querySelector('.ms');
+    const playIcon     = playBtn && playBtn.querySelector('.ms');
     const resetBtn     = host.querySelector('.fv-reset');
     const speedBtns    = host.querySelectorAll('.fv-speed-btn');
     const loopCb       = host.querySelector('input[data-loop]');
     const progressEl   = host.querySelector('.fv-progress');
     const detailNum    = host.querySelector('.fv-detail-num');
     const detailText   = host.querySelector('.fv-detail-text');
+    if (!playBtn || !stepNodes.length) {
+      // Render didn't produce expected DOM — leave the host alone so
+      // the <details> text fallback is still readable.
+      return;
+    }
 
     let timers = [];
     let speed = 1;
@@ -211,6 +219,7 @@ export function initFlowViz() {
       detailNum.textContent  = '';
       detailText.textContent = `Press ▶ Play to walk through ${flow.steps.length} steps. ← → to step manually. Space to pause/resume.`;
       state = 'idle';
+      host.classList.remove('fv-playing');
       playLabel.textContent = 'Play';
       playIcon.textContent  = 'play_arrow';
       playBtn.setAttribute('aria-label', 'Play flow');
@@ -218,36 +227,46 @@ export function initFlowViz() {
 
     function schedule(startAt = 0) {
       clearTimers();
-      const baseStagger = reduced ? 0 : Math.max(180, 1100 / speed);
+      // Slower base stagger (1600ms at 1×) so each step is unmistakably
+      // on screen long enough to read the detail strip + see the active
+      // step pulse. 2× → 800ms · 4× → 400ms.
+      const baseStagger = reduced ? 0 : Math.max(220, 1600 / speed);
       for (let i = startAt; i < stepNodes.length; i++) {
         const delay = (i - startAt) * baseStagger;
         timers.push(setTimeout(() => setStep(i), delay));
         timers.push(setTimeout(() => stepNodes[i].classList.add('is-done'),
-          delay + baseStagger * 0.7));
+          delay + baseStagger * 0.85));
       }
       timers.push(setTimeout(() => {
         if (loopCb.checked) {
           setTimeout(() => { reset(); play(); }, baseStagger);
         } else {
           state = 'done';
+          host.classList.remove('fv-playing');
           playLabel.textContent = 'Replay';
           playIcon.textContent  = 'replay';
         }
-      }, (stepNodes.length - startAt) * baseStagger + 80));
+      }, (stepNodes.length - startAt) * baseStagger + 200));
     }
 
     function play() {
       if (state === 'done') reset();
       state = 'playing';
+      host.classList.add('fv-playing');
       playLabel.textContent = 'Pause';
       playIcon.textContent  = 'pause';
       playBtn.setAttribute('aria-label', 'Pause flow');
-      schedule(cursor < 0 ? 0 : cursor);
+      // Light up the first step IMMEDIATELY so the click is obviously
+      // doing something, even before the schedule's first timer fires.
+      const startIdx = cursor < 0 ? 0 : cursor;
+      setStep(startIdx);
+      schedule(startIdx + 1);
     }
 
     function pause() {
       clearTimers();
       state = 'paused';
+      host.classList.remove('fv-playing');
       playLabel.textContent = 'Resume';
       playIcon.textContent  = 'play_arrow';
       playBtn.setAttribute('aria-label', 'Resume flow');
@@ -267,10 +286,14 @@ export function initFlowViz() {
           x.classList.toggle('is-on', on);
           x.setAttribute('aria-checked', on ? 'true' : 'false');
         });
-        if (state === 'playing') {
-          clearTimers();
-          schedule(cursor < 0 ? 0 : cursor);
-        }
+        // Always restart from the start at the new speed so the user
+        // SEES the speed change. Previously this only re-scheduled if
+        // already playing, which made the buttons feel locked when the
+        // flow was paused / done / idle.
+        clearTimers();
+        cursor = -1;
+        stepNodes.forEach(n => n.classList.remove('is-on', 'is-done'));
+        play();
       });
     });
 
@@ -297,13 +320,16 @@ export function initFlowViz() {
       }
     });
 
-    // Auto-play once on first scroll into viewport, unless reduced-motion.
+    // Auto-play removed — confused users when the animation finished
+    // before they had read the controls. Pulse the play button briefly
+    // when the host enters viewport so the user knows it's interactive.
     if ('IntersectionObserver' in window && !reduced) {
       const io = new IntersectionObserver(entries => {
         for (const en of entries) {
-          if (en.isIntersecting && !autoPlayed && state === 'idle') {
+          if (en.isIntersecting && !autoPlayed) {
             autoPlayed = true;
-            setTimeout(play, 350);
+            playBtn.classList.add('fv-pulse');
+            setTimeout(() => playBtn.classList.remove('fv-pulse'), 2200);
           }
         }
       }, { threshold: 0.4 });
