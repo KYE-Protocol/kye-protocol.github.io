@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script>(function(){try{var s=localStorage.getItem("kye-theme");if(s==="dark"||s==="light"){document.documentElement.setAttribute("data-theme",s);}}catch(e){}})();</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KYE Protocol™ — Vocabulary | entity types, action types, decision codes, reason codes</title>
+  <meta name="description" content="Canonical KYE Protocol™ vocabulary: entity types, action types, decision codes, reason codes, capability kinds, side-effect levels, data classes, signal types, redaction fields, taxonomies, graph types. Apache 2.0." />
+  <meta name="keywords" content="KYE Protocol vocabulary, entity types, action types, decision codes, reason codes, capability kinds, taxonomies" />
+  <link rel="canonical" href="https://kye-protocol.github.io/vocabulary.html" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="KYE Protocol™ — Vocabulary" />
+  <meta property="og:description" content="The canonical KYE Protocol™ vocabulary — entity types, action types, decision codes, reason codes, capability kinds, side-effect levels, data classes, signal types, redaction fields, taxonomies, graph types." />
+  <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
+  <meta property="og:url" content="https://kye-protocol.github.io/vocabulary.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css?v=1778380000" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="top-bar" role="banner" data-kye-header data-active="vocabulary"><!-- canonical chrome injected by assets/components.js mountKyeComponents() --></header>
+<main id="main" role="main">
+
+<section id="top" class="hero">
+  <div class="container hero-inner">
+    <span class="hero-pill"><span class="dot"></span> Vocabulary &middot; canonical reference</span>
+    <h1 id="hero-title" style="margin-top:18px">The <span class="accent">words</span> the protocol uses.</h1>
+    <p class="lede">Entity types, action types, decision codes, reason codes, capability kinds, side-effect levels, data classes, signal types, redaction fields, taxonomies, graph types &mdash; the vocabulary every conformant implementation reads from. The canonical machine-readable source lives at <a href="https://github.com/KYE-Protocol/vocabulary" target="_blank" rel="noopener">github.com/KYE-Protocol/vocabulary</a>; this page is the human-readable index.</p>
+  </div>
+</section>
+
+<section id="entities" class="section" aria-labelledby="h-ent">
+        <span class="eyebrow">Entity types</span>
+    <h2 id="h-ent" class="h-section">What KYE<span class="tm">™</span> recognises as <span class="accent">an entity</span>.</h2>
+  <div class="section-body"><div class="container">
+    <p class="lede">Every URN starts with one of these classes &mdash; <code data-code="urn">kye:&lt;class&gt;:&lt;trust-domain&gt;:&lt;subclass&gt;:&lt;local&gt;</code>.</p>
+    <ul class="biz-list">
+      <li><code data-code="field">human</code> &mdash; natural person; KYC-verified</li>
+      <li><code data-code="field">org</code> &mdash; legal entity / business; KYB-verified</li>
+      <li><code data-code="field">agent</code> &mdash; AI agent (LLM-backed, autonomous, supervised, etc.)</li>
+      <li><code data-code="field">service</code> &mdash; software service / workload (SPIFFE-equivalent)</li>
+      <li><code data-code="field">model</code> &mdash; foundation / fine-tuned model</li>
+      <li><code data-code="field">tool</code> &mdash; capability instance (MCP tool, function, connector, playbook, model_profile)</li>
+      <li><code data-code="field">workflow</code> &mdash; orchestrated sequence of actions</li>
+      <li><code data-code="field">capability</code> &mdash; named capability declaration</li>
+      <li><code data-code="field">credential</code> &mdash; verifiable credential / attestation / key</li>
+      <li><code data-code="field">resource</code> &mdash; wallet / dataset / document / vehicle / vessel / shipment</li>
+      <li><code data-code="field">workload</code> &mdash; attested runtime instance</li>
+      <li><code data-code="field">payload</code> &mdash; signed evidence artefact</li>
+    </ul>
+  </div></div>
+</section>
+
+<section id="actions" class="section alt" aria-labelledby="h-act">
+        <span class="eyebrow">Action types</span>
+    <h2 id="h-act" class="h-section">What KYE<span class="tm">™</span> sees an entity <span class="accent">do</span>.</h2>
+  <div class="section-body"><div class="container">
+    <ul class="biz-list">
+      <li><code data-code="field">read</code> / <code data-code="field">write</code> / <code data-code="field">execute</code> &mdash; baseline data + capability operations</li>
+      <li><code data-code="field">delegate</code> / <code data-code="field">attenuate</code> / <code data-code="field">revoke</code> &mdash; authority lifecycle</li>
+      <li><code data-code="field">authorize</code> / <code data-code="field">attest</code> / <code data-code="field">vouch</code> &mdash; decision-producing operations</li>
+      <li><code data-code="field">payment</code> / <code data-code="field">transfer</code> / <code data-code="field">trade</code> &mdash; money-rail operations (Payments + Treasury profiles)</li>
+      <li><code data-code="field">redact</code> / <code data-code="field">tombstone</code> / <code data-code="field">recover</code> &mdash; data-lifecycle operations</li>
+      <li><code data-code="field">quarantine</code> / <code data-code="field">break_glass</code> / <code data-code="field">cascade</code> &mdash; incident-response operations</li>
+    </ul>
+    <p style="margin-top:14px;color:var(--kye-color-text-muted);font-size:13.5px">Sector profiles add domain-specific actions (e.g. Healthcare adds <code data-code="field">consent</code>, <code data-code="field">disclose</code>; Custody adds <code data-code="field">co_sign</code>, <code data-code="field">recover_key</code>).</p>
+  </div></div>
+</section>
+
+<section id="decisions" class="section" aria-labelledby="h-dec">
+        <span class="eyebrow">Decision codes</span>
+    <h2 id="h-dec" class="h-section">The <span class="accent">eight</span> ways KYE<span class="tm">™</span> answers an authorize call.</h2>
+  <div class="section-body"><div class="container">
+    <ul class="biz-list">
+      <li><code data-code="allow">allow</code> &mdash; unconditional permission</li>
+      <li><code data-code="allow">allow_with_constraints</code> &mdash; permission subject to obligations the caller must honour (e.g. redaction, rate-limit, dual approval)</li>
+      <li><code data-code="condition">require_approval</code> &mdash; dual-control / human-in-the-loop step required before the action proceeds</li>
+      <li><code data-code="condition">require_step_up</code> &mdash; additional credential (re-authn, MFA, attested workload) required</li>
+      <li><code data-code="condition">require_human_review</code> &mdash; explicit human review (used by EU AI Act high-risk workflows)</li>
+      <li><code data-code="condition">require_recovery</code> &mdash; recovery / break-glass flow required (compromised state)</li>
+      <li><code data-code="deny">quarantine</code> &mdash; entity placed in restricted state pending investigation; partial operations may continue</li>
+      <li><code data-code="deny">deny</code> &mdash; refused; the audit chain records the reason code</li>
+    </ul>
+  </div></div>
+</section>
+
+<section id="reasons" class="section alt" aria-labelledby="h-r">
+        <span class="eyebrow">Reason codes</span>
+    <h2 id="h-r" class="h-section"><span class="accent">Why</span> the runtime decided what it decided.</h2>
+  <div class="section-body"><div class="container">
+    <p class="lede">Reason codes are namespaced. Every decision carries at least one. Examples:</p>
+    <ul class="biz-list">
+      <li><code data-code="field">authority.delegation_chain_invalid</code> &mdash; the chain back to a human / business is broken</li>
+      <li><code data-code="field">scope.amount_exceeds_cap</code> &mdash; the action is within scope <em>type</em> but exceeds the value limit</li>
+      <li><code data-code="field">state.entity_quarantined</code> &mdash; the actor is in a quarantine state</li>
+      <li><code data-code="field">state.credential_expired</code> &mdash; the credential carrying the action&rsquo;s justification has lapsed</li>
+      <li><code data-code="field">obligation.redaction_required</code> &mdash; the action proceeds with a redaction obligation attached</li>
+      <li><code data-code="field">policy.deny_by_default</code> &mdash; no matching allow rule</li>
+      <li><code data-code="field">recovery.break_glass_required</code> &mdash; the operation needs the break-glass workflow</li>
+    </ul>
+    <p style="margin-top:14px;font-size:13.5px;color:var(--kye-color-text-muted)">Full canonical list: <a href="https://github.com/KYE-Protocol/vocabulary/blob/main/reason-codes.md" target="_blank" rel="noopener"><code data-code="path">github.com/KYE-Protocol/vocabulary/reason-codes.md</code></a> (~120 codes).</p>
+  </div></div>
+</section>
+
+<section id="other" class="section" aria-labelledby="h-o">
+        <span class="eyebrow">More vocabularies</span>
+    <h2 id="h-o" class="h-section">The rest of the canonical word-list.</h2>
+  <div class="section-body"><div class="container">
+    <ul class="biz-list">
+      <li><strong>Capability kinds</strong> &mdash; <code data-code="field">skill</code>, <code data-code="field">tool</code>, <code data-code="field">mcp_tool</code>, <code data-code="field">function</code>, <code data-code="field">connector</code>, <code data-code="field">playbook</code>, <code data-code="field">model_profile</code>, <code data-code="field">payment_action</code>.</li>
+      <li><strong>Side-effect levels</strong> &mdash; <code data-code="field">none</code>, <code data-code="field">read</code>, <code data-code="field">write</code>, <code data-code="field">money</code>, <code data-code="field">physical</code>, <code data-code="field">irreversible</code>.</li>
+      <li><strong>Data classes</strong> &mdash; <code data-code="field">public</code>, <code data-code="field">internal</code>, <code data-code="field">confidential</code>, <code data-code="field">pii</code>, <code data-code="field">phi</code>, <code data-code="field">pci</code>, <code data-code="field">restricted</code>.</li>
+      <li><strong>Signal types</strong> &mdash; <code data-code="field">stop</code>, <code data-code="field">pause</code>, <code data-code="field">quarantine</code>, <code data-code="field">cascade_revoke</code>, <code data-code="field">step_up_required</code>, <code data-code="field">attestation_invalidated</code>.</li>
+      <li><strong>Redaction fields</strong> &mdash; <code data-code="field">pii.redacted</code>, <code data-code="field">phi.redacted</code>, <code data-code="field">credential.redacted</code>, <code data-code="field">payload.redacted</code>.</li>
+      <li><strong>Taxonomies</strong> &mdash; 16 V1 canonical taxonomies covering entity_type, capability_type, action_type, resource_type, data_class, side_effect_level, risk_state, environment, decision, reason_code, evidence_type, compliance_framework, sector, jurisdiction, plus state taxonomies.</li>
+      <li><strong>Graph types</strong> &mdash; Authority Graph<span class="tm">™</span> (entity / authority / delegation / scope / capability / state / decision / evidence nodes; typed edges between them).</li>
+    </ul>
+    <p style="margin-top:18px;font-size:13.5px;color:var(--kye-color-text-muted)">All vocabularies ship as Apache 2.0 markdown + JSON Schemas in <a href="https://github.com/KYE-Protocol/vocabulary" target="_blank" rel="noopener"><code data-code="path">github.com/KYE-Protocol/vocabulary</code></a>. New entries follow the v1.x process documented in the whitepaper §9 Governance.</p>
+  </div></div>
+</section>
+
+</main>
+<footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected by assets/components.js mountKyeComponents() --></footer>
+<button id="scroll-top" class="scroll-top" type="button" aria-label="Scroll to top" data-kye-scroll-top><!-- svg injected --></button>
+<script type="module" src="main.js?v=1778380000"></script>
+</body>
+</html>

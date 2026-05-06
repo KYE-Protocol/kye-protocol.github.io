@@ -27,7 +27,7 @@
   <meta name="twitter:title" content="KYE Protocol™ — Entity Authority Protocol for AI Governance | Authority Finality™" />
   <meta name="twitter:description" content="Authority Finality™ for AI agents — replayable proof of who or what acted, on behalf of whom, using which capability, under what authority, in what state, with what audit trail." />
   <meta name="twitter:image" content="https://kye-protocol.github.io/og.svg" />
-  <link rel="stylesheet" href="styles.css?v=1778370000" />
+  <link rel="stylesheet" href="styles.css?v=1778380000" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
   <script type="application/ld+json">
@@ -488,127 +488,17 @@
   </div>
 </section>
 
-<section id="faq" class="section collapsible alt" data-default-open="false" aria-labelledby="h-faq">
-  <details>
-    <summary>
+<section id="faq-callout" class="section alt" aria-labelledby="h-faq-c">
         <span class="eyebrow">FAQ</span>
-    <h2 id="h-faq" class="h-section">Questions teams ask <span class="accent">on the first call</span>.</h2>
-      <span class="section-caret" aria-hidden="true">▼</span>
-    </summary>
-  <div class="section-body" id="faq-body">
+    <h2 id="h-faq-c" class="h-section">The <span class="accent">three most-asked questions</span>.</h2>
+  <div class="section-body">
     <div class="container">
-    <div class="faq-filters" role="tablist" aria-label="Filter FAQ by audience">
-      <button type="button" role="tab" class="faq-filter is-active" data-faq-filter="all" aria-selected="true">All</button>
-      <button type="button" role="tab" class="faq-filter" data-faq-filter="builder" aria-selected="false">Builders</button>
-      <button type="button" role="tab" class="faq-filter" data-faq-filter="buyer" aria-selected="false">Buyers</button>
-      <button type="button" role="tab" class="faq-filter" data-faq-filter="auditor" aria-selected="false">Auditors</button>
-      <button type="button" role="tab" class="faq-filter" data-faq-filter="regulator" aria-selected="false">Regulators</button>
-    </div>
-    <div class="faq-list">
-      <details class="faq-item" data-faq-aud="buyer auditor regulator" open>
-        <summary>What is Authority Finality<span class="tm">™</span> and how is KYE different from IAM?</summary>
-        <p>Traditional IAM answers <em>who logged in</em>. <strong>KYE Protocol<span class="tm">™</span></strong> answers what happens after &mdash; <em>who or what is acting, on behalf of whom, using which capability, under what authority, in what state, and with what audit trail</em>. We call this Authority Finality<span class="tm">™</span>: a replayable proof layer for AI-agent actions. KYE does not replace legal agreements, signatures, or regulatory obligations &mdash; it provides the technical and evidentiary foundation for accountability, compliance, dispute resolution, and legally defensible audit trails in agentic systems.</p>
-      </details>
-      <details class="faq-item" data-faq-aud="buyer auditor">
-        <summary>What problem does KYE Protocol<span class="tm">™</span> actually solve?</summary>
-        <p>Agentic systems are reaching production faster than identity, authorization and audit can keep up. Today an AI agent calls five services with five different identities; stop signals don&rsquo;t cross system boundaries; auditors can&rsquo;t reconstruct what happened. KYE Protocol<span class="tm">™</span> gives every actor &mdash; human, service, agent, model, tool, workflow &mdash; a single URN, one delegation chain, one decision vocabulary, one cascade and one append-only audit chain. So &ldquo;who acted, on whose behalf, with what authority, under what scope, with what evidence&rdquo; has the same answer in every system.</p>
-      </details>
-      <details class="faq-item" data-faq-aud="builder buyer">
-        <summary>How is this different from MCP, A2A, OAuth, SPIFFE or SCITT?</summary>
-        <p>They solve slices. MCP and A2A are agent communication. OAuth and GNAP are human authorization. SPIFFE is workload identity. SCITT is transparency. None give you one URN format spanning humans + services + AI agents, a first-class delegation chain with attenuable scope, standard decision codes, cascading stop signals and a hash-linked audit chain in a single open contract. KYE Protocol<span class="tm">™</span> is that contract layer; it composes with the others.</p>
-      </details>
-      <details class="faq-item" data-faq-aud="builder buyer">
-        <summary>How is KYE<span class="tm">™</span> different from KYA (Know Your Agent)?</summary>
-        <p>KYA frameworks &mdash; <a href="https://developer.visa.com/use-cases/trusted-agent-protocol" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">Visa Trusted Agent</a>, Skyfire, <a href="https://withpersona.com/identity-glossary/know-your-agent-kya" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">Persona</a>, Sumsub, Trulioo&rsquo;s Digital Agent Passport &mdash; verify an AI agent <em>once</em>, at onboarding, with a vendor-specific passport. KYA answers &ldquo;is this agent real?&rdquo; KYE Protocol<span class="tm">™</span> answers the bigger question every minute the agent is alive: <em>who is acting, on whose behalf, with what authority, under what scope, with what evidence?</em> KYE Protocol<span class="tm">™</span> is the open contract that <strong>unifies KYC, KYB and KYA</strong> &mdash; one URN spanning humans, businesses and agents; one delegation chain binding them; one cascading bus revoking the chain when something goes wrong. KYA vendors slot in as <em>credential issuers</em> inside KYE Protocol<span class="tm">™</span>; the protocol takes care of everything that happens after issuance.</p>
-      </details>
-      <details class="faq-item" data-faq-aud="buyer auditor">
-        <summary>Is it production-ready?</summary>
-        <p>v1.0 ships <strong>41 normative profiles</strong>, 186 OpenAPI operations (87+ runtime endpoints), 55 JSON Schemas with 58 validated examples payloads, a reference Gateway (67/67 unit tests), an embedded PDP library, a PEP middleware, three SDKs (TypeScript, Python, Go), <strong>37 conformance fixtures</strong> (37/37 pass), and <strong>173 control mappings</strong> across SOC 2, ISO 27001:2022, PCI DSS 4.0, PSD2/PSD3, DORA, NIS2, EU AI Act, NIST 800-207 and HIPAA. Profile contract is bank-grade today; reference implementation is pilot-grade (correctness-first, not throughput-tuned). Apache 2.0.</p>
-      </details>
-      <details class="faq-item" data-faq-aud="auditor buyer">
-        <summary>How do I verify a vendor&rsquo;s claim of KYE Protocol<span class="tm">™</span> conformance?</summary>
-        <p>Run the 37-fixture black-box conformance pack against their Gateway. Fixtures speak only HTTP; no implementation internals required. The reporter emits machine-readable evidence (<code>conformance-report.json</code>) listing every passed and failed scenario. Pin the conformance pack version in your vendor contract; re-run on each release. The same pack tested the reference Gateway, so apples-to-apples is guaranteed.</p>
-      </details>
-      <details class="faq-item" data-faq-aud="builder">
-        <summary>What&rsquo;s the deployment topology?</summary>
-        <p>KYE Protocol<span class="tm">™</span> is a contract, not a service. Bank stacks deploy: (a) a vendor or in-house Gateway behind their existing edge, (b) the embedded PDP library where low-latency local decisions are needed, (c) the PEP middleware in their service mesh, (d) the signal bus subscribed to by their SIEM. The reference Gateway is a starter for dev/pilot; production deployments substitute a hardened build behind the same contract. Single-tenant or multi-tenant; on-prem, hybrid or SaaS.</p>
-      </details>
-      <details class="faq-item" data-faq-aud="builder buyer">
-        <summary>Do we have to rewrite our existing IAM?</summary>
-        <p>No. KYE Protocol<span class="tm">™</span> sits <em>over</em> existing identity providers. Your OAuth/OIDC IdP issues credentials that become <code>kye:cred:...</code> records. SPIFFE workload identities become <code>kye:ent:...</code> attestations. Your existing OPA or Cerbos policies plug into the ePDP via published Rego/YAML bundles (we ship <code>kye_authz.rego</code> + <code>kye_authz.yaml</code> at parity). MCP tool servers become <code>kye:capability:...</code> registrations. The protocol composes; it does not replace.</p>
-      </details>
-      <details class="faq-item" data-faq-aud="builder">
-        <summary>How does the Capability profile differ from existing tool-use frameworks (ReAct, MCP, function-calling)?</summary>
-        <p>MCP and function-calling describe <em>how</em> an agent invokes a tool. KYE-Capability describes <em>whether the agent is authorised to invoke this tool, on whose behalf, within what scope, with what obligations</em>. Capability covers skills, tools, MCP tools, functions, connectors, prompts, workflows, playbooks, runbooks, model_profiles, payment_actions, api_operations &mdash; each a first-class entity with its own URN, lifecycle, grant chain, audit trail, and verbs (allow / deny / require-approval / quarantine / supersede / revoke). Plug your existing MCP server in; KYE<span class="tm">™</span> gates each invocation against a capability grant.</p>
-      </details>
-      <details class="faq-item" data-faq-aud="builder auditor regulator">
-        <summary>What happens when a credential is compromised?</summary>
-        <p>File a compromise report. The protocol cascades atomically: the entity transitions to <code>compromised</code> recovery_state; all delegations from that entity revoke (recursively through <code>parent_delegation_id</code>); payment authorities revoke; access rights revoke; capability grants revoke; break-glass grants freeze. Every step appends to the audit chain with a shared <code>correlation_id</code>. Re-activation requires a recovery flow (request &rarr; signed decision &rarr; proof) plus, where applicable, a key rotation gated by a break-glass grant. Replaces ad-hoc admin reset.</p>
-      </details>
-      <details class="faq-item" data-faq-aud="builder auditor">
-        <summary>How does recovery / break-glass differ from admin reset?</summary>
-        <p>Admin reset is a black box: an admin clicks a button, you trust the audit log. KYE-Recovery is a contract: a request resource (<code>kye:rec:...</code>) records who asked, why, when, and which subject; a decision resource records the approver(s), rationale, and time; a signed proof artefact ties them together; break-glass grants are time-boxed and emit signals on issue, use, and expiry. Every step is part of the audit chain. Auditors replay the flow; they don&rsquo;t take the admin&rsquo;s word for it.</p>
-      </details>
-      <details class="faq-item" data-faq-aud="auditor regulator buyer">
-        <summary>How does this map to the EU AI Act?</summary>
-        <p>The Act&rsquo;s Title III obligations on high-risk AI systems &mdash; data governance, technical documentation, record-keeping, transparency, human oversight, accuracy/robustness, post-market monitoring &mdash; map to KYE<span class="tm">™</span> artefacts: capability grants for data governance, profile docs for technical docs, audit chain for record-keeping, telemetry for transparency, recovery + break-glass for human oversight, point-in-time replay for post-market investigation. Each Article maps to specific endpoints + conformance fixtures in the 173-row control-mapping table.</p>
-      </details>
-      <details class="faq-item" data-faq-aud="auditor regulator buyer">
-        <summary>GDPR + data residency?</summary>
-        <p>KYE<span class="tm">™</span> entity payloads minimise PII; PII is referenced by URN, not embedded. Trust domains are first-class (federation profile) so EU records can stay EU and non-EU records can stay non-EU while remaining cross-verifiable. Right-to-erasure is supported by the lifecycle <code>tombstoned</code> state plus profile-specific obligations (e.g. the Healthcare profile&rsquo;s <code>redaction.required</code>). The protocol does not, by itself, decide where you host data &mdash; it gives you the contract that lets your data-residency policy be auditable.</p>
-      </details>
-      <details class="faq-item" data-faq-aud="buyer regulator">
-        <summary>Open governance &mdash; who controls the spec?</summary>
-        <p>The vocabulary, URN format, JSON Schemas, OpenAPI specs, conformance pack, reference implementation, SDKs and policy bundles are open under Apache 2.0 in <a href="https://github.com/KYE-Protocol" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">github.com/KYE-Protocol</a>. Profile RFCs are accepted via Discussions. The patent track moves to a royalty-free open standard at v2.0 (Linux Foundation / OpenWallet Foundation track). Trademark policy: KYE<span class="tm">™</span>, KYE Protocol<span class="tm">™</span> and Know Your Entity<span class="tm">™</span> identify the protocol as published; conformant implementations may use them; forks may not.</p>
-      </details>
-      <details class="faq-item" data-faq-aud="builder">
-        <summary>How do the 18 base profiles compose?</summary>
-        <p>Core is mandatory. Gateway is mandatory (it&rsquo;s the API contract). Conformance is mandatory if you claim conformance. Everything else is opt-in by sector: Payments + Treasury + Custody for money flows; Capability + Recovery + Telemetry for agent fleets; Healthcare for HIPAA workloads; Federation for cross-domain; Credentials + Attestation for proof bundles; Signals + Transparency for audit/observability. The Sectors section above lists the typical bundle per industry. Profiles never modify Core; they add vocabulary, schemas, endpoints, fixtures.</p>
-      </details>
-      <details class="faq-item" data-faq-aud="buyer builder">
-        <summary>Cost &amp; throughput?</summary>
-        <p>The reference Gateway is correctness-first, not throughput-tuned &mdash; expect &le;1k authorize/sec on a single Node.js process. Production deployments substitute a hardened build (Rust, Go, JVM, or the bank&rsquo;s own runtime) behind the same contract; the Capability + ePDP paths are designed to be horizontally scalable and cache-friendly. There is no per-call licence fee; the protocol is Apache 2.0. Operational cost is your runtime cost, plus your conformance-test cadence.</p>
-      </details>
-      <details class="faq-item" data-faq-aud="buyer">
-        <summary>Roadmap to v1.1 &mdash; what&rsquo;s changing?</summary>
-        <p><strong>v1.1:</strong> sector overlays for healthcare (clinical / payer / research, 42 CFR Part 2); <code>conformance-report.json</code> + <code>conformance-fixture.json</code> schemas; extended signal-bus durability options. <strong>v1.2:</strong> certification programme + independent test-vector runners + vendor self-attestation portal. <strong>v2.0:</strong> Federation v2 with multi-hop attenuation; patent-track algorithms move to royalty-free open standard. v1.0 contract surface is stable; v1.1 is purely additive.</p>
-      </details>
-      <details class="faq-item" data-faq-aud="builder auditor">
-        <summary>What does &ldquo;cascade revoke&rdquo; actually do?</summary>
-        <p>One signal on the bus &mdash; <code>entity.stop</code>, <code>delegation.revoked</code>, <code>credential.revoked</code> &mdash; propagates through the trust graph in milliseconds. Dependent delegations are suspended. Payment authorities are revoked. Resource grants are withdrawn. Recursive through <code>parent_delegation_id</code>. No orphaned authority. No stale grant. The lifecycle simulator and cascade visualizer above are live demos of the same logic the reference Gateway runs.</p>
-      </details>
-      <details class="faq-item" data-faq-aud="buyer">
-        <summary>Who is using this today?</summary>
-        <p>The reference implementation, conformance suite and SDKs are public on <a href="https://github.com/KYE-Protocol" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">github.com/KYE-Protocol</a>. Public adopters are listed on the org profile as they go live. Banking, payment, custody and AI lab integrators are encouraged to share their integrations in <a href="#" data-contact-trigger style="color:var(--accent);text-decoration:underline">share their integration with us</a>.</p>
-      </details>
-      <details class="faq-item" data-faq-aud="buyer auditor regulator">
-        <summary>Is the protocol patented?</summary>
-        <p>The vocabulary, URN format, schemas and OpenAPI surface are openly published under Apache 2.0 and are intended to remain royalty-free for conformant implementations. Specific mechanism designs (decision algorithms, hash-chain construction, cascade ordering, attenuation propagation) sit in a separate patent track and are not disclosed in the public repositories.</p>
-      </details>
-      <details class="faq-item" data-faq-aud="builder">
-        <summary>How do I get involved?</summary>
-        <p>Open a discussion in <a href="https://github.com/KYE-Protocol/Discussions/discussions" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">KYE-Protocol/Discussions</a> &mdash; ask a question, propose a profile RFC, share an integration. File issues against the relevant code repo. Watch the org for new profile drops.</p>
-      </details>
-      <details class="faq-item" data-faq-aud="builder regulator">
-        <summary>What is the KYE Payload Trust Profile<span class="tm">™</span> and why does it matter?</summary>
-        <p>Payloads &mdash; the signed bytes an actor submits to invoke a capability &mdash; are first-class <em>evidence artefacts</em>, not authority-bearing entities. Without a payload-artefact contract, the agent / API / tool world tends to treat the signed payload itself as authority (&ldquo;the payload is signed therefore the action is authorised&rdquo;), which corrupts the entity model. The <strong>KYE Payload Trust Profile<span class="tm">™</span></strong> defines a 13-state lifecycle (created &rarr; signed &rarr; submitted &rarr; received &rarr; verified &rarr; bound_to_decision &rarr; executed &rarr; archived, plus rejected / expired / replayed / tampered / failed), 10 deny reason codes, and a runtime pipeline that verifies the payload, binds the resulting policy decision back to the artefact, and emits replayable audit evidence. Payloads carry state but never authority.</p>
-      </details>
-      <details class="faq-item" data-faq-aud="builder auditor">
-        <summary>What is the KYE Taxonomy &amp; Metadata Profile<span class="tm">™</span>?</summary>
-        <p>Authority decisions depend on knowing what <em>kind</em> of entity, capability, resource, data, action, risk, sector, jurisdiction, and evidence is involved. The profile registers <strong>16 canonical V1 taxonomies</strong> (entity_type, capability_type, action_type, resource_type, data_class, side_effect_level, risk_state, environment, decision, reason_code, evidence_type, compliance_framework, sector, jurisdiction, plus two state taxonomies) and a normative metadata model with five blocks: <code>labels</code>, <code>classifications</code>, <code>ownership</code>, <code>lineage</code>, <code>compliance</code>. Field values draw from registered taxonomies. The runtime exposes metadata to the policy layer as <code>request.{actor,capability,resource,authority}.metadata</code>, so policies like &ldquo;require human review for high-risk AI capabilities in production&rdquo; or &ldquo;deny special-category data without an authorised healthcare profile&rdquo; can be expressed declaratively.</p>
-      </details>
-      <details class="faq-item" data-faq-aud="builder buyer auditor regulator">
-        <summary>What is the Authority Graph<span class="tm">™</span> and how does Decision Map<span class="tm">™</span> work?</summary>
-        <p>Authority is relational: a human owns a business; the business controls an agent; the agent uses a capability; the capability depends on a tool; the tool calls an API; the API uses a credential; and so on. The <strong>KYE Graph Profile<span class="tm">™</span></strong> defines canonical node and edge schemas so every entity, delegation, capability, credential, policy, state, decision, audit event, and evidence pack becomes a traversable graph. The <strong>Decision Map<span class="tm">™</span></strong> (returned by <code>GET /v1/decisions/{id}/map</code>) is a per-decision graph projection &mdash; actor &rarr; principal &rarr; delegation &rarr; capability &rarr; authority &rarr; scope &rarr; state &rarr; policy &rarr; decision &rarr; audit &rarr; evidence &mdash; that turns &ldquo;why was this allowed / denied / escalated?&rdquo; into a visualisable trace. <strong>Blast Radius Map<span class="tm">™</span></strong> answers &ldquo;what breaks if this credential is compromised?&rdquo;. <strong>Compliance Map<span class="tm">™</span></strong> projects KYE objects to framework controls. Storage substrate is implementation choice (Postgres, Neo4j, Neptune, Memgraph, TigerGraph, ArangoDB, RDF) &mdash; the protocol defines node + edge contracts, never the database.</p>
-      </details>
-      <details class="faq-item" data-faq-aud="builder buyer">
-        <summary>What are the 16 protocol-core principles?</summary>
-        <p>KYE is structured in three tiers. <strong>Tier A &mdash; Runtime governance (6):</strong> authority-first &middot; state-first &middot; decision-first &middot; policy-bound &middot; evidence-first &middot; audit-trail-first. <strong>Tier B &mdash; Protocol design (8):</strong> schema-first &middot; dictionary-first &middot; taxonomy-first &middot; metadata-first &middot; graph-first &middot; profile-first &middot; registry-first &middot; conformance-first. <strong>Tier C &mdash; Developer adoption (2):</strong> API-first &middot; SDK-first. The commercial layer (KYE Cloud<span class="tm">™</span>) is SKU-first, metering-first, dashboard-first, evidence-pack-first, enterprise-pack-first, BYOC / on-prem-first &mdash; but never bleeds into the open protocol core.</p>
-      </details>
+    <details class="faq-item" open><summary>What is Authority Finality<span class="tm">™</span> and how is KYE different from IAM?</summary><p>Identity tells you the front door &mdash; KYE Protocol<span class="tm">™</span> tells you what happened on the other side. We call this <strong>Authority Finality<span class="tm">™</span></strong>: a replayable proof layer for AI-agent actions. Every action carries a delegation chain back to a human or business, attenuable scope, signed evidence, and standardised reason codes that any auditor can verify with public keys alone.</p></details>
+    <details class="faq-item"><summary>Is this production ready?</summary><p>The v1.0 contract is bank-grade and frozen as of April 2026 (41 normative profiles, 186 OpenAPI operations, 55 schemas, 173 control mappings, 37 conformance fixtures all passing). Reference implementations are pilot-grade (correctness-first, not throughput-tuned). Apache License 2.0.</p></details>
+    <details class="faq-item"><summary>How is KYE different from KYA / MCP / SPIFFE / OAuth?</summary><p>KYE composes with all of them. OAuth issues credentials; MCP gives agents tool access; SPIFFE handles workload identity; KYA vendors issue agent passports. KYE binds these into one open contract that carries delegation, scope, state, decision, and signed audit across every layer.</p></details>
+    <p style="margin-top:18px;text-align:center"><a href="faq.html" class="btn btn-primary"><span class="ms">help</span> See all 18 questions &rarr;</a></p>
     </div>
   </div>
-  </div>
-  </details>
 </section>
 
 </main>
@@ -634,7 +524,7 @@
   } });
   window.mermaid = mermaid;
 </script>
-<script type="module" src="main.js?v=1778370000"></script>
+<script type="module" src="main.js?v=1778380000"></script>
 </body>
 </html>
 
