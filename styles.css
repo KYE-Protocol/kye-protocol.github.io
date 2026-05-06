@@ -3614,3 +3614,489 @@ section  p.lede {
   font-size: var(--fs-eyebrow) !important;
   letter-spacing: 0.04em !important;
 }
+
+/* ============================================================
+   §FINAL-8 — Mega-menu nav (audience-grouped) + section accordion.
+   The flat 14-link nav was overwhelming; redesigned to 5
+   audience-keyed dropdowns (For builders / buyers / auditors /
+   regulators / By sector) plus 4 quick links and the existing
+   audience + theme toggles. Dropdowns use <details>/<summary> for
+   accessibility (keyboard, screen reader, no JS required).
+   ============================================================ */
+
+.mega-nav { gap: 6px; }
+
+.mega { position: relative; list-style: none; }
+.mega summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  white-space: nowrap;
+}
+.mega summary::-webkit-details-marker { display: none; }
+.mega summary::marker { content: ''; }
+.mega summary:hover { background: var(--accent-soft); color: var(--accent); }
+.mega[open] > summary { background: var(--accent-soft); color: var(--accent); }
+.mega .caret { font-size: 9px; transition: transform .15s ease; opacity: 0.7; }
+.mega[open] .caret { transform: rotate(180deg); }
+
+.mega-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  padding: 18px 20px;
+  display: grid;
+  grid-template-columns: minmax(200px, 240px) minmax(200px, 240px);
+  gap: 8px 28px;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.10), 0 4px 12px rgba(15, 23, 42, 0.04);
+  z-index: 200;
+  min-width: 480px;
+}
+.mega-panel .mega-col h4 {
+  font-size: 11px !important;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+.mega-panel .mega-col a {
+  display: block;
+  padding: 7px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--text);
+  text-decoration: none;
+  transition: background .12s, color .12s;
+  white-space: nowrap;
+}
+.mega-panel .mega-col a:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.nav-quick {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: var(--text-muted);
+}
+.nav-quick:hover { background: var(--accent-soft); color: var(--accent); }
+
+@media (max-width: 1080px) {
+  .mega-panel { min-width: 360px; grid-template-columns: 1fr; }
+}
+@media (max-width: 900px) {
+  .mega summary { padding: 4px 8px; font-size: 13px; }
+  .nav-quick { font-size: 13px; padding: 4px 8px; }
+}
+/* Mobile drawer behaviour: dropdowns expand inline rather than absolute */
+@media (max-width: 760px) {
+  .mega-panel {
+    position: static;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    padding: 6px 12px;
+    grid-template-columns: 1fr;
+    min-width: 0;
+  }
+  .mega-panel .mega-col a { padding: 6px 0; font-size: 14px; }
+}
+
+/* ============================================================
+   Section accordion — every .collapsible-section has a clickable
+   header (eyebrow + h2) that toggles the body. Default state is
+   based on data-default-open; user state persists in localStorage.
+   ============================================================ */
+
+.section.collapsible {
+  padding: 0 !important;
+  border-top: 1px solid var(--line);
+}
+.section.collapsible .section-toggle {
+  width: 100%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  padding: 36px 0 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  color: var(--text);
+  font-family: inherit;
+}
+.section.collapsible .section-toggle .container {
+  flex: 1;
+  display: block;
+  padding: 0 var(--container-pad, 24px);
+}
+.section.collapsible .section-toggle .section-caret {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  margin: 38px 24px 0 0;
+  transition: transform .2s ease, background .15s;
+}
+.section.collapsible[data-open="false"] .section-caret { transform: rotate(-90deg); }
+.section.collapsible .section-toggle:hover .section-caret { background: var(--accent); color: #fff; }
+.section.collapsible .section-body {
+  padding: 0 0 64px;
+  overflow: hidden;
+  transition: max-height .28s ease;
+}
+.section.collapsible[data-open="false"] .section-body { display: none; }
+.section.collapsible[data-open="false"] .section-toggle { padding-bottom: 28px; }
+
+.accordion-controls {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  padding: 14px 24px 0;
+  font-size: 12px;
+}
+.accordion-controls button {
+  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: inherit;
+}
+.accordion-controls button:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ============================================================
+   §FINAL-9 — Google-aligned color palette (definitive).
+   Eliminates the slate-blue --text-muted cast that read as
+   "depressing dark blue". Replaces it with Google's grey-700
+   neutral family so secondary text, body text, and footnotes
+   don't fight the violet accent. Surfaces stay warm-neutral.
+   ============================================================ */
+
+:root {
+  /* Google-aligned text scale */
+  --text:           #1f2024 !important;  /* primary text — near-black, no blue cast */
+  --text-muted:     #5f6368 !important;  /* secondary — Google grey-700 */
+  --text-dim:       #80868b !important;  /* tertiary — Google grey-600 */
+  --text-disabled:  #9aa0a6 !important;  /* disabled — Google grey-500 */
+
+  /* Surface scale — neutral whites + greys */
+  --paper:    #ffffff !important;
+  --paper-2:  #f8f9fa !important;        /* Google grey-50 */
+  --paper-3:  #f1f3f4 !important;        /* Google grey-100 */
+  --rule:     #e8eaed !important;        /* Google grey-200 — borders */
+  --rule-soft:#f1f3f4 !important;        /* lighter dividers */
+  --line:     #e8eaed !important;
+  --line-soft:#f1f3f4 !important;
+  --line-strong:#dadce0 !important;      /* Google grey-300 */
+
+  /* Accent — keep violet, just ensure it harmonises */
+  --accent:        #7c3aed !important;   /* violet-600 (unchanged) */
+  --accent-2:      #6d28d9 !important;   /* violet-700 hover */
+  --accent-soft:   rgba(124, 58, 237, 0.08) !important;
+  --accent-line:   rgba(124, 58, 237, 0.20) !important;
+
+  /* Semantic */
+  --success:    #1e8e3e !important;      /* Google green */
+  --success-soft:rgba(30, 142, 62, 0.10) !important;
+  --warning:    #f29900 !important;      /* Google amber */
+  --warning-soft:rgba(242, 153, 0, 0.10) !important;
+  --danger:     #d93025 !important;      /* Google red */
+  --danger-soft:rgba(217, 48, 37, 0.10) !important;
+}
+
+:root[data-theme="dark"] {
+  --text:           #e8eaed !important;
+  --text-muted:     #bdc1c6 !important;  /* Google grey-400 */
+  --text-dim:       #9aa0a6 !important;  /* Google grey-500 */
+  --text-disabled:  #5f6368 !important;
+  --paper:    #202124 !important;        /* Google dark-grey-900 */
+  --paper-2:  #28292c !important;
+  --paper-3:  #303134 !important;
+  --rule:     #3c4043 !important;
+  --rule-soft:#28292c !important;
+  --line:     #3c4043 !important;
+  --line-soft:#28292c !important;
+  --line-strong:#5f6368 !important;
+}
+
+/* Reset any dark-blue cast on common foreground elements */
+body, p, li, span, td, th, dt, dd { color: inherit; }
+
+/* The hero, section heads, and lede now ride on the Google neutrals */
+.hero, .section, .footer { color: var(--text); }
+.lede, p.lede { color: var(--text-muted) !important; }
+.eyebrow { color: var(--text-dim) !important; }
+
+/* Card body copy unified to grey-700 */
+.section .ps-list li, .section .af-list li,
+.section .why-pain, .section .why-out,
+.section .arch-b, .section .ag-b, .section .cf-b,
+.section .persona-card p, .section .sector-pain,
+.section .what-card p, .section .qs-card p, .section .how-card p,
+.section .evo-card p, .section .ba-sub, .section .card-sub {
+  color: var(--text-muted) !important;
+}
+
+/* Strong inside cards rides on the primary text color (not the muted) */
+.section .ps-list li strong,
+.section .why-out strong,
+.section .arch-b strong,
+.section .ag-b strong,
+.section .why-card strong,
+.section .ag-card strong,
+.section .ps-card strong {
+  color: var(--text) !important;
+}
+
+/* Code blocks — neutral surface */
+code, pre code, .what-card code, .arch-b code, .why-out code, .ag-b code, .ps-list code {
+  background: var(--paper-3) !important;
+  border-color: var(--rule) !important;
+  color: var(--text) !important;
+}
+
+/* Tables — Google-aligned neutrals */
+.cmp { color: var(--text); }
+.cmp thead th { background: var(--paper-2) !important; color: var(--text-muted) !important; border-bottom-color: var(--line-strong) !important; }
+.cmp tbody td { border-bottom-color: var(--line-soft) !important; }
+.cmp tbody td:not(.cell-yes):not(.cell-partial):not(.cell-no) { color: var(--text); }
+.cmp .cell-yes     { color: var(--success) !important; }
+.cmp .cell-partial { color: var(--warning) !important; }
+.cmp .cell-no      { color: var(--text-dim) !important; }
+
+/* Comparison table - subtle hover with neutral grey not violet */
+.cmp tbody tr:hover { background: var(--paper-2) !important; }
+
+/* Footer — neutral grey */
+.footer { background: var(--paper-2) !important; color: var(--text-muted) !important; border-top: 1px solid var(--line); }
+
+/* Pills / tags — keep accent color but on neutral surfaces */
+.hero-pill, .version-pill { background: var(--paper-2); color: var(--text-muted); border-color: var(--rule); }
+
+/* Mega-nav surfaces use Google paper */
+.mega-panel { background: var(--paper) !important; border-color: var(--rule) !important; }
+.mega-panel .mega-col h4 { color: var(--text-dim) !important; }
+.mega-panel .mega-col a { color: var(--text) !important; }
+.mega-panel .mega-col a:hover { background: var(--paper-2) !important; color: var(--accent) !important; }
+
+/* ============================================================
+   §FINAL-10 — Clean / modern / neat / clear pass.
+   Strips visual noise: glass-blurs, gradient washes, decorative
+   borders. Uses one accent, one neutral text, one neutral surface.
+   Generous spacing. Inspired by Google / Stripe / Linear product
+   pages (clarity over showmanship).
+   ============================================================ */
+
+/* --- Strip glass-blur and translucent washes (clean over flashy) --- */
+.what-card, .ps-card, .af-card, .ag-card, .why-card,
+.persona-card, .sector-card, .arch-card, .cf-card,
+.evo-card, .qs-card, .how-card, .ba-side {
+  background: var(--paper) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+  border: 1px solid var(--rule) !important;
+  border-radius: 12px !important;
+}
+
+/* Preserve the colour-coded borders on problem/solution / before/after */
+.ps-card.problem  { border-color: rgba(217, 48, 37, 0.20) !important; }
+.ps-card.solution { border-color: rgba(30, 142, 62, 0.22) !important; background: var(--paper) !important; }
+.ba-side.before   { border-color: rgba(217, 48, 37, 0.20) !important; }
+.ba-side.after    { border-color: rgba(30, 142, 62, 0.22) !important; }
+.evo-card.legacy   { border-color: var(--line-strong) !important; }
+.evo-card.emerging { border-color: rgba(242, 153, 0, 0.22) !important; background: var(--paper) !important; }
+.evo-card.kye      { border-color: rgba(124, 58, 237, 0.30) !important; background: var(--paper) !important; }
+
+/* Subtle hover lift only */
+.what-card:hover, .ps-card:hover, .af-card:hover, .ag-card:hover, .why-card:hover,
+.persona-card:hover, .sector-card:hover, .arch-card:hover, .cf-card:hover,
+.evo-card:hover, .qs-card:hover, .how-card:hover {
+  border-color: var(--line-strong) !important;
+  transform: none !important;
+}
+
+/* Hero — clean, no gradient grid */
+.hero { background: var(--paper) !important; }
+.hero-grid, .hero-bg { display: none !important; }
+
+/* Section dividers — minimal, single hairline */
+.section { border-top: 1px solid var(--line) !important; padding: 80px 0 !important; }
+.section.alt { background: var(--paper-2) !important; }
+@media (max-width: 760px) { .section { padding: 56px 0 !important; } }
+
+/* Buttons — cleaner */
+.btn-primary {
+  background: var(--accent) !important;
+  color: #fff !important;
+  border: 1px solid var(--accent) !important;
+  border-radius: 8px !important;
+  padding: 11px 18px !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  box-shadow: none !important;
+}
+.btn-primary:hover { background: var(--accent-2) !important; border-color: var(--accent-2) !important; }
+.btn-secondary {
+  background: var(--paper) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--rule) !important;
+  border-radius: 8px !important;
+  padding: 11px 18px !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+}
+.btn-secondary:hover { border-color: var(--line-strong) !important; }
+.btn-ghost {
+  background: transparent !important;
+  color: var(--text-muted) !important;
+  border: none !important;
+  font-weight: 500 !important;
+}
+.btn-ghost:hover { color: var(--accent) !important; }
+
+/* Pills — neutral baseline */
+.hero-pill {
+  background: var(--paper-2) !important;
+  border: 1px solid var(--rule) !important;
+  color: var(--text-muted) !important;
+  font-weight: 500 !important;
+}
+.hero-pill .dot { background: var(--accent); }
+
+/* Audience toggle — cleaner */
+.audience-toggle { border-color: var(--rule) !important; background: var(--paper-2) !important; }
+.aud-btn { color: var(--text-muted) !important; }
+.aud-btn.is-active { background: var(--accent) !important; color: #fff !important; }
+
+/* Tables — clean */
+.cmp { border-collapse: separate !important; border-spacing: 0 !important; }
+.cmp thead th { font-weight: 600 !important; }
+.cmp tbody td { font-weight: 400 !important; }
+
+/* Footer */
+.footer { padding: 48px 0 40px !important; }
+.footer .footer-inner, .footer .container { color: var(--text-muted) !important; }
+
+/* Generous inter-card spacing */
+.what-grid, .ps-wrap, .af-wrap, .ag-grid, .why-grid, .persona-grid,
+.sector-grid, .arch-grid, .cf-wrap, .evo-grid, .qs-grid, .how-grid {
+  gap: 16px !important;
+}
+@media (min-width: 900px) {
+  .what-grid, .ps-wrap, .af-wrap, .ag-grid, .why-grid, .persona-grid,
+  .sector-grid, .arch-grid, .cf-wrap, .evo-grid, .qs-grid, .how-grid {
+    gap: 20px !important;
+  }
+}
+
+/* Card padding: consistent 22px / 28px desktop */
+.what-card, .ps-card, .af-card, .ag-card, .why-card,
+.persona-card, .sector-card, .arch-card, .cf-card,
+.evo-card, .qs-card, .how-card {
+  padding: 22px !important;
+}
+@media (min-width: 900px) {
+  .what-card, .ps-card, .af-card, .ag-card, .why-card,
+  .persona-card, .sector-card, .arch-card, .cf-card,
+  .evo-card, .qs-card, .how-card {
+    padding: 28px !important;
+  }
+}
+
+/* Eyebrow — neutral grey-dim, not violet */
+.eyebrow { color: var(--text-dim) !important; }
+
+/* Section h2 — slightly tighter weight */
+.h-section { font-weight: 600 !important; color: var(--text) !important; }
+.h-section .accent {
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  color: var(--accent) !important;
+}
+
+/* Section toggles — cleaner press affordance */
+.section.collapsible .section-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+/* ============================================================
+   §FINAL-11 — Native <details>/<summary> layout (HTML-valid).
+   Sections are now collapsible via native <details>/<summary>
+   for full a11y (keyboard / screen reader). The summary content
+   model is phrasing + headings only — no <div> children.
+   ============================================================ */
+
+.section.collapsible details { display: block; }
+.section.collapsible summary {
+  list-style: none;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 16px;
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 40px 24px 16px;
+}
+.section.collapsible summary::-webkit-details-marker { display: none; }
+.section.collapsible summary::marker { content: ''; }
+.section.collapsible summary > .eyebrow,
+.section.collapsible summary > .h-section {
+  grid-column: 1;
+}
+.section.collapsible summary > .section-caret {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  transition: transform .2s ease, background .15s;
+}
+.section.collapsible details[open] .section-caret { transform: rotate(180deg); }
+.section.collapsible summary:hover .section-caret { background: var(--accent); color: #fff; }
+
+.section.collapsible details:not([open]) summary { padding-bottom: 28px; }
+.section.collapsible .section-body {
+  padding: 0 0 64px;
+}
+
+/* The <section.collapsible> itself uses no padding (the summary handles top
+   padding when collapsed; the body provides bottom padding when open). */
+.section.collapsible {
+  padding: 0 !important;
+}
+
+/* Override §FINAL-10 padding for collapsible sections only */
+.section.collapsible.alt { padding: 0 !important; }

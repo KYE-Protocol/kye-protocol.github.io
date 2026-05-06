@@ -75,3 +75,53 @@ initWebMcp();
   apply(saved);
   buttons.forEach((b) => b.addEventListener("click", () => apply(b.dataset.audience)));
 })();
+
+/* Mega-nav dropdowns — close on outside click, escape, and on selecting a link.
+   Also enforce single-open (close other open dropdowns when one opens). */
+(function initMegaNav() {
+  const megas = document.querySelectorAll('.mega');
+  if (!megas.length) return;
+  function closeAll(except) {
+    megas.forEach(d => { if (d !== except) d.removeAttribute('open'); });
+  }
+  megas.forEach(d => {
+    d.addEventListener('toggle', () => { if (d.open) closeAll(d); });
+    d.querySelectorAll('a').forEach(a => a.addEventListener('click', () => closeAll(null)));
+  });
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.mega')) closeAll(null);
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeAll(null);
+  });
+})();
+
+/* Section accordion — collapses sections by default (per data-default-open).
+   Persists state per-section in localStorage. Adds Expand all / Collapse all
+   controls to the first .accordion-controls element on the page. */
+(function initSectionAccordion() {
+  const sections = document.querySelectorAll('.section.collapsible');
+  if (!sections.length) return;
+  const KEY = id => `kye-sec-${id}`;
+  sections.forEach(sec => {
+    const details = sec.querySelector('details');
+    if (!details) return;
+    let stored;
+    try { stored = localStorage.getItem(KEY(sec.id)); } catch(_) {}
+    const defaultOpen = sec.dataset.defaultOpen === 'true';
+    const initial = stored == null ? defaultOpen : stored === 'true';
+    if (initial) details.setAttribute('open', '');
+    else details.removeAttribute('open');
+    details.addEventListener('toggle', () => {
+      try { localStorage.setItem(KEY(sec.id), String(details.open)); } catch(_) {}
+    });
+  });
+  document.querySelectorAll('[data-accordion-expand-all]').forEach(b =>
+    b.addEventListener('click', () => sections.forEach(s => {
+      const d = s.querySelector('details'); if (d) d.setAttribute('open', '');
+    })));
+  document.querySelectorAll('[data-accordion-collapse-all]').forEach(b =>
+    b.addEventListener('click', () => sections.forEach(s => {
+      const d = s.querySelector('details'); if (d) d.removeAttribute('open');
+    })));
+})();
