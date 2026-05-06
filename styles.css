@@ -7203,13 +7203,24 @@ p code[data-code], li code[data-code] {
   border-bottom: 1px solid var(--kye-color-line);
 }
 .faq-item > summary {
-  padding: 14px 32px 14px 0 !important;
+  /* Block (not flex) so inline children — including the .tm ™ span —
+   * stay on the same baseline as surrounding text. The earlier rule
+   * at line 1164 set display:flex which split contiguous inline runs
+   * across lines whenever the text wrapped, so on narrower viewports
+   * "KYE" with its ™ span dropped to its own visual line. The +/−
+   * marker is absolutely positioned (below) so it doesn't need to be
+   * a flex sibling. */
+  display: block !important;
+  padding: 14px 32px 14px 22px !important;
   font-size: var(--kye-type-small);
   font-weight: 600;
   color: var(--kye-color-text);
   cursor: pointer;
   position: relative;
   line-height: 1.4;
+}
+@media (max-width: 480px) {
+  .faq-item > summary { padding: 14px 28px 14px 16px !important; }
 }
 .faq-item > summary::-webkit-details-marker { display: none; }
 .faq-item > summary::after {
