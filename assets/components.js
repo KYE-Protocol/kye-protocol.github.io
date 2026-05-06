@@ -112,10 +112,12 @@ export function kyeHeader({ active = '' } = {}) {
   </div>`;
 }
 
-// Grouped column structure for the site footer. Each group has a heading
-// and a list of {href, label, attrs?} items. Order matters for visual
-// scanning: protocol/spec first (the thing being defined), then the
-// compliance pages, then audience pages, then resources, then site/legal.
+// Grouped column structure for the site footer. Five clean columns,
+// canonical product names with ™ on every trademark, ordered:
+// Protocol → Build → Compliance → Audiences → Programme → Site.
+// Trademarked product names use the full canonical "KYE …™" form so
+// the trademark notice in the footer bar is supported by every link
+// label that uses the mark.
 const FOOTER_GROUPS = [
   {
     heading: 'Protocol',
@@ -124,10 +126,23 @@ const FOOTER_GROUPS = [
       { href: 'protocol.html',     label: 'Protocol' },
       { href: 'concepts.html',     label: 'Concepts' },
       { href: 'vocabulary.html',   label: 'Vocabulary' },
+      { href: 'glossary.html',     label: 'Glossary' },
       { href: 'whitepaper.html',   label: 'Whitepaper' },
       { href: 'roadmap.html',      label: 'Roadmap' },
-      { href: 'integrations.html', label: 'Integrations' },
       { href: 'changelog.html',    label: 'Changelog' },
+      { href: 'integrations.html', label: 'Integrations' },
+    ],
+  },
+  {
+    heading: 'Build',
+    items: [
+      { href: 'build.html',       label: 'Build' },
+      { href: 'developers.html',  label: 'Quickstart' },
+      { href: 'mcp.html',         label: 'KYE MCP Server<span class="tm">™</span>' },
+      { href: 'connectors.html',  label: 'KYE Connector Hub<span class="tm">™</span>' },
+      { href: 'apps.html',        label: 'KYE App Store<span class="tm">™</span>' },
+      { href: 'plugins.html',     label: 'KYE Plugin Marketplace<span class="tm">™</span>' },
+      { href: 'protocol.html#signals', label: 'KYE Signal Bus<span class="tm">™</span>' },
     ],
   },
   {
@@ -136,54 +151,34 @@ const FOOTER_GROUPS = [
       { href: 'compliance.html',      label: 'Compliance' },
       { href: 'frameworks.html',      label: 'Frameworks' },
       { href: 'oscal.html',           label: 'OSCAL' },
-      { href: 'compliance-card.html', label: 'Compliance Card' },
+      { href: 'compliance-card.html', label: 'Compliance Card<span class="tm">™</span>' },
+      { href: 'risk.html',            label: 'Risk' },
+      { href: 'readiness.html',       label: 'Readiness' },
     ],
   },
   {
     heading: 'Audiences',
     items: [
-      { href: 'developers.html', label: 'Developers' },
-      { href: 'buyers.html',     label: 'Buyers' },
-      { href: 'auditors.html',   label: 'Auditors' },
-      { href: 'regulators.html', label: 'Regulators' },
-      { href: 'sectors.html',    label: 'Sectors' },
-      { href: 'customers.html',  label: 'Customers' },
-    ],
-  },
-  {
-    heading: 'Resources',
-    items: [
-      { href: 'usecases.html',     label: 'Use Cases' },
-      { href: 'open-banking.html', label: 'Open Banking' },
+      { href: 'developers.html',       label: 'Developers' },
+      { href: 'buyers.html',           label: 'Buyers' },
+      { href: 'auditors.html',         label: 'Auditors' },
+      { href: 'regulators.html',       label: 'Regulators' },
+      { href: 'sectors.html',          label: 'Sectors' },
+      { href: 'usecases.html',         label: 'Use Cases' },
+      { href: 'open-banking.html',     label: 'Open Banking' },
       { href: 'agent-purchasing.html', label: 'Agent Purchasing' },
-      { href: 'risk.html',      label: 'Risk' },
-      { href: 'readiness.html', label: 'Readiness' },
-      { href: 'demos.html',     label: 'Demos' },
-      { href: 'docs.html',      label: 'Docs' },
-      { href: 'glossary.html',  label: 'Glossary' },
-      { href: 'faq.html',       label: 'FAQ' },
-    ],
-  },
-  {
-    heading: 'Build',
-    items: [
-      { href: 'build.html',       label: 'Build' },
-      { href: 'developers.html',  label: 'Quickstart' },
-      { href: 'mcp.html',         label: 'MCP Server' },
-      { href: 'connectors.html',  label: 'Connectors' },
-      { href: 'apps.html',        label: 'Apps' },
-      { href: 'plugins.html',     label: 'Plugins' },
-      { href: 'protocol.html#signals', label: 'Signal Bus' },
+      { href: 'demos.html',            label: 'Demos' },
     ],
   },
   {
     heading: 'Programme',
     items: [
-      { href: 'engage.html',          label: 'Engagement' },
-      { href: 'partners.html',        label: 'Partners' },
-      { href: 'certification.html',   label: 'Certification' },
-      { href: 'training.html',        label: 'Training' },
-      { href: 'working-groups.html',  label: 'Working Groups' },
+      { href: 'engage.html',         label: 'Engagement' },
+      { href: 'partners.html',       label: 'Partners' },
+      { href: 'certification.html',  label: 'Certification' },
+      { href: 'training.html',       label: 'Training' },
+      { href: 'working-groups.html', label: 'Working Groups' },
+      { href: 'customers.html',      label: 'Customers' },
     ],
   },
   {
@@ -192,6 +187,8 @@ const FOOTER_GROUPS = [
       { href: 'status.html',    label: 'Status' },
       { href: 'press.html',     label: 'Press' },
       { href: 'sitemap.html',   label: 'Sitemap' },
+      { href: 'docs.html',      label: 'Docs' },
+      { href: 'faq.html',       label: 'FAQ' },
       { href: 'legal.html',     label: 'Legal' },
       { href: 'legal-faq.html', label: 'Legal FAQ' },
       { href: '#',              label: 'Talk to us', attrs: 'data-contact-trigger' },
