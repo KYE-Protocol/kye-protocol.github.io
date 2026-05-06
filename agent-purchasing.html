@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script>(function(){try{var s=localStorage.getItem("kye-theme");if(s==="dark"||s==="light"){document.documentElement.setAttribute("data-theme",s);}}catch(e){}})();</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KYE Protocol™ — Agent-backed card purchasing | Reference architecture for agentic commerce</title>
+  <meta name="description" content="Independent reference architecture for AI-agent-backed card purchasing. Public-context analysis: agentic-commerce initiatives are moving live payments. KYE Protocol™ provides the authority + state + decision + evidence layer around the agent action — complementary to payment rails and verifiable-intent layers, not a replacement." />
+  <meta name="keywords" content="agent-backed card purchasing, agentic commerce, AI agent payments, delegated payment authority, virtual card token, tokenised card, agent purchasing, KYE Protocol, Authority Finality, payment authority" />
+  <link rel="canonical" href="https://kye-protocol.github.io/agent-purchasing.html" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="KYE Protocol™ — Agent-backed card purchasing reference architecture" />
+  <meta property="og:description" content="Before the payment is authorised, prove the agent was authorised. Independent reference architecture for AI-agent purchasing on tokenised payment instruments." />
+  <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
+  <meta property="og:url" content="https://kye-protocol.github.io/agent-purchasing.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css?v=1778820000" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="top-bar" role="banner" data-kye-header data-active="agent-purchasing"><!-- canonical chrome injected by assets/components.js mountKyeComponents() --></header>
+<main id="main" role="main">
+
+<section id="top" class="hero">
+  <div class="container hero-inner">
+    <span class="hero-pill"><span class="dot"></span> Reference architecture &middot; agent-backed card purchasing</span>
+    <h1 id="hero-title" style="margin-top:18px">Before the payment is authorised, <span class="accent">prove the agent was authorised</span>.</h1>
+    <p class="lede">Independent reference architecture for an AI agent purchasing on behalf of a customer or business using a tokenised payment instrument. KYE Protocol<span class="tm">™</span> provides the authority &middot; state &middot; decision &middot; evidence layer around the agent action &mdash; complementary to payment rails and verifiable-intent layers, never a replacement.</p>
+    <p class="lede" style="margin-top:8px;font-style:italic;color:var(--accent);font-weight:600">Payment rails move money. Verifiable intent proves customer intent. KYE<span class="tm">™</span> proves delegated authority.</p>
+  </div>
+</section>
+
+<section id="context" class="section" aria-labelledby="h-ctx">
+        <span class="eyebrow">Section 1 &middot; public market context</span>
+    <h2 id="h-ctx" class="h-section">Agentic commerce is moving from theory to live payment flows.</h2>
+  <div class="section-body"><div class="container">
+    <p class="lede">Public agentic-commerce initiatives demonstrate that AI agents are entering real payment flows on infrastructure designed for trusted, scoped agent actions:</p>
+    <ul class="who-bullets">
+      <li><strong>Mastercard Agent Pay</strong> &mdash; publicly positioned as infrastructure for secure, scalable, trusted payments in agentic commerce.</li>
+      <li><strong>Mastercard Verifiable Intent</strong> &mdash; publicly positioned as an open, standards-based trust layer for agentic commerce designed to work across protocols, devices, wallets, platforms and payment networks.</li>
+      <li><strong>Santander &times; Mastercard live AI-agent payment</strong> &mdash; publicly announced end-to-end payment executed by an AI agent on behalf of a customer within predefined limits and permissions.</li>
+      <li><strong>Visa Trusted Agent Protocol</strong> &mdash; public KYA framework for verifying AI agents at onboarding.</li>
+    </ul>
+    <p class="lede" style="margin-top:14px">These initiatives validate the thesis: <em>if agents can buy on behalf of people or businesses, the ecosystem needs a standard way to prove delegated authority, scope, state, decisioning, and evidence</em> &mdash; <em>before</em> the payment-network rules execute.</p>
+  </div></div>
+</section>
+
+<section id="question" class="section alt" aria-labelledby="h-q">
+        <span class="eyebrow">Section 2 &middot; the unresolved authority question</span>
+    <h2 id="h-q" class="h-section">Payment authorisation is one question. <span class="accent">Authority is another.</span></h2>
+  <div class="section-body"><div class="container">
+    <p class="lede">Card-network authorisation already answers <em>&ldquo;is this card transaction financially authorised?&rdquo;</em>. Agentic commerce raises a separate, prior question that today&rsquo;s issuer pipelines do not answer:</p>
+    <ul class="who-bullets">
+      <li>Which agent acted?</li>
+      <li>Who delegated authority to that agent?</li>
+      <li>What payment instrument (card / token / wallet) was used?</li>
+      <li>What merchant + MCC was allowed?</li>
+      <li>What amount limits applied?</li>
+      <li>Was approval required and on which channel?</li>
+      <li>What was the agent&rsquo;s state at the time of action?</li>
+      <li>What signed evidence proves the decision?</li>
+    </ul>
+    <p class="lede" style="margin-top:14px">A bank, issuer, merchant, network, auditor, court, or regulator who later wants to replay any one purchase needs all eight answers in a single replayable artefact. That is the gap KYE Protocol<span class="tm">™</span> closes.</p>
+  </div></div>
+</section>
+
+<section id="fit" class="section" aria-labelledby="h-fit">
+        <span class="eyebrow">Section 3 &middot; where KYE<span class="tm">™</span> fits</span>
+    <h2 id="h-fit" class="h-section">Authority finality, before payment finality.</h2>
+  <div class="section-body"><div class="container">
+    <p class="lede">KYE Protocol<span class="tm">™</span> does <strong>not</strong> process the card payment, issue the card, replace tokenisation, run fraud scoring, replace SCA, or replace issuer authorisation. It is the <strong>authority + state + decision + evidence layer</strong> around the agent action.</p>
+    <pre class="ob-stack">  Customer / Cardholder
+        &darr; <em>delegates limited authority</em>
+  AI Purchasing Agent
+        &darr; <em>uses</em>
+  Purchase Capability
+        &darr; <em>against</em>
+  Card Token + Merchant + Basket
+        &darr; <em>checked by</em>
+  KYE<span class="tm">™</span> Authority Decision
+        &darr; <em>returns</em>
+  allow / deny / require_approval
+        &darr; <em>then</em>
+  Bank / Issuer / Card processor authorises payment
+        &darr; <em>and emits</em>
+  Decision Map<span class="tm">™</span> + Evidence Pack</pre>
+  </div></div>
+</section>
+
+<section id="model" class="section alt" aria-labelledby="h-model">
+        <span class="eyebrow">Section 4 &middot; KYE<span class="tm">™</span> object model</span>
+    <h2 id="h-model" class="h-section">Every purchase resolves into eight objects.</h2>
+  <div class="section-body"><div class="container">
+    <ul class="who-bullets">
+      <li><strong>Principal entity</strong> &mdash; cardholder or business (<code data-code="urn">kye:human:bank-z.eu:psu:alice-meier</code> / <code data-code="urn">kye:business:bank-z.eu:corp:acme-treasury-gmbh</code>).</li>
+      <li><strong>Acting entity</strong> &mdash; AI purchasing agent (<code data-code="urn">kye:agent:bank-z.eu:retail:shopping-bot</code>).</li>
+      <li><strong>Capability entity</strong> &mdash; <code data-code="field">card_purchase</code> with sub-capabilities (<code data-code="field">purchase.search</code> &middot; <code data-code="field">purchase.compare</code> &middot; <code data-code="field">purchase.prepare</code> &middot; <code data-code="field">purchase.request_approval</code> &middot; <code data-code="field">purchase.execute</code> &middot; <code data-code="field">purchase.refund_request</code> &middot; <code data-code="field">purchase.dispute_prepare</code>).</li>
+      <li><strong>Resource entity</strong> &mdash; tokenised payment instrument (<code data-code="urn">kye:credential:bank-z.eu:card-token:tok_abc123</code>). Agent never holds the raw PAN.</li>
+      <li><strong>Scope</strong> &mdash; amount cap, merchant allowlist, MCC allowlist + blocklist, jurisdiction, time window, approval threshold.</li>
+      <li><strong>State</strong> &mdash; six dimensions: agent lifecycle, credential, authority, delegation, recovery, risk.</li>
+      <li><strong>Decision</strong> &mdash; one of <code data-code="allow">allow_with_constraints</code>, <code data-code="approve">require_approval</code>, <code data-code="deny">deny</code>, with reason code.</li>
+      <li><strong>Evidence</strong> &mdash; signed audit event, payload hash, receipt reference, Decision Map<span class="tm">™</span>, Evidence Pack.</li>
+    </ul>
+  </div></div>
+</section>
+
+<section id="flow" class="section" aria-labelledby="h-flow">
+        <span class="eyebrow">Section 5 &middot; runtime decision flow</span>
+    <h2 id="h-flow" class="h-section">Seven steps from purchase intent to signed proof.</h2>
+  <div class="section-body"><div class="container">
+    <ol class="ob-flow" style="margin-top:14px">
+      <li><span class="ob-step">1.</span> Agent prepares the purchase: merchant, basket, amount, currency, delivery address, payment instrument.</li>
+      <li><span class="ob-step">2.</span> Agent submits a signed purchase request &mdash; <code data-code="endpoint">POST /v1/runtime/authorize</code>.</li>
+      <li><span class="ob-step">3.</span> KYE<span class="tm">™</span> resolves customer + agent + card token + capability + scope.</li>
+      <li><span class="ob-step">4.</span> KYE<span class="tm">™</span> evaluates state, delegation, authority, and policy.</li>
+      <li><span class="ob-step">5.</span> KYE<span class="tm">™</span> returns <code data-code="allow">allow_with_constraints</code> &middot; <code data-code="approve">require_approval</code> &middot; <code data-code="deny">deny</code> with reason (e.g. <code data-code="field">merchant_category_blocked</code>, <code data-code="field">amount_above_agent_threshold</code>).</li>
+      <li><span class="ob-step">6.</span> Bank / payment stack continues with normal card-issuer authorisation.</li>
+      <li><span class="ob-step">7.</span> KYE<span class="tm">™</span> emits the audit event + Decision Map<span class="tm">™</span> + Evidence Pack to the audit chain.</li>
+    </ol>
+  </div></div>
+</section>
+
+<section id="evidence" class="section alt" aria-labelledby="h-ev">
+        <span class="eyebrow">Section 6 &middot; evidence pack</span>
+    <h2 id="h-ev" class="h-section">What ends up signed and replayable.</h2>
+  <div class="section-body"><div class="container">
+    <ul class="who-bullets">
+      <li>customer / principal reference</li>
+      <li>agent reference + agent state snapshot at time of purchase</li>
+      <li>delegation grant URN</li>
+      <li>payment capability URN</li>
+      <li>card-token reference (no raw PAN)</li>
+      <li>merchant metadata + MCC + jurisdiction</li>
+      <li>basket hash</li>
+      <li>amount + currency</li>
+      <li>policy decision + reason code</li>
+      <li>approval event (where applicable)</li>
+      <li>state snapshot (six dimensions) + risk state</li>
+      <li>payload hash + signature</li>
+      <li>audit-chain entry pointer</li>
+      <li>receipt reference (if execute completed)</li>
+      <li>full Decision Map<span class="tm">™</span></li>
+    </ul>
+    <p class="lede" style="margin-top:14px">The Evidence Pack lets the bank later prove either: <em>&ldquo;the agent was allowed to do this specific purchase at this specific time under this specific authority&rdquo;</em> &mdash; or, equally importantly, <em>&ldquo;the agent was not allowed; the transaction should have been blocked or escalated.&rdquo;</em></p>
+  </div></div>
+</section>
+
+<section id="why-banks" class="section" aria-labelledby="h-wb">
+        <span class="eyebrow">Section 7 &middot; why banks care</span>
+    <h2 id="h-wb" class="h-section">Eight teams that read this artefact.</h2>
+  <div class="section-body"><div class="container">
+    <ul class="who-bullets">
+      <li><strong>Agent-purchase disputes</strong> &mdash; complainant says the agent overstepped. Pull the Evidence Pack; replay offline.</li>
+      <li><strong>Chargebacks</strong> &mdash; merchant challenges a refund. The Decision Map<span class="tm">™</span> shows why the purchase was authorised in the first place.</li>
+      <li><strong>Fraud investigation</strong> &mdash; SIU walks the chain agent &rarr; agent state &rarr; delegation &rarr; principal in seconds.</li>
+      <li><strong>Consumer protection</strong> &mdash; regulator audits the merchant-allowlist + amount-cap behaviour against the holder&rsquo;s consent.</li>
+      <li><strong>Merchant assurance</strong> &mdash; merchant proves the AI agent that hit their checkout was a real delegated agent of a real cardholder.</li>
+      <li><strong>Issuer liability analysis</strong> &mdash; the bank distinguishes &ldquo;agent acted within authority&rdquo; vs &ldquo;agent acted outside authority&rdquo; in audit.</li>
+      <li><strong>Operational resilience (DORA)</strong> &mdash; replayable evidence chain meets ICT-third-party-risk reporting.</li>
+      <li><strong>Regulatory audit</strong> &mdash; PSD3 + EU AI Act + PCI DSS 4.0 obligations all draw from the same chain.</li>
+    </ul>
+  </div></div>
+</section>
+
+<section id="not" class="section alt" aria-labelledby="h-not">
+        <span class="eyebrow">Honest non-goals</span>
+    <h2 id="h-not" class="h-section">What KYE<span class="tm">™</span> does <em>not</em> do.</h2>
+  <div class="section-body"><div class="container">
+    <ul class="who-bullets">
+      <li>KYE<span class="tm">™</span> does not store raw card numbers (PANs).</li>
+      <li>KYE<span class="tm">™</span> does not process the payment.</li>
+      <li>KYE<span class="tm">™</span> is not the issuer processor, the wallet custodian, the SCA flow, or the fraud engine.</li>
+      <li>KYE<span class="tm">™</span> does not replace card-network rules.</li>
+      <li>KYE<span class="tm">™</span> does not replace customer consent UX.</li>
+    </ul>
+    <p class="lede" style="margin-top:14px"><strong>KYE<span class="tm">™</span> governs:</strong> agent authority &middot; card-token authority &middot; purchase capability &middot; scope limits &middot; state &middot; decision &middot; audit &middot; evidence &middot; revocation. That keeps the protocol correctly scoped.</p>
+  </div></div>
+</section>
+
+<section id="disclaimer" class="section" aria-labelledby="h-dis">
+        <span class="eyebrow">Section 8 &middot; disclaimer</span>
+    <h2 id="h-dis" class="h-section">Independent reference architecture, not endorsement.</h2>
+  <div class="section-body"><div class="container">
+    <div class="cn-card cn-card-featured">
+      <p class="cn-def" style="font-size:13px;line-height:1.6"><strong>Disclaimer.</strong> This page is an <em>independent illustrative analysis</em> of a public agentic-commerce scenario. KYE Protocol<span class="tm">™</span> is <strong>not affiliated with, sponsored by, endorsed by, or approved by</strong> Mastercard, Santander, Visa, Google, the FIDO Alliance, EMVCo, or any payment network, issuer, acquirer, merchant, or standards body referenced on this page. Mastercard Agent Pay<span class="tm">™</span>, Verifiable Intent<span class="tm">™</span>, Visa Trusted Agent<span class="tm">™</span>, and all third-party names and trademarks belong to their respective owners. The references on this page are <em>public market context only</em> &mdash; not a statement of partnership, integration, or product approval. KYE Protocol<span class="tm">™</span> is published Apache 2.0 and is independently developed.</p>
+    </div>
+  </div></div>
+</section>
+
+<section id="next" class="section alt" aria-labelledby="h-next">
+        <span class="eyebrow">Where to go next</span>
+    <h2 id="h-next" class="h-section">Adjacent reading.</h2>
+  <div class="section-body"><div class="container">
+    <div class="hero-cta" style="margin-top:8px">
+      <a href="open-banking.html"          class="btn btn-primary"><span class="ms">payments</span> Open-banking flow &rarr;</a>
+      <a href="concepts.html#on-behalf-of" class="btn btn-secondary"><span class="ms">link</span> On-Behalf-Of primitive</a>
+      <a href="usecases.html#financial"    class="btn btn-secondary"><span class="ms">lightbulb</span> All financial-services use cases</a>
+      <a href="risk.html"                  class="btn btn-secondary"><span class="ms">shield</span> Threat model</a>
+      <a href="frameworks.html"            class="btn btn-secondary"><span class="ms">fact_check</span> PSD3 / DORA / PCI DSS / EU AI Act</a>
+      <a href="#"                          class="btn btn-secondary" data-contact-trigger><span class="ms">forum</span> Talk to us</a>
+    </div>
+  </div></div>
+</section>
+
+</main>
+<footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected by assets/components.js mountKyeComponents() --></footer>
+<button id="scroll-top" class="scroll-top" type="button" aria-label="Scroll to top" data-kye-scroll-top><!-- svg injected --></button>
+<script type="module" src="main.js?v=1778820000"></script>
+</body>
+</html>
