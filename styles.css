@@ -5775,3 +5775,287 @@ header.nav .brand-mark svg path { stroke: currentColor !important; }
 /* Hide the original af-wrap if any cached HTML still references it
    (defensive only — current index.html no longer has af-wrap). */
 .af-wrap { display: none; }
+
+/* ============================================================
+   §FINAL-26 — Visual hierarchy + green/red semantic colour pass
+   ============================================================
+   Goals:
+   • Break visual repetition between #authority-finality and #who.
+     The af-table from §FINAL-25 was still 'grid of rows' — same
+     gestalt as the persona grid. Replace with a numbered ordered
+     list of comparison cards: red ✗ (Traditional IAM gaps) vs
+     green ✓ (KYE coverage) per row. Eye reads it as 'check-list',
+     not 'card grid'.
+   • Colour-code sectors. The all-purple/green palette flattened
+     12 distinct industries into one. Add per-sector accent colours
+     (banking blue, payments orange, healthcare red, etc.) on the
+     icon block and prof-pill borders.
+   • Whitepaper prior-art table: green / red columns for
+     'Solves' vs 'Doesn't solve' so the gap analysis reads at
+     a glance.
+   • Code-snippet semantic colouring across the whitepaper.
+   ============================================================ */
+
+/* === af-compare (replaces §FINAL-25 af-table) === */
+.af-compare {
+  list-style: none;
+  margin: 28px 0 16px;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+.af-row {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px 20px;
+  display: grid;
+  gap: 14px;
+}
+.af-q {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.af-q-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+.af-cells {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.af-cell {
+  position: relative;
+  padding: 14px 14px 14px 44px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+.af-cell .af-mark {
+  position: absolute;
+  left: 12px;
+  top: 14px;
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.af-cell .af-mark .ms {
+  font-size: 16px !important;
+  width: 16px !important;
+  min-width: 16px !important;
+  height: 16px !important;
+}
+.af-cell .af-tag {
+  display: block;
+  font-size: 10.5px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.af-cell p { margin: 0; color: var(--text); }
+.af-cell.af-no {
+  background: rgba(234, 67, 53, 0.06);
+  border: 1px solid rgba(234, 67, 53, 0.22);
+  color: var(--text-muted);
+}
+.af-cell.af-no .af-mark   { background: rgba(234, 67, 53, 0.16); color: #C5221F; }
+.af-cell.af-no .af-tag    { color: #B31412; }
+.af-cell.af-no p          { text-decoration: line-through; text-decoration-color: rgba(234, 67, 53, 0.45); text-decoration-thickness: 1px; color: var(--text-muted); }
+.af-cell.af-yes {
+  background: rgba(26, 135, 84, 0.07);
+  border: 1px solid rgba(26, 135, 84, 0.26);
+}
+.af-cell.af-yes .af-mark  { background: rgba(26, 135, 84, 0.18); color: var(--accent); }
+.af-cell.af-yes .af-tag   { color: var(--accent); }
+.af-cell.af-yes p         { color: var(--text); font-weight: 500; }
+
+@media (max-width: 720px) {
+  .af-cells { grid-template-columns: 1fr; }
+  .af-row { padding: 16px; }
+}
+
+/* === Sector colour coding ===
+   Each sector card gets its own accent for the icon block + a
+   thin accent border on the prof-pills. The card body stays neutral
+   so 12 cards in the grid don't fight for attention; only the icon
+   and the pill borders carry the colour. */
+.sector-card[data-sector] .sector-icon {
+  background: var(--sec-soft, var(--accent-soft)) !important;
+  border-color: var(--sec-line, var(--accent-line)) !important;
+  color: var(--sec, var(--accent)) !important;
+}
+.sector-card[data-sector] .prof-pill {
+  border-color: transparent;
+}
+.sector-card[data-sector] .prof-pill:hover {
+  border-color: var(--sec, var(--accent)) !important;
+  color: var(--sec, var(--accent)) !important;
+}
+.sector-card[data-sector="banking"]      { --sec: #1A73E8; --sec-soft: rgba(26, 115, 232, 0.10); --sec-line: rgba(26, 115, 232, 0.24); }
+.sector-card[data-sector="payments"]     { --sec: #F4B400; --sec-soft: rgba(244, 180, 0, 0.12); --sec-line: rgba(244, 180, 0, 0.30); }
+.sector-card[data-sector="healthcare"]   { --sec: #EA4335; --sec-soft: rgba(234, 67, 53, 0.10); --sec-line: rgba(234, 67, 53, 0.24); }
+.sector-card[data-sector="treasury"]     { --sec: #3F51B5; --sec-soft: rgba(63, 81, 181, 0.10); --sec-line: rgba(63, 81, 181, 0.24); }
+.sector-card[data-sector="custody"]      { --sec: #009688; --sec-soft: rgba(0, 150, 136, 0.10); --sec-line: rgba(0, 150, 136, 0.26); }
+.sector-card[data-sector="insurance"]    { --sec: #8E24AA; --sec-soft: rgba(142, 36, 170, 0.10); --sec-line: rgba(142, 36, 170, 0.24); }
+.sector-card[data-sector="ai-labs"]      { --sec: #00ACC1; --sec-soft: rgba(0, 172, 193, 0.10); --sec-line: rgba(0, 172, 193, 0.26); }
+.sector-card[data-sector="public"]       { --sec: #5F6368; --sec-soft: rgba(95, 99, 104, 0.12); --sec-line: rgba(95, 99, 104, 0.26); }
+.sector-card[data-sector="marketplaces"] { --sec: #D81B60; --sec-soft: rgba(216, 27, 96, 0.10); --sec-line: rgba(216, 27, 96, 0.24); }
+.sector-card[data-sector="defence"]      { --sec: #455A64; --sec-soft: rgba(69, 90, 100, 0.12); --sec-line: rgba(69, 90, 100, 0.26); }
+.sector-card[data-sector="energy"]       { --sec: #F57C00; --sec-soft: rgba(245, 124, 0, 0.10); --sec-line: rgba(245, 124, 0, 0.24); }
+.sector-card[data-sector="manufacturing"]{ --sec: #6D4C41; --sec-soft: rgba(109, 76, 65, 0.12); --sec-line: rgba(109, 76, 65, 0.26); }
+
+/* === Persona-chip colour coding (hero 'I'm building for' row) === */
+.persona-chip[href="#sectors"]:nth-of-type(1) .ms { color: #1A73E8; }
+.persona-chip[href="#sectors"]:nth-of-type(2) .ms { color: #F4B400; }
+.persona-chip[href="#sectors"]:nth-of-type(3) .ms { color: #00ACC1; }
+.persona-chip[href="#sectors"]:nth-of-type(4) .ms { color: #EA4335; }
+.persona-chip[href="#sectors"]:nth-of-type(5) .ms { color: #3F51B5; }
+.persona-chip[href="#sectors"]:nth-of-type(6) .ms { color: #009688; }
+.persona-chip[href="#sectors"]:nth-of-type(7) .ms { color: #5F6368; }
+
+/* === Whitepaper prior-art green/red columns === */
+.wp-prior-art {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  margin: 18px 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  font-size: 14px;
+}
+.wp-prior-art thead th {
+  background: var(--paper-2, var(--surface));
+  padding: 12px 14px;
+  text-align: left;
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--line);
+}
+.wp-prior-art thead th.wp-pa-yes { color: var(--accent); }
+.wp-prior-art thead th.wp-pa-no  { color: #C5221F; }
+.wp-prior-art tbody th {
+  text-align: left;
+  font-weight: 600;
+  padding: 14px;
+  vertical-align: top;
+  background: var(--surface);
+  color: var(--text);
+  border-bottom: 1px solid var(--line);
+  width: 26%;
+}
+.wp-prior-art tbody td {
+  padding: 14px 14px 14px 44px;
+  position: relative;
+  vertical-align: top;
+  line-height: 1.55;
+  border-bottom: 1px solid var(--line);
+}
+.wp-prior-art tbody td.wp-pa-yes {
+  background: rgba(26, 135, 84, 0.06);
+  color: var(--text);
+}
+.wp-prior-art tbody td.wp-pa-no {
+  background: rgba(234, 67, 53, 0.05);
+  color: var(--text-muted);
+}
+.wp-prior-art tbody tr:last-child th,
+.wp-prior-art tbody tr:last-child td { border-bottom: none; }
+.wp-pa-mark {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.wp-pa-mark .ms {
+  font-size: 16px !important;
+  width: 16px !important;
+  min-width: 16px !important;
+  height: 16px !important;
+}
+.wp-pa-yes .wp-pa-mark { background: rgba(26, 135, 84, 0.18); color: var(--accent); }
+.wp-pa-no  .wp-pa-mark { background: rgba(234, 67, 53, 0.18); color: #C5221F; }
+
+@media (max-width: 720px) {
+  .wp-prior-art, .wp-prior-art thead, .wp-prior-art tbody,
+  .wp-prior-art tr, .wp-prior-art th, .wp-prior-art td {
+    display: block; width: 100%;
+  }
+  .wp-prior-art thead { display: none; }
+  .wp-prior-art tbody tr { padding: 12px 14px; border-bottom: 1px solid var(--line); }
+  .wp-prior-art tbody tr:last-child { border-bottom: none; }
+  .wp-prior-art tbody th { padding: 0 0 6px; border: none; background: transparent; width: auto; }
+  .wp-prior-art tbody td { border: none; padding: 8px 0 8px 30px; }
+  .wp-prior-art tbody td.wp-pa-yes { background: transparent; }
+  .wp-prior-art tbody td.wp-pa-no  { background: transparent; }
+  .wp-pa-mark { left: 0; top: 8px; width: 20px; height: 20px; }
+}
+
+/* === Inline code-snippet semantic colouring (whitepaper) ===
+   Tagged at runtime by initCodeSnippetColours() in main.js based
+   on simple content patterns:
+     [data-code="type"]     KYE*       (entity / record types)
+     [data-code="field"]    snake_case (state / metadata fields)
+     [data-code="endpoint"] HTTP verbs (POST /v1/...)
+     [data-code="profile"]  kye.x.y    (profile names / schema_versions)
+     [data-code="allow"]                allow / allow_with_constraints
+     [data-code="deny"]                 deny / quarantine
+     [data-code="condition"]            require_* / step-up / approval
+*/
+.wp-article code,
+.wp-article p code,
+.wp-article li code {
+  background: var(--code-bg, rgba(95, 99, 104, 0.10));
+  color: var(--code-fg, var(--text));
+  border: 1px solid transparent;
+  padding: 1px 6px;
+  border-radius: 5px;
+  font-size: 12.5px;
+  font-family: var(--font-mono, ui-monospace, monospace);
+}
+.wp-article code[data-code="type"]      { --code-bg: rgba(124, 58, 237, 0.10); --code-fg: #6D28D9; }
+.wp-article code[data-code="field"]     { --code-bg: rgba(0, 172, 193, 0.10);  --code-fg: #007C91; }
+.wp-article code[data-code="endpoint"]  { --code-bg: rgba(26, 115, 232, 0.10); --code-fg: #1A73E8; }
+.wp-article code[data-code="profile"]   { --code-bg: rgba(245, 124, 0, 0.10);  --code-fg: #C56000; }
+.wp-article code[data-code="allow"]     { --code-bg: rgba(26, 135, 84, 0.12);  --code-fg: var(--accent); font-weight: 600; }
+.wp-article code[data-code="deny"]      { --code-bg: rgba(234, 67, 53, 0.12);  --code-fg: #C5221F; font-weight: 600; }
+.wp-article code[data-code="condition"] { --code-bg: rgba(244, 180, 0, 0.16);  --code-fg: #B47200; font-weight: 600; }
+
+:root[data-theme="dark"] .wp-article code[data-code="type"]      { --code-bg: rgba(167, 139, 250, 0.18); --code-fg: #C4B5FD; }
+:root[data-theme="dark"] .wp-article code[data-code="field"]     { --code-bg: rgba(0, 188, 212, 0.18);   --code-fg: #80DEEA; }
+:root[data-theme="dark"] .wp-article code[data-code="endpoint"]  { --code-bg: rgba(66, 165, 245, 0.18);  --code-fg: #90CAF9; }
+:root[data-theme="dark"] .wp-article code[data-code="profile"]   { --code-bg: rgba(255, 167, 38, 0.18);  --code-fg: #FFCC80; }
+:root[data-theme="dark"] .wp-article code[data-code="allow"]     { --code-bg: rgba(129, 201, 149, 0.18); --code-fg: #A8DAB5; }
+:root[data-theme="dark"] .wp-article code[data-code="deny"]      { --code-bg: rgba(244, 119, 110, 0.18); --code-fg: #FFAB91; }
+:root[data-theme="dark"] .wp-article code[data-code="condition"] { --code-bg: rgba(255, 213, 79, 0.18);  --code-fg: #FFE082; }

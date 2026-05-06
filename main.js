@@ -204,6 +204,27 @@ initWebMcp();
   });
 })();
 
+/* Whitepaper / legal code-snippet colour tagger.
+   Walks every <code> inside .wp-article and assigns a data-code
+   attribute based on the snippet's content. CSS handles the
+   actual colour (see §FINAL-26). */
+(function initCodeSnippetColours() {
+  const codes = document.querySelectorAll('.wp-article code');
+  if (!codes.length) return;
+  for (const el of codes) {
+    if (el.dataset.code) continue;
+    const t = (el.textContent || '').trim();
+    if (!t) continue;
+    if (/^KYE[A-Z]/.test(t))                                                        el.dataset.code = 'type';
+    else if (/^(GET|POST|PUT|PATCH|DELETE)\s+\//.test(t))                           el.dataset.code = 'endpoint';
+    else if (/^kye\.[a-z0-9_]+\.v[0-9]/.test(t))                                    el.dataset.code = 'profile';
+    else if (/^allow(_with_constraints)?$/.test(t))                                 el.dataset.code = 'allow';
+    else if (/^(deny|quarantine)$/.test(t))                                         el.dataset.code = 'deny';
+    else if (/^require_(approval|step_up|human_review|recovery)$/.test(t))          el.dataset.code = 'condition';
+    else if (/^[a-z][a-z0-9_]*$/.test(t) && t.includes('_'))                        el.dataset.code = 'field';
+  }
+})();
+
 /* Contact modal — Talk to us / Drop us a line.
    All submissions open a mailto: to [email protected] with the
    form fields prefilled in the body. No backend, no third party. */
