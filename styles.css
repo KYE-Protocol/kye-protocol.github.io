@@ -4100,3 +4100,280 @@ code, pre code, .what-card code, .arch-b code, .why-out code, .ag-b code, .ps-li
 
 /* Override §FINAL-10 padding for collapsible sections only */
 .section.collapsible.alt { padding: 0 !important; }
+
+/* ============================================================
+   §FINAL-12 — Universal design tokens + dark-mode contrast.
+   Single source of truth for: tables, widgets, cards, modals,
+   tags, labels, buttons, diagrams, graphs, code blocks.
+   ============================================================ */
+
+:root {
+  /* Radii */
+  --radius-1: 6px;
+  --radius-2: 8px;
+  --radius-3: 12px;
+  --radius-4: 16px;
+  --radius-pill: 999px;
+
+  /* Shadows (subtle, neutral) */
+  --shadow-1: 0 1px 2px rgba(15,23,42,0.04);
+  --shadow-2: 0 2px 6px rgba(15,23,42,0.06);
+  --shadow-3: 0 8px 24px rgba(15,23,42,0.08);
+  --shadow-mega: 0 16px 40px rgba(15,23,42,0.10);
+
+  /* Spacing scale */
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 20px; --sp-6: 24px; --sp-7: 32px; --sp-8: 40px;
+  --sp-9: 56px; --sp-10: 72px;
+
+  /* Border weight */
+  --bw: 1px;
+}
+
+:root[data-theme="dark"] {
+  --shadow-1: 0 1px 2px rgba(0,0,0,0.30);
+  --shadow-2: 0 2px 6px rgba(0,0,0,0.40);
+  --shadow-3: 0 8px 24px rgba(0,0,0,0.50);
+  --shadow-mega: 0 16px 40px rgba(0,0,0,0.60);
+}
+
+/* --- Tables (universal, e.g. .ps-table, .cmp, .cf-list table, etc.) --- */
+table { border-collapse: separate !important; border-spacing: 0; }
+th, td { padding: 12px 16px; border-bottom: var(--bw) solid var(--rule); text-align: left; }
+thead th {
+  font-size: var(--fs-pill, 11px) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.10em !important;
+  text-transform: uppercase !important;
+  color: var(--text-muted) !important;
+  background: var(--paper-2) !important;
+}
+tbody tr:hover { background: var(--paper-2) !important; }
+
+/* --- Widget surfaces (cards, modals, panels) --- */
+.widget, .widget-card, .modal, .panel,
+.what-card, .ps-card, .af-card, .ag-card, .why-card,
+.persona-card, .sector-card, .arch-card, .cf-card,
+.evo-card, .qs-card, .how-card, .ba-side, .biz-list li,
+.faq-q, .faq-item {
+  background: var(--paper) !important;
+  border: var(--bw) solid var(--rule) !important;
+  border-radius: var(--radius-3) !important;
+  box-shadow: none !important;
+}
+
+/* --- Tag pills (universal) --- */
+.tag, .pill, .badge, .label-pill,
+.ps-tag, .af-tag, .ag-tag, .evo-tag, .ba-tag, .def-tag, .cf-tag,
+.hero-pill, .version-pill, .prof-pill, .urn-sample, .sector-frameworks {
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  padding: 4px 10px !important;
+  border-radius: var(--radius-pill) !important;
+  border: var(--bw) solid var(--rule) !important;
+  background: var(--paper-2) !important;
+  color: var(--text-muted) !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+/* --- Buttons (universal) --- */
+.btn, .button, button.btn-primary, button.btn-secondary, button.btn-ghost,
+a.btn, a.btn-primary, a.btn-secondary, a.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: var(--radius-2);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  border: var(--bw) solid transparent;
+  transition: background .12s, border-color .12s, color .12s;
+}
+.btn-primary, a.btn-primary, button.btn-primary {
+  background: var(--accent) !important;
+  color: #fff !important;
+  border-color: var(--accent) !important;
+}
+.btn-primary:hover, a.btn-primary:hover, button.btn-primary:hover {
+  background: var(--accent-2) !important;
+  border-color: var(--accent-2) !important;
+}
+.btn-secondary, a.btn-secondary {
+  background: var(--paper) !important;
+  color: var(--text) !important;
+  border-color: var(--rule) !important;
+}
+.btn-secondary:hover { border-color: var(--line-strong) !important; }
+.btn-ghost, a.btn-ghost {
+  background: transparent !important;
+  border-color: transparent !important;
+  color: var(--text-muted) !important;
+}
+.btn-ghost:hover { color: var(--accent) !important; }
+
+/* --- Diagrams / graphs / SVG canvas --- */
+svg { color: currentColor; }
+.tg-svg, .flow-svg, .cascade-svg {
+  background: var(--paper-2) !important;
+  border: var(--bw) solid var(--rule) !important;
+  border-radius: var(--radius-3) !important;
+}
+
+/* --- Inline code --- */
+code, kbd, samp {
+  font-family: var(--font-mono);
+  font-size: 12px !important;
+  background: var(--paper-3) !important;
+  border: var(--bw) solid var(--rule) !important;
+  border-radius: var(--radius-1) !important;
+  padding: 1px 5px !important;
+  color: var(--text) !important;
+}
+pre {
+  background: var(--paper-3) !important;
+  border: var(--bw) solid var(--rule) !important;
+  border-radius: var(--radius-3) !important;
+  padding: 16px 20px !important;
+  overflow-x: auto;
+}
+pre code {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+/* ============================================================
+   Dark-mode contrast — universal pass.
+   Every container that was using a hardcoded light background or
+   light border in the legacy CSS is overridden here so dark mode
+   meets WCAG AA contrast (4.5:1 body text, 3:1 large text).
+   ============================================================ */
+:root[data-theme="dark"] {
+  /* Lift accent so violet on dark surface contrasts 4.5:1+ */
+  --accent:        #a78bfa !important;   /* violet-400 — readable on grey-900 */
+  --accent-2:      #c4b5fd !important;   /* violet-300 hover */
+  --accent-soft:   rgba(167, 139, 250, 0.15) !important;
+  --accent-line:   rgba(167, 139, 250, 0.30) !important;
+
+  /* Semantic in dark mode — lifted for contrast */
+  --success:    #81c995 !important;
+  --warning:    #fdd663 !important;
+  --danger:     #f28b82 !important;
+}
+
+/* Dark-mode card/widget contrast */
+:root[data-theme="dark"] .widget,
+:root[data-theme="dark"] .widget-card,
+:root[data-theme="dark"] .modal,
+:root[data-theme="dark"] .panel,
+:root[data-theme="dark"] .what-card,
+:root[data-theme="dark"] .ps-card,
+:root[data-theme="dark"] .af-card,
+:root[data-theme="dark"] .ag-card,
+:root[data-theme="dark"] .why-card,
+:root[data-theme="dark"] .persona-card,
+:root[data-theme="dark"] .sector-card,
+:root[data-theme="dark"] .arch-card,
+:root[data-theme="dark"] .cf-card,
+:root[data-theme="dark"] .evo-card,
+:root[data-theme="dark"] .qs-card,
+:root[data-theme="dark"] .how-card,
+:root[data-theme="dark"] .ba-side,
+:root[data-theme="dark"] .biz-list li,
+:root[data-theme="dark"] .faq-q,
+:root[data-theme="dark"] .faq-item {
+  background: var(--paper-2) !important;
+  border-color: var(--rule) !important;
+  color: var(--text) !important;
+}
+:root[data-theme="dark"] .ps-card.problem,
+:root[data-theme="dark"] .ba-side.before { border-color: rgba(242, 139, 130, 0.30) !important; }
+:root[data-theme="dark"] .ps-card.solution,
+:root[data-theme="dark"] .ba-side.after  { border-color: rgba(129, 201, 149, 0.30) !important; }
+
+/* Dark-mode tags */
+:root[data-theme="dark"] .tag,
+:root[data-theme="dark"] .pill,
+:root[data-theme="dark"] .ps-tag,
+:root[data-theme="dark"] .af-tag,
+:root[data-theme="dark"] .ag-tag,
+:root[data-theme="dark"] .evo-tag,
+:root[data-theme="dark"] .ba-tag,
+:root[data-theme="dark"] .hero-pill,
+:root[data-theme="dark"] .version-pill,
+:root[data-theme="dark"] .prof-pill,
+:root[data-theme="dark"] .sector-frameworks {
+  background: var(--paper-3) !important;
+  border-color: var(--rule) !important;
+  color: var(--text-muted) !important;
+}
+
+/* Dark-mode tables */
+:root[data-theme="dark"] thead th,
+:root[data-theme="dark"] .cmp thead th { background: var(--paper-3) !important; color: var(--text-muted) !important; }
+:root[data-theme="dark"] tbody tr:hover,
+:root[data-theme="dark"] .cmp tbody tr:hover { background: var(--paper-3) !important; }
+
+/* Dark-mode mega-nav */
+:root[data-theme="dark"] .mega-panel { background: var(--paper-2) !important; border-color: var(--rule) !important; }
+:root[data-theme="dark"] .mega-panel .mega-col a:hover { background: var(--paper-3) !important; }
+:root[data-theme="dark"] .mega summary:hover,
+:root[data-theme="dark"] .mega[open] > summary { background: var(--accent-soft) !important; color: var(--accent) !important; }
+
+/* Dark-mode hero — neutral-dark, accent text contrast lifted */
+:root[data-theme="dark"] .hero { background: var(--paper) !important; }
+:root[data-theme="dark"] .h-section .accent { color: var(--accent) !important; }
+
+/* Dark-mode button */
+:root[data-theme="dark"] .btn-secondary { background: var(--paper-2) !important; }
+:root[data-theme="dark"] .btn-primary { color: #1f2024 !important; }   /* dark text on light-violet for contrast */
+
+/* Dark-mode inline code */
+:root[data-theme="dark"] code { background: var(--paper-3) !important; color: var(--text) !important; }
+
+/* Dark-mode footer */
+:root[data-theme="dark"] .footer { background: var(--paper-2) !important; color: var(--text-muted) !important; }
+
+/* Dark-mode <details> caret + summary hover */
+:root[data-theme="dark"] .section.collapsible summary:hover .section-caret { background: var(--accent) !important; color: #1f2024 !important; }
+
+/* FAQ audience filter tabs */
+.faq-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding: 8px;
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-pill);
+  width: fit-content;
+}
+.faq-filter {
+  padding: 6px 14px;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: inherit;
+  transition: background .12s, color .12s;
+}
+.faq-filter:hover { color: var(--text); }
+.faq-filter.is-active {
+  background: var(--accent);
+  color: #fff;
+}
+:root[data-theme="dark"] .faq-filter.is-active { color: #1f2024; }
+.faq-list .faq-item.faq-hidden { display: none; }

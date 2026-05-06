@@ -125,3 +125,23 @@ initWebMcp();
       const d = s.querySelector('details'); if (d) d.removeAttribute('open');
     })));
 })();
+
+/* FAQ audience filter — tabs filter <details class="faq-item" data-faq-aud="..."> */
+(function initFaqFilter() {
+  const tabs = document.querySelectorAll('.faq-filter');
+  const items = document.querySelectorAll('.faq-item');
+  if (!tabs.length || !items.length) return;
+  function apply(aud) {
+    tabs.forEach(t => {
+      const on = t.dataset.faqFilter === aud;
+      t.classList.toggle('is-active', on);
+      t.setAttribute('aria-selected', String(on));
+    });
+    items.forEach(it => {
+      const auds = (it.dataset.faqAud || 'all').split(/\s+/);
+      const show = aud === 'all' || auds.includes(aud) || auds.includes('all');
+      it.classList.toggle('faq-hidden', !show);
+    });
+  }
+  tabs.forEach(t => t.addEventListener('click', () => apply(t.dataset.faqFilter)));
+})();
