@@ -77,10 +77,15 @@ function svgEscape(s) {
 function renderFlow(host, flow) {
   const W = host.clientWidth || 720;
   const N = flow.actors.length;
-  const padX = 48;
+  const padX = 56;
   const laneSpan = (W - padX * 2) / Math.max(1, N - 1);
-  const headY = 48, footY = 64 + flow.steps.length * 56, laneTop = 64;
-  const H = footY + 24;
+  const headY = 56, footY = 72 + flow.steps.length * 56, laneTop = 72;
+  const H = footY + 28;
+  // Inset margins around the viewBox so drop-shadow glow on the active
+  // step's path / arrow / label / payload pill never clips at the SVG
+  // boundary. Without this, the active "step strip" appeared cut off at
+  // the top + sides of the diagram.
+  const VBX = 18, VBY = 14;
 
   const lanes = flow.actors.map((id, i) => ({
     ...actor(id),
@@ -141,7 +146,7 @@ function renderFlow(host, flow) {
       <span class="fv-progress" aria-live="polite">0 / ${flow.steps.length}</span>
     </div>
     <div class="fv-stage">
-      <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="${svgEscape(flow.title)}">
+      <svg viewBox="${-VBX} ${-VBY} ${W + VBX * 2} ${H + VBY * 2}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="${svgEscape(flow.title)}">
         ${lanesSvg}
         ${stepsSvg}
       </svg>

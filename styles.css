@@ -2496,8 +2496,16 @@ h3, h4, h5, .ps-tag, .eyebrow {
   letter-spacing: var(--tm-letterspacing) !important;
   margin-left: 0.04em;
   margin-right: 0.02em;
-  position: relative;
   font-feature-settings: "tnum" 0, "ss01" 0, "ss02" 0;
+  /* Force ™/® to stay glued to the preceding word. Without this, narrow
+     containers (mobile use-case cards, narrow grid cells) sometimes
+     wrap "KYE" + "™" onto separate lines because the .tm's margin-left
+     creates a soft break opportunity. The U+2060 word-joiner inserted
+     via ::before tells the browser "do not break here". */
+  white-space: nowrap;
+}
+.tm::before, .reg::before {
+  content: "\2060";
 }
 
 /* ============================================================
@@ -8864,10 +8872,10 @@ li > .fwk-list.sector-frameworks-badged {
 .fv-stage {
   background: linear-gradient(180deg, rgba(26,135,84,0.04), rgba(0,172,193,0.04));
   border-radius: var(--kye-radius-2);
-  padding: 8px;
-  overflow-x: auto;
+  padding: 14px 12px;
+  overflow: visible;
 }
-.fv-stage svg { width: 100%; height: auto; display: block; }
+.fv-stage svg { width: 100%; height: auto; display: block; overflow: visible; }
 
 /* Actor lanes */
 .fv-actor-icon {
