@@ -6059,3 +6059,208 @@ header.nav .brand-mark svg path { stroke: currentColor !important; }
 :root[data-theme="dark"] .wp-article code[data-code="allow"]     { --code-bg: rgba(129, 201, 149, 0.18); --code-fg: #A8DAB5; }
 :root[data-theme="dark"] .wp-article code[data-code="deny"]      { --code-bg: rgba(244, 119, 110, 0.18); --code-fg: #FFAB91; }
 :root[data-theme="dark"] .wp-article code[data-code="condition"] { --code-bg: rgba(255, 213, 79, 0.18);  --code-fg: #FFE082; }
+
+/* ============================================================
+   §FINAL-27 — Cohesive systematic fix
+   ============================================================
+   Closes four user-reported issues in one pass:
+   1. Brand-mark icon was invisible on some pages — earlier rules
+      (.brand-mark { background: ink !important }) competed at the
+      same !important level. New highest-specificity rule pins
+      the top-bar / header.nav / footer brand mark to a known
+      good appearance: 24×24 transparent box, accent-coloured
+      stylized monogram via stroke=currentColor.
+   2. 6 of 18 sector cards had no data-sector attribute, so they
+      fell back to the all-purple default. Added oil-gas, mining,
+      automotive, maritime, logistics, aviation hues.
+   3. #who section was a 6-card grid — visually identical gestalt
+      to #sectors. Restructured as a vertical 'persona timeline':
+      large avatar circle on the left, content panel cascading
+      right, dividing line between rows. Different from any other
+      section on the page.
+   4. Persona-grid styles cleaned up so the legacy .persona-card
+      shape doesn't bleed into the new .who-timeline. */
+
+/* === BRAND-MARK BULLETPROOF (highest specificity, single rule) === */
+header.top-bar a.brand .brand-mark,
+header.nav     a.brand .brand-mark,
+footer.footer  .brand-mark {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 26px !important;
+  height: 26px !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: var(--accent) !important;
+  flex-shrink: 0 !important;
+}
+header.top-bar a.brand .brand-mark svg,
+header.nav     a.brand .brand-mark svg,
+footer.footer  .brand-mark svg {
+  width: 22px !important;
+  height: 22px !important;
+  display: block !important;
+  color: inherit !important;
+  fill: none !important;
+  overflow: visible !important;
+}
+header.top-bar a.brand .brand-mark svg path,
+header.nav     a.brand .brand-mark svg path,
+footer.footer  .brand-mark svg path {
+  stroke: currentColor !important;
+  stroke-width: 5 !important;
+  stroke-linecap: round !important;
+  fill: none !important;
+}
+:root[data-theme="dark"] header.top-bar a.brand .brand-mark,
+:root[data-theme="dark"] header.nav     a.brand .brand-mark,
+:root[data-theme="dark"] footer.footer  .brand-mark { color: var(--accent) !important; }
+
+/* === Sector colour pack (18 industries) === */
+.sector-card[data-sector] .sector-icon {
+  background: var(--sec-soft, var(--accent-soft)) !important;
+  border-color: var(--sec-line, var(--accent-line)) !important;
+  color: var(--sec, var(--accent)) !important;
+}
+.sector-card[data-sector] .prof-pill {
+  border-color: transparent;
+  color: var(--sec, var(--accent));
+  background: var(--sec-soft, var(--accent-soft));
+}
+.sector-card[data-sector] .prof-pill:hover {
+  border-color: var(--sec, var(--accent)) !important;
+}
+.sector-card[data-sector="banking"]      { --sec: #1A73E8; --sec-soft: rgba(26, 115, 232, 0.10); --sec-line: rgba(26, 115, 232, 0.24); }
+.sector-card[data-sector="payments"]     { --sec: #B47200; --sec-soft: rgba(244, 180, 0, 0.14); --sec-line: rgba(244, 180, 0, 0.32); }
+.sector-card[data-sector="healthcare"]   { --sec: #EA4335; --sec-soft: rgba(234, 67, 53, 0.10); --sec-line: rgba(234, 67, 53, 0.24); }
+.sector-card[data-sector="treasury"]     { --sec: #3F51B5; --sec-soft: rgba(63, 81, 181, 0.10); --sec-line: rgba(63, 81, 181, 0.24); }
+.sector-card[data-sector="custody"]      { --sec: #009688; --sec-soft: rgba(0, 150, 136, 0.10); --sec-line: rgba(0, 150, 136, 0.26); }
+.sector-card[data-sector="insurance"]    { --sec: #8E24AA; --sec-soft: rgba(142, 36, 170, 0.10); --sec-line: rgba(142, 36, 170, 0.24); }
+.sector-card[data-sector="ai-labs"]      { --sec: #00838F; --sec-soft: rgba(0, 172, 193, 0.12); --sec-line: rgba(0, 172, 193, 0.30); }
+.sector-card[data-sector="public"]       { --sec: #5F6368; --sec-soft: rgba(95, 99, 104, 0.12); --sec-line: rgba(95, 99, 104, 0.26); }
+.sector-card[data-sector="marketplaces"] { --sec: #D81B60; --sec-soft: rgba(216, 27, 96, 0.10); --sec-line: rgba(216, 27, 96, 0.24); }
+.sector-card[data-sector="defence"]      { --sec: #455A64; --sec-soft: rgba(69, 90, 100, 0.12); --sec-line: rgba(69, 90, 100, 0.26); }
+.sector-card[data-sector="energy"]       { --sec: #F57C00; --sec-soft: rgba(245, 124, 0, 0.10); --sec-line: rgba(245, 124, 0, 0.24); }
+.sector-card[data-sector="manufacturing"]{ --sec: #6D4C41; --sec-soft: rgba(109, 76, 65, 0.12); --sec-line: rgba(109, 76, 65, 0.26); }
+.sector-card[data-sector="oil-gas"]      { --sec: #4E342E; --sec-soft: rgba(78, 52, 46, 0.12); --sec-line: rgba(78, 52, 46, 0.26); }
+.sector-card[data-sector="mining"]       { --sec: #7B5E1A; --sec-soft: rgba(123, 94, 26, 0.12); --sec-line: rgba(123, 94, 26, 0.26); }
+.sector-card[data-sector="automotive"]   { --sec: #C2185B; --sec-soft: rgba(194, 24, 91, 0.10); --sec-line: rgba(194, 24, 91, 0.24); }
+.sector-card[data-sector="maritime"]     { --sec: #006064; --sec-soft: rgba(0, 96, 100, 0.12); --sec-line: rgba(0, 96, 100, 0.28); }
+.sector-card[data-sector="logistics"]    { --sec: #5D4037; --sec-soft: rgba(93, 64, 55, 0.12); --sec-line: rgba(93, 64, 55, 0.26); }
+.sector-card[data-sector="aviation"]     { --sec: #1565C0; --sec-soft: rgba(21, 101, 192, 0.10); --sec-line: rgba(21, 101, 192, 0.26); }
+
+/* === #who: vertical persona timeline (replaces persona-grid) === */
+.who-timeline {
+  list-style: none;
+  margin: 28px 0 16px;
+  padding: 0;
+  position: relative;
+  display: grid;
+  gap: 0;
+}
+.who-timeline::before {
+  content: "";
+  position: absolute;
+  left: 27px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(180deg,
+    rgba(26, 115, 232, 0.30) 0%,
+    rgba(0, 172, 193, 0.30)  20%,
+    rgba(234, 67, 53, 0.30)  40%,
+    rgba(0, 150, 136, 0.30)  60%,
+    rgba(142, 36, 170, 0.30) 80%,
+    rgba(95, 99, 104, 0.30)  100%);
+  border-radius: 2px;
+}
+.who-row {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 18px;
+  padding: 22px 0 22px 0;
+  border-bottom: 1px dashed var(--line);
+  align-items: start;
+}
+.who-row:last-child { border-bottom: none; }
+.who-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--who-soft, var(--accent-soft));
+  border: 2px solid var(--who, var(--accent));
+  color: var(--who, var(--accent));
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+.who-avatar svg { width: 26px; height: 26px; display: block; }
+.who-content { padding-top: 6px; }
+.who-content h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+}
+.who-content .pain {
+  font-size: 13.5px;
+  color: var(--text-dim);
+  font-style: italic;
+  margin: 0 0 10px;
+  padding-left: 12px;
+  border-left: 3px solid var(--who, var(--accent));
+}
+.who-content > p:not(.pain) {
+  margin: 0 0 10px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text);
+}
+.who-content .persona-roi {
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 4px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+.who-content .persona-roi li {
+  padding-left: 18px;
+  position: relative;
+  line-height: 1.55;
+}
+.who-content .persona-roi li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--who, var(--accent));
+  font-weight: 700;
+}
+.who-row[data-who="banks"]      { --who: #1A73E8; --who-soft: rgba(26, 115, 232, 0.10); }
+.who-row[data-who="ai-labs"]    { --who: #00838F; --who-soft: rgba(0, 172, 193, 0.12); }
+.who-row[data-who="healthcare"] { --who: #EA4335; --who-soft: rgba(234, 67, 53, 0.10); }
+.who-row[data-who="custody"]    { --who: #009688; --who-soft: rgba(0, 150, 136, 0.12); }
+.who-row[data-who="regulators"] { --who: #8E24AA; --who-soft: rgba(142, 36, 170, 0.10); }
+.who-row[data-who="platform"]   { --who: #5F6368; --who-soft: rgba(95, 99, 104, 0.12); }
+
+/* The legacy persona-grid styling is no longer used on index.html;
+   defensively neutralise the leftover persona-card left-rail
+   pseudo-element from §FINAL-24 in case any other surface still
+   renders it. */
+.persona-card { padding-left: 0; }
+.persona-card::before { content: none; }
+
+@media (max-width: 720px) {
+  .who-timeline::before { left: 22px; }
+  .who-row { grid-template-columns: 46px 1fr; gap: 14px; padding: 18px 0; }
+  .who-avatar { width: 46px; height: 46px; }
+  .who-avatar svg { width: 22px; height: 22px; }
+  .who-content h3 { font-size: 16px; }
+}
