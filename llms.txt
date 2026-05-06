@@ -58,12 +58,12 @@ implementable protocol — not a whitepaper.
 
 6. **Schema-first** — JSON Schema 2020-12 with absolute `$id` at
    `schemas.kye.dev`. OpenAPI, SDKs, validators, docs, and conformance
-   tests are derived from schemas, not hand-written. 42 schemas,
-   45 validated examples.
+   tests are derived from schemas, not hand-written. 50 schemas,
+   48 validated examples.
 7. **Dictionary-first** — canonical vocabulary for entity types, all
    state dimensions, decisions, reason codes, capability kinds,
    side-effect levels, data classes, signal types, redaction fields,
-   taxonomies, graph types. 15 dictionary files in `public/vocabulary/`.
+   taxonomies, graph types. 16 dictionary files in `public/vocabulary/`.
 8. **Taxonomy-first** — 16 V1 canonical taxonomies (entity_type,
    capability_type, action_type, resource_type, data_class,
    side_effect_level, risk_state, environment, decision, reason_code,
@@ -81,7 +81,7 @@ implementable protocol — not a whitepaper.
     Blast Radius Map™, Compliance Map™. Storage substrate is
     implementation choice (Postgres, Neo4j, Neptune, Memgraph,
     TigerGraph, ArangoDB, RDF).
-11. **Profile-first** — Core stays small. 34 profiles add domain
+11. **Profile-first** — Core stays small. 41 profiles add domain
     semantics (Capability, Recovery, Payments, Payload Trust,
     Taxonomy & Metadata, Graph, Healthcare, EU AI Act, ISO 42001,
     Defence, Energy, Manufacturing, Maritime, Logistics, Aviation,
@@ -119,14 +119,14 @@ never enters Core objects** (`KYEEntity`, `KYEAuthorityGrant`,
 
 ## v1.0 ships
 
-- 34 normative profiles: Core, Gateway, Federation, Credentials,
+- 41 normative profiles: Core, Gateway, Federation, Credentials,
   Attestation, Signals, Transparency, Conformance, Treasury, Custody,
   Healthcare, Telemetry, Capability, Recovery, Payments, Payload Trust,
   Taxonomy & Metadata, Graph
 - 3 payment overlays: kye-payments-eu-1.0, kye-payments-card-1.0,
   kye-payments-high-assurance-1.0
 - 112 OpenAPI operations across 87+ runtime endpoints
-- 42 JSON Schemas (JSON Schema 2020-12) with 45 validated examples
+- 50 JSON Schemas (JSON Schema 2020-12) with 48 validated examples
 - 37 black-box conformance fixtures
 - 173 control mappings: SOC 2, ISO 27001:2022, PCI DSS 4.0, PSD2/PSD3,
   DORA, NIS2, EU AI Act, NIST 800-207, HIPAA
