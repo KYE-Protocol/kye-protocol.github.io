@@ -48,8 +48,23 @@ const NODE_META = {
 
 export function initTrustGraph() {
   const stage = document.getElementById("tg-stage");
-  if (!stage || typeof d3 === "undefined") return;
-  const W = stage.clientWidth || 720;
+  if (!stage) return;
+  // Wait up to ~3s for d3 to load (deferred CDN script). On a cold mobile
+  // load main.js can run a tick before the d3 <script defer> finishes,
+  // and silently bailing here meant the trust graph rendered no nodes.
+  if (typeof d3 === "undefined") {
+    let tries = 0;
+    const id = setInterval(() => {
+      tries += 1;
+      if (typeof d3 !== "undefined") { clearInterval(id); initTrustGraph(); }
+      else if (tries > 30) { clearInterval(id); /* give up silently */ }
+    }, 100);
+    return;
+  }
+  // Use the live stage dimensions; if they're 0 (e.g. layout not settled
+  // on first paint), pick a reasonable default that the SVG viewBox will
+  // scale into the real container size on resize.
+  const W = stage.clientWidth  || 720;
   const H = stage.clientHeight || 480;
 
   const svg = d3.select(stage).append("svg").attr("viewBox", `0 0 ${W} ${H}`).attr("width", "100%").attr("height", "100%");
