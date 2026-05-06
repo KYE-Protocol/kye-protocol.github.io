@@ -98,43 +98,91 @@ export function kyeHeader({ active = '' } = {}) {
   </div>`;
 }
 
-export function kyeFooter({ links = [] } = {}) {
-  const defaultLinks = [
-    { href: './',              label: 'Home' },
-    { href: 'protocol.html',   label: 'Protocol' },
-    { href: 'vocabulary.html', label: 'Vocabulary' },
-    { href: 'docs.html',       label: 'Docs' },
-    { href: 'roadmap.html',    label: 'Roadmap' },
-    { href: 'integrations.html', label: 'Integrations' },
-    { href: 'compliance.html', label: 'Compliance' },
-    { href: 'frameworks.html', label: 'Frameworks' },
-    { href: 'oscal.html',      label: 'OSCAL' },
-    { href: 'compliance-card.html', label: 'Compliance card' },
-    { href: 'sectors.html',    label: 'Sectors' },
-    { href: 'usecases.html',   label: 'Use cases' },
-    { href: 'risk.html',       label: 'Risk & mitigation' },
-    { href: 'readiness.html',  label: 'Readiness' },
-    { href: 'customers.html',  label: 'Customers' },
-    { href: 'changelog.html',  label: 'Changelog' },
-    { href: 'faq.html',        label: 'FAQ' },
-    { href: 'whitepaper.html', label: 'Whitepaper' },
-    { href: 'status.html',     label: 'Status' },
-    { href: 'press.html',      label: 'Press' },
-    { href: 'sitemap.html',    label: 'Sitemap' },
-    { href: 'legal.html',      label: 'Legal' },
-    { href: 'legal-faq.html',  label: 'Legal FAQ' },
-    { href: '#',               label: 'Talk to us', attrs: 'data-contact-trigger' },
-  ];
-  const all = links.length ? links : defaultLinks;
-  const linksHtml = all.map(l => {
-    const attrs = l.attrs ? ` ${l.attrs}` : '';
-    const ext   = (l.href || '').startsWith('http') ? ' target="_blank" rel="noopener"' : '';
-    return `<a href="${l.href}"${ext}${attrs}>${l.label}</a>`;
+// Grouped column structure for the site footer. Each group has a heading
+// and a list of {href, label, attrs?} items. Order matters for visual
+// scanning: protocol/spec first (the thing being defined), then the
+// compliance pages, then audience pages, then resources, then site/legal.
+const FOOTER_GROUPS = [
+  {
+    heading: 'Protocol',
+    items: [
+      { href: './',                label: 'Home' },
+      { href: 'protocol.html',     label: 'Protocol' },
+      { href: 'vocabulary.html',   label: 'Vocabulary' },
+      { href: 'whitepaper.html',   label: 'Whitepaper' },
+      { href: 'roadmap.html',      label: 'Roadmap' },
+      { href: 'integrations.html', label: 'Integrations' },
+      { href: 'changelog.html',    label: 'Changelog' },
+    ],
+  },
+  {
+    heading: 'Compliance',
+    items: [
+      { href: 'compliance.html',      label: 'Compliance' },
+      { href: 'frameworks.html',      label: 'Frameworks' },
+      { href: 'oscal.html',           label: 'OSCAL' },
+      { href: 'compliance-card.html', label: 'Compliance card' },
+    ],
+  },
+  {
+    heading: 'Audiences',
+    items: [
+      { href: 'developers.html', label: 'Developers' },
+      { href: 'buyers.html',     label: 'Buyers' },
+      { href: 'auditors.html',   label: 'Auditors' },
+      { href: 'regulators.html', label: 'Regulators' },
+      { href: 'sectors.html',    label: 'Sectors' },
+      { href: 'customers.html',  label: 'Customers' },
+    ],
+  },
+  {
+    heading: 'Resources',
+    items: [
+      { href: 'usecases.html',  label: 'Use cases' },
+      { href: 'risk.html',      label: 'Risk & mitigation' },
+      { href: 'readiness.html', label: 'Readiness self-test' },
+      { href: 'demos.html',     label: 'Demos' },
+      { href: 'docs.html',      label: 'Docs hub' },
+      { href: 'faq.html',       label: 'FAQ' },
+    ],
+  },
+  {
+    heading: 'Site',
+    items: [
+      { href: 'status.html',    label: 'Status' },
+      { href: 'press.html',     label: 'Press kit' },
+      { href: 'sitemap.html',   label: 'Sitemap' },
+      { href: 'legal.html',     label: 'Legal' },
+      { href: 'legal-faq.html', label: 'Legal FAQ' },
+      { href: '#',              label: 'Talk to us', attrs: 'data-contact-trigger' },
+    ],
+  },
+];
+
+export function kyeFooter({ groups = null } = {}) {
+  const all = groups || FOOTER_GROUPS;
+  const groupsHtml = all.map(g => {
+    const lis = g.items.map(l => {
+      const attrs = l.attrs ? ` ${l.attrs}` : '';
+      const ext   = (l.href || '').startsWith('http') ? ' target="_blank" rel="noopener"' : '';
+      return `<li><a href="${l.href}"${ext}${attrs}>${l.label}</a></li>`;
+    }).join('');
+    return `
+      <section class="footer-col">
+        <h4>${g.heading}</h4>
+        <ul>${lis}</ul>
+      </section>`;
   }).join('');
   return `
   <div class="container footer-inner">
-    <div>&copy; <span data-kye-year></span> KYE Protocol<span class="tm">™</span>. ${TM_NOTICE_FULL} <a href="legal.html">Trademark policy &amp; legal FAQ &rarr;</a></div>
-    <div class="footer-links">${linksHtml}</div>
+    <div class="footer-grid">${groupsHtml}</div>
+    <div class="footer-bar">
+      <div class="footer-copy">&copy; <span data-kye-year></span> KYE Protocol<span class="tm">™</span>. <a href="legal.html">Trademark policy &amp; legal FAQ &rarr;</a></div>
+      <a href="https://github.com/KYE-Protocol" target="_blank" rel="noopener" class="footer-gh" aria-label="KYE Protocol on GitHub">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="16" height="16"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg><span>GitHub</span>
+      </a>
+    </div>
+    <div class="footer-tm">${TM_NOTICE_FULL}</div>
   </div>`;
 }
 

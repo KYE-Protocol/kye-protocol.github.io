@@ -9,12 +9,23 @@ export function initScrollTop() {
   if (!btn || !ring) return;
   const RING_LEN = 138.23; // 2 * π * 22
 
+  // Hide the button whenever the footer is intersecting the viewport
+  // — otherwise the fixed pill covers the footer link grid.
+  const footer = document.querySelector("footer.footer, [data-kye-footer]");
+  let footerVisible = false;
+  if (footer && "IntersectionObserver" in window) {
+    new IntersectionObserver((entries) => {
+      footerVisible = entries.some((e) => e.isIntersecting);
+      update();
+    }, { rootMargin: "0px 0px -40px 0px" }).observe(footer);
+  }
+
   function update() {
     const max = (document.documentElement.scrollHeight - window.innerHeight) || 1;
     const y = window.scrollY;
     const pct = Math.max(0, Math.min(1, y / max));
     ring.setAttribute("stroke-dashoffset", String(RING_LEN * (1 - pct)));
-    const visible = y > Math.min(360, window.innerHeight * 0.4);
+    const visible = y > Math.min(360, window.innerHeight * 0.4) && !footerVisible;
     btn.classList.toggle("is-visible", visible);
   }
 
