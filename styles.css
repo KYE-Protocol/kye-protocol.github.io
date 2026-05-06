@@ -6834,3 +6834,23 @@ code[data-code="condition"] { --code-bg: rgba(244, 180, 0, 0.16);  --code-fg: #B
 :root[data-theme="dark"] code[data-code="allow"]     { --code-bg: rgba(129, 201, 149, 0.18); --code-fg: #A8DAB5; }
 :root[data-theme="dark"] code[data-code="deny"]      { --code-bg: rgba(244, 119, 110, 0.18); --code-fg: #FFAB91; }
 :root[data-theme="dark"] code[data-code="condition"] { --code-bg: rgba(255, 213, 79, 0.18);  --code-fg: #FFE082; }
+
+/* ============================================================
+   §FINAL-32 — extended code-snippet semantic categories
+   ============================================================
+   User: 'paths still grey, all stuff with grey background must be
+   colour coded'. Added URN, package, header, path and misc
+   categories so every <code> on every page renders with a hue,
+   never default grey. Light + dark palettes.
+   ============================================================ */
+code[data-code="urn"]      { --code-bg: rgba(216, 27, 96, 0.10);  --code-fg: #C2185B; }
+code[data-code="package"]  { --code-bg: rgba(255, 87, 34, 0.10);  --code-fg: #BF360C; }
+code[data-code="header"]   { --code-bg: rgba(56, 142, 60, 0.10);  --code-fg: #2E7D32; font-weight: 600; }
+code[data-code="path"]     { --code-bg: rgba(96, 125, 139, 0.10); --code-fg: #455A64; }
+code[data-code="misc"]     { --code-bg: rgba(63, 81, 181, 0.10);  --code-fg: #303F9F; }
+
+:root[data-theme="dark"] code[data-code="urn"]     { --code-bg: rgba(244, 143, 177, 0.18); --code-fg: #F8BBD0; }
+:root[data-theme="dark"] code[data-code="package"] { --code-bg: rgba(255, 138, 101, 0.18); --code-fg: #FFAB91; }
+:root[data-theme="dark"] code[data-code="header"]  { --code-bg: rgba(129, 199, 132, 0.18); --code-fg: #A5D6A7; }
+:root[data-theme="dark"] code[data-code="path"]    { --code-bg: rgba(176, 190, 197, 0.16); --code-fg: #CFD8DC; }
+:root[data-theme="dark"] code[data-code="misc"]    { --code-bg: rgba(159, 168, 218, 0.18); --code-fg: #C5CAE9; }

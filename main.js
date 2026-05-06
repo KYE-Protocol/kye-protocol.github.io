@@ -308,23 +308,56 @@ initWebMcp();
    attribute based on the snippet's content. CSS handles the
    actual colour (see §FINAL-26). */
 (function initCodeSnippetColours() {
-  // Apply semantic colouring to every <code> on the page — landing,
-  // whitepaper, legal, audience pages. The landing has many <code>
-  // refs (URN samples, schema names, decision values) that previously
-  // stayed grey because the tagger only walked .wp-article.
+  // Tag every <code> on every page with a data-code category so the
+  // CSS in §FINAL-26/31/32 can colour it. Order matters — earlier
+  // patterns win. The final fallback ('misc') catches anything else
+  // so no <code> ever renders in the default grey-on-grey.
   const codes = document.querySelectorAll('code');
   if (!codes.length) return;
   for (const el of codes) {
     if (el.dataset.code) continue;
     const t = (el.textContent || '').trim();
     if (!t) continue;
-    if (/^KYE[A-Z]/.test(t))                                                        el.dataset.code = 'type';
-    else if (/^(GET|POST|PUT|PATCH|DELETE)\s+\//.test(t))                           el.dataset.code = 'endpoint';
-    else if (/^kye\.[a-z0-9_]+\.v[0-9]/.test(t))                                    el.dataset.code = 'profile';
-    else if (/^allow(_with_constraints)?$/.test(t))                                 el.dataset.code = 'allow';
-    else if (/^(deny|quarantine)$/.test(t))                                         el.dataset.code = 'deny';
-    else if (/^require_(approval|step_up|human_review|recovery)$/.test(t))          el.dataset.code = 'condition';
-    else if (/^[a-z][a-z0-9_]*$/.test(t) && t.includes('_'))                        el.dataset.code = 'field';
+
+    // High-priority semantic categories
+    if      (/^(GET|POST|PUT|PATCH|DELETE)\s+\//.test(t))                                el.dataset.code = 'endpoint';
+    else if (/^allow(_with_constraints)?$/.test(t))                                      el.dataset.code = 'allow';
+    else if (/^(deny|quarantine)$/.test(t))                                              el.dataset.code = 'deny';
+    else if (/^require_(approval|step_up|human_review|recovery)$/.test(t))               el.dataset.code = 'condition';
+
+    // KYE typed records, including PascalCase short names with no KYE prefix
+    else if (/^KYE[A-Z]/.test(t))                                                        el.dataset.code = 'type';
+    else if (/^[A-Z][a-zA-Z0-9]+$/.test(t) && /[a-z][A-Z]/.test(t))                      el.dataset.code = 'type';
+
+    // Profile / schema versions: kye.x.y.v1
+    else if (/^kye\.[a-z0-9_]+\.v[0-9]/.test(t))                                         el.dataset.code = 'profile';
+
+    // URNs: kye:class:td:sub:local
+    else if (/^kye:[a-z0-9_-]+:/.test(t))                                                el.dataset.code = 'urn';
+
+    // npm packages: @scope/name
+    else if (/^@[a-z0-9_-]+\/[a-z0-9_-]+$/.test(t))                                      el.dataset.code = 'package';
+
+    // HTTP headers: capitalised words with hyphens (Accept-Version, Idempotency-Key, X-Break-Glass-...)
+    else if (/^[A-Z][a-zA-Z0-9]*(-[A-Z][a-zA-Z0-9]*)+$/.test(t))                         el.dataset.code = 'header';
+
+    // File paths and well-known URLs
+    else if (/^\//.test(t) || /\//.test(t) && /\.(md|json|yaml|yml|js|ts|py|go|sql)$/.test(t))
+                                                                                          el.dataset.code = 'path';
+    else if (/^(private|public|src|scripts|node_modules|schemas)\//.test(t))             el.dataset.code = 'path';
+    else if (/\.[a-z0-9_-]+\.(dev|com|io|org)(\/|$)/.test(t))                            el.dataset.code = 'path';
+
+    // Filenames ending with .md / .json (without leading dir)
+    else if (/^[a-z0-9_-]+\.(md|json|yaml|yml)$/.test(t))                                el.dataset.code = 'path';
+
+    // Generic snake_case identifiers (state names, field names)
+    else if (/^[a-z][a-z0-9_]*$/.test(t) && t.includes('_'))                             el.dataset.code = 'field';
+
+    // Single-word lowercase identifiers (labels, lineage, ownership)
+    else if (/^[a-z][a-z0-9]*$/.test(t))                                                 el.dataset.code = 'field';
+
+    // Anything else → misc (still coloured, no longer grey)
+    else                                                                                  el.dataset.code = 'misc';
   }
 })();
 
