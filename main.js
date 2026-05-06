@@ -1,18 +1,18 @@
 /* KYE Protocol™ landing — orchestrator. */
-import { initHeroStats }    from "./assets/hero-stats.js?v=1778660000";
-import { mountKyeComponents } from "./assets/components.js?v=1778660000";
-import { initBeforeAfter }  from "./assets/before-after.js?v=1778660000";
-import { initTrustGraph }   from "./assets/trust-graph.js?v=1778660000";
-import { initDecisionFlow } from "./assets/decision-flow.js?v=1778660000";
-import { initCascadeViz }   from "./assets/cascade-viz.js?v=1778660000";
-import { initDashboard }    from "./assets/dashboard.js?v=1778660000";
-import { initComparison }   from "./assets/comparison.js?v=1778660000";
-import { initUrnParser }    from "./assets/urn-parser.js?v=1778660000";
-import { initProfiles }     from "./assets/profiles.js?v=1778660000";
-import { initLifecycleSim } from "./assets/lifecycle-sim.js?v=1778660000";
-import { initVocabBrowser } from "./assets/vocab-browser.js?v=1778660000";
-import { initScrollTop }    from "./assets/scroll-top.js?v=1778660000";
-import { initQuickstart, initStarCta } from "./assets/quickstart.js?v=1778660000";
+import { initHeroStats }    from "./assets/hero-stats.js?v=1778680000";
+import { mountKyeComponents } from "./assets/components.js?v=1778680000";
+import { initBeforeAfter }  from "./assets/before-after.js?v=1778680000";
+import { initTrustGraph }   from "./assets/trust-graph.js?v=1778680000";
+import { initDecisionFlow } from "./assets/decision-flow.js?v=1778680000";
+import { initCascadeViz }   from "./assets/cascade-viz.js?v=1778680000";
+import { initDashboard }    from "./assets/dashboard.js?v=1778680000";
+import { initComparison }   from "./assets/comparison.js?v=1778680000";
+import { initUrnParser }    from "./assets/urn-parser.js?v=1778680000";
+import { initProfiles }     from "./assets/profiles.js?v=1778680000";
+import { initLifecycleSim } from "./assets/lifecycle-sim.js?v=1778680000";
+import { initVocabBrowser } from "./assets/vocab-browser.js?v=1778680000";
+import { initScrollTop }    from "./assets/scroll-top.js?v=1778680000";
+import { initQuickstart, initStarCta } from "./assets/quickstart.js?v=1778680000";
 
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -37,7 +37,7 @@ initQuickstart();
 initStarCta();
 
 /* WebMCP: expose KYE Protocol™ tools to AI agents via the browser. */
-import { initWebMcp } from "./assets/webmcp.js?v=1778660000";
+import { initWebMcp } from "./assets/webmcp.js?v=1778680000";
 initWebMcp();
 
 /* Theme toggle — persists to localStorage; works alongside @media
@@ -156,39 +156,23 @@ initWebMcp();
   const btn = document.querySelector('[data-drawer-toggle]');
   const topbar = document.querySelector('.top-bar');
   if (!btn || !topbar) return;
+
+  // Build / reuse drawer + backdrop FIRST so close() can reference both.
   let drawer = document.querySelector('.top-bar-drawer');
+  let backdrop = document.querySelector('.top-bar-drawer-backdrop');
   if (!drawer) {
-    // Build the drawer from the top-bar-nav children
     drawer = document.createElement('aside');
     drawer.className = 'top-bar-drawer';
     drawer.setAttribute('aria-label', 'Mobile navigation');
-    const sourceLinks = document.querySelectorAll('.top-bar-nav .tb-link');
-    sourceLinks.forEach(a => {
-      const clone = a.cloneNode(true);
-      clone.addEventListener('click', () => {
-        drawer.classList.remove('is-open');
-        topbar.classList.remove('drawer-open');
-      });
-      drawer.appendChild(clone);
-    });
-    // Append a GitHub CTA inside the drawer (top-bar CTA is hidden on mobile)
-    const ghLink = document.createElement('a');
-    ghLink.href = 'https://github.com/KYE-Protocol';
-    ghLink.target = '_blank';
-    ghLink.rel = 'noopener';
-    ghLink.className = 'tb-link tb-cta-mobile';
-    ghLink.innerHTML = '<span class="ms">open_in_new</span><span class="lbl">GitHub</span>';
-    drawer.appendChild(ghLink);
     document.body.appendChild(drawer);
   }
-  // Backdrop (covers the page behind the drawer; clicking it closes).
-  let backdrop = document.querySelector('.top-bar-drawer-backdrop');
   if (!backdrop) {
     backdrop = document.createElement('div');
     backdrop.className = 'top-bar-drawer-backdrop';
     backdrop.setAttribute('aria-hidden', 'true');
     document.body.appendChild(backdrop);
   }
+
   function close() {
     drawer.classList.remove('is-open');
     topbar.classList.remove('drawer-open');
@@ -201,14 +185,31 @@ initWebMcp();
     backdrop.classList.add('is-open');
     btn.setAttribute('aria-expanded', 'true');
   }
+
+  // Populate drawer contents now that close() exists.
+  if (!drawer.firstChild) {
+    const sourceLinks = document.querySelectorAll('.top-bar-nav .tb-link');
+    sourceLinks.forEach(a => {
+      const clone = a.cloneNode(true);
+      clone.addEventListener('click', close);
+      drawer.appendChild(clone);
+    });
+    const ghLink = document.createElement('a');
+    ghLink.href = 'https://github.com/KYE-Protocol';
+    ghLink.target = '_blank';
+    ghLink.rel = 'noopener';
+    ghLink.className = 'tb-link tb-cta-mobile';
+    ghLink.innerHTML = '<span class="ms">open_in_new</span><span class="lbl">GitHub</span>';
+    ghLink.addEventListener('click', close);
+    drawer.appendChild(ghLink);
+  }
+
   btn.setAttribute('aria-expanded', 'false');
   btn.addEventListener('click', e => {
     e.stopPropagation();
     if (drawer.classList.contains('is-open')) close(); else open();
   });
   // Click anywhere outside the drawer (or on the backdrop) closes it.
-  // We listen on document and check that the click is neither inside
-  // the drawer nor on the toggle button.
   document.addEventListener('click', e => {
     if (!drawer.classList.contains('is-open')) return;
     if (drawer.contains(e.target) || btn.contains(e.target)) return;
@@ -218,6 +219,15 @@ initWebMcp();
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') close();
   });
+
+  // Defensive: ensure drawer + backdrop are closed on initial load AND
+  // on bfcache restore (browser back/forward). Without the pageshow
+  // hook, the previous page comes back with whatever class state it
+  // left with — so a stale .is-open backdrop would be visible until
+  // the user tapped to dismiss. The persisted flag is true only for
+  // bfcache restores; on regular loads it's a harmless no-op.
+  close();
+  window.addEventListener('pageshow', e => { if (e.persisted) close(); });
 })();
 
 /* Material Symbols font-load gate — set html.ms-loaded once the icon
