@@ -23,17 +23,22 @@
  */
 
 const NAV_ITEMS = [
-  { id: 'home',       href: './',              label: 'Home',       icon: 'home',            color: '#1A8754' },
-  { id: 'protocol',   href: 'protocol.html',   label: 'Protocol',   icon: 'architecture',    color: '#00ACC1' },
-  { id: 'developers', href: 'developers.html', label: 'Developers', icon: 'code',            color: '#1A73E8' },
-  { id: 'buyers',     href: 'buyers.html',     label: 'Buyers',     icon: 'business_center', color: '#B47200' },
-  { id: 'auditors',   href: 'auditors.html',   label: 'Auditors',   icon: 'verified_user',   color: '#009688' },
-  { id: 'compliance', href: 'compliance.html', label: 'Compliance', icon: 'rule',            color: '#1A73E8' },
-  { id: 'regulators', href: 'regulators.html', label: 'Regulators', icon: 'gavel',           color: '#8E24AA' },
-  { id: 'sectors',    href: 'sectors.html',    label: 'Sectors',    icon: 'apartment',       color: '#5F6368' },
-  { id: 'usecases',   href: 'usecases.html',   label: 'Use cases',  icon: 'lightbulb',       color: '#F4B400' },
-  { id: 'demos',      href: 'demos.html',      label: 'Demos',      icon: 'play_circle',     color: '#EA4335' },
-  { id: 'whitepaper', href: 'whitepaper.html', label: 'Whitepaper', icon: 'menu_book',       color: '#00838F' },
+  { id: 'home',             href: './',                    label: 'Home',             icon: 'home',                    color: '#1A8754' },
+  { id: 'protocol',         href: 'protocol.html',         label: 'Protocol',         icon: 'architecture',            color: '#00ACC1' },
+  { id: 'developers',       href: 'developers.html',       label: 'Developers',       icon: 'code',                    color: '#1A73E8' },
+  { id: 'buyers',           href: 'buyers.html',           label: 'Buyers',           icon: 'business_center',         color: '#B47200' },
+  { id: 'auditors',         href: 'auditors.html',         label: 'Auditors',         icon: 'verified_user',           color: '#009688' },
+  { id: 'regulators',       href: 'regulators.html',       label: 'Regulators',       icon: 'gavel',                   color: '#8E24AA' },
+  { id: 'compliance',       href: 'compliance.html',       label: 'Compliance',       icon: 'rule',                    color: '#1A73E8' },
+  { id: 'frameworks',       href: 'frameworks.html',       label: 'Frameworks',       icon: 'fact_check',              color: '#1A73E8' },
+  { id: 'oscal',            href: 'oscal.html',            label: 'OSCAL',            icon: 'integration_instructions',color: '#1A73E8' },
+  { id: 'compliance-card',  href: 'compliance-card.html',  label: 'Compliance card',  icon: 'badge',                   color: '#009688' },
+  { id: 'sectors',          href: 'sectors.html',          label: 'Sectors',          icon: 'apartment',               color: '#5F6368' },
+  { id: 'usecases',         href: 'usecases.html',         label: 'Use cases',        icon: 'lightbulb',               color: '#F4B400' },
+  { id: 'risk',             href: 'risk.html',             label: 'Risk',             icon: 'shield',                  color: '#C5221F' },
+  { id: 'readiness',        href: 'readiness.html',        label: 'Readiness',        icon: 'checklist',               color: '#1A8754' },
+  { id: 'demos',            href: 'demos.html',            label: 'Demos',            icon: 'play_circle',             color: '#EA4335' },
+  { id: 'whitepaper',       href: 'whitepaper.html',       label: 'Whitepaper',       icon: 'menu_book',               color: '#00838F' },
 ];
 
 const TM_NOTICE_FULL =
