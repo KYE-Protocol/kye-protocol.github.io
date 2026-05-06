@@ -181,15 +181,42 @@ initWebMcp();
     drawer.appendChild(ghLink);
     document.body.appendChild(drawer);
   }
-  btn.addEventListener('click', () => {
-    drawer.classList.toggle('is-open');
-    topbar.classList.toggle('drawer-open');
+  // Backdrop (covers the page behind the drawer; clicking it closes).
+  let backdrop = document.querySelector('.top-bar-drawer-backdrop');
+  if (!backdrop) {
+    backdrop = document.createElement('div');
+    backdrop.className = 'top-bar-drawer-backdrop';
+    backdrop.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(backdrop);
+  }
+  function close() {
+    drawer.classList.remove('is-open');
+    topbar.classList.remove('drawer-open');
+    backdrop.classList.remove('is-open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+  function open() {
+    drawer.classList.add('is-open');
+    topbar.classList.add('drawer-open');
+    backdrop.classList.add('is-open');
+    btn.setAttribute('aria-expanded', 'true');
+  }
+  btn.setAttribute('aria-expanded', 'false');
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    if (drawer.classList.contains('is-open')) close(); else open();
   });
+  // Click anywhere outside the drawer (or on the backdrop) closes it.
+  // We listen on document and check that the click is neither inside
+  // the drawer nor on the toggle button.
+  document.addEventListener('click', e => {
+    if (!drawer.classList.contains('is-open')) return;
+    if (drawer.contains(e.target) || btn.contains(e.target)) return;
+    close();
+  });
+  backdrop.addEventListener('click', close);
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') {
-      drawer.classList.remove('is-open');
-      topbar.classList.remove('drawer-open');
-    }
+    if (e.key === 'Escape') close();
   });
 })();
 

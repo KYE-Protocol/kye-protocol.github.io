@@ -4725,6 +4725,24 @@ pre code {
   display: flex; flex-direction: column; gap: 4px;
 }
 .top-bar-drawer.is-open { transform: translateX(0); }
+.top-bar-drawer-backdrop {
+  position: fixed;
+  inset: 64px 0 0 0;
+  background: rgba(15, 23, 42, 0.32);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease;
+  z-index: 98;
+}
+.top-bar-drawer-backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+:root[data-theme="dark"] .top-bar-drawer-backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
 .top-bar-drawer .tb-link {
   width: 100%; justify-content: flex-start;
   padding: 14px 18px; border-radius: 12px;
