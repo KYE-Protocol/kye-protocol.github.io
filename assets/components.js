@@ -31,6 +31,7 @@ const NAV_ITEMS = [
   { id: 'compliance', href: 'compliance.html', label: 'Compliance', icon: 'rule',            color: '#1A73E8' },
   { id: 'regulators', href: 'regulators.html', label: 'Regulators', icon: 'gavel',           color: '#8E24AA' },
   { id: 'sectors',    href: 'sectors.html',    label: 'Sectors',    icon: 'apartment',       color: '#5F6368' },
+  { id: 'usecases',   href: 'usecases.html',   label: 'Use cases',  icon: 'lightbulb',       color: '#F4B400' },
   { id: 'demos',      href: 'demos.html',      label: 'Demos',      icon: 'play_circle',     color: '#EA4335' },
   { id: 'whitepaper', href: 'whitepaper.html', label: 'Whitepaper', icon: 'menu_book',       color: '#00838F' },
 ];
@@ -103,6 +104,7 @@ export function kyeFooter({ links = [] } = {}) {
     { href: 'compliance.html', label: 'Compliance' },
     { href: 'frameworks.html', label: 'Frameworks' },
     { href: 'sectors.html',    label: 'Sectors' },
+    { href: 'usecases.html',   label: 'Use cases' },
     { href: 'customers.html',  label: 'Customers' },
     { href: 'changelog.html',  label: 'Changelog' },
     { href: 'faq.html',        label: 'FAQ' },

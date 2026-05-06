@@ -7515,3 +7515,133 @@ p code[data-code], li code[data-code] {
   font-weight: 600;
 }
 .fwk-card .fwk-src a:hover { text-decoration: underline; }
+
+/* ============================================================
+   §FINAL-46 — usecases page grid + card
+   Real-world business-application scenarios. Each .uc-card has a
+   sector-tag header, framework chips, scenario lede, a six-step
+   .uc-trace ordered list, and an .uc-outcome footer.
+   ============================================================ */
+.uc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: var(--kye-space-4);
+}
+.uc-card {
+  background: var(--kye-color-paper);
+  border: 1px solid var(--kye-color-line);
+  border-radius: var(--kye-radius-3);
+  padding: var(--kye-space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--kye-space-2);
+  position: relative;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+.uc-card:hover {
+  border-color: var(--kye-color-brand);
+  box-shadow: 0 8px 24px rgba(26,135,84,0.10);
+}
+.uc-card .uc-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+.uc-card .uc-sector {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--kye-color-text-muted);
+}
+.uc-card .uc-sector .ms {
+  font-size: 16px !important;
+  width: 16px;
+  color: var(--kye-color-brand) !important;
+}
+.uc-card .uc-fwk {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.uc-card .uc-fwk .fwk-badge {
+  font-size: 10.5px;
+  padding: 2px 6px;
+  border-radius: var(--kye-radius-1);
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-weight: 700;
+}
+.uc-card .uc-h {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.32;
+  color: var(--kye-color-text);
+}
+.uc-card .uc-scenario {
+  margin: 0;
+  font-size: var(--kye-type-small);
+  line-height: 1.55;
+  color: var(--kye-color-text-muted);
+}
+.uc-card .uc-trace {
+  list-style: none;
+  margin: var(--kye-space-1) 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1px dashed var(--kye-color-line);
+  padding-top: var(--kye-space-2);
+}
+.uc-card .uc-trace li {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--kye-color-text);
+  display: grid;
+  grid-template-columns: minmax(110px, auto) 1fr;
+  gap: 10px;
+  align-items: baseline;
+}
+.uc-card .uc-step {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--kye-color-brand);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.uc-card .uc-outcome {
+  margin: var(--kye-space-2) 0 0;
+  padding: var(--kye-space-2) var(--kye-space-3);
+  background: var(--kye-color-paper-2);
+  border-left: 3px solid var(--kye-color-brand);
+  border-radius: var(--kye-radius-2);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--kye-color-text);
+}
+@media (max-width: 520px) {
+  .uc-card { padding: var(--kye-space-3); }
+  .uc-card .uc-trace li {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+  .uc-card .uc-step {
+    font-size: 10.5px;
+  }
+}
+:root[data-theme="dark"] .uc-card {
+  background: var(--surface-solid);
+  border-color: var(--line);
+}
+:root[data-theme="dark"] .uc-card .uc-outcome {
+  background: rgba(255,255,255,0.04);
+}
