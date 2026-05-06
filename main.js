@@ -424,6 +424,50 @@ initWebMcp();
   update();
 })();
 
+/* Authority Finality before→after diagram interactivity.
+   Each AFTER dim card carries data-af-dim="<slug>". The matching
+   BEFORE pain carries data-af-pain="<slug>". Click / Enter / Space
+   on a dim toggles the cross-highlight; clicking again clears it.
+   No-op when the section isn't on the page (other pages reuse the
+   same main.js bundle). */
+(function initAuthorityFinalityDiagram() {
+  const diagram = document.querySelector('.af-diagram[data-af-interactive]');
+  if (!diagram) return;
+  const dims  = diagram.querySelectorAll('[data-af-dim]');
+  const pains = diagram.querySelectorAll('[data-af-pain]');
+  if (!dims.length || !pains.length) return;
+  function clear() {
+    diagram.classList.remove('has-selection');
+    dims.forEach(d => { d.classList.remove('is-active'); d.setAttribute('aria-pressed', 'false'); });
+    pains.forEach(p => p.classList.remove('is-paired'));
+  }
+  function select(slug) {
+    diagram.classList.add('has-selection');
+    dims.forEach(d => {
+      const on = d.dataset.afDim === slug;
+      d.classList.toggle('is-active', on);
+      d.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    pains.forEach(p => p.classList.toggle('is-paired', p.dataset.afPain === slug));
+  }
+  dims.forEach(d => {
+    d.addEventListener('click', () => {
+      const slug = d.dataset.afDim;
+      if (d.classList.contains('is-active')) clear();
+      else select(slug);
+    });
+    d.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        d.click();
+      } else if (e.key === 'Escape') {
+        clear();
+        d.blur();
+      }
+    });
+  });
+})();
+
 /* Whitepaper / legal code-snippet colour tagger.
    Walks every <code> inside .wp-article and assigns a data-code
    attribute based on the snippet's content. CSS handles the

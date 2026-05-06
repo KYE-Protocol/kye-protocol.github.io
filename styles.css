@@ -6428,13 +6428,61 @@ footer.footer  .brand-mark svg path {
   gap: 4px;
   padding: 0 4px;
 }
-.af-arrow svg { width: 100%; height: auto; max-width: 110px; }
+.af-arrow svg { width: 100%; height: auto; max-width: 110px; display: block; }
+.af-arrow .af-arrow-v { display: none; }
+.af-arrow .af-arrow-h { display: block; }
 .af-arrow-label {
   font-size: 10.5px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 700;
   color: var(--accent);
+}
+/* Interactive state: AFTER dim cards become clickable; BEFORE pains
+ * dim by default and light up when their matching dim is selected.
+ * Cross-highlight: each AFTER dim has data-af-dim="<slug>" matching
+ * a BEFORE pain's data-af-pain="<slug>". */
+.af-diagram[data-af-interactive] .af-dim {
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+.af-diagram[data-af-interactive] .af-dim:hover,
+.af-diagram[data-af-interactive] .af-dim:focus-visible {
+  transform: translateY(-1px);
+  border-color: var(--accent);
+  box-shadow: 0 6px 16px rgba(26,135,84,0.18);
+  outline: none;
+}
+.af-diagram[data-af-interactive] .af-dim.is-active {
+  border-color: var(--accent);
+  background: rgba(26,135,84,0.10);
+  box-shadow: 0 6px 18px rgba(26,135,84,0.22);
+}
+.af-diagram[data-af-interactive] .af-block-points li {
+  transition: opacity 160ms ease, color 160ms ease, transform 160ms ease;
+}
+.af-diagram[data-af-interactive].has-selection .af-block-points li {
+  opacity: 0.45;
+}
+.af-diagram[data-af-interactive] .af-block-points li.is-paired {
+  opacity: 1;
+  color: var(--accent);
+  transform: translateX(2px);
+}
+.af-diagram[data-af-interactive] .af-block-points li.is-paired .ms {
+  color: var(--accent) !important;
+}
+.af-diagram[data-af-interactive].has-selection .af-arrow .af-arrow-line {
+  filter: drop-shadow(0 0 4px rgba(26,135,84,0.55));
+}
+.af-hint {
+  display: inline-block;
+  margin-left: 6px;
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.85;
 }
 .af-dim-grid {
   list-style: none;
@@ -6493,7 +6541,11 @@ footer.footer  .brand-mark svg path {
   .af-diagram { grid-template-columns: 1fr; }
   .af-block-then { border-right: 1px solid rgba(95,99,104,0.20); border-bottom: none; border-radius: 18px 18px 0 0; }
   .af-block-now  { border-left:  1px solid rgba(26,135,84,0.30);  border-top:    none; border-radius: 0 0 18px 18px; }
-  .af-arrow { padding: 8px 0; transform: rotate(90deg); }
+  /* Stacked layout: swap to a real vertical arrow so the SVG renders
+     correctly and the "becomes" label stays upright (no rotate hack). */
+  .af-arrow { padding: 12px 0; transform: none; }
+  .af-arrow .af-arrow-h { display: none; }
+  .af-arrow .af-arrow-v { display: block; max-width: 56px; margin: 0 auto; }
   .af-dim-grid { grid-template-columns: 1fr; }
 }
 
