@@ -38,13 +38,23 @@ export function initQuickstart() {
 export function initStarCta() {
   const cta = document.getElementById("star-cta");
   if (!cta) return;
+  // Hide the CTA whenever the footer is intersecting the viewport,
+  // otherwise the fixed pill covers the footer link grid.
+  const footer = document.querySelector("footer.footer, [data-kye-footer]");
+  let footerVisible = false;
+  if (footer && "IntersectionObserver" in window) {
+    new IntersectionObserver((entries) => {
+      footerVisible = entries.some((e) => e.isIntersecting);
+      apply();
+    }, { rootMargin: "0px 0px -40px 0px" }).observe(footer);
+  }
   let raf = 0;
+  function apply() {
+    cta.classList.toggle("is-visible", window.scrollY > 400 && !footerVisible);
+  }
   function on() {
     if (raf) return;
-    raf = requestAnimationFrame(() => {
-      raf = 0;
-      cta.classList.toggle("is-visible", window.scrollY > 400);
-    });
+    raf = requestAnimationFrame(() => { raf = 0; apply(); });
   }
   window.addEventListener("scroll", on, { passive: true });
   on();

@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script>(function(){try{var s=localStorage.getItem("kye-theme");if(s==="dark"||s==="light"){document.documentElement.setAttribute("data-theme",s);}}catch(e){}})();</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KYE Protocol™ — Readiness self-test | 12-question Authority Finality™ assessment</title>
+  <meta name="description" content="A 12-question interactive self-assessment that scores your AI-agent stack 0–100 on KYE Protocol™ readiness — entity registry, delegation chain, capability scoping, signed audit, recovery posture, evidence freshness — and lists the profile that closes each gap." />
+  <meta name="keywords" content="AI agent readiness assessment, AI governance readiness, AI compliance readiness, EU AI Act readiness, AI audit readiness, KYE Protocol readiness, Authority Finality readiness" />
+  <link rel="canonical" href="https://kye-protocol.github.io/readiness.html" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="KYE Protocol™ — Readiness self-test" />
+  <meta property="og:description" content="A 12-question interactive self-assessment scoring your AI-agent stack on Authority Finality™ readiness." />
+  <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
+  <meta property="og:url" content="https://kye-protocol.github.io/readiness.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css?v=1778580000" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="top-bar" role="banner" data-kye-header data-active="readiness"><!-- canonical chrome injected by assets/components.js mountKyeComponents() --></header>
+<main id="main" role="main">
+
+<section id="top" class="hero">
+  <div class="container hero-inner">
+    <span class="hero-pill"><span class="dot"></span> Readiness self-test &middot; 12 questions, ~3 minutes</span>
+    <h1 id="hero-title" style="margin-top:18px">How <span class="accent">audit-ready</span> is your agent stack?</h1>
+    <p class="lede">Twelve yes/no/partial questions across the six Authority Finality<span class="tm">™</span> dimensions: identity, delegation, capability, decision, audit, recovery. Each answer scores 0&ndash;10 points (max 120). The result is a 0&ndash;100 readiness band plus the named KYE Protocol<span class="tm">™</span> profile that closes each gap. Nothing is sent over the wire &mdash; the test runs entirely in your browser.</p>
+  </div>
+</section>
+
+<section id="quiz" class="section" aria-labelledby="h-quiz">
+        <span class="eyebrow">Self-test</span>
+    <h2 id="h-quiz" class="h-section">Answer 12 questions.</h2>
+  <div class="section-body"><div class="container">
+    <form id="rd-form" class="rd-form" data-rd-form aria-describedby="h-quiz">
+
+      <ol class="rd-list">
+
+        <li class="rd-q" data-rd-dim="identity">
+          <h3 class="rd-h">1. Every AI agent in production has a single, durable identifier across systems.</h3>
+          <p class="rd-b">Not five different tokens, five logs, five identities &mdash; one URN that persists across rebuilds, redeployments, and tool invocations.</p>
+          <div class="rd-opts">
+            <label><input type="radio" name="q1" value="10" required> Yes, every agent</label>
+            <label><input type="radio" name="q1" value="5"> Partial &mdash; some, not all</label>
+            <label><input type="radio" name="q1" value="0"> No</label>
+          </div>
+        </li>
+
+        <li class="rd-q" data-rd-dim="identity">
+          <h3 class="rd-h">2. Agent identifiers are cryptographically bound (not just opaque strings).</h3>
+          <p class="rd-b">Each identifier is provable to a public key &mdash; not just a database row.</p>
+          <div class="rd-opts">
+            <label><input type="radio" name="q2" value="10" required> Yes, all agents</label>
+            <label><input type="radio" name="q2" value="5"> Partial</label>
+            <label><input type="radio" name="q2" value="0"> No</label>
+          </div>
+        </li>
+
+        <li class="rd-q" data-rd-dim="delegation">
+          <h3 class="rd-h">3. There is a signed delegation chain from each agent back to a human or business.</h3>
+          <p class="rd-b">If asked &ldquo;who is legally on the hook for this action?&rdquo;, you can answer in seconds with a signed proof, not a Slack thread.</p>
+          <div class="rd-opts">
+            <label><input type="radio" name="q3" value="10" required> Yes, end-to-end</label>
+            <label><input type="radio" name="q3" value="5"> Partial &mdash; chain exists but unsigned</label>
+            <label><input type="radio" name="q3" value="0"> No</label>
+          </div>
+        </li>
+
+        <li class="rd-q" data-rd-dim="delegation">
+          <h3 class="rd-h">4. Delegation scope is attenuable &mdash; children cannot exceed parents.</h3>
+          <p class="rd-b">A sub-agent or downstream call cannot acquire authority the parent did not have.</p>
+          <div class="rd-opts">
+            <label><input type="radio" name="q4" value="10" required> Yes, enforced</label>
+            <label><input type="radio" name="q4" value="5"> Partial &mdash; documented but not enforced</label>
+            <label><input type="radio" name="q4" value="0"> No</label>
+          </div>
+        </li>
+
+        <li class="rd-q" data-rd-dim="capability">
+          <h3 class="rd-h">5. Every tool / MCP / function the agent can call is a first-class capability with explicit grant.</h3>
+          <p class="rd-b">No &ldquo;the agent has the API key, so it can do anything the API allows&rdquo;.</p>
+          <div class="rd-opts">
+            <label><input type="radio" name="q5" value="10" required> Yes, every capability</label>
+            <label><input type="radio" name="q5" value="5"> Partial</label>
+            <label><input type="radio" name="q5" value="0"> No</label>
+          </div>
+        </li>
+
+        <li class="rd-q" data-rd-dim="capability">
+          <h3 class="rd-h">6. Capabilities are scoped (parameter-level constraints), not just on/off.</h3>
+          <p class="rd-b">e.g. payment capability scoped to USD &le; $5M, EU/US corridors only &mdash; not a single &ldquo;can transact&rdquo; flag.</p>
+          <div class="rd-opts">
+            <label><input type="radio" name="q6" value="10" required> Yes</label>
+            <label><input type="radio" name="q6" value="5"> Partial</label>
+            <label><input type="radio" name="q6" value="0"> No</label>
+          </div>
+        </li>
+
+        <li class="rd-q" data-rd-dim="decision">
+          <h3 class="rd-h">7. Every authorisation produces an explainable decision (not just allow / deny).</h3>
+          <p class="rd-b">Decision carries the policy, the inputs, and the reason &mdash; replayable from public keys.</p>
+          <div class="rd-opts">
+            <label><input type="radio" name="q7" value="10" required> Yes</label>
+            <label><input type="radio" name="q7" value="5"> Partial &mdash; logged but not signed</label>
+            <label><input type="radio" name="q7" value="0"> No</label>
+          </div>
+        </li>
+
+        <li class="rd-q" data-rd-dim="decision">
+          <h3 class="rd-h">8. Decisions can be replayed offline by an external auditor.</h3>
+          <p class="rd-b">The auditor verifies your evidence with public keys alone &mdash; no read-access to your runtime.</p>
+          <div class="rd-opts">
+            <label><input type="radio" name="q8" value="10" required> Yes</label>
+            <label><input type="radio" name="q8" value="5"> Partial</label>
+            <label><input type="radio" name="q8" value="0"> No</label>
+          </div>
+        </li>
+
+        <li class="rd-q" data-rd-dim="audit">
+          <h3 class="rd-h">9. The audit log is append-only, hash-linked, and tamper-evident.</h3>
+          <p class="rd-b">Not just an &ldquo;immutable&rdquo; database table &mdash; cryptographically chained.</p>
+          <div class="rd-opts">
+            <label><input type="radio" name="q9" value="10" required> Yes</label>
+            <label><input type="radio" name="q9" value="5"> Partial &mdash; immutable storage but not chained</label>
+            <label><input type="radio" name="q9" value="0"> No</label>
+          </div>
+        </li>
+
+        <li class="rd-q" data-rd-dim="audit">
+          <h3 class="rd-h">10. Evidence packs ship in a structured, framework-mappable format.</h3>
+          <p class="rd-b">Auditors get JSON/OSCAL, not a CSV pulled from Splunk.</p>
+          <div class="rd-opts">
+            <label><input type="radio" name="q10" value="10" required> Yes &mdash; OSCAL or equivalent</label>
+            <label><input type="radio" name="q10" value="5"> Partial &mdash; structured logs, no framework mapping</label>
+            <label><input type="radio" name="q10" value="0"> No &mdash; ad-hoc spreadsheets</label>
+          </div>
+        </li>
+
+        <li class="rd-q" data-rd-dim="recovery">
+          <h3 class="rd-h">11. You can revoke an agent&rsquo;s authority &mdash; with cascade &mdash; in &lt; 1 second.</h3>
+          <p class="rd-b">Agent compromised at 02:14? Token gone, downstream grants revoked, audit recorded &mdash; before the next settlement cycle.</p>
+          <div class="rd-opts">
+            <label><input type="radio" name="q11" value="10" required> Yes &mdash; tested in production</label>
+            <label><input type="radio" name="q11" value="5"> Partial &mdash; documented runbook, untested</label>
+            <label><input type="radio" name="q11" value="0"> No</label>
+          </div>
+        </li>
+
+        <li class="rd-q" data-rd-dim="recovery">
+          <h3 class="rd-h">12. Break-glass / recovery flows leave a signed audit trail (not a black box).</h3>
+          <p class="rd-b">Every emergency override is itself a request, decision, and proof artefact &mdash; not an admin clicking a button no auditor sees.</p>
+          <div class="rd-opts">
+            <label><input type="radio" name="q12" value="10" required> Yes</label>
+            <label><input type="radio" name="q12" value="5"> Partial</label>
+            <label><input type="radio" name="q12" value="0"> No</label>
+          </div>
+        </li>
+
+      </ol>
+
+      <div class="rd-actions">
+        <button type="submit" class="btn btn-primary">Score my readiness &rarr;</button>
+        <button type="reset" class="btn btn-secondary">Reset</button>
+      </div>
+    </form>
+
+    <div id="rd-result" class="rd-result" hidden aria-live="polite">
+      <header class="rd-result-head">
+        <span class="rd-band" data-rd-band>&mdash;</span>
+        <div>
+          <h3 id="rd-result-h" class="rd-result-h">Your score: <span data-rd-score>0</span> / 100</h3>
+          <p class="rd-result-sub" data-rd-summary></p>
+        </div>
+      </header>
+      <h4 class="rd-gap-title">Gaps to close, in priority order</h4>
+      <ol class="rd-gap-list" data-rd-gaps></ol>
+      <div class="rd-result-cta">
+        <a href="usecases.html" class="btn btn-primary"><span class="ms">lightbulb</span> See it in your sector &rarr;</a>
+        <a href="builders.html" class="btn btn-secondary"><span class="ms">code</span> Builder quickstart</a>
+        <a href="#" class="btn btn-secondary" data-contact-trigger><span class="ms">forum</span> Walk through with us</a>
+      </div>
+      <p class="rd-disclaimer"><strong>Privacy:</strong> this self-test runs entirely in your browser. No answers are submitted, stored, or transmitted.</p>
+    </div>
+
+  </div></div>
+</section>
+
+<section id="next" class="section alt" aria-labelledby="h-next">
+        <span class="eyebrow">Where to go next</span>
+    <h2 id="h-next" class="h-section">Adjacent reading.</h2>
+  <div class="section-body"><div class="container">
+    <div class="hero-cta" style="margin-top:8px">
+      <a href="risk.html" class="btn btn-secondary"><span class="ms">shield</span> Threat model &amp; mitigations</a>
+      <a href="compliance-card.html" class="btn btn-secondary"><span class="ms">badge</span> AI System Compliance Card</a>
+      <a href="oscal.html" class="btn btn-secondary"><span class="ms">integration_instructions</span> OSCAL compatibility</a>
+      <a href="frameworks.html" class="btn btn-secondary"><span class="ms">fact_check</span> Per-framework reference</a>
+    </div>
+  </div></div>
+</section>
+
+</main>
+<footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected by assets/components.js mountKyeComponents() --></footer>
+<button id="scroll-top" class="scroll-top" type="button" aria-label="Scroll to top" data-kye-scroll-top><!-- svg injected --></button>
+<script type="module" src="main.js?v=1778580000"></script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script>(function(){try{var s=localStorage.getItem("kye-theme");if(s==="dark"||s==="light"){document.documentElement.setAttribute("data-theme",s);}}catch(e){}})();</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KYE Protocol™ — Risk &amp; mitigation | Threat model · failure modes · operational guarantees</title>
+  <meta name="description" content="The KYE Protocol™ threat model: signing-key compromise, registry availability, false-positive denials, time-skew, replay, supply-chain risk, recovery-channel abuse — and the protocol-level mitigations the spec ships." />
+  <meta name="keywords" content="KYE Protocol threat model, AI agent threat model, signing key compromise, registry availability, false positive denials, replay attack, time skew, supply chain, recovery channel" />
+  <link rel="canonical" href="https://kye-protocol.github.io/risk.html" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="KYE Protocol™ — Risk &amp; mitigation" />
+  <meta property="og:description" content="The KYE Protocol™ threat model and the mitigations the spec ships — for security, risk, and operational due-diligence teams." />
+  <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
+  <meta property="og:url" content="https://kye-protocol.github.io/risk.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css?v=1778580000" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="top-bar" role="banner" data-kye-header data-active="risk"><!-- canonical chrome injected by assets/components.js mountKyeComponents() --></header>
+<main id="main" role="main">
+
+<section id="top" class="hero">
+  <div class="container hero-inner">
+    <span class="hero-pill"><span class="dot"></span> Risk &amp; mitigation &middot; published threat model</span>
+    <h1 id="hero-title" style="margin-top:18px">What can go <span class="accent">wrong</span>. What KYE<span class="tm">™</span> does about it.</h1>
+    <p class="lede">Every risk and security team asks the same question before adopting a new contract layer: <em>what&rsquo;s the threat model, and where does the protocol fail?</em> KYE Protocol<span class="tm">™</span> answers in the open. Below is the published threat model, the failure modes, and the protocol-level mitigations the spec ships.</p>
+  </div>
+</section>
+
+<section id="threats" class="section" aria-labelledby="h-threats">
+        <span class="eyebrow">Threat model</span>
+    <h2 id="h-threats" class="h-section">10 threats. 10 mitigations. Spec-level, not operator-best-effort.</h2>
+  <div class="section-body"><div class="container">
+    <div class="risk-grid">
+
+      <article class="risk-card" data-sev="high">
+        <header class="risk-head">
+          <span class="risk-sev risk-sev-high">High</span>
+          <span class="risk-id">R-01</span>
+        </header>
+        <h3 class="risk-h">Signing-key compromise &mdash; agent or trust-domain root</h3>
+        <p class="risk-b"><strong>Threat:</strong> an agent&rsquo;s Ed25519 key, or a trust-domain root key, is exfiltrated. Forged authority + audit entries become possible.</p>
+        <p class="risk-m"><strong>Mitigation:</strong> mandatory key-rotation profile (<code data-code="profile">kye-rotation-1.0</code>) with overlapping validity windows; signal-bus <code data-code="signal">quarantine</code> + cascade revoke in &lt; 1 second; transparency-log receipt makes any forged audit entry detectable on next replay; recovery-profile time-boxed re-keying; HSM &middot; KMS &middot; cloud-KMS-backed keys at L3 conformance.</p>
+      </article>
+
+      <article class="risk-card" data-sev="high">
+        <header class="risk-head">
+          <span class="risk-sev risk-sev-high">High</span>
+          <span class="risk-id">R-02</span>
+        </header>
+        <h3 class="risk-h">Registry / Gateway outage</h3>
+        <p class="risk-b"><strong>Threat:</strong> the KYE<span class="tm">™</span> Gateway, signal bus, or registry is unavailable. Decisions stall &mdash; or worse, fail-open.</p>
+        <p class="risk-m"><strong>Mitigation:</strong> embedded PDP library runs in-process with cached policy bundles; configurable fail-closed default; multi-region active-active deployment topology in the runbook; Gateway is stateless, registry is the only state plane; DORA-grade chaos-testing fixtures ship with the conformance pack.</p>
+      </article>
+
+      <article class="risk-card" data-sev="med">
+        <header class="risk-head">
+          <span class="risk-sev risk-sev-med">Medium</span>
+          <span class="risk-id">R-03</span>
+        </header>
+        <h3 class="risk-h">False-positive deny &mdash; over-restrictive policy</h3>
+        <p class="risk-b"><strong>Threat:</strong> agents are denied legitimate actions because policy is too tight; business velocity drops; users circumvent the protocol.</p>
+        <p class="risk-m"><strong>Mitigation:</strong> shadow-mode + canary policies (every PDP request can be evaluated against multiple policy versions); <code data-code="allow">allow_with_constraints</code> as default disposition (vs binary deny); per-tenant policy review surfaced in the audit chain; explainability via Decision Map<span class="tm">™</span> on every deny.</p>
+      </article>
+
+      <article class="risk-card" data-sev="med">
+        <header class="risk-head">
+          <span class="risk-sev risk-sev-med">Medium</span>
+          <span class="risk-id">R-04</span>
+        </header>
+        <h3 class="risk-h">Time-skew &middot; expired credentials honoured</h3>
+        <p class="risk-b"><strong>Threat:</strong> clocks drift; expired delegations or stale grants are honoured; revocation propagation is delayed.</p>
+        <p class="risk-m"><strong>Mitigation:</strong> NTP / chrony required + drift telemetry in the signal bus; every authority token carries <code data-code="field">issued_at</code> + <code data-code="field">not_after</code> + <code data-code="field">cascade_seq</code>; cascade-seq monotonicity check rejects out-of-order updates; conformance fixture covers ±60s skew tolerance.</p>
+      </article>
+
+      <article class="risk-card" data-sev="high">
+        <header class="risk-head">
+          <span class="risk-sev risk-sev-high">High</span>
+          <span class="risk-id">R-05</span>
+        </header>
+        <h3 class="risk-h">Replay attack on signed payloads</h3>
+        <p class="risk-b"><strong>Threat:</strong> a previously-signed payload (e.g. a payment intent) is replayed by an attacker; same signature, same authority &mdash; new effect.</p>
+        <p class="risk-m"><strong>Mitigation:</strong> KYE<span class="tm">™</span> Payload Trust Profile<span class="tm">™</span> 13-state lifecycle; <code data-code="field">payload_id</code> uniqueness enforced at <code data-code="endpoint">/v1/payloads/verify</code>; replayed-state transition emits a <code data-code="signal">replay</code> signal; bound_to_decision pinning makes a payload single-use.</p>
+      </article>
+
+      <article class="risk-card" data-sev="med">
+        <header class="risk-head">
+          <span class="risk-sev risk-sev-med">Medium</span>
+          <span class="risk-id">R-06</span>
+        </header>
+        <h3 class="risk-h">Supply-chain risk &middot; SDK / dependency compromise</h3>
+        <p class="risk-b"><strong>Threat:</strong> a compromised SDK or transitive dependency injects a backdoor into authorize calls; trust is undermined silently.</p>
+        <p class="risk-m"><strong>Mitigation:</strong> SBOM (CycloneDX) per release; reproducible builds for the reference implementations; signed releases (Sigstore-compatible); npm audit &middot; pip-audit &middot; govulncheck wired into CI; conformance fixture suite re-run by the consumer (not just the publisher) at adoption.</p>
+      </article>
+
+      <article class="risk-card" data-sev="high">
+        <header class="risk-head">
+          <span class="risk-sev risk-sev-high">High</span>
+          <span class="risk-id">R-07</span>
+        </header>
+        <h3 class="risk-h">Recovery-channel abuse &middot; break-glass exploit</h3>
+        <p class="risk-b"><strong>Threat:</strong> the recovery / break-glass profile becomes the path of least resistance; insiders abuse it; auditors lose visibility.</p>
+        <p class="risk-m"><strong>Mitigation:</strong> recovery is a contract not a black box (<code data-code="profile">kye-recovery-1.0</code>): every break-glass grant is a signed request + decision + proof artefact; auto-expiry; mandatory dual-control at L4 KYE Certified<span class="tm">™</span>; emits <code data-code="signal">break_glass_issued</code> + <code data-code="signal">break_glass_used</code> + <code data-code="signal">break_glass_expired</code> on the bus.</p>
+      </article>
+
+      <article class="risk-card" data-sev="med">
+        <header class="risk-head">
+          <span class="risk-sev risk-sev-med">Medium</span>
+          <span class="risk-id">R-08</span>
+        </header>
+        <h3 class="risk-h">PII &middot; sensitive-data leakage in audit chain</h3>
+        <p class="risk-b"><strong>Threat:</strong> the audit chain itself becomes a sensitive-data store; GDPR / HIPAA / 42&nbsp;CFR&nbsp;Part&nbsp;2 violations follow.</p>
+        <p class="risk-m"><strong>Mitigation:</strong> audit chain references entities by URN, never embeds payload bytes; redaction profile binds to capability before bytes leave the data boundary; lifecycle <code data-code="field">tombstoned</code> state for right-to-erasure; trust-domain federation keeps EU records EU and non-EU records non-EU.</p>
+      </article>
+
+      <article class="risk-card" data-sev="low">
+        <header class="risk-head">
+          <span class="risk-sev risk-sev-low">Low</span>
+          <span class="risk-id">R-09</span>
+        </header>
+        <h3 class="risk-h">Operator misconfiguration &middot; loose scope</h3>
+        <p class="risk-b"><strong>Threat:</strong> an operator grants overly-broad scope (the &ldquo;star permission&rdquo; problem); blast radius on compromise is excessive.</p>
+        <p class="risk-m"><strong>Mitigation:</strong> attenuation is a protocol invariant (parent &supe; child enforced); Blast Radius Map<span class="tm">™</span> surfaces over-broad grants pre-deployment; conformance fixture rejects wildcards in payment / healthcare / federation profiles; scope-tightening recommendation engine in the recovery console.</p>
+      </article>
+
+      <article class="risk-card" data-sev="low">
+        <header class="risk-head">
+          <span class="risk-sev risk-sev-low">Low</span>
+          <span class="risk-id">R-10</span>
+        </header>
+        <h3 class="risk-h">Cryptographic agility &middot; algorithm sunset</h3>
+        <p class="risk-b"><strong>Threat:</strong> Ed25519 / SHA-256 are eventually superseded; signed evidence packs need to remain verifiable for 7+ years (regulatory retention).</p>
+        <p class="risk-m"><strong>Mitigation:</strong> algorithm choice is a profile parameter, not hard-coded; v2.0 RFC adds the post-quantum cryptography overlay (algorithm choice deferred); legacy verifier remains permanently shipped so historical evidence stays replayable.</p>
+      </article>
+
+    </div>
+
+    <p class="lede" style="margin-top:18px"><strong>Reporting a finding:</strong> see <a href="https://github.com/KYE-Protocol/.github/blob/main/SECURITY.md" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">SECURITY.md</a> for the coordinated-disclosure policy. We&rsquo;ll publish updates to this threat model on the <a href="changelog.html">changelog</a>; new risks accepted via Discussions.</p>
+  </div></div>
+</section>
+
+<section id="non-goals" class="section alt" aria-labelledby="h-ng">
+        <span class="eyebrow">What KYE<span class="tm">™</span> does <em>not</em> claim</span>
+    <h2 id="h-ng" class="h-section">Honest non-goals.</h2>
+  <div class="section-body"><div class="container">
+    <ul class="who-bullets">
+      <li><strong>Not a model-safety layer.</strong> KYE<span class="tm">™</span> governs <em>what an agent is allowed to do</em>; it does not stop a model from producing unsafe output. Pair it with a content-safety layer.</li>
+      <li><strong>Not a replacement for legal counsel.</strong> KYE<span class="tm">™</span> produces evidence; certifications, legal filings, and regulator interpretations remain the customer&rsquo;s.</li>
+      <li><strong>Not a certification body.</strong> KYE Conformant<span class="tm">™</span> / KYE Certified<span class="tm">™</span> are conformance badges issued through the registry; framework certifications (SOC&nbsp;2, ISO 27001:2022, FedRAMP) come from accredited auditors.</li>
+      <li><strong>Not a single-vendor product.</strong> The protocol is Apache 2.0 + open contract. KYE Cloud<span class="tm">™</span> is one (commercial) implementation; multiple conformant implementations are expected.</li>
+      <li><strong>Not a silver bullet for adversarial inputs.</strong> Decision Map<span class="tm">™</span> explainability + cascade revocation reduce blast radius when adversarial inputs slip past the model; they don&rsquo;t prevent the inputs.</li>
+    </ul>
+  </div></div>
+</section>
+
+<section id="next" class="section" aria-labelledby="h-next">
+        <span class="eyebrow">Where to go next</span>
+    <h2 id="h-next" class="h-section">Adjacent reading.</h2>
+  <div class="section-body"><div class="container">
+    <div class="hero-cta" style="margin-top:8px">
+      <a href="readiness.html" class="btn btn-primary"><span class="ms">checklist</span> Readiness self-test &rarr;</a>
+      <a href="protocol.html" class="btn btn-secondary"><span class="ms">architecture</span> Protocol overview</a>
+      <a href="auditors.html" class="btn btn-secondary"><span class="ms">verified_user</span> For auditors</a>
+      <a href="https://github.com/KYE-Protocol/.github/blob/main/SECURITY.md" target="_blank" rel="noopener" class="btn btn-secondary"><span class="ms">security</span> SECURITY.md</a>
+      <a href="#" class="btn btn-secondary" data-contact-trigger><span class="ms">forum</span> Talk to us</a>
+    </div>
+  </div></div>
+</section>
+
+</main>
+<footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected by assets/components.js mountKyeComponents() --></footer>
+<button id="scroll-top" class="scroll-top" type="button" aria-label="Scroll to top" data-kye-scroll-top><!-- svg injected --></button>
+<script type="module" src="main.js?v=1778580000"></script>
+</body>
+</html>

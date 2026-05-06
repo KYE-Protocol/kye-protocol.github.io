@@ -424,6 +424,103 @@ initWebMcp();
   update();
 })();
 
+/* Readiness self-test scorer.
+   Scores the 12 yes/no/partial answers (0/5/10 each) into a 0–100
+   band, summarises by dimension, and lists prioritised gaps with
+   the named KYE Protocol™ profile that closes each. Runs entirely
+   in the browser — no submission. */
+(function initReadiness() {
+  const form = document.querySelector('[data-rd-form]');
+  if (!form) return;
+  const result = document.getElementById('rd-result');
+  const scoreEl = result.querySelector('[data-rd-score]');
+  const bandEl  = result.querySelector('[data-rd-band]');
+  const summary = result.querySelector('[data-rd-summary]');
+  const gapsEl  = result.querySelector('[data-rd-gaps]');
+
+  const dims = {
+    identity:   { label: 'Identity',   profile: 'kye-entity-1.0',     advice: 'Issue a single durable URN per agent and bind every identifier to a public key. The KYE™ entity registry is the source of truth.' },
+    delegation: { label: 'Delegation', profile: 'kye-delegation-1.0', advice: 'Build a signed delegation chain from each agent up to a human or business; enforce attenuation so children cannot exceed parents.' },
+    capability: { label: 'Capability', profile: 'kye-capability-1.0', advice: 'Make every tool / MCP / function a first-class capability with parameter-level scope. No implicit "the API key works" authority.' },
+    decision:   { label: 'Decision',   profile: 'kye-runtime-1.0',    advice: 'Every authorize call returns an explainable, signed decision (Decision Map™) replayable from public keys alone.' },
+    audit:      { label: 'Audit',      profile: 'kye-audit-1.0',      advice: 'Append-only, hash-linked audit chain; ship evidence packs in OSCAL or KYE™ structured form so auditors can map directly to framework controls.' },
+    recovery:   { label: 'Recovery',   profile: 'kye-recovery-1.0',   advice: 'Quarantine + cascade revoke in <1s; break-glass as a signed contract (request → decision → proof), not an admin button.' },
+  };
+
+  function band(score) {
+    if (score >= 85) return { tag: 'A', cls: 'rd-band-a', text: 'Audit-ready — Authority Finality™ posture is mature.' };
+    if (score >= 65) return { tag: 'B', cls: 'rd-band-b', text: 'Solid foundations — close the targeted gaps below to reach audit-ready.' };
+    if (score >= 40) return { tag: 'C', cls: 'rd-band-c', text: 'Partial coverage — significant gaps remain. Pick one dimension and harden it first.' };
+    return                { tag: 'D', cls: 'rd-band-d', text: 'Authority Finality™ is not yet in place. Start with identity + delegation; the other dimensions depend on them.' };
+  }
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const fd = new FormData(form);
+    let total = 0, max = 0;
+    const byDim = {};
+    Object.keys(dims).forEach(d => { byDim[d] = { score: 0, max: 0, gaps: [] }; });
+
+    for (const q of form.querySelectorAll('.rd-q')) {
+      const dim = q.dataset.rdDim;
+      const radio = q.querySelector('input[type=radio]:checked');
+      if (!radio) continue;
+      const v = parseInt(radio.value, 10);
+      total += v; max += 10;
+      byDim[dim].score += v;
+      byDim[dim].max   += 10;
+      if (v < 10) {
+        byDim[dim].gaps.push({
+          q: q.querySelector('.rd-h').textContent.trim(),
+          partial: v === 5,
+        });
+      }
+    }
+    const score = Math.round((total / max) * 100);
+    const b = band(score);
+    scoreEl.textContent = score;
+    bandEl.textContent = b.tag;
+    bandEl.className = 'rd-band ' + b.cls;
+    summary.textContent = b.text;
+
+    // Build gap list, sorted by dimension score ascending (worst first).
+    const ordered = Object.entries(byDim)
+      .filter(([, v]) => v.gaps.length)
+      .sort((a, b) => (a[1].score / a[1].max) - (b[1].score / b[1].max));
+
+    gapsEl.innerHTML = '';
+    if (!ordered.length) {
+      const li = document.createElement('li');
+      li.className = 'rd-gap rd-gap-clean';
+      li.innerHTML = '<strong>No gaps detected.</strong> Authority Finality™ posture is mature on every dimension. Verify by replaying a recent decision against your public keys and shipping the evidence pack.';
+      gapsEl.appendChild(li);
+    } else {
+      for (const [d, v] of ordered) {
+        const li = document.createElement('li');
+        li.className = 'rd-gap';
+        const pct = Math.round((v.score / v.max) * 100);
+        const items = v.gaps.map(g => `<li>${g.q}${g.partial ? ' <em class="rd-tag-partial">(partial)</em>' : ''}</li>`).join('');
+        li.innerHTML = `
+          <header class="rd-gap-h">
+            <span class="rd-gap-dim">${dims[d].label}</span>
+            <span class="rd-gap-pct">${pct}%</span>
+          </header>
+          <p class="rd-gap-advice">${dims[d].advice}</p>
+          <p class="rd-gap-profile">Closing profile: <code data-code="profile">${dims[d].profile}</code></p>
+          <ul class="rd-gap-items">${items}</ul>
+        `;
+        gapsEl.appendChild(li);
+      }
+    }
+    result.hidden = false;
+    result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  form.addEventListener('reset', () => {
+    result.hidden = true;
+  });
+})();
+
 /* Authority Finality before→after diagram interactivity.
    Each AFTER dim card carries data-af-dim="<slug>". The matching
    BEFORE pain carries data-af-pain="<slug>". Click / Enter / Space
