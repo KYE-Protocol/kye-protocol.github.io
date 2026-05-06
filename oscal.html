@@ -15,7 +15,7 @@
   <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
   <meta property="og:url" content="https://kye-protocol.github.io/oscal.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="styles.css?v=1778780000" />
+  <link rel="stylesheet" href="styles.css?v=1778800000" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
 </head>
@@ -62,7 +62,7 @@
           <span class="oscal-to">OSCAL <code data-code="path">component-definition</code></span>
         </header>
         <p class="oscal-b">A KYE<span class="tm">™</span> profile (e.g. <code data-code="profile">kye-payments-1.0</code>) becomes an OSCAL component-definition declaring which NIST 800-53 controls the profile satisfies, with one <code data-code="field">implemented-requirement</code> per binding and the binding source URN as <code data-code="field">link.href</code>.</p>
-        <p class="oscal-src"><strong>OSCAL ref:</strong> <a href="https://pages.nist.gov/OSCAL/concepts/layer/implementation/component-definition/" target="_blank" rel="noopener">component-definition layer &rarr;</a></p>
+        <p class="oscal-src"><strong>OSCAL ref:</strong> <a href="https://github.com/usnistgov/OSCAL/blob/main/src/metaschema/oscal_component_metaschema.xml" target="_blank" rel="noopener">component-definition metaschema (NIST OSCAL repo) &rarr;</a></p>
       </article>
 
       <article class="oscal-card">
@@ -72,7 +72,7 @@
           <span class="oscal-to">OSCAL <code data-code="path">system-security-plan</code></span>
         </header>
         <p class="oscal-b">The KYE<span class="tm">™</span> entity registry plus its delegation chain produces the <code data-code="field">system-implementation</code> section of the SSP &mdash; component inventory, user/role mapping, authorisation boundaries, data-flow declarations.</p>
-        <p class="oscal-src"><strong>OSCAL ref:</strong> <a href="https://pages.nist.gov/OSCAL/concepts/layer/implementation/ssp/" target="_blank" rel="noopener">system-security-plan layer &rarr;</a></p>
+        <p class="oscal-src"><strong>OSCAL ref:</strong> <a href="https://github.com/usnistgov/OSCAL/blob/main/src/metaschema/oscal_ssp_metaschema.xml" target="_blank" rel="noopener">system-security-plan metaschema (NIST OSCAL repo) &rarr;</a></p>
       </article>
 
       <article class="oscal-card">
@@ -82,7 +82,7 @@
           <span class="oscal-to">OSCAL <code data-code="path">assessment-results</code></span>
         </header>
         <p class="oscal-b">A signed KYE<span class="tm">™</span> evidence pack &mdash; including decision logs, recovery proofs, and signal-bus telemetry &mdash; renders as an OSCAL assessment-results document with one <code data-code="field">finding</code> per control, evidence linked by URN.</p>
-        <p class="oscal-src"><strong>OSCAL ref:</strong> <a href="https://pages.nist.gov/OSCAL/concepts/layer/assessment/assessment-results/" target="_blank" rel="noopener">assessment-results layer &rarr;</a></p>
+        <p class="oscal-src"><strong>OSCAL ref:</strong> <a href="https://github.com/usnistgov/OSCAL/blob/main/src/metaschema/oscal_assessment-results_metaschema.xml" target="_blank" rel="noopener">assessment-results metaschema (NIST OSCAL repo) &rarr;</a></p>
       </article>
 
       <article class="oscal-card">
@@ -92,7 +92,7 @@
           <span class="oscal-to">OSCAL <code data-code="path">assessment-plan</code></span>
         </header>
         <p class="oscal-b">A scheduled KYE<span class="tm">™</span> self-audit run becomes an OSCAL assessment-plan: scope, controls under test, methods, schedule, and signing keys all declared in machine-readable form.</p>
-        <p class="oscal-src"><strong>OSCAL ref:</strong> <a href="https://pages.nist.gov/OSCAL/concepts/layer/assessment/assessment-plan/" target="_blank" rel="noopener">assessment-plan layer &rarr;</a></p>
+        <p class="oscal-src"><strong>OSCAL ref:</strong> <a href="https://github.com/usnistgov/OSCAL/blob/main/src/metaschema/oscal_assessment-plan_metaschema.xml" target="_blank" rel="noopener">assessment-plan metaschema (NIST OSCAL repo) &rarr;</a></p>
       </article>
 
       <article class="oscal-card">
@@ -102,7 +102,7 @@
           <span class="oscal-to">OSCAL <code data-code="path">poam</code></span>
         </header>
         <p class="oscal-b">Open recovery requests, unresolved signals, and failed self-audit checks aggregate into a Plan-of-Actions-and-Milestones (POA&amp;M) document &mdash; with each item carrying its KYE<span class="tm">™</span> URN and target close date.</p>
-        <p class="oscal-src"><strong>OSCAL ref:</strong> <a href="https://pages.nist.gov/OSCAL/concepts/layer/assessment/poam/" target="_blank" rel="noopener">plan-of-action-and-milestones layer &rarr;</a></p>
+        <p class="oscal-src"><strong>OSCAL ref:</strong> <a href="https://github.com/usnistgov/OSCAL/blob/main/src/metaschema/oscal_poam_metaschema.xml" target="_blank" rel="noopener">plan-of-action-and-milestones metaschema (NIST OSCAL repo) &rarr;</a></p>
       </article>
 
       <article class="oscal-card">
@@ -112,7 +112,7 @@
           <span class="oscal-to">OSCAL <code data-code="path">profile</code></span>
         </header>
         <p class="oscal-b">A regulator profile (FedRAMP Moderate, NIS2, EU AI Act) becomes an OSCAL profile that selects controls from the relevant catalog and declares parameter values. KYE<span class="tm">™</span> profile mapping rides on top.</p>
-        <p class="oscal-src"><strong>OSCAL ref:</strong> <a href="https://pages.nist.gov/OSCAL/concepts/layer/control/profile/" target="_blank" rel="noopener">profile layer &rarr;</a></p>
+        <p class="oscal-src"><strong>OSCAL ref:</strong> <a href="https://github.com/usnistgov/OSCAL/blob/main/src/metaschema/oscal_profile_metaschema.xml" target="_blank" rel="noopener">profile metaschema (NIST OSCAL repo) &rarr;</a></p>
       </article>
 
     </div>
@@ -162,6 +162,6 @@
 </main>
 <footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected by assets/components.js mountKyeComponents() --></footer>
 <button id="scroll-top" class="scroll-top" type="button" aria-label="Scroll to top" data-kye-scroll-top><!-- svg injected --></button>
-<script type="module" src="main.js?v=1778780000"></script>
+<script type="module" src="main.js?v=1778800000"></script>
 </body>
 </html>

@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script>(function(){try{var s=localStorage.getItem("kye-theme");if(s==="dark"||s==="light"){document.documentElement.setAttribute("data-theme",s);}}catch(e){}})();</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KYE Protocol™ — Open banking | Delegated payment-initiation authority for AI agents (PSD3 · DORA · EU AI Act)</title>
+  <meta name="description" content="KYE Protocol™ for open banking and delegated payment initiation: account holder → TPP → AI finance agent → ASPSP, every link signed, every scope attenuated, cascade revoke in <1s. Before the bank authorises the payment, KYE™ authorises the agent. PSD3, DORA, EU AI Act bindings; OSCAL-native evidence; PCI DSS 4.0 for card-issuing agent purchasing." />
+  <meta name="keywords" content="open banking, PSD3 delegated payment initiation, AI finance agent, TPP authority, ASPSP audit, account-information service, payment-initiation service, on-behalf-of authority, agent purchasing, virtual card token" />
+  <link rel="canonical" href="https://kye-protocol.github.io/open-banking.html" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="KYE Protocol™ — Open banking" />
+  <meta property="og:description" content="Before the bank authorises the payment, KYE™ authorises the agent. Delegated payment initiation, agent purchasing, consent + revocation — full open-banking flow, signed end-to-end." />
+  <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
+  <meta property="og:url" content="https://kye-protocol.github.io/open-banking.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css?v=1778800000" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="top-bar" role="banner" data-kye-header data-active="open-banking"><!-- canonical chrome injected by assets/components.js mountKyeComponents() --></header>
+<main id="main" role="main">
+
+<section id="top" class="hero">
+  <div class="container hero-inner">
+    <span class="hero-pill"><span class="dot"></span> Open banking &middot; delegated payment initiation &middot; agent purchasing</span>
+    <h1 id="hero-title" style="margin-top:18px">Before the bank authorises the payment, <span class="accent">KYE<span class="tm">™</span> authorises the agent</span>.</h1>
+    <p class="lede">KYE Protocol<span class="tm">™</span> is the authority &amp; evidence layer that sits over open-banking rails &mdash; not a replacement for them. The bank still answers <em>&ldquo;is this card transaction financially authorised?&rdquo;</em>. KYE<span class="tm">™</span> answers the prior question every regulator, court, and chargeback panel actually wants: <em>&ldquo;was this AI agent allowed to request this purchase, on this customer&rsquo;s behalf, under this delegation, in this state?&rdquo;</em>.</p>
+    <div class="hero-cta" style="margin-top:18px">
+      <a href="#flow"        class="btn btn-primary"><span class="ms">payments</span> See the flow &darr;</a>
+      <a href="#card-agent"  class="btn btn-secondary"><span class="ms">credit_card</span> Card-issuing agent</a>
+      <a href="concepts.html#on-behalf-of" class="btn btn-secondary"><span class="ms">link</span> On-Behalf-Of primitive</a>
+      <a href="#"            class="btn btn-secondary" data-contact-trigger><span class="ms">forum</span> Talk to us</a>
+    </div>
+  </div>
+</section>
+
+<section id="positioning" class="section" aria-labelledby="h-pos">
+        <span class="eyebrow">Where KYE<span class="tm">™</span> sits</span>
+    <h2 id="h-pos" class="h-section">In the bank / agent / card stack.</h2>
+  <div class="section-body"><div class="container">
+    <p class="lede">KYE Protocol<span class="tm">™</span> does not replace the bank, card network, wallet, processor, fraud engine, SCA flow, or issuer authorisation system. It sits as the <strong>authority and evidence layer</strong> around the agent&rsquo;s purchasing action.</p>
+    <pre class="ob-stack">  Customer / Cardholder
+        &darr; <em>delegates authority</em>
+  AI Purchasing Agent
+        &darr; <em>requests purchase</em>
+  KYE<span class="tm">™</span> Authority Decision
+        &darr; <em>allow / deny / require_approval</em>
+  Bank / Issuer / Card processor
+        &darr; <em>authorises payment</em>
+  Merchant
+        &darr; <em>fulfils purchase</em>
+  KYE<span class="tm">™</span> Audit + Evidence Pack</pre>
+    <p class="lede" style="margin-top:14px"><strong>Clean positioning:</strong> KYE<span class="tm">™</span> provides Authority Finality<span class="tm">™</span> <em>before</em> payment finality. The bank still decides whether the card transaction is financially authorised. KYE<span class="tm">™</span> proves whether the agent had the authority to request it.</p>
+  </div></div>
+</section>
+
+<section id="flow" class="section alt" aria-labelledby="h-flow">
+        <span class="eyebrow">PISP / TPP flow</span>
+    <h2 id="h-flow" class="h-section">Account holder &rarr; TPP &rarr; AI agent &rarr; ASPSP. <span class="accent">Six steps, end-to-end signed.</span></h2>
+  <div class="section-body"><div class="container">
+    <ol class="ob-flow" style="margin-top:14px">
+      <li><span class="ob-step">1.</span> <strong>Account holder</strong> grants the TPP a delegation: <em>&ldquo;initiate payments on my behalf, &le; &euro;1,000 single, &le; &euro;10,000 monthly, EUR + SEPA only.&rdquo;</em> Signed by the holder; SCA satisfied at the human edge once.</li>
+      <li><span class="ob-step">2.</span> <strong>TPP</strong> sub-delegates an attenuated scope to its <strong>AI finance agent</strong>: <em>&ldquo;EUR only, EU corridors, prepare-and-stage; final submit requires human approval &gt; &euro;500.&rdquo;</em> Child scope MUST be a subset of the holder&rsquo;s grant &mdash; protocol invariant.</li>
+      <li><span class="ob-step">3.</span> <strong>AI agent</strong> prepares a &euro;420 payment. The KYE<span class="tm">™</span> ePDP walks: agent &rarr; TPP &rarr; account holder. Every link is signed; every scope attenuates. The bank receives a payment intent with the full chain attached.</li>
+      <li><span class="ob-step">4.</span> <strong>ASPSP</strong> verifies the chain offline using public keys; returns <code data-code="allow">allow_with_constraints</code>. Constraint: emit an SCA proof artefact + an audit-chain entry. <strong>Then</strong> the bank&rsquo;s normal issuer authorisation pipeline runs.</li>
+      <li><span class="ob-step">5.</span> Holder revokes consent at T+30&nbsp;days. Cascade kills every authority + every downstream agent grant in &lt;&nbsp;1s. Stale-consent transactions become impossible &mdash; the next agent call gets <code data-code="deny">deny: authority_revoked</code>.</li>
+      <li><span class="ob-step">6.</span> 60 days later, a complainant disputes the &euro;420 payment. The bank pulls the Evidence Pack; the regulator verifies the full chain offline using the public keys it already holds for each party. No interview transcripts, no spreadsheets.</li>
+    </ol>
+  </div></div>
+</section>
+
+<section id="card-agent" class="section" aria-labelledby="h-ca">
+        <span class="eyebrow">Card-issuing &middot; agent purchasing on a tokenised card</span>
+    <h2 id="h-ca" class="h-section">Bank-backed AI shopping agent on a virtual card token.</h2>
+  <div class="section-body"><div class="container">
+    <p class="lede">A retail bank ships an AI purchasing agent to its customers. The customer delegates limited buying authority &mdash; capped amount, allowed merchant categories, jurisdiction, time window, approval threshold &mdash; bound to a <strong>virtual card token</strong> (never the raw PAN). On every purchase intent, KYE<span class="tm">™</span> answers <em>was the agent allowed to use this card, on this customer&rsquo;s behalf, for this merchant, this amount, this category, in this state?</em> before the bank&rsquo;s issuer authorisation pipeline runs.</p>
+
+    <h3 class="h-sub" style="margin-top:18px">Authority grant &mdash; example</h3>
+    <pre class="ob-json"><code data-code="json">{
+  "grant_id": "kye:authority:grant:agent_purchase_001",
+  "principal_entity_id": "kye:human:bank-z.eu:psu:alice-meier",
+  "actor_entity_id": "kye:agent:bank-z.eu:retail:shopping-bot",
+  "capability_id": "kye:capability:payment_action:card_purchase",
+  "resource_id": "kye:credential:card-token:tok_abc123",
+  "scope": {
+    "max_amount_per_purchase":  { "amount": 100, "currency": "GBP" },
+    "max_daily_amount":         { "amount": 300, "currency": "GBP" },
+    "allowed_merchant_categories": ["groceries","travel","office_supplies"],
+    "blocked_merchant_categories": ["gambling","crypto","adult","weapons"],
+    "requires_approval_above":  { "amount": 50, "currency": "GBP" },
+    "allowed_jurisdictions":    ["GB"],
+    "valid_until":              "2026-06-30T23:59:59Z"
+  },
+  "state": "active"
+}</code></pre>
+
+    <h3 class="h-sub" style="margin-top:18px">Sub-capabilities &mdash; an agent may prepare without being allowed to execute</h3>
+    <ul class="who-bullets">
+      <li><code data-code="field">purchase.search</code> &middot; <code data-code="field">purchase.compare</code> &middot; <code data-code="field">purchase.prepare</code></li>
+      <li><code data-code="field">purchase.request_approval</code> (push to bank-app) &middot; <code data-code="field">purchase.execute</code></li>
+      <li><code data-code="field">purchase.refund_request</code> &middot; <code data-code="field">purchase.dispute_prepare</code></li>
+    </ul>
+
+    <h3 class="h-sub" style="margin-top:18px">Decision shape</h3>
+    <p class="lede">Per purchase, the agent calls <code data-code="endpoint">POST /v1/runtime/authorize</code>. KYE<span class="tm">™</span> checks: customer + agent + card token active &middot; delegation valid &middot; merchant allowed &middot; amount within scope &middot; approval threshold &middot; risk state &middot; payload signed and fresh. Returns <code data-code="allow">allow_with_constraints</code> &middot; <code data-code="approve">require_approval</code> &middot; <code data-code="deny">deny</code> with reason (e.g. <code data-code="field">merchant_category_blocked</code>, <code data-code="field">amount_above_agent_threshold</code>).</p>
+
+    <p class="lede" style="font-style:italic;color:var(--accent);font-weight:600;margin-top:18px">KYE<span class="tm">™</span> Authority Finality<span class="tm">™</span> + bank issuer authorisation = agent-backed card purchase with replayable proof a regulator, court, or chargeback panel can verify offline.</p>
+  </div></div>
+</section>
+
+<section id="not" class="section alt" aria-labelledby="h-not">
+        <span class="eyebrow">Honest non-goals</span>
+    <h2 id="h-not" class="h-section">What KYE<span class="tm">™</span> does <em>not</em> do.</h2>
+  <div class="section-body"><div class="container">
+    <ul class="who-bullets">
+      <li>KYE<span class="tm">™</span> does not store raw card numbers (PANs).</li>
+      <li>KYE<span class="tm">™</span> does not process the payment.</li>
+      <li>KYE<span class="tm">™</span> is not the issuer processor, the wallet custodian, the SCA flow, or the fraud engine.</li>
+      <li>KYE<span class="tm">™</span> does not replace card-network rules.</li>
+      <li>KYE<span class="tm">™</span> does not replace customer consent UX.</li>
+    </ul>
+    <p class="lede" style="margin-top:14px"><strong>KYE<span class="tm">™</span> governs:</strong> agent authority &middot; card-token authority &middot; purchase capability &middot; scope limits &middot; state &middot; decision &middot; audit &middot; evidence &middot; revocation. That keeps the protocol correctly scoped.</p>
+  </div></div>
+</section>
+
+<section id="frameworks" class="section" aria-labelledby="h-fwk">
+        <span class="eyebrow">Framework bindings</span>
+    <h2 id="h-fwk" class="h-section">Which obligations the chain evidences.</h2>
+  <div class="section-body"><div class="container">
+    <ul class="who-bullets">
+      <li><strong>PSD3</strong> &mdash; SCA at the human edge once, attenuated through the chain; payment-initiation authority audit-trail; consent-revocation cascade.</li>
+      <li><strong>DORA</strong> &mdash; signed audit chain for ICT-third-party-risk; replayable evidence for incident response.</li>
+      <li><strong>EU AI Act</strong> &mdash; Title&nbsp;III high-risk (autonomous payment systems) technical-documentation pack: capability registry, decision logs, human-oversight gates, post-market monitoring.</li>
+      <li><strong>PCI DSS 4.0</strong> &mdash; tokenised card binding (no raw PAN held by the agent); per-purchase Decision Map<span class="tm">™</span>.</li>
+      <li><strong>GDPR</strong> &mdash; minimum-necessary principle on payload metadata; right-to-erasure via lifecycle <code data-code="field">tombstoned</code> state.</li>
+      <li><strong>NIS2</strong> &mdash; for the financial-services essential-entity classification.</li>
+    </ul>
+    <div class="hero-cta" style="margin-top:14px">
+      <a href="frameworks.html" class="btn btn-primary"><span class="ms">fact_check</span> Per-framework reference &rarr;</a>
+      <a href="usecases.html#financial" class="btn btn-secondary"><span class="ms">payments</span> See all 4 financial-services use cases</a>
+      <a href="oscal.html" class="btn btn-secondary"><span class="ms">integration_instructions</span> OSCAL exporter</a>
+    </div>
+  </div></div>
+</section>
+
+<section id="next" class="section alt" aria-labelledby="h-next">
+        <span class="eyebrow">Where to go next</span>
+    <h2 id="h-next" class="h-section">Adjacent reading.</h2>
+  <div class="section-body"><div class="container">
+    <div class="hero-cta" style="margin-top:8px">
+      <a href="concepts.html#on-behalf-of" class="btn btn-primary"><span class="ms">link</span> On-Behalf-Of primitive &rarr;</a>
+      <a href="usecases.html"          class="btn btn-secondary"><span class="ms">lightbulb</span> All 9 use cases</a>
+      <a href="risk.html"              class="btn btn-secondary"><span class="ms">shield</span> Threat model</a>
+      <a href="readiness.html"         class="btn btn-secondary"><span class="ms">checklist</span> Readiness self-test</a>
+      <a href="engage.html#enterprises" class="btn btn-secondary"><span class="ms">apartment</span> Scope a pilot</a>
+    </div>
+  </div></div>
+</section>
+
+</main>
+<footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected by assets/components.js mountKyeComponents() --></footer>
+<button id="scroll-top" class="scroll-top" type="button" aria-label="Scroll to top" data-kye-scroll-top><!-- svg injected --></button>
+<script type="module" src="main.js?v=1778800000"></script>
+</body>
+</html>

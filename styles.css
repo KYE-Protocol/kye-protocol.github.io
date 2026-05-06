@@ -4728,8 +4728,11 @@ pre code {
 }
 .drawer-toggle:hover { background: var(--paper-2); }
 
-/* Hide labels on tablet — keep icons */
-@media (max-width: 1100px) {
+/* Hide labels on tablet — keep icons. Bumped from 1100px to 1500px
+ * because the nav grew to 19 items (Engage / Open banking added) and
+ * the labels now overflow the container at 1100–1400px desktop, causing
+ * silent horizontal scroll most users never discover. */
+@media (max-width: 1500px) {
   .tb-link .lbl { display: none; }
   .tb-link { padding: 8px; }
   .tb-link .ms { font-size: 22px; opacity: 1; }
@@ -8666,4 +8669,51 @@ p code[data-code], li code[data-code] {
     animation: none !important;
     transition: none !important;
   }
+}
+
+/* ============================================================
+   §FINAL-52 — base .fwk-badge style + .fwk-list hydration layout
+   The framework-badge tagger in main.js injects bare <span
+   class="fwk-badge"> chips into .fwk-list / .sector-frameworks /
+   .compliance-list at runtime. Until now those bare badges had
+   only inline color/border (set by JS) and inherited zero
+   padding/spacing — so on buyers.html they rendered as
+   "SOC 2ISO 27001:2022PCI DSS 4.0..." (unspaced run-on).
+   This block gives the badge a default chip look + makes the
+   hydrated parent a flex-wrap row with gap.
+   ============================================================ */
+.fwk-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  margin: 0;
+  border-radius: var(--kye-radius-1, 4px);
+  border: 1px solid currentColor;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  line-height: 1.5;
+}
+.sector-frameworks-badged,
+.fwk-list.sector-frameworks-badged,
+.sector-frameworks.sector-frameworks-badged,
+.compliance-list.sector-frameworks-badged {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  /* Cancel the pre-hydration plain-text colour from §FINAL-42
+     once the tagger has run, so the chips read as primary content. */
+  color: inherit;
+  font-size: inherit;
+  letter-spacing: 0;
+  word-spacing: 0;
+}
+/* Inside list items the badged container should sit on the same
+   text baseline as the surrounding copy. */
+li > .fwk-list.sector-frameworks-badged {
+  vertical-align: middle;
+  margin-right: 4px;
 }

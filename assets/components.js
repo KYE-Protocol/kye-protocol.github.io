@@ -39,6 +39,7 @@ const NAV_ITEMS = [
   { id: 'risk',             href: 'risk.html',             label: 'Risk',             icon: 'shield',                  color: '#C5221F' },
   { id: 'readiness',        href: 'readiness.html',        label: 'Readiness',        icon: 'checklist',               color: '#1A8754' },
   { id: 'demos',            href: 'demos.html',            label: 'Demos',            icon: 'play_circle',             color: '#EA4335' },
+  { id: 'open-banking',     href: 'open-banking.html',     label: 'Open banking',     icon: 'payments',                color: '#FF6D00' },
   { id: 'whitepaper',       href: 'whitepaper.html',       label: 'Whitepaper',       icon: 'menu_book',               color: '#00838F' },
   { id: 'engage',           href: 'engage.html',           label: 'Engage',           icon: 'handshake',               color: '#1A8754' },
 ];
@@ -141,7 +142,8 @@ const FOOTER_GROUPS = [
   {
     heading: 'Resources',
     items: [
-      { href: 'usecases.html',  label: 'Use cases' },
+      { href: 'usecases.html',     label: 'Use cases' },
+      { href: 'open-banking.html', label: 'Open banking' },
       { href: 'risk.html',      label: 'Risk & mitigation' },
       { href: 'readiness.html', label: 'Readiness self-test' },
       { href: 'demos.html',     label: 'Demos' },

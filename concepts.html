@@ -15,7 +15,7 @@
   <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
   <meta property="og:url" content="https://kye-protocol.github.io/concepts.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="styles.css?v=1778780000" />
+  <link rel="stylesheet" href="styles.css?v=1778800000" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
 </head>
@@ -50,7 +50,7 @@
 </section>
 
 <section id="identity" class="section alt" aria-labelledby="h-id">
-        <span class="eyebrow">Primitive 1 / 6 &middot; <a href="vocabulary.html#entity" style="color:var(--accent)">vocabulary &rarr;</a></span>
+        <span class="eyebrow">Primitive 1 / 6 &middot; <a href="vocabulary.html#entities" style="color:var(--accent)">vocabulary &rarr;</a></span>
     <h2 id="h-id" class="h-section"><span class="ms cn-h-icon">person</span> Identity &mdash; one URN, every actor.</h2>
   <div class="section-body"><div class="container">
     <div class="cn-card">
@@ -145,7 +145,7 @@
     <div class="cn-card">
       <p class="cn-def"><strong>Definition.</strong> Every KYE<span class="tm">™</span> entity carries six state dimensions, each independently versioned: <strong>lifecycle</strong> (created/active/quarantined/tombstoned), <strong>authority</strong> (granted/exercised/revoked), <strong>delegation</strong> (issued/expired), <strong>credential</strong> (valid/rotated/revoked), <strong>recovery</strong> (normal/break-glass/restored), <strong>risk</strong> (telemetry-derived posture). The runtime evaluates state <em>at the moment of decision</em> &mdash; auditors replay the same point-in-time state offline.</p>
       <dl class="cn-meta">
-        <dt>Schema</dt><dd><code data-code="path">https://schemas.kye.dev/state-composition.json</code> &middot; <code data-code="path">https://schemas.kye.dev/state-transition.json</code></dd>
+        <dt>Schema</dt><dd><code data-code="path">https://schemas.kye.dev/state-composition.json</code> &middot; <code data-code="path">https://schemas.kye.dev/state-composition.json</code></dd>
         <dt>Endpoints</dt><dd><code data-code="endpoint">GET /v1/entities/{id}/state</code> &middot; <code data-code="endpoint">GET /v1/entities/{id}/state:at-time</code> &middot; <code data-code="endpoint">POST /v1/state-transitions</code></dd>
         <dt>Decision role</dt><dd>The PDP composes all six state dimensions into a single decision input. Mismatch (e.g. credential rotated mid-flight) &rarr; <code data-code="deny">deny: state_mismatch</code>.</dd>
         <dt>Audit event</dt><dd><code data-code="signal">state.transitioned</code> &middot; <code data-code="signal">state.replayed</code></dd>
@@ -167,7 +167,7 @@
       <p class="cn-def"><strong>Definition.</strong> An append-only, hash-linked audit chain. Every authorise call, every state transition, every signal cascade emits a signed audit event. Bundles project to <strong>Evidence Packs</strong> &mdash; the artefact a regulator, court, auditor, or dispute panel verifies offline using public keys alone. No read-access to your runtime required.</p>
       <dl class="cn-meta">
         <dt>Schema</dt><dd><code data-code="path">https://schemas.kye.dev/audit-event.json</code> &middot; <code data-code="path">https://schemas.kye.dev/evidence-pack.json</code> &middot; <code data-code="path">https://schemas.kye.dev/proof-bundle.json</code></dd>
-        <dt>Endpoints</dt><dd><code data-code="endpoint">POST /v1/audit-events</code> &middot; <code data-code="endpoint">GET /v1/proof-bundles/{id}</code> &middot; <code data-code="endpoint">GET /v1/decisions/{id}/map</code> &middot; <code data-code="endpoint">POST /v1/oscal/export</code></dd>
+        <dt>Endpoints</dt><dd><code data-code="endpoint">POST /v1/audit/events</code> &middot; <code data-code="endpoint">GET /v1/proof-bundles/{id}</code> &middot; <code data-code="endpoint">GET /v1/decisions/{id}/map</code> &middot; <code data-code="endpoint">POST /v1/oscal/export</code></dd>
         <dt>Decision role</dt><dd>The runtime emits a signed Decision Map<span class="tm">™</span> per authorise call: actor &rarr; principal &rarr; delegation &rarr; capability &rarr; authority &rarr; scope &rarr; state &rarr; policy &rarr; decision &rarr; audit &rarr; evidence.</dd>
         <dt>Audit event</dt><dd><code data-code="signal">audit.appended</code> &middot; <code data-code="signal">evidence_pack.exported</code> &middot; <code data-code="signal">decision.replayed</code></dd>
       </dl>
@@ -197,6 +197,6 @@
 </main>
 <footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected by assets/components.js mountKyeComponents() --></footer>
 <button id="scroll-top" class="scroll-top" type="button" aria-label="Scroll to top" data-kye-scroll-top><!-- svg injected --></button>
-<script type="module" src="main.js?v=1778780000"></script>
+<script type="module" src="main.js?v=1778800000"></script>
 </body>
 </html>
