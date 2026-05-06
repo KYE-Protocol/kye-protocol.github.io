@@ -142,6 +142,57 @@ Persona-chip icons (`account_balance` / `credit_card` / `smart_toy` / `local_hos
 | P3 | Whitepaper section icons in top-bar drawer | ✅ already shipping | `mountKyeComponents()` builds the drawer from the same NAV_ITEMS list with per-tab Material Symbols, so the drawer inherits the icon palette. |
 | P3 | Visual regression CI (Playwright screenshot diff) | ✅ scaffolded | `.github/workflows/visual-regression.yml` written. Currently `if: false` until the Actions-minute budget resets — flip the gate to activate. Captures every page × {desktop, mobile} × {light, dark} = 48 screenshots per run. |
 
+## 9a. Landing-page restructuring opportunities + content gaps
+
+**Landing as of `67cfd3d` — 12 sections, 700 lines, 5 substantial blocks:**
+
+| # | Section | Weight | Recommendation |
+|---|---|---|---|
+| 1 | Hero | keep | category-defining; non-negotiable |
+| 2 | `#why` (4 stakeholder why-cards: board / CIO / risk / compliance) | **MOVE** | Audience-specific business content — belongs on `buyers.html` (already exists, has the right reader). Replace landing with a 1-line callout. |
+| 3 | `#what` | keep | The definition. |
+| 4 | `#authority-finality` (af-diagram) | keep | The marquee concept. |
+| 5 | `#problem-solution` | keep (already trimmed) | Single paragraph now. |
+| 6 | `#protocol-callout` | keep | 1-line CTA. |
+| 7 | `#evolution` (KYC/KYB/KYA timeline) | keep (already trimmed) | Iconic 4-step graphic; central to the pitch. |
+| 8 | `#sectors` (callout) | keep | 1-line CTA. |
+| 9 | `#who` (mini-grid) | keep | 4-card audience strip. |
+| 10 | `#roi` (callout) | keep | 1-line CTA. |
+| 11 | `#audit-callout` | keep | 1-line CTA. |
+| 12 | `#faq` | **MOVE** | FAQ is its own thing — could move to `faq.html` to free the landing's last big block. Keep a 3-question summary on landing pointing to the full page. |
+
+**Net** — moving `#why` and `#faq` would reduce landing from ~700 lines to ~400.
+
+## 9b. Content gaps identified
+
+**Pages we have:**
+home (`index.html`) · protocol · builders · buyers · auditors · compliance · regulators · sectors · demos · whitepaper · legal · legal-faq · 404. **13 pages.**
+
+**Gaps** (priority order):
+
+| Priority | Missing page / content | Why it's a gap | Suggested home |
+|---|---|---|---|
+| P1 | **Pricing / commercial offerings** | Trademark policy + COMPONENTS.md + footer reference KYE Cloud™ commercial SKUs (Hosted Registry, Validator API, Recovery Console, Evidence Packs, Compliance Profiles, Regulated-Sector Packs, Enterprise Deployment) — but no page enumerates them with positioning. | new `pricing.html` |
+| P1 | **Roadmap** | Buried in whitepaper §10. Buyers / regulators / partners want a top-level page they can link to. | new `roadmap.html` (or hoist whitepaper §10 to its own page with a redirect note) |
+| P1 | **Integrations / interoperability** | MCP, OAuth, OIDC, SPIFFE, SCITT, AuthZEN, KYC/KYB/KYA vendors all referenced — but the "how KYE composes with X" story is scattered across whitepaper §2 and audience pages. A single integrations matrix would help adopters. | new `integrations.html` |
+| P2 | **Case studies / design partners** | Landing currently says "Design-partner logos coming soon" with no follow-up. As pilots land, this becomes the social proof page. | new `customers.html` (or `partners.html`) |
+| P2 | **Changelog / release notes** | The whitepaper documents v1.0; subsequent versions need a chronological changelog page beyond GitHub releases. | new `changelog.html` (or pull GitHub Releases via a build step) |
+| P2 | **Documentation hub** | Right now developers land on the GitHub org. A site-hosted docs entry-point with a curated reading order (vocabulary → ID format → schemas → SDKs → conformance) would lower onboarding friction. | new `docs.html` |
+| P3 | **Search** | The site has no search. With 13 pages and growing, on-page search (e.g. Pagefind, lunr.js) would help. | augmentation, not a page |
+| P3 | **Sitemap (human-readable)** | `sitemap.xml` exists for crawlers; a `sitemap.html` page would help screen-readers + low-vision users navigate. | new `sitemap.html` |
+| P3 | **Status / SLA page** | When KYE Cloud™ launches, a status page (uptime, incidents, planned maintenance) is standard. | new `status.html` |
+| P3 | **Press / media kit** | Logo, screenshots, boilerplate, contacts — for journalists writing about KYE™. | new `press.html` (or `brand.html`) |
+| P4 | **Internationalisation** | All English. Out of scope for v1.0 — flagged for v1.x. | structural change |
+| P4 | **Blog / news** | No blog surface. Discussion posts live on GitHub Discussions. | new `blog.html` (or just rely on Discussions) |
+
+**Functional / UX gaps (not page-shaped):**
+
+- The persona-chip strip at the top of the hero on landing is visual but doesn't carry the same hue accents as the `#who` mini-grid. Consistency opportunity.
+- The whitepaper TOC is sticky on desktop but drops on mobile — the §FINAL-29 floating section indicator helps, but a mobile TOC drawer would be cleaner.
+- `404.html` doesn't suggest where the user might have meant to go (just generic "back to home"). Could include a list of the 4 most common destinations.
+- `legal.html` and `legal-faq.html` overlap in scope — could be merged or one made the canonical entry.
+- The contact modal works on every page but doesn't pre-fill the topic when triggered from a "Speak to sales" CTA on `compliance.html` or `buyers.html` — minor UX win.
+
 ## 9. Third-party audit score-tracking
 
 The May 2026 third-party audit rated the landing 85/100 with 15
