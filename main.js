@@ -203,3 +203,116 @@ initWebMcp();
     /* font failed to load — keep .ms hidden, labels remain readable */
   });
 })();
+
+/* Contact modal — Talk to us / Drop us a line.
+   All submissions open a mailto: to [email protected] with the
+   form fields prefilled in the body. No backend, no third party. */
+(function initContactModal() {
+  const triggers = document.querySelectorAll('[data-contact-trigger]');
+  if (!triggers.length) return;
+
+  const CONTACT_EMAIL = '[email protected]';
+  let backdrop = document.getElementById('kye-contact-modal');
+
+  if (!backdrop) {
+    backdrop = document.createElement('div');
+    backdrop.id = 'kye-contact-modal';
+    backdrop.className = 'kye-modal-backdrop';
+    backdrop.setAttribute('role', 'dialog');
+    backdrop.setAttribute('aria-modal', 'true');
+    backdrop.setAttribute('aria-labelledby', 'kye-contact-title');
+    backdrop.innerHTML = `
+      <div class="kye-modal">
+        <button type="button" class="kye-modal-close" aria-label="Close" data-modal-close>&times;</button>
+        <h3 id="kye-contact-title">Talk to us</h3>
+        <p class="kye-modal-sub">Send a note straight to the maintainers. Submitting opens your mail client &mdash; nothing leaves your machine until you press <em>send</em>.</p>
+        <form data-contact-form>
+          <label for="kye-contact-name">Name</label>
+          <input type="text" id="kye-contact-name" name="name" autocomplete="name" required />
+          <label for="kye-contact-email">Email</label>
+          <input type="email" id="kye-contact-email" name="email" autocomplete="email" required />
+          <label for="kye-contact-org">Organisation <span style="font-weight:400;color:var(--text-dim)">(optional)</span></label>
+          <input type="text" id="kye-contact-org" name="organisation" autocomplete="organization" />
+          <label for="kye-contact-topic">Topic</label>
+          <select id="kye-contact-topic" name="topic">
+            <option value="general">General enquiry</option>
+            <option value="trademark">Trademark policy</option>
+            <option value="patent">Patent licensing</option>
+            <option value="conformance">Conformance &amp; certification</option>
+            <option value="security">Security advisory</option>
+            <option value="partnership">Partnership / pilot</option>
+          </select>
+          <label for="kye-contact-message">Message</label>
+          <textarea id="kye-contact-message" name="message" required></textarea>
+          <label class="kye-modal-accept" for="kye-contact-accept">
+            <input type="checkbox" id="kye-contact-accept" name="accept" required />
+            <span>I have read and accept the <a href="legal.html#terms" target="_blank" rel="noopener">terms &amp; conditions</a> and <a href="legal.html#privacy" target="_blank" rel="noopener">privacy policy</a>, and I confirm the information above is accurate.</span>
+          </label>
+          <div class="kye-modal-actions">
+            <button type="button" class="btn btn-ghost" data-modal-close>Cancel</button>
+            <button type="submit" class="btn btn-primary" data-submit disabled>Send via email</button>
+          </div>
+          <p class="kye-modal-meta">Your mail client will open with a pre-filled message to <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>. Nothing leaves your device until you press <em>Send</em>.</p>
+        </form>
+      </div>
+    `;
+    document.body.appendChild(backdrop);
+  }
+
+  function open() {
+    backdrop.classList.add('is-open');
+    const first = backdrop.querySelector('input, textarea, select');
+    if (first) first.focus();
+  }
+  function close() {
+    backdrop.classList.remove('is-open');
+  }
+
+  triggers.forEach(t => t.addEventListener('click', e => {
+    e.preventDefault();
+    open();
+  }));
+
+  backdrop.addEventListener('click', e => {
+    if (e.target === backdrop) close();
+    if (e.target.matches('[data-modal-close]')) close();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && backdrop.classList.contains('is-open')) close();
+  });
+
+  const form = backdrop.querySelector('[data-contact-form]');
+  const acceptBox = form.querySelector('#kye-contact-accept');
+  const submitBtn = form.querySelector('[data-submit]');
+  acceptBox.addEventListener('change', () => {
+    submitBtn.disabled = !acceptBox.checked;
+  });
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    if (!acceptBox.checked) return;
+    const fd = new FormData(form);
+    const name = (fd.get('name') || '').toString().trim();
+    const email = (fd.get('email') || '').toString().trim();
+    const org = (fd.get('organisation') || '').toString().trim();
+    const topic = (fd.get('topic') || 'general').toString();
+    const message = (fd.get('message') || '').toString().trim();
+    const subject = `[KYE Protocol] ${topic} — ${name || 'enquiry'}`;
+    const acceptedAt = new Date().toISOString();
+    const body = [
+      `From: ${name} <${email}>`,
+      org ? `Organisation: ${org}` : null,
+      `Topic: ${topic}`,
+      '',
+      message,
+      '',
+      '---',
+      `Accepted: terms & conditions + privacy policy at ${acceptedAt}`,
+      '— Sent via the KYE Protocol™ contact form (kye-protocol.github.io)'
+    ].filter(Boolean).join('\n');
+    const href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = href;
+    setTimeout(close, 200);
+  });
+})();

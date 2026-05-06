@@ -5273,3 +5273,505 @@ html:not(.ms-loaded) .evo-card::before,
 html:not(.ms-loaded) .what-card::before {
   visibility: hidden;
 }
+
+/* ============================================================
+   §FINAL-24 — Punch-list pass: brand-mark contrast, theme-toggle
+   visibility on mobile, whitepaper mobile borders + scroll-top,
+   sector / persona / what-card layout cleanup, persona-chip
+   icon support, contact modal, footer trademark notice layout.
+   ============================================================ */
+
+/* --- Top-bar brand-mark: SVG must inherit currentColor (not white).
+       Earlier rule '.brand-mark svg { color: white; }' was meant for
+       the gradient pill mark; the top-bar variant is transparent so
+       the icon must take the parent green. */
+.top-bar .brand-mark {
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--accent) !important;
+}
+.top-bar .brand-mark svg { color: inherit !important; }
+.top-bar .brand-mark svg path { stroke: currentColor !important; }
+:root[data-theme="dark"] .top-bar .brand-mark { color: var(--accent) !important; }
+
+/* Same fix for legacy '.nav' header used on 404.html / legal.html */
+header.nav .brand-mark {
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--accent) !important;
+}
+header.nav .brand-mark svg { color: inherit !important; }
+header.nav .brand-mark svg path { stroke: currentColor !important; }
+
+/* Footer brand-mark same treatment so the icon is always visible
+   regardless of theme (footer surface is ink in dark, paper in light). */
+.footer .brand-mark {
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--accent) !important;
+}
+.footer .brand-mark svg { color: inherit !important; }
+.footer .brand-mark svg path { stroke: currentColor !important; }
+
+/* --- Theme toggle: guarantee visibility on EVERY breakpoint.
+       Earlier rules hid icons by display:none until [data-theme] was
+       set — but the page may load with no data-theme attr (system
+       preference path). Force the moon to show in the default state. */
+.theme-toggle {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--text);
+}
+.theme-toggle svg {
+  width: 18px !important;
+  height: 18px !important;
+  display: block !important;
+}
+/* Default (no theme attr OR light) → moon */
+.theme-toggle .icon-moon { display: block !important; }
+.theme-toggle .icon-sun  { display: none  !important; }
+/* Dark → sun */
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none  !important; }
+:root[data-theme="dark"] .theme-toggle .icon-sun  { display: block !important; }
+@media (max-width: 600px) {
+  .theme-toggle { width: 36px; height: 36px; }
+}
+
+/* --- Persona-chip: support inline Material icon variant. */
+.persona-chip .ms {
+  font-size: 14px !important;
+  width: 14px !important;
+  min-width: 14px !important;
+  height: 14px !important;
+  color: var(--accent);
+}
+.persona-chip:hover .ms { color: var(--accent-2); }
+
+/* --- What-card row icons: render Material symbols cleanly. */
+.what-row .what-icon { display: inline-flex; align-items: center; justify-content: center; }
+.what-row .what-icon .ms {
+  font-size: 20px !important;
+  width: 20px !important;
+  min-width: 20px !important;
+  height: 20px !important;
+  color: var(--accent);
+}
+
+/* --- Sector grid: prevent card content overflow on very narrow phones.
+       Pills and frameworks string can push beyond viewport edge. */
+@media (max-width: 600px) {
+  .sector-grid { gap: 12px; }
+  .sector-card { padding: 18px; min-width: 0; }
+  .sector-card h3 { font-size: 16px; }
+  .sector-card .sector-pain { font-size: 12.5px; }
+  .sector-card .sector-profiles { gap: 4px; }
+  .sector-card .prof-pill { font-size: 10.5px; padding: 3px 8px; }
+  .sector-card .sector-frameworks {
+    font-size: 10.5px;
+    word-wrap: anywhere;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* --- Persona-grid (Who-it's-for): visually differentiate from
+       sector grid by giving each card a left accent rail and a
+       different padding/typography rhythm. */
+.persona-card {
+  position: relative;
+  padding-left: 22px;
+}
+.persona-card::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 22px; bottom: 22px;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  opacity: 0.8;
+}
+.persona-card .persona-icon {
+  background: transparent !important;
+  border: none !important;
+  margin-bottom: 8px !important;
+  width: 36px !important;
+  height: 36px !important;
+}
+.persona-card .persona-roi {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.persona-card .persona-roi li {
+  padding-left: 18px;
+  position: relative;
+}
+.persona-card .persona-roi li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* --- Whitepaper mobile: prevent every kind of horizontal overflow
+       and guarantee the scroll-top button is visible. */
+@media (max-width: 900px) {
+  body.wp-body {
+    overflow-x: clip;
+    -webkit-text-size-adjust: 100%;
+  }
+  body.wp-body .wp-main {
+    grid-template-columns: 1fr !important;
+    padding: 24px 16px !important;
+    max-width: 100% !important;
+  }
+  body.wp-body .wp-toc { display: none !important; }
+  body.wp-body .wp-article {
+    max-width: 100% !important;
+    word-wrap: anywhere;
+    overflow-wrap: anywhere;
+  }
+  body.wp-body .wp-article p,
+  body.wp-body .wp-article li,
+  body.wp-body .wp-article h1,
+  body.wp-body .wp-article h2,
+  body.wp-body .wp-article h3 {
+    word-wrap: anywhere;
+    overflow-wrap: anywhere;
+    max-width: 100%;
+  }
+  body.wp-body .wp-article pre,
+  body.wp-body .wp-article table {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  body.wp-body .wp-article code {
+    word-wrap: anywhere;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* Scroll-top — guaranteed visible across all pages including wp-body.
+   z-index high, position fixed, no transform parent traps. */
+#scroll-top.scroll-top {
+  position: fixed !important;
+  right: 18px !important;
+  bottom: 18px !important;
+  z-index: 9999 !important;
+  display: grid !important;
+  place-items: center;
+  width: 52px; height: 52px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
+  color: var(--accent);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .18s ease, transform .18s ease;
+}
+#scroll-top.scroll-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+#scroll-top.scroll-top:hover { transform: translateY(-2px); }
+#scroll-top.scroll-top svg .ring-bg {
+  fill: none; stroke: var(--line); stroke-width: 2;
+}
+#scroll-top.scroll-top svg .ring-progress {
+  fill: none; stroke: var(--accent); stroke-width: 3;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: 26px 26px;
+  transition: stroke-dashoffset .12s linear;
+}
+#scroll-top.scroll-top svg .arrow {
+  fill: none; stroke: var(--accent); stroke-width: 2.5;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+@media (max-width: 600px) {
+  #scroll-top.scroll-top { right: 14px; bottom: 14px; width: 46px; height: 46px; }
+}
+
+/* --- Footer-bottom layout (universal trademark notice) */
+.footer-bottom {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 11.5px;
+  color: var(--text-dim);
+  line-height: 1.55;
+}
+.footer-bottom > div:first-child { flex: 1; min-width: 0; }
+.footer-bottom a { color: var(--accent); text-decoration: underline; }
+@media (max-width: 700px) {
+  .footer-bottom { flex-direction: column; }
+  .footer-bottom { font-size: 11px; }
+}
+
+/* --- Contact modal (Talk to us / Drop us a line) */
+.kye-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(15, 23, 42, 0.55);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.kye-modal-backdrop.is-open { display: flex; }
+.kye-modal {
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.30);
+  max-width: 520px;
+  width: 100%;
+  padding: 28px;
+  position: relative;
+}
+.kye-modal h3 { margin: 0 0 6px; font-size: 20px; font-weight: 700; }
+.kye-modal .kye-modal-sub { margin: 0 0 18px; color: var(--text-muted); font-size: 13px; }
+.kye-modal label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin: 12px 0 4px;
+}
+.kye-modal input,
+.kye-modal textarea,
+.kye-modal select {
+  width: 100%;
+  padding: 10px 12px;
+  font: inherit;
+  font-size: 14px;
+  background: var(--paper, #fff);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+.kye-modal textarea { min-height: 120px; resize: vertical; }
+.kye-modal input:focus,
+.kye-modal textarea:focus,
+.kye-modal select:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+.kye-modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 18px;
+}
+.kye-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 22px;
+  line-height: 1;
+}
+.kye-modal-close:hover { background: var(--accent-soft); color: var(--accent); }
+.kye-modal .kye-modal-meta {
+  font-size: 11.5px;
+  color: var(--text-dim);
+  margin-top: 12px;
+}
+.kye-modal .kye-modal-meta a { color: var(--accent); }
+@media (max-width: 480px) {
+  .kye-modal { padding: 22px; border-radius: 12px; }
+  .kye-modal h3 { font-size: 17px; }
+}
+
+/* Accept-terms checkbox row inside the contact modal */
+.kye-modal-accept {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 16px 0 4px !important;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  font-weight: 400 !important;
+  cursor: pointer;
+}
+.kye-modal-accept input[type="checkbox"] {
+  width: auto !important;
+  margin: 2px 0 0;
+  flex-shrink: 0;
+  accent-color: var(--accent);
+}
+.kye-modal-accept a { color: var(--accent); text-decoration: underline; }
+.kye-modal [data-submit]:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Inline TOC for legal/legal-faq pages */
+.wp-toc-inline {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px 18px 14px 36px;
+  margin: 18px 0 28px;
+  font-size: 13.5px;
+}
+.wp-toc-inline ol {
+  margin: 0;
+  padding: 0;
+  list-style: decimal;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px 24px;
+}
+.wp-toc-inline li { margin: 0; }
+.wp-toc-inline a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px dashed transparent;
+}
+.wp-toc-inline a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+@media (max-width: 600px) {
+  .wp-toc-inline ol { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   §FINAL-25 — Break visual repetition between #authority-finality
+   and #who. The original af-wrap (two big cards side by side
+   with bullet lists) looked too much like the persona grid
+   underneath. Replace it with a compact 3-column comparison
+   table: one row per question, dim 'Then' column on the left,
+   accented 'Now' column on the right.
+   ============================================================ */
+.af-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 24px 0 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  font-size: 14px;
+}
+.af-table thead th {
+  text-align: left;
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+  padding: 12px 16px;
+  background: var(--paper-2, var(--surface));
+  border-bottom: 1px solid var(--line);
+}
+.af-table thead th.af-col-q    { width: 22%; }
+.af-table thead th.af-col-then { width: 33%; color: var(--text-dim); }
+.af-table thead th.af-col-now  { width: 45%; color: var(--accent); }
+.af-table tbody th {
+  text-align: left;
+  font-weight: 600;
+  font-size: 13.5px;
+  color: var(--text);
+  padding: 14px 16px;
+  vertical-align: top;
+  border-bottom: 1px solid var(--line);
+}
+.af-table tbody td {
+  padding: 14px 16px;
+  vertical-align: top;
+  line-height: 1.55;
+  border-bottom: 1px solid var(--line);
+}
+.af-table tbody td:first-of-type {
+  color: var(--text-dim);
+  font-size: 13px;
+}
+.af-table tbody td:last-of-type {
+  color: var(--text);
+  background: var(--accent-soft);
+  border-left: 1px solid var(--accent-line);
+  font-weight: 500;
+}
+.af-table tbody tr:last-child th,
+.af-table tbody tr:last-child td { border-bottom: none; }
+
+/* Mobile: collapse the table into stacked rows so it stays readable. */
+@media (max-width: 720px) {
+  .af-table, .af-table thead, .af-table tbody, .af-table tr,
+  .af-table th, .af-table td { display: block; width: 100% !important; }
+  .af-table thead { display: none; }
+  .af-table tbody tr {
+    border-bottom: 1px solid var(--line);
+    padding: 12px 14px;
+  }
+  .af-table tbody tr:last-child { border-bottom: none; }
+  .af-table tbody th {
+    padding: 0 0 6px;
+    border: none;
+    font-size: 14px;
+  }
+  .af-table tbody td {
+    padding: 8px 0 0 14px;
+    border: none;
+    position: relative;
+    font-size: 13px;
+  }
+  .af-table tbody td:first-of-type::before {
+    content: "Then:";
+    color: var(--text-dim);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    display: block;
+    margin: 6px 0 2px;
+  }
+  .af-table tbody td:last-of-type {
+    background: transparent;
+    border-left: 2px solid var(--accent);
+    margin-top: 8px;
+  }
+  .af-table tbody td:last-of-type::before {
+    content: "Now:";
+    color: var(--accent);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    display: block;
+    margin: 0 0 2px;
+  }
+}
+
+/* Hide the original af-wrap if any cached HTML still references it
+   (defensive only — current index.html no longer has af-wrap). */
+.af-wrap { display: none; }
