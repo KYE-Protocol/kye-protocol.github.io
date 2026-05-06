@@ -5196,3 +5196,80 @@ html.ms-loaded .ms { visibility: visible; }
     padding: 4px 9px !important;
   }
 }
+
+/* ============================================================
+   §FINAL-23 — Pill dot visibility + card-icon consistency
+   ============================================================ */
+
+/* Hero pill needs the colored dot to be obvious at the start of
+   the line, even when the pill wraps to multiple lines. */
+.hero-pill,
+.version-pill,
+.deployed-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+.hero-pill .dot,
+.version-pill .dot,
+.deployed-pill .dot {
+  width: 8px !important;
+  height: 8px !important;
+  min-width: 8px !important;
+  min-height: 8px !important;
+  border-radius: 50% !important;
+  background: var(--accent) !important;
+  box-shadow: 0 0 10px var(--accent) !important;
+  flex-shrink: 0 !important;
+  display: inline-block !important;
+}
+
+/* Card-icon consistency — Material icons added to the card
+   families that previously used only a tag pill. The tag + icon
+   pair gives visual hierarchy uniform across why-cards,
+   sector-cards, persona-cards, ps-cards, af-cards, ag-cards,
+   arch-cards, evo-cards, what-card. */
+.ps-card::before,
+.af-card::before,
+.ag-card::before,
+.evo-card::before,
+.what-card::before {
+  content: var(--card-icon, "");
+  font-family: 'Material Symbols Outlined';
+  font-size: 22px;
+  line-height: 1;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-line);
+  margin-bottom: 12px;
+}
+/* Per-card-type icon assignment via custom property */
+.ps-card.problem  { --card-icon: "report"; }
+.ps-card.solution { --card-icon: "verified"; }
+.af-card.af-then  { --card-icon: "lock_open"; }
+.af-card.af-now   { --card-icon: "shield_lock"; }
+.ag-card          { --card-icon: "hub"; }
+.ag-card.ag-feature { --card-icon: "stacked_line_chart"; }
+.evo-card.legacy   { --card-icon: "history"; }
+.evo-card.emerging { --card-icon: "auto_awesome"; }
+.evo-card.kye      { --card-icon: "verified"; }
+.what-card         { --card-icon: "menu_book"; }
+
+/* arch-cards use their numeric badge; don't add an icon there */
+.arch-card::before { content: none !important; }
+
+/* Hide the icon block until the Material font has loaded so the
+   literal text 'verified' / 'shield_lock' etc never flashes. */
+html:not(.ms-loaded) .ps-card::before,
+html:not(.ms-loaded) .af-card::before,
+html:not(.ms-loaded) .ag-card::before,
+html:not(.ms-loaded) .evo-card::before,
+html:not(.ms-loaded) .what-card::before {
+  visibility: hidden;
+}
