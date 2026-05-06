@@ -1,18 +1,18 @@
 /* KYE Protocol™ landing — orchestrator. */
-import { initHeroStats }    from "./assets/hero-stats.js?v=1778760000";
-import { mountKyeComponents } from "./assets/components.js?v=1778760000";
-import { initBeforeAfter }  from "./assets/before-after.js?v=1778760000";
-import { initTrustGraph }   from "./assets/trust-graph.js?v=1778760000";
-import { initDecisionFlow } from "./assets/decision-flow.js?v=1778760000";
-import { initCascadeViz }   from "./assets/cascade-viz.js?v=1778760000";
-import { initDashboard }    from "./assets/dashboard.js?v=1778760000";
-import { initComparison }   from "./assets/comparison.js?v=1778760000";
-import { initUrnParser }    from "./assets/urn-parser.js?v=1778760000";
-import { initProfiles }     from "./assets/profiles.js?v=1778760000";
-import { initLifecycleSim } from "./assets/lifecycle-sim.js?v=1778760000";
-import { initVocabBrowser } from "./assets/vocab-browser.js?v=1778760000";
-import { initScrollTop }    from "./assets/scroll-top.js?v=1778760000";
-import { initQuickstart, initStarCta } from "./assets/quickstart.js?v=1778760000";
+import { initHeroStats }    from "./assets/hero-stats.js?v=1778780000";
+import { mountKyeComponents } from "./assets/components.js?v=1778780000";
+import { initBeforeAfter }  from "./assets/before-after.js?v=1778780000";
+import { initTrustGraph }   from "./assets/trust-graph.js?v=1778780000";
+import { initDecisionFlow } from "./assets/decision-flow.js?v=1778780000";
+import { initCascadeViz }   from "./assets/cascade-viz.js?v=1778780000";
+import { initDashboard }    from "./assets/dashboard.js?v=1778780000";
+import { initComparison }   from "./assets/comparison.js?v=1778780000";
+import { initUrnParser }    from "./assets/urn-parser.js?v=1778780000";
+import { initProfiles }     from "./assets/profiles.js?v=1778780000";
+import { initLifecycleSim } from "./assets/lifecycle-sim.js?v=1778780000";
+import { initVocabBrowser } from "./assets/vocab-browser.js?v=1778780000";
+import { initScrollTop }    from "./assets/scroll-top.js?v=1778780000";
+import { initQuickstart, initStarCta } from "./assets/quickstart.js?v=1778780000";
 
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -37,7 +37,7 @@ initQuickstart();
 initStarCta();
 
 /* WebMCP: expose KYE Protocol™ tools to AI agents via the browser. */
-import { initWebMcp } from "./assets/webmcp.js?v=1778760000";
+import { initWebMcp } from "./assets/webmcp.js?v=1778780000";
 initWebMcp();
 
 /* Theme toggle — persists to localStorage; works alongside @media
@@ -555,6 +555,73 @@ initWebMcp();
 
   form.addEventListener('reset', () => {
     result.hidden = true;
+  });
+})();
+
+/* Use-case trace animation. Each .uc-card has a 6-step .uc-trace
+   (Entity → Delegation → Capability → Decision → Audit → Recovery).
+   We inject a "▶ Play trace" button at the top of every .uc-trace and
+   sequentially light up each .uc-step with a 900ms stagger, then pulse
+   the .uc-outcome at the end. Click again to reset. Uses prefers-
+   reduced-motion to skip the stagger when set. */
+(function initUseCaseTraceAnimation() {
+  const cards = document.querySelectorAll('.uc-card');
+  if (!cards.length) return;
+  const reduced = window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  cards.forEach(card => {
+    const trace = card.querySelector('.uc-trace');
+    if (!trace) return;
+    const steps = Array.from(trace.querySelectorAll('li'));
+    if (!steps.length) return;
+    const outcome = card.querySelector('.uc-outcome');
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'uc-play';
+    btn.innerHTML = '<span class="ms" aria-hidden="true">play_arrow</span><span class="uc-play-l">Play trace</span>';
+    btn.setAttribute('aria-label', 'Animate the 6-step trace for this use case');
+    trace.insertBefore(btn, trace.firstChild);
+
+    let timers = [];
+    let playing = false;
+
+    function reset() {
+      timers.forEach(t => clearTimeout(t));
+      timers = [];
+      steps.forEach(s => s.classList.remove('is-on', 'is-done'));
+      outcome && outcome.classList.remove('is-done');
+      card.classList.remove('uc-playing');
+      btn.querySelector('.uc-play-l').textContent = 'Play trace';
+      btn.querySelector('.ms').textContent = 'play_arrow';
+      playing = false;
+    }
+
+    function play() {
+      reset();
+      playing = true;
+      card.classList.add('uc-playing');
+      btn.querySelector('.uc-play-l').textContent = 'Reset';
+      btn.querySelector('.ms').textContent = 'replay';
+      const stagger = reduced ? 0 : 900;
+      steps.forEach((s, i) => {
+        timers.push(setTimeout(() => {
+          s.classList.add('is-on');
+        }, i * stagger));
+        timers.push(setTimeout(() => {
+          s.classList.add('is-done');
+        }, i * stagger + (reduced ? 0 : 700)));
+      });
+      timers.push(setTimeout(() => {
+        if (outcome) outcome.classList.add('is-done');
+      }, steps.length * stagger + (reduced ? 0 : 200)));
+    }
+
+    btn.addEventListener('click', () => {
+      if (playing) reset();
+      else play();
+    });
   });
 })();
 

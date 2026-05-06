@@ -5,17 +5,17 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>KYE Protocol™ — Use cases | Real-world business applications across banking, healthcare, custody, insurance, SaaS, telco, public sector</title>
-  <meta name="description" content="Eight concrete business applications of KYE Protocol™ — high-value payment approval, custody break-glass recovery, EU AI Act technical-documentation packs, HIPAA chart-review agents, NIS2 incident response, FedRAMP RAG, claims-triage, B2B SaaS MCP — each traced step-by-step from entity registration through Authority Finality™ proof bundle." />
+  <meta name="description" content="Nine concrete business applications of KYE Protocol™ — high-value payment approval, custody break-glass recovery, EU AI Act technical-documentation packs, HIPAA chart-review agents, NIS2 incident response, FedRAMP RAG, claims-triage, B2B SaaS MCP, bank-backed AI shopping agent on tokenised cards — each traced step-by-step from entity registration through Authority Finality™ proof bundle." />
   <meta name="keywords" content="KYE Protocol use cases, AI agent business applications, AI agent banking, AI agent custody, AI agent healthcare, AI agent insurance, AI agent SaaS, EU AI Act use case, PSD3 AI agent, MiCA custody, HIPAA AI agent, NIS2 incident response, FedRAMP RAG, claims triage, MCP capability authority" />
   <link rel="canonical" href="https://kye-protocol.github.io/usecases.html" />
   <meta name="robots" content="index, follow" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="KYE Protocol™ — Real-world business applications" />
-  <meta property="og:description" content="Eight concrete business applications across banking, healthcare, custody, insurance, SaaS, telco, public sector — each traced step-by-step through Authority Finality™." />
+  <meta property="og:description" content="Nine concrete business applications across banking, healthcare, custody, insurance, SaaS, telco, public sector — each traced step-by-step through Authority Finality™." />
   <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
   <meta property="og:url" content="https://kye-protocol.github.io/usecases.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="styles.css?v=1778760000" />
+  <link rel="stylesheet" href="styles.css?v=1778780000" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
 </head>
@@ -26,15 +26,15 @@
 
 <section id="top" class="hero">
   <div class="container hero-inner">
-    <span class="hero-pill"><span class="dot"></span> Use cases &middot; 8 real-world business applications</span>
+    <span class="hero-pill"><span class="dot"></span> Use cases &middot; 9 real-world business applications</span>
     <h1 id="hero-title" style="margin-top:18px">From <span class="accent">spec</span> to <span class="accent">deployed protocol</span>.</h1>
-    <p class="lede">Eight concrete deployments of KYE Protocol<span class="tm">™</span> across banking, healthcare, custody, insurance, SaaS, telco and public sector. Each scenario traces the same six-step flow: <strong>entity &rarr; delegation &rarr; capability &rarr; decision &rarr; audit &rarr; recovery</strong> &mdash; producing Authority Finality<span class="tm">™</span> in every domain.</p>
+    <p class="lede">Nine concrete deployments of KYE Protocol<span class="tm">™</span> across banking, healthcare, custody, insurance, SaaS, telco and public sector. Each scenario traces the same six-step flow: <strong>entity &rarr; delegation &rarr; capability &rarr; decision &rarr; audit &rarr; recovery</strong> &mdash; producing Authority Finality<span class="tm">™</span> in every domain.</p>
   </div>
 </section>
 
 <section id="financial" class="section" aria-labelledby="h-fin">
         <span class="eyebrow">Financial services</span>
-    <h2 id="h-fin" class="h-section">Banking &middot; custody &middot; asset management.</h2>
+    <h2 id="h-fin" class="h-section">Banking &middot; custody &middot; asset management &middot; agent purchasing.</h2>
   <div class="section-body"><div class="container">
     <div class="uc-grid">
 
@@ -102,6 +102,29 @@
           <li><span class="uc-step">6. Monitoring</span> Post-market signals continuously fed back into the audit chain; corrective-action trail is immutable.</li>
         </ol>
         <p class="uc-outcome"><strong>Outcome:</strong> the technical-documentation pack the EU AI Act notified body asks for ships from one endpoint &mdash; no parallel evidence team, no spreadsheet reconciliation.</p>
+      </article>
+
+      <article class="uc-card" data-uc="card-agent">
+        <header class="uc-head">
+          <span class="uc-sector"><span class="ms" aria-hidden="true">credit_card</span> Card issuing &middot; agent purchasing</span>
+          <span class="uc-fwk">
+            <span class="fwk-badge" data-fwk="pcidss">PCI DSS 4.0</span>
+            <span class="fwk-badge" data-fwk="psd3">PSD3</span>
+            <span class="fwk-badge" data-fwk="dora">DORA</span>
+            <span class="fwk-badge" data-fwk="euaiact">EU AI Act</span>
+          </span>
+        </header>
+        <h3 class="uc-h">Bank-backed AI shopping agent on a tokenised card &mdash; <em>before the bank authorises the payment, KYE<span class="tm">™</span> authorises the agent</em></h3>
+        <p class="uc-scenario">A retail bank ships an AI purchasing agent to its customers. The customer delegates limited buying authority &mdash; capped amount, allowed merchant categories, jurisdiction, time window, approval threshold &mdash; bound to a virtual card token (never the raw PAN). On every purchase intent, KYE<span class="tm">™</span> answers <em>was the agent allowed to use this card, on this customer&rsquo;s behalf, for this merchant, this amount, this category, in this state?</em> before the bank&rsquo;s issuer authorisation pipeline runs.</p>
+        <ol class="uc-trace">
+          <li><span class="uc-step">1. Entity</span> Customer (<code data-code="urn">kye:human:bank-z.eu:psu:alice-meier</code>), shopping agent (<code data-code="urn">kye:agent:bank-z.eu:retail:shopping-bot</code>), virtual-card token (<code data-code="urn">kye:credential:card-token:tok_abc123</code>) registered as KYE<span class="tm">™</span> entities. Agent never holds the raw PAN.</li>
+          <li><span class="uc-step">2. Delegation</span> Customer &rarr; agent grant: &le; &pound;100 / purchase, &le; &pound;300 / day, GB only, allowed MCCs (<code data-code="field">groceries</code>, <code data-code="field">travel</code>, <code data-code="field">office_supplies</code>); blocked MCCs (gambling, crypto, adult, weapons); approval required &gt; &pound;50.</li>
+          <li><span class="uc-step">3. Capability</span> <code data-code="profile">kye-payments-1.0</code> + <code data-code="profile">kye-capability-1.0</code> bind sub-capabilities: <code data-code="field">purchase.search</code> &middot; <code data-code="field">purchase.compare</code> &middot; <code data-code="field">purchase.prepare</code> &middot; <code data-code="field">purchase.request_approval</code> &middot; <code data-code="field">purchase.execute</code> &middot; <code data-code="field">purchase.refund_request</code> &middot; <code data-code="field">purchase.dispute_prepare</code>. The agent may prepare without being allowed to execute.</li>
+          <li><span class="uc-step">4. Decision</span> Per purchase, the agent calls <code data-code="endpoint">POST /v1/runtime/authorize</code>. KYE<span class="tm">™</span> checks: customer + agent + card token active &middot; delegation valid &middot; merchant allowed &middot; amount within scope &middot; approval threshold &middot; risk state &middot; payload signed and fresh. Returns <code data-code="allow">allow_with_constraints</code> &middot; <code data-code="approve">require_approval</code> (push to bank-app) &middot; <code data-code="deny">deny</code> with reason (e.g. <code data-code="field">merchant_category_blocked</code>, <code data-code="field">amount_above_agent_threshold</code>).</li>
+          <li><span class="uc-step">5. Audit</span> Per-purchase Decision Map<span class="tm">™</span> + signed evidence pack: customer &rarr; agent &rarr; capability &rarr; card-token &rarr; merchant &rarr; amount &rarr; approval &rarr; decision &rarr; receipt. Used for chargebacks, disputes, fraud investigations, regulatory review.</li>
+          <li><span class="uc-step">6. Recovery</span> If the agent or its session key is suspected compromised &mdash; <code data-code="signal">quarantine</code> signal, cascade revokes the delegation + the card-token grant in &lt; 1 second. Stale-consent purchases become impossible before the next clearing cycle.</li>
+        </ol>
+        <p class="uc-outcome"><strong>Outcome:</strong> the bank&rsquo;s issuer authorisation pipeline still answers <em>&ldquo;is this card transaction financially authorised?&rdquo;</em>. KYE<span class="tm">™</span> answers the prior question &mdash; <em>&ldquo;is this agent authorised to request this purchase, on this customer&rsquo;s behalf, under this delegation?&rdquo;</em>. KYE<span class="tm">™</span> Authority Finality<span class="tm">™</span> + bank issuer authorisation = agent-backed card purchase with proof a regulator, court, or chargeback panel can replay offline.</p>
       </article>
 
     </div>
@@ -266,6 +289,6 @@
 </main>
 <footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected by assets/components.js mountKyeComponents() --></footer>
 <button id="scroll-top" class="scroll-top" type="button" aria-label="Scroll to top" data-kye-scroll-top><!-- svg injected --></button>
-<script type="module" src="main.js?v=1778760000"></script>
+<script type="module" src="main.js?v=1778780000"></script>
 </body>
 </html>
