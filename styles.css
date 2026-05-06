@@ -4477,3 +4477,275 @@ pre code {
 @media print {
   .scroll-top { display: none !important; }
 }
+
+/* ============================================================
+   §FINAL-14 — Kill the residual blue.
+   Multiple "blue" sources survived previous passes:
+     • --accent-grad gradient included #6366f1 indigo + #06b6d4 cyan
+       which read as "dark blue" through -webkit-background-clip: text
+       on h1/h2/h3/.what-def/.evo-card/.assurance-card .accent
+     • --info (#0ea5e9 sky-500) on cascade-feed pill, profile-detail
+       code, coverage line pills
+     • urn-tok-prefix #6366f1 indigo
+   ============================================================ */
+
+:root {
+  /* Solid-violet "gradient" — single colour so background-clip: text shows pure violet */
+  --accent-grad: linear-gradient(120deg, var(--accent) 0%, var(--accent) 100%) !important;
+  /* Replace bright sky-blue with a soft purple — same family as --accent */
+  --info:        #a855f7 !important;
+  --info-soft:   rgba(168, 85, 247, 0.10) !important;
+  --info-line:   rgba(168, 85, 247, 0.22) !important;
+}
+:root[data-theme="dark"] {
+  --accent-grad: linear-gradient(120deg, var(--accent) 0%, var(--accent) 100%) !important;
+  --info:        #c084fc !important;
+  --info-soft:   rgba(192, 132, 252, 0.16) !important;
+  --info-line:   rgba(192, 132, 252, 0.30) !important;
+}
+
+/* All gradient-clipped accent text → solid violet */
+.h-section .accent,
+.hero h1 .accent,
+.what-def .accent,
+.evo-card.kye h3,
+.assurance-card .c,
+.qs-tabs .qs-tab.is-active::after,
+.lifecycle-state.active::before {
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  color: var(--accent) !important;
+}
+
+/* Replace the lingering indigo on URN tokens (now on demos page anyway) */
+.urn-tok-prefix {
+  background: rgba(124, 58, 237, 0.10) !important;
+  color: var(--accent) !important;
+}
+
+/* Cascade-feed audit pill, coverage line pills, profile-detail terms — purple, not sky-blue */
+.cascade-feed .pill.audit,
+.cov-pill.line,
+.profile-detail .terms code {
+  background: var(--info-soft) !important;
+  color: var(--info) !important;
+  border-color: var(--info-line) !important;
+}
+
+/* Quickstart sample-output token highlighting — was bright cyan */
+.qs-pane pre .u { color: var(--accent) !important; }
+.qs-pane pre .s { color: var(--success) !important; }
+.qs-pane pre .c { color: var(--text-muted) !important; }
+
+/* Brand-mark + nav: occasional blue cast through accent-2 in dark mode — pin to violet */
+:root[data-theme="dark"] .brand,
+:root[data-theme="dark"] .brand-mark { color: var(--accent) !important; }
+
+/* ============================================================
+   §FINAL-15 — Material top app bar + drawer + stepper.
+   Replaces the mega-menu with a flat, per-audience top bar
+   styled like Google's Material 3 top app bar. Each link
+   navigates to a real page (no more anchor-jumping).
+   ============================================================ */
+
+.ms {
+  font-family: 'Material Symbols Outlined';
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-flex;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  vertical-align: middle;
+}
+
+.top-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.92);
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+  backdrop-filter: saturate(180%) blur(10px);
+  border-bottom: 1px solid var(--rule);
+  height: 64px;
+}
+.top-bar-inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 100%;
+  padding: 0 24px;
+}
+.top-bar .brand {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-weight: 600; font-size: 15px;
+  color: var(--text); text-decoration: none;
+  flex-shrink: 0;
+}
+.top-bar .brand-mark {
+  display: inline-flex; width: 24px; height: 24px; color: var(--accent);
+}
+.top-bar-nav {
+  display: flex; gap: 4px; align-items: center;
+  flex: 1; justify-content: center;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.top-bar-nav::-webkit-scrollbar { display: none; }
+.tb-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 14px; border-radius: 999px;
+  font-size: 14px; font-weight: 500;
+  color: var(--text-muted); text-decoration: none;
+  transition: background .12s, color .12s;
+  white-space: nowrap;
+}
+.tb-link .ms { font-size: 18px; opacity: 0.85; }
+.tb-link:hover { background: var(--paper-2); color: var(--text); }
+.tb-link.is-active {
+  background: var(--accent-soft); color: var(--accent);
+}
+.tb-link.is-active .ms { opacity: 1; }
+.top-bar-actions {
+  display: flex; align-items: center; gap: 8px; flex-shrink: 0;
+}
+.tb-cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 14px; border-radius: 999px;
+  font-size: 14px; font-weight: 500;
+  background: var(--accent); color: #fff !important;
+  text-decoration: none;
+}
+.tb-cta:hover { background: var(--accent-2); }
+.tb-cta .ms { font-size: 16px; }
+.theme-toggle {
+  width: 40px; height: 40px;
+  background: transparent; border: none; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--text-muted);
+}
+.theme-toggle:hover { background: var(--paper-2); color: var(--text); }
+.theme-toggle .icon-moon, .theme-toggle .icon-sun { font-size: 22px; }
+:root[data-theme="dark"] .theme-toggle .icon-sun  { display: inline-flex; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+:root:not([data-theme="dark"]) .theme-toggle .icon-sun  { display: none; }
+:root:not([data-theme="dark"]) .theme-toggle .icon-moon { display: inline-flex; }
+.drawer-toggle {
+  display: none;
+  width: 40px; height: 40px;
+  background: transparent; border: none; border-radius: 50%;
+  align-items: center; justify-content: center; cursor: pointer;
+  color: var(--text); font-size: 24px;
+}
+.drawer-toggle:hover { background: var(--paper-2); }
+
+/* Hide labels on tablet — keep icons */
+@media (max-width: 1100px) {
+  .tb-link .lbl { display: none; }
+  .tb-link { padding: 8px; }
+  .tb-link .ms { font-size: 22px; opacity: 1; }
+  .tb-cta span:not(.ms) { display: none; }
+  .tb-cta { padding: 8px; }
+}
+/* Mobile drawer */
+@media (max-width: 760px) {
+  .top-bar-nav { display: none; }
+  .drawer-toggle { display: inline-flex; }
+  .top-bar.drawer-open + .top-bar-drawer { transform: translateX(0); }
+  .top-bar-actions .audience-toggle { display: none; }
+}
+
+.top-bar-drawer {
+  position: fixed; top: 64px; right: 0; bottom: 0;
+  width: min(320px, 86vw);
+  background: var(--paper);
+  border-left: 1px solid var(--rule);
+  transform: translateX(100%);
+  transition: transform .25s ease;
+  z-index: 99;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.top-bar-drawer.is-open { transform: translateX(0); }
+.top-bar-drawer .tb-link {
+  width: 100%; justify-content: flex-start;
+  padding: 14px 18px; border-radius: 12px;
+}
+.top-bar-drawer .tb-link .lbl { display: inline; }
+.top-bar-drawer .tb-link .ms { font-size: 22px; }
+
+/* Hide the legacy mega-menu on pages we've upgraded */
+.top-bar ~ * .nav-links.mega-nav { display: none !important; }
+header.nav { display: none !important; }   /* legacy nav hidden where top-bar present */
+
+/* ============================================================
+   Horizontal stepper (Material) for adoption timeline
+   ============================================================ */
+.stepper {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  position: relative;
+  margin-top: 28px;
+  counter-reset: stepper-num;
+}
+.stepper::before {
+  content: ""; position: absolute;
+  top: 22px; left: 6%; right: 6%;
+  height: 2px; background: var(--rule);
+  z-index: 0;
+}
+.step {
+  display: flex; flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  position: relative; z-index: 1;
+}
+.step-circle {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  border: 2px solid var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent);
+  font-weight: 600; font-size: 14px;
+  counter-increment: stepper-num;
+}
+.step-circle::before { content: counter(stepper-num); }
+.step-circle .ms { font-size: 22px; }
+.step.done .step-circle { background: var(--accent); color: #fff; }
+.step-when { font-size: 11px; font-weight: 600; letter-spacing: 0.10em; text-transform: uppercase; color: var(--text-dim); }
+.step-h { font-size: 15px; font-weight: 600; line-height: 1.35; color: var(--text); margin: 0; }
+.step-b { font-size: 13px; line-height: 1.55; color: var(--text-muted); margin: 0; }
+
+@media (max-width: 900px) {
+  .stepper { grid-template-columns: 1fr; gap: 24px; }
+  .stepper::before { display: none; }
+  .step { flex-direction: row; align-items: flex-start; gap: 16px; }
+  .step-circle { flex-shrink: 0; }
+  .step-text { flex: 1; }
+}
+
+/* ============================================================
+   Hero visual placeholder — clean SVG illustration on business.html
+   ============================================================ */
+.hero-with-visual { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center; }
+@media (min-width: 900px) { .hero-with-visual { grid-template-columns: 1.1fr 1fr; gap: 56px; } }
+.hero-visual {
+  width: 100%; aspect-ratio: 1.2;
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-visual svg { width: 100%; height: 100%; }

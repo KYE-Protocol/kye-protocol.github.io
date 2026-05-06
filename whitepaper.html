@@ -20,7 +20,7 @@
   <meta name="twitter:description" content="Authority Finality™ for AI agents — replayable proof of accountability, compliance, dispute resolution, legally defensible audit trails." />
   <meta name="twitter:image" content="https://kye-protocol.github.io/og.svg" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%237c3aed'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="styles.css?v=1778028513" />
+  <link rel="stylesheet" href="styles.css?v=1778036383" />
   <link rel="stylesheet" href="whitepaper.css?v=1778017907" />
   <script type="application/ld+json">
   {
@@ -48,21 +48,38 @@
   </script>
 </head>
 <body class="wp-body">
-<header class="nav">
-  <div class="container nav-inner">
-    <a href="./" class="brand">
-      <span class="brand-mark">
-        <svg width="18" height="18" viewBox="0 0 64 64" fill="none">
+<header class="top-bar" role="banner">
+  <div class="container top-bar-inner">
+    <a href="./" class="brand" aria-label="KYE Protocol home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 64 64" fill="none">
           <path d="M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
         </svg>
       </span>
-      <span>KYE Protocol<span class="tm">™</span></span>
+      <span class="brand-name">KYE Protocol<span class="tm">™</span></span>
     </a>
-    <nav class="nav-links">
-      <a href="./">Home</a>
-      <a href="https://github.com/KYE-Protocol" target="_blank" rel="noopener">GitHub</a>
-      <a class="nav-cta" href="https://github.com/KYE-Protocol/Discussions/discussions" target="_blank" rel="noopener">Discussions &rarr;</a>
+    <nav class="top-bar-nav" aria-label="Primary">
+      <a href="./" class="tb-link" data-tb="home"><span class="ms">home</span><span class="lbl">Home</span></a>
+      <a href="builders.html" class="tb-link" data-tb="builders"><span class="ms">code</span><span class="lbl">Builders</span></a>
+      <a href="buyers.html" class="tb-link" data-tb="buyers"><span class="ms">business_center</span><span class="lbl">Buyers</span></a>
+      <a href="auditors.html" class="tb-link" data-tb="auditors"><span class="ms">verified_user</span><span class="lbl">Auditors</span></a>
+      <a href="regulators.html" class="tb-link" data-tb="regulators"><span class="ms">gavel</span><span class="lbl">Regulators</span></a>
+      <a href="sectors.html" class="tb-link" data-tb="sectors"><span class="ms">apartment</span><span class="lbl">Sectors</span></a>
+      <a href="demos.html" class="tb-link" data-tb="demos"><span class="ms">play_circle</span><span class="lbl">Demos</span></a>
+      <a href="whitepaper.html" class="tb-link is-active" data-tb="whitepaper"><span class="ms">menu_book</span><span class="lbl">Whitepaper</span></a>
     </nav>
+    <div class="top-bar-actions">
+      <a class="tb-cta" href="https://github.com/KYE-Protocol" target="_blank" rel="noopener" aria-label="GitHub repository">
+        <span class="ms">open_in_new</span><span>GitHub</span>
+      </a>
+      <button class="theme-toggle" type="button" aria-label="Toggle dark / light theme" data-theme-toggle>
+        <span class="ms icon-moon">dark_mode</span>
+        <span class="ms icon-sun">light_mode</span>
+      </button>
+      <button class="drawer-toggle" type="button" aria-label="Open navigation drawer" data-drawer-toggle>
+        <span class="ms">menu</span>
+      </button>
+    </div>
   </div>
 </header>
 

@@ -145,3 +145,37 @@ initWebMcp();
   }
   tabs.forEach(t => t.addEventListener('click', () => apply(t.dataset.faqFilter)));
 })();
+
+/* Mobile drawer toggle (Material top app bar). */
+(function initDrawer() {
+  const btn = document.querySelector('[data-drawer-toggle]');
+  const topbar = document.querySelector('.top-bar');
+  if (!btn || !topbar) return;
+  let drawer = document.querySelector('.top-bar-drawer');
+  if (!drawer) {
+    // Build the drawer from the top-bar-nav children
+    drawer = document.createElement('aside');
+    drawer.className = 'top-bar-drawer';
+    drawer.setAttribute('aria-label', 'Mobile navigation');
+    const sourceLinks = document.querySelectorAll('.top-bar-nav .tb-link');
+    sourceLinks.forEach(a => {
+      const clone = a.cloneNode(true);
+      clone.addEventListener('click', () => {
+        drawer.classList.remove('is-open');
+        topbar.classList.remove('drawer-open');
+      });
+      drawer.appendChild(clone);
+    });
+    document.body.appendChild(drawer);
+  }
+  btn.addEventListener('click', () => {
+    drawer.classList.toggle('is-open');
+    topbar.classList.toggle('drawer-open');
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      drawer.classList.remove('is-open');
+      topbar.classList.remove('drawer-open');
+    }
+  });
+})();
