@@ -252,6 +252,21 @@ initWebMcp();
   // Anywhere a card lists compliance frameworks separated by ' · ' / ' | '
   // / ' / ' / commas, this tagger transforms the inline string into
   // individually-coloured chips.
+  // Step 1 — colour the leading <strong> of each <li> in .cf-grid-list
+  // so the "horizontal frameworks" list reads as per-framework badges
+  // without rebuilding the markup.
+  for (const li of document.querySelectorAll('.cf-grid-list li')) {
+    const strong = li.querySelector(':scope > strong');
+    if (!strong || strong.dataset.fwkBadged) continue;
+    const meta = FW[strong.textContent.trim()];
+    if (!meta) continue;
+    strong.dataset.fwkBadged = '1';
+    strong.style.background    = `color-mix(in srgb, ${meta.hue} 14%, transparent)`;
+    strong.style.borderColor   = `color-mix(in srgb, ${meta.hue} 32%, transparent)`;
+    strong.style.color         = meta.hue;
+  }
+
+  // Step 2 — replace dot-joined framework strings with split badges
   const SELECTORS = [
     '.sector-frameworks',
     '.compliance-list',
@@ -295,23 +310,23 @@ initWebMcp();
   const article = document.querySelector('.wp-article');
   if (!article) return;
   const ICON_FOR = {
-    abstract:     ['description', '#1A8754'],
-    problem:      ['warning',     '#EA4335'],
-    prior:        ['compare',     '#5F6368'],
-    design:       ['design_services', '#1A73E8'],
-    model:        ['hub',         '#8E24AA'],
-    architecture: ['account_tree','#00838F'],
-    contract:     ['gavel',       '#3F51B5'],
-    runtime:      ['memory',      '#009688'],
-    profiles:     ['view_module', '#F57C00'],
-    sectors:      ['apartment',   '#5F6368'],
-    compliance:   ['rule',        '#1A73E8'],
-    conformance:  ['verified',    '#1A8754'],
-    addenda:      ['playlist_add_check', '#8E24AA'],
-    security:     ['shield',      '#EA4335'],
-    governance:   ['groups',      '#3F51B5'],
-    roadmap:      ['route',       '#F57C00'],
-    references:   ['menu_book',   '#5F6368'],
+    abstract:     ['description',         '#1A8754'],
+    problem:      ['report_problem',      '#EA4335'],
+    prior:        ['compare_arrows',      '#5F6368'],
+    design:       ['architecture',        '#1A73E8'],
+    model:        ['hub',                 '#8E24AA'],
+    architecture: ['account_tree',        '#00838F'],
+    contract:     ['handshake',           '#3F51B5'],
+    runtime:      ['settings_input_component', '#009688'],
+    profiles:     ['stacked_bar_chart',   '#F57C00'],
+    sectors:      ['domain',              '#5F6368'],
+    compliance:   ['rule',                '#1A73E8'],
+    conformance:  ['fact_check',          '#1A8754'],
+    addenda:      ['playlist_add_check',  '#8E24AA'],
+    security:     ['lock',                '#EA4335'],
+    governance:   ['gavel',               '#3F51B5'],
+    roadmap:      ['route',               '#F57C00'],
+    references:   ['format_quote',        '#5F6368'],
   };
   const sections = Array.from(article.querySelectorAll('h2[id]'));
   if (!sections.length) return;
