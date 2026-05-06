@@ -1,5 +1,6 @@
 /* KYE Protocol™ landing — orchestrator. */
 import { initHeroStats }    from "./assets/hero-stats.js";
+import { mountKyeComponents } from "./assets/components.js";
 import { initBeforeAfter }  from "./assets/before-after.js";
 import { initTrustGraph }   from "./assets/trust-graph.js";
 import { initDecisionFlow } from "./assets/decision-flow.js";
@@ -15,6 +16,10 @@ import { initQuickstart, initStarCta } from "./assets/quickstart.js";
 
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+// Mount shared chrome (header, footer, scroll-top, year-stamp) BEFORE
+// any other init so subsequent components find canonical markup.
+mountKyeComponents();
 
 initHeroStats();
 initBeforeAfter();
