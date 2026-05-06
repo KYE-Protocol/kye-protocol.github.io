@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script>(function(){try{var s=localStorage.getItem("kye-theme");if(s==="dark"||s==="light"){document.documentElement.setAttribute("data-theme",s);}}catch(e){}})();</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KYE Protocol™ — Concepts | The 6 protocol primitives: Identity, Authority, Scope, State, Audit, On-Behalf-Of</title>
+  <meta name="description" content="The six clickable KYE Protocol™ primitives — Identity, Authority, Scope, State, Audit, On-Behalf-Of — each with its canonical schema, endpoint, JSON example, decision role, audit event, and an open-banking / payment-initiation flow." />
+  <meta name="keywords" content="KYE Protocol concepts, KYE primitives, on-behalf-of authority, delegation chain, attenuated scope, KYE state model, KYE audit chain, open banking authority, payment initiation, agentic delegation" />
+  <link rel="canonical" href="https://kye-protocol.github.io/concepts.html" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="KYE Protocol™ — The six protocol primitives" />
+  <meta property="og:description" content="Click into each primitive: Identity · Authority · Scope · State · Audit · On-Behalf-Of. Schema · endpoint · example · open-banking flow per card." />
+  <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
+  <meta property="og:url" content="https://kye-protocol.github.io/concepts.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css?v=1778720000" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="top-bar" role="banner" data-kye-header data-active="concepts"><!-- canonical chrome injected by assets/components.js mountKyeComponents() --></header>
+<main id="main" role="main">
+
+<section id="top" class="hero">
+  <div class="container hero-inner">
+    <span class="hero-pill"><span class="dot"></span> Concepts &middot; six clickable primitives</span>
+    <h1 id="hero-title" style="margin-top:18px">The <span class="accent">six primitives</span> KYE<span class="tm">™</span> ships.</h1>
+    <p class="lede">KYE Protocol<span class="tm">™</span> is built on six primitives. Each is a real protocol object &mdash; a schema, an endpoint, an example payload, a decision role, an audit event &mdash; not an explanatory abstraction. Click any card to jump straight to its definition + schema + endpoint + open-banking flow.</p>
+    <div class="cn-quick" style="margin-top:18px">
+      <a href="#identity"      class="cn-pill" data-cn="identity"><span class="ms">person</span> Identity</a>
+      <a href="#on-behalf-of"  class="cn-pill" data-cn="obo"><span class="ms">link</span> On-Behalf-Of</a>
+      <a href="#authority"     class="cn-pill" data-cn="authority"><span class="ms">tune</span> Authority</a>
+      <a href="#scope"         class="cn-pill" data-cn="scope"><span class="ms">filter_alt</span> Scope</a>
+      <a href="#state"         class="cn-pill" data-cn="state"><span class="ms">timeline</span> State</a>
+      <a href="#audit"         class="cn-pill" data-cn="audit"><span class="ms">verified</span> Audit</a>
+    </div>
+  </div>
+</section>
+
+<section id="why" class="section" aria-labelledby="h-why">
+        <span class="eyebrow">Why six</span>
+    <h2 id="h-why" class="h-section">Together they answer six questions.</h2>
+  <div class="section-body"><div class="container">
+    <p class="lede"><strong>Identity</strong> &mdash; <em>who or what is acting?</em>&nbsp; <strong>On-Behalf-Of</strong> &mdash; <em>on whose behalf?</em>&nbsp; <strong>Authority</strong> &mdash; <em>under what authority?</em>&nbsp; <strong>Scope</strong> &mdash; <em>within what scope?</em>&nbsp; <strong>State</strong> &mdash; <em>in what state?</em>&nbsp; <strong>Audit</strong> &mdash; <em>with what proof?</em></p>
+    <p class="lede" style="margin-top:8px">Combined, they produce <strong>Authority Finality<span class="tm">™</span></strong>: a replayable, signed answer to all six questions for every action a human, service or AI agent takes.</p>
+  </div></div>
+</section>
+
+<section id="identity" class="section alt" aria-labelledby="h-id">
+        <span class="eyebrow">Primitive 1 / 6 &middot; <a href="vocabulary.html#entity" style="color:var(--accent)">vocabulary &rarr;</a></span>
+    <h2 id="h-id" class="h-section"><span class="ms cn-h-icon">person</span> Identity &mdash; one URN, every actor.</h2>
+  <div class="section-body"><div class="container">
+    <div class="cn-card">
+      <p class="cn-def"><strong>Definition.</strong> A KYE<span class="tm">™</span> identity is a single durable URN that uniquely names any actor &mdash; human, service, AI agent, model, tool, workflow, business &mdash; and binds it to a public key. URN format: <code data-code="urn">kye:&lt;class&gt;:&lt;trust-domain&gt;:&lt;subclass&gt;:&lt;local&gt;</code>. Identifiers persist across rebuilds, redeployments, and tool invocations.</p>
+      <dl class="cn-meta">
+        <dt>Schema</dt><dd><code data-code="path">https://schemas.kye.dev/entity.json</code></dd>
+        <dt>Endpoints</dt><dd><code data-code="endpoint">POST /v1/entities</code> &middot; <code data-code="endpoint">GET /v1/entities/{id}</code> &middot; <code data-code="endpoint">POST /v1/entities/{id}:rotate-key</code></dd>
+        <dt>Decision role</dt><dd>Resolves <code data-code="field">subject</code>, <code data-code="field">actor</code>, and <code data-code="field">principal</code> in every authorize call.</dd>
+        <dt>Audit event</dt><dd><code data-code="signal">entity.registered</code> &middot; <code data-code="signal">entity.key_rotated</code> &middot; <code data-code="signal">entity.tombstoned</code></dd>
+      </dl>
+      <p class="cn-ex-h"><strong>Open-banking example.</strong></p>
+      <ul class="cn-ex-list">
+        <li><code data-code="urn">kye:human:acme.eu:psu:alice-meier</code> &mdash; payment-service user (account holder).</li>
+        <li><code data-code="urn">kye:business:acme.eu:corp:acme-treasury-gmbh</code> &mdash; corporate account holder.</li>
+        <li><code data-code="urn">kye:agent:fintech-x.eu:tpp:ai-finance-bot</code> &mdash; the TPP&rsquo;s AI finance agent.</li>
+        <li><code data-code="urn">kye:service:bank-z.eu:aspsp:rail-gateway</code> &mdash; the bank&rsquo;s ASPSP rail.</li>
+      </ul>
+    </div>
+  </div></div>
+</section>
+
+<section id="on-behalf-of" class="section" aria-labelledby="h-obo">
+        <span class="eyebrow">Primitive 2 / 6 &middot; the missing layer</span>
+    <h2 id="h-obo" class="h-section"><span class="ms cn-h-icon">link</span> On-Behalf-Of &mdash; the layer most stacks omit.</h2>
+  <div class="section-body"><div class="container">
+    <div class="cn-card cn-card-featured">
+      <p class="cn-def"><strong>Definition.</strong> A signed delegation chain that binds every action back to a human or business who is legally on the hook. Each link carries a <code data-code="field">parent_delegation_id</code>, a scope (which must <em>attenuate</em> the parent&rsquo;s &mdash; never exceed it), and a signature from the delegator. The chain is the answer to &ldquo;<em>who authorised this?</em>&rdquo; in seconds, not a Slack thread.</p>
+      <p class="cn-def" style="margin-top:8px"><strong>Why it matters.</strong> Modern systems do not just authenticate users. They delegate authority across humans, companies, agents, APIs, wallets, workflows, and payment rails. KYE<span class="tm">™</span> makes <em>acting on behalf of</em> explicit, scoped, state-aware, revocable, and auditable. This is the layer OAuth, OIDC, and SPIFFE leave to ad-hoc app code.</p>
+      <dl class="cn-meta">
+        <dt>Schema</dt><dd><code data-code="path">https://schemas.kye.dev/delegation.json</code></dd>
+        <dt>Endpoints</dt><dd><code data-code="endpoint">POST /v1/delegations</code> &middot; <code data-code="endpoint">GET /v1/delegations/{id}</code> &middot; <code data-code="endpoint">POST /v1/delegations/{id}:revoke</code> &middot; <code data-code="endpoint">GET /v1/graph/authority-path</code></dd>
+        <dt>Decision role</dt><dd>Every authorize call walks the chain to verify continuity from acting agent to root principal. Break in the chain &rarr; <code data-code="deny">deny: chain_broken</code>.</dd>
+        <dt>Audit event</dt><dd><code data-code="signal">delegation.issued</code> &middot; <code data-code="signal">delegation.revoked</code> &middot; <code data-code="signal">delegation.expired</code></dd>
+      </dl>
+      <p class="cn-ex-h"><strong>Open-banking flow:</strong></p>
+      <ol class="cn-flow">
+        <li><strong>Account holder</strong> grants the TPP a delegation: <em>&ldquo;initiate payments on my behalf, &le; &euro;1,000 single, &le; &euro;10,000 monthly.&rdquo;</em></li>
+        <li><strong>TPP</strong> sub-delegates an attenuated scope to its <strong>AI finance agent</strong>: <em>&ldquo;EUR only, EU corridors, prepare-and-stage; final submit requires human approval &gt; &euro;500.&rdquo;</em></li>
+        <li><strong>AI agent</strong> prepares a payment. The KYE<span class="tm">™</span> ePDP walks: agent &rarr; TPP &rarr; account holder. Every link is signed; every scope attenuates. The bank receives a payment intent with the full chain attached.</li>
+        <li><strong>ASPSP</strong> verifies the chain offline using public keys; pays the rail or denies with a reason code.</li>
+      </ol>
+    </div>
+  </div></div>
+</section>
+
+<section id="authority" class="section alt" aria-labelledby="h-auth">
+        <span class="eyebrow">Primitive 3 / 6</span>
+    <h2 id="h-auth" class="h-section"><span class="ms cn-h-icon">tune</span> Authority &mdash; scope-bound, revocable, recursive.</h2>
+  <div class="section-body"><div class="container">
+    <div class="cn-card">
+      <p class="cn-def"><strong>Definition.</strong> An authority grant declares <em>what</em> an actor may do, <em>over what resource</em>, <em>under what conditions</em>, <em>until when</em>. Authority is bound to a delegation chain (<a href="#on-behalf-of" style="color:var(--accent)">on-behalf-of</a>) so it always traces to a root principal. Authority is <em>recursively revocable</em>: revoke a parent and the cascade kills every child grant in &lt;&nbsp;1&nbsp;second.</p>
+      <dl class="cn-meta">
+        <dt>Schema</dt><dd><code data-code="path">https://schemas.kye.dev/authority-grant.json</code></dd>
+        <dt>Endpoints</dt><dd><code data-code="endpoint">POST /v1/authority-grants</code> &middot; <code data-code="endpoint">GET /v1/authority-grants/{id}</code> &middot; <code data-code="endpoint">POST /v1/authority-grants/{id}:revoke</code> &middot; <code data-code="endpoint">POST /v1/runtime/authorize</code></dd>
+        <dt>Decision role</dt><dd>The runtime <strong>authorize</strong> call returns one of three decisions backed by Authority: <code data-code="allow">allow_with_constraints</code> &middot; <code data-code="approve">require_approval</code> &middot; <code data-code="deny">deny</code>. Every decision carries the obligations the caller must honour.</dd>
+        <dt>Audit event</dt><dd><code data-code="signal">authority.granted</code> &middot; <code data-code="signal">authority.exercised</code> &middot; <code data-code="signal">authority.revoked</code> &middot; <code data-code="signal">authority.cascade_revoked</code></dd>
+      </dl>
+      <p class="cn-ex-h"><strong>Open-banking example.</strong></p>
+      <ul class="cn-ex-list">
+        <li>Authority: <em>payment_initiation</em>; Scope: <em>EUR &le; &euro;1,000</em>; Conditions: <em>SCA satisfied at edge</em>; Until: <em>90 days</em>.</li>
+        <li>If the holder revokes consent at minute&nbsp;0, the cascade kills every authority + every downstream agent grant by minute&nbsp;0:00.4. The PISP cannot keep transacting on a stale consent.</li>
+      </ul>
+    </div>
+  </div></div>
+</section>
+
+<section id="scope" class="section" aria-labelledby="h-scope">
+        <span class="eyebrow">Primitive 4 / 6</span>
+    <h2 id="h-scope" class="h-section"><span class="ms cn-h-icon">filter_alt</span> Scope &mdash; parameter-level, attenuable.</h2>
+  <div class="section-body"><div class="container">
+    <div class="cn-card">
+      <p class="cn-def"><strong>Definition.</strong> Scope is the parameter-level constraint set on an authority. Not a single &ldquo;can transact&rdquo; flag &mdash; structured fields: <code data-code="field">amount.max</code>, <code data-code="field">currency.allowlist</code>, <code data-code="field">corridor.allowlist</code>, <code data-code="field">beneficiary.first_time</code>, <code data-code="field">time_window</code>, <code data-code="field">approval.threshold</code>. <strong>Attenuation invariant</strong>: a child&rsquo;s scope MUST be a subset of its parent&rsquo;s. Enforced by the protocol, not the policy bundle.</p>
+      <dl class="cn-meta">
+        <dt>Schema</dt><dd><code data-code="path">https://schemas.kye.dev/scope.json</code></dd>
+        <dt>Endpoints</dt><dd><code data-code="endpoint">POST /v1/scopes</code> &middot; <code data-code="endpoint">POST /v1/scopes:attenuate</code> &middot; <code data-code="endpoint">POST /v1/scopes:check-subset</code></dd>
+        <dt>Decision role</dt><dd>Every authorize call evaluates whether the request is <em>inside</em> the active grant&rsquo;s scope. Outside &rarr; <code data-code="deny">deny: scope_attenuation_violation</code>.</dd>
+        <dt>Audit event</dt><dd><code data-code="signal">scope.created</code> &middot; <code data-code="signal">scope.violated</code></dd>
+      </dl>
+      <p class="cn-ex-h"><strong>Open-banking example.</strong></p>
+      <ul class="cn-ex-list">
+        <li>Holder grants TPP scope <code data-code="field">{amount.max: 1000, currency: ["EUR"], corridor: ["SEPA"]}</code>.</li>
+        <li>TPP attenuates for the AI agent to <code data-code="field">{amount.max: 500, currency: ["EUR"], beneficiary.first_time: false}</code>. Protocol verifies the child is a subset; rejects any agent grant claiming &euro;2,000 (would exceed parent).</li>
+      </ul>
+    </div>
+  </div></div>
+</section>
+
+<section id="state" class="section alt" aria-labelledby="h-state">
+        <span class="eyebrow">Primitive 5 / 6</span>
+    <h2 id="h-state" class="h-section"><span class="ms cn-h-icon">timeline</span> State &mdash; six dimensions, point-in-time replayable.</h2>
+  <div class="section-body"><div class="container">
+    <div class="cn-card">
+      <p class="cn-def"><strong>Definition.</strong> Every KYE<span class="tm">™</span> entity carries six state dimensions, each independently versioned: <strong>lifecycle</strong> (created/active/quarantined/tombstoned), <strong>authority</strong> (granted/exercised/revoked), <strong>delegation</strong> (issued/expired), <strong>credential</strong> (valid/rotated/revoked), <strong>recovery</strong> (normal/break-glass/restored), <strong>risk</strong> (telemetry-derived posture). The runtime evaluates state <em>at the moment of decision</em> &mdash; auditors replay the same point-in-time state offline.</p>
+      <dl class="cn-meta">
+        <dt>Schema</dt><dd><code data-code="path">https://schemas.kye.dev/state-composition.json</code> &middot; <code data-code="path">https://schemas.kye.dev/state-transition.json</code></dd>
+        <dt>Endpoints</dt><dd><code data-code="endpoint">GET /v1/entities/{id}/state</code> &middot; <code data-code="endpoint">GET /v1/entities/{id}/state:at-time</code> &middot; <code data-code="endpoint">POST /v1/state-transitions</code></dd>
+        <dt>Decision role</dt><dd>The PDP composes all six state dimensions into a single decision input. Mismatch (e.g. credential rotated mid-flight) &rarr; <code data-code="deny">deny: state_mismatch</code>.</dd>
+        <dt>Audit event</dt><dd><code data-code="signal">state.transitioned</code> &middot; <code data-code="signal">state.replayed</code></dd>
+      </dl>
+      <p class="cn-ex-h"><strong>Open-banking example.</strong></p>
+      <ul class="cn-ex-list">
+        <li>At T+0, account holder revokes consent. State transitions: <code data-code="field">authority.revoked</code> on the TPP grant, cascade fires.</li>
+        <li>At T+0:00.5, AI agent attempts a payment. PDP evaluates state at T+0:00.5 &mdash; <code data-code="deny">deny: authority_revoked</code>. The decision is replayable: at T+30 days an auditor evaluates state &ldquo;as of&rdquo; T+0:00.5 and gets the same answer.</li>
+      </ul>
+    </div>
+  </div></div>
+</section>
+
+<section id="audit" class="section" aria-labelledby="h-audit-c">
+        <span class="eyebrow">Primitive 6 / 6</span>
+    <h2 id="h-audit-c" class="h-section"><span class="ms cn-h-icon">verified</span> Audit &mdash; signed evidence, public-key verifiable.</h2>
+  <div class="section-body"><div class="container">
+    <div class="cn-card">
+      <p class="cn-def"><strong>Definition.</strong> An append-only, hash-linked audit chain. Every authorise call, every state transition, every signal cascade emits a signed audit event. Bundles project to <strong>Evidence Packs</strong> &mdash; the artefact a regulator, court, auditor, or dispute panel verifies offline using public keys alone. No read-access to your runtime required.</p>
+      <dl class="cn-meta">
+        <dt>Schema</dt><dd><code data-code="path">https://schemas.kye.dev/audit-event.json</code> &middot; <code data-code="path">https://schemas.kye.dev/evidence-pack.json</code> &middot; <code data-code="path">https://schemas.kye.dev/proof-bundle.json</code></dd>
+        <dt>Endpoints</dt><dd><code data-code="endpoint">POST /v1/audit-events</code> &middot; <code data-code="endpoint">GET /v1/proof-bundles/{id}</code> &middot; <code data-code="endpoint">GET /v1/decisions/{id}/map</code> &middot; <code data-code="endpoint">POST /v1/oscal/export</code></dd>
+        <dt>Decision role</dt><dd>The runtime emits a signed Decision Map<span class="tm">™</span> per authorise call: actor &rarr; principal &rarr; delegation &rarr; capability &rarr; authority &rarr; scope &rarr; state &rarr; policy &rarr; decision &rarr; audit &rarr; evidence.</dd>
+        <dt>Audit event</dt><dd><code data-code="signal">audit.appended</code> &middot; <code data-code="signal">evidence_pack.exported</code> &middot; <code data-code="signal">decision.replayed</code></dd>
+      </dl>
+      <p class="cn-ex-h"><strong>Open-banking example.</strong></p>
+      <ul class="cn-ex-list">
+        <li>Every TPP&rarr;AI&rarr;ASPSP transaction emits the full chain to the audit log: consent granted, scope attenuated, payment intent, decision, rail confirmation, settlement.</li>
+        <li>30 days later, a complainant disputes the &euro;420 payment. The bank pulls the Evidence Pack; the regulator verifies the chain with the public keys it already holds for each party. No spreadsheets, no SQL.</li>
+      </ul>
+    </div>
+  </div></div>
+</section>
+
+<section id="next" class="section alt" aria-labelledby="h-next">
+        <span class="eyebrow">Where to go next</span>
+    <h2 id="h-next" class="h-section">Adjacent reading.</h2>
+  <div class="section-body"><div class="container">
+    <div class="hero-cta" style="margin-top:8px">
+      <a href="developers.html"  class="btn btn-primary"><span class="ms">code</span> Developer quickstart &rarr;</a>
+      <a href="protocol.html"    class="btn btn-secondary"><span class="ms">architecture</span> Protocol overview</a>
+      <a href="usecases.html"    class="btn btn-secondary"><span class="ms">lightbulb</span> Use cases (incl. open banking)</a>
+      <a href="vocabulary.html"  class="btn btn-secondary"><span class="ms">menu_book</span> Vocabulary</a>
+      <a href="readiness.html"   class="btn btn-secondary"><span class="ms">checklist</span> Readiness self-test</a>
+    </div>
+  </div></div>
+</section>
+
+</main>
+<footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected by assets/components.js mountKyeComponents() --></footer>
+<button id="scroll-top" class="scroll-top" type="button" aria-label="Scroll to top" data-kye-scroll-top><!-- svg injected --></button>
+<script type="module" src="main.js?v=1778720000"></script>
+</body>
+</html>

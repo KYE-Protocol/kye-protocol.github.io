@@ -8182,3 +8182,246 @@ p code[data-code], li code[data-code] {
 :root[data-theme="dark"] .risk-card .risk-m {
   background: rgba(255,255,255,0.04);
 }
+
+/* ============================================================
+   §FINAL-48 — concept primitives, tech-quickstart, open-banking
+   flow, concepts.html cards
+   ============================================================ */
+
+/* Landing: clickable primitive grid (#primitives section). Each
+ * card is an anchor into concepts.html#<id>. Distinct from
+ * .who-mini (audience cards) and .af-dim (interactive Authority
+ * Finality cross-highlight) — this one screams "click for tech". */
+.prim-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--kye-space-3);
+}
+.prim-card {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 4px 12px;
+  padding: var(--kye-space-3);
+  background: var(--kye-color-paper);
+  border: 1px solid var(--kye-color-line);
+  border-radius: var(--kye-radius-2);
+  text-decoration: none;
+  color: var(--kye-color-text);
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+.prim-card:hover {
+  border-color: var(--kye-color-brand);
+  box-shadow: 0 6px 16px rgba(26,135,84,0.12);
+  transform: translateY(-1px);
+}
+.prim-card .ms {
+  grid-row: 1 / span 3;
+  align-self: start;
+  font-size: 26px !important;
+  width: 26px;
+  color: var(--kye-color-brand) !important;
+  margin-top: 2px;
+}
+.prim-card strong {
+  font-size: 15.5px;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+}
+.prim-card span {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--kye-color-text-muted);
+}
+.prim-card em {
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--kye-color-brand);
+  margin-top: 4px;
+}
+.prim-card[data-prim="obo"] { border-left: 3px solid #00ACC1; }
+.prim-card[data-prim="obo"] .ms { color: #00ACC1 !important; }
+.prim-card[data-prim="obo"] em  { color: #00ACC1; }
+
+/* Tech-quickstart steps (#quickstart-tech section). */
+.qs-steps {
+  list-style: none; padding: 0; margin: 14px 0 0;
+  display: flex; flex-direction: column; gap: var(--kye-space-2);
+  counter-reset: qs-counter;
+}
+.qs-steps li {
+  padding: var(--kye-space-3);
+  background: var(--kye-color-paper);
+  border-left: 3px solid var(--kye-color-brand);
+  border-radius: var(--kye-radius-2);
+  font-size: var(--kye-type-small);
+  line-height: 1.55;
+}
+.qs-steps li strong {
+  color: var(--kye-color-text);
+  font-weight: 700;
+}
+.qs-steps a {
+  color: var(--kye-color-brand);
+  text-decoration: none;
+  font-weight: 600;
+}
+.qs-steps a:hover { text-decoration: underline; }
+
+/* Open-banking flow (#open-banking section). Numbered steps with
+ * a coloured step pill on the left. */
+.ob-flow {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: var(--kye-space-2);
+}
+.ob-flow li {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 14px;
+  align-items: baseline;
+  padding: var(--kye-space-3);
+  background: var(--kye-color-paper);
+  border: 1px solid var(--kye-color-line);
+  border-radius: var(--kye-radius-2);
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+.ob-flow .ob-step {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--kye-color-brand);
+  color: white;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-weight: 700;
+  font-size: 12.5px;
+  flex-shrink: 0;
+}
+@media (max-width: 520px) {
+  .ob-flow li { grid-template-columns: 1fr; }
+}
+
+/* concepts.html — pill quick-jump bar in hero */
+.cn-quick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.cn-pill {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 6px 11px;
+  border-radius: 999px;
+  background: var(--kye-color-paper);
+  border: 1px solid var(--kye-color-line);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--kye-color-text);
+  text-decoration: none;
+  transition: border-color 120ms ease, color 120ms ease;
+}
+.cn-pill:hover {
+  border-color: var(--kye-color-brand);
+  color: var(--kye-color-brand);
+}
+.cn-pill .ms { font-size: 14px !important; width: 14px; }
+
+/* concepts.html — primitive heading icon */
+.cn-h-icon {
+  font-size: 22px !important;
+  width: 22px;
+  vertical-align: -3px;
+  color: var(--kye-color-brand) !important;
+  margin-right: 4px;
+}
+
+/* concepts.html — primitive card */
+.cn-card {
+  background: var(--kye-color-paper);
+  border: 1px solid var(--kye-color-line);
+  border-radius: var(--kye-radius-3);
+  padding: var(--kye-space-4);
+}
+.cn-card-featured {
+  border-left: 4px solid #00ACC1;
+  background: linear-gradient(180deg, rgba(0,172,193,0.04), var(--kye-color-paper) 60%);
+}
+.cn-def {
+  margin: 0 0 var(--kye-space-2);
+  font-size: var(--kye-type-small);
+  line-height: 1.6;
+  color: var(--kye-color-text);
+}
+.cn-meta {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 6px 14px;
+  margin: 0 0 var(--kye-space-2);
+  padding: var(--kye-space-2) var(--kye-space-3);
+  background: var(--kye-color-paper-2);
+  border-radius: var(--kye-radius-2);
+  font-size: 13px;
+  line-height: 1.55;
+}
+.cn-meta dt {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--kye-color-text-muted);
+}
+.cn-meta dd { margin: 0; color: var(--kye-color-text); }
+.cn-ex-h {
+  margin: var(--kye-space-2) 0 6px;
+  font-size: 13px;
+  color: var(--kye-color-text);
+}
+.cn-ex-list {
+  margin: 0; padding-left: 1.2em;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--kye-color-text);
+}
+.cn-ex-list li { margin-bottom: 4px; }
+.cn-flow {
+  margin: 0; padding: 0; list-style: none;
+  counter-reset: cn-flow-counter;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.cn-flow li {
+  counter-increment: cn-flow-counter;
+  padding: var(--kye-space-2) var(--kye-space-3) var(--kye-space-2) calc(var(--kye-space-3) + 18px);
+  position: relative;
+  background: var(--kye-color-paper-2);
+  border-radius: var(--kye-radius-2);
+  font-size: 13px;
+  line-height: 1.55;
+}
+.cn-flow li::before {
+  content: counter(cn-flow-counter);
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--kye-color-brand);
+}
+@media (max-width: 600px) {
+  .cn-meta { grid-template-columns: 1fr; gap: 2px; }
+}
+:root[data-theme="dark"] .prim-card,
+:root[data-theme="dark"] .qs-steps li,
+:root[data-theme="dark"] .ob-flow li,
+:root[data-theme="dark"] .cn-card,
+:root[data-theme="dark"] .cn-pill {
+  background: var(--surface-solid);
+  border-color: var(--line);
+}
+:root[data-theme="dark"] .cn-meta,
+:root[data-theme="dark"] .cn-flow li {
+  background: rgba(255,255,255,0.04);
+}

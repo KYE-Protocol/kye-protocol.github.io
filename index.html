@@ -27,7 +27,7 @@
   <meta name="twitter:title" content="KYE Protocol™ — Entity Authority Protocol for AI Governance | Authority Finality™" />
   <meta name="twitter:description" content="Authority Finality™ for AI agents — replayable proof of who or what acted, on behalf of whom, using which capability, under what authority, in what state, with what audit trail." />
   <meta name="twitter:image" content="https://kye-protocol.github.io/og.svg" />
-  <link rel="stylesheet" href="styles.css?v=1778700000" />
+  <link rel="stylesheet" href="styles.css?v=1778720000" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
   <script type="application/ld+json">
@@ -470,6 +470,63 @@
   </div>
 </section>
 
+<section id="primitives" class="section" aria-labelledby="h-prim">
+        <span class="eyebrow">The protocol &middot; six clickable primitives</span>
+    <h2 id="h-prim" class="h-section">Click into <span class="accent">any primitive</span> for schema, endpoint, example.</h2>
+  <div class="section-body"><div class="container">
+    <p class="lede">KYE Protocol<span class="tm">™</span> is built on six primitives. Each is a real protocol object &mdash; schema, endpoint, JSON example, decision role, audit event &mdash; not abstract copy. Each card opens its dedicated section on the concepts page, including an open-banking / payment-initiation flow.</p>
+    <div class="prim-grid" style="margin-top:18px">
+      <a href="concepts.html#identity"     class="prim-card" data-prim="identity"><span class="ms">person</span><strong>Identity</strong><span>One URN per actor &mdash; humans, agents, services, models, tools, businesses.</span><em>schema &middot; endpoint &middot; example &rarr;</em></a>
+      <a href="concepts.html#on-behalf-of" class="prim-card" data-prim="obo"><span class="ms">link</span><strong>On-Behalf-Of</strong><span>Signed delegation chain; binds every action back to a human or business.</span><em>schema &middot; endpoint &middot; flow &rarr;</em></a>
+      <a href="concepts.html#authority"    class="prim-card" data-prim="authority"><span class="ms">tune</span><strong>Authority</strong><span>Scope-bound, recursively revocable, cascade kills children in &lt;&nbsp;1s.</span><em>schema &middot; endpoint &middot; example &rarr;</em></a>
+      <a href="concepts.html#scope"        class="prim-card" data-prim="scope"><span class="ms">filter_alt</span><strong>Scope</strong><span>Parameter-level constraints. Attenuation invariant: child &sube; parent.</span><em>schema &middot; endpoint &middot; example &rarr;</em></a>
+      <a href="concepts.html#state"        class="prim-card" data-prim="state"><span class="ms">timeline</span><strong>State</strong><span>Six dimensions: lifecycle, authority, delegation, credential, recovery, risk.</span><em>schema &middot; endpoint &middot; example &rarr;</em></a>
+      <a href="concepts.html#audit"        class="prim-card" data-prim="audit"><span class="ms">verified</span><strong>Audit</strong><span>Signed evidence packs verifiable offline with public keys alone.</span><em>schema &middot; endpoint &middot; example &rarr;</em></a>
+    </div>
+  </div></div>
+</section>
+
+<section id="quickstart-tech" class="section alt" aria-labelledby="h-qs-tech">
+        <span class="eyebrow">For developers &middot; the technical funnel</span>
+    <h2 id="h-qs-tech" class="h-section">Five steps from <span class="accent">curl</span> to <span class="accent">signed evidence</span>.</h2>
+  <div class="section-body"><div class="container">
+    <ol class="qs-steps">
+      <li><strong>1. Read the object model.</strong> Six primitives, one URN format. <a href="concepts.html">Concepts page &rarr;</a></li>
+      <li><strong>2. Browse the canonical JSON Schemas.</strong> 55 schemas, 60 validated examples, all under <code data-code="path">https://schemas.kye.dev/</code>. <a href="https://github.com/KYE-Protocol" target="_blank" rel="noopener">github.com/KYE-Protocol &rarr;</a></li>
+      <li><strong>3. Try a runtime decision.</strong> <code data-code="endpoint">POST /v1/runtime/authorize</code> &mdash; returns a Decision Map<span class="tm">™</span> in &lt; 1ms (ePDP).</li>
+      <li><strong>4. Inspect the Decision Map<span class="tm">™</span>.</strong> <code data-code="endpoint">GET /v1/decisions/{id}/map</code> &mdash; the actor &rarr; principal &rarr; delegation &rarr; capability &rarr; authority &rarr; scope &rarr; state &rarr; policy &rarr; decision &rarr; audit &rarr; evidence chain for that decision.</li>
+      <li><strong>5. Run the conformance pack.</strong> 38 black-box fixtures (38/38 pass) test your gateway byte-for-byte against the reference implementation.</li>
+    </ol>
+    <div class="hero-cta" style="margin-top:18px">
+      <a href="developers.html"   class="btn btn-primary"><span class="ms">code</span> Developer quickstart &rarr;</a>
+      <a href="concepts.html"     class="btn btn-secondary"><span class="ms">menu_book</span> Concepts (schemas + endpoints)</a>
+      <a href="oscal.html"        class="btn btn-secondary"><span class="ms">integration_instructions</span> OSCAL exporter</a>
+      <a href="readiness.html"    class="btn btn-secondary"><span class="ms">checklist</span> Readiness self-test</a>
+    </div>
+  </div></div>
+</section>
+
+<section id="open-banking" class="section" aria-labelledby="h-ob">
+        <span class="eyebrow">Concrete example &middot; open banking / payment initiation</span>
+    <h2 id="h-ob" class="h-section">An AI finance agent prepares a payment <span class="accent">on behalf of</span> a business.</h2>
+  <div class="section-body"><div class="container">
+    <p class="lede">The clearest demonstration of the on-behalf-of layer in production. Account holder &rarr; TPP &rarr; AI agent &rarr; ASPSP. Every link signed; scope attenuates at every step; cascade kills the chain in &lt;&nbsp;1s on consent revocation.</p>
+    <ol class="ob-flow" style="margin-top:14px">
+      <li><span class="ob-step">1.</span> <strong>Account holder</strong> grants the TPP a delegation: <em>&ldquo;initiate payments on my behalf, &le; &euro;1,000 single, &le; &euro;10,000 monthly, EUR + SEPA only.&rdquo;</em></li>
+      <li><span class="ob-step">2.</span> <strong>TPP</strong> sub-delegates an attenuated scope to its <strong>AI finance agent</strong>: <em>&ldquo;EUR only, EU corridors, prepare-and-stage; final submit requires human approval &gt; &euro;500.&rdquo;</em></li>
+      <li><span class="ob-step">3.</span> <strong>AI agent</strong> prepares a &euro;420 payment. The KYE<span class="tm">™</span> ePDP walks: agent &rarr; TPP &rarr; account holder. Every link is signed; every scope attenuates. The bank receives a payment intent with the full chain attached.</li>
+      <li><span class="ob-step">4.</span> <strong>ASPSP</strong> verifies the chain offline with public keys; returns <code data-code="allow">allow_with_constraints</code>. The constraint: emit an SCA proof artefact + an audit-chain entry.</li>
+      <li><span class="ob-step">5.</span> Holder revokes consent at T+30&nbsp;days. Cascade kills every authority + every downstream agent grant in &lt;&nbsp;1s. Stale-consent transactions become impossible.</li>
+      <li><span class="ob-step">6.</span> 60 days later, a complainant disputes the &euro;420 payment. The bank pulls the Evidence Pack; the regulator verifies the full chain offline using the public keys it already holds. No interview transcripts.</li>
+    </ol>
+    <div class="hero-cta" style="margin-top:18px">
+      <a href="usecases.html#financial" class="btn btn-primary"><span class="ms">payments</span> See the full flow &rarr;</a>
+      <a href="concepts.html#on-behalf-of" class="btn btn-secondary"><span class="ms">link</span> On-Behalf-Of primitive</a>
+      <a href="frameworks.html" class="btn btn-secondary"><span class="ms">fact_check</span> PSD3 / DORA / EU AI Act mappings</a>
+    </div>
+  </div></div>
+</section>
+
 <section id="essentials" class="section alt" aria-labelledby="h-essentials">
         <span class="eyebrow">Essentials &middot; deep dives</span>
     <h2 id="h-essentials" class="h-section">Pages every <span class="accent">due-diligence team</span> reads next.</h2>
@@ -556,7 +613,7 @@
   } });
   window.mermaid = mermaid;
 </script>
-<script type="module" src="main.js?v=1778700000"></script>
+<script type="module" src="main.js?v=1778720000"></script>
 </body>
 </html>
 
