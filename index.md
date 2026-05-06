@@ -127,11 +127,12 @@ kye:pb:acme.example:01JYPROOF00000000000000A
 
 ## Cascade revocation
 
-Stop signals cascade atomically before the response returns. Revoking an
-entity propagates to its delegations (recursively through
-`parent_delegation_id`), payment authorities, access rights, capability
-grants, and recovery decisions. Each propagation step emits its own
-audit event with a shared `correlation_id`.
+When an entity is stopped, quarantined, revoked or marked compromised,
+downstream-derived authorities become unusable before the response to
+the originating request returns. Dependent delegations, payment
+authorities, access rights, capability grants, and recovery decisions
+are all affected. The mechanism that effects this propagation is part
+of the patent track and is not published in this repository.
 
 ## Discovery
 

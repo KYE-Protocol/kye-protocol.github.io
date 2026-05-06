@@ -15,7 +15,7 @@
   <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
   <meta property="og:url" content="https://kye-protocol.github.io/open-banking.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="styles.css?v=1778840000" />
+  <link rel="stylesheet" href="styles.css?v=1778860000" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
 </head>
@@ -62,6 +62,8 @@
         <span class="eyebrow">PISP / TPP flow</span>
     <h2 id="h-flow" class="h-section">Account holder &rarr; TPP &rarr; AI agent &rarr; ASPSP. <span class="accent">Six steps, end-to-end signed.</span></h2>
   <div class="section-body"><div class="container">
+    <div class="fv" data-flow-viz="open-banking" aria-label="Animated PISP/TPP flow visualisation"></div>
+    <details class="fv-details" style="margin-top:14px"><summary>Step-by-step text version</summary>
     <ol class="ob-flow" style="margin-top:14px">
       <li><span class="ob-step">1.</span> <strong>Account holder</strong> grants the TPP a delegation: <em>&ldquo;initiate payments on my behalf, &le; &euro;1,000 single, &le; &euro;10,000 monthly, EUR + SEPA only.&rdquo;</em> Signed by the holder; SCA satisfied at the human edge once.</li>
       <li><span class="ob-step">2.</span> <strong>TPP</strong> sub-delegates an attenuated scope to its <strong>AI finance agent</strong>: <em>&ldquo;EUR only, EU corridors, prepare-and-stage; final submit requires human approval &gt; &euro;500.&rdquo;</em> Child scope MUST be a subset of the holder&rsquo;s grant &mdash; protocol invariant.</li>
@@ -70,6 +72,7 @@
       <li><span class="ob-step">5.</span> Holder revokes consent at T+30&nbsp;days. Cascade kills every authority + every downstream agent grant in &lt;&nbsp;1s. Stale-consent transactions become impossible &mdash; the next agent call gets <code data-code="deny">deny: authority_revoked</code>.</li>
       <li><span class="ob-step">6.</span> 60 days later, a complainant disputes the &euro;420 payment. The bank pulls the Evidence Pack; the regulator verifies the full chain offline using the public keys it already holds for each party. No interview transcripts, no spreadsheets.</li>
     </ol>
+    </details>
   </div></div>
 </section>
 
@@ -164,6 +167,6 @@
 </main>
 <footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected by assets/components.js mountKyeComponents() --></footer>
 <button id="scroll-top" class="scroll-top" type="button" aria-label="Scroll to top" data-kye-scroll-top><!-- svg injected --></button>
-<script type="module" src="main.js?v=1778840000"></script>
+<script type="module" src="main.js?v=1778860000"></script>
 </body>
 </html>

@@ -20,7 +20,7 @@
   <meta name="twitter:description" content="Authority Finality™ for AI agents — replayable proof of accountability, compliance, dispute resolution, legally defensible audit trails." />
   <meta name="twitter:image" content="https://kye-protocol.github.io/og.svg" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="styles.css?v=1778840000" />
+  <link rel="stylesheet" href="styles.css?v=1778860000" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
   <link rel="stylesheet" href="whitepaper.css?v=1778017907" />
@@ -176,7 +176,7 @@
     <p>Each dimension transitions independently and emits its own signal class. &ldquo;Can this actor act now?&rdquo; is a single composed test against the six dimensions plus scope. The full vocabulary is open and pinned in the conformance pack.</p>
 
     <h3>4.2 Cascade revocation</h3>
-    <p>Stop signals cascade atomically before the response returns. Revoking an entity propagates to its delegations (recursively through <code>parent_delegation_id</code>), payment authorities, access rights, capability grants, and recovery decisions. Each propagation step emits its own audit event with a shared <code>correlation_id</code>; downstream PDPs that subscribe to the bus invalidate caches on signal receipt. Compromise reports trigger the same cascade with an elevated reason class.</p>
+    <p>When an entity is stopped, quarantined, revoked or marked compromised, downstream authorities derived from it become unusable before the response to the originating request returns. Dependent delegations, payment authorities, access rights, capability grants, and recovery decisions are all affected. The mechanism that effects this propagation &mdash; including its ordering, atomicity contract, audit emission, and on-the-wire summary &mdash; is part of the patent track and is <strong>not published</strong> in this repository.</p>
 
     <h2 id="architecture">4.3 &middot; Implementation architecture</h2>
     <p>KYE Protocol<span class="tm">™</span> stands on <strong>16 protocol-core principles</strong> in three tiers (see &sect;3 above). Tier A &mdash; runtime governance &mdash; defines what KYE<span class="tm">™</span> <em>decides</em>: <em>authority-first, state-first, decision-first, policy-bound, evidence-first, audit-trail-first</em>. Tier B &mdash; protocol design &mdash; defines how KYE<span class="tm">™</span> <em>classifies and ships</em>: <em>schema-first, dictionary-first, taxonomy-first, metadata-first, graph-first, profile-first, registry-first, conformance-first</em>. Tier C &mdash; developer adoption &mdash; defines how KYE<span class="tm">™</span> <em>reaches developers</em>: <em>API-first, SDK-first</em>. A separate commercial layer (KYE Cloud<span class="tm">™</span>) is SKU-first, metering-first, dashboard-first, and never bleeds into the open protocol. Canonical JSON Schemas drive OpenAPI, SDK code generation, validators, documentation, and conformance fixtures. Shared dictionaries (entity types, states, decisions, reason codes, capability kinds, side-effect levels, data classes, signal types, taxonomies, graph types) make implementations interoperable. Versioned taxonomies (16 V1 canonical taxonomies) and a normative metadata model (labels, classifications, ownership, lineage, compliance) drive policy decisions at runtime. Profiles keep Core small while letting domain extensions (Capability, Recovery, Payments, Payload Trust, Taxonomy &amp; Metadata, Graph, Healthcare, EU AI Act, ISO 42001, sector overlays) compose without modifying it. Registries make every object resolvable. The runtime API is decisioning-led, with <code>POST /v1/runtime/authorize</code> as the headline endpoint and <code>GET /v1/decisions/{id}/map</code> returning a Decision Map<span class="tm">™</span> for every adjudication. SDKs in TypeScript, Python, and Go ship with schema types, signing/verification helpers, evidence-pack builders, taxonomy resolvers, metadata classifiers, graph traversal clients. Every adjudicated action produces a signed <code>evidence_pack</code> a regulator can verify with public keys alone. A 38-fixture black-box conformance pack tests vendor and reference implementations byte-for-byte the same.</p>
@@ -268,7 +268,7 @@
     <ul class="wp-records">
       <li><strong>State-composition transition matrix</strong> &mdash; <code>private/specs/state/state-composition-matrix.md</code> publishes the 10 illegal compositions, 5 break-glass entry conditions and 3 terminal states across the 6-tuple state.</li>
       <li><strong>Wire-protocol version negotiation</strong> &mdash; <code>kye-gateway-v1.md</code> §11: <code>Accept-Version</code> header, optional URN version segment, <code>/.well-known/kye::kye_supported_versions</code>, 18-month backward-compatibility floor.</li>
-      <li><strong>Cascade atomicity contract</strong> &mdash; <code>kye-gateway-v1.md</code> §12: caller-visible all-or-nothing guarantee, idempotent retry, signed <code>cascade_summary</code>. Algorithm remains patent-track.</li>
+      <li><strong>Cascade atomicity contract</strong> &mdash; <code>kye-gateway-v1.md</code> §12: caller-visible end-state semantics. The contract shape, the on-the-wire summary, and the algorithm are part of the patent track and remain unpublished.</li>
       <li><strong>RFC 7807 problem+json error envelope</strong> &mdash; <code>kye-gateway-v1.md</code> §13 + <code>schemas/problem-detail.json</code>, with status-code map and reason-code pinning.</li>
       <li><strong>MCP elicitation / sampling / versioning</strong> &mdash; <code>kye-capability-v1.md</code> §11: gating per MCP operation, sampling budgets, tool versioning rules.</li>
     </ul>
@@ -294,10 +294,10 @@
     <ul class="wp-records">
       <li><strong>Replay attacks</strong> &mdash; webhook signatures include a Unix timestamp and are rejected outside a 5-minute window. Idempotency keys cache responses for 24 hours.</li>
       <li><strong>Tampered audit events</strong> &mdash; each event&rsquo;s canonical encoding includes its predecessor&rsquo;s hash; the verify endpoint detects breaks end-to-end.</li>
-      <li><strong>Stale revocations</strong> &mdash; cascade machinery propagates atomically to dependent records before the response returns; downstream PDPs that subscribe to the bus invalidate caches on signal receipt.</li>
+      <li><strong>Stale revocations</strong> &mdash; downstream-derived authorities become unusable before the originating request returns. Mechanism not disclosed in this repository.</li>
       <li><strong>Forged credentials</strong> &mdash; Ed25519 signatures verified against the gateway&rsquo;s published JWKS at <code>/.well-known/jwks.json</code>.</li>
       <li><strong>Approval timeout abuse</strong> &mdash; pending approvals carry a <code>required_by</code> deadline; the runtime expires them and emits a deny signal.</li>
-      <li><strong>Compromised actor</strong> &mdash; compromise reports trigger atomic cascade revocation across delegations, payment authorities, access rights, capability grants, and break-glass grants; recovery flow gates re-activation behind signed, time-boxed approvals.</li>
+      <li><strong>Compromised actor</strong> &mdash; compromise reports cause downstream-derived authorities to become unusable; re-activation is gated by a signed, time-boxed recovery flow. Cascade and recovery algorithms are part of the patent track.</li>
       <li><strong>Lost or rotated keys</strong> &mdash; key rotation requires a valid <code>X-Break-Glass-Grant-Id</code>; appends a <code>key.rotated</code> entry to the audit chain; previous keys remain verifiable for a configurable retention window. The signing-suite construction is part of the normative specification and is not disclosed publicly.</li>
       <li><strong>Forensic back-dating</strong> &mdash; point-in-time audit replay reconstructs entity / authority / state at any sequence or timestamp; investigators verify behaviour rather than reading current state.</li>
     </ul>
@@ -333,6 +333,6 @@
 <footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected by assets/components.js mountKyeComponents() --></footer>
 <script>document.getElementById("year").textContent=new Date().getFullYear();</script>
 <button id="scroll-top" class="scroll-top" type="button" aria-label="Scroll to top" data-kye-scroll-top><!-- svg injected --></button>
-<script type="module" src="main.js?v=1778840000"></script>
+<script type="module" src="main.js?v=1778860000"></script>
 </body>
 </html>
