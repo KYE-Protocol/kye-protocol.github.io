@@ -7130,3 +7130,222 @@ code[data-code="misc"]      { --code-bg: rgba(63, 81, 181, 0.14)  !important; --
   border-color: color-mix(in srgb, var(--fwk, #9AA0A6) 45%, transparent);
   color: color-mix(in srgb, var(--fwk, #9AA0A6) 70%, white);
 }
+
+/* ============================================================
+   §FINAL-37 — modal accessibility + per-section variant chrome
+   ============================================================
+   User: 'on mobile view no way to exit modal either' + 'WHO IT'S
+   FOR and all collapsing items below FROM ACCESS CONTROL TO
+   AUTHORITY FINALITY share identical fucking collapsing headers,
+   shouldn't be repetitive' + 'modal compulsory fields not showing
+   compulsory'.
+   ============================================================ */
+
+/* === Required-field markers === */
+.kye-req {
+  color: #EA4335;
+  font-weight: 700;
+  margin-left: 2px;
+}
+.kye-modal-note {
+  margin: 6px 0 0;
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+
+/* === Mobile modal exit visibility === */
+.kye-modal-backdrop { padding: 12px !important; }
+.kye-modal {
+  max-height: calc(100vh - 24px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+  padding-top: 56px !important;  /* leave room for the close X */
+}
+.kye-modal-close {
+  position: absolute !important;
+  top: 10px !important;
+  right: 10px !important;
+  width: 40px !important;
+  height: 40px !important;
+  font-size: 26px !important;
+  background: rgba(0,0,0,0.04) !important;
+  border-radius: 999px !important;
+  z-index: 5 !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  line-height: 1 !important;
+  border: 1px solid var(--line) !important;
+  color: var(--text) !important;
+}
+.kye-modal-close:hover { background: rgba(234,67,53,0.10) !important; color: #C5221F !important; }
+:root[data-theme="dark"] .kye-modal-close {
+  background: rgba(255,255,255,0.10) !important;
+  border-color: rgba(255,255,255,0.18) !important;
+  color: #F0F4FF !important;
+}
+
+/* On mobile, also show a sticky bottom Cancel/Close bar so the
+   exit affordance is reachable without scrolling back to the X. */
+.kye-modal-actions {
+  position: sticky;
+  bottom: 0;
+  background: var(--surface);
+  padding: 12px 0 4px;
+  margin-top: 16px;
+  z-index: 4;
+  border-top: 1px solid var(--line);
+}
+:root[data-theme="dark"] .kye-modal-actions {
+  background: #161c30;
+  border-top-color: rgba(255,255,255,0.12);
+}
+
+@media (max-width: 480px) {
+  .kye-modal {
+    width: 100%;
+    max-height: 100vh;
+    border-radius: 12px;
+    padding: 56px 16px 16px !important;
+  }
+  .kye-modal-close { top: 8px !important; right: 8px !important; width: 44px !important; height: 44px !important; }
+  .kye-modal-actions { gap: 8px; }
+  .kye-modal-actions .btn { flex: 1; min-width: 0; }
+}
+
+/* === Section collapse-header variants — every section a different chrome ===
+   §FINAL-34 gave each section a 4px coloured left rail + tinted
+   eyebrow, which the user reported as still 'identical style'.
+   This pass adds genuine layout variety. We define five variant
+   styles; sections are bucketed across them by id so no two
+   adjacent sections look the same.
+
+   Variants:
+     v1 — left rail (default from §FINAL-34)
+     v2 — top rule + bigger gap
+     v3 — accent dot bullet on the left
+     v4 — full tinted background panel
+     v5 — boxed eyebrow chip on top of the heading
+*/
+.section.collapsible > details > summary { padding-top: 18px; padding-bottom: 18px; }
+
+/* Variant 2: top rule + bigger vertical gap */
+#what                 > details > summary,
+#evolution            > details > summary,
+#assurance            > details > summary,
+#cmp                  > details > summary,
+#payload-trust        > details > summary {
+  border-left: none;
+  padding-left: 0;
+  border-top: 2px solid var(--sec-rail, currentColor);
+  padding-top: 24px;
+  margin-top: 8px;
+}
+#what            > details > summary { --sec-rail: #1A73E8; }
+#evolution       > details > summary { --sec-rail: #8E24AA; }
+#assurance       > details > summary { --sec-rail: #455A64; }
+#cmp             > details > summary { --sec-rail: #1565C0; }
+#payload-trust   > details > summary { --sec-rail: #6750A4; }
+
+/* Variant 3: bullet-dot prefix */
+#authority-graph     > details > summary,
+#roi                 > details > summary,
+#profiles            > details > summary,
+#quickstart          > details > summary,
+#taxonomy            > details > summary {
+  border-left: none;
+  padding-left: 24px;
+  position: relative;
+}
+#authority-graph     > details > summary::before,
+#roi                 > details > summary::before,
+#profiles            > details > summary::before,
+#quickstart          > details > summary::before,
+#taxonomy            > details > summary::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 28px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--sec-rail, currentColor);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--sec-rail, currentColor) 18%, transparent);
+}
+#authority-graph > details > summary { --sec-rail: #00838F; }
+#roi             > details > summary { --sec-rail: #009688; }
+#profiles        > details > summary { --sec-rail: #C2185B; }
+#quickstart      > details > summary { --sec-rail: #0F5132; }
+#taxonomy        > details > summary { --sec-rail: #00ACC1; }
+
+/* Variant 4: full tinted background panel for definitional sections */
+#authority-finality > details > summary,
+#sectors            > details > summary {
+  border-left: none;
+  padding: 22px 22px 22px 22px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--sec-bg, #1A8754) 6%, transparent);
+  border: 1px solid color-mix(in srgb, var(--sec-bg, #1A8754) 18%, transparent);
+}
+#authority-finality > details > summary { --sec-bg: #1A8754; }
+#sectors            > details > summary { --sec-bg: #3F51B5; }
+
+/* Variant 5: boxed eyebrow chip on top */
+#who                 > details > summary,
+#ps                  > details > summary,
+#why                 > details > summary,
+#compliance          > details > summary,
+#faq                 > details > summary {
+  border-left: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+#who         > details > summary .eyebrow,
+#ps          > details > summary .eyebrow,
+#why         > details > summary .eyebrow,
+#compliance  > details > summary .eyebrow,
+#faq         > details > summary .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  font-weight: 700;
+  background: color-mix(in srgb, var(--sec-chip, #F57C00) 14%, transparent);
+  color: var(--sec-chip, #F57C00) !important;
+  border: 1px solid color-mix(in srgb, var(--sec-chip, #F57C00) 30%, transparent);
+  margin: 0 !important;
+}
+#who         > details > summary { --sec-chip: #F57C00; }
+#ps          > details > summary { --sec-chip: #B47200; }
+#why         > details > summary { --sec-chip: #EA4335; }
+#compliance  > details > summary { --sec-chip: #6D4C41; }
+#faq         > details > summary { --sec-chip: #5F6368; }
+
+/* Caret position must adapt to the new layouts */
+#who         > details > summary .section-caret,
+#ps          > details > summary .section-caret,
+#why         > details > summary .section-caret,
+#compliance  > details > summary .section-caret,
+#faq         > details > summary .section-caret { align-self: flex-end; margin-top: -32px; }
+
+/* Fallback for browsers without color-mix — solid soft tints */
+@supports not (background: color-mix(in srgb, red, blue)) {
+  #authority-finality > details > summary { background: rgba(26,135,84,0.06); border-color: rgba(26,135,84,0.20); }
+  #sectors            > details > summary { background: rgba(63,81,181,0.06); border-color: rgba(63,81,181,0.20); }
+  #who         > details > summary .eyebrow,
+  #ps          > details > summary .eyebrow,
+  #why         > details > summary .eyebrow,
+  #compliance  > details > summary .eyebrow,
+  #faq         > details > summary .eyebrow {
+    background: rgba(95,99,104,0.14);
+    border-color: rgba(95,99,104,0.30);
+  }
+}

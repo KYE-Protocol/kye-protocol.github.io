@@ -449,23 +449,23 @@ initWebMcp();
         <form data-contact-form>
           <div class="kye-modal-grid">
             <div>
-              <label for="kye-contact-name">Name</label>
+              <label for="kye-contact-name">Name <span class="kye-req" aria-label="required">*</span></label>
               <input type="text" id="kye-contact-name" name="name" autocomplete="name" required />
             </div>
             <div>
-              <label for="kye-contact-email">Email</label>
+              <label for="kye-contact-email">Email <span class="kye-req" aria-label="required">*</span></label>
               <input type="email" id="kye-contact-email" name="email" autocomplete="email" required />
             </div>
             <div>
-              <label for="kye-contact-org">Company</label>
+              <label for="kye-contact-org">Company <span class="kye-req" aria-label="required">*</span></label>
               <input type="text" id="kye-contact-org" name="organisation" autocomplete="organization" required />
             </div>
             <div>
-              <label for="kye-contact-phone">Contact number</label>
+              <label for="kye-contact-phone">Contact number <span class="kye-req" aria-label="required">*</span></label>
               <input type="tel" id="kye-contact-phone" name="phone" autocomplete="tel" inputmode="tel" required />
             </div>
             <div>
-              <label for="kye-contact-position">Your role</label>
+              <label for="kye-contact-position">Your role <span class="kye-req" aria-label="required">*</span></label>
               <select id="kye-contact-position" name="position" required>
                 <option value="" disabled selected>Select your role&hellip;</option>
                 <option value="board">Board / executive</option>
@@ -486,7 +486,7 @@ initWebMcp();
               </select>
             </div>
             <div>
-              <label for="kye-contact-topic">Topic</label>
+              <label for="kye-contact-topic">Topic <span class="kye-req" aria-label="required">*</span></label>
               <select id="kye-contact-topic" name="topic" required>
                 <option value="general">General enquiry</option>
                 <option value="adoption">Adoption &mdash; integrating KYE Protocol&trade;</option>
@@ -499,8 +499,9 @@ initWebMcp();
               </select>
             </div>
           </div>
-          <label for="kye-contact-message">Message</label>
+          <label for="kye-contact-message">Message <span class="kye-req" aria-label="required">*</span></label>
           <textarea id="kye-contact-message" name="message" required></textarea>
+          <p class="kye-modal-note"><span class="kye-req">*</span> All marked fields are required.</p>
           <label class="kye-modal-accept" for="kye-contact-accept">
             <input type="checkbox" id="kye-contact-accept" name="accept" required />
             <span>I have read and accept the <a href="legal.html#terms" target="_blank" rel="noopener">terms &amp; conditions</a> and <a href="legal.html#privacy" target="_blank" rel="noopener">privacy policy</a>, and I confirm the information above is accurate.</span>
