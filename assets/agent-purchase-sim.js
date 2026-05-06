@@ -4,14 +4,16 @@
  * Mounts on any element with [data-agent-sim]. Renders a controls pane
  * (agent state, customer authority, merchant category, basket amount,
  * approval threshold, card-token state, risk state) on the left, and
- * three live outputs on the right:
+ * four live outputs on the right:
  *
  *   1. The KYE™ runtime decision (allow / allow_with_constraints /
  *      require_approval / require_step_up / quarantine / deny) plus the
  *      reason code and a list of obligations.
- *   2. The first signed webhook event KYE™ would emit for this decision.
- *   3. An evidence-pack preview (signature + audit_ref + the chain of
- *      authority refs).
+ *   2. The Decision Map™ — visual authority chain that produced the
+ *      decision (principal → delegation → actor → capability → scope →
+ *      state → policy → decision), bound to audit + evidence refs.
+ *   3. The first signed webhook event KYE™ would emit for this decision.
+ *   4. An evidence-pack preview (signature + audit_ref + chain refs).
  *
  * The decision logic is intentionally rule-based and conservative — it
  * exists to make the protocol's runtime semantics tangible to a non-
@@ -19,6 +21,8 @@
  * production runtime's internal mechanism is part of the patent track
  * and is not modelled here.
  */
+
+import { renderDecisionMap } from './decision-map-viz.js?v=1778960000';
 
 const MERCHANT_RISK = {
   groceries:        { label: 'Groceries / supermarket',  risk: 'low'  },
@@ -223,6 +227,10 @@ function shellHTML() {
           </div>
         </div>
         <details class="aps-output-block" open>
+          <summary><span class="ms">account_tree</span> Decision Map<span class="tm">&trade;</span> &mdash; the chain that produced this decision</summary>
+          <div class="aps-output-body" data-aps-decision-map></div>
+        </details>
+        <details class="aps-output-block">
           <summary><span class="ms">send</span> Webhook event KYE<span class="tm">&trade;</span> would emit</summary>
           <pre class="codeblock"><code data-aps-event></code></pre>
         </details>
@@ -248,6 +256,34 @@ function readState(host) {
   };
 }
 
+function decisionMapFor(state, result, event, evid) {
+  // Project the simulator state into a Decision Map™ data shape that
+  // the visual viewer can render. Order = principal → delegation →
+  // actor → capability → scope → state → policy → decision.
+  return {
+    decision: result.decision,
+    reason:   result.reason,
+    nodes: [
+      { type: 'principal',  ref: 'kye:entity:person:customer_123',
+        short: 'customer_123' },
+      { type: 'delegation', ref: 'kye:delegation:tpp_to_agent_002',
+        short: 'tpp_to_agent_002' },
+      { type: 'actor',      ref: 'kye:entity:agent:shopping_agent_456',
+        short: `shopping_agent (${state.agent})` },
+      { type: 'capability', ref: 'kye:capability:payment_action:card_purchase',
+        short: 'card_purchase' },
+      { type: 'scope',      ref: `kye:scope:cap_${state.threshold}_gbp`,
+        short: `≤ £${state.threshold} cap` },
+      { type: 'state',      ref: `kye:state:authority_${state.authority}`,
+        short: `authority: ${state.authority}` },
+      { type: 'policy',     ref: 'kye:policy:agent_purchase_v1',
+        short: `merchant: ${state.merchant} · risk: ${state.risk}` },
+    ],
+    audit_ref:     evid.audit_ref,
+    evidence_refs: [evid.pack_id],
+  };
+}
+
 function recompute(host) {
   const state  = readState(host);
   const result = decide(state);
@@ -262,6 +298,12 @@ function recompute(host) {
   host.querySelector('[data-aps-reason]').textContent = result.reason;
   host.querySelector('[data-aps-obligations]').textContent =
     result.obligations.join(', ');
+
+  // Visual Decision Map™ — re-render on every recompute so the chain
+  // reflects the current input state live.
+  const dmHost = host.querySelector('[data-aps-decision-map]');
+  if (dmHost) renderDecisionMap(dmHost, decisionMapFor(state, result, event, evid));
+
   host.querySelector('[data-aps-event]').textContent =
     JSON.stringify(event, null, 2);
   host.querySelector('[data-aps-evidence]').textContent =

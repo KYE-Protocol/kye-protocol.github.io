@@ -9289,3 +9289,165 @@ li > .fwk-list.sector-frameworks-badged {
 :root[data-theme="dark"] .rr-card { background: var(--surface-solid); border-color: var(--line); }
 :root[data-theme="dark"] .rr-card:hover { border-color: var(--kye-color-brand); }
 :root[data-theme="dark"] .rr-cta { border-color: var(--line); }
+
+/* ============================================================
+   §FINAL-57 — Decision Map™ visual viewer
+   ============================================================ */
+.dm-host { display: block; }
+.dm-chain {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 0;
+  background: var(--kye-color-paper-2);
+  border: 1px solid var(--kye-color-line);
+  border-radius: var(--kye-radius-3);
+  padding: 14px;
+}
+.dm-node {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--kye-color-paper);
+  border: 1px solid var(--kye-color-line);
+  border-radius: var(--kye-radius-2);
+  padding: 10px 12px;
+  margin: 6px;
+  flex: 1 1 180px;
+  min-width: 160px;
+  max-width: 260px;
+  transition: border-color 160ms ease, transform 160ms ease;
+}
+.dm-node:hover {
+  border-color: var(--kye-color-brand);
+  transform: translateY(-1px);
+}
+.dm-node + .dm-node::before {
+  content: '→';
+  position: absolute;
+  left: -14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--kye-color-text-muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+@media (max-width: 600px) {
+  .dm-chain { flex-direction: column; }
+  .dm-node { max-width: none; margin: 4px 0; }
+  .dm-node + .dm-node::before {
+    content: '↓';
+    left: 50%;
+    top: -12px;
+    transform: translateX(-50%);
+  }
+}
+.dm-node-ico {
+  font-size: 20px !important;
+  width: 20px;
+  color: var(--kye-color-brand);
+  flex-shrink: 0;
+}
+.dm-node-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+.dm-node-type {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--kye-color-text-muted);
+}
+.dm-node-short {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--kye-color-text);
+  word-break: break-word;
+}
+.dm-node-ref code {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 10.5px;
+  background: rgba(95, 99, 104, 0.08);
+  padding: 1px 5px;
+  border-radius: 3px;
+  color: var(--kye-color-text-muted);
+  word-break: break-all;
+  display: inline-block;
+  margin-top: 2px;
+}
+.dm-node-hint {
+  font-size: 10.5px;
+  color: var(--kye-color-text-muted);
+  font-style: italic;
+}
+.dm-decision {
+  border-width: 2px;
+  background: rgba(95, 99, 104, 0.06);
+}
+.dm-decision.is-allow {
+  border-color: #1A8754;
+  background: rgba(26, 135, 84, 0.06);
+}
+.dm-decision.is-allow .dm-node-ico { color: #1A8754; }
+.dm-decision.is-approve {
+  border-color: #B47200;
+  background: rgba(180, 114, 0, 0.06);
+}
+.dm-decision.is-approve .dm-node-ico { color: #B47200; }
+.dm-decision.is-deny {
+  border-color: #C5221F;
+  background: rgba(197, 34, 31, 0.06);
+}
+.dm-decision.is-deny .dm-node-ico { color: #C5221F; }
+.dm-bindings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: var(--kye-color-paper);
+  border: 1px solid var(--kye-color-line);
+  border-radius: var(--kye-radius-2);
+}
+.dm-binding {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+}
+.dm-binding .ms {
+  font-size: 14px !important;
+  width: 14px;
+  color: var(--kye-color-brand);
+}
+.dm-binding-k {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--kye-color-text-muted);
+}
+.dm-binding code {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 11.5px;
+  background: rgba(95, 99, 104, 0.08);
+  padding: 1px 5px;
+  border-radius: 3px;
+  color: var(--kye-color-text);
+}
+:root[data-theme="dark"] .dm-chain,
+:root[data-theme="dark"] .dm-node,
+:root[data-theme="dark"] .dm-bindings {
+  background: var(--surface-solid);
+  border-color: var(--line);
+}

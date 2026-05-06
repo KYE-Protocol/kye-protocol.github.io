@@ -15,7 +15,7 @@
   <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
   <meta property="og:url" content="https://kye-protocol.github.io/protocol.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="styles.css?v=1778950000" />
+  <link rel="stylesheet" href="styles.css?v=1778960000" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
 </head>
@@ -150,6 +150,16 @@
     </div>
   </div>
   </div>
+</section>
+
+<section id="decision-map" class="section technical-only" aria-labelledby="h-dm">
+        <span class="eyebrow">Decision Map<span class="tm">&trade;</span> &middot; the chain that produced the verdict</span>
+    <h2 id="h-dm" class="h-section">Every decision <span class="accent">comes with a map</span>.</h2>
+  <div class="section-body"><div class="container">
+    <p class="lede">The runtime emits a signed Decision Map<span class="tm">&trade;</span> with every <code data-code="endpoint">/v1/runtime/authorize</code> response. The map shows which inputs led to the verdict &mdash; the principal, the delegation, the actor, the capability, the scope, the state, and the policy &mdash; bound to the audit-chain entry and the evidence pack. Verifiable offline with public keys alone.</p>
+    <div data-decision-map style="margin-top:18px"></div>
+    <p class="lede" style="margin-top:14px;font-size:13px;color:var(--kye-color-text-muted)">Try the live version on the <a href="agent-purchasing.html#simulator" style="color:var(--accent);text-decoration:underline">agent-backed purchasing simulator</a> &mdash; change any input and watch the chain recompute.</p>
+  </div></div>
 </section>
 
 <section id="signals" class="section technical-only" aria-labelledby="h-signals">
@@ -575,6 +585,6 @@
 </main>
 <footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected by assets/components.js mountKyeComponents() --></footer>
 <button id="scroll-top" class="scroll-top" type="button" aria-label="Scroll to top" data-kye-scroll-top><!-- svg injected --></button>
-<script type="module" src="main.js?v=1778950000"></script>
+<script type="module" src="main.js?v=1778960000"></script>
 </body>
 </html>
