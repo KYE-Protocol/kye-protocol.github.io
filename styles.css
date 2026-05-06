@@ -5015,3 +5015,184 @@ html.ms-loaded .ms { visibility: visible; }
   .wp-body .top-bar-inner { padding: 0 12px !important; }
   .wp-body .brand-name { display: none !important; }
 }
+
+/* ============================================================
+   §FINAL-19 — Whitepaper mobile border / overflow fix.
+   User: "whitepaper on mobile seem to be trimmed page borders
+   text borders must be fixed". Long inline code, URLs, tables,
+   pre blocks were exceeding the viewport on phones, causing
+   horizontal cut-off and "borderless" feel.
+   ============================================================ */
+
+/* Constrain everything inside the wp-article to the viewport */
+.wp-body, .wp-body main, .wp-main { overflow-x: hidden !important; }
+.wp-article {
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+.wp-article p,
+.wp-article li,
+.wp-article h1,
+.wp-article h2,
+.wp-article h3,
+.wp-article h4 {
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}
+.wp-article code,
+.wp-article kbd,
+.wp-article samp {
+  word-break: break-all;
+  white-space: normal;
+}
+.wp-article pre {
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre;
+  word-break: normal;
+  -webkit-overflow-scrolling: touch;
+}
+.wp-article table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile-specific: tighter padding + visible page borders */
+@media (max-width: 760px) {
+  .wp-main {
+    padding: 24px 14px 56px !important;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+  }
+  .wp-article {
+    padding: 0 !important;
+    box-sizing: border-box;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .wp-toc {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    padding: 12px 14px !important;
+  }
+  /* Anything inline-code-like on mobile: 11px to fit */
+  .wp-article code { font-size: 11.5px !important; padding: 1px 4px !important; }
+  .wp-article pre  { font-size: 11.5px !important; padding: 10px 12px !important; line-height: 1.5; }
+  .wp-article p, .wp-records li, .wp-principles li, .wp-refs li {
+    font-size: 14px !important; line-height: 1.6 !important;
+  }
+}
+@media (max-width: 480px) {
+  .wp-main { padding: 20px 12px 48px !important; }
+  .wp-article h1 { font-size: 24px !important; line-height: 1.18 !important; }
+  .wp-article h2 { font-size: 19px !important; }
+  .wp-article h3 { font-size: 16px !important; }
+  .wp-article p, .wp-records li, .wp-principles li, .wp-refs li {
+    font-size: 13.5px !important; line-height: 1.6 !important;
+  }
+  .wp-article code, .wp-article pre { font-size: 11px !important; }
+}
+
+/* Make sure body itself doesn't horizontal-scroll */
+.wp-body { overflow-x: hidden; }
+
+/* Section h2 long-string overflow on collapsible sections */
+.section .h-section, .section .lede {
+  overflow-wrap: anywhere;
+  word-wrap: break-word;
+}
+
+/* ============================================================
+   §FINAL-20 — Scroll-top guaranteed visibility on every page
+   (especially whitepaper). User: "no going to top of page button
+   on whitepaper (mobile+web)". Cause: stacking-context conflict
+   with .wp-toc backdrop-filter + the button's z-index being
+   below other fixed UI on certain pages. Force z-index high
+   and pin the button to the body, not any ancestor.
+   ============================================================ */
+
+.scroll-top {
+  z-index: 9999 !important;
+  position: fixed !important;
+}
+
+/* Ensure the button isn't accidentally inside an overflow:hidden
+   ancestor on whitepaper-body */
+.wp-body { overflow-x: clip !important; }   /* clip != hidden, doesn't establish a new BFC for fixed pos */
+
+/* On the whitepaper, give the button its own visible-state guard
+   that doesn't depend on any earlier !important rule */
+.wp-body .scroll-top { opacity: 0; pointer-events: none; }
+.wp-body .scroll-top.is-visible { opacity: 1 !important; pointer-events: auto !important; }
+
+/* ============================================================
+   §FINAL-21 — Hero pill mobile fix
+   "v1.0 · OPEN STANDARD · ENTITY AUTHORITY PROTOCOL FOR AI
+   GOVERNANCE" was overflowing on phones. Allow wrap + shrink
+   font + keep within container.
+   ============================================================ */
+.hero-pill {
+  max-width: 100%;
+  white-space: normal !important;
+  text-align: left;
+  line-height: 1.5;
+}
+@media (max-width: 760px) {
+  .hero-pill {
+    font-size: 10.5px !important;
+    letter-spacing: 0.10em !important;
+    padding: 6px 12px !important;
+    line-height: 1.45 !important;
+  }
+}
+@media (max-width: 480px) {
+  .hero-pill {
+    font-size: 10px !important;
+    letter-spacing: 0.08em !important;
+    padding: 5px 10px !important;
+  }
+}
+/* Also constrain the version-pill (release notes link) the same way */
+.version-pill {
+  max-width: 100%;
+  white-space: normal !important;
+}
+
+/* ============================================================
+   §FINAL-22 — Unify hero-pill + version-pill font size on
+   every viewport. User: "V1.0 · OPEN STANDARD ... font size
+   discrepancies" — the two adjacent pills used different
+   sizes.
+   ============================================================ */
+.hero-pill,
+.version-pill,
+.deployed-pill {
+  font-size: 11px !important;
+  letter-spacing: 0.10em !important;
+  font-weight: 600 !important;
+  line-height: 1.45 !important;
+  padding: 5px 11px !important;
+  border-radius: 999px !important;
+  text-transform: uppercase !important;
+  white-space: normal !important;
+}
+@media (max-width: 760px) {
+  .hero-pill, .version-pill, .deployed-pill {
+    font-size: 10.5px !important;
+    letter-spacing: 0.08em !important;
+    padding: 5px 10px !important;
+  }
+}
+@media (max-width: 480px) {
+  .hero-pill, .version-pill, .deployed-pill {
+    font-size: 10px !important;
+    letter-spacing: 0.06em !important;
+    padding: 4px 9px !important;
+  }
+}
