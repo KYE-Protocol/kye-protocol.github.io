@@ -6264,3 +6264,547 @@ footer.footer  .brand-mark svg path {
   .who-avatar svg { width: 22px; height: 22px; }
   .who-content h3 { font-size: 16px; }
 }
+
+/* ============================================================
+   §FINAL-28 — kill the duplicate-section-style problem for good
+   ============================================================
+   The user kept reporting that #authority-finality and #who looked
+   like the same kind of vertical-list-of-bordered-rows section,
+   even after §FINAL-25 / 26 / 27. This pass replaces the inner
+   markup of both sections with structurally different shapes:
+
+     #authority-finality → side-by-side BEFORE → AFTER hero diagram:
+        a dim left block (Traditional IAM, monochrome, line-list of
+        gaps), a transition arrow with 'becomes' label, an accent
+        right block (Authority Finality™) with a 6-tile dimension
+        grid (Identity / Delegation / Capability / Authority /
+        State / Audit). One graphic, not a list of comparable rows.
+
+     #who → editorial magazine layout:
+        each persona is a long-form story block with a 'Story 0X'
+        eyebrow, large display headline, large pull-quote in a
+        serif-style italic with quote marks, narrative body, and
+        a single inline metadata line of dot-separated facts.
+        No bullets, no avatar gutter, no card containers.
+
+   The two are no longer 'card grid versus card grid'. They read as
+   'comparison diagram' versus 'magazine spread'.
+   ============================================================ */
+
+/* === #authority-finality — side-by-side hero diagram === */
+.af-diagram {
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  gap: 0;
+  align-items: stretch;
+  margin: 28px 0 16px;
+  border-radius: 18px;
+  overflow: hidden;
+}
+.af-block {
+  padding: 32px 28px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.af-block-then {
+  background: linear-gradient(180deg, rgba(95,99,104,0.06) 0%, rgba(95,99,104,0.10) 100%);
+  border: 1px solid rgba(95,99,104,0.20);
+  border-right: none;
+  border-radius: 18px 0 0 18px;
+}
+.af-block-now {
+  background: linear-gradient(180deg, rgba(26,135,84,0.08) 0%, rgba(26,135,84,0.16) 100%);
+  border: 1px solid rgba(26,135,84,0.30);
+  border-left: none;
+  border-radius: 0 18px 18px 0;
+}
+.af-block-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 0;
+}
+.af-block-then .af-block-eyebrow { color: #5F6368; }
+.af-block-now  .af-block-eyebrow { color: var(--accent); }
+.af-block-h {
+  margin: 0;
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+.af-block-then .af-block-h { color: var(--text-muted); }
+.af-block-now  .af-block-h { color: var(--text); }
+.af-block-sub {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-muted);
+  max-width: 36ch;
+}
+.af-block-points {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.af-block-points li {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 12px;
+  align-items: center;
+  font-size: 13.5px;
+  color: var(--text-muted);
+  text-decoration: line-through;
+  text-decoration-color: rgba(95,99,104,0.40);
+  text-decoration-thickness: 1px;
+}
+.af-block-points li .ms {
+  color: #9AA0A6 !important;
+  font-size: 18px !important;
+  width: 18px !important;
+  min-width: 18px !important;
+  height: 18px !important;
+}
+.af-arrow {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 0 4px;
+}
+.af-arrow svg { width: 100%; height: auto; max-width: 110px; }
+.af-arrow-label {
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--accent);
+}
+.af-dim-grid {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 4px;
+}
+.af-dim {
+  background: rgba(255,255,255,0.55);
+  border: 1px solid rgba(26,135,84,0.20);
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  grid-template-rows: auto auto;
+  gap: 4px 10px;
+  align-items: start;
+}
+.af-dim .ms {
+  grid-row: 1 / span 2;
+  align-self: center;
+  color: var(--accent) !important;
+  font-size: 18px !important;
+  width: 18px !important;
+  min-width: 18px !important;
+  height: 18px !important;
+}
+.af-dim-h {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.01em;
+}
+.af-dim-b {
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
+:root[data-theme="dark"] .af-block-then {
+  background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.07) 100%);
+  border-color: rgba(255,255,255,0.12);
+}
+:root[data-theme="dark"] .af-block-now {
+  background: linear-gradient(180deg, rgba(129,201,149,0.10) 0%, rgba(129,201,149,0.18) 100%);
+  border-color: rgba(129,201,149,0.32);
+}
+:root[data-theme="dark"] .af-dim {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(129,201,149,0.22);
+}
+
+@media (max-width: 800px) {
+  .af-diagram { grid-template-columns: 1fr; }
+  .af-block-then { border-right: 1px solid rgba(95,99,104,0.20); border-bottom: none; border-radius: 18px 18px 0 0; }
+  .af-block-now  { border-left:  1px solid rgba(26,135,84,0.30);  border-top:    none; border-radius: 0 0 18px 18px; }
+  .af-arrow { padding: 8px 0; transform: rotate(90deg); }
+  .af-dim-grid { grid-template-columns: 1fr; }
+}
+
+/* === #who — editorial magazine spread === */
+.who-stories {
+  margin: 28px auto 16px;
+  max-width: 720px;
+  padding: 0;
+  display: grid;
+  gap: 0;
+}
+.who-story {
+  padding: 36px 0;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+.who-story:first-child { padding-top: 8px; }
+.who-story:last-child  { border-bottom: none; padding-bottom: 12px; }
+.who-story-num {
+  margin: 0 0 6px;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 11.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--who, var(--accent));
+  font-weight: 700;
+}
+.who-story-h {
+  margin: 0 0 18px;
+  font-size: clamp(24px, 3.4vw, 34px);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  font-weight: 700;
+  color: var(--text);
+}
+.who-story-quote {
+  margin: 0 0 20px;
+  padding: 0 0 0 20px;
+  border-left: 3px solid var(--who, var(--accent));
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: clamp(17px, 2vw, 22px);
+  line-height: 1.4;
+  color: var(--text);
+  quotes: "\201C" "\201D";
+}
+.who-story-body {
+  margin: 0 0 16px;
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--text);
+  max-width: 60ch;
+}
+.who-story-body code {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 13px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+.who-story-meta {
+  margin: 0;
+  padding: 12px 16px;
+  background: var(--who-soft, var(--accent-soft));
+  border-radius: 8px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--text-muted);
+  letter-spacing: 0.01em;
+}
+.who-story[data-who="banks"]      { --who: #1A73E8; --who-soft: rgba(26, 115, 232, 0.08); }
+.who-story[data-who="ai-labs"]    { --who: #00838F; --who-soft: rgba(0, 172, 193, 0.08); }
+.who-story[data-who="healthcare"] { --who: #EA4335; --who-soft: rgba(234, 67, 53, 0.08); }
+.who-story[data-who="custody"]    { --who: #009688; --who-soft: rgba(0, 150, 136, 0.08); }
+.who-story[data-who="regulators"] { --who: #8E24AA; --who-soft: rgba(142, 36, 170, 0.08); }
+.who-story[data-who="platform"]   { --who: #5F6368; --who-soft: rgba(95, 99, 104, 0.10); }
+
+/* Defensively neutralise the §FINAL-27 timeline rules in case any
+   stale HTML still references them. */
+.who-timeline { display: contents; }
+.who-row { display: contents; }
+.who-avatar { display: none; }
+
+@media (max-width: 600px) {
+  .who-story { padding: 28px 0; }
+  .who-story-quote { padding-left: 14px; }
+}
+
+/* ============================================================
+   §FINAL-29 — whitepaper chrome (icons, pager, indicator) +
+                top-bar nav icon colour coding
+   ============================================================
+   User: 'all snippets still grey all icons same colour on
+   whitepaper'. The snippet greyness was a cache problem (main.js
+   wasn't cache-busted on whitepaper.html). The 'all icons same
+   colour' was the top-bar nav and the unstyled section headings —
+   nav icons all in green, h2 headings with no icons at all.
+   Plus: 'pagination on whitepaper must be fixed'.
+   ============================================================ */
+
+/* === Top-bar nav icons: per-tab colour === */
+.tb-link[data-tb="home"]       .ms { color: #1A8754 !important; }
+.tb-link[data-tb="builders"]   .ms { color: #1A73E8 !important; }
+.tb-link[data-tb="buyers"]     .ms { color: #B47200 !important; }
+.tb-link[data-tb="auditors"]   .ms { color: #009688 !important; }
+.tb-link[data-tb="regulators"] .ms { color: #8E24AA !important; }
+.tb-link[data-tb="sectors"]    .ms { color: #5F6368 !important; }
+.tb-link[data-tb="demos"]      .ms { color: #EA4335 !important; }
+.tb-link[data-tb="whitepaper"] .ms { color: #00838F !important; }
+
+/* === Whitepaper section heading icons === */
+.wp-article h2 {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  scroll-margin-top: 96px;
+  padding-left: 0;
+  border-left: 4px solid var(--wp-h2-c, var(--accent));
+  padding-left: 16px;
+  border-radius: 0 6px 6px 0;
+}
+.wp-article h2 .wp-h2-icon {
+  font-size: 26px !important;
+  width: 32px !important;
+  min-width: 32px !important;
+  height: 32px !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.04);
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+/* === Whitepaper pager (prev / next sections, table-of-contents grid) === */
+.wp-pager {
+  margin: 56px 0 32px;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+.wp-pager::before {
+  content: "Jump to section";
+  display: block;
+  margin-bottom: 14px;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+.wp-pager-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 8px;
+}
+.wp-pager-list li { margin: 0; }
+.wp-pager-list a {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  border: 1px solid var(--line);
+  background: transparent;
+  transition: background .12s, border-color .12s, transform .12s;
+}
+.wp-pager-list a:hover {
+  background: var(--surface);
+  border-color: var(--wp-h2-c, var(--accent));
+  transform: translateX(2px);
+}
+.wp-pager-num {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--wp-h2-c, var(--accent));
+  background: rgba(0,0,0,0.03);
+  padding: 4px 0;
+  border-radius: 6px;
+  text-align: center;
+}
+.wp-pager-t {
+  font-size: 13px;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* === Floating section progress indicator (whitepaper-only, fixed bottom-left) === */
+.wp-section-indicator {
+  position: fixed;
+  left: 18px;
+  bottom: 18px;
+  z-index: 50;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 12px;
+  color: var(--text-muted);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .18s ease;
+  max-width: calc(100vw - 36px);
+}
+.wp-section-indicator.is-visible { opacity: 1; }
+.wp-section-indicator::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+.wp-section-indicator-num {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  flex-shrink: 0;
+}
+.wp-section-indicator-t {
+  color: var(--text);
+  font-weight: 500;
+  max-width: 28ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@media (max-width: 600px) {
+  .wp-section-indicator { left: 12px; bottom: 12px; padding: 6px 12px; font-size: 11px; }
+  .wp-section-indicator-t { max-width: 16ch; }
+}
+
+:root[data-theme="dark"] .wp-article h2 .wp-h2-icon { background: rgba(255,255,255,0.05); }
+:root[data-theme="dark"] .wp-pager-num { background: rgba(255,255,255,0.05); }
+:root[data-theme="dark"] .wp-section-indicator { box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4); }
+
+/* ============================================================
+   §FINAL-30 — DARK-MODE READABILITY (emergency)
+   ============================================================
+   The §FINAL-28 / §FINAL-29 sections used semi-transparent tinted
+   backgrounds with text colors set to var(--text-muted). In dark
+   mode that resolved to medium grey-blue (#aab2cc) on a dim
+   surface, which the user reported as 'no text readable'. This
+   block forces high-contrast text colors and stronger surface
+   backgrounds for every component introduced in §FINAL-26..29
+   when dark mode is active. Light mode untouched.
+   ============================================================ */
+
+/* af-diagram blocks */
+:root[data-theme="dark"] .af-block-then {
+  background: rgba(255,255,255,0.06) !important;
+  border-color: rgba(255,255,255,0.18) !important;
+}
+:root[data-theme="dark"] .af-block-then .af-block-eyebrow { color: #B8C0D6 !important; }
+:root[data-theme="dark"] .af-block-then .af-block-h       { color: #D4DAEA !important; }
+:root[data-theme="dark"] .af-block-then .af-block-sub     { color: #AAB2CC !important; }
+:root[data-theme="dark"] .af-block-then .af-block-points li {
+  color: #C9D0E2 !important;
+  text-decoration-color: rgba(200,210,230,0.55) !important;
+}
+:root[data-theme="dark"] .af-block-then .af-block-points li .ms { color: #C9D0E2 !important; }
+
+:root[data-theme="dark"] .af-block-now {
+  background: rgba(129,201,149,0.16) !important;
+  border-color: rgba(129,201,149,0.40) !important;
+}
+:root[data-theme="dark"] .af-block-now .af-block-eyebrow { color: #81C995 !important; }
+:root[data-theme="dark"] .af-block-now .af-block-h       { color: #FFFFFF !important; }
+:root[data-theme="dark"] .af-block-now .af-block-sub     { color: #DCE5F0 !important; }
+
+:root[data-theme="dark"] .af-dim {
+  background: rgba(255,255,255,0.06) !important;
+  border-color: rgba(129,201,149,0.30) !important;
+}
+:root[data-theme="dark"] .af-dim .af-dim-h { color: #FFFFFF !important; }
+:root[data-theme="dark"] .af-dim .af-dim-b { color: #C9D0E2 !important; }
+:root[data-theme="dark"] .af-dim .ms       { color: #81C995 !important; }
+:root[data-theme="dark"] .af-arrow-label   { color: #81C995 !important; }
+
+/* who-stories editorial */
+:root[data-theme="dark"] .who-story          { border-bottom-color: rgba(255,255,255,0.10) !important; }
+:root[data-theme="dark"] .who-story-h        { color: #FFFFFF !important; }
+:root[data-theme="dark"] .who-story-quote    { color: #EEF1F9 !important; }
+:root[data-theme="dark"] .who-story-body     { color: #DCE5F0 !important; }
+:root[data-theme="dark"] .who-story-body code {
+  background: rgba(129,201,149,0.18) !important;
+  color: #A8DAB5 !important;
+}
+:root[data-theme="dark"] .who-story-meta {
+  background: rgba(255,255,255,0.05) !important;
+  color: #C9D0E2 !important;
+}
+
+/* whitepaper chrome */
+:root[data-theme="dark"] .wp-pager {
+  background: rgba(255,255,255,0.04) !important;
+  border-color: rgba(255,255,255,0.12) !important;
+}
+:root[data-theme="dark"] .wp-pager::before { color: #B8C0D6 !important; }
+:root[data-theme="dark"] .wp-pager-list a {
+  border-color: rgba(255,255,255,0.10) !important;
+  color: #EEF1F9 !important;
+}
+:root[data-theme="dark"] .wp-pager-list a:hover { background: rgba(255,255,255,0.06) !important; }
+:root[data-theme="dark"] .wp-pager-t   { color: #EEF1F9 !important; }
+:root[data-theme="dark"] .wp-pager-num { background: rgba(255,255,255,0.08) !important; }
+
+:root[data-theme="dark"] .wp-section-indicator {
+  background: rgba(20, 26, 44, 0.95) !important;
+  border-color: rgba(255,255,255,0.12) !important;
+  color: #C9D0E2 !important;
+}
+:root[data-theme="dark"] .wp-section-indicator-t { color: #FFFFFF !important; }
+
+:root[data-theme="dark"] .wp-article h2 .wp-h2-icon {
+  background: rgba(255,255,255,0.08) !important;
+}
+
+/* sector cards in dark mode */
+:root[data-theme="dark"] .sector-card[data-sector] .sector-icon {
+  background: rgba(255,255,255,0.06) !important;
+  border-color: rgba(255,255,255,0.18) !important;
+}
+:root[data-theme="dark"] .sector-card[data-sector] .prof-pill {
+  background: rgba(255,255,255,0.06) !important;
+}
+
+/* legacy persona-card defensive */
+:root[data-theme="dark"] .persona-card .pain { color: #C9D0E2 !important; }
+
+/* contact modal in dark mode */
+:root[data-theme="dark"] .kye-modal {
+  background: #161c30 !important;
+  border-color: rgba(255,255,255,0.12) !important;
+}
+:root[data-theme="dark"] .kye-modal h3,
+:root[data-theme="dark"] .kye-modal label,
+:root[data-theme="dark"] .kye-modal-meta { color: #EEF1F9 !important; }
+:root[data-theme="dark"] .kye-modal input,
+:root[data-theme="dark"] .kye-modal textarea,
+:root[data-theme="dark"] .kye-modal select {
+  background: rgba(255,255,255,0.05) !important;
+  border-color: rgba(255,255,255,0.18) !important;
+  color: #EEF1F9 !important;
+}

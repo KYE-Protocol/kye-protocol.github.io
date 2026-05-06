@@ -27,7 +27,7 @@
   <meta name="twitter:title" content="KYE Protocol™ — Entity Authority Protocol for AI Governance | Authority Finality™" />
   <meta name="twitter:description" content="Authority Finality™ for AI agents — replayable proof of who or what acted, on behalf of whom, using which capability, under what authority, in what state, with what audit trail." />
   <meta name="twitter:image" content="https://kye-protocol.github.io/og.svg" />
-  <link rel="stylesheet" href="styles.css?v=1778160000" />
+  <link rel="stylesheet" href="styles.css?v=1778190000" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
   <script type="application/ld+json">
@@ -432,57 +432,53 @@
     <div class="container">
     <p class="lede">Identity tells you the front door. <strong>KYE Protocol<span class="tm">™</span></strong> tells you what happened on the other side. We call this <strong>Authority Finality<span class="tm">™</span></strong>: a replayable proof layer for AI-agent actions.</p>
 
-    <ol class="af-compare" aria-label="Traditional IAM vs Authority Finality comparison">
-      <li class="af-row">
-        <h3 class="af-q"><span class="af-q-num">01</span>Who is acting?</h3>
-        <div class="af-cells">
-          <div class="af-cell af-no"><span class="af-mark" aria-hidden="true"><span class="ms">close</span></span><span class="af-tag">Traditional IAM</span><p>The principal who logged in.</p></div>
-          <div class="af-cell af-yes"><span class="af-mark" aria-hidden="true"><span class="ms">check</span></span><span class="af-tag">KYE Protocol<span class="tm">™</span></span><p>One URN across humans, businesses, agents, services, models, tools and workflows.</p></div>
-        </div>
-      </li>
-      <li class="af-row">
-        <h3 class="af-q"><span class="af-q-num">02</span>On whose behalf?</h3>
-        <div class="af-cells">
-          <div class="af-cell af-no"><span class="af-mark" aria-hidden="true"><span class="ms">close</span></span><span class="af-tag">Traditional IAM</span><p>No language for it.</p></div>
-          <div class="af-cell af-yes"><span class="af-mark" aria-hidden="true"><span class="ms">check</span></span><span class="af-tag">KYE Protocol<span class="tm">™</span></span><p>Signed delegation chain back to a human or business at the top.</p></div>
-        </div>
-      </li>
-      <li class="af-row">
-        <h3 class="af-q"><span class="af-q-num">03</span>Using which capability?</h3>
-        <div class="af-cells">
-          <div class="af-cell af-no"><span class="af-mark" aria-hidden="true"><span class="ms">close</span></span><span class="af-tag">Traditional IAM</span><p>Static OAuth scopes, frozen at issuance.</p></div>
-          <div class="af-cell af-yes"><span class="af-mark" aria-hidden="true"><span class="ms">check</span></span><span class="af-tag">KYE Protocol<span class="tm">™</span></span><p>First-class skills, tools, MCP tools, functions, connectors, playbooks, model_profiles.</p></div>
-        </div>
-      </li>
-      <li class="af-row">
-        <h3 class="af-q"><span class="af-q-num">04</span>Under what authority?</h3>
-        <div class="af-cells">
-          <div class="af-cell af-no"><span class="af-mark" aria-hidden="true"><span class="ms">close</span></span><span class="af-tag">Traditional IAM</span><p>The token says yes or no.</p></div>
-          <div class="af-cell af-yes"><span class="af-mark" aria-hidden="true"><span class="ms">check</span></span><span class="af-tag">KYE Protocol<span class="tm">™</span></span><p>Scope-bound, attenuable, revocable in milliseconds, recursively.</p></div>
-        </div>
-      </li>
-      <li class="af-row">
-        <h3 class="af-q"><span class="af-q-num">05</span>In what state?</h3>
-        <div class="af-cells">
-          <div class="af-cell af-no"><span class="af-mark" aria-hidden="true"><span class="ms">close</span></span><span class="af-tag">Traditional IAM</span><p>Authenticated / not authenticated.</p></div>
-          <div class="af-cell af-yes"><span class="af-mark" aria-hidden="true"><span class="ms">check</span></span><span class="af-tag">KYE Protocol<span class="tm">™</span></span><p>Six independent dimensions: lifecycle, authority, delegation, credential, recovery, risk.</p></div>
-        </div>
-      </li>
-      <li class="af-row">
-        <h3 class="af-q"><span class="af-q-num">06</span>With what audit trail?</h3>
-        <div class="af-cells">
-          <div class="af-cell af-no"><span class="af-mark" aria-hidden="true"><span class="ms">close</span></span><span class="af-tag">Traditional IAM</span><p>A log of requests &mdash; not of decisions.</p></div>
-          <div class="af-cell af-yes"><span class="af-mark" aria-hidden="true"><span class="ms">check</span></span><span class="af-tag">KYE Protocol<span class="tm">™</span></span><p>Signed proof bundle a regulator can verify with public keys alone.</p></div>
-        </div>
-      </li>
-      <li class="af-row">
-        <h3 class="af-q"><span class="af-q-num">07</span>Revoke what, where?</h3>
-        <div class="af-cells">
-          <div class="af-cell af-no"><span class="af-mark" aria-hidden="true"><span class="ms">close</span></span><span class="af-tag">Traditional IAM</span><p>Best-effort across systems; orphans common.</p></div>
-          <div class="af-cell af-yes"><span class="af-mark" aria-hidden="true"><span class="ms">check</span></span><span class="af-tag">KYE Protocol<span class="tm">™</span></span><p>One stop signal cascades through every delegation, capability and credential.</p></div>
-        </div>
-      </li>
-    </ol>
+    <div class="af-diagram" aria-label="Traditional IAM versus Authority Finality">
+      <article class="af-block af-block-then" aria-labelledby="af-then-h">
+        <span class="af-block-eyebrow">The yesterday view</span>
+        <h3 id="af-then-h" class="af-block-h">Traditional IAM</h3>
+        <p class="af-block-sub">Stops at the front door.</p>
+        <ul class="af-block-points">
+          <li><span class="ms" aria-hidden="true">login</span><span>Principal authenticated</span></li>
+          <li><span class="ms" aria-hidden="true">key</span><span>Token scopes (frozen)</span></li>
+          <li><span class="ms" aria-hidden="true">help</span><span>No agent identity</span></li>
+          <li><span class="ms" aria-hidden="true">help</span><span>No delegation chain</span></li>
+          <li><span class="ms" aria-hidden="true">help</span><span>No state model</span></li>
+          <li><span class="ms" aria-hidden="true">help</span><span>No proof for auditors</span></li>
+        </ul>
+      </article>
+
+      <div class="af-arrow" aria-hidden="true">
+        <svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="af-arrow-grad" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0%"  stop-color="rgba(120,128,140,0.50)"/>
+              <stop offset="60%" stop-color="rgba(26,135,84,0.85)"/>
+              <stop offset="100%" stop-color="rgba(26,135,84,1)"/>
+            </linearGradient>
+          </defs>
+          <line x1="10" y1="30" x2="170" y2="30"
+                stroke="url(#af-arrow-grad)" stroke-width="3" stroke-linecap="round"/>
+          <polyline points="160,18 180,30 160,42"
+                fill="none" stroke="rgba(26,135,84,1)" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="af-arrow-label">becomes</span>
+      </div>
+
+      <article class="af-block af-block-now" aria-labelledby="af-now-h">
+        <span class="af-block-eyebrow">The KYE view</span>
+        <h3 id="af-now-h" class="af-block-h">Authority Finality<span class="tm">™</span></h3>
+        <p class="af-block-sub">A replayable proof layer for everything that happens after.</p>
+        <ul class="af-dim-grid">
+          <li class="af-dim"><span class="ms" aria-hidden="true">person</span><span class="af-dim-h">Identity</span><span class="af-dim-b">One URN across humans, agents, services, models, tools, workflows.</span></li>
+          <li class="af-dim"><span class="ms" aria-hidden="true">link</span><span class="af-dim-h">Delegation</span><span class="af-dim-b">Signed chain back to a human or business at the top.</span></li>
+          <li class="af-dim"><span class="ms" aria-hidden="true">extension</span><span class="af-dim-h">Capability</span><span class="af-dim-b">First-class skills, tools, MCP tools, functions, playbooks.</span></li>
+          <li class="af-dim"><span class="ms" aria-hidden="true">tune</span><span class="af-dim-h">Authority</span><span class="af-dim-b">Scope-bound, attenuable, revocable in milliseconds, recursively.</span></li>
+          <li class="af-dim"><span class="ms" aria-hidden="true">timeline</span><span class="af-dim-h">State</span><span class="af-dim-b">Six dimensions: lifecycle, authority, delegation, credential, recovery, risk.</span></li>
+          <li class="af-dim"><span class="ms" aria-hidden="true">verified</span><span class="af-dim-h">Audit</span><span class="af-dim-b">Signed proof bundle a regulator can verify with public keys alone.</span></li>
+        </ul>
+      </article>
+    </div>
 
     <p class="af-foot">KYE does not replace legal agreements, signatures, or regulatory obligations. It provides the <strong>technical and evidentiary foundation</strong> for Authority Finality<span class="tm">™</span> in AI-agent systems &mdash; accountability, compliance, dispute resolution, legally defensible audit trails.</p>
   </div>
@@ -1177,62 +1173,55 @@
   <div class="section-body" id="who-body">
     <div class="container">
     <p class="lede">If your agents touch money, identity, health data or anything regulators care about, you can&rsquo;t hand them an OAuth token and hope.</p>
-    <ol class="who-timeline" aria-label="Persona stories">
-      <li class="who-row" data-who="banks">
-        <span class="who-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></svg></span>
-        <div class="who-content">
-          <h3>Banks &amp; payment platforms</h3>
-          <p class="pain">PSD3, FFIEC, RBI, MAS &mdash; every regulator now asks &ldquo;was the agent authorised, by whom, within what limit?&rdquo;</p>
-          <p>KYE Protocol<span class="tm">™</span> gives you a payment authority chain, scope-bound caps, sPDP gating, signed proof bundles for every auth. <strong>Use the Payments profile.</strong></p>
-          <ul class="persona-roi"><li>23 PSD3 / DORA / NIS2 controls evidenced from one chain</li><li>Audit-prep cycles &raquo; 2 days &rarr; minutes (signed proof bundles)</li><li>One contract across vendors &mdash; no per-vendor passport reconciliation</li></ul>
-        </div>
-      </li>
-      <li class="who-row" data-who="ai-labs">
-        <span class="who-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M20 9h2M20 15h2M2 9h2M2 15h2"/></svg></span>
-        <div class="who-content">
-          <h3>AI labs &amp; agent platforms</h3>
-          <p class="pain">Your agent does something destructive. The user asks you to prove it wasn&rsquo;t supposed to.</p>
-          <p>KYE Protocol<span class="tm">™</span> gives every action a <code>policy_decision_id</code>, a delegation chain back to a human, and a stop signal that revokes the agent everywhere at once.</p>
-          <ul class="persona-roi"><li>EU AI Act Title&nbsp;III obligations (record-keeping, human oversight, post-market monitoring) covered by Capability + Recovery + Telemetry</li><li>Compromise &rarr; cascade revoke across delegations, payment authorities, capability grants in one signal</li><li>Point-in-time replay reconstructs the agent&rsquo;s state at any past moment</li></ul>
-        </div>
-      </li>
-      <li class="who-row" data-who="healthcare">
-        <span class="who-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M12 11v6M9 14h6"/></svg></span>
-        <div class="who-content">
-          <h3>Healthcare systems</h3>
-          <p class="pain">An AI triages a patient&rsquo;s record. HIPAA wants the consent chain. The hospital wants the redaction trace.</p>
-          <p>KYE Protocol<span class="tm">™</span> binds the agent to the consent credential, attaches <code>redaction.required</code> and <code>external.send.block</code> obligations, and records the lot in the audit chain.</p>
-          <ul class="persona-roi"><li>HIPAA Security Rule + Privacy Rule mapped to specific endpoints</li><li>Consent &rarr; obligation &rarr; audit event in one chain (no stitching)</li><li>Right-to-erasure satisfied by lifecycle <code>tombstoned</code> + Healthcare profile redactions</li></ul>
-        </div>
-      </li>
-      <li class="who-row" data-who="custody">
-        <span class="who-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M14 9.5h-3a1.5 1.5 0 0 0 0 3h2a1.5 1.5 0 0 1 0 3H10M12 7v1.5M12 15.5V17"/></svg></span>
-        <div class="who-content">
-          <h3>Custodians &amp; treasury</h3>
-          <p class="pain">An autonomous treasury bot rebalances. Auditors need to see authority, scope, attestation, decision &mdash; not just &ldquo;the bot did it.&rdquo;</p>
-          <p>Combine the Custody and Attestation profiles. Workload attestation binds the runtime; payment authority binds the wallet; audit chain binds the timeline.</p>
-          <ul class="persona-roi"><li>Workload &rarr; wallet &rarr; transfer chain provable end-to-end</li><li>Recovery + break-glass replaces ad-hoc admin reset with a signed, time-boxed flow</li><li>Quarterly compromise drills are exercises, not incidents</li></ul>
-        </div>
-      </li>
-      <li class="who-row" data-who="regulators">
-        <span class="who-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M9 6v14a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V6"/><path d="M5 10l-2 4a3 3 0 0 0 6 0L7 10M19 10l-2 4a3 3 0 0 0 6 0L21 10"/></svg></span>
-        <div class="who-content">
-          <h3>Regulators &amp; auditors</h3>
-          <p class="pain">You are asked to certify something built on six different vendors&rsquo; agent stacks.</p>
-          <p>Every conformant gateway exports the same proof bundle format. Verify signatures with public keys; replay the audit chain; re-derive the decision. <strong>One contract, every vendor.</strong></p>
-          <ul class="persona-roi"><li>37-fixture conformance pack the auditor runs unchanged against any vendor</li><li>173 control mappings (SOC&nbsp;2, ISO&nbsp;27001, PCI&nbsp;DSS&nbsp;4.0, PSD2/3, DORA, NIS2, EU&nbsp;AI&nbsp;Act, NIST&nbsp;800-207, HIPAA)</li><li>Evidence collection is a fetch, not an interview</li></ul>
-        </div>
-      </li>
-      <li class="who-row" data-who="platform">
-        <span class="who-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
-        <div class="who-content">
-          <h3>Platform teams</h3>
-          <p class="pain">Identity, authz, audit, signals, webhooks &mdash; six teams, six tools.</p>
-          <p>One PEP middleware. One ePDP cache. One signal bus. Wire your existing OAuth, SPIFFE, MCP and KYA vendors into the contract instead of replacing them.</p>
-          <ul class="persona-roi"><li>Six tools &rarr; one contract; team count holds, surface area shrinks</li><li>Idempotency, retry, dead-letter, replay handled at the protocol layer</li><li>Drop-in OPA Rego / Cerbos policy bundles &mdash; you keep your policy author</li></ul>
-        </div>
-      </li>
-    </ol>
+    <div class="who-stories">
+      <article class="who-story" data-who="banks">
+        <p class="who-story-num">Story 01</p>
+        <h3 class="who-story-h">Banks &amp; payment platforms</h3>
+        <blockquote class="who-story-quote">PSD3, FFIEC, RBI, MAS &mdash; every regulator now asks &ldquo;was the agent authorised, by whom, within what limit?&rdquo;</blockquote>
+        <p class="who-story-body">KYE Protocol<span class="tm">™</span> gives you a payment authority chain, scope-bound caps, sPDP gating, signed proof bundles for every auth. <strong>Use the Payments profile.</strong></p>
+        <p class="who-story-meta">23 PSD3 / DORA / NIS2 controls from one chain &nbsp;&middot;&nbsp; Audit-prep 2 days &rarr; minutes &nbsp;&middot;&nbsp; One contract across vendors</p>
+      </article>
+
+      <article class="who-story" data-who="ai-labs">
+        <p class="who-story-num">Story 02</p>
+        <h3 class="who-story-h">AI labs &amp; agent platforms</h3>
+        <blockquote class="who-story-quote">Your agent does something destructive. The user asks you to prove it wasn&rsquo;t supposed to.</blockquote>
+        <p class="who-story-body">KYE Protocol<span class="tm">™</span> gives every action a <code>policy_decision_id</code>, a delegation chain back to a human, and a stop signal that revokes the agent everywhere at once.</p>
+        <p class="who-story-meta">EU AI Act Title&nbsp;III covered &nbsp;&middot;&nbsp; Cascade revoke across grants &nbsp;&middot;&nbsp; Point-in-time replay</p>
+      </article>
+
+      <article class="who-story" data-who="healthcare">
+        <p class="who-story-num">Story 03</p>
+        <h3 class="who-story-h">Healthcare systems</h3>
+        <blockquote class="who-story-quote">An AI triages a patient&rsquo;s record. HIPAA wants the consent chain. The hospital wants the redaction trace.</blockquote>
+        <p class="who-story-body">KYE Protocol<span class="tm">™</span> binds the agent to the consent credential, attaches <code>redaction.required</code> and <code>external.send.block</code> obligations, and records the lot in the audit chain.</p>
+        <p class="who-story-meta">HIPAA Security &amp; Privacy mapped &nbsp;&middot;&nbsp; Consent &rarr; obligation &rarr; audit in one chain &nbsp;&middot;&nbsp; Right-to-erasure via lifecycle</p>
+      </article>
+
+      <article class="who-story" data-who="custody">
+        <p class="who-story-num">Story 04</p>
+        <h3 class="who-story-h">Custodians &amp; treasury</h3>
+        <blockquote class="who-story-quote">An autonomous treasury bot rebalances. Auditors need to see authority, scope, attestation, decision &mdash; not just &ldquo;the bot did it.&rdquo;</blockquote>
+        <p class="who-story-body">Combine the Custody and Attestation profiles. Workload attestation binds the runtime; payment authority binds the wallet; audit chain binds the timeline.</p>
+        <p class="who-story-meta">Workload &rarr; wallet &rarr; transfer end-to-end &nbsp;&middot;&nbsp; Signed break-glass &nbsp;&middot;&nbsp; Quarterly drills, not incidents</p>
+      </article>
+
+      <article class="who-story" data-who="regulators">
+        <p class="who-story-num">Story 05</p>
+        <h3 class="who-story-h">Regulators &amp; auditors</h3>
+        <blockquote class="who-story-quote">You are asked to certify something built on six different vendors&rsquo; agent stacks.</blockquote>
+        <p class="who-story-body">Every conformant gateway exports the same proof bundle format. Verify signatures with public keys; replay the audit chain; re-derive the decision. <strong>One contract, every vendor.</strong></p>
+        <p class="who-story-meta">37 fixtures, vendor-neutral &nbsp;&middot;&nbsp; 173 control mappings &nbsp;&middot;&nbsp; Evidence is a fetch, not an interview</p>
+      </article>
+
+      <article class="who-story" data-who="platform">
+        <p class="who-story-num">Story 06</p>
+        <h3 class="who-story-h">Platform teams</h3>
+        <blockquote class="who-story-quote">Identity, authz, audit, signals, webhooks &mdash; six teams, six tools.</blockquote>
+        <p class="who-story-body">One PEP middleware. One ePDP cache. One signal bus. Wire your existing OAuth, SPIFFE, MCP and KYA vendors into the contract instead of replacing them.</p>
+        <p class="who-story-meta">Six tools &rarr; one contract &nbsp;&middot;&nbsp; Idempotency / retry / replay at the protocol layer &nbsp;&middot;&nbsp; Drop-in OPA / Cerbos bundles</p>
+      </article>
+    </div>
 
     <div class="logos-strip" aria-label="Reference adopters and design partners">
       <p class="logos-strip-h"><strong>Design-partner logos coming soon.</strong></p>
@@ -1961,7 +1950,7 @@ curl -X POST https://gw.example/v1/runtime/authorize \
   } });
   window.mermaid = mermaid;
 </script>
-<script type="module" src="main.js?v=1778160000"></script>
+<script type="module" src="main.js?v=1778190000"></script>
 </body>
 </html>
 

@@ -204,6 +204,105 @@ initWebMcp();
   });
 })();
 
+/* Whitepaper section icons + per-section pager + reading progress.
+   Prefixes each <h2 id> in .wp-article with a coloured Material
+   icon based on the section id. Builds a 'previous / next' pager
+   at the end of the article so users don't have to scroll back
+   to the TOC. Also injects a small floating progress indicator
+   showing 'N / total' as the user scrolls. */
+(function initWhitepaperChrome() {
+  const article = document.querySelector('.wp-article');
+  if (!article) return;
+  const ICON_FOR = {
+    abstract:     ['description', '#1A8754'],
+    problem:      ['warning',     '#EA4335'],
+    prior:        ['compare',     '#5F6368'],
+    design:       ['design_services', '#1A73E8'],
+    model:        ['hub',         '#8E24AA'],
+    architecture: ['account_tree','#00838F'],
+    contract:     ['gavel',       '#3F51B5'],
+    runtime:      ['memory',      '#009688'],
+    profiles:     ['view_module', '#F57C00'],
+    sectors:      ['apartment',   '#5F6368'],
+    compliance:   ['rule',        '#1A73E8'],
+    conformance:  ['verified',    '#1A8754'],
+    addenda:      ['playlist_add_check', '#8E24AA'],
+    security:     ['shield',      '#EA4335'],
+    governance:   ['groups',      '#3F51B5'],
+    roadmap:      ['route',       '#F57C00'],
+    references:   ['menu_book',   '#5F6368'],
+  };
+  const sections = Array.from(article.querySelectorAll('h2[id]'));
+  if (!sections.length) return;
+
+  // 1. Section icons
+  for (const h of sections) {
+    const id = h.id.replace(/-.*$/, '');
+    const meta = ICON_FOR[h.id] || ICON_FOR[id];
+    if (!meta) continue;
+    const [name, colour] = meta;
+    if (h.querySelector('.wp-h2-icon')) continue;
+    const span = document.createElement('span');
+    span.className = 'ms wp-h2-icon';
+    span.setAttribute('aria-hidden', 'true');
+    span.style.color = colour;
+    span.textContent = name;
+    h.prepend(span);
+    h.dataset.section = h.id;
+    h.style.setProperty('--wp-h2-c', colour);
+  }
+
+  // 2. Per-section pager just before .wp-cite
+  const cite = article.querySelector('.wp-cite');
+  const pager = document.createElement('nav');
+  pager.className = 'wp-pager';
+  pager.setAttribute('aria-label', 'Whitepaper section navigation');
+  const list = document.createElement('ol');
+  list.className = 'wp-pager-list';
+  sections.forEach((h, i) => {
+    const li = document.createElement('li');
+    const a  = document.createElement('a');
+    a.href = '#' + h.id;
+    const c = ICON_FOR[h.id] ? ICON_FOR[h.id][1] : (ICON_FOR[h.id.replace(/-.*$/, '')] || ['', '#5F6368'])[1];
+    a.style.setProperty('--wp-h2-c', c);
+    a.innerHTML = `<span class="wp-pager-num">${String(i + 1).padStart(2, '0')}</span><span class="wp-pager-t">${h.textContent.replace(/^[^A-Za-z0-9]+/, '').replace(/^[a-z_]+\s*/, '')}</span>`;
+    li.appendChild(a);
+    list.appendChild(li);
+  });
+  pager.appendChild(list);
+  if (cite) cite.parentNode.insertBefore(pager, cite);
+  else article.appendChild(pager);
+
+  // 3. Floating section indicator
+  const indicator = document.createElement('div');
+  indicator.className = 'wp-section-indicator';
+  indicator.setAttribute('aria-hidden', 'true');
+  indicator.innerHTML = `<span class="wp-section-indicator-num"></span><span class="wp-section-indicator-t"></span>`;
+  document.body.appendChild(indicator);
+  const numEl = indicator.querySelector('.wp-section-indicator-num');
+  const tEl   = indicator.querySelector('.wp-section-indicator-t');
+  function update() {
+    const y = window.scrollY + 120;
+    let active = sections[0];
+    let activeIdx = 0;
+    for (let i = 0; i < sections.length; i++) {
+      if (sections[i].offsetTop <= y) { active = sections[i]; activeIdx = i; }
+      else break;
+    }
+    numEl.textContent = `${String(activeIdx + 1).padStart(2, '0')} / ${String(sections.length).padStart(2, '0')}`;
+    tEl.textContent = active.textContent.replace(/^[^A-Za-z0-9]+/, '');
+    const pct = Math.max(0, Math.min(1, (window.scrollY) / (document.documentElement.scrollHeight - window.innerHeight)));
+    indicator.style.setProperty('--wp-progress', String(pct));
+    indicator.classList.toggle('is-visible', window.scrollY > 200);
+  }
+  let raf = 0;
+  window.addEventListener('scroll', () => {
+    if (raf) return;
+    raf = requestAnimationFrame(() => { raf = 0; update(); });
+  }, { passive: true });
+  update();
+})();
+
 /* Whitepaper / legal code-snippet colour tagger.
    Walks every <code> inside .wp-article and assigns a data-code
    attribute based on the snippet's content. CSS handles the
@@ -257,6 +356,8 @@ initWebMcp();
           <label for="kye-contact-topic">Topic</label>
           <select id="kye-contact-topic" name="topic">
             <option value="general">General enquiry</option>
+            <option value="adoption">Adoption &mdash; integrating KYE Protocol&trade;</option>
+            <option value="sales">Speak to sales &mdash; KYE Cloud&trade; / cost</option>
             <option value="trademark">Trademark policy</option>
             <option value="patent">Patent licensing</option>
             <option value="conformance">Conformance &amp; certification</option>
