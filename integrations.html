@@ -14,7 +14,7 @@
   <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
   <meta property="og:url" content="https://kye-protocol.github.io/integrations.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="styles.css?v=1778390000" />
+  <link rel="stylesheet" href="styles.css?v=1778500000" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
 </head>
@@ -40,18 +40,18 @@
 
     <div class="table-wrap">
       <table class="ps-table">
-        <thead><tr><th>Layer</th><th>Existing standard / vendor</th><th>How KYE composes</th></tr></thead>
+        <thead><tr><th>Layer</th><th>Existing standard / vendor</th><th>How KYE<span class="tm">™</span> composes</th></tr></thead>
         <tbody>
-          <tr><td><strong>Human auth</strong></td><td>OAuth 2.1, OIDC, SAML, GNAP</td><td>The OAuth/OIDC token issuer becomes a credential issuer in KYE&rsquo;s vocabulary; KYE&rsquo;s delegation chain attaches scope and state to the resulting principal.</td></tr>
-          <tr><td><strong>Workload identity</strong></td><td>SPIFFE / SPIRE (SVIDs)</td><td>SVIDs become entity URNs (<code data-code="urn">kye:workload:&lt;td&gt;:&lt;sub&gt;:&lt;local&gt;</code>); KYE adds delegation, capability, decision and audit on top.</td></tr>
-          <tr><td><strong>AI agent &harr; tool</strong></td><td>Anthropic MCP</td><td>MCP tools become first-class capability entities; every MCP invocation becomes a KYE authorize call with the agent&rsquo;s delegation chain attached.</td></tr>
-          <tr><td><strong>Agent registration</strong></td><td>Google A2A / ADK</td><td>Agent metadata feeds the KYE entity registry; KYE adds runtime authority, scope, state, and signed audit.</td></tr>
-          <tr><td><strong>Decision API shape</strong></td><td>OpenID AuthZEN</td><td>KYE&rsquo;s <code data-code="endpoint">POST /v1/runtime/authorize</code> is AuthZEN-compatible; reason codes, obligations, evidence refs are KYE-specific extensions.</td></tr>
-          <tr><td><strong>Transparency receipts</strong></td><td>OpenSSF SCITT</td><td>KYE proof bundles are emitted as SCITT statements; SCITT receipts attach to KYE evidence packs.</td></tr>
-          <tr><td><strong>Stop-event distribution</strong></td><td>OpenID SSF / CAEP</td><td>KYE signal bus emits SSF-shaped events for compromise / cascade revoke / quarantine; downstream SSF receivers act on them.</td></tr>
-          <tr><td><strong>Agent passport</strong></td><td>Visa Trusted Agent / Skyfire / Persona / Sumsub / Trulioo (KYA)</td><td>Agent passport becomes a credential entity; KYE&rsquo;s authority chain governs what the agent does <em>with</em> the passport, across vendors.</td></tr>
-          <tr><td><strong>Policy engines</strong></td><td>OPA Rego / Cerbos / Cedar / AWS IAM</td><td>KYE ships Rego (5), Cerbos (4), Cedar (1) reference bundles. Bring your own engine; KYE provides the input shape and the obligation grammar.</td></tr>
-          <tr><td><strong>Storage</strong></td><td>Postgres / Neo4j / Neptune / Memgraph / TigerGraph / ArangoDB / RDF</td><td>KYE objects project into any graph or relational store; the protocol defines node + edge contracts, not the database.</td></tr>
+          <tr><td><strong>Human auth</strong></td><td>OAuth 2.1, OIDC, SAML, GNAP</td><td>The OAuth/OIDC token issuer becomes a credential issuer in KYE<span class="tm">™</span>&rsquo;s vocabulary; KYE<span class="tm">™</span>&rsquo;s delegation chain attaches scope and state to the resulting principal.</td></tr>
+          <tr><td><strong>Workload identity</strong></td><td>SPIFFE / SPIRE (SVIDs)</td><td>SVIDs become entity URNs (<code data-code="urn">kye:workload:&lt;td&gt;:&lt;sub&gt;:&lt;local&gt;</code>); KYE<span class="tm">™</span> adds delegation, capability, decision and audit on top.</td></tr>
+          <tr><td><strong>AI agent &harr; tool</strong></td><td>Anthropic MCP</td><td>MCP tools become first-class capability entities; every MCP invocation becomes a KYE<span class="tm">™</span> authorize call with the agent&rsquo;s delegation chain attached.</td></tr>
+          <tr><td><strong>Agent registration</strong></td><td>Google A2A / ADK</td><td>Agent metadata feeds the KYE<span class="tm">™</span> entity registry; KYE<span class="tm">™</span> adds runtime authority, scope, state, and signed audit.</td></tr>
+          <tr><td><strong>Decision API shape</strong></td><td>OpenID AuthZEN</td><td>KYE<span class="tm">™</span>&rsquo;s <code data-code="endpoint">POST /v1/runtime/authorize</code> is AuthZEN-compatible; reason codes, obligations, evidence refs are KYE-specific extensions.</td></tr>
+          <tr><td><strong>Transparency receipts</strong></td><td>OpenSSF SCITT</td><td>KYE<span class="tm">™</span> proof bundles are emitted as SCITT statements; SCITT receipts attach to KYE<span class="tm">™</span> evidence packs.</td></tr>
+          <tr><td><strong>Stop-event distribution</strong></td><td>OpenID SSF / CAEP</td><td>KYE<span class="tm">™</span> signal bus emits SSF-shaped events for compromise / cascade revoke / quarantine; downstream SSF receivers act on them.</td></tr>
+          <tr><td><strong>Agent passport</strong></td><td>Visa Trusted Agent / Skyfire / Persona / Sumsub / Trulioo (KYA)</td><td>Agent passport becomes a credential entity; KYE<span class="tm">™</span>&rsquo;s authority chain governs what the agent does <em>with</em> the passport, across vendors.</td></tr>
+          <tr><td><strong>Policy engines</strong></td><td>OPA Rego / Cerbos / Cedar / AWS IAM</td><td>KYE<span class="tm">™</span> ships Rego (5), Cerbos (4), Cedar (1) reference bundles. Bring your own engine; KYE<span class="tm">™</span> provides the input shape and the obligation grammar.</td></tr>
+          <tr><td><strong>Storage</strong></td><td>Postgres / Neo4j / Neptune / Memgraph / TigerGraph / ArangoDB / RDF</td><td>KYE<span class="tm">™</span> objects project into any graph or relational store; the protocol defines node + edge contracts, not the database.</td></tr>
         </tbody>
       </table>
     </div>
@@ -64,6 +64,6 @@
 </main>
 <footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected by assets/components.js mountKyeComponents() --></footer>
 <button id="scroll-top" class="scroll-top" type="button" aria-label="Scroll to top" data-kye-scroll-top><!-- svg injected --></button>
-<script type="module" src="main.js?v=1778390000"></script>
+<script type="module" src="main.js?v=1778500000"></script>
 </body>
 </html>
