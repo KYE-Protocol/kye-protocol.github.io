@@ -1,18 +1,18 @@
 /* KYE Protocol™ landing — orchestrator. */
-import { initHeroStats }    from "./assets/hero-stats.js?v=1778820000";
-import { mountKyeComponents } from "./assets/components.js?v=1778820000";
-import { initBeforeAfter }  from "./assets/before-after.js?v=1778820000";
-import { initTrustGraph }   from "./assets/trust-graph.js?v=1778820000";
-import { initDecisionFlow } from "./assets/decision-flow.js?v=1778820000";
-import { initCascadeViz }   from "./assets/cascade-viz.js?v=1778820000";
-import { initDashboard }    from "./assets/dashboard.js?v=1778820000";
-import { initComparison }   from "./assets/comparison.js?v=1778820000";
-import { initUrnParser }    from "./assets/urn-parser.js?v=1778820000";
-import { initProfiles }     from "./assets/profiles.js?v=1778820000";
-import { initLifecycleSim } from "./assets/lifecycle-sim.js?v=1778820000";
-import { initVocabBrowser } from "./assets/vocab-browser.js?v=1778820000";
-import { initScrollTop }    from "./assets/scroll-top.js?v=1778820000";
-import { initQuickstart, initStarCta } from "./assets/quickstart.js?v=1778820000";
+import { initHeroStats }    from "./assets/hero-stats.js?v=1778840000";
+import { mountKyeComponents } from "./assets/components.js?v=1778840000";
+import { initBeforeAfter }  from "./assets/before-after.js?v=1778840000";
+import { initTrustGraph }   from "./assets/trust-graph.js?v=1778840000";
+import { initDecisionFlow } from "./assets/decision-flow.js?v=1778840000";
+import { initCascadeViz }   from "./assets/cascade-viz.js?v=1778840000";
+import { initDashboard }    from "./assets/dashboard.js?v=1778840000";
+import { initComparison }   from "./assets/comparison.js?v=1778840000";
+import { initUrnParser }    from "./assets/urn-parser.js?v=1778840000";
+import { initProfiles }     from "./assets/profiles.js?v=1778840000";
+import { initLifecycleSim } from "./assets/lifecycle-sim.js?v=1778840000";
+import { initVocabBrowser } from "./assets/vocab-browser.js?v=1778840000";
+import { initScrollTop }    from "./assets/scroll-top.js?v=1778840000";
+import { initQuickstart, initStarCta } from "./assets/quickstart.js?v=1778840000";
 
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -37,7 +37,7 @@ initQuickstart();
 initStarCta();
 
 /* WebMCP: expose KYE Protocol™ tools to AI agents via the browser. */
-import { initWebMcp } from "./assets/webmcp.js?v=1778820000";
+import { initWebMcp } from "./assets/webmcp.js?v=1778840000";
 initWebMcp();
 
 /* Theme toggle — persists to localStorage; works alongside @media
@@ -621,6 +621,60 @@ initWebMcp();
     btn.addEventListener('click', () => {
       if (playing) reset();
       else play();
+    });
+  });
+})();
+
+/* Open-banking / agent-purchasing flow animation. Both pages render
+   numbered steps as <ol class="ob-flow"><li><span class="ob-step">N.</span>
+   …</li></ol>. We inject a "▶ Play flow" button immediately before each
+   .ob-flow and sequentially light up each <li> with a 900ms stagger.
+   Click again to reset. Honors prefers-reduced-motion. */
+(function initObFlowAnimation() {
+  const flows = document.querySelectorAll('.ob-flow');
+  if (!flows.length) return;
+  const reduced = window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  flows.forEach(flow => {
+    const steps = Array.from(flow.querySelectorAll(':scope > li'));
+    if (!steps.length) return;
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'ob-play';
+    btn.innerHTML = '<span class="ms" aria-hidden="true">play_arrow</span><span class="ob-play-l">Play flow</span>';
+    btn.setAttribute('aria-label', 'Animate the flow step-by-step');
+    flow.parentNode.insertBefore(btn, flow);
+
+    let timers = [];
+    let playing = false;
+
+    function reset() {
+      timers.forEach(t => clearTimeout(t));
+      timers = [];
+      steps.forEach(s => s.classList.remove('is-on', 'is-done'));
+      flow.classList.remove('is-playing');
+      btn.querySelector('.ob-play-l').textContent = 'Play flow';
+      btn.querySelector('.ms').textContent = 'play_arrow';
+      playing = false;
+    }
+
+    function play() {
+      reset();
+      playing = true;
+      flow.classList.add('is-playing');
+      btn.querySelector('.ob-play-l').textContent = 'Reset';
+      btn.querySelector('.ms').textContent = 'replay';
+      const stagger = reduced ? 0 : 900;
+      steps.forEach((s, i) => {
+        timers.push(setTimeout(() => s.classList.add('is-on'),    i * stagger));
+        timers.push(setTimeout(() => s.classList.add('is-done'),  i * stagger + (reduced ? 0 : 700)));
+      });
+    }
+
+    btn.addEventListener('click', () => {
+      if (playing) reset(); else play();
     });
   });
 })();

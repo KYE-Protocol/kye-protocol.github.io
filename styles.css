@@ -8717,3 +8717,67 @@ li > .fwk-list.sector-frameworks-badged {
   vertical-align: middle;
   margin-right: 4px;
 }
+
+/* ============================================================
+   §FINAL-53 — animated .ob-flow (open-banking + agent-purchasing)
+   The "▶ Play flow" button injected by initObFlowAnimation() in
+   main.js. Same idle/is-on/is-done states as the use-case trace.
+   ============================================================ */
+.ob-play {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--kye-color-brand);
+  color: white;
+  border: none;
+  padding: 6px 14px 6px 10px;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  margin: 0 0 var(--kye-space-2);
+  transition: background 160ms ease, transform 160ms ease;
+}
+.ob-play:hover { background: #166f44; transform: translateY(-1px); }
+.ob-play .ms { font-size: 16px !important; width: 16px; }
+.ob-play:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(26,135,84,0.35);
+}
+
+.ob-flow li {
+  transition: opacity 220ms ease, background 220ms ease, transform 220ms ease;
+}
+.ob-flow.is-playing li {
+  opacity: 0.42;
+  filter: saturate(0.6);
+}
+.ob-flow.is-playing li.is-on,
+.ob-flow.is-playing li.is-done {
+  opacity: 1;
+  filter: none;
+}
+.ob-flow li.is-on {
+  background: linear-gradient(90deg, rgba(26,135,84,0.10), transparent 60%);
+  transform: translateX(2px);
+}
+.ob-flow li.is-on .ob-step {
+  background: var(--kye-color-brand);
+  color: white;
+  animation: ob-pulse 700ms ease-out;
+}
+.ob-flow li.is-done .ob-step::before {
+  content: "✓ ";
+  font-weight: 700;
+}
+@keyframes ob-pulse {
+  0%   { transform: scale(0.82); box-shadow: 0 0 0 0 rgba(26,135,84,0.55); }
+  50%  { transform: scale(1.08); box-shadow: 0 0 0 8px rgba(26,135,84,0.18); }
+  100% { transform: scale(1.0);  box-shadow: 0 0 0 0 rgba(26,135,84,0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ob-flow li, .ob-flow li.is-on, .ob-flow li.is-on .ob-step {
+    animation: none !important;
+    transition: none !important;
+  }
+}
