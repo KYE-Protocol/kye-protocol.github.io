@@ -28,6 +28,7 @@ const NAV_ITEMS = [
   { id: 'builders',   href: 'builders.html',   label: 'Builders',   icon: 'code',            color: '#1A73E8' },
   { id: 'buyers',     href: 'buyers.html',     label: 'Buyers',     icon: 'business_center', color: '#B47200' },
   { id: 'auditors',   href: 'auditors.html',   label: 'Auditors',   icon: 'verified_user',   color: '#009688' },
+  { id: 'compliance', href: 'compliance.html', label: 'Compliance', icon: 'rule',            color: '#1A73E8' },
   { id: 'regulators', href: 'regulators.html', label: 'Regulators', icon: 'gavel',           color: '#8E24AA' },
   { id: 'sectors',    href: 'sectors.html',    label: 'Sectors',    icon: 'apartment',       color: '#5F6368' },
   { id: 'demos',      href: 'demos.html',      label: 'Demos',      icon: 'play_circle',     color: '#EA4335' },

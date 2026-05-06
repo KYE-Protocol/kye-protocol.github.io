@@ -14,7 +14,7 @@
   <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
   <meta property="og:url" content="https://kye-protocol.github.io/builders.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="styles.css?v=1778340000" />
+  <link rel="stylesheet" href="styles.css?v=1778350000" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
 </head>
@@ -70,6 +70,92 @@
 </div></section>
 
 
+<section id="quickstart" class="section technical-only" aria-labelledby="h-quickstart">
+        <span class="eyebrow">Quickstart &middot; ship in 5 minutes</span>
+    <h2 id="h-quickstart" class="h-section">Three SDKs. One <span class="accent">authorize call</span>.</h2>
+  <div class="section-body" id="quickstart-body">
+    <div class="container">
+    <p class="lede">Pick a language. Drop in the SDK. Ask the gateway whether the action is allowed. Every response is a verifiable decision your auditors can replay.</p>
+    <div class="qs-card">
+      <div class="qs-tabs" role="tablist" aria-label="Quickstart language">
+        <button class="qs-tab is-on" role="tab" aria-selected="true"  data-qs="ts">TypeScript</button>
+        <button class="qs-tab"        role="tab" aria-selected="false" data-qs="py">Python</button>
+        <button class="qs-tab"        role="tab" aria-selected="false" data-qs="go">Go</button>
+        <button class="qs-tab"        role="tab" aria-selected="false" data-qs="curl">curl</button>
+      </div>
+      <div class="qs-pane-wrap" id="qs-pane-ts" role="tabpanel">
+        <button class="qs-copy" data-copy="ts" aria-label="Copy TypeScript example">copy</button>
+        <pre><span class="c">// npm i @kye/sdk</span>
+<span class="k">import</span> { KyeClient } <span class="k">from</span> <span class="s">"@kye/sdk"</span>;
+
+<span class="k">const</span> kye = <span class="k">new</span> <span class="u">KyeClient</span>({ baseUrl: <span class="s">"https://gw.example/v1"</span> });
+
+<span class="k">const</span> decision = <span class="k">await</span> kye.<span class="u">authorize</span>({
+  actor:               { entity_id: <span class="s">"kye:ent:acme:ai_agent:01J..."</span> },
+  acting_on_behalf_of: { delegation_id: <span class="s">"kye:del:acme:01J..."</span> },
+  action:              <span class="s">"document.render"</span>,
+});
+
+<span class="k">if</span> (decision.decision !== <span class="s">"allow_with_constraints"</span>) <span class="k">throw</span> <span class="k">new</span> <span class="u">Error</span>(decision.reasons.join(<span class="s">","</span>));
+
+<span class="c">// → { decision: "allow_with_constraints", obligations: ["audit.emit"],</span>
+<span class="c">//     stop_conditions: ["actor.stop_signal","delegation.revoked",...] }</span></pre>
+      </div>
+      <div class="qs-pane-wrap" id="qs-pane-py" role="tabpanel" hidden>
+        <button class="qs-copy" data-copy="py" aria-label="Copy Python example">copy</button>
+        <pre><span class="c"># pip install kye-sdk</span>
+<span class="k">from</span> kye_sdk <span class="k">import</span> KyeClient
+
+kye = KyeClient(base_url=<span class="s">"https://gw.example/v1"</span>)
+
+decision = kye.<span class="u">authorize</span>({
+    <span class="s">"actor"</span>:               {<span class="s">"entity_id"</span>: <span class="s">"kye:ent:acme:ai_agent:01J..."</span>},
+    <span class="s">"acting_on_behalf_of"</span>: {<span class="s">"delegation_id"</span>: <span class="s">"kye:del:acme:01J..."</span>},
+    <span class="s">"action"</span>:              <span class="s">"document.render"</span>,
+})
+
+<span class="k">assert</span> decision[<span class="s">"decision"</span>] == <span class="s">"allow_with_constraints"</span>, decision[<span class="s">"reasons"</span>]</pre>
+      </div>
+      <div class="qs-pane-wrap" id="qs-pane-go" role="tabpanel" hidden>
+        <button class="qs-copy" data-copy="go" aria-label="Copy Go example">copy</button>
+        <pre><span class="c">// go get github.com/kye-protocol/sdk-go</span>
+<span class="k">package</span> main
+
+<span class="k">import</span> (
+    <span class="s">"context"</span>
+    <span class="s">"github.com/kye-protocol/sdk-go/pkg/kye"</span>
+)
+
+<span class="k">func</span> main() {
+    c := kye.<span class="u">NewClient</span>(<span class="s">"https://gw.example"</span>)
+    d, err := c.<span class="u">Authorize</span>(context.Background(), kye.AuthorizeRequest{
+        Action: <span class="s">"document.render"</span>,
+        Actor:  kye.Actor{EntityID: <span class="s">"kye:ent:acme:ai_agent:01J..."</span>},
+    })
+    <span class="k">if</span> err != <span class="k">nil</span> { <span class="k">panic</span>(err) }
+    <span class="c">// d.Decision == "allow_with_constraints"</span>
+    _ = d
+}</pre>
+      </div>
+      <div class="qs-pane-wrap" id="qs-pane-curl" role="tabpanel" hidden>
+        <button class="qs-copy" data-copy="curl" aria-label="Copy curl example">copy</button>
+        <pre><span class="c"># Plain HTTP — no SDK required</span>
+curl -X POST https://gw.example/v1/runtime/authorize \
+  -H <span class="s">'content-type: application/json'</span> \
+  -H <span class="s">'idempotency-key: 8c4a-...'</span> \
+  -d <span class="s">'{
+    "actor":               { "entity_id": "kye:ent:acme:ai_agent:01J..." },
+    "acting_on_behalf_of": { "delegation_id": "kye:del:acme:01J..." },
+    "action":              "document.render"
+  }'</span>
+
+<span class="c"># → { "decision":"allow_with_constraints", "reasons":["delegation_active","scope_match"], ... }</span></pre>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
 </main>
 
 <footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected by assets/components.js mountKyeComponents() --></footer>
@@ -77,6 +163,6 @@
 <button id="scroll-top" class="scroll-top" type="button" aria-label="Scroll to top" data-kye-scroll-top><!-- svg injected --></button>
 
 <script>document.getElementById("year").textContent=new Date().getFullYear();</script>
-<script type="module" src="main.js?v=1778340000"></script>
+<script type="module" src="main.js?v=1778350000"></script>
 </body>
 </html>
