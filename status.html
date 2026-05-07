@@ -15,7 +15,7 @@
   <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
   <meta property="og:url" content="https://kye-protocol.github.io/status.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="styles.css?v=1779220000" />
+  <link rel="stylesheet" href="styles.css?v=1779230000" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
 </head>
@@ -28,7 +28,7 @@
   <div class="container hero-inner">
     <span class="hero-pill"><span class="dot"></span> Status &middot; KYE Cloud Gateway<span class="tm">™</span> &middot; pre-launch</span>
     <h1 id="hero-title" style="margin-top:18px">Status, SLA targets, and incident posture for the <span class="accent">KYE Cloud Gateway<span class="tm">™</span></span>.</h1>
-    <p class="lede">KYE Protocol<span class="tm">™</span> is open source (Apache 2.0) and runs wherever you deploy it. KYE Cloud Gateway<span class="tm">™</span> is the planned commercial managed runtime; today it operates under MOU with named pilot Customers. This page documents the SLA tiers, recovery targets, severity classification, and escalation channels the offering runs under.</p>
+    <p class="lede">KYE Protocol<span class="tm">™</span> is open source (Apache 2.0) and runs wherever you deploy it. KYE Cloud Gateway<span class="tm">™</span> is the planned commercial managed runtime &mdash; not launched and no Customers engaged today. This page documents the SLA tiers, RTO / RPO targets, incident severity, and notification cadence the offering will run under once it launches.</p>
     <div class="cn-quick" style="margin-top:18px">
       <a href="#tiers"     class="cn-pill"><span class="ms">layers</span> SLA tiers</a>
       <a href="#rto-rpo"   class="cn-pill"><span class="ms">restart_alt</span> RTO / RPO</a>
@@ -46,12 +46,12 @@
     <table class="cmp-table" style="margin-top:14px">
       <thead><tr><th>Tier</th><th>Availability target</th><th>Eligibility</th><th>Service credit on miss</th></tr></thead>
       <tbody>
-        <tr><th>Standard</th><td>99.9% per calendar month</td><td>Default for new Customers</td><td>10% &rarr; 50% scaling with miss size</td></tr>
-        <tr><th>Enterprise</th><td>99.95% per calendar month</td><td>Customers operating regulated profiles (payments high-assurance, federation, healthcare, treasury)</td><td>15% &rarr; 50%</td></tr>
-        <tr><th>Tier-1 Partner</th><td>99.99% per calendar month</td><td>Customers under MOU with named pilot scope, dedicated capacity, quarterly drills</td><td>20% &rarr; 75%</td></tr>
+        <tr><th>Standard (template)</th><td>99.9% per calendar month</td><td>Default tier in the SLA template</td><td>10% &rarr; 50% scaling with miss size</td></tr>
+        <tr><th>Enterprise (template)</th><td>99.95% per calendar month</td><td>Tier defined for deployments operating regulated profiles (payments high-assurance, federation, healthcare, treasury)</td><td>15% &rarr; 50%</td></tr>
+        <tr><th>Mission-critical (template)</th><td>99.99% per calendar month</td><td>Tier defined for direct-engagement deployments</td><td>20% &rarr; 75%</td></tr>
       </tbody>
     </table>
-    <p class="lede" style="margin-top:14px">Availability is measured at the Customer's nearest region by KYE Protocol Ltd.&rsquo;s synthetic monitor. Source of record: <code data-code="path">private/runbooks/customer-sla.md</code>.</p>
+    <p class="lede" style="margin-top:14px">These are the SLA tiers defined in the template at <code data-code="path">private/runbooks/customer-sla.md</code>. The hosted offering has not launched and no Customers are engaged at any tier today; the table documents the targets the offering will run under once it does.</p>
   </div></div>
 </section>
 
@@ -112,9 +112,9 @@
     <div class="prim-grid" style="margin-top:14px">
       <a href="https://github.com/KYE-Protocol" target="_blank" rel="noopener" class="prim-card"><span class="ms">code</span><strong>GitHub: KYE-Protocol</strong><span>Issue activity, release notes, public CI runs against the reference Gateway.</span></a>
       <a href="changelog.html" class="prim-card"><span class="ms">history</span><strong>Changelog</strong><span>Dated release notes for the protocol contract and reference implementation.</span></a>
-      <a href="#" data-contact-trigger class="prim-card"><span class="ms">support_agent</span><strong>SLA-backed support</strong><span>Pilot Customers under MOU: pick the &ldquo;Speak to sales&rdquo; topic for the dedicated escalation channel.</span></a>
+      <a href="#" data-contact-trigger class="prim-card"><span class="ms">support_agent</span><strong>Engagement enquiries</strong><span>Pick the &ldquo;Speak to sales&rdquo; topic to talk about the planned commercial managed runtime.</span></a>
     </div>
-    <p class="lede" style="margin-top:14px"><em>Status page automation lands with the public KYE Cloud Gateway<span class="tm">™</span> launch.</em> Until then, this page documents the targets the hosted offering operates against; pilot Customers receive direct notifications under their MOU.</p>
+    <p class="lede" style="margin-top:14px"><em>Status page automation lands with the public KYE Cloud Gateway<span class="tm">™</span> launch.</em> Until then, this page documents the targets the hosted offering operates against; engagement enquiries route through the published contact form.</p>
   </div></div>
 </section>
 

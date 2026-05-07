@@ -4,18 +4,18 @@
   <script>(function(){try{var s=localStorage.getItem("kye-theme");if(s==="dark"||s==="light"){document.documentElement.setAttribute("data-theme",s);}}catch(e){}})();</script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>KYE Protocol™ — Customers · pilot-stage adopters and design-partner snapshots</title>
-  <meta name="description" content="KYE Protocol™ pilot-stage adopters by sector — Tier-1 banking, payment infrastructure, agentic-purchasing, open finance, regulatory sandbox, healthcare authority, legal evidence. Anonymised under MOU until each Customer publishes their reference." />
-  <meta name="keywords" content="KYE Protocol customers, KYE pilots, design partners, Tier-1 bank pilot, agent purchasing pilot, open banking pilot, healthcare authority pilot" />
+  <title>KYE Protocol™ — Customers · honest status of the design-partner programme</title>
+  <meta name="description" content="KYE Protocol™ customers — honest status: no design partners or Customers have been publicly announced. The page documents how prospective design partners can engage and what artefacts a published reference would contain." />
+  <meta name="keywords" content="KYE Protocol customers, KYE design partners, engagement model, prospective adopters" />
   <link rel="canonical" href="https://kye-protocol.github.io/customers.html" />
   <meta name="robots" content="index, follow" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="KYE Protocol™ — Customers" />
-  <meta property="og:description" content="KYE Protocol™ pilot-stage adopters by sector. Anonymised under MOU until each Customer publishes their reference." />
+  <meta property="og:description" content="No design partners or Customers have been publicly announced. The page documents how prospective design partners can engage." />
   <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
   <meta property="og:url" content="https://kye-protocol.github.io/customers.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="styles.css?v=1779220000" />
+  <link rel="stylesheet" href="styles.css?v=1779230000" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
 </head>
@@ -26,88 +26,56 @@
 
 <section id="top" class="hero">
   <div class="container hero-inner">
-    <span class="hero-pill"><span class="dot"></span> Customers &middot; pilot snapshots</span>
-    <h1 id="hero-title" style="margin-top:18px">Pilot-stage adopters, <span class="accent">across the sectors KYE was built for</span>.</h1>
-    <p class="lede">KYE Protocol<span class="tm">™</span> is in pilot with named Customers across regulated finance, agentic commerce, open banking, regulatory sandboxing, healthcare authority, and legal evidence. Customers are listed by sector and shape until they publish their own reference; nothing on this page is published without the Customer&rsquo;s sign-off. Where a logo is not yet shown, it is because the Customer has not yet co-announced.</p>
-    <div class="cn-quick" style="margin-top:18px">
-      <a href="#snapshots" class="cn-pill"><span class="ms">apartment</span> Snapshots</a>
+    <span class="hero-pill"><span class="dot"></span> Customers &middot; honest status</span>
+    <h1 id="hero-title" style="margin-top:18px">No customers have been <span class="accent">publicly announced yet</span>.</h1>
+    <p class="lede">KYE Protocol<span class="tm">™</span> is a public, open-source contract (Apache 2.0). The hosted commercial managed runtime &mdash; KYE Cloud Gateway<span class="tm">™</span> &mdash; has not launched. No design partners, pilots, or Customer references have been publicly announced. This page is deliberately empty of logos and case studies until a Customer publishes a reference of their own; anything else would be an unverifiable claim.</p>
+    <p class="lede" style="background:color-mix(in srgb, var(--kye-color-brand) 8%, transparent); border-left:3px solid var(--kye-color-brand); padding:10px 14px; border-radius:6px; margin-bottom:14px; margin-top:14px"><strong>What this page is:</strong> a description of the engagement shape for prospective design partners and the artefacts a published reference would contain &mdash; not a list of customers we have.</p>
+    <div class="cn-quick" style="margin-top:14px">
       <a href="#shape"     class="cn-pill"><span class="ms">explore</span> Engagement shape</a>
-      <a href="#join"      class="cn-pill"><span class="ms">handshake</span> Join the pilot</a>
+      <a href="#what-published" class="cn-pill"><span class="ms">description</span> What a reference will contain</a>
+      <a href="#join"      class="cn-pill"><span class="ms">handshake</span> How to engage</a>
     </div>
   </div>
 </section>
 
-<section id="snapshots" class="section" aria-labelledby="h-snap">
-        <span class="eyebrow">Pilot snapshots</span>
-    <h2 id="h-snap" class="h-section">Six anonymised pilots in flight.</h2>
-  <div class="section-body"><div class="container">
-
-    <article class="eg-card">
-      <h3 class="uc-h">Tier-1 European bank &middot; agentic payment authority pilot</h3>
-      <p class="uc-scenario"><strong>Problem:</strong> AI agents inside the bank&rsquo;s commercial-banking workflow were proposing payment instructions; the existing IPG had no way to verify that each instruction was authorised by the corporate principal under a delegation chain that satisfied PSD3 SCA + DORA Art. 17 audit-trail requirements.</p>
-      <p class="uc-scenario"><strong>KYE in scope:</strong> Reference Gateway behind the bank&rsquo;s existing PSP layer; KYE Payment Profile<span class="tm">™</span>; webhook-signed Decision Map<span class="tm">™</span> per payment intent; signed evidence pack handed to internal audit on every payment.</p>
-      <p class="uc-scenario"><strong>Outcome target:</strong> close the audit cycle on agentic payments in days rather than the current weeks.</p>
-    </article>
-
-    <article class="eg-card" style="margin-top:18px">
-      <h3 class="uc-h">UK payment-infrastructure provider &middot; checkout-guard pilot</h3>
-      <p class="uc-scenario"><strong>Problem:</strong> agent-backed checkout flows were arriving at the merchant gateway with no portable proof that the buying agent was authorised to make the purchase from this merchant for this basket under this customer&rsquo;s limits.</p>
-      <p class="uc-scenario"><strong>KYE in scope:</strong> KYE Checkout Guard<span class="tm">™</span> (planned commercial app) backed by the reference Gateway; basket-hash schema; per-checkout signed Decision Map<span class="tm">™</span>; merchant-side approval workflow.</p>
-      <p class="uc-scenario"><strong>Outcome target:</strong> agent-backed disputes resolved in under 24 hours via signed evidence pack instead of multi-week chargeback cycles.</p>
-    </article>
-
-    <article class="eg-card" style="margin-top:18px">
-      <h3 class="uc-h">UAE regulatory-sandbox programme &middot; open-finance authority harness</h3>
-      <p class="uc-scenario"><strong>Problem:</strong> a national open-finance sandbox needed a single authority-evidence format that all participants and the supervisor could verify offline with public keys.</p>
-      <p class="uc-scenario"><strong>KYE in scope:</strong> KYE Open Finance Authority Gateway<span class="tm">™</span> (planned); UAE Open Finance Sandbox Connector<span class="tm">™</span>; Regulatory Sandbox Evidence Harness<span class="tm">™</span>; signed conformance reports per participant.</p>
-      <p class="uc-scenario"><strong>Outcome target:</strong> supervisor accepts a single verifiable evidence-pack format; all sandbox participants demonstrate conformance against the same fixture set.</p>
-    </article>
-
-    <article class="eg-card" style="margin-top:18px">
-      <h3 class="uc-h">Top-five US healthtech &middot; healthcare break-glass authority pilot</h3>
-      <p class="uc-scenario"><strong>Problem:</strong> emergency-access (HIPAA &sect;164.308 break-glass) authority was being granted via ad-hoc tickets; no provable, replayable record of who authorised what under which clinical context.</p>
-      <p class="uc-scenario"><strong>KYE in scope:</strong> KYE Healthcare Profile<span class="tm">™</span> + healthcare break-glass categories vocabulary; signed break-glass-grant + compromise-cascade fixtures; internal audit dashboard backed by KYE Self-Audit<span class="tm">™</span> attestations.</p>
-      <p class="uc-scenario"><strong>Outcome target:</strong> every break-glass event has a signed, replayable proof bundle within 60 seconds of the grant.</p>
-    </article>
-
-    <article class="eg-card" style="margin-top:18px">
-      <h3 class="uc-h">UK Magic-Circle law firm &middot; matter-authority + legal-hold pilot</h3>
-      <p class="uc-scenario"><strong>Problem:</strong> external counsel + in-house legal teams were exchanging matter authority + privilege-classification + legal-hold instructions across systems with no portable signed record. Litigation hold preservation was being challenged on integrity grounds.</p>
-      <p class="uc-scenario"><strong>KYE in scope:</strong> KYE Legal Profile<span class="tm">™</span> &mdash; KYE Contract Authority Gateway<span class="tm">™</span>, Matter Authority Workspace<span class="tm">™</span>, Legal Hold &amp; Preservation<span class="tm">™</span> apps; signature-authority connectors for the firm&rsquo;s e-signature stack.</p>
-      <p class="uc-scenario"><strong>Outcome target:</strong> a single legal-evidence pack format admissible across counsel, court, and audit; chain-of-custody verified offline with public keys.</p>
-    </article>
-
-    <article class="eg-card" style="margin-top:18px">
-      <h3 class="uc-h">UK pension administrator &middot; member-authority + adviser-authority pilot</h3>
-      <p class="uc-scenario"><strong>Problem:</strong> regulated advisers acting on member-pension data needed a portable, FCA-friendly proof of consent + authority + scope, not a vendor-locked dashboard claim.</p>
-      <p class="uc-scenario"><strong>KYE in scope:</strong> KYE Pension Authority Connector<span class="tm">™</span> + KYE Pension Sandbox Harness<span class="tm">™</span>; signed find / view authority payloads; adviser authority dashboard.</p>
-      <p class="uc-scenario"><strong>Outcome target:</strong> regulator accepts a single per-adviser evidence-pack format across all administrators they oversee.</p>
-    </article>
-
-  </div></div>
-</section>
-
-<section id="shape" class="section alt" aria-labelledby="h-shape">
+<section id="shape" class="section" aria-labelledby="h-shape">
         <span class="eyebrow">Engagement shape</span>
-    <h2 id="h-shape" class="h-section">What a pilot looks like.</h2>
+    <h2 id="h-shape" class="h-section">How a design-partner engagement is structured.</h2>
   <div class="section-body"><div class="container">
-    <ul class="biz-list">
-      <li><strong>MOU first.</strong> Pilots start under a Memorandum of Understanding that pins the conformance suite version, the profile subset in scope, the deployment topology, the break-glass drill cadence, and the v1.1 roadmap items the Customer cares about.</li>
-      <li><strong>Reference Gateway in dev / pilot environment.</strong> The open-source reference Gateway runs alongside the Customer&rsquo;s existing stack &mdash; not in front of the production payment rail or audit ledger on day one.</li>
-      <li><strong>Sector profile in scope.</strong> The pilot uses the relevant Connector Profile<span class="tm">™</span> (Payment, Open Finance, Health, Pension, Legal) plus the Core profile.</li>
-      <li><strong>Signed evidence on day one.</strong> Every authorisation produces a Decision Map<span class="tm">™</span> + evidence pack from the first transaction; auditors and supervisors can verify offline immediately.</li>
-      <li><strong>Quarterly drill.</strong> Tier-1 Partner Customers run a joint break-glass drill every quarter and a joint failover drill annually, per <code data-code="path">private/runbooks/customer-sla.md</code> &sect;8.</li>
+    <p class="lede">Below is the shape any future engagement will take. None of the items in this list are claims that an engagement is in progress today; they describe the contract template that would be executed if a Customer chose to engage.</p>
+    <ul class="biz-list" style="margin-top:12px">
+      <li><strong>Written agreement first.</strong> Engagement begins with a written agreement before any non-public artefacts are shared. Template under <code data-code="path">private/runbooks/customer-sla.md</code>.</li>
+      <li><strong>Reference Gateway in dev / pilot environment.</strong> The open-source reference Gateway runs alongside the prospective Customer&rsquo;s existing stack &mdash; not in front of a production payment rail or audit ledger.</li>
+      <li><strong>Profile subset in scope.</strong> Engagement uses the relevant Connector Profile<span class="tm">™</span> for the sector (Payment, Open Finance, Health, Pension, Legal, Sovereign AI), plus the Core profile.</li>
+      <li><strong>Conformance pinned.</strong> The conformance suite version, the profile subset, the deployment topology, the drill cadence, and the v1.1 roadmap items in scope are all pinned in writing.</li>
+      <li><strong>Signed evidence on every action.</strong> Each authorisation produces a Decision Map<span class="tm">™</span> + evidence pack that the Customer&rsquo;s auditor or supervisor can verify offline using the published JWKS.</li>
     </ul>
   </div></div>
 </section>
 
+<section id="what-published" class="section alt" aria-labelledby="h-pub">
+        <span class="eyebrow">When a reference is published</span>
+    <h2 id="h-pub" class="h-section">What a published Customer reference will contain.</h2>
+  <div class="section-body"><div class="container">
+    <p class="lede">This page will populate with Customer references only when each Customer publishes their own reference, signed off by their own communications team. The minimum content for a reference to land here:</p>
+    <ul class="biz-list" style="margin-top:12px">
+      <li><strong>Named Customer.</strong> Real organisation name and a public quote attributable to a named individual at that organisation.</li>
+      <li><strong>Scoped problem.</strong> A specific problem the Customer faced &mdash; not a generic vertical positioning.</li>
+      <li><strong>Specific artefacts in scope.</strong> The KYE profiles, schemas, fixtures, and apps that were used &mdash; with version numbers.</li>
+      <li><strong>Measured outcome.</strong> A measurable result the Customer is willing to attribute publicly &mdash; latency, audit-cycle reduction, reduced incident frequency, etc.</li>
+      <li><strong>Evidence link.</strong> Where possible, a link to the Customer&rsquo;s own blog post, talk recording, or case study so the reference is not single-sourced from KYE Protocol Ltd.</li>
+    </ul>
+    <p class="lede" style="margin-top:14px">Until those criteria are met for at least one Customer, this section stays empty. Anonymised, hypothetical, or composite case studies are not published here.</p>
+  </div></div>
+</section>
+
 <section id="join" class="section" aria-labelledby="h-join">
-        <span class="eyebrow">Join the pilot</span>
-    <h2 id="h-join" class="h-section">Three ways in.</h2>
+        <span class="eyebrow">How to engage</span>
+    <h2 id="h-join" class="h-section">Three paths in.</h2>
   <div class="section-body"><div class="container">
     <div class="prim-grid" style="margin-top:14px">
-      <a href="engage.html#enterprises" class="prim-card"><span class="ms">apartment</span><strong>Enterprise pilot</strong><span>Direct MOU under the Tier-1 Partner SLA; named pilot scope; quarterly break-glass + annual failover drills; pilot architect assigned.</span></a>
-      <a href="partners.html" class="prim-card"><span class="ms">group_work</span><strong>Partner integration</strong><span>System integrators, audit firms, sector consultants. Co-built reference deployments; co-marketing on the certification registry.</span></a>
+      <a href="engage.html#enterprises" class="prim-card"><span class="ms">apartment</span><strong>Enterprise engagement</strong><span>Direct engagement enquiry. Defined in the engagement model; written agreement before any non-public scope is shared.</span></a>
+      <a href="partners.html" class="prim-card"><span class="ms">group_work</span><strong>Partner integration</strong><span>System integrators, audit firms, sector consultants. Co-built reference deployments; conformance ladder participation.</span></a>
       <a href="working-groups.html" class="prim-card"><span class="ms">groups</span><strong>Sector working group</strong><span>Open WGs (Payments, Healthcare, Open Banking, Agent Governance, Evidence &amp; Audit, Compliance Mapping) shape the v1.1 preview profiles before they freeze.</span></a>
     </div>
     <div class="hero-cta" style="margin-top:18px">
