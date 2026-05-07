@@ -10197,3 +10197,36 @@ body[class] #evidence {
   padding-top: 32px;
   padding-bottom: 32px;
 }
+
+/* ============================================================
+   §FINAL-69 — global flow compression
+   ============================================================
+   Caller report: "each and all pages must read as a flow not a wall".
+   Root: .section had padding 96px 0 (192px stacked per section);
+   with 5-8 sections per page that adds up to thousands of vertical
+   pixels of dead chrome. Plus .hero padded 96/64. The pages literally
+   read as a wall because the chrome dwarfs the content.
+
+   Fix: compress every section to a tighter rhythm site-wide. This
+   overrides the original 96px and the per-page §FINAL-68. Hero gets
+   a lighter top/bottom too. h-section gets a tighter top margin so
+   the eyebrow + heading land closer together. */
+.section { padding: 48px 0; }
+.section-body { padding-top: 8px; }
+.hero { padding: 56px 0 40px; }
+.hero h1 { margin-top: 14px; }
+.h-section { margin: 6px 0 10px; }
+.lede { margin-top: 8px; }
+.section .eyebrow { margin-top: 0; }
+@media (max-width: 720px) {
+  .section { padding: 36px 0; }
+  .hero { padding: 44px 0 32px; }
+  .h-section { font-size: 26px; }
+}
+/* Tighter spacing inside common card rhythms */
+.eg-card { padding: 16px 18px; }
+.eg-card + .eg-card { margin-top: 14px !important; }
+.who-mini { padding: 14px 16px; }
+.section-body > .container > .lede + .prim-grid,
+.section-body > .container > .lede + .who-bullets,
+.section-body > .container > .lede + .eg-stages { margin-top: 14px; }
