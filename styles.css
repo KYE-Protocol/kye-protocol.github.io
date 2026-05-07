@@ -10435,3 +10435,63 @@ body[class] #evidence .lede { font-size: 14px; line-height: 1.45; max-width: 720
   margin-right: 6px;
   vertical-align: middle;
 }
+
+/* ============================================================
+   §FINAL-73 — restore inner widget-card chrome (§FINAL-71 went too
+   far). User: "those boxes was evidence pack previews but in widget
+   3 all those cards are the ui of widget it seems".
+
+   Keep §FINAL-71's outer-host strip (.aps-host / .br-host / .ep-host
+   etc) — that fixed the genuine frame-in-frame. But restore the
+   inner cards: those cards ARE the widget UI. The Decision Map
+   chain nodes, the runtime-decision card, the evidence-pack output
+   panels, the blast-radius output cards — without their borders +
+   backgrounds they don't read as widget output, they read as bare
+   inline text that happens to be near the page.
+   ============================================================ */
+.aps-decision-card {
+  background: var(--kye-color-paper);
+  border: 1px solid var(--kye-color-line);
+  border-radius: var(--kye-radius-2);
+  padding: 12px 14px;
+  margin-bottom: 0;
+}
+.aps-output-block {
+  background: var(--kye-color-paper) !important;
+  border: 1px solid var(--kye-color-line) !important;
+  border-radius: var(--kye-radius-2) !important;
+}
+.br-subject-card {
+  background: var(--kye-color-paper);
+  border: 1px solid var(--kye-color-line);
+  border-left: 3px solid #C5221F;
+  border-radius: var(--kye-radius-2);
+  padding: 10px 12px;
+}
+.br-card {
+  background: var(--kye-color-paper) !important;
+  border: 1px solid var(--kye-color-line) !important;
+  border-radius: var(--kye-radius-2) !important;
+  padding: 10px 12px;
+}
+.ep-pack-card {
+  background: var(--kye-color-paper);
+  border: 1px solid var(--kye-color-line);
+  border-left: 3px solid var(--kye-color-brand);
+  border-radius: var(--kye-radius-2);
+  padding: 10px 12px;
+}
+.ep-output {
+  background: var(--kye-color-paper) !important;
+  border: 1px solid var(--kye-color-line) !important;
+  border-radius: var(--kye-radius-2) !important;
+}
+:root[data-theme="dark"] .aps-decision-card,
+:root[data-theme="dark"] .aps-output-block,
+:root[data-theme="dark"] .br-subject-card,
+:root[data-theme="dark"] .br-card,
+:root[data-theme="dark"] .ep-pack-card,
+:root[data-theme="dark"] .ep-output {
+  background: var(--surface-solid) !important;
+  border-color: var(--line) !important;
+}
