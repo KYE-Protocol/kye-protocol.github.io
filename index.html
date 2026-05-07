@@ -347,6 +347,39 @@
   </div>
 </section>
 
+<section id="why-protocol" class="section" aria-labelledby="h-why-protocol">
+        <span class="eyebrow">Why &ldquo;protocol&rdquo;</span>
+    <h2 id="h-why-protocol" class="h-section">The <span class="accent">rules of engagement</span> for the AI game.</h2>
+  <div class="section-body">
+    <div class="container">
+    <p class="lede">KYE<span class="tm">™</span> is a protocol because it defines the rules of engagement for the AI game &mdash; <em>who can do what, on whose behalf, with what proof</em> &mdash; in a form that any two independent implementations can follow and verify the same way, without trusting each other or asking us. Six properties make it one:</p>
+    <ul class="biz-list" style="margin-top:14px">
+      <li><strong>Message format.</strong> 69 JSON Schemas + 193 OpenAPI operations + URN identifier scheme. Two implementations talk to each other byte-for-byte the same.</li>
+      <li><strong>State semantics.</strong> Six-dimension state model with defined transitions; cascade contract on revocation; idempotency contract on every state-changing endpoint.</li>
+      <li><strong>Wire contract.</strong> HTTP-level. RFC 7807 problem+json. Crypto-suite negotiation. Version negotiation header.</li>
+      <li><strong>Extensibility.</strong> 50 v1.0 profiles compose without modifying Core.</li>
+      <li><strong>Conformance.</strong> 40 black-box fixtures any implementation runs the same way.</li>
+      <li><strong>Multi-party.</strong> Actor, principal, gateway, auditor, signal subscriber are independent parties exchanging signed artefacts.</li>
+    </ul>
+    <p class="lede" style="margin-top:18px;font-style:italic">Right metaphor: KYE produces the <strong>chain-of-custody for authority</strong> the way digital signatures produce chain-of-custody for documents. Courts already accept signed documents; KYE gives them signed delegations.</p>
+    </div>
+  </div>
+</section>
+
+<section id="three-legs" class="section alt" aria-labelledby="h-three-legs">
+        <span class="eyebrow">Why it stands up</span>
+    <h2 id="h-three-legs" class="h-section">Three legs to stand on.</h2>
+  <div class="section-body">
+    <div class="container">
+    <div class="prim-grid" style="margin-top:14px">
+      <div class="prim-card"><span class="ms">gavel</span><strong>Regulatory tailwind</strong><span>EU AI Act Title III (2024/1689), DORA (2022/2554), PSD3, NIS2, NIST AI RMF, ISO 42001 each require some form of <em>prove who authorised the AI action</em>. That is mandate, not guess.</span></div>
+      <div class="prim-card"><span class="ms">hub</span><strong>Composes, doesn&rsquo;t replace</strong><span>OAuth (humans), SPIFFE (workloads), MCP (tool calls), KYA vendors (agent passports) all solve slices. KYE<span class="tm">™</span> is the layer above that binds them. Composing is harder to disrupt than replacing.</span></div>
+      <div class="prim-card"><span class="ms">verified</span><strong>Implementable today</strong><span>50 v1.0 profiles &middot; 40 conformance fixtures (40 / 40 pass) &middot; 3 SDKs (67/67 + 51/53 + Go pass) &middot; reference Gateway (141/141 tests) &middot; 72 / 72 schema-validated examples. The artefacts exist; this isn&rsquo;t vapour.</span></div>
+    </div>
+    </div>
+  </div>
+</section>
+
 <section id="what" class="section" aria-labelledby="h-what">
         <span class="eyebrow">What it is</span>
     <h2 id="h-what" class="h-section">In one sentence: <span class="accent">the open contract for who-acted-and-why.</span></h2>

@@ -344,7 +344,10 @@
     <h2 id="h-profiles" class="h-section">Banking, healthcare, custody &mdash; <span class="accent">no rewrites required</span>.</h2>
   <div class="section-body" id="profiles-body">
     <div class="container">
-    <p class="lede">Core handles 90% of the contract. The other 10% &mdash; payment caps, healthcare consent, custody attestation &mdash; is in profiles. Adopt only what you need. Each profile adds vocabulary and conformance fixtures; the Core surface never shifts under your feet.</p>
+    <p class="lede">50 v1.0 profiles structured in three tiers: <strong>Core (18)</strong> &mdash; every conformant Gateway implements all 18; <strong>Sector overlays (25)</strong> &mdash; adopt only those that match your sector; <strong>Operational (7)</strong> &mdash; multi-tenant + service primitives. Core handles ~90% of the contract; overlays add domain specialisation. The Core surface never shifts.</p>
+    <div class="cta-callout" style="margin-top:18px;padding:18px;border:1px solid var(--kye-color-line);border-radius:var(--kye-radius-3);background:color-mix(in srgb, var(--kye-color-brand) 4%, var(--kye-color-paper-2))">
+      <strong>Tier-1 evaluation path:</strong> 10 Core profiles to read end-to-end before deciding to pilot &mdash; <code>kye-core-v1</code> &middot; <code>kye-gateway-v1</code> &middot; <code>kye-conformance-v1</code> &middot; <code>kye-payments-v1</code> &middot; <code>kye-credentials-v1</code> &middot; <code>kye-attestation-v1</code> &middot; <code>kye-signals-v1</code> &middot; <code>kye-transparency-v1</code> &middot; <code>kye-recovery-v1</code> &middot; <code>kye-capability-v1</code>. Add the EU AI Act + Payments-EU + Payments-Card overlays for your jurisdiction. Everything else composes on top.
+    </div>
     <div id="profile-tabs" class="profile-tabs" role="tablist" aria-label="Profile inventory tabs"></div>
     <div id="profile-detail" class="profile-detail" role="tabpanel" aria-live="polite"></div>
     <noscript>
