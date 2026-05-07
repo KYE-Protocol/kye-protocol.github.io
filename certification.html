@@ -15,7 +15,7 @@
   <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
   <meta property="og:url" content="https://kye-protocol.github.io/certification.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="styles.css?v=1779180000" />
+  <link rel="stylesheet" href="styles.css?v=1779190000" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
 </head>
@@ -64,6 +64,34 @@
       <li><span class="eg-tier eg-tier-l3">L3</span><strong>KYE Conformant<span class="tm">™</span></strong> &mdash; full programme review of schema + endpoint + behaviour + evidence shape + error codes + edge cases. Badge issued; registry listing upgraded; co-marketing eligible.</li>
       <li><span class="eg-tier eg-tier-l4">L4</span><strong>KYE Certified<span class="tm">™</span></strong> &mdash; third-party-audited certification by an approved audit firm. Annual revalidation. The mark a regulated buyer can put in front of their supervisor.</li>
     </ul>
+
+    <h3 class="arch-tier-h" style="margin-top:28px">Capability-scoped Conformance badges</h3>
+    <p class="lede" style="margin-top:6px">Within each tier, an implementation can carry capability-scoped marks. Each badge attests to a defined slice of the conformance pack &mdash; not the whole thing &mdash; so an implementation can grow its claims one capability at a time.</p>
+    <div class="kye-conformance-ladder">
+      <div class="kye-conformance-card" data-conformance-status="planned">
+        <span class="name">KYE Core Conformant<span class="tm">™</span></span>
+        <span class="desc">Core authority, delegation, scope, state, audit, decision-code conformance against the Core fixture set.</span>
+        <span class="status">Programme in development</span>
+      </div>
+      <div class="kye-conformance-card" data-conformance-status="planned">
+        <span class="name">KYE Authority Conformant<span class="tm">™</span></span>
+        <span class="desc">Authority Finality<span class="tm">™</span> binding &mdash; actor &middot; on-behalf-of &middot; capability &middot; scope &middot; state &middot; audit &mdash; tested end-to-end.</span>
+        <span class="status">Programme in development</span>
+      </div>
+      <div class="kye-conformance-card" data-conformance-status="planned">
+        <span class="name">KYE Capability Conformant<span class="tm">™</span></span>
+        <span class="desc">Capability registry, grant, invocation, quarantine and cascade fixtures all pass.</span>
+        <span class="status">Programme in development</span>
+      </div>
+      <div class="kye-conformance-card" data-conformance-status="planned">
+        <span class="name">KYE Evidence Conformant<span class="tm">™</span></span>
+        <span class="desc">Evidence Pack<span class="tm">™</span> generation, signing, replay and OSCAL projection conformance.</span>
+        <span class="status">Programme in development</span>
+      </div>
+    </div>
+    <div class="kye-badge-disclaimer" style="margin-top:14px">
+      <strong>Capability-scoped badges are still in development.</strong> They become live once the public conformance programme opens registration and the per-capability fixture pack is frozen. Until then, only the five tiers above are issued. Capability badges, when issued, will be versioned, time-limited, and link to a public verification record at <code>/badges/{badge_id}/verify</code> showing implementation, profile version, test-suite version, issued / expires dates, and revocation status.
+    </div>
   </div></div>
 </section>
 

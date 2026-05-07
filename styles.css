@@ -10583,3 +10583,149 @@ body[class] #evidence .lede { font-size: 14px; line-height: 1.45; max-width: 720
 :root[data-theme="dark"] .layer-chip {
   background: color-mix(in srgb, var(--layer-c, var(--kye-color-brand)) 22%, transparent);
 }
+
+/* ============================================================
+   §FINAL-77 — KYE badge system.
+
+   Three categories, three sizes. Visual rule: badges describe
+   capabilities or conformance, never imply third-party
+   endorsement / regulatory approval / certification by another
+   body. The CSS distinguishes the three categories so visitors
+   can read trust at a glance.
+
+   Categories (data-badge-cat):
+     capability — what KYE supports (Decision Map™, MCP-ready, …)
+     profile    — where KYE applies (Payment Profile™, Legal Profile™…)
+     conformance — what has been verified (Core Conformant™, Certified™)
+
+   Sizes (data-badge-size):
+     sm — feature strips, hero rows
+     md — profile cards
+     lg — certification cards / trust marks
+
+   The small disclaimer at the foot of every certification badge
+   group reminds the reader that profile/capability badges are
+   support-level, not regulatory approval.
+   ============================================================ */
+.kye-badge-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin-top: 10px;
+}
+.kye-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-sans, system-ui, sans-serif);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  border-radius: 999px;
+  border: 1px solid var(--kye-color-line);
+  background: var(--kye-color-paper);
+  color: var(--kye-color-text);
+  text-decoration: none !important;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+.kye-badge .ms {
+  font-size: 14px;
+  opacity: 0.85;
+}
+/* Sizes */
+.kye-badge[data-badge-size="sm"]  { font-size: 11.5px; padding: 4px 9px; line-height: 1.4; }
+.kye-badge[data-badge-size="md"]  { font-size: 12.5px; padding: 6px 11px; }
+.kye-badge[data-badge-size="lg"]  { font-size: 13px; padding: 8px 14px; }
+
+/* Category accents */
+.kye-badge[data-badge-cat="capability"] {
+  border-color: color-mix(in srgb, var(--kye-color-brand) 30%, var(--kye-color-line));
+  color: color-mix(in srgb, var(--kye-color-brand) 80%, var(--kye-color-text));
+}
+.kye-badge[data-badge-cat="capability"]:hover {
+  border-color: var(--kye-color-brand);
+  background: color-mix(in srgb, var(--kye-color-brand) 7%, var(--kye-color-paper));
+}
+.kye-badge[data-badge-cat="profile"] {
+  border-color: color-mix(in srgb, #009688 30%, var(--kye-color-line));
+  color: color-mix(in srgb, #009688 80%, var(--kye-color-text));
+}
+.kye-badge[data-badge-cat="profile"]:hover {
+  border-color: #009688;
+  background: color-mix(in srgb, #009688 7%, var(--kye-color-paper));
+}
+.kye-badge[data-badge-cat="conformance"] {
+  border-color: color-mix(in srgb, #1A73E8 30%, var(--kye-color-line));
+  color: color-mix(in srgb, #1A73E8 80%, var(--kye-color-text));
+}
+.kye-badge[data-badge-cat="conformance"]:hover {
+  border-color: #1A73E8;
+  background: color-mix(in srgb, #1A73E8 7%, var(--kye-color-paper));
+}
+
+/* Conformance ladder card layout (large + status rail) */
+.kye-conformance-ladder {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+.kye-conformance-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px;
+  border: 1px solid var(--kye-color-line);
+  border-left: 3px solid #1A73E8;
+  border-radius: var(--kye-radius-2);
+  background: var(--kye-color-paper);
+}
+.kye-conformance-card .name {
+  font-weight: 700;
+  font-size: 13.5px;
+}
+.kye-conformance-card .desc {
+  font-size: 12px;
+  color: var(--kye-color-muted);
+  line-height: 1.45;
+}
+.kye-conformance-card .status {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 3px;
+  background: color-mix(in srgb, #F4B400 16%, transparent);
+  color: #B47200;
+}
+.kye-conformance-card[data-conformance-status="active"] .status {
+  background: color-mix(in srgb, #1A8754 14%, transparent);
+  color: #1A8754;
+}
+
+/* Disclaimer rail below certification badge groups. */
+.kye-badge-disclaimer {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-left: 3px solid var(--kye-color-brand);
+  background: color-mix(in srgb, var(--kye-color-brand) 6%, transparent);
+  border-radius: 0 var(--kye-radius-2) var(--kye-radius-2) 0;
+  font-size: 12.5px;
+  color: var(--kye-color-text);
+}
+.kye-badge-disclaimer strong { font-weight: 700; }
+
+/* Dark mode lifts the badge backgrounds. */
+:root[data-theme="dark"] .kye-conformance-card {
+  background: var(--surface-solid, var(--kye-color-paper));
+}
+:root[data-theme="dark"] .kye-badge {
+  background: color-mix(in srgb, var(--kye-color-paper) 70%, transparent);
+}
