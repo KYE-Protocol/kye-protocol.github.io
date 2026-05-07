@@ -228,7 +228,7 @@
     </ul>
 
     <h3 class="arch-tier-h" style="margin-top:26px">OSS / commercial split</h3>
-    <p class="arch-b"><strong>Open (Apache 2.0):</strong> envelope schema, every event-family schema, error / reason codes, delivery-receipt format, verifier SDK (TypeScript / Python / Go), reference Gateway webhook handler + retry loop + DLQ + replay endpoint, conformance test vectors.</p>
+    <p class="arch-b">Envelope schema, every event-family schema, error / reason codes, delivery-receipt format, verifier SDK (TypeScript / Python / Go), reference Gateway webhook handler + retry loop + DLQ + replay endpoint, conformance test vectors. All Apache 2.0.</p>
 
     <h3 class="arch-tier-h" style="margin-top:26px">Worked example &middot; agent-purchase revocation</h3>
     <p class="arch-b">A customer revokes their shopping-agent's payment authority. One signed <code data-code="field">kye.authority.revoked</code> event fans out to five subscribers: <strong>bank</strong> freezes the agent card token; <strong>merchant platform</strong> blocks future agent purchases; <strong>agent runtime</strong> removes the <code data-code="field">payment_action.card_purchase</code> capability; <strong>SIEM</strong> opens an alert linked to the audit-chain ref; <strong>audit pipeline</strong> emits <code data-code="field">kye.evidence_pack.generated</code> for the regulator-facing pack. All five verify with the same public-key set; the regulator can replay the entire flow offline.</p>
@@ -435,7 +435,7 @@
     <h2 id="h-arch" class="h-section">From <span class="accent">authority to audit</span> &mdash; backed by schemas, taxonomies, metadata, and a traversable graph.</h2>
   <div class="section-body" id="architecture-body">
     <div class="container">
-    <p class="lede">KYE Protocol<span class="tm">™</span> has three layers. <strong>Runtime Governance</strong> &mdash; authority, state, decisions, policy, evidence, audit. <strong>Protocol Design</strong> &mdash; schemas, dictionaries, taxonomies, metadata, graph, profiles, registries, conformance. <strong>Developer Adoption</strong> &mdash; APIs and SDKs. The separation matters: what the protocol <em>decides</em> is independent from how it <em>ships</em>, which is independent from how you <em>use</em> it. The KYE Cloud Gateway<span class="tm">™</span> is the planned commercial bundle &mdash; the open protocol stays open.</p>
+    <p class="lede">KYE Protocol<span class="tm">™</span> has three layers. <strong>Runtime Governance</strong> &mdash; authority, state, decisions, policy, evidence, audit. <strong>Protocol Design</strong> &mdash; schemas, dictionaries, taxonomies, metadata, graph, profiles, registries, conformance. <strong>Developer Adoption</strong> &mdash; APIs and SDKs. The separation matters: what the protocol <em>decides</em> is independent from how it <em>ships</em>, which is independent from how you <em>use</em> it.</p>
 
     <h3 class="arch-tier-h">Tier A &middot; Runtime governance &mdash; <em>what KYE<span class="tm">™</span> decides</em></h3>
     <div class="arch-grid">
@@ -558,11 +558,6 @@
       </article>
     </div>
 
-    <div class="arch-commercial">
-      <span class="eyebrow">Commercial layer &middot; KYE Cloud Gateway<span class="tm">™</span></span>
-      <h3 class="arch-h" style="margin-top:8px">SKU-first, metering-first &mdash; never in the open protocol.</h3>
-      <p class="arch-b">The open protocol stays vendor-neutral. The hosted product packages it commercially: <strong>SKU-first, metering-first, dashboard-first, evidence-pack-first, enterprise-pack-first, compliance-pack-first, BYOC / on-prem-first</strong>. KYE Cloud Gateway<span class="tm">™</span> SKUs include Hosted Registry, Validator API, Recovery Console, Evidence Packs, Compliance Profiles, Regulated-Sector Packs, and Enterprise Deployment. SKU logic never enters Core objects (<code>KYEEntity</code>, <code>KYEAuthorityGrant</code>, <code>KYEAuditEvent</code>, <code>KYEStateTransition</code>, <code>KYETaxonomyTerm</code>, <code>KYEMetadataBinding</code>).</p>
-    </div>
   </div>
   </div>
 </section>

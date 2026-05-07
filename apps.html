@@ -5,13 +5,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>KYE Protocol™ — KYE App Store™ | Productised apps for agentic payments, open finance, MCP, evidence and certification</title>
-  <meta name="description" content="The KYE App Store™. 21 productised apps built on KYE Protocol™ — Payment Authority Gateway™, Checkout Guard™, Agent Purchasing reference, IPG/MPG Connector™, Open Finance Authority Gateway™, OpenBankProject™ adapter, Bank Developer Portal Authority Connector™, UAE Open Finance Sandbox Connector™, Regulatory Sandbox Evidence Harness™, Pension Authority Connector™, Pension Sandbox Harness™, MCP Server & Tool Governance Gateway™, Evidence Pack Viewer™, Certification & Conformance Portal™, plus 7 legal-profile apps. Open contracts ship with v1.0; commercial runtime per app planned." />
+  <meta name="description" content="The KYE App Store™. 21 productised authority surfaces built on KYE Protocol™ — Payment Authority Gateway™, Checkout Guard™, Agent Purchasing reference, IPG/MPG Connector™, Open Finance Authority Gateway™, OpenBankProject™ adapter, Bank Developer Portal Authority Connector™, UAE Open Finance Sandbox Connector™, Regulatory Sandbox Evidence Harness™, Pension Authority Connector™, Pension Sandbox Harness™, MCP Server & Tool Governance Gateway™, Evidence Pack Viewer™, Certification & Conformance Portal™, plus 7 legal-profile apps." />
   <meta name="keywords" content="KYE App Store, Payment Authority Gateway, Checkout Guard, agent-backed purchasing app, Open Finance Authority Gateway, OpenBankProject, Pension Authority Connector, KYE MCP Server, Evidence Pack Viewer, Certification Conformance Portal" />
   <link rel="canonical" href="https://kye-protocol.github.io/apps.html" />
   <meta name="robots" content="index, follow" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="KYE Protocol™ — KYE App Store™" />
-  <meta property="og:description" content="Production-ready apps built on KYE Protocol™. Open contracts; commercial runtime." />
+  <meta property="og:description" content="Productised authority surfaces built on KYE Protocol™ — payments, open finance, sandbox, sector, MCP, evidence, certification, legal." />
   <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
   <meta property="og:url" content="https://kye-protocol.github.io/apps.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
@@ -260,7 +260,7 @@
         <span class="eyebrow">App manifest</span>
     <h2 id="h-mn" class="h-section">Every app ships a <code data-code="field">kye.app_manifest.v1</code>.</h2>
   <div class="section-body"><div class="container">
-    <p class="lede">App manifests declare what the app does, which profiles it supports, deployment modes (hosted &middot; BYOC &middot; on-prem), the OSS / commercial component split, and the commercial model (annual licence + usage, transaction fees, bps).</p>
+    <p class="lede">App manifests declare what the app does, which profiles it supports, the capabilities it exposes, and the deployment modes it supports.</p>
 <pre class="codeblock" style="margin-top:14px"><code>{
   "schema_version": "kye.app_manifest.v1",
   "app_id":         "kye:app:payment-authority-gateway",
@@ -284,14 +284,6 @@
     "evidence_pack_generation", "signed_webhooks"
   ],
   "deployment_modes": ["hosted", "byoc", "on_prem"],
-  "commercial_model": {
-    "pricing_type":             "annual_license_plus_usage",
-    "supports_transaction_fee": true,
-    "supports_bps":             true
-  },
-  "oss_components": ["schemas", "manifest", "sdk_examples", "webhook_verifier"],
-  "commercial_components": ["runtime_gateway", "decision_engine",
-                            "evidence_engine", "dashboard", "sla_support"],
   "status": "active"
 }</code></pre>
   </div></div>

@@ -29,7 +29,7 @@
   <div class="container hero-inner">
     <span class="hero-pill"><span class="dot"></span> Legal &middot; what&rsquo;s open, what&rsquo;s protected</span>
     <h1 id="hero-title" style="margin-top:18px">Everything is open. <span class="accent">You can build a production system without paying us.</span></h1>
-    <p class="lede">Schemas, SDKs, conformance tests, reference Gateway, OpenAPI, vocabulary, ID format, examples, policy bundles &mdash; Apache License 2.0. Three things are not open: a small set of patent-track mechanism algorithms, the KYE Protocol<span class="tm">™</span> trademarks, and the planned commercial KYE Cloud Gateway<span class="tm">™</span> hosted service.</p>
+    <p class="lede">Schemas, SDKs, conformance tests, reference Gateway, OpenAPI, vocabulary, ID format, examples, policy bundles &mdash; Apache License 2.0. Two things are not open: a small set of patent-track mechanism algorithms, and the KYE Protocol<span class="tm">™</span> trademarks.</p>
     <div class="cn-quick" style="margin-top:14px">
       <a href="#yesno"      class="cn-pill"><span class="ms">checklist</span> Yes / no table</a>
       <a href="#license"    class="cn-pill"><span class="ms">balance</span> Apache 2.0</a>
@@ -79,7 +79,7 @@
     <h2 id="h-pat" class="h-section">What is patent-track and why it exists.</h2>
   <div class="section-body"><div class="container">
     <p class="lede">A small set of mechanism algorithms &mdash; how the cascade propagates, how the audit chain composes, how the federation transfer binds &mdash; are held in <code data-code="path">private/mechanisms/</code> and are <strong>not</strong> publicly disclosed. They are subject to a patent track (UK / EU / US, with priority anchored on the public-surface release date).</p>
-    <p class="lede" style="margin-top:14px">Why the split? The contracts have to be open or KYE Protocol<span class="tm">™</span> isn&rsquo;t a protocol. Partners, banks, regulators, auditors must be able to implement and verify without depending on us. The mechanism layer is what the commercial KYE Cloud Gateway<span class="tm">™</span> runs &mdash; it is the operational moat, not the standard.</p>
+    <p class="lede" style="margin-top:14px">Why the split? The contracts have to be open or KYE Protocol<span class="tm">™</span> isn&rsquo;t a protocol. Partners, banks, regulators, auditors must be able to implement and verify without depending on us. The mechanism layer is the operational moat &mdash; not the standard.</p>
     <p class="lede" style="margin-top:14px"><strong>What you can do today:</strong> implement everything you see in the public repo. Pass the conformance pack. Ship a competing implementation. <strong>What you cannot do:</strong> reverse-engineer or re-publish the mechanism algorithms (they aren&rsquo;t in the public repo to reverse-engineer) and represent your implementation as the canonical KYE one without going through the KYE Conformant<span class="tm">™</span> / KYE Certified<span class="tm">™</span> ladder.</p>
     <p style="margin-top:14px">Counsel-cleared disclosure register lives at <code data-code="path">private/patent/disclosure-register.md</code>; six entries logged 2026-04-29.</p>
   </div></div>
@@ -102,7 +102,7 @@
   <div class="section-body"><div class="container">
     <div class="prim-grid" style="margin-top:14px">
       <a href="developers.html" class="prim-card"><span class="ms">code</span><strong>Developer</strong><span>You can build, ship, sell, fork. Apache 2.0 across the public surface. Don&rsquo;t reverse-engineer mechanisms; don&rsquo;t use the trademarks for your product name without consent.</span></a>
-      <a href="buyers.html" class="prim-card"><span class="ms">business_center</span><strong>Enterprise / CIO</strong><span>You can run KYE in production with no licence fee. The KYE Cloud Gateway<span class="tm">™</span> is the planned commercial path for a managed runtime. Either way, your evidence packs are verifiable offline forever.</span></a>
+      <a href="buyers.html" class="prim-card"><span class="ms">business_center</span><strong>Enterprise / CIO</strong><span>You can run KYE in production with no licence fee. Your evidence packs are verifiable offline forever, regardless of where the runtime lives.</span></a>
       <a href="partners.html" class="prim-card"><span class="ms">group_work</span><strong>Partner / SI</strong><span>You can build conformant integrations and use the &ldquo;built on KYE&rdquo; positioning. The L3 KYE Conformant<span class="tm">™</span> / L4 KYE Certified<span class="tm">™</span> ladder gives you a public registry listing.</span></a>
       <a href="auditors.html" class="prim-card"><span class="ms">verified</span><strong>Auditor / regulator</strong><span>Every claim on this page is verifiable: licence, trademarks register, disclosure register, source repos, patent-safety CI scan. Read by URL; verify with public keys.</span></a>
     </div>
