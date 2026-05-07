@@ -5,13 +5,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>KYE Protocol™ — Legal · what's open, what's protected, what you can build</title>
-  <meta name="description" content="Plain-English legal page: everything is open under Apache 2.0 (vocabulary, schemas, OpenAPI, conformance, SDKs, reference Gateway). The patent track covers specific mechanism algorithms inside private/mechanisms/. KYE™, KYE Protocol™ and product names are trademarks. Yes/no table per audience: developer, enterprise, partner, investor." />
-  <meta name="keywords" content="KYE Protocol legal, KYE Apache 2.0, KYE patents, KYE trademarks, what's open what's protected, build without paying" />
+  <meta name="description" content="Plain-English legal page: everything is open under Apache 2.0 (vocabulary, schemas, OpenAPI, conformance, SDKs, reference Gateway). The patent track covers specific mechanism algorithms inside private/mechanisms/. KYE™, KYE Protocol™ and product names are trademarks. Yes/no table per audience plus FAQ on licence, patents, trademarks, conformance, terms, privacy, contact." />
+  <meta name="keywords" content="KYE Protocol legal, KYE Apache 2.0, KYE patents, KYE trademarks, KYE legal FAQ, terms, privacy, what's open what's protected, build without paying" />
   <link rel="canonical" href="https://kye-protocol.github.io/legal.html" />
   <meta name="robots" content="index, follow" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="KYE Protocol™ — Legal" />
-  <meta property="og:description" content="Plain-English: what's open, what's protected, what you can build without paying us." />
+  <meta property="og:description" content="Plain-English: what's open, what's protected, what you can build without paying us. Plus FAQ on licence, patents, trademarks, conformance, terms, privacy." />
   <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
   <meta property="og:url" content="https://kye-protocol.github.io/legal.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
@@ -35,6 +35,10 @@
       <a href="#license"    class="cn-pill"><span class="ms">balance</span> Apache 2.0</a>
       <a href="#patents"    class="cn-pill"><span class="ms">policy</span> Patents</a>
       <a href="#trademarks" class="cn-pill"><span class="ms">verified</span> Trademarks</a>
+      <a href="#conformance-faq" class="cn-pill"><span class="ms">workspace_premium</span> Conformance</a>
+      <a href="#terms"      class="cn-pill"><span class="ms">gavel</span> Terms</a>
+      <a href="#privacy"    class="cn-pill"><span class="ms">privacy_tip</span> Privacy</a>
+      <a href="#contact"    class="cn-pill"><span class="ms">forum</span> Contact</a>
       <a href="#audiences"  class="cn-pill"><span class="ms">groups</span> By audience</a>
     </div>
   </div>
@@ -61,7 +65,7 @@
 </section>
 
 <section id="license" class="section alt" aria-labelledby="h-lic">
-        <span class="eyebrow">License &mdash; Apache 2.0</span>
+        <span class="eyebrow">Licence &mdash; Apache 2.0</span>
     <h2 id="h-lic" class="h-section">What Apache 2.0 actually grants.</h2>
   <div class="section-body"><div class="container">
     <ul class="biz-list" style="margin-top:12px">
@@ -71,6 +75,24 @@
       <li><strong>Patent grant.</strong> Apache 2.0 §3 includes an explicit, irrevocable patent grant from contributors for the contributed code. Mechanism content held in <code>private/mechanisms/</code> is <em>not</em> contributed code &mdash; it is held confidentially pre-filing and is not in scope of the §3 grant.</li>
     </ul>
     <p style="margin-top:14px">Source of record: <a href="https://github.com/KYE-Protocol/app/blob/main/public/LICENSE" target="_blank" rel="noopener">LICENSE</a> at the public org root.</p>
+
+    <h3 style="margin-top:24px">Frequently asked &mdash; licence</h3>
+    <details class="faq-q">
+      <summary><strong>What licence is the protocol published under?</strong></summary>
+      <p>Apache License, Version 2.0. That covers the vocabulary, ID format, JSON Schemas, OpenAPI specifications, examples, reference Gateway source, SDKs, conformance fixtures, this site, and the whitepaper &mdash; unless an individual file specifies otherwise.</p>
+    </details>
+    <details class="faq-q">
+      <summary><strong>Can I fork it?</strong></summary>
+      <p>Yes. Forks and derivative works are permitted under the Apache 2.0 terms. You must not, however, use the protected marks to identify a forked or derivative project that is not the published protocol.</p>
+    </details>
+    <details class="faq-q">
+      <summary><strong>Is there a CLA?</strong></summary>
+      <p>No. Contributions follow the <em>inbound-equals-outbound</em> principle: by submitting a pull request you agree to license your contribution under Apache 2.0.</p>
+    </details>
+    <details class="faq-q">
+      <summary><strong>What is free?</strong></summary>
+      <p>Vocabulary, schemas, dictionaries, OpenAPI, profile bindings, the three reference SDKs (TypeScript / Python / Go), the local validator, the conformance test pack, local decision helpers, and the reference Gateway. You can build a real KYE-conformant integration end-to-end with no payment and no signature beyond the licence. To scope a structured pilot or partner integration, use the <a href="#" data-contact-trigger>Talk to the team</a> modal.</p>
+    </details>
   </div></div>
 </section>
 
@@ -82,17 +104,147 @@
     <p class="lede" style="margin-top:14px">Why the split? The contracts have to be open or KYE Protocol<span class="tm">™</span> isn&rsquo;t a protocol. Partners, banks, regulators, auditors must be able to implement and verify without depending on us. The mechanism layer is the operational moat &mdash; not the standard.</p>
     <p class="lede" style="margin-top:14px"><strong>What you can do today:</strong> implement everything you see in the public repo. Pass the conformance pack. Ship a competing implementation. <strong>What you cannot do:</strong> reverse-engineer or re-publish the mechanism algorithms (they aren&rsquo;t in the public repo to reverse-engineer) and represent your implementation as the canonical KYE one without going through the KYE Conformant<span class="tm">™</span> / KYE Certified<span class="tm">™</span> ladder.</p>
     <p style="margin-top:14px">Counsel-cleared disclosure register lives at <code data-code="path">private/patent/disclosure-register.md</code>; six entries logged 2026-04-29.</p>
+
+    <h3 style="margin-top:24px">Frequently asked &mdash; patent track</h3>
+    <details class="faq-q">
+      <summary><strong>Are the algorithms patent-encumbered?</strong></summary>
+      <p>Specific <em>mechanism designs</em> &mdash; decision evaluation, hash-chain construction, cascade ordering, attenuation propagation, signal-driven invalidation &mdash; sit in a separate patent track and are intentional placeholders pre-filing in the development repo. Once filed they will be made available <strong>royalty-free for any conformant implementation</strong>.</p>
+    </details>
+    <details class="faq-q">
+      <summary><strong>Why placeholders?</strong></summary>
+      <p>EU and UK patent law requires absolute novelty. Disclosing the mechanism designs publicly before filing destroys novelty in those jurisdictions. The placeholder convention preserves novelty without holding back the public protocol surface.</p>
+    </details>
+    <details class="faq-q">
+      <summary><strong>I&rsquo;m integrating today &mdash; do I need a patent licence?</strong></summary>
+      <p>The publicly published vocabulary, URN format, schemas and OpenAPI are released under the Apache 2.0 patent grant; that covers conformant implementation of the public surface. If you need written assurance about the patent track, open a discussion at <a href="https://github.com/KYE-Protocol/Discussions/discussions" target="_blank" rel="noopener">KYE-Protocol/Discussions</a> or email <a href="mailto:[email protected]">[email protected]</a>.</p>
+    </details>
   </div></div>
 </section>
 
 <section id="trademarks" class="section alt" aria-labelledby="h-tm">
         <span class="eyebrow">Trademarks</span>
-    <h2 id="h-tm" class="h-section">33 protected marks. Use them, don&rsquo;t reuse them.</h2>
+    <h2 id="h-tm" class="h-section">Use them, don&rsquo;t reuse them.</h2>
   <div class="section-body"><div class="container">
     <p class="lede">KYE<span class="tm">™</span>, KYE Protocol<span class="tm">™</span>, Know Your Entity<span class="tm">™</span>, Authority Finality<span class="tm">™</span>, Authority Graph<span class="tm">™</span>, Decision Map<span class="tm">™</span>, Evidence Pack<span class="tm">™</span>, Evidence Graph<span class="tm">™</span>, Blast Radius Map<span class="tm">™</span>, Compliance Map<span class="tm">™</span>, KYE Compliance Mapping Rail<span class="tm">™</span>, KYE Cloud Gateway<span class="tm">™</span>, KYE Conformant<span class="tm">™</span>, KYE Certified<span class="tm">™</span>, KYE Self-Tested<span class="tm">™</span>, KYE Self-Attested<span class="tm">™</span>, plus capability-scoped Conformance marks (Core / Authority / Capability / Evidence) and the Sovereign AI family (9 profiles + 5 apps).</p>
     <p class="lede" style="margin-top:14px"><strong>Permitted:</strong> referring to KYE Protocol<span class="tm">™</span> in your documentation; saying &ldquo;built on KYE Protocol<span class="tm">™</span>&rdquo; once your implementation has passed the conformance pack; using the marks editorially in articles, talks, papers.</p>
     <p class="lede" style="margin-top:14px"><strong>Not permitted:</strong> using a KYE mark in your own product name without written consent; representing yourself as &ldquo;KYE Conformant&rdquo; without a current verification record; using a confusingly similar mark.</p>
     <p style="margin-top:14px">Full register (machine-readable, JSON-Schema-validated): <code data-code="path">public/vocabulary/trademarks.json</code>.</p>
+
+    <h3 style="margin-top:24px">Frequently asked &mdash; trademarks</h3>
+    <details class="faq-q">
+      <summary><strong>Can I name my product &ldquo;KYE&nbsp;X&rdquo; or &ldquo;X-KYE&rdquo;?</strong></summary>
+      <p>No. You may not use &ldquo;KYE<span class="tm">™</span>&rdquo; or any of the protected marks in your product&rsquo;s name, domain, organisation name or logo. You <em>may</em> describe your product as &ldquo;KYE Protocol<span class="tm">™</span>-compatible&rdquo; or &ldquo;conformant with KYE Protocol<span class="tm">™</span> v1.0&rdquo; once you pass the public conformance fixture pack.</p>
+    </details>
+    <details class="faq-q">
+      <summary><strong>Do I need to put &ldquo;<span class="tm">™</span>&rdquo; every time?</strong></summary>
+      <p>Use the <span class="tm">™</span> symbol on the <em>first prominent use</em> in any public document or page. Subsequent uses on the same page may drop it. In code comments, READMEs and developer chat the symbol is optional but encouraged.</p>
+    </details>
+    <details class="faq-q">
+      <summary><strong>Can I use the marks in a comparison or review?</strong></summary>
+      <p>Yes &mdash; nominative fair use is fine. You can write factual comparisons (&ldquo;Vendor X vs. KYE Protocol<span class="tm">™</span>&rdquo;) provided you don&rsquo;t imply endorsement, sponsorship or affiliation, and you don&rsquo;t use the logo as if it were yours.</p>
+    </details>
+    <details class="faq-q">
+      <summary><strong>Can I issue &ldquo;KYE Certified<span class="tm">™</span>&rdquo; certifications?</strong></summary>
+      <p>No. <em>KYE Certified<span class="tm">™</span></em> is reserved for the formal certification programme published by the project. Vendors may self-declare conformance levels (KYE Self-Tested<span class="tm">™</span> / KYE Self-Attested<span class="tm">™</span>) per the conformance &amp; certification spec, but the L4 Certified<span class="tm">™</span> badge is issued only by the project.</p>
+    </details>
+  </div></div>
+</section>
+
+<section id="conformance-faq" class="section" aria-labelledby="h-cf">
+        <span class="eyebrow">Conformance &amp; certification</span>
+    <h2 id="h-cf" class="h-section">Five tiers; conformance is the only commercial layer.</h2>
+  <div class="section-body"><div class="container">
+    <p class="lede">The conformance ladder runs L0 Declared &rarr; L1 KYE Self-Tested<span class="tm">™</span> &rarr; L2 KYE Self-Attested<span class="tm">™</span> &rarr; L3 KYE Conformant<span class="tm">™</span> &rarr; L4 KYE Certified<span class="tm">™</span>. Full programme detail on the <a href="certification.html">certification page</a>.</p>
+
+    <h3 style="margin-top:18px">Frequently asked</h3>
+    <details class="faq-q">
+      <summary><strong>What are the badge tiers?</strong></summary>
+      <p>Five tiers in the KYE<span class="tm">™</span> Conformance &amp; Certification Programme<span class="tm">™</span>: <strong>L0 Declared</strong>, <strong>L1 KYE Self-Tested<span class="tm">™</span></strong>, <strong>L2 KYE Self-Attested<span class="tm">™</span></strong>, <strong>L3 KYE Conformant<span class="tm">™</span></strong> (with optional Profile / Compliance variants), and <strong>L4 KYE Certified<span class="tm">™</span></strong>.</p>
+    </details>
+    <details class="faq-q">
+      <summary><strong>How do I run the fixture pack?</strong></summary>
+      <p>Clone the public examples repository and run <code>node scripts/validate-schemas.js</code> + <code>npm test</code>. The current pack ships <strong>40 conformance fixtures</strong> (40/40 pass) plus the SDK + Gateway unit / integration tests. Submit your run output to the public registry to claim KYE Self-Tested<span class="tm">™</span>.</p>
+    </details>
+    <details class="faq-q">
+      <summary><strong>Is certification annual?</strong></summary>
+      <p>Yes. Both KYE Self-Attested<span class="tm">™</span> and KYE Certified<span class="tm">™</span> badges are renewed annually against the then-current spec version. The signed certification record records the spec version, the run hash and the renewal cadence.</p>
+    </details>
+  </div></div>
+</section>
+
+<section id="terms" class="section alt" aria-labelledby="h-terms">
+        <span class="eyebrow">Terms &amp; conditions</span>
+    <h2 id="h-terms" class="h-section">Site &amp; protocol terms.</h2>
+  <div class="section-body"><div class="container">
+    <ul class="biz-list" style="margin-top:12px">
+      <li><strong>Lawful use only.</strong> Of this site and the protocol. No impersonation, no false-conformance claims, no use of the marks contrary to the trademark policy above.</li>
+      <li><strong>&ldquo;As is&rdquo;.</strong> The protocol, the reference Gateway, the SDKs, the conformance pack, and this site are provided without warranty. Apache 2.0 &sect;7&ndash;9 govern.</li>
+      <li><strong>Governing law.</strong> English &amp; Welsh law applies; courts of England &amp; Wales have exclusive jurisdiction over disputes arising from this site.</li>
+      <li><strong>Changes.</strong> Terms may be updated; the canonical version is the latest commit of this page on the public mirror.</li>
+    </ul>
+
+    <h3 style="margin-top:24px">Frequently asked &mdash; terms</h3>
+    <details class="faq-q">
+      <summary><strong>What am I agreeing to when I use this site?</strong></summary>
+      <p>The terms above. In short: lawful use of the site and the protocol; no impersonation or false-conformance claims; the protocol is provided &ldquo;as is&rdquo; with no warranty (Apache 2.0 &sect;7&ndash;9 govern); English &amp; Welsh law applies.</p>
+    </details>
+    <details class="faq-q">
+      <summary><strong>What am I agreeing to when I submit a contact form?</strong></summary>
+      <p>The contact modal requires you to accept these terms and the <a href="#privacy">privacy policy</a> below before sending. The form opens your local mail client with a pre-filled message to <a href="mailto:[email protected]">[email protected]</a> &mdash; nothing leaves your device until you press <em>Send</em>.</p>
+    </details>
+  </div></div>
+</section>
+
+<section id="privacy" class="section" aria-labelledby="h-priv">
+        <span class="eyebrow">Privacy</span>
+    <h2 id="h-priv" class="h-section">No analytics. No trackers. <span class="accent">Three localStorage keys.</span></h2>
+  <div class="section-body"><div class="container">
+    <ul class="biz-list" style="margin-top:12px">
+      <li><strong>No third-party analytics, advertising trackers, behavioural cookies, or fingerprinting.</strong> Verify with browser dev-tools.</li>
+      <li><strong>Local storage only.</strong> Three keys: <code>kye-theme</code> (light/dark), <code>kye-audience</code> (audience filter), <code>kye-sec-*</code> (which sections you&rsquo;ve opened). All client-side; never sent to a server.</li>
+      <li><strong>Contact form.</strong> Composes a <code>mailto:</code> link with what you typed; your mail client sends. The maintainers process incoming email under <em>legitimate interest</em>; messages retained only as long as needed; never shared with third parties except where required by law.</li>
+      <li><strong>Your rights.</strong> UK GDPR / EU GDPR / CCPA-equivalent rights apply where you live: access, rectification, erasure, portability, objection. Email <a href="mailto:[email protected]">[email protected]</a> with subject &ldquo;Data request&rdquo;; we respond within 30 days.</li>
+    </ul>
+
+    <h3 style="margin-top:24px">Frequently asked &mdash; privacy</h3>
+    <details class="faq-q">
+      <summary><strong>Does this site track me?</strong></summary>
+      <p>No. There are no third-party analytics, no advertising trackers, no behavioural cookies, no fingerprinting scripts.</p>
+    </details>
+    <details class="faq-q">
+      <summary><strong>What does the site store?</strong></summary>
+      <p>Three keys in your browser&rsquo;s <code>localStorage</code>: <code>kye-theme</code>, <code>kye-audience</code>, <code>kye-sec-*</code>. All client-side; never sent to a server.</p>
+    </details>
+    <details class="faq-q">
+      <summary><strong>What happens to my contact-form submission?</strong></summary>
+      <p>Your browser composes a <code>mailto:</code> link with the fields you typed. Your mail client sends the email when you press <em>Send</em>. Once it arrives at <code>[email protected]</code>, the maintainers process it under <em>legitimate interest</em> to handle your enquiry.</p>
+    </details>
+    <details class="faq-q">
+      <summary><strong>Can I request deletion of my data?</strong></summary>
+      <p>Yes. Email <a href="mailto:[email protected]">[email protected]</a> with the subject &ldquo;Data request&rdquo;. We respond within 30 days.</p>
+    </details>
+  </div></div>
+</section>
+
+<section id="contact" class="section alt" aria-labelledby="h-contact">
+        <span class="eyebrow">Contact</span>
+    <h2 id="h-contact" class="h-section">Where to send what.</h2>
+  <div class="section-body"><div class="container">
+    <ul class="biz-list" style="margin-top:12px">
+      <li><strong>Public discussion / RFCs / questions.</strong> <a href="https://github.com/KYE-Protocol/Discussions/discussions" target="_blank" rel="noopener">KYE-Protocol/Discussions</a>.</li>
+      <li><strong>Security advisories.</strong> Private channel per <a href="https://github.com/KYE-Protocol/.github/security/policy" target="_blank" rel="noopener">SECURITY.md</a>.</li>
+      <li><strong>Trademark, patent, press, partnership.</strong> Email <a href="mailto:[email protected]">[email protected]</a>, or use the <em>Talk to us</em> button in the footer of any page.</li>
+    </ul>
+
+    <h3 style="margin-top:24px">Frequently asked &mdash; contact</h3>
+    <details class="faq-q">
+      <summary><strong>How do I get in touch?</strong></summary>
+      <p>For trademark questions, security advisories, patent-licensing requests, or anything that doesn&rsquo;t belong in a public discussion, email <a href="mailto:[email protected]">[email protected]</a>, or use the <em>Talk to us</em> button in the footer of any page.</p>
+    </details>
+    <details class="faq-q">
+      <summary><strong>Where do I report a bug or propose an RFC?</strong></summary>
+      <p>Bug reports and RFC discussion happen in the public forum: <a href="https://github.com/KYE-Protocol/Discussions/discussions" target="_blank" rel="noopener">KYE-Protocol/Discussions</a>. Security vulnerabilities should be reported privately per <a href="https://github.com/KYE-Protocol/.github/security/policy" target="_blank" rel="noopener">SECURITY.md</a>.</p>
+    </details>
   </div></div>
 </section>
 

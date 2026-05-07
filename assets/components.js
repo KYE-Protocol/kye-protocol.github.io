@@ -249,9 +249,8 @@ const FOOTER_GROUPS = [
   {
     heading: 'Site',
     items: [
-      { href: 'status.html',    label: 'KYE Cloud<span class="tm">™</span> Status' },
+      { href: 'status.html',    label: 'Status' },
       { href: 'legal.html',     label: 'Legal' },
-      { href: 'legal-faq.html', label: 'Legal FAQ' },
       { href: '#',              label: 'Talk to us', attrs: 'data-contact-trigger' },
     ],
   },
