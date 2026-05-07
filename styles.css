@@ -10029,3 +10029,171 @@ li > .fwk-list.sector-frameworks-badged {
     background: var(--accent-soft); color: var(--accent);
   }
 }
+
+/* ============================================================
+   §FINAL-66 — clipboard copy buttons + widget code snippets
+   ============================================================ */
+.code-snippet {
+  position: relative;
+  margin-top: 14px;
+}
+.code-snippet pre {
+  margin: 0;
+  padding: 14px 16px;
+  padding-right: 88px;          /* room for the absolute-positioned button */
+  background: var(--kye-color-paper-2);
+  border: 1px solid var(--kye-color-line);
+  border-radius: var(--kye-radius-2);
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--kye-color-text);
+  overflow-x: auto;
+  max-height: 360px;
+}
+.copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--kye-color-line);
+  background: var(--kye-color-paper);
+  color: var(--kye-color-text-muted);
+  font: inherit;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+}
+.copy-btn .ms {
+  font-size: 14px !important;
+  width: 14px;
+}
+.copy-btn:hover {
+  background: var(--kye-color-paper-2);
+  color: var(--kye-color-text);
+  border-color: var(--kye-color-brand);
+}
+.copy-btn.is-copied {
+  background: rgba(26, 135, 84, 0.14);
+  color: #1A8754;
+  border-color: rgba(26, 135, 84, 0.40);
+}
+:root[data-theme="dark"] .code-snippet pre,
+:root[data-theme="dark"] .copy-btn { background: var(--surface-solid); border-color: var(--line); color: var(--text); }
+:root[data-theme="dark"] .copy-btn { color: var(--text-muted); }
+:root[data-theme="dark"] .copy-btn:hover { background: var(--surface-3); color: var(--text); }
+
+/* Widget section "tabs" — language switcher for code snippets */
+.widget-tabs {
+  display: inline-flex;
+  border: 1px solid var(--kye-color-line);
+  border-radius: 999px;
+  padding: 2px;
+  margin-top: 12px;
+  background: var(--kye-color-paper);
+}
+.widget-tab {
+  padding: 5px 14px;
+  border: none;
+  background: transparent;
+  font: inherit;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--kye-color-text-muted);
+  cursor: pointer;
+  border-radius: 999px;
+  transition: background 120ms ease, color 120ms ease;
+}
+.widget-tab.is-on { background: var(--kye-color-brand); color: white; }
+.widget-tab:hover:not(.is-on) { color: var(--kye-color-text); }
+.code-snippet[hidden] { display: none !important; }
+:root[data-theme="dark"] .widget-tabs { background: var(--surface-solid); border-color: var(--line); }
+
+/* §FINAL-67 — top-bar group separator label (small caps, between
+   dividers). Helps the user see the structure of a 32-item nav. */
+.top-bar-nav .tb-group-label {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--kye-color-text-muted);
+  padding: 0 4px;
+  flex-shrink: 0;
+  opacity: 0.65;
+}
+@media (max-width: 1100px) { .top-bar-nav .tb-group-label { display: none; } }
+:root[data-theme="dark"] .top-bar-nav .tb-group-label { color: var(--text-muted); }
+
+/* §FINAL-68 — widgets-page compression: collapsible code snippets +
+   tighter section padding so the page reads as a flow not a wall. */
+body .w-snippet {
+  margin-top: 14px;
+  border: 1px solid var(--kye-color-line);
+  border-radius: var(--kye-radius-2);
+  background: var(--kye-color-paper);
+  overflow: hidden;
+}
+body .w-snippet > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--kye-color-text);
+  user-select: none;
+}
+body .w-snippet > summary::-webkit-details-marker { display: none; }
+body .w-snippet > summary::after {
+  content: '▾';
+  margin-left: auto;
+  color: var(--kye-color-text-muted);
+  font-size: 11px;
+}
+body .w-snippet:not([open]) > summary::after { content: '▸'; }
+body .w-snippet[open] > summary {
+  border-bottom: 1px solid var(--kye-color-line);
+}
+body .w-snippet > summary .ms {
+  font-size: 16px !important;
+  width: 16px;
+  color: var(--kye-color-brand);
+}
+body .w-snippet .code-snippet {
+  margin: 0;
+  padding: 12px 14px;
+}
+body .w-snippet .code-snippet pre {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  padding: 0 88px 0 0;
+}
+body .w-snippet .copy-btn {
+  top: 8px;
+  right: 8px;
+}
+:root[data-theme="dark"] body .w-snippet { background: var(--surface-solid); border-color: var(--line); }
+
+/* Compress widgets-page section vertical rhythm */
+body[class] #role,
+body[class] #sim,
+body[class] #dm,
+body[class] #explorer,
+body[class] #blast,
+body[class] #evidence {
+  padding-top: 32px;
+  padding-bottom: 32px;
+}

@@ -22,31 +22,59 @@
  *   <!-- contact modal injected on first [data-contact-trigger] click -->
  */
 
-// Top-bar nav: trimmed to 12 primary items, grouped visually via the
-// `group` field. Secondary pages (whitepaper, glossary, OSCAL, demos,
-// risk, readiness, framework refs, every individual audience page,
-// every individual programme page) live in the footer only — the
-// header was 32+ items and unscanably crowded.
+// Top-bar nav: full surface organised into 6 visual groups via the
+// `group` field. The kyeHeader render injects a thin divider between
+// groups so the structure reads even on a single horizontal strip.
+// Mobile (<1100px) collapses dividers; the strip horizontally scrolls.
 //
-// Order of groups: Protocol → Build → Sector → Audiences → Engage.
-// `group` is presentational only; the renderer can use it to insert
-// visual dividers if needed.
+// Group order: Protocol → Build → Compliance → Audience → Sector →
+// Programme → Resources.
 const NAV_ITEMS = [
+  // Protocol
   { id: 'home',                href: './',                       label: 'Home',                                              icon: 'home',                    color: '#1A8754', group: 'protocol' },
   { id: 'protocol',            href: 'protocol.html',            label: 'Protocol',                                          icon: 'architecture',            color: '#00ACC1', group: 'protocol' },
   { id: 'concepts',            href: 'concepts.html',            label: 'Concepts',                                          icon: 'category',                color: '#00ACC1', group: 'protocol' },
+  { id: 'whitepaper',          href: 'whitepaper.html',          label: 'Whitepaper',                                        icon: 'menu_book',               color: '#00838F', group: 'protocol' },
 
+  // Build
   { id: 'build',               href: 'build.html',               label: 'Build',                                             icon: 'construction',            color: '#1A8754', group: 'build' },
+  { id: 'developers',          href: 'developers.html',          label: 'Developers',                                        icon: 'code',                    color: '#1A73E8', group: 'build' },
+  { id: 'mcp',                 href: 'mcp.html',                 label: 'MCP',                                               icon: 'smart_toy',               color: '#8E24AA', group: 'build' },
   { id: 'connectors',          href: 'connectors.html',          label: 'Connectors',                                        icon: 'extension',               color: '#FF6D00', group: 'build' },
   { id: 'connector-profiles',  href: 'connector-profiles.html',  label: 'Profiles',                                          icon: 'grid_view',               color: '#00ACC1', group: 'build' },
   { id: 'apps',                href: 'apps.html',                label: 'Apps',                                              icon: 'apps',                    color: '#00838F', group: 'build' },
   { id: 'plugins',             href: 'plugins.html',             label: 'Plugins',                                           icon: 'power',                   color: '#5F6368', group: 'build' },
+  { id: 'widgets',             href: 'widgets.html',             label: 'Widgets',                                           icon: 'widgets',                 color: '#1A8754', group: 'build' },
 
-  { id: 'compliance',          href: 'compliance.html',          label: 'Compliance',                                        icon: 'rule',                    color: '#1A73E8', group: 'sector' },
+  // Compliance
+  { id: 'compliance',          href: 'compliance.html',          label: 'Compliance',                                        icon: 'rule',                    color: '#1A73E8', group: 'compliance' },
+  { id: 'frameworks',          href: 'frameworks.html',          label: 'Frameworks',                                        icon: 'fact_check',              color: '#1A73E8', group: 'compliance' },
+  { id: 'oscal',               href: 'oscal.html',               label: 'OSCAL',                                             icon: 'integration_instructions',color: '#1A73E8', group: 'compliance' },
+  { id: 'compliance-card',     href: 'compliance-card.html',     label: 'Compliance Card',                                   icon: 'badge',                   color: '#009688', group: 'compliance' },
+  { id: 'risk',                href: 'risk.html',                label: 'Risk',                                              icon: 'shield',                  color: '#C5221F', group: 'compliance' },
+  { id: 'readiness',           href: 'readiness.html',           label: 'Readiness',                                         icon: 'checklist',               color: '#1A8754', group: 'compliance' },
+
+  // Audience
+  { id: 'buyers',              href: 'buyers.html',              label: 'Buyers',                                            icon: 'business_center',         color: '#B47200', group: 'audience' },
+  { id: 'auditors',            href: 'auditors.html',            label: 'Auditors',                                          icon: 'verified_user',           color: '#009688', group: 'audience' },
+  { id: 'regulators',          href: 'regulators.html',          label: 'Regulators',                                        icon: 'gavel',                   color: '#8E24AA', group: 'audience' },
+
+  // Sector
   { id: 'sectors',             href: 'sectors.html',             label: 'Sectors',                                           icon: 'apartment',               color: '#5F6368', group: 'sector' },
   { id: 'usecases',            href: 'usecases.html',            label: 'Use Cases',                                         icon: 'lightbulb',               color: '#F4B400', group: 'sector' },
+  { id: 'open-banking',        href: 'open-banking.html',        label: 'Open Banking',                                      icon: 'payments',                color: '#FF6D00', group: 'sector' },
+  { id: 'agent-purchasing',    href: 'agent-purchasing.html',    label: 'Agent Purchasing',                                  icon: 'credit_card',             color: '#F4B400', group: 'sector' },
 
-  { id: 'engage',              href: 'engage.html',              label: 'Engage',                                            icon: 'handshake',               color: '#1A8754', group: 'engage' },
+  // Programme
+  { id: 'engage',              href: 'engage.html',              label: 'Engage',                                            icon: 'handshake',               color: '#1A8754', group: 'programme' },
+  { id: 'partners',            href: 'partners.html',            label: 'Partners',                                          icon: 'group_work',              color: '#1A8754', group: 'programme' },
+  { id: 'certification',       href: 'certification.html',       label: 'Certification',                                     icon: 'workspace_premium',       color: '#B47200', group: 'programme' },
+  { id: 'training',            href: 'training.html',            label: 'Training',                                          icon: 'school',                  color: '#1A73E8', group: 'programme' },
+  { id: 'working-groups',      href: 'working-groups.html',      label: 'Working Groups',                                    icon: 'groups',                  color: '#00ACC1', group: 'programme' },
+
+  // Resources
+  { id: 'demos',               href: 'demos.html',               label: 'Demos',                                             icon: 'play_circle',             color: '#EA4335', group: 'resources' },
+  { id: 'glossary',            href: 'glossary.html',            label: 'Glossary',                                          icon: 'book_2',                  color: '#5F6368', group: 'resources' },
 ];
 
 const TM_NOTICE_FULL =
@@ -80,16 +108,35 @@ export function kyeBrand() {
     </a>`;
 }
 
+const GROUP_LABELS = {
+  protocol:   'Protocol',
+  build:      'Build',
+  compliance: 'Compliance',
+  audience:   'Audience',
+  sector:     'Sector',
+  programme:  'Programme',
+  resources:  'Resources',
+};
+
 export function kyeHeader({ active = '' } = {}) {
-  // Render with a thin divider between groups so the visual rhythm
-  // makes the structure obvious without a heavy dropdown menu.
+  // Render with a thin divider + small group label between groups so
+  // the structure of a 32-item nav reads at a glance on desktop.
+  // Mobile (<1100px) hides the labels and the strip horizontally
+  // scrolls through the items in group order.
   let prev = null;
-  const links = NAV_ITEMS.map(n => {
-    const cls = n.id === active ? 'tb-link is-active' : 'tb-link';
-    const divider = (prev && n.group !== prev) ? '<span class="tb-divider" aria-hidden="true"></span>' : '';
+  const parts = [];
+  for (const n of NAV_ITEMS) {
+    if (prev && n.group !== prev) {
+      parts.push('<span class="tb-divider" aria-hidden="true"></span>');
+    }
+    if (n.group !== prev && GROUP_LABELS[n.group]) {
+      parts.push(`<span class="tb-group-label" aria-hidden="true">${GROUP_LABELS[n.group]}</span>`);
+    }
     prev = n.group;
-    return `${divider}<a href="${n.href}" class="${cls}" data-tb="${n.id}" data-group="${n.group || ''}"><span class="ms">${n.icon}</span><span class="lbl">${n.label}</span></a>`;
-  }).join('\n      ');
+    const cls = n.id === active ? 'tb-link is-active' : 'tb-link';
+    parts.push(`<a href="${n.href}" class="${cls}" data-tb="${n.id}" data-group="${n.group || ''}"><span class="ms">${n.icon}</span><span class="lbl">${n.label}</span></a>`);
+  }
+  const links = parts.join('\n      ');
   return `
   <div class="container top-bar-inner">
     ${kyeBrand()}
@@ -111,12 +158,11 @@ export function kyeHeader({ active = '' } = {}) {
   </div>`;
 }
 
-// Grouped column structure for the site footer. Five clean columns,
-// canonical product names with ™ on every trademark, ordered:
-// Protocol → Build → Compliance → Audiences → Programme → Site.
-// Trademarked product names use the full canonical "KYE …™" form so
-// the trademark notice in the footer bar is supported by every link
-// label that uses the mark.
+// Footer column structure: 6 clean groups (Protocol · Build ·
+// Ecosystem · Compliance · Audience · Programme · Resources · Site).
+// Every trademark label uses the canonical "KYE …™" form with proper
+// <span class="tm">™</span> wrapping. No duplicates: each page lives
+// in exactly one group except trademark anchors that are deliberate.
 const FOOTER_GROUPS = [
   {
     heading: 'Protocol',
@@ -127,23 +173,27 @@ const FOOTER_GROUPS = [
       { href: 'vocabulary.html',   label: 'Vocabulary' },
       { href: 'glossary.html',     label: 'Glossary' },
       { href: 'whitepaper.html',   label: 'Whitepaper' },
-      { href: 'roadmap.html',      label: 'Roadmap' },
-      { href: 'changelog.html',    label: 'Changelog' },
-      { href: 'integrations.html', label: 'Integrations' },
     ],
   },
   {
     heading: 'Build',
     items: [
-      { href: 'build.html',               label: 'Build' },
-      { href: 'developers.html',          label: 'Quickstart' },
+      { href: 'build.html',               label: 'Build with KYE<span class="tm">™</span>' },
+      { href: 'developers.html',          label: 'Developer Quickstart' },
+      { href: 'protocol.html#signals',    label: 'KYE Signal Bus<span class="tm">™</span>' },
       { href: 'mcp.html',                 label: 'KYE MCP Server<span class="tm">™</span>' },
+      { href: 'widgets.html',             label: 'Interactive Widgets' },
+      { href: 'demos.html',               label: 'Demos' },
+      { href: 'integrations.html',        label: 'Integrations' },
+    ],
+  },
+  {
+    heading: 'Ecosystem',
+    items: [
       { href: 'connectors.html',          label: 'KYE Connector Hub<span class="tm">™</span>' },
       { href: 'connector-profiles.html',  label: 'KYE Connector Profiles<span class="tm">™</span>' },
       { href: 'apps.html',                label: 'KYE App Store<span class="tm">™</span>' },
       { href: 'plugins.html',             label: 'KYE Plugin Marketplace<span class="tm">™</span>' },
-      { href: 'protocol.html#signals',    label: 'KYE Signal Bus<span class="tm">™</span>' },
-      { href: 'widgets.html',             label: 'Interactive widgets' },
     ],
   },
   {
@@ -152,54 +202,50 @@ const FOOTER_GROUPS = [
       { href: 'compliance.html',      label: 'Compliance' },
       { href: 'frameworks.html',      label: 'Frameworks' },
       { href: 'oscal.html',           label: 'OSCAL' },
-      { href: 'compliance-card.html', label: 'Compliance Card<span class="tm">™</span>' },
+      { href: 'compliance-card.html', label: 'AI System Compliance Card<span class="tm">™</span>' },
+      { href: 'risk.html',            label: 'Risk &amp; Mitigation' },
+      { href: 'readiness.html',       label: 'Readiness Self-Test' },
     ],
   },
   {
-    heading: 'Audiences',
+    heading: 'Audience',
     items: [
-      { href: 'developers.html', label: 'Developers' },
-      { href: 'buyers.html',     label: 'Buyers' },
-      { href: 'auditors.html',   label: 'Auditors' },
-      { href: 'regulators.html', label: 'Regulators' },
-      { href: 'sectors.html',    label: 'Sectors' },
-      { href: 'customers.html',  label: 'Customers' },
-    ],
-  },
-  {
-    heading: 'Resources',
-    items: [
+      { href: 'developers.html',       label: 'Developers' },
+      { href: 'buyers.html',           label: 'Buyers' },
+      { href: 'auditors.html',         label: 'Auditors' },
+      { href: 'regulators.html',       label: 'Regulators' },
+      { href: 'sectors.html',          label: 'Sectors' },
       { href: 'usecases.html',         label: 'Use Cases' },
       { href: 'open-banking.html',     label: 'Open Banking' },
       { href: 'agent-purchasing.html', label: 'Agent Purchasing' },
-      { href: 'demos.html',            label: 'Demos' },
-      { href: 'widgets.html',          label: 'Interactive Widgets' },
-      { href: 'risk.html',             label: 'Risk' },
-      { href: 'readiness.html',        label: 'Readiness' },
-      { href: 'whitepaper.html',       label: 'Whitepaper' },
-      { href: 'docs.html',             label: 'Docs' },
-      { href: 'glossary.html',         label: 'Glossary' },
-      { href: 'faq.html',              label: 'FAQ' },
     ],
   },
   {
     heading: 'Programme',
     items: [
-      { href: 'engage.html',         label: 'Engagement' },
+      { href: 'engage.html',         label: 'Engagement Model' },
       { href: 'partners.html',       label: 'Partners' },
       { href: 'certification.html',  label: 'Certification' },
       { href: 'training.html',       label: 'Training' },
       { href: 'working-groups.html', label: 'Working Groups' },
+      { href: 'customers.html',      label: 'Customers' },
+    ],
+  },
+  {
+    heading: 'Resources',
+    items: [
+      { href: 'docs.html',      label: 'Docs Hub' },
+      { href: 'faq.html',       label: 'FAQ' },
+      { href: 'changelog.html', label: 'Changelog' },
+      { href: 'roadmap.html',   label: 'Roadmap' },
+      { href: 'press.html',     label: 'Press Kit' },
+      { href: 'sitemap.html',   label: 'Sitemap' },
     ],
   },
   {
     heading: 'Site',
     items: [
-      { href: 'status.html',    label: 'Status' },
-      { href: 'press.html',     label: 'Press' },
-      { href: 'sitemap.html',   label: 'Sitemap' },
-      { href: 'changelog.html', label: 'Changelog' },
-      { href: 'roadmap.html',   label: 'Roadmap' },
+      { href: 'status.html',    label: 'KYE Cloud<span class="tm">™</span> Status' },
       { href: 'legal.html',     label: 'Legal' },
       { href: 'legal-faq.html', label: 'Legal FAQ' },
       { href: '#',              label: 'Talk to us', attrs: 'data-contact-trigger' },

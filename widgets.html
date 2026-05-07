@@ -15,7 +15,7 @@
   <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
   <meta property="og:url" content="https://kye-protocol.github.io/widgets.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="styles.css?v=1779030000" />
+  <link rel="stylesheet" href="styles.css?v=1779050000" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
 </head>
@@ -46,6 +46,17 @@
   <div class="section-body"><div class="container">
     <p class="lede">Nine role cards, each routing to the right entry page on the site. Banks land on the agent-purchase simulator. CISOs land on the Blast Radius Map<span class="tm">™</span>. Auditors land on the Evidence Pack Viewer<span class="tm">™</span>. Builders land on the Build surface.</p>
     <div data-role-router style="margin-top:18px"></div>
+    <details class="w-snippet">
+      <summary><span class="ms" aria-hidden="true">code</span> Embed it</summary>
+      
+    <p class="lede" style="font-size:13.5px">Drop the widget host into any HTML page and the role-router renders.</p>
+    <div class="code-snippet">
+      <pre id="snippet-role" class="codeblock"><code>&lt;!-- KYE Choose-Your-Role router --&gt;
+&lt;div data-role-router&gt;&lt;/div&gt;
+&lt;script type="module" src="https://kye-protocol.github.io/main.js"&gt;&lt;/script&gt;</code></pre>
+      <button class="copy-btn" type="button" data-copy-target="#snippet-role"><span class="ms">content_copy</span> Copy</button>
+    </div>
+    </details>
   </div></div>
 </section>
 
@@ -55,6 +66,58 @@
   <div class="section-body"><div class="container">
     <p class="lede">Seven inputs &mdash; agent state, customer authority, merchant, basket amount, approval threshold, card / token state, risk state. Four live outputs &mdash; runtime decision, Decision Map<span class="tm">™</span>, signed webhook event, evidence-pack preview. Decision logic is rule-based for clarity; production runtime mechanism stays on the patent track.</p>
     <div data-agent-sim style="margin-top:18px"></div>
+    <details class="w-snippet">
+      <summary><span class="ms" aria-hidden="true">code</span> The real call</summary>
+      
+    <p class="lede" style="font-size:13.5px">The simulator above is illustrative. In production, your app makes one POST to the KYE<span class="tm">™</span> Runtime Authority API:</p>
+    <div class="code-snippet">
+      <pre id="snippet-sim-curl" class="codeblock"><code>curl -X POST https://gateway.kye.example/v1/runtime/authorize \
+  -H 'Authorization: Bearer $KYE_TOKEN' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "actor_entity_id":     "kye:entity:agent:shopping_agent_456",
+    "principal_entity_id": "kye:entity:person:customer_123",
+    "subject":             "kye:capability:payment_action:card_purchase",
+    "resource":            { "merchant_id": "M-7104", "amount": 9999, "currency": "GBP" },
+    "scope":               { "instrument": "kye:card_token:tok_abc..." }
+  }'
+
+# → 200 OK
+# {
+#   "decision":  "allow_with_constraints",
+#   "reason":    "scope_within_attenuated_authority",
+#   "obligations":     [ { "type": "audit.emit" }, { "type": "basket_hash_binding" } ],
+#   "stop_conditions": [ "actor.stop_signal", "delegation.revoked", "scope.attenuated" ],
+#   "evidence_refs":    [ "kye:evidence-pack:01HX..." ],
+#   "decision_map_ref": "kye:decision_map:01HX..."
+# }</code></pre>
+      <button class="copy-btn" type="button" data-copy-target="#snippet-sim-curl"><span class="ms">content_copy</span> Copy</button>
+    </div>
+    </details>
+    <details class="w-snippet">
+      <summary><span class="ms" aria-hidden="true">code</span> SDK</summary>
+      
+    <div class="code-snippet">
+      <pre id="snippet-sim-ts" class="codeblock"><code>import { KyeClient } from '@kye-protocol/sdk';
+
+const kye = new KyeClient({ baseUrl: process.env.KYE_GATEWAY, token: process.env.KYE_TOKEN });
+
+const result = await kye.runtime.authorize({
+  actor_entity_id:     'kye:entity:agent:shopping_agent_456',
+  principal_entity_id: 'kye:entity:person:customer_123',
+  subject:             'kye:capability:payment_action:card_purchase',
+  resource:            { merchant_id: 'M-7104', amount: 9999, currency: 'GBP' },
+  scope:               { instrument: 'kye:card_token:tok_abc...' },
+});
+
+if (result.decision === 'allow_with_constraints') {
+  // honour result.obligations + result.stop_conditions
+} else if (result.decision === 'require_approval') {
+  // queue human approver, retry with same policy_decision_id
+}</code></pre>
+      <button class="copy-btn" type="button" data-copy-target="#snippet-sim-ts"><span class="ms">content_copy</span> Copy</button>
+    </div>
+    </details>
   </div></div>
 </section>
 
@@ -64,6 +127,30 @@
   <div class="section-body"><div class="container">
     <p class="lede">The runtime emits a signed Decision Map<span class="tm">™</span> with every <code data-code="endpoint">/v1/runtime/authorize</code> response. Below: a sample chain &mdash; principal &rarr; delegation &rarr; actor &rarr; capability &rarr; scope &rarr; state &rarr; policy &rarr; decision, bound to <code data-code="field">audit_ref</code> + <code data-code="field">evidence_refs</code>.</p>
     <div data-decision-map style="margin-top:18px"></div>
+    <details class="w-snippet">
+      <summary><span class="ms" aria-hidden="true">code</span> Render it yourself</summary>
+      
+    <div class="code-snippet">
+      <pre id="snippet-dm" class="codeblock"><code>import { renderDecisionMap } from '@kye-protocol/sdk/widgets';
+
+renderDecisionMap(document.querySelector('#dm-host'), {
+  decision: 'allow_with_constraints',
+  reason:   'scope_within_attenuated_authority',
+  nodes: [
+    { type: 'principal',  ref: 'kye:entity:person:customer_123',           short: 'customer_123' },
+    { type: 'delegation', ref: 'kye:delegation:tpp_to_agent_002',          short: 'tpp_to_agent_002' },
+    { type: 'actor',      ref: 'kye:entity:agent:shopping_agent_456',      short: 'shopping_agent' },
+    { type: 'capability', ref: 'kye:capability:payment_action:card_purchase', short: 'card_purchase' },
+    { type: 'scope',      ref: 'kye:scope:eu_eea_corridor_below_500_gbp',  short: '≤ £500 EU/EEA' },
+    { type: 'state',      ref: 'kye:state:active',                         short: 'active' },
+    { type: 'policy',     ref: 'kye:policy:agent_purchase_v1',             short: 'agent_purchase_v1' },
+  ],
+  audit_ref:     'kye:audit:event_001',
+  evidence_refs: ['kye:evidence-pack:authority_revocation_001'],
+});</code></pre>
+      <button class="copy-btn" type="button" data-copy-target="#snippet-dm"><span class="ms">content_copy</span> Copy</button>
+    </div>
+    </details>
   </div></div>
 </section>
 
@@ -73,6 +160,37 @@
   <div class="section-body"><div class="container">
     <p class="lede">Six families, fourteen <code data-code="field">connector_type</code> categories. Each row shows the type, status, and <code data-code="field">side_effect_level</code> from the canonical manifest dictionary &mdash; so you can pick the right connector for the right risk envelope before you install.</p>
     <div data-connector-explorer style="margin-top:18px"></div>
+    <details class="w-snippet">
+      <summary><span class="ms" aria-hidden="true">code</span> Connector manifest shape</summary>
+      
+    <div class="code-snippet">
+      <pre id="snippet-conn" class="codeblock"><code>{
+  "schema_version": "kye.connector_manifest.v1",
+  "connector_id":   "kye:connector:ipg:example_gateway",
+  "name":           "Example IPG Connector",
+  "connector_type": "internet_payment_gateway",
+  "category":       "payments",
+  "version":        "1.0.0",
+  "supported_profiles": [
+    "kye.core.v1", "kye.payment_authority.v1",
+    "kye.agent_purchasing.v1", "kye.webhooks.v1", "kye.evidence.v1"
+  ],
+  "risk": {
+    "risk_level":                      "high",
+    "side_effect_level":               "move_money",
+    "requires_signature_verification": true,
+    "requires_idempotency":            true,
+    "requires_audit_event":            true
+  },
+  "events": {
+    "subscribes_to": ["kye.authority.revoked", "kye.decision.requires_approval"],
+    "publishes":     ["kye.purchase_authority.allowed", "kye.purchase_authority.denied"]
+  },
+  "status": "active"
+}</code></pre>
+      <button class="copy-btn" type="button" data-copy-target="#snippet-conn"><span class="ms">content_copy</span> Copy</button>
+    </div>
+    </details>
   </div></div>
 </section>
 
@@ -82,6 +200,34 @@
   <div class="section-body"><div class="container">
     <p class="lede">Pick a compromised credential, agent, capability, delegation, or principal. The Blast Radius Map<span class="tm">™</span> shows the downstream agents, payment authorities, capabilities, sessions, and webhooks that fan out &mdash; plus the required revocations a runbook should execute.</p>
     <div data-blast-radius style="margin-top:18px"></div>
+    <details class="w-snippet">
+      <summary><span class="ms" aria-hidden="true">code</span> The cascade event</summary>
+      
+    <p class="lede" style="font-size:13.5px">When KYE<span class="tm">™</span> emits a revocation, every subscriber receives the same signed envelope:</p>
+    <div class="code-snippet">
+      <pre id="snippet-blast" class="codeblock"><code>{
+  "schema_version":  "kye.webhook.v1",
+  "event_id":        "kye:event:01HX...",
+  "event_type":      "kye.authority.revoked",
+  "occurred_at":     "2026-05-07T21:30:00Z",
+  "actor_entity_id":     "kye:entity:agent:shopping_agent_456",
+  "principal_entity_id": "kye:entity:person:customer_123",
+  "subject_ref":     "kye:authority:grant:purchase_001",
+  "reason_code":     "principal_revoked_authority",
+  "data": {
+    "previous_state":        "active",
+    "new_state":             "revoked",
+    "affected_capabilities": ["kye:capability:payment_action:card_purchase"]
+  },
+  "audit_ref":     "kye:audit:event_001",
+  "evidence_refs": ["kye:evidence-pack:authority_revocation_001"],
+  "delivery":  { "idempotency_key": "kye:event:01HX...", "replayable": true },
+  "signature": { "algorithm": "ed25519", "key_id": "kye:key:webhook_signing_001",
+                 "signature": "..." }
+}</code></pre>
+      <button class="copy-btn" type="button" data-copy-target="#snippet-blast"><span class="ms">content_copy</span> Copy</button>
+    </div>
+    </details>
   </div></div>
 </section>
 
@@ -91,6 +237,29 @@
   <div class="section-body"><div class="container">
     <p class="lede">Pick a sample evidence pack. Verify its signature offline against the publisher's published JWKS. Replay the bound Decision Map<span class="tm">™</span> against the snapshot inputs. Walk the audit chain. Project the pack onto SOC 2, ISO 27001, EU AI Act, PSD3, or DORA controls via the KYE Compliance Mapping Rail<span class="tm">™</span>.</p>
     <div data-evidence-preview style="margin-top:18px"></div>
+    <details class="w-snippet">
+      <summary><span class="ms" aria-hidden="true">code</span> Verify offline</summary>
+      
+    <div class="code-snippet">
+      <pre id="snippet-ep" class="codeblock"><code>import { verifyEvidencePack } from '@kye-protocol/sdk';
+
+const pack = await fetch('/v1/evidence-packs/01HX...').then(r =&gt; r.json());
+
+// Pull the publisher's JWKS once and cache it.
+const jwks = await fetch('https://issuer.example/.well-known/jwks.json').then(r =&gt; r.json());
+
+const result = await verifyEvidencePack(pack, jwks);
+//   result.valid         // boolean
+//   result.algorithm     // "ed25519"
+//   result.key_id        // "kye:key:evidence_signing_001"
+//   result.replay_decision // re-run the bound /v1/runtime/authorize against the
+//                          // snapshot inputs; returns the same decision the pack
+//                          // recorded — a mismatch emits kye.decision.replay_mismatch.
+
+if (!result.valid) throw new Error('evidence pack signature invalid');</code></pre>
+      <button class="copy-btn" type="button" data-copy-target="#snippet-ep"><span class="ms">content_copy</span> Copy</button>
+    </div>
+    </details>
   </div></div>
 </section>
 
@@ -110,6 +279,6 @@
 </main>
 <footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected --></footer>
 <button id="scroll-top" class="scroll-top" type="button" aria-label="Scroll to top" data-kye-scroll-top><!-- svg injected --></button>
-<script type="module" src="main.js?v=1778990000"></script>
+<script type="module" src="main.js?v=1779040000"></script>
 </body>
 </html>

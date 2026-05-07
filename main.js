@@ -20,6 +20,7 @@ import { initDecisionMap } from "./assets/decision-map-viz.js?v=1778960000";
 import { initConnectorExplorer } from "./assets/connector-explorer.js?v=1778970000";
 import { initBlastRadius } from "./assets/blast-radius-viz.js?v=1778980000";
 import { initEvidencePackPreview } from "./assets/evidence-pack-preview.js?v=1778980000";
+import { initClipboard } from "./assets/clipboard.js?v=1779040000";
 
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -49,6 +50,7 @@ initDecisionMap();
 initConnectorExplorer();
 initBlastRadius();
 initEvidencePackPreview();
+initClipboard();
 
 /* WebMCP: expose KYE Protocol™ tools to AI agents via the browser. */
 import { initWebMcp } from "./assets/webmcp.js?v=1778880000";
