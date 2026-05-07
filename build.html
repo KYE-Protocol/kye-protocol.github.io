@@ -80,7 +80,7 @@
     <h2 id="h-api" class="h-section">One call, before the action executes.</h2>
   <div class="section-body"><div class="container">
     <p class="lede">The decision endpoint is the single most important surface. Your app asks; KYE answers in milliseconds.</p>
-<pre class="codeblock" style="margin-top:14px"><code>POST /v1/runtime/authorize
+<div class="code-snippet"><pre id="snippet-build" class="codeblock" style="margin-top:14px"><code>POST /v1/runtime/authorize
 {
   "actor_entity_id":     "kye:entity:agent:shopping_agent_456",
   "principal_entity_id": "kye:entity:person:customer_123",
@@ -99,7 +99,7 @@
   "evidence_refs":   [ "kye:evidence-pack:01HX..." ],
   "decision_map_ref": "kye:decision_map:01HX..."
 }
-</code></pre>
+</code></pre><button class="copy-btn" type="button" data-copy-target="#snippet-build"><span class="ms">content_copy</span> Copy</button></div>
     <p class="lede" style="margin-top:14px">Eight decision codes are stable across versions: <code data-code="allow">allow</code>, <code data-code="allow">allow_with_constraints</code>, <code data-code="approve">require_approval</code>, <code data-code="approve">require_step_up</code>, <code data-code="approve">require_human_review</code>, <code data-code="approve">require_recovery</code>, <code data-code="deny">quarantine</code>, <code data-code="deny">deny</code>. Map to your own code-set via the conformance pack.</p>
   </div></div>
 </section>

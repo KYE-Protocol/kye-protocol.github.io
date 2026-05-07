@@ -30,20 +30,27 @@
   <div class="container hero-inner">
     <span class="hero-pill"><span class="dot"></span> For developers &middot; engineers &amp; platform teams</span>
     <h1 id="hero-title" style="margin-top:18px">Build <span class="accent">with the contract.</span></h1>
-    <p class="lede">Schema-first. Three SDKs. Reference Gateway. 40/40 conformance fixtures. Every entity, authority, decision, audit event, evidence pack, payload, taxonomy term, metadata binding, graph node — canonical JSON Schema you can implement against.</p>
+    <p class="lede">Schema-first. Three SDKs. Reference Gateway. 40/40 conformance fixtures. Every entity, authority, decision, audit event, evidence pack, payload, taxonomy term, metadata binding, graph node &mdash; canonical JSON Schema you can implement against.</p>
+    <div class="cn-quick" style="margin-top:18px">
+      <a href="#approach"   class="cn-pill"><span class="ms">code</span> Approach</a>
+      <a href="#refimpl"    class="cn-pill"><span class="ms">extension</span> Reference impl</a>
+      <a href="#principles" class="cn-pill"><span class="ms">architecture</span> 16 principles</a>
+      <a href="#webhooks"   class="cn-pill"><span class="ms">send</span> Subscribe to signals</a>
+      <a href="#quickstart" class="cn-pill"><span class="ms">play_arrow</span> 5-min quickstart</a>
+    </div>
   </div>
 </section>
 
 
-<section class="section alt"><div class="container">
+<section id="approach" class="section alt" aria-labelledby="h-approach"><div class="container">
   <span class="eyebrow">Developers</span>
-  <h2 class="h-section">A protocol you can <span class="accent">implement</span> &mdash; not just read.</h2>
+  <h2 id="h-approach" class="h-section">A protocol you can <span class="accent">implement</span> &mdash; not just read.</h2>
   <p class="lede">KYE Protocol<span class="tm">™</span> is schema-first. Every entity, authority grant, delegation, scope, capability manifest, validation result, audit event, evidence pack, payload artefact, taxonomy term, metadata binding, and compliance mapping is a canonical JSON Schema 2020-12. OpenAPI, three SDKs, validators, conformance fixtures &mdash; all derived.</p>
 </div></section>
 
-<section class="section"><div class="container">
+<section id="refimpl" class="section" aria-labelledby="h-refimpl"><div class="container">
   <span class="eyebrow">Reference impl</span>
-  <h2 class="h-section">Three SDKs. One reference Gateway. <span class="accent">40/40 conformance.</span></h2>
+  <h2 id="h-refimpl" class="h-section">Three SDKs. One reference Gateway. <span class="accent">40/40 conformance.</span></h2>
   <ul class="biz-list">
     <li><strong>TypeScript SDK</strong> &mdash; <a href="https://github.com/KYE-Protocol/sdk-typescript" target="_blank" rel="noopener"><code>github.com/KYE-Protocol/sdk-typescript</code></a> &mdash; schema types, local validators, decision client, signing helpers, evidence-pack builder, taxonomy resolver, metadata classifier, graph traversal client, decision-map renderer. <code>npm install @kye-protocol/sdk</code>.</li>
     <li><strong>Python SDK</strong> &mdash; <a href="https://github.com/KYE-Protocol/sdk-python" target="_blank" rel="noopener"><code>github.com/KYE-Protocol/sdk-python</code></a> &mdash; same surface, dataclass-based. <code>pip install kye-protocol</code>.</li>
@@ -54,13 +61,13 @@
   </ul>
 </div></section>
 
-<section class="section alt"><div class="container">
+<section id="principles" class="section alt" aria-labelledby="h-principles"><div class="container">
   <span class="eyebrow">Architecture</span>
-  <h2 class="h-section">16 protocol-core principles in <span class="accent">three tiers</span>.</h2>
+  <h2 id="h-principles" class="h-section">16 protocol-core principles in <span class="accent">three tiers</span>.</h2>
   <p class="lede">Tier A &middot; Runtime governance: authority &middot; state &middot; decision &middot; policy-bound &middot; evidence &middot; audit-trail. Tier B &middot; Protocol design: schema &middot; dictionary &middot; taxonomy &middot; metadata &middot; graph &middot; profile &middot; registry &middot; conformance. Tier C &middot; Developer adoption: API &middot; SDK.</p>
 </div></section>
 
-<section class="section technical-only" aria-labelledby="h-webhooks-dev">
+<section id="webhooks" class="section technical-only" aria-labelledby="h-webhooks-dev">
   <div class="container">
     <h2 id="h-webhooks-dev" class="h-section">Subscribe to <span class="accent">signed signals</span> in 10 minutes.</h2>
     <p class="lede">KYE Protocol<span class="tm">™</span> is event-driven. The KYE Signal Bus<span class="tm">™</span> emits signed, replayable events for every authority, decision, recovery and evidence-pack lifecycle. Build a verifier:</p>

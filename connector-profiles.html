@@ -54,7 +54,7 @@
       <li class="rd-row rd-row-shipped"><span class="rd-tag">L5</span><span class="layer-chip" data-layer="app">L5</span><strong><span class="layer-name" data-layer="app">Apps</span> &middot; <span class="layer-name" data-layer="plugin">Plugins</span> &middot; <span class="layer-name" data-layer="widget">Widgets</span></strong> &mdash; <span class="layer-name" data-layer="app">KYE App Store<span class="tm">™</span></span> productises &middot; <span class="layer-name" data-layer="plugin">KYE Plugin Marketplace<span class="tm">™</span></span> extends.</li>
     </ol>
     <h3 class="arch-tier-h" style="margin-top:22px">Worked example &middot; KYE Payment Profile<span class="tm">™</span></h3>
-    <pre class="codeblock" style="margin-top:8px"><code>KYE Core Protocol™
+    <div class="code-snippet"><pre id="snippet-connector-profiles-1" class="codeblock" style="margin-top:8px"><code>KYE Core Protocol™
   └── kye.payments.v1 (KYE Profile)
         └── KYE Payment Profile™ (Connector Profile)
               ├── KYE IPG / MPG Connector™
@@ -65,7 +65,7 @@
               └── KYE Open-Banking Payment-Initiation Connector™
                     │
                     └── KYE Payment Authority Gateway™  (App)
-                          └── KYE Webhook Verifier Plugin™  (Plugin)</code></pre>
+                          └── KYE Webhook Verifier Plugin™  (Plugin)</code></pre><button class="copy-btn" type="button" data-copy-target="#snippet-connector-profiles-1"><span class="ms">content_copy</span> Copy</button></div>
   </div></div>
 </section>
 
@@ -161,7 +161,7 @@
     <h2 id="h-m" class="h-section">Every profile ships <code data-code="field">kye.connector_profile.v1</code>.</h2>
   <div class="section-body"><div class="container">
     <p class="lede">A connector profile manifest declares the supported KYE Profiles, the required objects, the decision types, the event families, and the conformance suite. Schema: <code data-code="path">https://kye-protocol.github.io/schemas/connector-profile.json</code>.</p>
-<pre class="codeblock" style="margin-top:14px"><code>{
+<div class="code-snippet"><pre id="snippet-connector-profiles-2" class="codeblock" style="margin-top:14px"><code>{
   "schema_version":  "kye.connector_profile.v1",
   "profile_id":      "kye:connector-profile:payment",
   "display_name":    "KYE Payment Profile™",
@@ -194,7 +194,7 @@
   "side_effect_level":  "move_money",
   "conformance_suite":  "kye.payment_profile.conformance.v1",
   "status":             "active"
-}</code></pre>
+}</code></pre><button class="copy-btn" type="button" data-copy-target="#snippet-connector-profiles-2"><span class="ms">content_copy</span> Copy</button></div>
   </div></div>
 </section>
 

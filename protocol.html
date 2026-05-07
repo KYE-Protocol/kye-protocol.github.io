@@ -30,6 +30,18 @@
     <span class="hero-pill"><span class="dot"></span> Protocol overview &middot; technical layer</span>
     <h1 id="hero-title" style="margin-top:18px">The <span class="accent">technical layer</span> behind Authority Finality<span class="tm">™</span>.</h1>
     <p class="lede">Authority Graph<span class="tm">™</span>, Decision Map<span class="tm">™</span>, taxonomy &amp; metadata, runtime &amp; state model, profile inventory, coverage matrix, and the 16 protocol-core principles. Each section links back to the JSON Schemas, OpenAPI, and conformance fixtures that ship in <code>github.com/KYE-Protocol</code>.</p>
+    <div class="cn-quick" style="margin-top:18px">
+      <a href="#authority-graph" class="cn-pill"><span class="ms">account_tree</span> Authority Graph</a>
+      <a href="#how"             class="cn-pill"><span class="ms">play_arrow</span> How it works</a>
+      <a href="#decision-map"    class="cn-pill"><span class="ms">balance</span> Decision Map</a>
+      <a href="#signals"         class="cn-pill"><span class="ms">send</span> Signal Bus</a>
+      <a href="#state-model"     class="cn-pill"><span class="ms">timeline</span> State model</a>
+      <a href="#lifecycle"       class="cn-pill"><span class="ms">science</span> Lifecycle simulator</a>
+      <a href="#profiles"        class="cn-pill"><span class="ms">grid_view</span> 50 v1.0 profiles</a>
+      <a href="#coverage"        class="cn-pill"><span class="ms">layers</span> Coverage</a>
+      <a href="#architecture"    class="cn-pill"><span class="ms">architecture</span> 16 principles</a>
+      <a href="#cmp"             class="cn-pill"><span class="ms">compare_arrows</span> vs MCP / OAuth</a>
+    </div>
   </div>
 </section>
 
@@ -184,7 +196,7 @@
 
     <h3 class="arch-tier-h" style="margin-top:26px">Canonical envelope &middot; one shape across every event</h3>
     <p class="arch-b">Schema: <code data-code="path">https://kye-protocol.github.io/schemas/signal.json</code>. Signing covers the full envelope; subscribers verify with the publisher's published JWKS.</p>
-<pre class="codeblock" style="margin-top:10px"><code>{
+<div class="code-snippet"><pre id="snippet-webhook-envelope" class="codeblock" style="margin-top:10px"><code>{
   "schema_version":  "kye.webhook.v1",
   "event_id":        "kye:event:01HX...",
   "event_type":      "kye.authority.revoked",
@@ -204,7 +216,7 @@
   "delivery":  { "idempotency_key": "kye:event:01HX...", "replayable": true },
   "signature": { "algorithm": "ed25519", "key_id": "kye:key:webhook_signing_001",
                  "signature": "..." }
-}</code></pre>
+}</code></pre><button class="copy-btn" type="button" data-copy-target="#snippet-webhook-envelope"><span class="ms">content_copy</span> Copy</button></div>
 
     <h3 class="arch-tier-h" style="margin-top:26px">Endpoints &middot; subscribe, manage, replay</h3>
     <ul class="eg-pilot-deliv" style="margin-top:8px">

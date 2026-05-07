@@ -84,7 +84,7 @@
     <h2 id="h-man" class="h-section">One canonical schema for every connector.</h2>
   <div class="section-body"><div class="container">
     <p class="lede">Every connector ships a <code data-code="field">kye.connector_manifest.v1</code> document. The manifest declares what the connector does, which profiles it supports, which integration points it exposes, what it subscribes to, what it publishes, what side effects it can produce, and how it authenticates. Schema: <code data-code="path">https://kye-protocol.github.io/schemas/connector-manifest.json</code>.</p>
-<pre class="codeblock" style="margin-top:14px"><code>{
+<div class="code-snippet"><pre id="snippet-connector-manifest" class="codeblock" style="margin-top:14px"><code>{
   "schema_version": "kye.connector_manifest.v1",
   "connector_id":   "kye:connector:ipg:example_gateway",
   "name":           "Example IPG Connector",
@@ -147,7 +147,7 @@
   "status":     "active",
   "created_at": "2026-05-06T00:00:00Z",
   "updated_at": "2026-05-06T00:00:00Z"
-}</code></pre>
+}</code></pre><button class="copy-btn" type="button" data-copy-target="#snippet-connector-manifest"><span class="ms">content_copy</span> Copy</button></div>
   </div></div>
 </section>
 
