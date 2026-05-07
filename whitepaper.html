@@ -179,7 +179,7 @@
     <p>KYE Protocol<span class="tm">™</span> stands on <strong>16 protocol-core principles</strong> in three tiers (see &sect;3 above). Tier A &mdash; runtime governance &mdash; defines what KYE<span class="tm">™</span> <em>decides</em>: <em>authority-first, state-first, decision-first, policy-bound, evidence-first, audit-trail-first</em>. Tier B &mdash; protocol design &mdash; defines how KYE<span class="tm">™</span> <em>classifies and ships</em>: <em>schema-first, dictionary-first, taxonomy-first, metadata-first, graph-first, profile-first, registry-first, conformance-first</em>. Tier C &mdash; developer adoption &mdash; defines how KYE<span class="tm">™</span> <em>reaches developers</em>: <em>API-first, SDK-first</em>. Canonical JSON Schemas drive OpenAPI, SDK code generation, validators, documentation, and conformance fixtures. Shared dictionaries (entity types, states, decisions, reason codes, capability kinds, side-effect levels, data classes, signal types, taxonomies, graph types) make implementations interoperable. Versioned taxonomies (16 V1 canonical taxonomies) and a normative metadata model (labels, classifications, ownership, lineage, compliance) drive policy decisions at runtime. Profiles keep Core small while letting domain extensions (Capability, Recovery, Payments, Payload Trust, Taxonomy &amp; Metadata, Graph, Healthcare, EU AI Act, ISO 42001, sector overlays) compose without modifying it. Registries make every object resolvable. The runtime API is decisioning-led, with <code>POST /v1/runtime/authorize</code> as the headline endpoint and <code>GET /v1/decisions/{id}/map</code> returning a Decision Map<span class="tm">™</span> for every adjudication. SDKs in TypeScript, Python, and Go ship with schema types, signing/verification helpers, evidence-pack builders, taxonomy resolvers, metadata classifiers, graph traversal clients. Every adjudicated action produces a signed <code>evidence_pack</code> a regulator can verify with public keys alone. A 40-fixture black-box conformance pack tests vendor and reference implementations byte-for-byte the same.</p>
 
     <h2 id="contract">5 &middot; Contract surface</h2>
-    <p>v1.0 publishes <strong>193 OpenAPI operations</strong> across the Core + Payments specs (87+ runtime endpoints in the reference Gateway), spanning resource families: Entities, Delegations, Scopes, Access Rights, Credentials, Attestations, Capabilities, Capability Grants, Runtime (authorize / invoke), Signals, Webhooks, Audit, Proof Bundles, Transparency, Federation, Recoveries, Break-Glass Grants, Compromise Reports, Keys, Conformance, plus the Payments families (Wallets, Payment Authorities, Payment Intents, Beneficiaries). 69 JSON Schemas with absolute <code>$id</code> URIs at <code>https://kye-protocol.github.io/schemas/</code>; 58 example payloads pinned to schemas and validated in CI. <strong>40 conformance fixtures</strong> assert deterministic behaviour under happy paths and edge cases.</p>
+    <p>v1.0 publishes <strong>193 OpenAPI operations</strong> across the Core + Payments specs (87+ runtime endpoints in the reference Gateway), spanning resource families: Entities, Delegations, Scopes, Access Rights, Credentials, Attestations, Capabilities, Capability Grants, Runtime (authorize / invoke), Signals, Webhooks, Audit, Proof Bundles, Transparency, Federation, Recoveries, Break-Glass Grants, Compromise Reports, Keys, Conformance, plus the Payments families (Wallets, Payment Authorities, Payment Intents, Beneficiaries). <strong>69 JSON Schemas</strong> with absolute <code>$id</code> URIs at <code>https://kye-protocol.github.io/schemas/</code>; <strong>69 example payloads</strong> pinned to schemas and validated in CI. <strong>40 conformance fixtures</strong> assert deterministic behaviour under happy paths and edge cases.</p>
     <p>Every state-changing endpoint accepts an <code>Idempotency-Key</code> header and returns the original response on replay; conflicting bodies under the same key return HTTP 409. Every state-changing endpoint emits an audit event whose <code>correlation_id</code> matches the originating request.</p>
 
     <h2 id="runtime">6 &middot; Reference runtime</h2>
@@ -226,7 +226,7 @@
     <p>Sector overlays beyond these (healthcare-clinical / payer / research, 42 CFR Part 2) are intentional placeholders for v1.1.</p>
 
     <h2 id="sectors">7.1 &middot; Sector coverage</h2>
-    <p>The 15 profiles compose into nine sector-ready bundles:</p>
+    <p>The 18 base profiles compose into nine sector-ready bundles:</p>
     <ul class="wp-records">
       <li><strong>Retail &amp; commercial banking</strong> &mdash; Core + Payments + Treasury + Federation + Capability + Recovery.</li>
       <li><strong>Payments &amp; cards</strong> &mdash; Core + Payments + Credentials + Signals + Telemetry.</li>
@@ -240,7 +240,7 @@
     </ul>
 
     <h2 id="compliance">7.2 &middot; Compliance &amp; control mapping</h2>
-    <p>The compliance addendum (<code>private/specs/compliance/control-mappings.md</code>) ships <strong>266 control mappings</strong> across thirteen frameworks. Each row points to the specific KYE<span class="tm">™</span> artefact &mdash; endpoint, schema, profile section, or conformance fixture &mdash; that satisfies it. Frameworks covered:</p>
+    <p>The compliance addendum (<code>private/specs/compliance/control-mappings.md</code>) ships <strong>266 control mappings</strong> across <strong>13 horizontal frameworks</strong>. Each row points to the specific KYE<span class="tm">™</span> artefact &mdash; endpoint, schema, profile section, or conformance fixture &mdash; that satisfies it. Horizontal frameworks covered:</p>
     <ul class="wp-records">
       <li>SOC 2 Trust Services Criteria 2017 (rev. 2022)</li>
       <li>ISO/IEC 27001:2022 Annex A</li>
@@ -249,9 +249,14 @@
       <li>DORA (Digital Operational Resilience Act)</li>
       <li>NIS2</li>
       <li>EU AI Act (Title III high-risk system obligations)</li>
+      <li>ISO/IEC 42001 (AI Management System)</li>
+      <li>NIST AI Risk Management Framework</li>
       <li>NIST SP 800-207 (Zero-Trust Architecture)</li>
-      <li>HIPAA Security Rule</li>
+      <li>NIST Cybersecurity Framework 2.0</li>
+      <li>GDPR / UK GDPR</li>
+      <li>FedRAMP</li>
     </ul>
+    <p>Sector overlays bind on top of the horizontal mappings: HIPAA Privacy + Security Rule (US healthcare), MiCA (EU crypto-asset markets), FFIEC (US bank exam guidance), IEC 62443 (industrial cybersecurity), 42 CFR Part 2 (US substance-use confidentiality).</p>
     <p>The mapping is the audit-evidence skeleton an enterprise GRC team uses to certify a deployment.</p>
     <p>The <strong>KYE Compliance Mapping Rail<span class="tm">™</span></strong> (<code>schemas/compliance-mapping.json</code>) binds each framework control to the specific KYE<span class="tm">™</span> runtime events that produce evidence for it; the <strong>KYE<span class="tm">™</span> EU AI Act Profile<span class="tm">™</span></strong> (<code>kye-euaiact-v1.md</code>) is the first such mapping, covering the EU AI Act with 10 controls (KYE-EUAIACT-001 through KYE-EUAIACT-010): entity accountability, AI system registry, capability manifest + risk classification, human-oversight decision gates, runtime authority decision logs, technical documentation evidence pack, corrective action and revocation trail, provider/deployer/operator role mapping, high-risk workflow profile, and post-market monitoring evidence hooks. KYE<span class="tm">™</span> EU AI Act does not replace conformity assessments, notified bodies, or fundamental-rights impact assessments &mdash; it provides the signed evidence those processes consume.</p>
     <p>Sector profiles in v1.0 cover financial services, healthcare, custody, treasury, AI labs, public sector, marketplaces, defence, critical infrastructure, energy, manufacturing, oil &amp; gas, mining, automotive, maritime &amp; shipping, logistics, and aviation. Each composes with KYE<span class="tm">™</span> EU AI Act when AI systems or AI agents participate.</p>

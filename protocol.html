@@ -169,7 +169,7 @@
   <div class="section-body"><div class="container">
     <p class="lede">A registry is passive. KYE Protocol<span class="tm">™</span> is a <em>runtime authority layer</em> &mdash; when authority changes, downstream systems must know before the next request lands. The <strong>KYE Signal Bus<span class="tm">™</span></strong> emits signed, replayable events for every grant, revocation, state transition, decision, approval, recovery action and evidence-pack lifecycle. Subscribers verify with public keys alone, deduplicate by event id, and bind every signal back to the audit chain.</p>
 
-    <h3 class="arch-tier-h" style="margin-top:22px">Nine event families &middot; ~70 well-known types</h3>
+    <h3 class="arch-tier-h" style="margin-top:22px">24 event families &middot; 79 well-known types <em style="font-weight:400;color:var(--kye-color-text-muted)">(nine highlighted below)</em></h3>
     <div class="prim-grid" style="margin-top:14px">
       <div class="prim-card"><span class="ms">person</span><strong>Entity</strong><span><code data-code="field">created</code> &middot; <code data-code="field">verified</code> &middot; <code data-code="field">state_changed</code> &middot; <code data-code="field">suspended</code> &middot; <code data-code="field">quarantined</code> &middot; <code data-code="field">revoked</code> &middot; <code data-code="field">recovered</code> &middot; <code data-code="field">tombstoned</code></span></div>
       <div class="prim-card"><span class="ms">verified_user</span><strong>Authority</strong><span><code data-code="field">granted</code> &middot; <code data-code="field">updated</code> &middot; <code data-code="field">limited</code> &middot; <code data-code="field">elevated</code> &middot; <code data-code="field">frozen</code> &middot; <code data-code="field">revoked</code> &middot; <code data-code="field">expired</code></span></div>
@@ -227,7 +227,7 @@
       <li><strong>SSF / CAEP boundary adapter</strong> &mdash; KYE event types translate to OpenID Shared Signals Framework + CAEP at trust-domain boundaries; lossless for the in-scope families.</li>
     </ul>
 
-    <h3 class="arch-tier-h" style="margin-top:26px">OSS / commercial split</h3>
+    <h3 class="arch-tier-h" style="margin-top:26px">What ships today</h3>
     <p class="arch-b">Envelope schema, every event-family schema, error / reason codes, delivery-receipt format, verifier SDK (TypeScript / Python / Go), reference Gateway webhook handler + retry loop + DLQ + replay endpoint, conformance test vectors. All Apache 2.0.</p>
 
     <h3 class="arch-tier-h" style="margin-top:26px">Worked example &middot; agent-purchase revocation</h3>
@@ -336,7 +336,7 @@
     <div id="profile-tabs" class="profile-tabs" role="tablist" aria-label="Profile inventory tabs"></div>
     <div id="profile-detail" class="profile-detail" role="tabpanel" aria-live="polite"></div>
     <noscript>
-      <p class="lede" style="margin-top:14px">Profile inventory: <strong>Core, Gateway, Payments, Federation, Credentials, Attestation, Signals, Transparency, Conformance, Treasury, Custody, Healthcare, Telemetry, Capability, Recovery</strong> &mdash; plus 26 sector overlays. The interactive tabbed inventory requires JavaScript; the canonical inventory is in <a href="https://github.com/KYE-Protocol/examples" target="_blank" rel="noopener">github.com/KYE-Protocol/examples</a>.</p>
+      <p class="lede" style="margin-top:14px">Profile inventory: <strong>Core, Gateway, Payments, Federation, Credentials, Attestation, Signals, Transparency, Conformance, Treasury, Custody, Healthcare, Telemetry, Capability, Recovery</strong> &mdash; 50 v1.0 normative profiles in total, including sector overlays. The interactive tabbed inventory requires JavaScript; the canonical inventory is in <a href="https://github.com/KYE-Protocol/examples" target="_blank" rel="noopener">github.com/KYE-Protocol/examples</a>.</p>
     </noscript>
     <div class="cta-callout" style="margin-top:24px;padding:18px;border:1px solid var(--kye-color-line);border-radius:var(--kye-radius-3);background:var(--kye-color-paper-2)">
       <strong>Run the 40-fixture conformance pack:</strong>
@@ -415,13 +415,17 @@
         <div class="cov-row" style="margin-top:18px">
           <span class="cov-pill gov">SOC 2</span>
           <span class="cov-pill gov">ISO 27001</span>
+          <span class="cov-pill gov">ISO 42001</span>
           <span class="cov-pill gov">PCI DSS</span>
           <span class="cov-pill gov">PSD2/PSD3</span>
           <span class="cov-pill gov">DORA</span>
-          <span class="cov-pill gov">HIPAA</span>
-          <span class="cov-pill gov">EU AI Act</span>
           <span class="cov-pill gov">NIS2</span>
+          <span class="cov-pill gov">EU AI Act</span>
+          <span class="cov-pill gov">NIST AI RMF</span>
           <span class="cov-pill gov">NIST 800-207</span>
+          <span class="cov-pill gov">NIST CSF</span>
+          <span class="cov-pill gov">GDPR</span>
+          <span class="cov-pill gov">FedRAMP</span>
         </div>
         <div class="sub" style="margin-top:10px">Verticalised &mdash; sectoral profiles surface the controls auditors already ask for.</div>
       </div>
@@ -495,7 +499,7 @@
         <div class="arch-num">8</div>
         <h3 class="arch-h">Dictionary-first</h3>
         <p class="arch-b">Authority decisions need shared vocabulary, or every implementation invents different words for the same thing. KYE<span class="tm">™</span> ships canonical dictionaries for entity types, all state dimensions, decisions, reason codes, capability kinds, side-effect levels, data classes, signal types, redaction fields, taxonomies.</p>
-        <code class="arch-path">public/vocabulary/*.md &middot; 17 dictionary files</code>
+        <code class="arch-path">public/vocabulary/*.md &middot; 19 dictionary files</code>
       </article>
 
       <article class="arch-card">
@@ -546,8 +550,8 @@
       <article class="arch-card">
         <div class="arch-num">15</div>
         <h3 class="arch-h">API-first</h3>
-        <p class="arch-b">Validation happens at runtime. The headline endpoint <code>POST /v1/runtime/authorize</code> answers <em>can this entity perform this action, on behalf of this principal, using this capability, under this scope, in this state?</em> &mdash; in milliseconds, with a signed decision. Graph queries (authority path, delegation path, capability dependencies, blast radius) are first-class. <span class="kye-num">193</span> OpenAPI operations across 87+ runtime endpoints.</p>
-        <code class="arch-path"><span class="kye-num">193</span> OpenAPI operations across 87+ runtime endpoints &middot; redocly-lint clean</code>
+        <p class="arch-b">Validation happens at runtime. The headline endpoint <code>POST /v1/runtime/authorize</code> answers <em>can this entity perform this action, on behalf of this principal, using this capability, under this scope, in this state?</em> &mdash; in milliseconds, with a signed decision. Graph queries (authority path, delegation path, capability dependencies, blast radius) are first-class.</p>
+        <code class="arch-path">193 OpenAPI operations &middot; 87+ runtime endpoints &middot; redocly-lint clean</code>
       </article>
 
       <article class="arch-card">
