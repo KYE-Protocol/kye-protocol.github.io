@@ -4,65 +4,179 @@
   <script>(function(){try{var s=localStorage.getItem("kye-theme");if(s==="dark"||s==="light"){document.documentElement.setAttribute("data-theme",s);}}catch(e){}})();</script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>KYE Protocol™ — Integrations | OAuth, OIDC, SPIFFE, MCP, KYA vendors</title>
-  <meta name="description" content="How KYE Protocol™ composes with OAuth 2.1, OIDC, SAML, GNAP, SPIFFE/SPIRE, Anthropic MCP, Google A2A, OpenID AuthZEN, OpenSSF SCITT, OpenID SSF/CAEP, Visa Trusted Agent, Skyfire, Persona, Sumsub, Trulioo, OPA Rego, Cerbos, Cedar." />
+  <title>KYE Protocol™ — Integrations · what KYE composes with</title>
+  <meta name="description" content="What KYE Protocol™ composes with — identity (OAuth 2.0, OIDC, SAML, SPIFFE/SPIRE, mTLS, passkeys), policy (OPA, Cerbos, AWS Cedar), agent runtime (MCP, AuthZEN), payment rails (IPG, MPG, card-token, open-banking initiation), KYC/KYB/KYA vendors, SIEM (Splunk, Sentinel, Datadog), GRC (AuditBoard, Domo), and audit (OSCAL, SCITT receipts). Conformance status per integration." />
+  <meta name="keywords" content="KYE integrations, OAuth OIDC integration, SPIFFE integration, MCP integration, AuthZEN integration, OPA Cerbos Cedar policy, KYC KYB KYA vendors, SIEM SOAR integration, OSCAL export, SCITT" />
   <link rel="canonical" href="https://kye-protocol.github.io/integrations.html" />
   <meta name="robots" content="index, follow" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="KYE Protocol™ — Integrations | OAuth, OIDC, SPIFFE, MCP, KYA vendors" />
-  <meta property="og:description" content="How KYE Protocol™ composes with OAuth 2.1, OIDC, SAML, GNAP, SPIFFE/SPIRE, Anthropic MCP, Google A2A, OpenID AuthZEN, OpenSSF SCITT, OpenID SSF/CAEP, Visa Trusted Agent, Skyfire, Persona, Sumsub, Trulioo, OPA Rego, Cerbos, Cedar." />
+  <meta property="og:title" content="KYE Protocol™ — Integrations" />
+  <meta property="og:description" content="What KYE Protocol™ composes with: identity, policy, agent runtime, payment rails, KYC/KYB/KYA, SIEM, GRC, OSCAL, SCITT — with conformance status per integration." />
   <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
   <meta property="og:url" content="https://kye-protocol.github.io/integrations.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="styles.css?v=1779190000" />
+  <link rel="stylesheet" href="styles.css?v=1779200000" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
 </head>
 <body>
 <a href="#main" class="skip-link">Skip to main content</a>
-<header class="top-bar" role="banner" data-kye-header data-active="integrations"><!-- canonical chrome injected by assets/components.js mountKyeComponents() --></header>
+<header class="top-bar" role="banner" data-kye-header data-active="integrations"><!-- canonical chrome injected --></header>
 <main id="main" role="main">
 
 <section id="top" class="hero">
   <div class="container hero-inner">
-    <span class="hero-pill"><span class="dot"></span> Integrations &middot; composition matrix</span>
-    <h1 id="hero-title" style="margin-top:18px">Composes with the <span class="accent">stack you already have</span>.</h1>
-    <p class="lede">KYE Protocol<span class="tm">™</span> is additive. Identity, workload identity, agent passport, decision API, transparency, signal-bus, policy engine, storage &mdash; one matrix showing how every layer slots in.</p>
+    <span class="hero-pill"><span class="dot"></span> Integrations &middot; what KYE composes with</span>
+    <h1 id="hero-title" style="margin-top:18px">KYE doesn&rsquo;t replace your stack &mdash; it <span class="accent">binds authority across it</span>.</h1>
+    <p class="lede">KYE Protocol<span class="tm">™</span> is designed to compose with the identity, policy, agent runtime, payment rail, KYC / KYB / KYA, SIEM, GRC, and audit infrastructure you already run. Each integration carries a conformance status: <em>shipping</em> means a tested adapter or fixture exists today; <em>reference pattern</em> means a documented integration shape exists but no managed adapter; <em>roadmap</em> means scheduled for a v1.x preview.</p>
+    <div class="cn-quick" style="margin-top:18px">
+      <a href="#identity"  class="cn-pill"><span class="ms">key</span> Identity</a>
+      <a href="#policy"    class="cn-pill"><span class="ms">policy</span> Policy</a>
+      <a href="#agents"    class="cn-pill"><span class="ms">smart_toy</span> Agent runtime</a>
+      <a href="#payments"  class="cn-pill"><span class="ms">payments</span> Payment rails</a>
+      <a href="#kyx"       class="cn-pill"><span class="ms">badge</span> KYC / KYB / KYA</a>
+      <a href="#siem"      class="cn-pill"><span class="ms">manage_search</span> SIEM / SOAR</a>
+      <a href="#grc"       class="cn-pill"><span class="ms">verified_user</span> GRC</a>
+      <a href="#audit"     class="cn-pill"><span class="ms">balance</span> Audit / OSCAL / SCITT</a>
+    </div>
   </div>
 </section>
 
-
-<section id="matrix" class="section" aria-labelledby="h-matrix">
-        <span class="eyebrow">Composition matrix</span>
-    <h2 id="h-matrix" class="h-section">Composes with the stack you already have.</h2>
+<section id="identity" class="section" aria-labelledby="h-id">
+        <span class="eyebrow">Identity &amp; access</span>
+    <h2 id="h-id" class="h-section">OAuth 2.0 &middot; OIDC &middot; SAML &middot; SPIFFE &middot; mTLS &middot; passkeys.</h2>
   <div class="section-body"><div class="container">
-    <p class="lede">KYE Protocol<span class="tm">™</span> is additive. It does not replace your identity provider, your authorisation engine, your audit log, or your KYA vendor &mdash; it ties them together via one open contract. This page maps how each layer slots in.</p>
-
-    <div class="table-wrap">
-      <table class="ps-table">
-        <thead><tr><th>Layer</th><th>Existing standard / vendor</th><th>How KYE<span class="tm">™</span> composes</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Human auth</strong></td><td>OAuth 2.1, OIDC, SAML, GNAP</td><td>The OAuth/OIDC token issuer becomes a credential issuer in KYE<span class="tm">™</span>&rsquo;s vocabulary; KYE<span class="tm">™</span>&rsquo;s delegation chain attaches scope and state to the resulting principal.</td></tr>
-          <tr><td><strong>Workload identity</strong></td><td>SPIFFE / SPIRE (SVIDs)</td><td>SVIDs become entity URNs (<code data-code="urn">kye:workload:&lt;td&gt;:&lt;sub&gt;:&lt;local&gt;</code>); KYE<span class="tm">™</span> adds delegation, capability, decision and audit on top.</td></tr>
-          <tr><td><strong>AI agent &harr; tool</strong></td><td>Anthropic MCP</td><td>MCP tools become first-class capability entities; every MCP invocation becomes a KYE<span class="tm">™</span> authorize call with the agent&rsquo;s delegation chain attached.</td></tr>
-          <tr><td><strong>Agent registration</strong></td><td>Google A2A / ADK</td><td>Agent metadata feeds the KYE<span class="tm">™</span> entity registry; KYE<span class="tm">™</span> adds runtime authority, scope, state, and signed audit.</td></tr>
-          <tr><td><strong>Decision API shape</strong></td><td>OpenID AuthZEN</td><td>KYE<span class="tm">™</span>&rsquo;s <code data-code="endpoint">POST /v1/runtime/authorize</code> is AuthZEN-compatible; reason codes, obligations, evidence refs are KYE-specific extensions.</td></tr>
-          <tr><td><strong>Transparency receipts</strong></td><td>OpenSSF SCITT</td><td>KYE<span class="tm">™</span> proof bundles are emitted as SCITT statements; SCITT receipts attach to KYE<span class="tm">™</span> evidence packs.</td></tr>
-          <tr><td><strong>Stop-event distribution</strong></td><td>OpenID SSF / CAEP</td><td>KYE<span class="tm">™</span> signal bus emits SSF-shaped events for compromise / cascade revoke / quarantine; downstream SSF receivers act on them.</td></tr>
-          <tr><td><strong>Agent passport</strong></td><td>Visa Trusted Agent / Skyfire / Persona / Sumsub / Trulioo (KYA)</td><td>Agent passport becomes a credential entity; KYE<span class="tm">™</span>&rsquo;s authority chain governs what the agent does <em>with</em> the passport, across vendors.</td></tr>
-          <tr><td><strong>Policy engines</strong></td><td>OPA Rego / Cerbos / Cedar / AWS IAM</td><td>KYE<span class="tm">™</span> ships Rego (5), Cerbos (4), Cedar (1) reference bundles. Bring your own engine; KYE<span class="tm">™</span> provides the input shape and the obligation grammar.</td></tr>
-          <tr><td><strong>Storage</strong></td><td>Postgres / Neo4j / Neptune / Memgraph / TigerGraph / ArangoDB / RDF</td><td>KYE<span class="tm">™</span> objects project into any graph or relational store; the protocol defines node + edge contracts, not the database.</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p style="margin-top:24px;color:var(--kye-color-text-muted);font-size:13.5px">For implementation help with any specific composition, open a discussion at <a href="https://github.com/KYE-Protocol/Discussions/discussions" target="_blank" rel="noopener">KYE-Protocol/Discussions</a> or use the <a href="#" data-contact-trigger>Talk to us</a> modal.</p>
+    <table class="cmp-table" style="margin-top:14px">
+      <thead><tr><th>Integration</th><th>Connector type</th><th>Status</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>OAuth 2.0 + PKCE</td><td><code data-code="field">oauth_oidc</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Shipping</span></td><td>Token introspection feeds the actor + on-behalf-of binding.</td></tr>
+        <tr><td>OpenID Connect</td><td><code data-code="field">oauth_oidc</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Shipping</span></td><td>ID-token claims map into the principal entity.</td></tr>
+        <tr><td>SAML 2.0</td><td><code data-code="field">saml</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Reference pattern</span></td><td>Federated identity assertion translated into KYE delegations.</td></tr>
+        <tr><td>SCIM 2.0</td><td><code data-code="field">scim</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Reference pattern</span></td><td>Workforce provisioning into the entity registry.</td></tr>
+        <tr><td>SPIFFE / SPIRE</td><td><code data-code="field">spiffe_spire</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Shipping</span></td><td>SPIFFE ID becomes the workload entity URN; SVID feeds attestation.</td></tr>
+        <tr><td>mTLS</td><td><code data-code="field">mtls</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Shipping</span></td><td>Front-the-Gateway pattern: reverse proxy verifies; passes <code>X-Client-Cert-Subject</code>.</td></tr>
+        <tr><td>Passkeys / WebAuthn</td><td><code data-code="field">passkey</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Reference pattern</span></td><td>Passkey assertion as the &ldquo;principal authenticated&rdquo; factor in step-up flows.</td></tr>
+        <tr><td>Verifiable Credentials (W3C)</td><td><code data-code="field">credential_issuer</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Shipping</span></td><td>Native: <code>kye-credentials-v1</code> profile.</td></tr>
+      </tbody>
+    </table>
   </div></div>
 </section>
 
+<section id="policy" class="section alt" aria-labelledby="h-pol">
+        <span class="eyebrow">Policy engines</span>
+    <h2 id="h-pol" class="h-section">OPA &middot; Cerbos &middot; AWS Cedar.</h2>
+  <div class="section-body"><div class="container">
+    <table class="cmp-table" style="margin-top:14px">
+      <thead><tr><th>Integration</th><th>Connector type</th><th>Status</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Open Policy Agent (OPA / Rego)</td><td><code data-code="field">opa</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Shipping</span></td><td>Reference policy bundles: Core (<code>kye_authz.rego</code>) + Payments (<code>payments_spdp.rego</code>).</td></tr>
+        <tr><td>Cerbos</td><td><code data-code="field">cerbos</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Shipping</span></td><td>Derived-roles + resource-policy bundles for the Core profile + sector overlays.</td></tr>
+        <tr><td>AWS Cedar</td><td><code data-code="field">aws_cedar</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Reference pattern</span></td><td>Cedar policy bundle for the Core profile.</td></tr>
+        <tr><td>AuthZEN (OpenID)</td><td><code data-code="field">authzen</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Reference pattern</span></td><td>KYE Decision API maps onto the AuthZEN authorization-API shape.</td></tr>
+      </tbody>
+    </table>
+  </div></div>
+</section>
+
+<section id="agents" class="section" aria-labelledby="h-ag">
+        <span class="eyebrow">Agent runtime</span>
+    <h2 id="h-ag" class="h-section">MCP &middot; agent frameworks &middot; tool gateways.</h2>
+  <div class="section-body"><div class="container">
+    <table class="cmp-table" style="margin-top:14px">
+      <thead><tr><th>Integration</th><th>Connector type</th><th>Status</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Model Context Protocol (MCP)</td><td><code data-code="field">mcp_server</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Roadmap (v1.1)</span></td><td>KYE MCP Server<span class="tm">™</span> design specification published; reference implementation ships v1.1.</td></tr>
+        <tr><td>Agent runtime (LangChain / LlamaIndex / DSPy / custom)</td><td><code data-code="field">agent_runtime</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Reference pattern</span></td><td>SDK-level integration: the agent loop calls <code>POST /v1/runtime/authorize</code> before any external action.</td></tr>
+        <tr><td>Tool gateway (function-calling)</td><td><code data-code="field">tool_gateway</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Reference pattern</span></td><td>Each tool invocation becomes a capability invocation with a Decision Map<span class="tm">™</span>.</td></tr>
+      </tbody>
+    </table>
+  </div></div>
+</section>
+
+<section id="payments" class="section alt" aria-labelledby="h-pay">
+        <span class="eyebrow">Payment rails</span>
+    <h2 id="h-pay" class="h-section">IPG / MPG / card-token / wallet / open-banking initiation.</h2>
+  <div class="section-body"><div class="container">
+    <table class="cmp-table" style="margin-top:14px">
+      <thead><tr><th>Integration</th><th>Connector type</th><th>Status</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Internet payment gateway (IPG)</td><td><code data-code="field">internet_payment_gateway</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Reference pattern</span></td><td>Pre-authorisation hook; KYE authorises the agent before the gateway processes the payment.</td></tr>
+        <tr><td>Mobile payment gateway (MPG)</td><td><code data-code="field">mobile_payment_gateway</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Reference pattern</span></td><td>Same shape as IPG; mobile-flow attestation.</td></tr>
+        <tr><td>Card token / vault</td><td><code data-code="field">card_token</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Shipping</span></td><td>Schema rejects raw PAN; token-only references; PCI null CDE.</td></tr>
+        <tr><td>Wallet</td><td><code data-code="field">wallet</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Shipping</span></td><td>Wallet-bound spend control; per-instrument scope intersection.</td></tr>
+        <tr><td>Open-banking payment initiation</td><td><code data-code="field">open_banking</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Reference pattern</span></td><td>PSD2 / PSD3 SCA binding; consent-to-authority mapping.</td></tr>
+        <tr><td>OpenBankProject (OBP)</td><td><code data-code="field">open_banking</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Roadmap</span></td><td>Sandbox connector pattern documented; managed connector planned.</td></tr>
+      </tbody>
+    </table>
+  </div></div>
+</section>
+
+<section id="kyx" class="section" aria-labelledby="h-kyx">
+        <span class="eyebrow">KYC / KYB / KYA</span>
+    <h2 id="h-kyx" class="h-section">Verification providers feed the entity record; KYE binds authority.</h2>
+  <div class="section-body"><div class="container">
+    <p class="lede">Identity-verification vendors are upstream of the KYE entity record. KYE does not duplicate KYC; it consumes the verification result + the verifier&rsquo;s evidence URI and binds the result into the entity&rsquo;s authority surface.</p>
+    <table class="cmp-table" style="margin-top:14px">
+      <thead><tr><th>Integration shape</th><th>Connector type</th><th>Status</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>KYC provider (per-individual identity)</td><td><code data-code="field">kyc_provider</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Reference pattern</span></td><td>Persona / Sumsub / Onfido / Trulioo &mdash; result becomes a signed credential bound to the person entity.</td></tr>
+        <tr><td>KYB provider (business identity)</td><td><code data-code="field">kyb_provider</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Reference pattern</span></td><td>Middesk / Mesh / Companies House feed bound to the business entity record.</td></tr>
+        <tr><td>KYA provider (agent identity / passport)</td><td><code data-code="field">kya_provider</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Reference pattern</span></td><td>Agent passport schema; Skyfire / Coinbase x402-style agent identity feeds.</td></tr>
+        <tr><td>Agent passport</td><td><code data-code="field">agent_passport</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Shipping</span></td><td>Native: <code>kye-attestation-v1</code> profile.</td></tr>
+      </tbody>
+    </table>
+  </div></div>
+</section>
+
+<section id="siem" class="section alt" aria-labelledby="h-siem">
+        <span class="eyebrow">SIEM &amp; SOAR</span>
+    <h2 id="h-siem" class="h-section">Signed events stream into your security stack.</h2>
+  <div class="section-body"><div class="container">
+    <table class="cmp-table" style="margin-top:14px">
+      <thead><tr><th>Integration</th><th>Connector type</th><th>Status</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Splunk HTTP Event Collector</td><td><code data-code="field">splunk</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Shipping</span></td><td>Reference exporter under <a href="plugins.html">plugins</a>.</td></tr>
+        <tr><td>Microsoft Sentinel</td><td><code data-code="field">sentinel</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Shipping</span></td><td>Sentinel exporter plugin.</td></tr>
+        <tr><td>Datadog</td><td><code data-code="field">datadog</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Reference pattern</span></td><td>Logs API + custom-metric integration.</td></tr>
+        <tr><td>AWS CloudWatch</td><td><code data-code="field">cloudwatch</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Reference pattern</span></td><td>Log group + EventBridge fan-out.</td></tr>
+        <tr><td>Kafka / EventBridge / SNS</td><td><code data-code="field">kafka</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Reference pattern</span></td><td>Event bus fan-out for signed signals.</td></tr>
+      </tbody>
+    </table>
+  </div></div>
+</section>
+
+<section id="grc" class="section" aria-labelledby="h-grc">
+        <span class="eyebrow">GRC</span>
+    <h2 id="h-grc" class="h-section">Control mappings feed your governance system of record.</h2>
+  <div class="section-body"><div class="container">
+    <table class="cmp-table" style="margin-top:14px">
+      <thead><tr><th>Integration shape</th><th>Connector type</th><th>Status</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>GRC platform (AuditBoard / Vanta / Drata / OneTrust)</td><td><code data-code="field">grc</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Reference pattern</span></td><td>KYE evidence packs feed the platform&rsquo;s evidence repository; control-mapping JSON exports.</td></tr>
+        <tr><td>Control-mapping export</td><td><code data-code="field">control_mapping</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Shipping</span></td><td>266 control mappings across 13 frameworks &mdash; SOC 2, ISO 27001, PCI DSS, PSD2/3, DORA, NIS2, EU AI Act, NIST 800-207, HIPAA, FedRAMP, NIST CSF, ISO 42001, NIST AI RMF.</td></tr>
+        <tr><td>Self-audit attestation</td><td><code data-code="field">self_audit</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Shipping</span></td><td>Native: <code>kye-self-audit-attestation-v1</code> profile.</td></tr>
+      </tbody>
+    </table>
+  </div></div>
+</section>
+
+<section id="audit" class="section alt" aria-labelledby="h-aud">
+        <span class="eyebrow">Audit / OSCAL / SCITT</span>
+    <h2 id="h-aud" class="h-section">Standards the auditor already accepts.</h2>
+  <div class="section-body"><div class="container">
+    <table class="cmp-table" style="margin-top:14px">
+      <thead><tr><th>Standard</th><th>Status</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>OSCAL (NIST SP 800-53A) &mdash; component definition / SSP / assessment results / POA&amp;M</td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Shipping</span></td><td>Reference exporter under <a href="plugins.html">plugins</a>; see <a href="oscal.html">oscal.html</a>.</td></tr>
+        <tr><td>SCITT receipts (Supply-Chain Integrity, Transparency &amp; Trust)</td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Reference pattern</span></td><td>Transparency receipt envelope aligns with SCITT; native via <code>kye-transparency-v1</code>.</td></tr>
+        <tr><td>RFC 8949 COSE_Sign1</td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Shipping</span></td><td>Webhook signing profile; binary CBOR receipts.</td></tr>
+      </tbody>
+    </table>
+  </div></div>
+</section>
 
 </main>
-<footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected by assets/components.js mountKyeComponents() --></footer>
+<footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected --></footer>
 <button id="scroll-top" class="scroll-top" type="button" aria-label="Scroll to top" data-kye-scroll-top><!-- svg injected --></button>
 <script type="module" src="main.js?v=1779050000"></script>
 </body>

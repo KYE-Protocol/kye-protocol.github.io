@@ -4,56 +4,122 @@
   <script>(function(){try{var s=localStorage.getItem("kye-theme");if(s==="dark"||s==="light"){document.documentElement.setAttribute("data-theme",s);}}catch(e){}})();</script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>KYE Protocol™ — Status · KYE Cloud Gateway™ operational health</title>
-  <meta name="description" content="KYE Cloud Gateway™ operational health: Hosted Registry, Validator API, Recovery Console, Evidence-pack Generator, Self-Audit™ Cloud. Pre-launch placeholder until automated polling is wired in." />
+  <title>KYE Protocol™ — Status · KYE Cloud Gateway™ operational health, SLA targets, incident severity</title>
+  <meta name="description" content="KYE Cloud Gateway™ status — pre-launch. Documents the SLA tiers (99.9% / 99.95% / 99.99%), the RTO/RPO targets per service tier, the incident-severity classification (Sev-0 to Sev-3), and the customer-notification cadence the hosted offering will run under." />
+  <meta name="keywords" content="KYE Cloud Gateway status, KYE Protocol SLA, KYE incident response, RTO RPO targets, hosted runtime status, KYE service tiers" />
   <link rel="canonical" href="https://kye-protocol.github.io/status.html" />
   <meta name="robots" content="index, follow" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="KYE Protocol™ — Status · KYE Cloud Gateway™ operational health" />
-  <meta property="og:description" content="KYE Cloud Gateway™ operational health: Hosted Registry, Validator API, Recovery Console, Evidence-pack Generator, Self-Audit™ Cloud. Pre-launch placeholder until automated polling is wired in." />
+  <meta property="og:title" content="KYE Protocol™ — Status" />
+  <meta property="og:description" content="KYE Cloud Gateway™ status — pre-launch. SLA tiers, RTO/RPO targets, incident classification, escalation channels." />
   <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
   <meta property="og:url" content="https://kye-protocol.github.io/status.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="styles.css?v=1779190000" />
+  <link rel="stylesheet" href="styles.css?v=1779200000" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
 </head>
 <body>
 <a href="#main" class="skip-link">Skip to main content</a>
-<header class="top-bar" role="banner" data-kye-header data-active="status"><!-- canonical chrome injected by assets/components.js mountKyeComponents() --></header>
+<header class="top-bar" role="banner" data-kye-header data-active="status"><!-- canonical chrome injected --></header>
 <main id="main" role="main">
 
 <section id="top" class="hero">
   <div class="container hero-inner">
-    <span class="hero-pill"><span class="dot"></span> Status</span>
-    <h1 id="hero-title" style="margin-top:18px">KYE Cloud Gateway<span class="tm">™</span> &mdash; <span class="accent">operational</span>.</h1>
-    <p class="lede">Hosted-services status. The protocol itself is open-source and runs wherever you deploy it; this page tracks the commercial KYE Cloud Gateway<span class="tm">™</span> offering.</p>
+    <span class="hero-pill"><span class="dot"></span> Status &middot; KYE Cloud Gateway<span class="tm">™</span> &middot; pre-launch</span>
+    <h1 id="hero-title" style="margin-top:18px">Status, SLA targets, and incident posture for the <span class="accent">KYE Cloud Gateway<span class="tm">™</span></span>.</h1>
+    <p class="lede">KYE Protocol<span class="tm">™</span> is open source (Apache 2.0) and runs wherever you deploy it. KYE Cloud Gateway<span class="tm">™</span> is the planned commercial managed runtime; today it operates under MOU with named pilot Customers. This page documents the SLA tiers, recovery targets, severity classification, and escalation channels the offering runs under.</p>
+    <div class="cn-quick" style="margin-top:18px">
+      <a href="#tiers"     class="cn-pill"><span class="ms">layers</span> SLA tiers</a>
+      <a href="#rto-rpo"   class="cn-pill"><span class="ms">restart_alt</span> RTO / RPO</a>
+      <a href="#severity"  class="cn-pill"><span class="ms">priority_high</span> Severity</a>
+      <a href="#notify"    class="cn-pill"><span class="ms">notifications</span> Notifications</a>
+      <a href="#channels"  class="cn-pill"><span class="ms">forum</span> Channels</a>
+    </div>
   </div>
 </section>
 
-
-<section id="cloud" class="section" aria-labelledby="h-cl">
-        <span class="eyebrow">KYE Cloud Gateway<span class="tm">™</span> status</span>
-    <h2 id="h-cl" class="h-section">Operational health of the hosted offering.</h2>
+<section id="tiers" class="section" aria-labelledby="h-tiers">
+        <span class="eyebrow">Three customer tiers</span>
+    <h2 id="h-tiers" class="h-section">Availability commitments per tier.</h2>
   <div class="section-body"><div class="container">
-    <p class="lede">KYE Cloud Gateway<span class="tm">™</span> is the commercial hosted offering. The protocol itself is open-source (Apache 2.0) and runs wherever you deploy it; this page tracks the hosted services.</p>
-
-    <div class="who-mini-grid" style="margin-top:8px">
-      <div class="who-mini" style="--who-c: #1A8754"><span class="ms">check_circle</span><strong>Hosted Registry</strong><span>Operational. Last verified ping: green.</span></div>
-      <div class="who-mini" style="--who-c: #1A8754"><span class="ms">check_circle</span><strong>Validator API</strong><span>Operational. p99 latency &lt;120ms.</span></div>
-      <div class="who-mini" style="--who-c: #1A8754"><span class="ms">check_circle</span><strong>Recovery Console</strong><span>Operational.</span></div>
-      <div class="who-mini" style="--who-c: #1A8754"><span class="ms">check_circle</span><strong>Evidence-pack Generator</strong><span>Operational.</span></div>
-      <div class="who-mini" style="--who-c: #1A8754"><span class="ms">check_circle</span><strong>KYE Self-Audit<span class="tm">™</span> Cloud</strong><span>Operational.</span></div>
-      <div class="who-mini" style="--who-c: #5F6368"><span class="ms">schedule</span><strong>Public certification registry</strong><span>Pre-launch &mdash; opens with v1.1.</span></div>
-    </div>
-
-    <p style="margin-top:24px;font-size:13px;color:var(--kye-color-text-dim)">This page is a placeholder until automated polling is wired in. For real-time signals, watch <a href="https://github.com/KYE-Protocol/Discussions/discussions" target="_blank" rel="noopener">KYE-Protocol/Discussions</a>; for SLA-backed support, see <a href="#" data-contact-trigger>Talk to us</a> &mdash; pick the &quot;Speak to sales&rdquo; topic.</p>
+    <table class="cmp-table" style="margin-top:14px">
+      <thead><tr><th>Tier</th><th>Availability target</th><th>Eligibility</th><th>Service credit on miss</th></tr></thead>
+      <tbody>
+        <tr><th>Standard</th><td>99.9% per calendar month</td><td>Default for new Customers</td><td>10% &rarr; 50% scaling with miss size</td></tr>
+        <tr><th>Enterprise</th><td>99.95% per calendar month</td><td>Customers operating regulated profiles (payments high-assurance, federation, healthcare, treasury)</td><td>15% &rarr; 50%</td></tr>
+        <tr><th>Tier-1 Partner</th><td>99.99% per calendar month</td><td>Customers under MOU with named pilot scope, dedicated capacity, quarterly drills</td><td>20% &rarr; 75%</td></tr>
+      </tbody>
+    </table>
+    <p class="lede" style="margin-top:14px">Availability is measured at the Customer's nearest region by KYE Protocol Ltd.&rsquo;s synthetic monitor. Source of record: <code data-code="path">private/runbooks/customer-sla.md</code>.</p>
   </div></div>
 </section>
 
+<section id="rto-rpo" class="section alt" aria-labelledby="h-rto">
+        <span class="eyebrow">Recovery commitments</span>
+    <h2 id="h-rto" class="h-section">RTO / RPO per component.</h2>
+  <div class="section-body"><div class="container">
+    <table class="cmp-table" style="margin-top:14px">
+      <thead><tr><th>Component</th><th>Tier</th><th>RTO</th><th>RPO</th></tr></thead>
+      <tbody>
+        <tr><td>Gateway / PDP</td><td>1 (Critical)</td><td>5 min</td><td>0</td></tr>
+        <tr><td>Entity / delegation registry</td><td>1 (Critical)</td><td>15 min</td><td>&le; 5 min</td></tr>
+        <tr><td>Audit ledger</td><td>1 (Critical)</td><td>60 min</td><td>0 (synchronous replication)</td></tr>
+        <tr><td>Signal stream</td><td>2 (High)</td><td>15 min</td><td>&le; 5 min</td></tr>
+        <tr><td>Transparency service</td><td>2 (High)</td><td>4 h</td><td>0 (rebuildable from audit)</td></tr>
+        <tr><td>ePDP cache distribution</td><td>3 (Standard)</td><td>8 h</td><td>0 (rebuildable)</td></tr>
+        <tr><td>Conformance reporting</td><td>3 (Standard)</td><td>24 h</td><td>24 h</td></tr>
+      </tbody>
+    </table>
+    <p class="lede" style="margin-top:14px">Quarterly tabletop + annual live failover exercise required by the disaster-recovery runbook. The most recent exercise is logged at <code data-code="path">private/runbooks/incidents/2026-05-07-bcdr-tabletop-q2.md</code>.</p>
+  </div></div>
+</section>
+
+<section id="severity" class="section" aria-labelledby="h-sev">
+        <span class="eyebrow">Incident severity</span>
+    <h2 id="h-sev" class="h-section">Sev-0 to Sev-3.</h2>
+  <div class="section-body"><div class="container">
+    <table class="cmp-table" style="margin-top:14px">
+      <thead><tr><th>Severity</th><th>Trigger</th><th>Customer notify</th><th>Status updates</th><th>Resolution target</th></tr></thead>
+      <tbody>
+        <tr><th>Sev-0</th><td>Full outage / data breach</td><td>&le; 30 min</td><td>Every 60 min</td><td>4 h mitigation, 7 d permanent fix</td></tr>
+        <tr><th>Sev-1</th><td>Major component degraded / regulator-notifiable</td><td>&le; 60 min</td><td>Every 2 h</td><td>8 h mitigation, 14 d permanent fix</td></tr>
+        <tr><th>Sev-2</th><td>Single tenant or feature impacted</td><td>&le; 4 h</td><td>Every 4 business hours</td><td>24 h mitigation, 30 d permanent fix</td></tr>
+        <tr><th>Sev-3</th><td>Cosmetic / minor</td><td>&le; 1 business day</td><td>Daily</td><td>Best effort</td></tr>
+      </tbody>
+    </table>
+    <p class="lede" style="margin-top:14px">Sev-0 and Sev-1 trigger the regulatory notification path defined in the incident-response runbook (DORA Art. 19, GDPR Art. 33, PSD2 Art. 96, HIPAA &sect;164.408). Source: <code data-code="path">private/runbooks/incident-response.md</code>.</p>
+  </div></div>
+</section>
+
+<section id="notify" class="section alt" aria-labelledby="h-notify">
+        <span class="eyebrow">Customer notifications</span>
+    <h2 id="h-notify" class="h-section">When and how Customers hear about an incident.</h2>
+  <div class="section-body"><div class="container">
+    <ul class="eg-pilot-deliv" style="margin-top:14px">
+      <li><strong>Initial declaration.</strong> Within the per-severity window above, the Comms lead posts to the public status page (this page, when live) and emails the named technical contacts on the Customer's account.</li>
+      <li><strong>Status updates.</strong> Posted on the published cadence until resolution; every update carries a current state, an explicit ETA when known, and any required Customer action.</li>
+      <li><strong>Resolution.</strong> Marked &ldquo;resolved&rdquo; when synthetic monitors return to within SLA bounds for the dwell window; a post-mortem is published within 14 days for Sev-0 / Sev-1 events.</li>
+      <li><strong>Service credits.</strong> Customers claim credits within 30 days of month-end per the SLA in <code data-code="path">private/runbooks/customer-sla.md</code> &sect;5; credit is applied to the next invoice.</li>
+    </ul>
+  </div></div>
+</section>
+
+<section id="channels" class="section" aria-labelledby="h-ch">
+        <span class="eyebrow">Real-time signals today</span>
+    <h2 id="h-ch" class="h-section">Where to watch while the status page is pre-launch.</h2>
+  <div class="section-body"><div class="container">
+    <div class="prim-grid" style="margin-top:14px">
+      <a href="https://github.com/KYE-Protocol" target="_blank" rel="noopener" class="prim-card"><span class="ms">code</span><strong>GitHub: KYE-Protocol</strong><span>Issue activity, release notes, public CI runs against the reference Gateway.</span></a>
+      <a href="changelog.html" class="prim-card"><span class="ms">history</span><strong>Changelog</strong><span>Dated release notes for the protocol contract and reference implementation.</span></a>
+      <a href="#" data-contact-trigger class="prim-card"><span class="ms">support_agent</span><strong>SLA-backed support</strong><span>Pilot Customers under MOU: pick the &ldquo;Speak to sales&rdquo; topic for the dedicated escalation channel.</span></a>
+    </div>
+    <p class="lede" style="margin-top:14px"><em>Status page automation lands with the public KYE Cloud Gateway<span class="tm">™</span> launch.</em> Until then, this page documents the targets the hosted offering operates against; pilot Customers receive direct notifications under their MOU.</p>
+  </div></div>
+</section>
 
 </main>
-<footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected by assets/components.js mountKyeComponents() --></footer>
+<footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected --></footer>
 <button id="scroll-top" class="scroll-top" type="button" aria-label="Scroll to top" data-kye-scroll-top><!-- svg injected --></button>
 <script type="module" src="main.js?v=1779050000"></script>
 </body>
