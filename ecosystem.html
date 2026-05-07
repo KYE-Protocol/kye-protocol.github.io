@@ -15,7 +15,7 @@
   <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
   <meta property="og:url" content="https://kye-protocol.github.io/ecosystem.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="styles.css?v=1779150000" />
+  <link rel="stylesheet" href="styles.css?v=1779160000" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
 </head>
@@ -95,17 +95,18 @@
         <span class="eyebrow">OSS / paid split, ecosystem-wide</span>
     <h2 id="h-o" class="h-section">Open contracts. <span class="accent">Paid operations.</span></h2>
   <div class="section-body"><div class="container">
+    <p class="lede" style="background:color-mix(in srgb, var(--kye-color-brand) 8%, transparent); border-left:3px solid var(--kye-color-brand); padding:10px 14px; border-radius:6px; margin-bottom:14px"><strong>Status note.</strong> Today, the open-source column ships. The KYE Cloud<span class="tm">™</span> column is the planned commercial offering &mdash; a managed runtime under MOU with named pilot Customers; not a generally-available SaaS yet. Where rows below say <em>(planned)</em>, the feature is on the v1.1 roadmap, not shipping today.</p>
     <table class="cmp-table" style="margin-top:14px">
-      <thead><tr><th>Surface</th><th>Open source &middot; Apache 2.0</th><th>KYE Cloud<span class="tm">™</span> &middot; commercial</th></tr></thead>
+      <thead><tr><th>Surface</th><th>Open source &middot; Apache 2.0 &middot; <em>shipping</em></th><th>KYE Cloud<span class="tm">™</span> &middot; commercial &middot; <em>planned / pilot</em></th></tr></thead>
       <tbody>
-        <tr><th>Profiles</th><td>Every <code data-code="field">kye.connector_profile.v1</code> manifest, supported-connector list, conformance suite, dictionaries.</td><td>Sector-specific profile bundles &middot; regulated-industry presets.</td></tr>
-        <tr><th>Connectors</th><td>Every <code data-code="field">kye.connector_manifest.v1</code> beneath a profile &middot; sample IPG / checkout / MCP / SIEM connectors &middot; SDK adapters &middot; local test harness.</td><td>Managed Connector Hub<span class="tm">™</span> &middot; enterprise connector engine &middot; SLA-backed delivery &middot; connector health monitoring.</td></tr>
-        <tr><th>Apps</th><td>Reference architectures &middot; sample <code data-code="field">kye.app_manifest.v1</code> &middot; SDK examples per app.</td><td>Hosted apps in KYE App Store<span class="tm">™</span> &mdash; KYE Payment Authority Gateway<span class="tm">™</span>, KYE Checkout Guard<span class="tm">™</span>, KYE Evidence Pack Viewer<span class="tm">™</span> Pro, etc.</td></tr>
-        <tr><th>Plugins</th><td><code data-code="field">kye.plugin_manifest.v1</code> &middot; sample plugins &middot; permissions dictionary &middot; conformance fixtures.</td><td>Hosted KYE Plugin Marketplace<span class="tm">™</span> &middot; install / monitor / replay UI.</td></tr>
-        <tr><th>Runtime</th><td>Reference Gateway: PEP middleware &middot; embedded ePDP &middot; conformance runner.</td><td>Managed runtime gateway, decision engine, state engine, graph engine, signal bus, evidence engine, dashboards.</td></tr>
+        <tr><th>Profiles</th><td>Every <code data-code="field">kye.connector_profile.v1</code> manifest, supported-connector list, conformance suite, dictionaries.</td><td>Sector-specific profile bundles &middot; regulated-industry presets. <em>(planned)</em></td></tr>
+        <tr><th>Connectors</th><td>Every <code data-code="field">kye.connector_manifest.v1</code> beneath a profile &middot; sample IPG / checkout / MCP / SIEM connectors &middot; SDK adapters &middot; local test harness.</td><td>Managed Connector Hub<span class="tm">™</span> &middot; enterprise connector engine &middot; SLA-backed delivery &middot; connector health monitoring. <em>(planned)</em></td></tr>
+        <tr><th>Apps</th><td>Reference architectures &middot; sample <code data-code="field">kye.app_manifest.v1</code> &middot; SDK examples per app.</td><td>Hosted apps in KYE App Store<span class="tm">™</span> &mdash; KYE Payment Authority Gateway<span class="tm">™</span>, KYE Checkout Guard<span class="tm">™</span>, KYE Evidence Pack Viewer<span class="tm">™</span> Pro, etc. <em>(planned; pilots under MOU)</em></td></tr>
+        <tr><th>Plugins</th><td><code data-code="field">kye.plugin_manifest.v1</code> &middot; sample plugins &middot; permissions dictionary &middot; conformance fixtures.</td><td>Hosted KYE Plugin Marketplace<span class="tm">™</span> &middot; install / monitor / replay UI. <em>(planned)</em></td></tr>
+        <tr><th>Runtime</th><td>Reference Gateway: PEP middleware &middot; embedded ePDP &middot; conformance runner.</td><td>Managed runtime gateway, decision engine, state engine, graph engine, signal bus, evidence engine, dashboards. <em>(planned)</em></td></tr>
       </tbody>
     </table>
-    <p class="lede" style="margin-top:14px"><em>Why this split?</em> The contracts have to be open or KYE Protocol<span class="tm">™</span> isn't a protocol &mdash; partners and developers must be able to implement, integrate, and verify without depending on a hosted service. The runtime engine that scales decisions, signal delivery, and connector operations sits behind a paid layer where the operational moat lives.</p>
+    <p class="lede" style="margin-top:14px"><em>Why this split?</em> The contracts have to be open or KYE Protocol<span class="tm">™</span> isn't a protocol &mdash; partners and developers must be able to implement, integrate, and verify without depending on a hosted service. The runtime engine that scales decisions, signal delivery, and connector operations is the planned commercial layer; today it runs as the reference Gateway only, with bank pilots under MOU.</p>
   </div></div>
 </section>
 
