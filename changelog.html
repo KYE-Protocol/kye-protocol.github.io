@@ -15,7 +15,7 @@
   <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
   <meta property="og:url" content="https://kye-protocol.github.io/changelog.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="styles.css?v=1779260000" />
+  <link rel="stylesheet" href="styles.css?v=1779270000" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://kye-protocol.github.io/"},{"@type":"ListItem","position":2,"name":"Changelog","item":"https://kye-protocol.github.io/changelog.html"}]}</script>
@@ -28,7 +28,8 @@
 <section id="top" class="hero">
   <div class="container hero-inner">
     <span class="hero-pill"><span class="dot"></span> Changelog</span>
-    <h1 id="hero-title" style="margin-top:18px">What shipped, when, in <span class="accent">one place</span>.</h1>
+    <h1 id="hero-title" style="margin-top:18px">Upgrade your build &mdash; <span class="accent">here&rsquo;s what&rsquo;s new</span>.</h1>
+    <p class="lede" style="background:color-mix(in srgb, var(--kye-color-brand) 8%, transparent); border-left:3px solid var(--kye-color-brand); padding:10px 14px; border-radius:6px; margin-bottom:14px"><strong>Breaking changes since v1.0.0:</strong> none. SemVer guarantees apply from v1.0.0 onwards (see <a href="#policy">policy</a>). Every entry below carries an action label: <em>action: required</em>, <em>action: optional</em>, or <em>no action</em>.</p>
     <p class="lede">Dated release notes for KYE Protocol<span class="tm">™</span>. The contract is frozen at v1.0 (April 2026); patch releases (v1.0.x) ship behaviour-preserving fixes; v1.1 preview profiles are gated until the conformance suite for each one is signed off. For day-to-day commit history, see <a href="https://github.com/KYE-Protocol" target="_blank" rel="noopener">github.com/KYE-Protocol</a>.</p>
     <div class="cn-quick" style="margin-top:18px">
       <a href="#unreleased" class="cn-pill"><span class="ms">science</span> Unreleased</a>
@@ -44,9 +45,10 @@
     <h2 id="h-un" class="h-section">In flight.</h2>
   <div class="section-body"><div class="container">
     <ul class="biz-list">
-      <li><strong>Tier-1 readiness pass</strong> &mdash; six-batch hardening landing through May 2026. CI supply-chain (dependency-review, gitleaks, signed-commit check, SBOM 90-day retention); governance docs (GDPR DPA template, ROPA, DSR procedure, PCI DSS scope, customer SLA, sub-processor inventory, BCDR tabletop record); Gateway runtime hardening (opt-in inbound auth, rate-limit, request-size limit, structured logging, JSONL persistent audit chain, receiver-side webhook verifier); SDK + CLI hardening (crypto, errors, retry helpers in TS + Python; CLI keystore + sign + verify-webhook).</li>
-      <li><strong>Marketing-honesty scrub</strong> &mdash; conformance count normalised to 38 across the site; widget count normalised to 5; commercial KYE Cloud Gateway<span class="tm">™</span> features tagged &ldquo;(planned)&rdquo;; MCP page tagged as v1.1 roadmap; capability-scoped Conformance badges added to <a href="certification.html#ladder">the certification ladder</a>.</li>
-      <li><strong>Trademark family unified</strong> &mdash; the commercial offering is &ldquo;KYE Cloud Gateway<span class="tm">™</span>&rdquo;; the open-source / spec surface continues to use lowercase &ldquo;Reference Gateway&rdquo; / &ldquo;Runtime Gateway&rdquo; / &ldquo;KYE-Gateway v1&rdquo; without the &trade;.</li>
+      <li><strong>Tier-1 readiness pass</strong> <em>(action: optional &mdash; turn on the new env vars to harden your deployment)</em> &mdash; CI supply-chain (dependency-review, gitleaks, signed-commit check, SBOM retention); governance templates (GDPR DPA, ROPA, DSR procedure, PCI scope, customer SLA, sub-processor inventory, BCDR tabletop); Gateway hardening middleware (auth, rate-limit, body-size, structured logging, JSONL + Postgres audit-chain adapters, receiver-side webhook verifier, COSE_Sign1 binary signing, OPA policy-engine adapter, Authority Graph™ traversal engine, HSM/KMS key-custody interface); SDK crypto + errors + retry across TS + Python + Go; CLI keystore + sign + verify-webhook.</li>
+      <li><strong>Sovereign AI build-out</strong> <em>(action: optional &mdash; only if you adopt the v1.1 preview profile)</em> &mdash; Sovereign AI Profile™ + 9 sub-profiles + 5 planned apps; <code data-code="path">sovereign-ai-authority.json</code> schema + example + conformance fixture + SDK types.</li>
+      <li><strong>Numeric ledger reconciled</strong> <em>(no action)</em> &mdash; site claims now match repo counts line-for-line: 50 v1.0 normative profiles, 40 conformance fixtures (40/40 pass), 69 JSON Schemas, 69 validated examples, 46 reference connectors (now served by GET /v1/connectors), 24 event families × 79 types, 266 control mappings across 13 frameworks.</li>
+      <li><strong>Trademark family unified</strong> <em>(no action)</em> &mdash; commercial offering is KYE Cloud Gateway<span class="tm">™</span>; open-source / spec surface continues as Reference Gateway / Runtime Gateway / KYE-Gateway v1 without the &trade;.</li>
     </ul>
   </div></div>
 </section>
