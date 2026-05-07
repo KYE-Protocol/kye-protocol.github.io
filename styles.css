@@ -10526,3 +10526,60 @@ body[class] #evidence .lede { font-size: 14px; line-height: 1.45; max-width: 720
 }
 [data-layer]:is(.eg-card) .uc-h .accent { color: var(--layer-c, var(--kye-color-brand)); }
 [data-layer]:is(.eg-card):hover { border-color: var(--layer-c, var(--kye-color-brand)); }
+
+/* ============================================================
+   §FINAL-76 — inline entity colour-coding.
+
+   Extends the hospital-code rhythm beyond cards, into prose: any
+   first-prominent-use of an ecosystem entity (an App, Connector,
+   Plugin, Profile name) is wrapped in <span class="layer-name"
+   data-layer="..."> so it inherits the same --layer-c token used
+   by .prim-card / .eg-card.
+
+   Two helpers:
+     .layer-name — inline coloured text (no chip), keeps weight,
+                   adds a subtle underline-on-hover so the rhythm
+                   reads as deliberate not as "broken link".
+     .layer-tag  — small uppercase pill, used as a prefix label
+                   ("APP", "CONNECTOR", "PLUGIN") in card headers
+                   or list items where space allows.
+
+   Scope rules (enforced by hand, not CSS):
+     - Code snippets stay neutral — syntax highlighting wins.
+     - Framework tags (SOC 2, PCI DSS, GDPR, ISO 27001…) stay
+       neutral — those belong to a different taxonomy
+       (regulatory) and conflating them dilutes the layer signal.
+     - Audience / sector / role tags stay neutral for the same
+       reason.
+     - First-prominent-use per section, not every mention —
+       otherwise the page becomes a rainbow.
+   ============================================================ */
+.layer-name {
+  color: var(--layer-c, var(--kye-color-brand));
+  font-weight: 600;
+}
+.layer-name:hover {
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--layer-c, var(--kye-color-brand)) 60%, transparent);
+  text-underline-offset: 2px;
+}
+.layer-tag {
+  display: inline-block;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 1px 6px;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--layer-c, var(--kye-color-brand)) 12%, transparent);
+  color: var(--layer-c, var(--kye-color-brand));
+  vertical-align: 1px;
+  white-space: nowrap;
+  margin-right: 4px;
+}
+/* Dark-mode lift: tint backgrounds need a touch more saturation. */
+:root[data-theme="dark"] .layer-tag,
+:root[data-theme="dark"] .layer-chip {
+  background: color-mix(in srgb, var(--layer-c, var(--kye-color-brand)) 22%, transparent);
+}
