@@ -172,7 +172,7 @@ home (`index.html`) · protocol · builders · buyers · auditors · compliance 
 
 | Priority | Missing page / content | Why it's a gap | Suggested home |
 |---|---|---|---|
-| P1 | **Pricing / commercial offerings** | Trademark policy + COMPONENTS.md + footer reference KYE Gateway™ commercial SKUs (Hosted Registry, Validator API, Recovery Console, Evidence Packs, Compliance Profiles, Regulated-Sector Packs, Enterprise Deployment) — but no page enumerates them with positioning. | new `pricing.html` |
+| P1 | **Pricing / commercial offerings** | Trademark policy + COMPONENTS.md + footer reference KYE Cloud Gateway™ commercial SKUs (Hosted Registry, Validator API, Recovery Console, Evidence Packs, Compliance Profiles, Regulated-Sector Packs, Enterprise Deployment) — but no page enumerates them with positioning. | new `pricing.html` |
 | P1 | **Roadmap** | Buried in whitepaper §10. Buyers / regulators / partners want a top-level page they can link to. | new `roadmap.html` (or hoist whitepaper §10 to its own page with a redirect note) |
 | P1 | **Integrations / interoperability** | MCP, OAuth, OIDC, SPIFFE, SCITT, AuthZEN, KYC/KYB/KYA vendors all referenced — but the "how KYE composes with X" story is scattered across whitepaper §2 and audience pages. A single integrations matrix would help adopters. | new `integrations.html` |
 | P2 | **Case studies / design partners** | Landing currently says "Design-partner logos coming soon" with no follow-up. As pilots land, this becomes the social proof page. | new `customers.html` (or `partners.html`) |
@@ -180,7 +180,7 @@ home (`index.html`) · protocol · builders · buyers · auditors · compliance 
 | P2 | **Documentation hub** | Right now developers land on the GitHub org. A site-hosted docs entry-point with a curated reading order (vocabulary → ID format → schemas → SDKs → conformance) would lower onboarding friction. | new `docs.html` |
 | P3 | **Search** | The site has no search. With 13 pages and growing, on-page search (e.g. Pagefind, lunr.js) would help. | augmentation, not a page |
 | P3 | **Sitemap (human-readable)** | `sitemap.xml` exists for crawlers; a `sitemap.html` page would help screen-readers + low-vision users navigate. | new `sitemap.html` |
-| P3 | **Status / SLA page** | When KYE Gateway™ launches, a status page (uptime, incidents, planned maintenance) is standard. | new `status.html` |
+| P3 | **Status / SLA page** | When KYE Cloud Gateway™ launches, a status page (uptime, incidents, planned maintenance) is standard. | new `status.html` |
 | P3 | **Press / media kit** | Logo, screenshots, boilerplate, contacts — for journalists writing about KYE™. | new `press.html` (or `brand.html`) |
 | P4 | **Internationalisation** | All English. Out of scope for v1.0 — flagged for v1.x. | structural change |
 | P4 | **Blog / news** | No blog surface. Discussion posts live on GitHub Discussions. | new `blog.html` (or just rely on Discussions) |
