@@ -15,7 +15,7 @@
   <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
   <meta property="og:url" content="https://kye-protocol.github.io/protocol.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="styles.css?v=1779160000" />
+  <link rel="stylesheet" href="styles.css?v=1779170000" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
 </head>
@@ -227,7 +227,7 @@
     </ul>
 
     <h3 class="arch-tier-h" style="margin-top:26px">OSS / commercial split</h3>
-    <p class="arch-b"><strong>Open (Apache 2.0):</strong> envelope schema, every event-family schema, error / reason codes, delivery-receipt format, verifier SDK (TypeScript / Python / Go), reference Gateway webhook handler + retry loop + DLQ + replay endpoint, conformance test vectors. <strong>Commercial (KYE Cloud<span class="tm">™</span>):</strong> managed signal bus (multi-region, multi-tenant, high-volume fanout), replay console, delivery analytics, subscriber-health monitor, sector-specific event packs, SIEM exports (Splunk / Datadog / Chronicle / Sentinel), EventBridge / Kafka / SNS / Pub/Sub connectors, SLA-backed delivery. The contract has to be open or KYE Protocol<span class="tm">™</span> isn't a protocol.</p>
+    <p class="arch-b"><strong>Open (Apache 2.0):</strong> envelope schema, every event-family schema, error / reason codes, delivery-receipt format, verifier SDK (TypeScript / Python / Go), reference Gateway webhook handler + retry loop + DLQ + replay endpoint, conformance test vectors. <strong>Commercial (KYE Gateway<span class="tm">™</span>):</strong> managed signal bus (multi-region, multi-tenant, high-volume fanout), replay console, delivery analytics, subscriber-health monitor, sector-specific event packs, SIEM exports (Splunk / Datadog / Chronicle / Sentinel), EventBridge / Kafka / SNS / Pub/Sub connectors, SLA-backed delivery. The contract has to be open or KYE Protocol<span class="tm">™</span> isn't a protocol.</p>
 
     <h3 class="arch-tier-h" style="margin-top:26px">Worked example &middot; agent-purchase revocation</h3>
     <p class="arch-b">A customer revokes their shopping-agent's payment authority. One signed <code data-code="field">kye.authority.revoked</code> event fans out to five subscribers: <strong>bank</strong> freezes the agent card token; <strong>merchant platform</strong> blocks future agent purchases; <strong>agent runtime</strong> removes the <code data-code="field">payment_action.card_purchase</code> capability; <strong>SIEM</strong> opens an alert linked to the audit-chain ref; <strong>audit pipeline</strong> emits <code data-code="field">kye.evidence_pack.generated</code> for the regulator-facing pack. All five verify with the same public-key set; the regulator can replay the entire flow offline.</p>
@@ -434,7 +434,7 @@
     <h2 id="h-arch" class="h-section">From <span class="accent">authority to audit</span> &mdash; backed by schemas, taxonomies, metadata, and a traversable graph.</h2>
   <div class="section-body" id="architecture-body">
     <div class="container">
-    <p class="lede">KYE Protocol<span class="tm">™</span> is built on <strong>16 protocol-core disciplines</strong> grouped in three tiers. <strong>Runtime governance (6)</strong> &mdash; authority, state, decisions, policy bindings, evidence, audit trails. <strong>Protocol design (8)</strong> &mdash; canonical schemas, shared dictionaries, versioned taxonomies, structured metadata, a graph-native authority model, sector profiles, resolvable registries, and conformance. <strong>Developer adoption (2)</strong> &mdash; runtime APIs and three first-party SDKs. A separate <strong>commercial layer (KYE Cloud<span class="tm">™</span>)</strong> packages it as SKUs &mdash; without bleeding into the open protocol. <em>No authority without context. Authority is relational.</em></p>
+    <p class="lede">KYE Protocol<span class="tm">™</span> is built on <strong>16 protocol-core disciplines</strong> grouped in three tiers. <strong>Runtime governance (6)</strong> &mdash; authority, state, decisions, policy bindings, evidence, audit trails. <strong>Protocol design (8)</strong> &mdash; canonical schemas, shared dictionaries, versioned taxonomies, structured metadata, a graph-native authority model, sector profiles, resolvable registries, and conformance. <strong>Developer adoption (2)</strong> &mdash; runtime APIs and three first-party SDKs. A separate <strong>commercial layer (KYE Gateway<span class="tm">™</span>)</strong> packages it as SKUs &mdash; without bleeding into the open protocol. <em>No authority without context. Authority is relational.</em></p>
 
     <h3 class="arch-tier-h">Tier A &middot; Runtime governance &mdash; <em>what KYE<span class="tm">™</span> decides</em></h3>
     <div class="arch-grid">
@@ -558,9 +558,9 @@
     </div>
 
     <div class="arch-commercial">
-      <span class="eyebrow">Commercial layer &middot; KYE Cloud<span class="tm">™</span></span>
+      <span class="eyebrow">Commercial layer &middot; KYE Gateway<span class="tm">™</span></span>
       <h3 class="arch-h" style="margin-top:8px">SKU-first, metering-first &mdash; never in the open protocol.</h3>
-      <p class="arch-b">The open protocol stays vendor-neutral. The hosted product packages it commercially: <strong>SKU-first, metering-first, dashboard-first, evidence-pack-first, enterprise-pack-first, compliance-pack-first, BYOC / on-prem-first</strong>. KYE Cloud<span class="tm">™</span> SKUs include Hosted Registry, Validator API, Recovery Console, Evidence Packs, Compliance Profiles, Regulated-Sector Packs, and Enterprise Deployment. SKU logic never enters Core objects (<code>KYEEntity</code>, <code>KYEAuthorityGrant</code>, <code>KYEAuditEvent</code>, <code>KYEStateTransition</code>, <code>KYETaxonomyTerm</code>, <code>KYEMetadataBinding</code>).</p>
+      <p class="arch-b">The open protocol stays vendor-neutral. The hosted product packages it commercially: <strong>SKU-first, metering-first, dashboard-first, evidence-pack-first, enterprise-pack-first, compliance-pack-first, BYOC / on-prem-first</strong>. KYE Gateway<span class="tm">™</span> SKUs include Hosted Registry, Validator API, Recovery Console, Evidence Packs, Compliance Profiles, Regulated-Sector Packs, and Enterprise Deployment. SKU logic never enters Core objects (<code>KYEEntity</code>, <code>KYEAuthorityGrant</code>, <code>KYEAuditEvent</code>, <code>KYEStateTransition</code>, <code>KYETaxonomyTerm</code>, <code>KYEMetadataBinding</code>).</p>
     </div>
   </div>
   </div>

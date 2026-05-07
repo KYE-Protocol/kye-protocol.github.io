@@ -14,7 +14,7 @@
   <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
   <meta property="og:url" content="https://kye-protocol.github.io/developers.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="styles.css?v=1779160000" />
+  <link rel="stylesheet" href="styles.css?v=1779170000" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
 </head>
@@ -56,7 +56,7 @@
 <section class="section alt"><div class="container">
   <span class="eyebrow">Architecture</span>
   <h2 class="h-section">16 protocol-core principles in <span class="accent">three tiers</span>.</h2>
-  <p class="lede">Tier A &middot; Runtime governance: authority &middot; state &middot; decision &middot; policy-bound &middot; evidence &middot; audit-trail. Tier B &middot; Protocol design: schema &middot; dictionary &middot; taxonomy &middot; metadata &middot; graph &middot; profile &middot; registry &middot; conformance. Tier C &middot; Developer adoption: API &middot; SDK. Commercial layer (KYE Cloud<span class="tm">™</span>) is SKU-first, metering-first, dashboard-first &mdash; never bleeds into the open core.</p>
+  <p class="lede">Tier A &middot; Runtime governance: authority &middot; state &middot; decision &middot; policy-bound &middot; evidence &middot; audit-trail. Tier B &middot; Protocol design: schema &middot; dictionary &middot; taxonomy &middot; metadata &middot; graph &middot; profile &middot; registry &middot; conformance. Tier C &middot; Developer adoption: API &middot; SDK. Commercial layer (KYE Gateway<span class="tm">™</span>) is SKU-first, metering-first, dashboard-first &mdash; never bleeds into the open core.</p>
 </div></section>
 
 <section class="section technical-only" aria-labelledby="h-webhooks-dev">
@@ -72,7 +72,7 @@
       <li>Ack with <code data-code="field">2xx</code> within the publisher's timeout. Anything else &rarr; retry with exponential backoff &rarr; eventual DLQ.</li>
       <li>Subscribe via <code data-code="endpoint">POST /v1/webhook-endpoints</code> with your URL + filter expression + retry policy. Test via <code data-code="endpoint">:test</code>.</li>
     </ol>
-    <p class="lede" style="margin-top:14px"><strong>Open contract:</strong> envelope schema, every event-family schema, verifier SDK, reference Gateway webhook handler + retry loop + DLQ + replay endpoint, conformance test vectors. <strong>Commercial (KYE Cloud<span class="tm">™</span>):</strong> managed signal bus, replay console, delivery analytics, SIEM exports, EventBridge / Kafka / SNS / Pub/Sub connectors, SLA-backed delivery.</p>
+    <p class="lede" style="margin-top:14px"><strong>Open contract:</strong> envelope schema, every event-family schema, verifier SDK, reference Gateway webhook handler + retry loop + DLQ + replay endpoint, conformance test vectors. <strong>Commercial (KYE Gateway<span class="tm">™</span>):</strong> managed signal bus, replay console, delivery analytics, SIEM exports, EventBridge / Kafka / SNS / Pub/Sub connectors, SLA-backed delivery.</p>
     <div class="hero-cta" style="margin-top:14px">
       <a href="protocol.html#signals" class="btn btn-primary"><span class="ms">send</span> Full signals reference &rarr;</a>
       <a href="https://github.com/KYE-Protocol" target="_blank" rel="noopener" class="btn btn-secondary"><span class="ms">code</span> Verifier SDKs</a>
