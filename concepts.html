@@ -57,7 +57,7 @@
     <div class="cn-card">
       <p class="cn-def"><strong>Definition.</strong> A KYE<span class="tm">™</span> identity is a single durable URN that uniquely names any actor &mdash; human, service, AI agent, model, tool, workflow, business &mdash; and binds it to a public key. URN format: <code data-code="urn">kye:&lt;class&gt;:&lt;trust-domain&gt;:&lt;subclass&gt;:&lt;local&gt;</code>. Identifiers persist across rebuilds, redeployments, and tool invocations.</p>
       <dl class="cn-meta">
-        <dt>Schema</dt><dd><code data-code="path">https://schemas.kye.dev/entity.json</code></dd>
+        <dt>Schema</dt><dd><code data-code="path">https://kye-protocol.github.io/schemas/entity.json</code></dd>
         <dt>Endpoints</dt><dd><code data-code="endpoint">POST /v1/entities</code> &middot; <code data-code="endpoint">GET /v1/entities/{id}</code> &middot; <code data-code="endpoint">POST /v1/entities/{id}:rotate-key</code></dd>
         <dt>Decision role</dt><dd>Resolves <code data-code="field">subject</code>, <code data-code="field">actor</code>, and <code data-code="field">principal</code> in every authorize call.</dd>
         <dt>Audit event</dt><dd><code data-code="signal">entity.registered</code> &middot; <code data-code="signal">entity.key_rotated</code> &middot; <code data-code="signal">entity.tombstoned</code></dd>
@@ -81,7 +81,7 @@
       <p class="cn-def"><strong>Definition.</strong> A signed delegation chain that binds every action back to a human or business who is legally on the hook. Each link carries a <code data-code="field">parent_delegation_id</code>, a scope (which must <em>attenuate</em> the parent&rsquo;s &mdash; never exceed it), and a signature from the delegator. The chain is the answer to &ldquo;<em>who authorised this?</em>&rdquo; in seconds, not a Slack thread.</p>
       <p class="cn-def" style="margin-top:8px"><strong>Why it matters.</strong> Modern systems do not just authenticate users. They delegate authority across humans, companies, agents, APIs, wallets, workflows, and payment rails. KYE<span class="tm">™</span> makes <em>acting on behalf of</em> explicit, scoped, state-aware, revocable, and auditable. This is the layer OAuth, OIDC, and SPIFFE leave to ad-hoc app code.</p>
       <dl class="cn-meta">
-        <dt>Schema</dt><dd><code data-code="path">https://schemas.kye.dev/delegation.json</code></dd>
+        <dt>Schema</dt><dd><code data-code="path">https://kye-protocol.github.io/schemas/delegation.json</code></dd>
         <dt>Endpoints</dt><dd><code data-code="endpoint">POST /v1/delegations</code> &middot; <code data-code="endpoint">GET /v1/delegations/{id}</code> &middot; <code data-code="endpoint">POST /v1/delegations/{id}:revoke</code> &middot; <code data-code="endpoint">GET /v1/graph/authority-path</code></dd>
         <dt>Decision role</dt><dd>Every authorize call walks the chain to verify continuity from acting agent to root principal. Break in the chain &rarr; <code data-code="deny">deny: chain_broken</code>.</dd>
         <dt>Audit event</dt><dd><code data-code="signal">delegation.issued</code> &middot; <code data-code="signal">delegation.revoked</code> &middot; <code data-code="signal">delegation.expired</code></dd>
@@ -104,7 +104,7 @@
     <div class="cn-card">
       <p class="cn-def"><strong>Definition.</strong> An authority grant declares <em>what</em> an actor may do, <em>over what resource</em>, <em>under what conditions</em>, <em>until when</em>. Authority is bound to a delegation chain (<a href="#on-behalf-of" style="color:var(--accent)">on-behalf-of</a>) so it always traces to a root principal. Authority is <em>recursively revocable</em>: revoke a parent and the cascade kills every child grant in &lt;&nbsp;1&nbsp;second.</p>
       <dl class="cn-meta">
-        <dt>Schema</dt><dd><code data-code="path">https://schemas.kye.dev/authority-grant.json</code></dd>
+        <dt>Schema</dt><dd><code data-code="path">https://kye-protocol.github.io/schemas/authority-grant.json</code></dd>
         <dt>Endpoints</dt><dd><code data-code="endpoint">POST /v1/authority-grants</code> &middot; <code data-code="endpoint">GET /v1/authority-grants/{id}</code> &middot; <code data-code="endpoint">POST /v1/authority-grants/{id}:revoke</code> &middot; <code data-code="endpoint">POST /v1/runtime/authorize</code></dd>
         <dt>Decision role</dt><dd>The runtime <strong>authorize</strong> call returns one of three decisions backed by Authority: <code data-code="allow">allow_with_constraints</code> &middot; <code data-code="approve">require_approval</code> &middot; <code data-code="deny">deny</code>. Every decision carries the obligations the caller must honour.</dd>
         <dt>Audit event</dt><dd><code data-code="signal">authority.granted</code> &middot; <code data-code="signal">authority.exercised</code> &middot; <code data-code="signal">authority.revoked</code> &middot; <code data-code="signal">authority.cascade_revoked</code></dd>
@@ -125,7 +125,7 @@
     <div class="cn-card">
       <p class="cn-def"><strong>Definition.</strong> Scope is the parameter-level constraint set on an authority. Not a single &ldquo;can transact&rdquo; flag &mdash; structured fields: <code data-code="field">amount.max</code>, <code data-code="field">currency.allowlist</code>, <code data-code="field">corridor.allowlist</code>, <code data-code="field">beneficiary.first_time</code>, <code data-code="field">time_window</code>, <code data-code="field">approval.threshold</code>. <strong>Attenuation invariant</strong>: a child&rsquo;s scope MUST be a subset of its parent&rsquo;s. Enforced by the protocol, not the policy bundle.</p>
       <dl class="cn-meta">
-        <dt>Schema</dt><dd><code data-code="path">https://schemas.kye.dev/scope.json</code></dd>
+        <dt>Schema</dt><dd><code data-code="path">https://kye-protocol.github.io/schemas/scope.json</code></dd>
         <dt>Endpoints</dt><dd><code data-code="endpoint">POST /v1/scopes</code> &middot; <code data-code="endpoint">POST /v1/scopes:attenuate</code> &middot; <code data-code="endpoint">POST /v1/scopes:check-subset</code></dd>
         <dt>Decision role</dt><dd>Every authorize call evaluates whether the request is <em>inside</em> the active grant&rsquo;s scope. Outside &rarr; <code data-code="deny">deny: scope_attenuation_violation</code>.</dd>
         <dt>Audit event</dt><dd><code data-code="signal">scope.created</code> &middot; <code data-code="signal">scope.violated</code></dd>
@@ -146,7 +146,7 @@
     <div class="cn-card">
       <p class="cn-def"><strong>Definition.</strong> Every KYE<span class="tm">™</span> entity carries six state dimensions, each independently versioned: <strong>lifecycle</strong> (created/active/quarantined/tombstoned), <strong>authority</strong> (granted/exercised/revoked), <strong>delegation</strong> (issued/expired), <strong>credential</strong> (valid/rotated/revoked), <strong>recovery</strong> (normal/break-glass/restored), <strong>risk</strong> (telemetry-derived posture). The runtime evaluates state <em>at the moment of decision</em> &mdash; auditors replay the same point-in-time state offline.</p>
       <dl class="cn-meta">
-        <dt>Schema</dt><dd><code data-code="path">https://schemas.kye.dev/state-composition.json</code> &middot; <code data-code="path">https://schemas.kye.dev/state-composition.json</code></dd>
+        <dt>Schema</dt><dd><code data-code="path">https://kye-protocol.github.io/schemas/state-composition.json</code> &middot; <code data-code="path">https://kye-protocol.github.io/schemas/state-composition.json</code></dd>
         <dt>Endpoints</dt><dd><code data-code="endpoint">GET /v1/entities/{id}/state</code> &middot; <code data-code="endpoint">GET /v1/entities/{id}/state:at-time</code> &middot; <code data-code="endpoint">POST /v1/state-transitions</code></dd>
         <dt>Decision role</dt><dd>The PDP composes all six state dimensions into a single decision input. Mismatch (e.g. credential rotated mid-flight) &rarr; <code data-code="deny">deny: state_mismatch</code>.</dd>
         <dt>Audit event</dt><dd><code data-code="signal">state.transitioned</code> &middot; <code data-code="signal">state.replayed</code></dd>
@@ -167,7 +167,7 @@
     <div class="cn-card">
       <p class="cn-def"><strong>Definition.</strong> An append-only, hash-linked audit chain. Every authorise call, every state transition, every signal cascade emits a signed audit event. Bundles project to <strong>Evidence Packs</strong> &mdash; the artefact a regulator, court, auditor, or dispute panel verifies offline using public keys alone. No read-access to your runtime required.</p>
       <dl class="cn-meta">
-        <dt>Schema</dt><dd><code data-code="path">https://schemas.kye.dev/audit-event.json</code> &middot; <code data-code="path">https://schemas.kye.dev/evidence-pack.json</code> &middot; <code data-code="path">https://schemas.kye.dev/proof-bundle.json</code></dd>
+        <dt>Schema</dt><dd><code data-code="path">https://kye-protocol.github.io/schemas/audit-event.json</code> &middot; <code data-code="path">https://kye-protocol.github.io/schemas/evidence-pack.json</code> &middot; <code data-code="path">https://kye-protocol.github.io/schemas/proof-bundle.json</code></dd>
         <dt>Endpoints</dt><dd><code data-code="endpoint">POST /v1/audit/events</code> &middot; <code data-code="endpoint">GET /v1/proof-bundles/{id}</code> &middot; <code data-code="endpoint">GET /v1/decisions/{id}/map</code> &middot; <code data-code="endpoint">POST /v1/oscal/export</code></dd>
         <dt>Decision role</dt><dd>The runtime emits a signed Decision Map<span class="tm">™</span> per authorise call: actor &rarr; principal &rarr; delegation &rarr; capability &rarr; authority &rarr; scope &rarr; state &rarr; policy &rarr; decision &rarr; audit &rarr; evidence.</dd>
         <dt>Audit event</dt><dd><code data-code="signal">audit.appended</code> &middot; <code data-code="signal">evidence_pack.exported</code> &middot; <code data-code="signal">decision.replayed</code></dd>

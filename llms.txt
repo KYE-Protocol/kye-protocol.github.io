@@ -57,7 +57,7 @@ implementable protocol — not a whitepaper.
 ### Tier B — Protocol design (how KYE classifies and ships)
 
 6. **Schema-first** — JSON Schema 2020-12 with absolute `$id` at
-   `schemas.kye.dev`. OpenAPI, SDKs, validators, docs, and conformance
+   `kye-protocol.github.io/schemas`. OpenAPI, SDKs, validators, docs, and conformance
    tests are derived from schemas, not hand-written. 55 schemas,
    58 validated examples.
 7. **Dictionary-first** — canonical vocabulary for entity types, all

@@ -60,9 +60,10 @@
 </section>
 
 <section id="plugins" class="section alt" aria-labelledby="h-pl">
-        <span class="eyebrow">Reference plugins</span>
-    <h2 id="h-pl" class="h-section">Open-source starters that ship with v1.0.</h2>
+        <span class="eyebrow">Reference plugins &middot; 18 starters</span>
+    <h2 id="h-pl" class="h-section">Open-source starters shipping with the v1.1 marketplace.</h2>
   <div class="section-body"><div class="container">
+    <p class="lede">Webhook verifiers in three languages ship today as standalone libraries. The full marketplace surface (categorisation, install gating, manifest signing, programme review) opens with v1.1.</p>
     <ul class="eg-pilot-deliv" style="margin-top:14px">
       <li><strong>Webhook verifier &mdash; JS / TS</strong> &middot; <code data-code="path">@kye-protocol/webhook-verifier</code> &middot; runs on Node / Cloudflare Workers / browser. Verifies signed KYE<span class="tm">™</span> webhook envelopes against the publisher's JWKS.</li>
       <li><strong>Webhook verifier &mdash; Python</strong> &middot; <code data-code="path">kye-webhook-verifier</code> &middot; same surface, sync + async APIs.</li>
@@ -83,7 +84,7 @@
       <li><strong>Approval workflow &mdash; Slack</strong> &middot; reusable Slack approval handler bound to <code data-code="field">require_approval</code> decisions.</li>
       <li><strong>Approval workflow &mdash; email</strong> &middot; SMTP fallback for sites without Slack.</li>
     </ul>
-    <p class="lede" style="margin-top:14px"><em>The Plugin Marketplace<span class="tm">™</span> opens with the v1.1 release. Founding plugins ship under Apache 2.0 from the public org; commercial plugins ship through KYE Cloud Gateway<span class="tm">™</span>.</em></p>
+    <p class="lede" style="margin-top:14px"><em>Founding plugins ship under Apache 2.0 from the public org; commercial plugins distribute through KYE Cloud Gateway<span class="tm">™</span> when it opens.</em></p>
   </div></div>
 </section>
 
@@ -91,7 +92,7 @@
         <span class="eyebrow">Plugin manifest</span>
     <h2 id="h-mn" class="h-section">Every plugin ships a <code data-code="field">kye.plugin_manifest.v1</code>.</h2>
   <div class="section-body"><div class="container">
-    <p class="lede">Plugin manifests declare the plugin's runtime, permission requirements, side-effect level, and OSS licence. Schema: <code data-code="path">https://schemas.kye.dev/plugin-manifest.json</code>.</p>
+    <p class="lede">Plugin manifests declare the plugin's runtime, permission requirements, side-effect level, and OSS licence. Schema: <code data-code="path">https://kye-protocol.github.io/schemas/plugin-manifest.json</code>.</p>
 <pre class="codeblock" style="margin-top:14px"><code>{
   "schema_version": "kye.plugin_manifest.v1",
   "plugin_id":      "kye:plugin:webhook-verifier-js",
@@ -127,6 +128,7 @@
         <span class="eyebrow">Publish a plugin</span>
     <h2 id="h-pub" class="h-section">Five steps from idea to marketplace.</h2>
   <div class="section-body"><div class="container">
+    <p class="lede">Manifest schema, conformance harness, and signature flow are defined now. Submission and review go live with the v1.1 marketplace.</p>
     <ol class="rd-status">
       <li class="rd-row rd-row-shipped"><span class="rd-tag">P1</span><strong>Author the manifest.</strong> Fill in <code data-code="field">plugin_type</code>, runtime, permissions, side-effect level, OSS licence.</li>
       <li class="rd-row rd-row-shipped"><span class="rd-tag">P2</span><strong>Write the plugin.</strong> One file or one package &mdash; small surface area is the point. Conformance harness checks shape and signature handling.</li>

@@ -183,7 +183,7 @@
     </div>
 
     <h3 class="arch-tier-h" style="margin-top:26px">Canonical envelope &middot; one shape across every event</h3>
-    <p class="arch-b">Schema: <code data-code="path">https://schemas.kye.dev/signal.json</code>. Signing covers the full envelope; subscribers verify with the publisher's published JWKS.</p>
+    <p class="arch-b">Schema: <code data-code="path">https://kye-protocol.github.io/schemas/signal.json</code>. Signing covers the full envelope; subscribers verify with the publisher's published JWKS.</p>
 <pre class="codeblock" style="margin-top:10px"><code>{
   "schema_version":  "kye.webhook.v1",
   "event_id":        "kye:event:01HX...",
@@ -228,7 +228,7 @@
     </ul>
 
     <h3 class="arch-tier-h" style="margin-top:26px">OSS / commercial split</h3>
-    <p class="arch-b"><strong>Open (Apache 2.0):</strong> envelope schema, every event-family schema, error / reason codes, delivery-receipt format, verifier SDK (TypeScript / Python / Go), reference Gateway webhook handler + retry loop + DLQ + replay endpoint, conformance test vectors. <strong>Commercial (KYE Cloud Gateway<span class="tm">™</span>):</strong> managed signal bus (multi-region, multi-tenant, high-volume fanout), replay console, delivery analytics, subscriber-health monitor, sector-specific event packs, SIEM exports (Splunk / Datadog / Chronicle / Sentinel), EventBridge / Kafka / SNS / Pub/Sub connectors, SLA-backed delivery. The contract has to be open or KYE Protocol<span class="tm">™</span> isn't a protocol.</p>
+    <p class="arch-b"><strong>Open (Apache 2.0):</strong> envelope schema, every event-family schema, error / reason codes, delivery-receipt format, verifier SDK (TypeScript / Python / Go), reference Gateway webhook handler + retry loop + DLQ + replay endpoint, conformance test vectors.</p>
 
     <h3 class="arch-tier-h" style="margin-top:26px">Worked example &middot; agent-purchase revocation</h3>
     <p class="arch-b">A customer revokes their shopping-agent's payment authority. One signed <code data-code="field">kye.authority.revoked</code> event fans out to five subscribers: <strong>bank</strong> freezes the agent card token; <strong>merchant platform</strong> blocks future agent purchases; <strong>agent runtime</strong> removes the <code data-code="field">payment_action.card_purchase</code> capability; <strong>SIEM</strong> opens an alert linked to the audit-chain ref; <strong>audit pipeline</strong> emits <code data-code="field">kye.evidence_pack.generated</code> for the regulator-facing pack. All five verify with the same public-key set; the regulator can replay the entire flow offline.</p>
@@ -487,7 +487,7 @@
       <article class="arch-card">
         <div class="arch-num">7</div>
         <h3 class="arch-h">Schema-first</h3>
-        <p class="arch-b">Every entity, authority grant, delegation, scope, capability manifest, validation result, audit event, evidence pack, payload artefact, taxonomy term, metadata binding, and compliance mapping is a canonical JSON Schema 2020-12 with an absolute <code>$id</code> at <code>schemas.kye.dev</code>. OpenAPI, SDKs, validators, docs, and conformance tests are derived from schemas &mdash; not hand-written.</p>
+        <p class="arch-b">Every entity, authority grant, delegation, scope, capability manifest, validation result, audit event, evidence pack, payload artefact, taxonomy term, metadata binding, and compliance mapping is a canonical JSON Schema 2020-12 with an absolute <code>$id</code> at <code>kye-protocol.github.io/schemas</code>. OpenAPI, SDKs, validators, docs, and conformance tests are derived from schemas &mdash; not hand-written.</p>
         <code class="arch-path">private/specs/schemas/*.json &middot; 69 schemas &middot; 69 validated examples</code>
       </article>
 
