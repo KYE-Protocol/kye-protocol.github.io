@@ -10517,3 +10517,12 @@ body[class] #evidence .lede { font-size: 14px; line-height: 1.45; max-width: 720
 /* Desktop also benefits from clamped node height when the chain
    wraps to a 2nd row — the row-stretch can otherwise leave gaps. */
 .dm-node { align-self: start; }
+
+/* §FINAL-75 — extend data-layer colour-coding to .eg-card so the
+   apps and connector-profiles pages get the same hospital-code
+   visual rhythm as ecosystem.html and the landing. */
+[data-layer]:is(.eg-card) {
+  border-left: 3px solid var(--layer-c, var(--kye-color-brand));
+}
+[data-layer]:is(.eg-card) .uc-h .accent { color: var(--layer-c, var(--kye-color-brand)); }
+[data-layer]:is(.eg-card):hover { border-color: var(--layer-c, var(--kye-color-brand)); }
