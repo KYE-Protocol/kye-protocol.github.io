@@ -10313,3 +10313,125 @@ body[class] #evidence .lede { font-size: 14px; line-height: 1.45; max-width: 720
     padding-bottom: 22px;
   }
 }
+
+/* ============================================================
+   §FINAL-71 — widget chrome strip + ecosystem colour-coding
+   ============================================================
+   User: "widgets boxes cards whatever its called is just wasting so
+   much space its disproportionate to the amount of text inside them
+   and is wrong … its as if there is a frame and these cards are
+   inside that frame".
+
+   Diagnosis: every widget host (.aps-host, .br-host, .ep-host) had
+   its own background + border + padding. The internal cards
+   (.aps-fs, .aps-decision-card, .br-card, .ep-pack-card) ALSO had
+   background + border + padding. Two layers of chrome stacked. The
+   inner cards looked like cards-inside-a-frame.
+
+   Fix: strip the outer host chrome. The widgets are sections on a
+   page that already has its own visual rhythm; they don't need
+   their own frame. Inner cards stand alone, breathing on the page
+   background. */
+.aps-host,
+.br-host,
+.ep-host,
+.dm-host,
+.rr-host,
+.ce-host {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+/* And the .aps-decision-card / .br-subject-card / .ep-pack-card —
+   keep light-touch chrome (a thin bottom border + inner padding)
+   instead of full bordered-box treatment so they read as a section
+   not a card-in-a-frame. */
+.aps-decision-card {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--kye-color-line);
+  border-radius: 0;
+  padding: 0 0 12px;
+  margin-bottom: 12px;
+}
+.br-subject-card {
+  background: transparent;
+  border: none;
+  border-left: 3px solid #C5221F;
+  border-radius: 0;
+  padding: 6px 0 6px 12px;
+}
+.ep-pack-card {
+  background: transparent;
+  border: none;
+  border-left: 3px solid var(--kye-color-brand);
+  border-radius: 0;
+  padding: 6px 0 6px 12px;
+}
+
+/* Also reduce the boxiness of .aps-fs / .br-fs (control fieldsets) —
+   keep the legend visible but thin out the surrounding box. */
+.aps-fs,
+.br-fs {
+  background: transparent;
+  border: 1px solid var(--kye-color-line);
+  border-radius: var(--kye-radius-2);
+  padding: 8px 10px 10px;
+}
+
+/* Output panels: light-touch border, no heavy bg */
+.aps-output-block,
+.br-card,
+.ep-output {
+  background: transparent !important;
+  border: 1px solid var(--kye-color-line) !important;
+}
+
+/* ============================================================
+   §FINAL-72 — ecosystem layer colour-coding (uniform across
+   ecosystem.html, connector-profiles.html, and the index landing
+   prim-cards in #build-with-kye / #try-it).
+
+   Like hospital codes: every reference to a layer carries the same
+   colour. Reduces cognitive load so a visitor sees orange and
+   thinks "Connectors", sees teal and thinks "Profiles", etc.
+
+   L1 Core Protocol  — brand green   (#1A8754)
+   L2 Profiles       — cyan          (#00ACC1)
+   L3 Connector Profiles — teal      (#009688)
+   L4 Connectors     — orange        (#FF6D00)
+   L5 Apps           — indigo        (#1A73E8)
+      Plugins        — violet        (#8E24AA)
+      Widgets        — amber         (#F4B400)
+      KYE Cloud™     — accent
+   ============================================================ */
+[data-layer="l1"], [data-layer="core"]    { --layer-c: #1A8754; }
+[data-layer="l2"], [data-layer="profile"] { --layer-c: #00ACC1; }
+[data-layer="l3"], [data-layer="connector-profile"] { --layer-c: #009688; }
+[data-layer="l4"], [data-layer="connector"] { --layer-c: #FF6D00; }
+[data-layer="l5"], [data-layer="app"]     { --layer-c: #1A73E8; }
+[data-layer="plugin"]                     { --layer-c: #8E24AA; }
+[data-layer="widget"]                     { --layer-c: #F4B400; }
+[data-layer]:is(.prim-card) {
+  border-left: 3px solid var(--layer-c, var(--kye-color-brand));
+}
+[data-layer]:is(.prim-card) .ms { color: var(--layer-c, var(--kye-color-brand)) !important; }
+[data-layer]:is(.prim-card) em  { color: var(--layer-c, var(--kye-color-brand)); }
+[data-layer]:is(.prim-card):hover { border-color: var(--layer-c, var(--kye-color-brand)); }
+/* Layer chip — small inline pill for "L1 Core" etc. */
+.layer-chip {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--layer-c, var(--kye-color-brand)) 14%, transparent);
+  color: var(--layer-c, var(--kye-color-brand));
+  margin-right: 6px;
+  vertical-align: middle;
+}
