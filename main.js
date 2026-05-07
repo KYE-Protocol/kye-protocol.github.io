@@ -1,6 +1,6 @@
 /* KYE Protocol™ landing — orchestrator. */
 import { initHeroStats }    from "./assets/hero-stats.js?v=1778880000";
-import { mountKyeComponents } from "./assets/components.js?v=1778920000";
+import { mountKyeComponents } from "./assets/components.js?v=1779220000";
 import { initBeforeAfter }  from "./assets/before-after.js?v=1778880000";
 import { initTrustGraph }   from "./assets/trust-graph.js?v=1778880000";
 import { initDecisionFlow } from "./assets/decision-flow.js?v=1778880000";

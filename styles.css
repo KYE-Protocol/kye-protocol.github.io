@@ -10729,3 +10729,33 @@ body[class] #evidence .lede { font-size: 14px; line-height: 1.45; max-width: 720
 :root[data-theme="dark"] .kye-badge {
   background: color-mix(in srgb, var(--kye-color-paper) 70%, transparent);
 }
+
+/* ============================================================
+   §FINAL-78 — URN code overflow fix on narrow viewports.
+   User report: schema URN on compliance-card.html runs off the
+   edge on mobile. URNs are deliberately long colon-separated
+   tokens; word-break needs to be allowed at any character so
+   they wrap inside their container instead of forcing a
+   horizontal scroll on the whole page.
+   ============================================================ */
+.cc-urn,
+code[data-code="urn"],
+code[data-code="path"],
+code[data-code="profile"],
+code[data-code="endpoint"],
+code[data-code="field"],
+code[data-code="type"] {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+@media (max-width: 600px) {
+  .cc-urn,
+  code[data-code="urn"],
+  code[data-code="path"],
+  code[data-code="profile"],
+  code[data-code="endpoint"] {
+    word-break: break-all;
+    white-space: normal;
+  }
+}
