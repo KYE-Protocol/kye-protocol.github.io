@@ -11,7 +11,7 @@
   <meta name="robots" content="index, follow" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="KYE Protocol™ — Compliance frameworks" />
-  <meta property="og:description" content="Per-framework reference: 14 horizontal frameworks + 4 sectoral frameworks, each mapped to KYE Protocol™ runtime controls via the KYE Compliance Mapping Rail™." />
+  <meta property="og:description" content="Per-framework reference: 13 horizontal frameworks (266 control mappings) + 5 sectoral frameworks, each bound to KYE Protocol™ runtime controls via the KYE Compliance Mapping Rail™." />
   <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
   <meta property="og:url" content="https://kye-protocol.github.io/frameworks.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
@@ -29,7 +29,7 @@
   <div class="container hero-inner">
     <span class="hero-pill"><span class="dot"></span> Compliance frameworks &middot; per-framework reference</span>
     <h1 id="hero-title" style="margin-top:18px">One <span class="accent">runtime</span>. Every <span class="accent">framework</span>.</h1>
-    <p class="lede">KYE Protocol<span class="tm">™</span> &mdash; 14 horizontal frameworks + 4 sectoral frameworks, each mapped to KYE Protocol<span class="tm">™</span> runtime controls via the <strong>KYE Compliance Mapping Rail<span class="tm">™</span></strong>. Pick your framework below; see the bound KYE<span class="tm">™</span> controls and the official source.</p>
+    <p class="lede"><strong>266 control mappings across 13 horizontal frameworks</strong>, plus 5 sectoral frameworks &mdash; all bound to KYE Protocol<span class="tm">™</span> runtime controls through the <strong>KYE Compliance Mapping Rail<span class="tm">™</span></strong>. Pick a framework; read the bound KYE<span class="tm">™</span> controls and the official source.</p>
   </div>
 </section>
 
@@ -109,13 +109,6 @@
         <p class="fwk-src"><a href="https://gdpr-info.eu/" target="_blank" rel="noopener">GDPR.eu →</a></p>
       </article>
 
-      <article class="fwk-card" data-fwk="hipaa">
-        <h3 class="fwk-h"><span class="fwk-badge" data-fwk="hipaa">HIPAA</span> US health-data protection</h3>
-        <p class="fwk-b">Healthcare entity access, minimum-necessary principle, emergency / break-glass, audit trails for PHI.</p>
-        <p class="fwk-mapped"><strong>KYE<span class="tm">™</span> bindings:</strong> minimum-necessary &rarr; capability scope; consent &rarr; credential entity; break-glass &rarr; recovery profile + signed time-boxed flow; audit &rarr; KYE<span class="tm">™</span> audit chain with PHI redaction obligation.</p>
-        <p class="fwk-src"><a href="https://www.hhs.gov/hipaa/" target="_blank" rel="noopener">HHS HIPAA →</a></p>
-      </article>
-
       <article class="fwk-card" data-fwk="nist800">
         <h3 class="fwk-h"><span class="fwk-badge" data-fwk="nist800">NIST 800-207</span> Zero-Trust Architecture</h3>
         <p class="fwk-b">US federal zero-trust reference: identity, device, network, application, data telemetry signals continuously inform every decision.</p>
@@ -166,6 +159,13 @@
         <p class="fwk-b">Standards series for industrial automation &amp; control systems. Used in energy, water, manufacturing, transport.</p>
         <p class="fwk-mapped"><strong>KYE<span class="tm">™</span> bindings:</strong> operator / vendor / maintenance authority &rarr; KYE<span class="tm">™</span> delegation + scope; emergency authority &rarr; break-glass profile; safety-critical actions &rarr; <code data-code="profile">kye-energy-1.0</code> / <code data-code="profile">kye-critical-infra-1.0</code> overlays.</p>
         <p class="fwk-src"><a href="https://www.iec.ch/cyber-security" target="_blank" rel="noopener">IEC 62443 →</a></p>
+      </article>
+
+      <article class="fwk-card" data-fwk="hipaa">
+        <h3 class="fwk-h"><span class="fwk-badge" data-fwk="hipaa">HIPAA</span> US health-data protection</h3>
+        <p class="fwk-b">Healthcare entity access, minimum-necessary principle, emergency / break-glass, audit trails for PHI. Bound through the v1.1 healthcare profile overlay.</p>
+        <p class="fwk-mapped"><strong>KYE<span class="tm">™</span> bindings:</strong> minimum-necessary &rarr; capability scope; consent &rarr; credential entity; break-glass &rarr; recovery profile + signed time-boxed flow; audit &rarr; KYE<span class="tm">™</span> audit chain with PHI redaction obligation.</p>
+        <p class="fwk-src"><a href="https://www.hhs.gov/hipaa/" target="_blank" rel="noopener">HHS HIPAA →</a></p>
       </article>
 
       <article class="fwk-card" data-fwk="cfr42">

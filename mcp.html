@@ -28,9 +28,9 @@
 <section id="top" class="hero">
   <div class="container hero-inner">
     <span class="hero-pill"><span class="dot"></span> KYE MCP Server<span class="tm">™</span> &middot; design specification &middot; v1.1 roadmap</span>
-    <h1 id="hero-title" style="margin-top:18px">Make KYE available to <span class="accent">MCP-compatible agents</span> &mdash; safely.</h1>
-    <p class="lede" style="background:color-mix(in srgb, var(--kye-color-brand) 8%, transparent); border-left:3px solid var(--kye-color-brand); padding:10px 14px; border-radius:6px; margin-bottom:14px"><strong>Status:</strong> design specification. The tools, resources, and prompts on this page describe the v1.1 roadmap surface for the KYE MCP Server<span class="tm">™</span>. The reference MCP server implementation ships with v1.1; today, integrate against the Reference Gateway via the SDKs. <a href="changelog.html">View roadmap &rarr;</a></p>
-    <p class="lede">The KYE MCP Server<span class="tm">™</span> will expose KYE Protocol<span class="tm">™</span> schemas, dictionaries, authority checks, Decision Maps<span class="tm">™</span>, and evidence packs through a controlled <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">Model Context Protocol</a> interface. Read-only resources, decision tools, and gated admin tools &mdash; with full auth, idempotency, and audit binding.</p>
+    <h1 id="hero-title" style="margin-top:18px">Expose KYE to <span class="accent">MCP agents</span> &mdash; safely.</h1>
+    <p class="lede" style="background:color-mix(in srgb, var(--kye-color-brand) 8%, transparent); border-left:3px solid var(--kye-color-brand); padding:10px 14px; border-radius:6px; margin-bottom:14px"><strong>Status &mdash; design specification.</strong> Tools, resources, and prompts below describe the v1.1 surface. Reference server lands with v1.1 (Q3 2026). Today, integrate via the Reference Gateway SDKs. <a href="roadmap.html">v1.1 roadmap &rarr;</a></p>
+    <p class="lede">When v1.1 ships, the KYE MCP Server<span class="tm">™</span> exposes KYE Protocol<span class="tm">™</span> schemas, dictionaries, authority checks, Decision Maps<span class="tm">™</span>, and evidence packs through a controlled <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">Model Context Protocol</a> interface &mdash; read-only resources, decision tools that round-trip through the gateway, gated admin tools. Auth, idempotency, audit binding all enforced.</p>
     <div class="cn-quick" style="margin-top:18px">
       <a href="#boundary" class="cn-pill"><span class="ms">balance</span> The boundary</a>
       <a href="#tools-ro" class="cn-pill"><span class="ms">visibility</span> Read-only tools</a>
@@ -162,18 +162,19 @@
 
 <section id="start" class="section alt" aria-labelledby="h-start">
         <span class="eyebrow">Start</span>
-    <h2 id="h-start" class="h-section">Run the reference server in 5 minutes.</h2>
+    <h2 id="h-start" class="h-section">When v1.1 ships, run the reference server in 5 minutes.</h2>
   <div class="section-body"><div class="container">
+    <p class="lede">The flow below describes the v1.1 install path. <strong>Today</strong>, integrate against the Reference Gateway directly via <a href="developers.html">the SDKs</a>; the same authority + decision + evidence semantics apply.</p>
     <ol class="eg-steps" style="margin-top:14px">
-      <li>Install &mdash; <code data-code="path">npm i @kye-protocol/mcp-server</code></li>
+      <li>Install &mdash; <code data-code="path">npm i @kye-protocol/mcp-server</code> <em>(v1.1)</em></li>
       <li>Configure tenant auth, gateway URL, and the tool allowlist (read-only / decision / admin sets).</li>
       <li>Start the server &mdash; <code data-code="path">npx kye-mcp-server --config kye-mcp.json</code></li>
       <li>Connect from an MCP client (Claude Desktop, Cursor, internal AI platform). Discover resources, tools, and prompts.</li>
       <li>Verify with the included conformance suite &mdash; <code data-code="path">npx kye-mcp-server conformance</code></li>
     </ol>
     <div class="hero-cta" style="margin-top:14px">
-      <a href="https://github.com/KYE-Protocol" target="_blank" rel="noopener" class="btn btn-primary"><span class="ms">code</span> Reference server &rarr;</a>
-      <a href="build.html" class="btn btn-secondary"><span class="ms">construction</span> Build with KYE</a>
+      <a href="developers.html" class="btn btn-primary"><span class="ms">code</span> Today: Reference Gateway SDKs &rarr;</a>
+      <a href="roadmap.html" class="btn btn-secondary"><span class="ms">map</span> v1.1 roadmap</a>
       <a href="protocol.html#signals" class="btn btn-secondary"><span class="ms">send</span> Signal Bus</a>
       <a href="#" class="btn btn-secondary" data-contact-trigger><span class="ms">forum</span> Talk to the programme</a>
     </div>
