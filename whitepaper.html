@@ -20,7 +20,7 @@
   <meta name="twitter:description" content="Authority Finality™ for AI agents — replayable proof of accountability, compliance, dispute resolution, legally defensible audit trails." />
   <meta name="twitter:image" content="https://kye-protocol.github.io/og.svg" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="styles.css?v=1779140000" />
+  <link rel="stylesheet" href="styles.css?v=1779150000" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
   <link rel="stylesheet" href="whitepaper.css?v=1778017907" />
@@ -130,7 +130,7 @@
       <li><strong>Graph-first.</strong> Authority is relational. Every entity, delegation, capability, credential, policy, state, decision, and evidence object is a node; every authority relationship is a typed edge. Authority Graph<span class="tm">™</span>, Decision Map<span class="tm">™</span>, Evidence Graph<span class="tm">™</span>, Blast Radius Map<span class="tm">™</span>, Compliance Map<span class="tm">™</span>. Storage substrate is implementation choice.</li>
       <li><strong>Profile-first.</strong> Core stays small. 33+ profiles add domain semantics; profiles never modify Core.</li>
       <li><strong>Registry-first.</strong> Every object is resolvable. <code>/.well-known/kye</code> advertises versions, profiles, crypto suites, JWKS, dictionaries, taxonomies, metadata schemas, registries.</li>
-      <li><strong>Conformance-first.</strong> 37-fixture black-box pack that any conformant Gateway must pass. Vendor self-attestation via <code>conformance-report.json</code>.</li>
+      <li><strong>Conformance-first.</strong> 38-fixture black-box pack that any conformant Gateway must pass. Vendor self-attestation via <code>conformance-report.json</code>.</li>
     </ol>
 
     <h3>3.3 Tier C &mdash; Developer adoption (how KYE<span class="tm">™</span> reaches developers)</h3>
@@ -208,7 +208,7 @@
       <li><strong>KYE-Attestation</strong> &mdash; SPIFFE / EAT / build-provenance bindings; explicit revocation; stale detection.</li>
       <li><strong>KYE-Signals</strong> &mdash; pub/sub bus with subscribe / ack / replay; signed webhook delivery with replay-window enforcement and key rotation. The specific signing-suite vectors are part of the normative specification and are not published in this repository.</li>
       <li><strong>KYE-Transparency</strong> &mdash; append-only statement log + signed inclusion receipts; verifiable with the gateway&rsquo;s public keys alone.</li>
-      <li><strong>KYE-Conformance</strong> &mdash; 37-fixture black-box pack + reporter; tests vendor stacks, internal stacks, and the reference Gateway with the same pack.</li>
+      <li><strong>KYE-Conformance</strong> &mdash; 38-fixture black-box pack + reporter; tests vendor stacks, internal stacks, and the reference Gateway with the same pack.</li>
       <li><strong>KYE-Treasury</strong> &mdash; treasury authority chain (sweeps, rebalances, intercompany transfers, FX); reconciliation hooks bind state-changing intents back to authority + scope.</li>
       <li><strong>KYE-Custody</strong> &mdash; asset custody chain of authority; workload attestation binds runtime, custody authority binds wallet, audit chain binds timeline.</li>
       <li><strong>KYE-Healthcare</strong> &mdash; HIPAA-aligned overlay; binds the agent to consent credentials, attaches redaction obligations and external-send blocks.</li>
@@ -260,7 +260,7 @@
     <p>Sector profiles in v1.0 cover financial services, healthcare, custody, treasury, AI labs, public sector, marketplaces, defence, critical infrastructure, energy, manufacturing, oil &amp; gas, mining, automotive, maritime &amp; shipping, logistics, and aviation. Each composes with KYE<span class="tm">™</span> EU AI Act when AI systems or AI agents participate.</p>
 
     <h2 id="conformance">7.3 &middot; Conformance &amp; certification</h2>
-    <p>v1.0 ships a <strong>37-fixture black-box conformance pack</strong> covering registration, delegation, scope attenuation, lifecycle and stop-cascade, capability invoke (allow / deny-quarantined / require-approval), capability-grant cascade, recovery flow, state transitions (allowed / rejected), break-glass grants, compromise cascade, key rotation, point-in-time replay, payments allow / deny / approval, audit integrity, idempotency, federation transfer, transparency log append + receipt, signal cascade, webhook delivery, proof bundle export, workload attest. Fixtures speak only HTTP &mdash; any conformant implementation can be tested with the same pack regardless of language, runtime, or topology. The conformance reporter emits machine-readable evidence for the auditor (<code>conformance-report.json</code>, normative as of v1.0).</p>
+    <p>v1.0 ships a <strong>38-fixture black-box conformance pack</strong> covering registration, delegation, scope attenuation, lifecycle and stop-cascade, capability invoke (allow / deny-quarantined / require-approval), capability-grant cascade, recovery flow, state transitions (allowed / rejected), break-glass grants, compromise cascade, key rotation, point-in-time replay, payments allow / deny / approval, audit integrity, idempotency, federation transfer, transparency log append + receipt, signal cascade, webhook delivery, proof bundle export, workload attest. Fixtures speak only HTTP &mdash; any conformant implementation can be tested with the same pack regardless of language, runtime, or topology. The conformance reporter emits machine-readable evidence for the auditor (<code>conformance-report.json</code>, normative as of v1.0).</p>
 
     <h2 id="addenda">7.4 &middot; Normative addenda (gap-closure register)</h2>
     <p>An independent v1.0 normative review identified 15 gaps across blockers, important and polish classes. Each is closed at the spec contract level; the underlying mechanisms remain in the patent track.</p>
