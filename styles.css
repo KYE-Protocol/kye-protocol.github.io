@@ -10495,3 +10495,25 @@ body[class] #evidence .lede { font-size: 14px; line-height: 1.45; max-width: 720
   background: var(--surface-solid) !important;
   border-color: var(--line) !important;
 }
+
+/* §FINAL-74 — Decision Map™ node empty-space fix on mobile.
+   Bug: .dm-node has `flex: 1 1 180px` which on a column flex
+   container (mobile @ <600px) makes each card grow to fill
+   available main-axis space. With 7 nodes in a single column the
+   flex-grow distributes vertical space across them — every card
+   stretches tall, content sits at the top, half the card is empty.
+   Fix: cards size to content on mobile. */
+@media (max-width: 600px) {
+  .dm-chain { align-items: stretch; gap: 4px; }
+  .dm-node {
+    flex: 0 0 auto;        /* size to content, no grow / shrink */
+    min-width: 0;
+    width: 100%;
+    margin: 0;
+    padding: 8px 10px;     /* tighter */
+  }
+  .dm-bindings { padding: 8px 10px; gap: 6px; }
+}
+/* Desktop also benefits from clamped node height when the chain
+   wraps to a 2nd row — the row-stretch can otherwise leave gaps. */
+.dm-node { align-self: start; }
