@@ -9926,3 +9926,106 @@ li > .fwk-list.sector-frameworks-badged {
   line-height: 1.45;
 }
 .prim-card em { margin-top: 6px; }
+
+/* ============================================================
+   §FINAL-64 — prim-card real-estate fix (overrides §FINAL-62/63)
+   ============================================================
+   Recurring complaint: "card heights too much white space looks so
+   cluttered". Two prior passes over-defended:
+     - §FINAL-62 reserved 2 lines of title height (wasted on short
+       titles).
+     - §FINAL-63 added grid-auto-rows: 1fr which forced every card
+       to the tallest card's height (wasted at the bottom of short
+       cards).
+   Strategy: let cards size to their content. The default grid
+   behaviour stretches cards within a row to match the tallest in
+   that row; different rows can have different heights. That's the
+   right rhythm — no phantom whitespace, still visually coherent. */
+.prim-grid {
+  grid-auto-rows: auto;       /* override the §FINAL-63 1fr forcing */
+  align-items: stretch;       /* default — cards in same row match */
+}
+.prim-card {
+  padding: 12px 14px;         /* tighter than the previous 14px 16px */
+  gap: 2px 12px;
+  align-self: stretch;
+}
+.prim-card .ms { margin-top: 0; }
+.prim-card strong {
+  min-height: 0;
+  line-height: 1.25;
+  margin-top: 2px;
+  margin-bottom: 4px;
+}
+.prim-card span {
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+.prim-card em {
+  margin-top: 4px;            /* was 6px */
+  font-size: 10.5px;          /* slightly tighter CTA */
+}
+
+/* ============================================================
+   §FINAL-65 — dark-mode top-bar contrast (mobile + desktop)
+   ============================================================
+   Bug: ".top-bar" hardcodes background: rgba(255,255,255,0.92) which
+   doesn't theme-switch. In dark mode the bar stayed near-white but
+   .tb-link text used --text-muted (#aab2cc — light grey), making the
+   menu invisible / un-tappable on mobile dark mode.
+   Fix: theme-aware overrides for the bar background, link colour,
+   hover/active states, brand colour, divider, and button surfaces. */
+:root[data-theme="dark"] .top-bar {
+  background: rgba(15, 20, 36, 0.92);     /* dark surface, blurred */
+  border-bottom-color: var(--line);
+}
+:root[data-theme="dark"] .tb-link {
+  color: var(--text-muted);                /* #aab2cc — readable on dark */
+}
+:root[data-theme="dark"] .tb-link:hover {
+  background: var(--surface-3);            /* solid #11162a */
+  color: var(--text);                      /* #eef1f9 */
+}
+:root[data-theme="dark"] .tb-link.is-active {
+  background: var(--accent-soft);
+  color: var(--accent);                    /* violet-400 — high contrast */
+}
+:root[data-theme="dark"] .tb-link.is-active .ms { color: var(--accent); }
+:root[data-theme="dark"] .top-bar .brand,
+:root[data-theme="dark"] .top-bar .brand-name {
+  color: var(--text);
+}
+:root[data-theme="dark"] .top-bar-nav .tb-divider {
+  background: var(--line);                 /* visible against dark bar */
+}
+/* Header right-side action buttons (GitHub, theme toggle, drawer
+   toggle): make sure their borders + icons are visible on dark. */
+:root[data-theme="dark"] .top-bar .tb-cta {
+  color: var(--text-muted);
+  border-color: var(--line-strong);
+}
+:root[data-theme="dark"] .top-bar .tb-cta:hover {
+  background: var(--surface-3);
+  color: var(--text);
+}
+:root[data-theme="dark"] .top-bar .theme-toggle,
+:root[data-theme="dark"] .top-bar .drawer-toggle {
+  color: var(--text);                      /* SVG strokes use currentColor */
+}
+:root[data-theme="dark"] .top-bar .theme-toggle:hover,
+:root[data-theme="dark"] .top-bar .drawer-toggle:hover {
+  background: var(--surface-3);
+}
+/* Mobile-specific: ensure the horizontally-scrollable nav strip is
+   tap-target-readable when the OS prefers dark and the user hasn't
+   toggled to light. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .top-bar {
+    background: rgba(15, 20, 36, 0.92);
+    border-bottom-color: var(--line);
+  }
+  :root:not([data-theme="light"]) .tb-link { color: var(--text-muted); }
+  :root:not([data-theme="light"]) .tb-link.is-active {
+    background: var(--accent-soft); color: var(--accent);
+  }
+}

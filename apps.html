@@ -15,7 +15,7 @@
   <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
   <meta property="og:url" content="https://kye-protocol.github.io/apps.html" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="styles.css?v=1779010000" />
+  <link rel="stylesheet" href="styles.css?v=1779030000" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
 </head>
@@ -37,6 +37,7 @@
       <a href="#sector"    class="cn-pill"><span class="ms">apartment</span> Sector apps</a>
       <a href="#agentic"   class="cn-pill"><span class="ms">smart_toy</span> Agentic / MCP</a>
       <a href="#audit"     class="cn-pill"><span class="ms">verified</span> Audit &amp; certification</a>
+      <a href="#legal"     class="cn-pill"><span class="ms">gavel</span> Legal</a>
     </div>
   </div>
 </section>
@@ -201,7 +202,60 @@
   </div></div>
 </section>
 
-<section id="manifest" class="section" aria-labelledby="h-mn">
+<section id="legal" class="section" aria-labelledby="h-legal">
+        <span class="eyebrow">Legal &middot; 7 apps</span>
+    <h2 id="h-legal" class="h-section">Authority Finality<span class="tm">™</span> for legally relevant actions.</h2>
+  <div class="section-body"><div class="container">
+    <p class="lede">KYE Legal Profile<span class="tm">™</span> apps prove who or what acted, on behalf of whom, under what authority, inside what scope, in what state, and with what evidence when a legally relevant action occurs &mdash; contracts, e-signatures, agent-negotiated transactions, corporate approvals, legal holds, matter access, settlement authority, regulatory submissions, dispute evidence.</p>
+    <p class="lede" style="margin-top:8px;font-style:italic;color:var(--accent);font-weight:600">No legal finality without authority finality.</p>
+    <p class="lede" style="margin-top:8px;font-size:13px;color:var(--kye-color-text-muted)"><strong>Non-goal:</strong> KYE<span class="tm">™</span> does not replace lawyers, courts, e-signature platforms, or legal agreements. It provides the technical authority and evidence layer that legal validity, enforceability, dispute resolution, and audit defensibility depend on.</p>
+
+    <article class="eg-card" id="contract-authority-gateway" style="margin-top:18px">
+      <h3 class="uc-h">KYE Contract Authority Gateway<span class="tm">™</span></h3>
+      <p class="uc-scenario">Verify whether a person, agent, director, employee, workflow, or system is authorised before a contract is generated, negotiated, approved, signed, amended, or terminated. Checks actor &middot; principal &middot; delegation chain &middot; signing authority &middot; approval threshold &middot; document state &middot; evidence requirements.</p>
+      <p class="uc-scenario"><strong>Open:</strong> contract authority schema &middot; sample contract-approval payloads &middot; sample audit events &middot; connector manifest &middot; webhook verifier. <strong>Commercial:</strong> contract authority gateway &middot; approval workflow &middot; contract Decision Map<span class="tm">™</span> &middot; evidence-pack automation &middot; matter dashboard &middot; enterprise policy templates.</p>
+    </article>
+
+    <article class="eg-card" id="signature-authority-connector" style="margin-top:18px">
+      <h3 class="uc-h">KYE Signature Authority Connector<span class="tm">™</span></h3>
+      <p class="uc-scenario">Add KYE<span class="tm">™</span> authority checks around e-signature workflows. Prove whether the signer, approver, agent, or workflow had authority to sign or approve the document at the time of signature. Connects to DocuSign-style, Adobe Sign-style, and contract-lifecycle-management systems.</p>
+      <p class="uc-scenario"><strong>Open:</strong> signature authority schema &middot; sample envelope mapping &middot; sample webhook events &middot; connector manifest. <strong>Commercial:</strong> managed e-signature connectors &middot; signature authority dashboard &middot; counterparty evidence pack &middot; approval-chain viewer &middot; legal evidence export.</p>
+    </article>
+
+    <article class="eg-card" id="poa-delegation" style="margin-top:18px">
+      <h3 class="uc-h">KYE Power of Attorney &amp; Delegation App<span class="tm">™</span></h3>
+      <p class="uc-scenario">Model legal or operational delegation where one entity acts on behalf of another &mdash; power of attorney, director delegation, employee mandate, agent mandate, corporate signatory authority, family-office authority, trustee authority, guardian / representative authority, adviser authority.</p>
+      <p class="uc-scenario"><strong>Open:</strong> delegation authority schema &middot; representative authority schema &middot; sample power-of-attorney payload &middot; reason codes. <strong>Commercial:</strong> delegation registry &middot; authority-expiry monitoring &middot; revocation workflow &middot; evidence packs &middot; legal authority dashboard.</p>
+    </article>
+
+    <article class="eg-card" id="legal-evidence-pack-viewer" style="margin-top:18px">
+      <h3 class="uc-h">KYE Legal Evidence Pack Viewer<span class="tm">™</span></h3>
+      <p class="uc-scenario">Replay authority decisions, verify signatures, inspect delegation chains, check state snapshots, review payload hashes, export legal evidence bundles. For contract disputes, payment disputes, agent-purchase disputes, employment disputes, supplier disputes, board-approval evidence, regulatory evidence, litigation-bundle preparation.</p>
+      <p class="uc-scenario"><strong>Open:</strong> legal evidence pack schema &middot; basic evidence verifier &middot; sample evidence packs &middot; signature-verification library. <strong>Commercial:</strong> managed evidence viewer &middot; legal-bundle export &middot; matter workspace &middot; privilege controls &middot; audit archive &middot; Decision Map<span class="tm">™</span> replay UI.</p>
+    </article>
+
+    <article class="eg-card" id="matter-authority-workspace" style="margin-top:18px">
+      <h3 class="uc-h">KYE Matter Authority Workspace<span class="tm">™</span></h3>
+      <p class="uc-scenario">Govern who can access, update, approve, or export information related to legal matters &mdash; law-firm matter access, in-house legal matter workspace, external counsel access, privileged-document access, settlement approval, litigation-task delegation, expert-witness document access.</p>
+      <p class="uc-scenario"><strong>Open:</strong> matter authority schema &middot; legal-matter metadata schema &middot; privilege-classification dictionary &middot; sample audit events. <strong>Commercial:</strong> matter workspace &middot; access dashboard &middot; privilege-aware evidence controls &middot; legal-hold integration &middot; external-counsel portal.</p>
+    </article>
+
+    <article class="eg-card" id="legal-hold-preservation" style="margin-top:18px">
+      <h3 class="uc-h">KYE Legal Hold &amp; Preservation App<span class="tm">™</span></h3>
+      <p class="uc-scenario">Bind legal holds to entities, systems, data classes, custodians, workflows, and audit evidence. Prove who issued the hold, who acknowledged it, what systems were affected, and when it changed &mdash; legal hold notice, document preservation, employee acknowledgement, e-discovery hold, audit preservation, regulatory investigation, data-deletion stop.</p>
+      <p class="uc-scenario"><strong>Open:</strong> legal hold schema &middot; custodian schema &middot; preservation event schema &middot; sample webhook events. <strong>Commercial:</strong> legal-hold dashboard &middot; custodian tracking &middot; preservation evidence packs &middot; system-connector integrations &middot; release workflow.</p>
+    </article>
+
+    <article class="eg-card" id="settlement-authority" style="margin-top:18px">
+      <h3 class="uc-h">KYE Settlement Authority App<span class="tm">™</span></h3>
+      <p class="uc-scenario">Verify whether a person, agent, insurer, claims handler, solicitor, or corporate officer has authority to offer, accept, or approve settlement &mdash; insurance settlement, employment settlement, commercial-dispute settlement, customer redress, regulatory remediation, ombudsman settlement.</p>
+      <p class="uc-scenario"><strong>Open:</strong> settlement authority schema &middot; approval-threshold schema &middot; sample decision payloads. <strong>Commercial:</strong> settlement authority workflow &middot; redress evidence pack &middot; approver dashboard &middot; dispute Decision Map<span class="tm">™</span>.</p>
+    </article>
+
+  </div></div>
+</section>
+
+<section id="manifest" class="section alt" aria-labelledby="h-mn">
         <span class="eyebrow">App manifest</span>
     <h2 id="h-mn" class="h-section">Every app ships a <code data-code="field">kye.app_manifest.v1</code>.</h2>
   <div class="section-body"><div class="container">
