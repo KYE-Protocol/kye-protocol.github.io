@@ -63,6 +63,7 @@ const NAV_ITEMS = [
   // Sector
   { id: 'sectors',             href: 'sectors.html',             label: 'Sectors',                                           icon: 'apartment',               color: '#5F6368', group: 'sector' },
   { id: 'usecases',            href: 'usecases.html',            label: 'Use Cases',                                         icon: 'lightbulb',               color: '#F4B400', group: 'sector' },
+  { id: 'sovereign-ai',        href: 'sovereign-ai.html',        label: 'Sovereign AI',                                      icon: 'public',                  color: '#1A73E8', group: 'sector' },
   { id: 'open-banking',        href: 'open-banking.html',        label: 'Open Banking',                                      icon: 'payments',                color: '#FF6D00', group: 'sector' },
   { id: 'agent-purchasing',    href: 'agent-purchasing.html',    label: 'Agent Purchasing',                                  icon: 'credit_card',             color: '#F4B400', group: 'sector' },
 
@@ -218,6 +219,7 @@ const FOOTER_GROUPS = [
       { href: 'regulators.html',       label: 'Regulators' },
       { href: 'sectors.html',          label: 'Sectors' },
       { href: 'usecases.html',         label: 'Use Cases' },
+      { href: 'sovereign-ai.html',     label: 'Sovereign AI' },
       { href: 'open-banking.html',     label: 'Open Banking' },
       { href: 'agent-purchasing.html', label: 'Agent Purchasing' },
     ],
