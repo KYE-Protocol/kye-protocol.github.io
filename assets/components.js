@@ -40,6 +40,7 @@ const NAV_ITEMS = [
   { id: 'build',               href: 'build.html',               label: 'Build',                                             icon: 'construction',            color: '#1A8754', group: 'build' },
   { id: 'developers',          href: 'developers.html',          label: 'Developers',                                        icon: 'code',                    color: '#1A73E8', group: 'build' },
   { id: 'mcp',                 href: 'mcp.html',                 label: 'MCP',                                               icon: 'smart_toy',               color: '#8E24AA', group: 'build' },
+  { id: 'ecosystem',           href: 'ecosystem.html',           label: 'Ecosystem',                                         icon: 'hub',                     color: '#1A8754', group: 'build' },
   { id: 'connectors',          href: 'connectors.html',          label: 'Connectors',                                        icon: 'extension',               color: '#FF6D00', group: 'build' },
   { id: 'connector-profiles',  href: 'connector-profiles.html',  label: 'Profiles',                                          icon: 'grid_view',               color: '#00ACC1', group: 'build' },
   { id: 'apps',                href: 'apps.html',                label: 'Apps',                                              icon: 'apps',                    color: '#00838F', group: 'build' },
@@ -190,6 +191,7 @@ const FOOTER_GROUPS = [
   {
     heading: 'Ecosystem',
     items: [
+      { href: 'ecosystem.html',           label: 'Ecosystem Overview' },
       { href: 'connectors.html',          label: 'KYE Connector Hub<span class="tm">™</span>' },
       { href: 'connector-profiles.html',  label: 'KYE Connector Profiles<span class="tm">™</span>' },
       { href: 'apps.html',                label: 'KYE App Store<span class="tm">™</span>' },

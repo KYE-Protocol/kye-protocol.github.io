@@ -10230,3 +10230,86 @@ body[class] #evidence {
 .section-body > .container > .lede + .prim-grid,
 .section-body > .container > .lede + .who-bullets,
 .section-body > .container > .lede + .eg-stages { margin-top: 14px; }
+
+/* ============================================================
+   §FINAL-70 — widgets-page aggressive compression
+   ============================================================
+   User: "widget cards flow still not fix on prod still showing as
+   before too much waste of space". §FINAL-68 + §FINAL-69 hit section
+   padding but the widget *hosts themselves* (.rr-host, .aps-host,
+   .br-host, .ep-host, .ce-host, .dm-host) carry their own internal
+   padding + gaps that compound. Tighten all six. */
+
+/* The widgets-page sections sit closer to each other */
+body #role, body #sim, body #dm,
+body #explorer, body #blast, body #evidence {
+  padding-top: 28px;
+  padding-bottom: 28px;
+}
+body #role .section-body,
+body #sim .section-body,
+body #dm .section-body,
+body #explorer .section-body,
+body #blast .section-body,
+body #evidence .section-body { padding-top: 4px; }
+
+/* Role-router cards — tighter card padding + grid gap */
+.rr-grid { gap: 10px; margin-top: 10px; }
+.rr-card { padding: 12px 14px; gap: 6px; }
+.rr-card .rr-you { font-size: 12.5px; line-height: 1.4; }
+
+/* Agent-purchase simulator shell — more compact */
+.aps-host { padding: 14px; }
+.aps-shell { gap: var(--kye-space-3); }
+.aps-controls { gap: 8px; }
+.aps-fs { padding: 8px 10px 10px; }
+.aps-decision-card { padding: 10px 12px; }
+.aps-decision-meta { margin-top: 8px; gap: 8px; }
+.aps-output-block .codeblock { max-height: 240px; }
+.aps-output-block > summary { padding: 9px 12px; font-size: 12px; }
+
+/* Decision Map™ — tighter chain padding */
+.dm-chain { padding: 10px; }
+.dm-node { padding: 8px 10px; margin: 4px; min-width: 140px; }
+.dm-bindings { padding: 8px 12px; margin-top: 8px; }
+
+/* Connector explorer — tighter rows */
+.ce-controls { margin-bottom: 12px; gap: 8px; }
+.ce-search { padding: 8px 12px; }
+.ce-row { padding: 10px 12px; gap: 6px; }
+
+/* Blast Radius — tighter cards */
+.br-host .br-shell { gap: var(--kye-space-3); }
+.br-fs { padding: 8px 10px 10px; }
+.br-subject-card { padding: 10px 12px; }
+.br-card { padding: 10px 12px; gap: 6px; }
+.br-grid { gap: 10px; }
+
+/* Evidence Pack viewer */
+.ep-shell { gap: var(--kye-space-3); }
+.ep-pack-card { padding: 10px 12px; }
+.ep-action-btn { padding: 8px 12px; font-size: 12.5px; }
+.ep-output { padding: 12px 14px; min-height: 140px; }
+.ep-output pre { max-height: 240px; padding: 9px 11px; }
+
+/* Collapsed code snippets sit tight */
+body .w-snippet { margin-top: 10px; }
+body .w-snippet > summary { padding: 8px 12px; font-size: 12px; }
+body .w-snippet .code-snippet { padding: 8px 10px; }
+
+/* Lede on widget sections is shorter */
+body[class] #role  .lede,
+body[class] #sim   .lede,
+body[class] #dm    .lede,
+body[class] #explorer .lede,
+body[class] #blast .lede,
+body[class] #evidence .lede { font-size: 14px; line-height: 1.45; max-width: 720px; }
+
+/* Mobile compress further */
+@media (max-width: 720px) {
+  body #role, body #sim, body #dm,
+  body #explorer, body #blast, body #evidence {
+    padding-top: 22px;
+    padding-bottom: 22px;
+  }
+}
