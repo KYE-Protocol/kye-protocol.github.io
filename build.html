@@ -28,7 +28,7 @@
 <section id="top" class="hero">
   <div class="container hero-inner">
     <span class="hero-pill"><span class="dot"></span> Build with KYE<span class="tm">™</span></span>
-    <h1 id="hero-title" style="margin-top:18px">Build <span class="accent">authority-aware apps</span> with KYE.</h1>
+    <h1 id="hero-title" style="margin-top:18px">Build <span class="accent">authority-aware apps</span> with KYE<span class="tm">™</span>.</h1>
     <p class="lede">KYE Protocol<span class="tm">™</span> is not just a specification &mdash; it's a <em>build surface</em>. Runtime Authority API, three SDKs, an MCP server, a connector framework, signed webhooks, Decision Maps<span class="tm">™</span>, and evidence packs. Add delegated authority, state-aware decisions, and replayable proof to AI agents, payment flows, checkout, wallets, IAM, SIEM, GRC, and enterprise workflows.</p>
     <p class="lede" style="margin-top:8px;font-style:italic;color:var(--accent);font-weight:600">Open contracts. Apache 2.0.</p>
     <div class="cn-quick" style="margin-top:18px">
@@ -50,8 +50,8 @@
     <div class="prim-grid" style="margin-top:14px">
       <a href="#api" class="prim-card"><span class="ms">api</span><strong>Runtime Authority API</strong><span>Ask whether an entity can act before the action executes. <code data-code="endpoint">POST /v1/runtime/authorize</code> &mdash; allow / require_approval / require_step_up / quarantine / deny + reason code + obligations + evidence refs.</span><em>view decision endpoint &rarr;</em></a>
       <a href="#sdks" class="prim-card"><span class="ms">code</span><strong>SDKs</strong><span>TypeScript, Python, Go. Schema types, validators, decision client, signing helpers, evidence-pack builder, taxonomy resolver, decision-map renderer, webhook verifier.</span><em>view SDKs &rarr;</em></a>
-      <a href="mcp.html" class="prim-card"><span class="ms">smart_toy</span><strong>KYE MCP Server<span class="tm">™</span></strong><span>Expose KYE schemas, decisions, Decision Maps<span class="tm">™</span> and evidence packs to MCP-compatible agents and developer tools &mdash; while production enforcement stays in the runtime gateway.</span><em>explore MCP server &rarr;</em></a>
-      <a href="connectors.html" class="prim-card"><span class="ms">extension</span><strong>Connector Hub<span class="tm">™</span></strong><span>Plug KYE into payment gateways, checkouts, wallets, IAM, policy engines, SIEM, GRC, agent runtimes, KYC/KYB/KYA. One canonical manifest schema; six families.</span><em>view connector hub &rarr;</em></a>
+      <a href="mcp.html" class="prim-card"><span class="ms">smart_toy</span><strong>KYE MCP Server<span class="tm">™</span></strong><span>Expose KYE<span class="tm">™</span> schemas, decisions, Decision Maps<span class="tm">™</span> and evidence packs to MCP-compatible agents and developer tools &mdash; while production enforcement stays in the runtime gateway.</span><em>explore MCP server &rarr;</em></a>
+      <a href="connectors.html" class="prim-card"><span class="ms">extension</span><strong>Connector Hub<span class="tm">™</span></strong><span>Plug KYE<span class="tm">™</span> into payment gateways, checkouts, wallets, IAM, policy engines, SIEM, GRC, agent runtimes, KYC/KYB/KYA. One canonical manifest schema; six families.</span><em>view connector hub &rarr;</em></a>
       <a href="protocol.html#signals" class="prim-card"><span class="ms">send</span><strong>Signed Signals &amp; Webhooks</strong><span>24 event families, 79 well-known event types, canonical envelope, signed deliveries, idempotent + replayable + dead-letter-safe.</span><em>view event reference &rarr;</em></a>
       <a href="compliance-card.html" class="prim-card"><span class="ms">verified</span><strong>Evidence Packs</strong><span>Generate signed, replayable proof bundles. Public-key-verifiable offline. Bind decisions, audit chain, control mapping, and OSCAL projection in one artefact.</span><em>inspect evidence pack &rarr;</em></a>
     </div>
@@ -66,10 +66,10 @@
     <ul class="eg-tier-list" style="margin-top:14px">
       <li><span class="eg-tier eg-tier-l3">P1</span><strong>KYE Checkout Guard<span class="tm">™</span></strong> &mdash; for merchants and commerce platforms. Detect agent-backed checkout flows and verify whether the agent is allowed to buy <em>this</em> basket from <em>this</em> merchant using <em>this</em> instrument under the customer's limits. Composes: Runtime API + Webhooks + Evidence Packs.</li>
       <li><span class="eg-tier eg-tier-l3">P2</span><strong>KYE Payment Authority Gateway<span class="tm">™</span></strong> &mdash; for banks, issuers, IPGs, MPGs, PSPs, agentic-payment platforms. Verify delegated payment authority before the gateway processes the transaction. Composes: Runtime API + Payments connector + Evidence Packs.</li>
-      <li><span class="eg-tier eg-tier-l3">P3</span><strong>KYE MCP Server<span class="tm">™</span></strong> &mdash; for agent developers and internal AI platforms. Expose KYE authority objects, schemas, decisions, and evidence to MCP clients safely. Composes: MCP Server + Read-only tools + Gated decision tools.</li>
-      <li><span class="eg-tier eg-tier-l3">P4</span><strong>KYE CISO Console</strong> &mdash; for security and risk teams. View every agent, credential, capability, delegation, state, and revocation path. Composes: Authority Graph<span class="tm">™</span> + Webhooks + Audit chain.</li>
-      <li><span class="eg-tier eg-tier-l3">P5</span><strong>KYE Evidence Viewer</strong> &mdash; for auditors and regulators. Replay decisions, verify evidence packs offline with public keys, map events to controls. Composes: Evidence Packs + OSCAL projection + Decision Maps<span class="tm">™</span>.</li>
-      <li><span class="eg-tier eg-tier-l3">P6</span><strong>KYE Partner Toolkit</strong> &mdash; for consultants, audit firms, SIs. Run authority mapping, readiness checks, conformance prep, pilot scoping. Composes: Readiness API + Conformance pack + Decision Maps<span class="tm">™</span>.</li>
+      <li><span class="eg-tier eg-tier-l3">P3</span><strong>KYE MCP Server<span class="tm">™</span></strong> &mdash; for agent developers and internal AI platforms. Expose KYE<span class="tm">™</span> authority objects, schemas, decisions, and evidence to MCP clients safely. Composes: MCP Server + Read-only tools + Gated decision tools.</li>
+      <li><span class="eg-tier eg-tier-l3">P4</span><strong>KYE CISO Console<span class="tm">™</span></strong> &mdash; for security and risk teams. View every agent, credential, capability, delegation, state, and revocation path. Composes: Authority Graph<span class="tm">™</span> + Webhooks + Audit chain.</li>
+      <li><span class="eg-tier eg-tier-l3">P5</span><strong>KYE Evidence Viewer<span class="tm">™</span></strong> &mdash; for auditors and regulators. Replay decisions, verify evidence packs offline with public keys, map events to controls. Composes: Evidence Packs + OSCAL projection + Decision Maps<span class="tm">™</span>.</li>
+      <li><span class="eg-tier eg-tier-l3">P6</span><strong>KYE Partner Toolkit<span class="tm">™</span></strong> &mdash; for consultants, audit firms, SIs. Run authority mapping, readiness checks, conformance prep, pilot scoping. Composes: Readiness API + Conformance pack + Decision Maps<span class="tm">™</span>.</li>
     </ul>
     <p class="lede" style="margin-top:14px">Other strong starters: agent purchasing apps &middot; agent marketplace trust layers &middot; wallet authority consoles &middot; open-banking delegated-authority apps &middot; enterprise service-account authority maps &middot; GRC evidence automation &middot; SIEM authority-signal feeds &middot; certification portals &middot; tool-governance gateways &middot; capability registries &middot; sector profiles for healthcare / custody / telco / federal.</p>
   </div></div>
@@ -79,7 +79,7 @@
         <span class="eyebrow">Runtime Authority API</span>
     <h2 id="h-api" class="h-section">One call, before the action executes.</h2>
   <div class="section-body"><div class="container">
-    <p class="lede">The decision endpoint is the single most important surface. Your app asks; KYE answers in milliseconds.</p>
+    <p class="lede">The decision endpoint is the single most important surface. Your app asks; KYE<span class="tm">™</span> answers in milliseconds.</p>
 <div class="code-snippet"><pre id="snippet-build" class="codeblock" style="margin-top:14px"><code>POST /v1/runtime/authorize
 {
   "actor_entity_id":     "kye:entity:agent:shopping_agent_456",
@@ -123,9 +123,9 @@
 
 <section id="mcp" class="section" aria-labelledby="h-mcp">
         <span class="eyebrow">KYE MCP Server<span class="tm">™</span></span>
-    <h2 id="h-mcp" class="h-section">Make KYE available to MCP-compatible agents.</h2>
+    <h2 id="h-mcp" class="h-section">Make KYE<span class="tm">™</span> available to MCP-compatible agents.</h2>
   <div class="section-body"><div class="container">
-    <p class="lede">Expose KYE schemas, dictionaries, authority checks, Decision Maps<span class="tm">™</span>, and evidence packs through a controlled MCP interface &mdash; while production enforcement stays in the KYE Runtime Gateway, never in MCP.</p>
+    <p class="lede">Expose KYE<span class="tm">™</span> schemas, dictionaries, authority checks, Decision Maps<span class="tm">™</span>, and evidence packs through a controlled MCP interface &mdash; while production enforcement stays in the KYE Runtime Gateway<span class="tm">™</span>, never in MCP.</p>
     <p class="lede" style="margin-top:8px"><strong>The boundary:</strong> MCP is a developer / agent integration surface. The Runtime Gateway is the enforcement surface. Don't conflate.</p>
     <div class="hero-cta" style="margin-top:14px">
       <a href="mcp.html" class="btn btn-primary"><span class="ms">smart_toy</span> KYE MCP Server<span class="tm">™</span> reference &rarr;</a>
@@ -136,7 +136,7 @@
 
 <section id="connectors" class="section alt" aria-labelledby="h-conn">
         <span class="eyebrow">Connector Framework</span>
-    <h2 id="h-conn" class="h-section">Plug KYE into the systems you already run.</h2>
+    <h2 id="h-conn" class="h-section">Plug KYE<span class="tm">™</span> into the systems you already run.</h2>
   <div class="section-body"><div class="container">
     <p class="lede">A canonical connector manifest schema, six connector families, and a hub for discovery.</p>
     <div class="prim-grid" style="margin-top:14px">

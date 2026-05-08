@@ -31,9 +31,9 @@
     <h1 id="hero-title" style="margin-top:18px">The <span class="accent">technical layer</span> behind Authority Finality<span class="tm">™</span>.</h1>
     <p class="lede">Authority Graph<span class="tm">™</span>, Decision Map<span class="tm">™</span>, taxonomy &amp; metadata, runtime &amp; state model, profile inventory, coverage matrix, and the 16 protocol-core principles. Each section links back to the JSON Schemas, OpenAPI, and conformance fixtures that ship in <code>github.com/KYE-Protocol</code>.</p>
     <div class="cn-quick" style="margin-top:18px">
-      <a href="#authority-graph" class="cn-pill"><span class="ms">account_tree</span> Authority Graph</a>
+      <a href="#authority-graph" class="cn-pill"><span class="ms">account_tree</span> Authority Graph<span class="tm">™</span></a>
       <a href="#how"             class="cn-pill"><span class="ms">play_arrow</span> How it works</a>
-      <a href="#decision-map"    class="cn-pill"><span class="ms">balance</span> Decision Map</a>
+      <a href="#decision-map"    class="cn-pill"><span class="ms">balance</span> Decision Map<span class="tm">™</span></a>
       <a href="#signals"         class="cn-pill"><span class="ms">send</span> Signal Bus</a>
       <a href="#state-model"     class="cn-pill"><span class="ms">timeline</span> State model</a>
       <a href="#lifecycle"       class="cn-pill"><span class="ms">science</span> Lifecycle simulator</a>
@@ -47,9 +47,9 @@
 
 <nav class="protocol-toc" aria-label="Section index">
   <div class="container">
-    <a href="#authority-graph" class="cn-pill">Authority Graph</a>
+    <a href="#authority-graph" class="cn-pill">Authority Graph<span class="tm">™</span></a>
     <a href="#how"             class="cn-pill">How</a>
-    <a href="#decision-map"    class="cn-pill">Decision Map</a>
+    <a href="#decision-map"    class="cn-pill">Decision Map<span class="tm">™</span></a>
     <a href="#signals"         class="cn-pill">Signal Bus</a>
     <a href="#state-model"     class="cn-pill">State model</a>
     <a href="#lifecycle"       class="cn-pill">Lifecycle</a>
@@ -181,10 +181,10 @@
 </section>
 
 <section id="decision-map" class="section technical-only" aria-labelledby="h-dm">
-        <span class="eyebrow">Decision Map<span class="tm">&trade;</span> &middot; the chain that produced the verdict</span>
+        <span class="eyebrow">Decision Map<span class="tm">™</span><span class="tm">&trade;</span> &middot; the chain that produced the verdict</span>
     <h2 id="h-dm" class="h-section">Every decision <span class="accent">comes with a map</span>.</h2>
   <div class="section-body"><div class="container">
-    <p class="lede">The runtime emits a signed Decision Map<span class="tm">&trade;</span> with every <code data-code="endpoint">/v1/runtime/authorize</code> response. The map shows which inputs led to the verdict &mdash; the principal, the delegation, the actor, the capability, the scope, the state, and the policy &mdash; bound to the audit-chain entry and the evidence pack. Verifiable offline with public keys alone.</p>
+    <p class="lede">The runtime emits a signed Decision Map<span class="tm">™</span><span class="tm">&trade;</span> with every <code data-code="endpoint">/v1/runtime/authorize</code> response. The map shows which inputs led to the verdict &mdash; the principal, the delegation, the actor, the capability, the scope, the state, and the policy &mdash; bound to the audit-chain entry and the evidence pack. Verifiable offline with public keys alone.</p>
     <div data-decision-map style="margin-top:18px"></div>
     <p class="lede" style="margin-top:14px;font-size:13px;color:var(--kye-color-text-muted)">Try the live version on the <a href="agent-purchasing.html#simulator" style="color:var(--accent);text-decoration:underline">agent-backed purchasing simulator</a> &mdash; change any input and watch the chain recompute.</p>
   </div></div>
@@ -251,7 +251,7 @@
       <li><strong>Replayable</strong> &mdash; ≥ 24-hour replay window via <code data-code="endpoint">/v1/signals/replay</code>; subscribers refetch missed events without involving the publisher.</li>
       <li><strong>Audit-bound</strong> &mdash; every publish, delivery, and retry is recorded as an audit event linked via <code data-code="field">audit_ref</code> + <code data-code="field">evidence_refs</code>.</li>
       <li><strong>Three transports</strong> &mdash; HTTPS webhook (REQUIRED), SSE / WebSocket (OPTIONAL), Kafka-compatible topic (OPTIONAL).</li>
-      <li><strong>SSF / CAEP boundary adapter</strong> &mdash; KYE event types translate to OpenID Shared Signals Framework + CAEP at trust-domain boundaries; lossless for the in-scope families.</li>
+      <li><strong>SSF / CAEP boundary adapter</strong> &mdash; KYE<span class="tm">™</span> event types translate to OpenID Shared Signals Framework + CAEP at trust-domain boundaries; lossless for the in-scope families.</li>
     </ul>
 
     <h3 class="arch-tier-h" style="margin-top:26px">What ships today</h3>

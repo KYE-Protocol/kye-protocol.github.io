@@ -27,8 +27,8 @@
 
 <section id="top" class="hero">
   <div class="container hero-inner">
-    <span class="hero-pill"><span class="dot"></span> Integrations &middot; what KYE composes with</span>
-    <h1 id="hero-title" style="margin-top:18px">KYE doesn&rsquo;t replace your stack &mdash; it <span class="accent">binds authority across it</span>.</h1>
+    <span class="hero-pill"><span class="dot"></span> Integrations &middot; what KYE<span class="tm">™</span> composes with</span>
+    <h1 id="hero-title" style="margin-top:18px">KYE<span class="tm">™</span> doesn&rsquo;t replace your stack &mdash; it <span class="accent">binds authority across it</span>.</h1>
     <p class="lede">KYE<span class="tm">™</span> composes with the identity, policy, agent runtime, payment rail, KYC / KYB / KYA, SIEM, GRC, and audit stack you already run. Each row carries a conformance status: <em>shipping</em>, <em>reference pattern</em>, or <em>roadmap</em>.</p>
     <div class="cn-quick" style="margin-top:18px">
       <a href="#identity"  class="cn-pill"><span class="ms">key</span> Identity</a>
@@ -52,7 +52,7 @@
       <tbody>
         <tr><td>OAuth 2.0 + PKCE</td><td><code data-code="field">oauth_oidc</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Shipping</span></td><td>Token introspection feeds the actor + on-behalf-of binding.</td></tr>
         <tr><td>OpenID Connect</td><td><code data-code="field">oauth_oidc</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Shipping</span></td><td>ID-token claims map into the principal entity.</td></tr>
-        <tr><td>SAML 2.0</td><td><code data-code="field">saml</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Reference pattern</span></td><td>Federated identity assertion translated into KYE delegations.</td></tr>
+        <tr><td>SAML 2.0</td><td><code data-code="field">saml</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Reference pattern</span></td><td>Federated identity assertion translated into KYE<span class="tm">™</span> delegations.</td></tr>
         <tr><td>SCIM 2.0</td><td><code data-code="field">scim</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Reference pattern</span></td><td>Workforce provisioning into the entity registry.</td></tr>
         <tr><td>SPIFFE / SPIRE</td><td><code data-code="field">spiffe_spire</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Shipping</span></td><td>SPIFFE ID becomes the workload entity URN; SVID feeds attestation.</td></tr>
         <tr><td>mTLS</td><td><code data-code="field">mtls</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Shipping</span></td><td>Front-the-Gateway pattern: reverse proxy verifies; passes <code>X-Client-Cert-Subject</code>.</td></tr>
@@ -73,7 +73,7 @@
         <tr><td>Open Policy Agent (OPA / Rego)</td><td><code data-code="field">opa</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Shipping</span></td><td>Reference policy bundles: Core (<code>kye_authz.rego</code>) + Payments (<code>payments_spdp.rego</code>).</td></tr>
         <tr><td>Cerbos</td><td><code data-code="field">cerbos</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Shipping</span></td><td>Derived-roles + resource-policy bundles for the Core profile + sector overlays.</td></tr>
         <tr><td>AWS Cedar</td><td><code data-code="field">aws_cedar</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Reference pattern</span></td><td>Cedar policy bundle for the Core profile.</td></tr>
-        <tr><td>AuthZEN (OpenID)</td><td><code data-code="field">authzen</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Reference pattern</span></td><td>KYE Decision API maps onto the AuthZEN authorization-API shape.</td></tr>
+        <tr><td>AuthZEN (OpenID)</td><td><code data-code="field">authzen</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Reference pattern</span></td><td>KYE<span class="tm">™</span> Decision API maps onto the AuthZEN authorization-API shape.</td></tr>
       </tbody>
     </table>
   </div></div>
@@ -101,7 +101,7 @@
     <table class="cmp-table" style="margin-top:14px">
       <thead><tr><th>Integration</th><th>Connector type</th><th>Status</th><th>Notes</th></tr></thead>
       <tbody>
-        <tr><td>Internet payment gateway (IPG)</td><td><code data-code="field">internet_payment_gateway</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Reference pattern</span></td><td>Pre-authorisation hook; KYE authorises the agent before the gateway processes the payment.</td></tr>
+        <tr><td>Internet payment gateway (IPG)</td><td><code data-code="field">internet_payment_gateway</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Reference pattern</span></td><td>Pre-authorisation hook; KYE<span class="tm">™</span> authorises the agent before the gateway processes the payment.</td></tr>
         <tr><td>Mobile payment gateway (MPG)</td><td><code data-code="field">mobile_payment_gateway</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Reference pattern</span></td><td>Same shape as IPG; mobile-flow attestation.</td></tr>
         <tr><td>Card token / vault</td><td><code data-code="field">card_token</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Shipping</span></td><td>Schema rejects raw PAN; token-only references; PCI null CDE.</td></tr>
         <tr><td>Wallet</td><td><code data-code="field">wallet</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Shipping</span></td><td>Wallet-bound spend control; per-instrument scope intersection.</td></tr>
@@ -114,9 +114,9 @@
 
 <section id="kyx" class="section" aria-labelledby="h-kyx">
         <span class="eyebrow">KYC / KYB / KYA</span>
-    <h2 id="h-kyx" class="h-section">Verification providers feed the entity record; KYE binds authority.</h2>
+    <h2 id="h-kyx" class="h-section">Verification providers feed the entity record; KYE<span class="tm">™</span> binds authority.</h2>
   <div class="section-body"><div class="container">
-    <p class="lede">Identity-verification vendors are upstream of the KYE entity record. KYE does not duplicate KYC; it consumes the verification result + the verifier&rsquo;s evidence URI and binds the result into the entity&rsquo;s authority surface.</p>
+    <p class="lede">Identity-verification vendors are upstream of the KYE<span class="tm">™</span> entity record. KYE<span class="tm">™</span> does not duplicate KYC; it consumes the verification result + the verifier&rsquo;s evidence URI and binds the result into the entity&rsquo;s authority surface.</p>
     <table class="cmp-table" style="margin-top:14px">
       <thead><tr><th>Integration shape</th><th>Connector type</th><th>Status</th><th>Notes</th></tr></thead>
       <tbody>
@@ -153,7 +153,7 @@
     <table class="cmp-table" style="margin-top:14px">
       <thead><tr><th>Integration shape</th><th>Connector type</th><th>Status</th><th>Notes</th></tr></thead>
       <tbody>
-        <tr><td>GRC platform (AuditBoard / Vanta / Drata / OneTrust)</td><td><code data-code="field">grc</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Reference pattern</span></td><td>KYE evidence packs feed the platform&rsquo;s evidence repository; control-mapping JSON exports.</td></tr>
+        <tr><td>GRC platform (AuditBoard / Vanta / Drata / OneTrust)</td><td><code data-code="field">grc</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Reference pattern</span></td><td>KYE<span class="tm">™</span> evidence packs feed the platform&rsquo;s evidence repository; control-mapping JSON exports.</td></tr>
         <tr><td>Control-mapping export</td><td><code data-code="field">control_mapping</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Shipping</span></td><td>266 control mappings across 13 horizontal frameworks (SOC 2, ISO 27001, PCI DSS, PSD2/3, DORA, NIS2, EU AI Act, ISO 42001, NIST AI RMF, NIST 800-207, NIST CSF, GDPR, FedRAMP) plus sector overlays.</td></tr>
         <tr><td>Self-audit attestation</td><td><code data-code="field">self_audit</code></td><td><span class="kye-badge" data-badge-cat="capability" data-badge-size="sm">Shipping</span></td><td>Native: <code>kye-self-audit-attestation-v1</code> profile.</td></tr>
       </tbody>
