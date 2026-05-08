@@ -212,6 +212,69 @@
   <link rel="openid-configuration" href="/.well-known/openid-configuration" type="application/json" />
   <link rel="alternate" href="/llms.txt" type="text/plain" title="LLM-readable summary" />
   <link rel="alternate" href="/index.md" type="text/markdown" title="Markdown version" />
+  <style>
+    /* ============== Option-Z hero (single-fold demo + roles + chips) ============== */
+    .hero-z .hz-inner { padding-top: 36px; padding-bottom: 28px; }
+    .hz-cols { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 36px; align-items: start; }
+    @media (max-width: 880px) { .hz-cols { grid-template-columns: 1fr; gap: 24px; } }
+    .hz-title { font-size: clamp(34px, 5vw, 54px); line-height: 1.05; margin: 14px 0 10px; letter-spacing: -0.02em; }
+    .hz-lede  { font-size: 17px; line-height: 1.55; color: var(--text, #111); max-width: 56ch; margin: 0 0 18px; }
+    @media (max-width: 600px) { .hz-lede { font-size: 15px; } }
+    .hz-roles { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+    .hz-role  { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--text-muted, #888) 25%, transparent); background: var(--paper, #fff); color: var(--text, #111); text-decoration: none; font-size: 13.5px; font-weight: 600; transition: background .15s, border-color .15s, transform .15s; }
+    .hz-role:hover { background: color-mix(in srgb, var(--accent, #1a8754) 8%, transparent); border-color: var(--accent, #1a8754); color: var(--accent, #1a8754); transform: translateY(-1px); }
+    .hz-role .ms   { font-size: 17px; }
+    .hz-cta { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 14px; }
+    .hz-trust { list-style: none; margin: 28px 0 0; padding: 18px 0 0; display: flex; flex-wrap: wrap; gap: 18px 28px; border-top: 1px solid color-mix(in srgb, var(--text-muted, #888) 18%, transparent); font-size: 13.5px; color: var(--text-muted, #6b7280); }
+    .hz-trust li { padding: 0; }
+    .hz-trust strong { color: var(--text, #111); font-weight: 700; margin-right: 4px; }
+
+    /* Demo strip — 5 frames cycle every 12 s, fade in/out */
+    .hz-demo {
+      position: relative; display: block; aspect-ratio: 4 / 3;
+      max-width: 460px; width: 100%; margin: 0 0 0 auto;
+      background: linear-gradient(140deg, color-mix(in srgb, var(--accent, #1a8754) 14%, var(--paper, #fff)) 0%, var(--paper, #fff) 65%);
+      border: 1px solid color-mix(in srgb, var(--accent, #1a8754) 30%, transparent);
+      border-radius: 14px; padding: 22px; overflow: hidden;
+      text-decoration: none; color: var(--text, #111);
+      box-shadow: 0 8px 32px -16px color-mix(in srgb, var(--accent, #1a8754) 40%, transparent);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .hz-demo:hover { transform: translateY(-2px); box-shadow: 0 14px 40px -16px color-mix(in srgb, var(--accent, #1a8754) 55%, transparent); }
+    .hz-demo-frame {
+      position: absolute; inset: 22px 22px 56px; opacity: 0;
+      display: flex; flex-direction: column; gap: 8px;
+      animation: hzDemo 12s infinite;
+    }
+    .hz-demo-frame.f1 { animation-delay: 0s; }
+    .hz-demo-frame.f2 { animation-delay: 2.4s; }
+    .hz-demo-frame.f3 { animation-delay: 4.8s; }
+    .hz-demo-frame.f4 { animation-delay: 7.2s; }
+    .hz-demo-frame.f5 { animation-delay: 9.6s; }
+    @keyframes hzDemo {
+      0%, 1%   { opacity: 0; transform: translateY(8px); }
+      4%, 18%  { opacity: 1; transform: translateY(0); }
+      22%, 100%{ opacity: 0; transform: translateY(-4px); }
+    }
+    .hz-demo-step  { display: inline-block; font-size: 11px; font-weight: 700; color: var(--accent, #1a8754); text-transform: uppercase; letter-spacing: 0.6px; }
+    .hz-demo strong{ font-size: 22px; line-height: 1.15; font-weight: 700; }
+    .hz-demo-line  { font-size: 13.5px; color: var(--text-muted, #6b7280); line-height: 1.45; }
+    .hz-demo-chip  { align-self: flex-start; font-size: 11.5px; padding: 4px 10px; border-radius: 999px; font-weight: 600; }
+    .hz-demo-chip.warn { background: rgba(180,114,0,0.14);  color: #B47200; }
+    .hz-demo-chip.info { background: rgba(26,115,232,0.14); color: #1A73E8; }
+    .hz-demo-chip.ok   { background: rgba(26,135,84,0.16);  color: #1A8754; }
+    .hz-demo-tap   { position: absolute; left: 22px; right: 22px; bottom: 18px; font-size: 11.5px; font-weight: 700; color: var(--accent, #1a8754); text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* Six-primitive grid */
+    .cn-card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    @media (max-width: 720px) { .cn-card-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 460px) { .cn-card-grid { grid-template-columns: 1fr; } }
+    .cn-card { display: flex; flex-direction: column; gap: 6px; padding: 16px; border-radius: 10px; border: 1px solid color-mix(in srgb, var(--text-muted, #888) 18%, transparent); background: var(--paper, #fff); text-decoration: none; color: var(--text, #111); transition: border-color .15s, transform .15s; }
+    .cn-card:hover { border-color: var(--accent, #1a8754); transform: translateY(-1px); }
+    .cn-card .ms { font-size: 22px; color: var(--accent, #1a8754); }
+    .cn-card strong { font-size: 15px; }
+    .cn-card span { font-size: 13px; color: var(--text-muted, #6b7280); }
+  </style>
 </head>
 <body>
 
@@ -221,85 +284,98 @@
 
 <main id="main" role="main">
 
-<section id="top" class="hero" aria-labelledby="hero-title">
+<section id="top" class="hero hero-z" aria-labelledby="hero-title">
   <div class="hero-grid"></div>
   <div class="hero-bg"></div>
-  <div class="container hero-inner">
-    <span class="hero-pill"><span class="dot"></span> v1.0 &middot; open standard &middot; entity authority protocol for AI governance</span>
-    <a class="version-pill" href="https://github.com/KYE-Protocol/.github/releases" target="_blank" rel="noopener" aria-label="View v1.0 release notes on GitHub"><span class="dot"></span> v1.0.0 &middot; release notes</a>
-    <h1 id="hero-title">
-      The <span class="accent">Entity Authority Protocol</span><br/>
-      for AI Governance.
-    </h1>
-    <p class="lede">
-      <strong>KYE Protocol<span class="tm">™</span></strong> proves <em>who or what is acting</em>, <em>on behalf of whom</em>, using <em>which capability</em>, under <em>what authority</em>, <em>in what state</em>, and with <em>what audit trail</em> &mdash; for every action a human, business, AI agent, service, model, tool or workflow takes.
-    </p>
-    <p class="lede" style="margin-top:8px;color:var(--text-muted)">
-      The technical and evidentiary foundation for <strong>Authority Finality<span class="tm">™</span></strong>: a replayable proof layer for accountability, compliance, dispute resolution, and legally defensible audit trails in agentic systems.
-    </p>
-    <div class="hero-cta">
-      <a href="whitepaper.html" class="btn btn-secondary">Read the whitepaper</a>
-      <a href="https://github.com/KYE-Protocol" target="_blank" rel="noopener" class="btn btn-ghost">Docs &amp; SDKs &rarr;</a>
-    </div>
-    <div class="kye-badge-strip" aria-label="KYE Protocol capability badges" style="margin-top:14px">
-      <a href="glossary.html#authority-finality" class="kye-badge" data-badge-cat="capability" data-badge-size="sm"><span class="ms">verified</span>Authority Finality<span class="tm">™</span></a>
-      <a href="widgets.html#dm"          class="kye-badge" data-badge-cat="capability" data-badge-size="sm"><span class="ms">account_tree</span>Decision Map<span class="tm">™</span></a>
-      <a href="widgets.html#evidence"    class="kye-badge" data-badge-cat="capability" data-badge-size="sm"><span class="ms">verified_user</span>Evidence Pack<span class="tm">™</span></a>
-      <a href="mcp.html"                 class="kye-badge" data-badge-cat="capability" data-badge-size="sm"><span class="ms">smart_toy</span>MCP-ready</a>
-      <a href="connectors.html"          class="kye-badge" data-badge-cat="capability" data-badge-size="sm"><span class="ms">extension</span>Connector-ready</a>
-      <a href="certification.html#ladder" class="kye-badge" data-badge-cat="capability" data-badge-size="sm"><span class="ms">workspace_premium</span>Conformance-ready</a>
-      <a href="sovereign-ai.html"        class="kye-badge" data-badge-cat="profile"    data-badge-size="sm"><span class="ms">public</span>Sovereign AI Profile<span class="tm">™</span></a>
+  <div class="container hero-inner hz-inner">
+
+    <div class="hz-cols">
+      <div class="hz-text">
+        <span class="hero-pill"><span class="dot"></span> Entity Authority Protocol &middot; v1.0 frozen April 2026</span>
+        <h1 id="hero-title" class="hz-title">Open contract for <span class="accent">who-acted-and-why</span>.</h1>
+        <p class="hz-lede">KYE Protocol<span class="tm">™</span> turns every action a human, business, AI agent, service, model, tool or workflow takes into a signed, replayable record &mdash; <em>before</em> the action runs.</p>
+
+        <div class="hz-roles" role="tablist" aria-label="Pick your role">
+          <a href="developers.html"                  class="hz-role" role="tab"><span class="ms">code</span><span>Developer</span></a>
+          <a href="buyers.html#persona-board"        class="hz-role" role="tab"><span class="ms">business_center</span><span>Buyer</span></a>
+          <a href="buyers.html#persona-auditors"     class="hz-role" role="tab"><span class="ms">verified_user</span><span>Auditor</span></a>
+          <a href="buyers.html#persona-regulators"   class="hz-role" role="tab"><span class="ms">gavel</span><span>Regulator</span></a>
+          <a href="value.html#people"                class="hz-role" role="tab"><span class="ms">groups</span><span>Civil society</span></a>
+        </div>
+
+        <div class="hero-cta hz-cta">
+          <a href="sandbox.html" class="btn btn-primary"><span class="ms">science</span> Try the sandbox</a>
+          <a href="whitepaper.html" class="btn btn-secondary"><span class="ms">menu_book</span> Whitepaper</a>
+          <a href="value.html" class="btn btn-ghost"><span class="ms">auto_graph</span> Why it exists</a>
+        </div>
+      </div>
+
+      <a href="sandbox.html" class="hz-demo" aria-label="Live demo: agent request → KYE check → approval → Decision Map → Evidence Pack. Tap to open the sandbox.">
+        <div class="hz-demo-frame f1">
+          <span class="hz-demo-step">1 · Request</span>
+          <strong>Shopping Agent</strong>
+          <span class="hz-demo-line">£34.99 · phone charger · Example Retailer</span>
+          <span class="hz-demo-chip warn">pending authorisation</span>
+        </div>
+        <div class="hz-demo-frame f2">
+          <span class="hz-demo-step">2 · KYE<span class="tm">™</span> checks</span>
+          <strong>Scope · state · policy</strong>
+          <span class="hz-demo-line">delegation active · scope match · over threshold £25</span>
+          <span class="hz-demo-chip info">authorising&hellip;</span>
+        </div>
+        <div class="hz-demo-frame f3">
+          <span class="hz-demo-step">3 · Decision</span>
+          <strong>require_approval</strong>
+          <span class="hz-demo-line">amount above approval threshold</span>
+          <span class="hz-demo-chip warn">approval requested</span>
+        </div>
+        <div class="hz-demo-frame f4">
+          <span class="hz-demo-step">4 · Decision Map<span class="tm">™</span></span>
+          <strong>principal &rarr; agent &rarr; capability</strong>
+          <span class="hz-demo-line">authority &rarr; scope &rarr; state &rarr; policy &rarr; decision</span>
+          <span class="hz-demo-chip ok">signed graph</span>
+        </div>
+        <div class="hz-demo-frame f5">
+          <span class="hz-demo-step">5 · Evidence Pack<span class="tm">™</span></span>
+          <strong>Ed25519 · replayable offline</strong>
+          <span class="hz-demo-line">audit-event · payload-hash · signature</span>
+          <span class="hz-demo-chip ok">verified with public keys</span>
+        </div>
+        <span class="hz-demo-tap">tap to try in the browser &rarr;</span>
+      </a>
     </div>
 
-    <div class="stat-strip" id="hero-stats">
-      <div class="stat-cell"><div class="stat-num" data-end="193">0</div><div class="stat-label">OpenAPI operations</div></div>
-      <div class="stat-cell"><div class="stat-num" data-end="40">0</div><div class="stat-label">Conformance fixtures passed</div></div>
-      <div class="stat-cell"><div class="stat-num" data-end="294">0</div><div class="stat-label">Tests passing across SDKs + Gateway</div></div>
-      <div class="stat-cell"><div class="stat-num" data-end="266">0</div><div class="stat-label">Compliance-control mappings</div></div>
-    </div>
+    <ul class="hz-trust" aria-label="Trust chips">
+      <li><strong>50</strong> profiles</li>
+      <li><strong>41 / 41</strong> conformance</li>
+      <li><strong>266</strong> control mappings</li>
+      <li><strong>13</strong> frameworks</li>
+      <li><strong>3</strong> SDKs</li>
+      <li><strong>v1.0</strong> frozen Apr 2026</li>
+    </ul>
   </div>
 </section>
 
 <section id="why" class="section" aria-labelledby="h-why">
-        <span class="eyebrow">Why this matters</span>
+  <div class="container">
+    <span class="eyebrow">Why this exists</span>
     <h2 id="h-why" class="h-section">AI-agent accountability is now a <span class="accent">board-level liability</span>.</h2>
-  <div class="section-body">
-    <div class="container">
-    <p class="lede">Boards, CIOs, risk officers, and compliance teams need replayable proof that an agent action was authorised, by whom, within what limits, in what state, and with what evidence. The full per-stakeholder breakdown lives on the buyers page.</p>
-    <div class="hero-cta" style="margin-top:14px"><a href="buyers.html#stakeholders" class="btn btn-primary"><span class="ms">business_center</span> See per-stakeholder view &rarr;</a></div>
+    <div class="vl-grid" style="grid-template-columns:1fr 1fr;gap:14px;margin-top:14px">
+      <div class="vl-card"><h4>The gap</h4><p>An AI agent calls five services with five different identities. Stop signals don&rsquo;t cross system boundaries. Auditors can&rsquo;t reconstruct what happened. Regulators (EU AI Act, DORA, NIS2, PSD3, ISO 42001, NIST AI RMF) want a <em>chain of authority</em> &mdash; not an OAuth token.</p></div>
+      <div class="vl-card"><h4>The contract</h4><p>One URN format. One delegation chain. One decision vocabulary. One cascading bus. One signed proof. The same answer in every system to <em>who acted, on whose behalf, with what authority, under what scope, with what evidence?</em></p></div>
+      <div class="vl-card"><h4>Three legs to stand on</h4><p>Regulatory tailwind &middot; composes with OAuth / SPIFFE / MCP / KYC / KYA &middot; implementable today on Apache 2.0 schemas + reference Gateway + 41-fixture conformance pack.</p></div>
+      <div class="vl-card"><h4>The metaphor</h4><p>KYE<span class="tm">™</span> produces the <strong>KYE Chain of Authority<span class="tm">™</span></strong> the way digital signatures produce chain-of-custody for documents. Courts already accept signed documents; KYE<span class="tm">™</span> gives them signed delegations.</p></div>
     </div>
   </div>
 </section>
 
-<section id="why-protocol" class="section alt" aria-labelledby="h-why-protocol">
-        <span class="eyebrow">Why &ldquo;protocol&rdquo;</span>
-    <h2 id="h-why-protocol" class="h-section">The <span class="accent">rules of engagement</span> for the AI game.</h2>
-  <div class="section-body">
-    <div class="container">
-    <p class="lede">KYE<span class="tm">™</span> is a protocol because it defines the rules of engagement for the AI game &mdash; <em>who can do what, on whose behalf, with what proof</em> &mdash; in a form that any two independent implementations can follow and verify the same way, without trusting each other or asking us. Six properties make it one:</p>
-    <ul class="biz-list" style="margin-top:14px">
-      <li><strong>Message format.</strong> 69 JSON Schemas + 193 OpenAPI operations + URN identifier scheme. Two implementations talk to each other byte-for-byte the same.</li>
-      <li><strong>State semantics.</strong> Six-dimension state model with defined transitions; cascade contract on revocation; idempotency contract on every state-changing endpoint.</li>
-      <li><strong>Wire contract.</strong> HTTP-level. RFC 7807 problem+json. Crypto-suite negotiation. Version negotiation header.</li>
-      <li><strong>Extensibility.</strong> 50 v1.0 profiles compose without modifying Core.</li>
-      <li><strong>Conformance.</strong> 41 black-box fixtures any implementation runs the same way.</li>
-      <li><strong>Multi-party.</strong> Actor, principal, gateway, auditor, signal subscriber are independent parties exchanging signed artefacts.</li>
-    </ul>
-    <p class="lede" style="margin-top:18px;font-style:italic">Right metaphor: KYE<span class="tm">™</span> produces the <strong>KYE Chain of Authority<span class="tm">™</span></strong> the way digital signatures produce chain-of-custody for documents. Courts already accept signed documents; KYE<span class="tm">™</span> gives them signed delegations.</p>
-    </div>
-  </div>
-</section>
-
-<section id="what" class="section" aria-labelledby="h-what">
-        <span class="eyebrow">What it is</span>
+<section id="what" class="section alt" aria-labelledby="h-what">
+  <div class="container">
+    <span class="eyebrow">What it is</span>
     <h2 id="h-what" class="h-section">In one sentence: <span class="accent">the open contract for who-acted-and-why.</span></h2>
-  <div class="section-body" id="what-body">
-    <div class="container">
     <div class="what-card">
       <div class="def-tag">Definition</div>
-      <p class="what-def">
-        KYE Protocol<span class="tm">™</span> is the open <span class="accent">identity, authority, scope, state and audit</span> layer for every action a human, business, AI agent, service, model, tool or workflow takes &mdash; one URN, one delegation chain, one decision vocabulary, one cascading bus, one signed proof.
-      </p>
+      <p class="what-def">KYE Protocol<span class="tm">™</span> is the open <span class="accent">identity, authority, scope, state and audit</span> layer for every action a human, business, AI agent, service, model, tool or workflow takes &mdash; one URN, one delegation chain, one decision vocabulary, one cascading bus, one signed proof.</p>
       <ul class="what-def-gloss">
         <li><strong>Identity</strong> &mdash; <em>proves who you are.</em> Every actor (human, business, agent, service, model, tool, workflow) has one URN, verifiable across vendors.</li>
         <li><strong>Authority</strong> &mdash; <em>proves what you&rsquo;re allowed to do.</em> A signed delegation chain back to a human or business; revocable in milliseconds, recursively.</li>
@@ -307,229 +383,54 @@
         <li><strong>State</strong> &mdash; <em>proves the conditions right now.</em> Six independent dimensions: lifecycle, authority, delegation, credential, recovery, risk. Each transitions independently.</li>
         <li><strong>Audit</strong> &mdash; <em>proves the full record forever.</em> Append-only chain, signed proof bundle, point-in-time replay; an external auditor verifies with public keys alone.</li>
       </ul>
-      <div class="what-grid">
-        <div class="what-row">
-          <div class="what-icon" aria-hidden="true"><span class="ms">link</span></div>
-          <div>
-            <p class="what-h">It's a protocol &mdash; not a product</p>
-            <p class="what-b">Open vocabulary, JSON Schemas, OpenAPI, conformance fixtures. Apache 2.0. Drop in, fork, extend.</p>
-          </div>
-        </div>
-        <div class="what-row">
-          <div class="what-icon" aria-hidden="true"><span class="ms">layers</span></div>
-          <div>
-            <p class="what-h">It's the layer above your stack</p>
-            <p class="what-b">Composes with OAuth, SPIFFE, MCP, OpenID, KYC and KYA. Doesn't replace them.</p>
-          </div>
-        </div>
-        <div class="what-row">
-          <div class="what-icon" aria-hidden="true"><span class="ms">verified</span></div>
-          <div>
-            <p class="what-h">It produces verifiable proof</p>
-            <p class="what-b">Every decision is signed evidence an external auditor can verify with public keys alone.</p>
-          </div>
-        </div>
-      </div>
+      <p style="margin:14px 0 0;font-size:13.5px;color:var(--text-muted,#6b7280)">More: <a href="value.html" style="color:var(--accent);text-decoration:underline">why it exists / what it adds &rarr;</a> &middot; <a href="protocol.html" style="color:var(--accent);text-decoration:underline">technical reference &rarr;</a> &middot; <a href="whitepaper.html" style="color:var(--accent);text-decoration:underline">whitepaper &rarr;</a></p>
     </div>
-  </div>
-  </div>
-</section>
-
-<section id="authority-finality" class="section alt" aria-labelledby="h-af">
-        <span class="eyebrow">From access control to Authority Finality<span class="tm">™</span></span>
-    <h2 id="h-af" class="h-section">Traditional IAM answers <em>who logged in</em>. <span class="accent">KYE<span class="tm">™</span> answers everything that comes after.</span></h2>
-  <div class="section-body" id="authority-finality-body">
-    <div class="container">
-    <p class="lede">Identity tells you the front door. <strong>KYE Protocol<span class="tm">™</span></strong> tells you what happened on the other side. We call this <strong>Authority Finality<span class="tm">™</span></strong>: a replayable proof layer for AI-agent actions.</p>
-
-    <div class="af-diagram" data-af-interactive aria-label="Traditional IAM versus Authority Finality">
-      <article class="af-block af-block-then" aria-labelledby="af-then-h">
-        <span class="af-block-eyebrow">The yesterday view</span>
-        <h3 id="af-then-h" class="af-block-h">Traditional IAM</h3>
-        <p class="af-block-sub">Stops at the front door.</p>
-        <ul class="af-block-points">
-          <li data-af-pain="authority"><span class="ms" aria-hidden="true">login</span><span>Principal authenticated</span></li>
-          <li data-af-pain="capability"><span class="ms" aria-hidden="true">key</span><span>Token scopes (frozen)</span></li>
-          <li data-af-pain="identity"><span class="ms" aria-hidden="true">help</span><span>No agent identity</span></li>
-          <li data-af-pain="delegation"><span class="ms" aria-hidden="true">help</span><span>No delegation chain</span></li>
-          <li data-af-pain="state"><span class="ms" aria-hidden="true">help</span><span>No state model</span></li>
-          <li data-af-pain="audit"><span class="ms" aria-hidden="true">help</span><span>No proof for auditors</span></li>
-        </ul>
-      </article>
-
-      <div class="af-arrow" aria-hidden="true">
-        <svg class="af-arrow-h" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="af-arrow-grad-h" x1="0" x2="1" y1="0" y2="0">
-              <stop offset="0%"  stop-color="rgba(120,128,140,0.50)"/>
-              <stop offset="60%" stop-color="rgba(26,135,84,0.85)"/>
-              <stop offset="100%" stop-color="rgba(26,135,84,1)"/>
-            </linearGradient>
-          </defs>
-          <line class="af-arrow-line" x1="10" y1="30" x2="170" y2="30"
-                stroke="url(#af-arrow-grad-h)" stroke-width="3" stroke-linecap="round"/>
-          <polyline points="160,18 180,30 160,42"
-                fill="none" stroke="rgba(26,135,84,1)" stroke-width="3"
-                stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <svg class="af-arrow-v" viewBox="0 0 60 120" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="af-arrow-grad-v" x1="0" x2="0" y1="0" y2="1">
-              <stop offset="0%"  stop-color="rgba(120,128,140,0.50)"/>
-              <stop offset="60%" stop-color="rgba(26,135,84,0.85)"/>
-              <stop offset="100%" stop-color="rgba(26,135,84,1)"/>
-            </linearGradient>
-          </defs>
-          <line class="af-arrow-line" x1="30" y1="8" x2="30" y2="100"
-                stroke="url(#af-arrow-grad-v)" stroke-width="3" stroke-linecap="round"/>
-          <polyline points="18,90 30,108 42,90"
-                fill="none" stroke="rgba(26,135,84,1)" stroke-width="3"
-                stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span class="af-arrow-label">becomes</span>
-      </div>
-
-      <article class="af-block af-block-now" aria-labelledby="af-now-h">
-        <span class="af-block-eyebrow">The KYE<span class="tm">™</span> view</span>
-        <h3 id="af-now-h" class="af-block-h">Authority Finality<span class="tm">™</span></h3>
-        <p class="af-block-sub">A replayable proof layer for everything that happens after. <span class="af-hint">Tap a card to see the gap it closes.</span></p>
-        <ul class="af-dim-grid">
-          <li class="af-dim" data-af-dim="identity"   tabindex="0" aria-pressed="false"><span class="ms" aria-hidden="true">person</span><span class="af-dim-h">Identity</span><span class="af-dim-b">One URN across humans, agents, services, models, tools, workflows.</span></li>
-          <li class="af-dim" data-af-dim="delegation" tabindex="0" aria-pressed="false"><span class="ms" aria-hidden="true">link</span><span class="af-dim-h">Delegation</span><span class="af-dim-b">Signed chain back to a human or business at the top.</span></li>
-          <li class="af-dim" data-af-dim="capability" tabindex="0" aria-pressed="false"><span class="ms" aria-hidden="true">extension</span><span class="af-dim-h">Capability</span><span class="af-dim-b">First-class skills, tools, MCP tools, functions, playbooks.</span></li>
-          <li class="af-dim" data-af-dim="authority"  tabindex="0" aria-pressed="false"><span class="ms" aria-hidden="true">tune</span><span class="af-dim-h">Authority</span><span class="af-dim-b">Scope-bound, attenuable, revocable in milliseconds, recursively.</span></li>
-          <li class="af-dim" data-af-dim="state"      tabindex="0" aria-pressed="false"><span class="ms" aria-hidden="true">timeline</span><span class="af-dim-h">State</span><span class="af-dim-b">Six dimensions: lifecycle, authority, delegation, credential, recovery, risk.</span></li>
-          <li class="af-dim" data-af-dim="audit"      tabindex="0" aria-pressed="false"><span class="ms" aria-hidden="true">verified</span><span class="af-dim-h">Audit</span><span class="af-dim-b">Signed proof bundle a regulator can verify with public keys alone.</span></li>
-        </ul>
-      </article>
-    </div>
-
-    <p class="af-foot">KYE<span class="tm">™</span> does not replace legal agreements, signatures, or regulatory obligations. It provides the <strong>technical and evidentiary foundation</strong> for Authority Finality<span class="tm">™</span> in AI-agent systems &mdash; accountability, compliance, dispute resolution, legally defensible audit trails.</p>
-  </div>
   </div>
 </section>
 
 <section id="primitives" class="section" aria-labelledby="h-prim">
-        <span class="eyebrow">The protocol &middot; six clickable primitives</span>
+  <div class="container">
+    <span class="eyebrow">Six protocol primitives</span>
     <h2 id="h-prim" class="h-section">Click into <span class="accent">any primitive</span> for schema, endpoint, example.</h2>
-  <div class="section-body"><div class="container">
-    <p class="lede">KYE Protocol<span class="tm">™</span> is built on six primitives. Each is a real protocol object &mdash; schema, endpoint, JSON example, decision role, audit event &mdash; not abstract copy. Each card opens its dedicated section on the concepts page, including an open-banking / payment-initiation flow.</p>
-    <div class="prim-grid" style="margin-top:18px">
-      <a href="concepts.html#identity"     class="prim-card" data-prim="identity"><span class="ms">person</span><strong>Identity</strong><span>One URN per actor &mdash; humans, agents, services, models, tools, businesses.</span><em>schema &middot; endpoint &middot; example &rarr;</em></a>
-      <a href="concepts.html#on-behalf-of" class="prim-card" data-prim="obo"><span class="ms">link</span><strong>On-Behalf-Of</strong><span>Signed delegation chain; binds every action back to a human or business.</span><em>schema &middot; endpoint &middot; flow &rarr;</em></a>
-      <a href="concepts.html#authority"    class="prim-card" data-prim="authority"><span class="ms">tune</span><strong>Authority</strong><span>Scope-bound, recursively revocable, cascade kills children in &lt;&nbsp;1s.</span><em>schema &middot; endpoint &middot; example &rarr;</em></a>
-      <a href="concepts.html#scope"        class="prim-card" data-prim="scope"><span class="ms">filter_alt</span><strong>Scope</strong><span>Parameter-level constraints. Attenuation invariant: child &sube; parent.</span><em>schema &middot; endpoint &middot; example &rarr;</em></a>
-      <a href="concepts.html#state"        class="prim-card" data-prim="state"><span class="ms">timeline</span><strong>State</strong><span>Six dimensions: lifecycle, authority, delegation, credential, recovery, risk.</span><em>schema &middot; endpoint &middot; example &rarr;</em></a>
-      <a href="concepts.html#audit"        class="prim-card" data-prim="audit"><span class="ms">verified</span><strong>Audit</strong><span>Signed evidence packs verifiable offline with public keys alone.</span><em>schema &middot; endpoint &middot; example &rarr;</em></a>
-    </div>
-  </div></div>
-</section>
-
-<section id="three-legs" class="section alt" aria-labelledby="h-three-legs">
-        <span class="eyebrow">Why it stands up</span>
-    <h2 id="h-three-legs" class="h-section">Three legs to stand on.</h2>
-  <div class="section-body">
-    <div class="container">
-    <div class="prim-grid" style="margin-top:14px">
-      <div class="prim-card"><span class="ms">gavel</span><strong>Regulatory tailwind</strong><span>EU AI Act Title III (2024/1689), DORA (2022/2554), PSD3, NIS2, NIST AI RMF, ISO 42001 each require some form of <em>prove who authorised the AI action</em>. That is mandate, not guess.</span></div>
-      <div class="prim-card"><span class="ms">hub</span><strong>Composes, doesn&rsquo;t replace</strong><span>OAuth (humans), SPIFFE (workloads), MCP (tool calls), KYA vendors (agent passports) all solve slices. KYE<span class="tm">™</span> is the layer above that binds them. Composing is harder to disrupt than replacing.</span></div>
-      <div class="prim-card"><span class="ms">verified</span><strong>Implementable today</strong><span>50 v1.0 profiles &middot; 41 conformance fixtures (41 / 41 pass) &middot; 3 SDKs (67/67 + 51/53 + Go pass) &middot; reference Gateway (141/141 tests) &middot; 72 / 72 schema-validated examples. The artefacts exist; this isn&rsquo;t vapour.</span></div>
-    </div>
+    <div class="cn-card-grid" style="margin-top:14px">
+      <a href="concepts.html#identity"     class="cn-card"><span class="ms">person</span><strong>Identity</strong><span>One URN per actor.</span></a>
+      <a href="concepts.html#on-behalf-of" class="cn-card"><span class="ms">link</span><strong>On-behalf-of</strong><span>Actor &harr; principal binding.</span></a>
+      <a href="concepts.html#authority"    class="cn-card"><span class="ms">verified</span><strong>Authority</strong><span>Signed, attenuable, revocable.</span></a>
+      <a href="concepts.html#scope"        class="cn-card"><span class="ms">tune</span><strong>Scope</strong><span>Bounds the action.</span></a>
+      <a href="concepts.html#state"        class="cn-card"><span class="ms">timeline</span><strong>State</strong><span>Six independent dimensions.</span></a>
+      <a href="concepts.html#audit"        class="cn-card"><span class="ms">verified_user</span><strong>Audit</strong><span>Append-only · signed · replayable.</span></a>
     </div>
   </div>
 </section>
 
-<section id="try-it" class="section" aria-labelledby="h-try">
-        <span class="eyebrow">Try it &middot; five interactive widgets, no signup</span>
-    <h2 id="h-try" class="h-section">Don&rsquo;t read the spec. <span class="accent">Run it.</span></h2>
-  <div class="section-body"><div class="container">
-    <p class="lede">Five live widgets show the runtime semantics on the page &mdash; no signup, no install. Pick your role and self-route. Simulate an agent purchase and watch KYE<span class="tm">™</span> decide. Walk the Decision Map<span class="tm">™</span> chain. Map the blast radius of a compromise. Replay an evidence pack.</p>
-    <div class="prim-grid" style="margin-top:18px">
-      <a href="widgets.html#sim" class="prim-card"><span class="ms">science</span><strong>Agent-Purchase Simulator</strong><span>7 inputs, 4 live outputs &mdash; runtime decision, Decision Map<span class="tm">™</span>, signed webhook, evidence-pack preview.</span><em>open simulator &rarr;</em></a>
-      <a href="widgets.html#dm" class="prim-card"><span class="ms">account_tree</span><strong>Decision Map<span class="tm">™</span> Viewer</strong><span>Visual chain: principal &rarr; delegation &rarr; actor &rarr; capability &rarr; scope &rarr; state &rarr; policy &rarr; decision.</span><em>open viewer &rarr;</em></a>
-      <a href="widgets.html#blast" class="prim-card"><span class="ms">explosion</span><strong>Blast Radius Map<span class="tm">™</span></strong><span>Pick a compromised subject, see the downstream agents, authorities, capabilities, sessions, webhooks, and required revocations.</span><em>open map &rarr;</em></a>
-      <a href="widgets.html#evidence" class="prim-card"><span class="ms">verified</span><strong>Evidence Pack Viewer<span class="tm">™</span></strong><span>Verify signature offline, replay the bound decision, walk the audit chain, project to SOC 2 / ISO 27001 / EU AI Act / PSD3 / DORA.</span><em>open viewer &rarr;</em></a>
-      <a href="widgets.html#role" class="prim-card"><span class="ms">groups</span><strong>Choose-Your-Role Router</strong><span>9 audience cards &mdash; Bank, CISO, Agent Builder, Open-Banking Architect, Consultant, Audit Firm, Regulator, Partner, Developer &mdash; each routing to the right starting page.</span><em>open router &rarr;</em></a>
-    </div>
-    <div class="hero-cta" style="margin-top:18px">
-      <a href="widgets.html" class="btn btn-primary"><span class="ms">apps</span> All widgets, one page &rarr;</a>
-      <a href="agent-purchasing.html#simulator" class="btn btn-secondary"><span class="ms">credit_card</span> Agent purchasing reference</a>
-    </div>
-  </div></div>
-</section>
-
-<section id="sectors" class="section alt" aria-labelledby="h-sectors">
-        <span class="eyebrow">Sectors</span>
-    <h2 id="h-sectors" class="h-section">One protocol. <span class="accent">Every regulated sector</span>.</h2>
-  <div class="section-body">
-    <div class="container">
-    <p class="lede">Banking, payments, healthcare, treasury, custody, insurance, AI labs, public sector, marketplaces, defence, energy, manufacturing, oil &amp; gas, mining, automotive, maritime, logistics, aviation &mdash; 18 sectors with their profile bundles + framework mappings on the dedicated page.</p>
-    <div class="hero-cta" style="margin-top:14px"><a href="sectors.html" class="btn btn-primary"><span class="ms">apartment</span> Browse 18 sectors &rarr;</a></div>
-    </div>
-  </div>
-</section>
-
-<section id="protocol-callout" class="section" aria-labelledby="h-protocol-callout">
-        <span class="eyebrow">Protocol depth</span>
-    <h2 id="h-protocol-callout" class="h-section">Want the technical layer?</h2>
-  <div class="section-body" id="protocol-callout-body">
-    <div class="container">
-    <p class="lede">Authority Graph<span class="tm">™</span>, Decision Map<span class="tm">™</span>, taxonomy &amp; metadata, runtime &amp; state model, profile inventory, coverage matrix, and the 16 protocol-core principles &mdash; each with diagrams, vocabulary, and reference markup &mdash; live on the dedicated protocol page.</p>
-    <div class="hero-cta" style="margin-top:18px">
-      <a href="protocol.html" class="btn btn-primary"><span class="ms">architecture</span> Read the protocol overview &rarr;</a>
-      <a href="whitepaper.html" class="btn btn-secondary"><span class="ms">menu_book</span> Whitepaper v1.0</a>
-    </div>
-    </div>
-  </div>
-</section>
-
-<section id="essentials" class="section alt" aria-labelledby="h-essentials">
-        <span class="eyebrow">Essentials &middot; deep dives</span>
-    <h2 id="h-essentials" class="h-section">Pages every <span class="accent">due-diligence team</span> reads next.</h2>
-  <div class="section-body" id="essentials-body">
-    <div class="container">
-    <p class="lede">Six dedicated pages: real-world business applications, per-framework references, OSCAL compatibility, AI System Compliance Card<span class="tm">™</span>, the published threat model, and an interactive readiness self-test.</p>
-    <div class="who-mini-grid" style="margin-top:14px">
-      <a href="usecases.html"         class="who-mini" data-who="usecases"><span class="ms">lightbulb</span><strong>Use cases</strong><span>9 real-world business applications &mdash; banking, healthcare, custody, insurance, SaaS, telco, public sector.</span></a>
-      <a href="frameworks.html"       class="who-mini" data-who="frameworks"><span class="ms">fact_check</span><strong>Frameworks</strong><span>13 horizontal + 5 sectoral &mdash; SOC 2, ISO 27001, PCI DSS, PSD3, DORA, NIS2, EU AI Act, ISO 42001, NIST AI RMF, NIST 800-207, NIST CSF, GDPR, FedRAMP + HIPAA, MiCA, FFIEC, IEC 62443, 42 CFR Part 2.</span></a>
-      <a href="oscal.html"            class="who-mini" data-who="oscal"><span class="ms">integration_instructions</span><strong>OSCAL</strong><span>NIST OSCAL compatibility &mdash; component-definition, SSP, assessment-results, POA&amp;M mapping spec.</span></a>
-      <a href="compliance-card.html"  class="who-mini" data-who="card"><span class="ms">badge</span><strong>Compliance card</strong><span>Public-key-verifiable nutrition label for any AI system &mdash; one artefact, every audience.</span></a>
-      <a href="risk.html"             class="who-mini" data-who="risk"><span class="ms">shield</span><strong>Risk &amp; mitigation</strong><span>Published threat model: 10 risks, 10 protocol-level mitigations, honest non-goals.</span></a>
-      <a href="readiness.html"        class="who-mini" data-who="readiness"><span class="ms">checklist</span><strong>Readiness self-test</strong><span>12-question interactive Authority Finality<span class="tm">™</span> assessment with prioritised gap list.</span></a>
-    </div>
-    </div>
-  </div>
-</section>
-
-<section id="engage-router" class="section" aria-labelledby="h-engage-router">
-        <span class="eyebrow">Engagement model &middot; pick your path</span>
+<section id="engage-router" class="section alt" aria-labelledby="h-engage-router">
+  <div class="container">
+    <span class="eyebrow">Engagement &middot; pick your path</span>
     <h2 id="h-engage-router" class="h-section">Now &mdash; <span class="accent">how do you want to engage</span>?</h2>
-  <div class="section-body"><div class="container">
-    <p class="lede">KYE Protocol<span class="tm">™</span> is an open spec with a commercial trust layer &mdash; not a SaaS product. The engagement path is <strong>Learn &rarr; Review &rarr; Build &rarr; Pilot &rarr; Conform &rarr; Certify</strong>. Pick the entry point that fits your role.</p>
+    <p class="lede">KYE Protocol<span class="tm">™</span> is a contract layer with a commercial trust layer &mdash; not a SaaS product. Path: <strong>Learn &rarr; Review &rarr; Build &rarr; Pilot &rarr; Conform &rarr; Certify</strong>. Pick the entry point that fits your role.</p>
     <div class="prim-grid" style="margin-top:18px">
       <a href="engage.html#experts"     class="prim-card"><span class="ms">menu_book</span><strong>Experts</strong><span>Open-banking, payments, IAM, AI-governance, audit. Critique the model.</span><em>review the authority chain &rarr;</em></a>
-      <a href="engage.html#developers"  class="prim-card"><span class="ms">code</span><strong>Developers</strong><span>Schemas, SDKs, decision endpoint, conformance pack. 10-minute path.</span><em>try it in 10 minutes &rarr;</em></a>
+      <a href="engage.html#developers"  class="prim-card"><span class="ms">code</span><strong>Developers</strong><span>Schemas, SDKs, decision endpoint, conformance pack.</span><em>try it in 10 minutes &rarr;</em></a>
       <a href="engage.html#buyers"      class="prim-card"><span class="ms">business_center</span><strong>Buyers</strong><span>Boards / CIO / risk / compliance / legal. Live authority-mapping workshop.</span><em>book the workshop &rarr;</em></a>
       <a href="engage.html#auditors"    class="prim-card"><span class="ms">verified_user</span><strong>Auditors</strong><span>3PAOs, GRC, internal audit. Inspect a signed evidence pack offline.</span><em>request a sample &rarr;</em></a>
       <a href="engage.html#regulators"  class="prim-card"><span class="ms">gavel</span><strong>Regulators</strong><span>Supervisors, examiners, notified bodies. Review the 266 control mappings.</span><em>review mappings &rarr;</em></a>
       <a href="engage.html#partners"    class="prim-card"><span class="ms">handshake</span><strong>Partners</strong><span>IAM / KYC / KYA vendors, MCP hosts, GRC tools. Build a profile.</span><em>integration ladder &rarr;</em></a>
       <a href="engage.html#enterprises" class="prim-card"><span class="ms">apartment</span><strong>Enterprises</strong><span>Banks, insurers, hospitals, federal agencies. 2&ndash;4 week pilot.</span><em>scope a pilot &rarr;</em></a>
     </div>
-  </div></div>
-</section>
-
-<section id="faq-callout" class="section alt" aria-labelledby="h-faq-c">
-        <span class="eyebrow">FAQ</span>
-    <h2 id="h-faq-c" class="h-section">The <span class="accent">three most-asked questions</span>.</h2>
-  <div class="section-body">
-    <div class="container">
-    <details class="faq-item" open><summary>What is Authority Finality<span class="tm">™</span> and how is KYE<span class="tm">™</span> different from IAM?</summary><p>Identity tells you the front door &mdash; KYE Protocol<span class="tm">™</span> tells you what happened on the other side. We call this <strong>Authority Finality<span class="tm">™</span></strong>: a replayable proof layer for AI-agent actions. Every action carries a delegation chain back to a human or business, attenuable scope, signed evidence, and standardised reason codes that any auditor can verify with public keys alone.</p></details>
-    <details class="faq-item"><summary>Is this production ready?</summary><p>The v1.0 contract is bank-grade and frozen as of April 2026 (50 v1.0 normative profiles, 193 OpenAPI operations, 69 schemas, 266 control mappings, 41 conformance fixtures all passing). Reference implementations are pilot-grade (correctness-first, not throughput-tuned). Apache License 2.0.</p></details>
-    <details class="faq-item"><summary>How is KYE<span class="tm">™</span> different from KYA / MCP / SPIFFE / OAuth?</summary><p>KYE<span class="tm">™</span> composes with all of them. OAuth issues credentials; MCP gives agents tool access; SPIFFE handles workload identity; KYA vendors issue agent passports. KYE<span class="tm">™</span> binds these into one open contract that carries delegation, scope, state, decision, and signed audit across every layer.</p></details>
-    <p style="margin-top:18px;text-align:center"><a href="faq.html" class="btn btn-primary"><span class="ms">help</span> See all 18 questions &rarr;</a></p>
-    </div>
   </div>
 </section>
+
+<section id="faq-callout" class="section" aria-labelledby="h-faq-c">
+  <div class="container">
+    <span class="eyebrow">FAQ</span>
+    <h2 id="h-faq-c" class="h-section">The <span class="accent">three most-asked questions</span>.</h2>
+    <details class="faq-item" open><summary>What is Authority Finality<span class="tm">™</span> and how is KYE<span class="tm">™</span> different from IAM?</summary><p>Identity tells you the front door &mdash; KYE Protocol<span class="tm">™</span> tells you what happened on the other side. We call this <strong>Authority Finality<span class="tm">™</span></strong>: a replayable proof layer for AI-agent actions. Every action carries a delegation chain back to a human or business, attenuable scope, signed evidence, and standardised reason codes that any auditor can verify with public keys alone.</p></details>
+    <details class="faq-item"><summary>Is this production ready?</summary><p>The v1.0 contract is bank-grade and frozen as of April 2026 (50 v1.0 normative profiles, 193 OpenAPI operations, 69 schemas, 266 control mappings, 41 conformance fixtures all passing). Reference implementations are pilot-grade (correctness-first, not throughput-tuned).</p></details>
+    <details class="faq-item"><summary>How is KYE<span class="tm">™</span> different from KYA / MCP / SPIFFE / OAuth?</summary><p>KYE<span class="tm">™</span> composes with all of them. OAuth issues credentials; MCP gives agents tool access; SPIFFE handles workload identity; KYA vendors issue agent passports. KYE<span class="tm">™</span> binds these into one open contract that carries delegation, scope, state, decision, and signed audit across every layer.</p></details>
+    <p class="lede" style="margin-top:18px;font-size:14px"><a href="faq.html" style="color:var(--accent);text-decoration:underline">25 more &mdash; full FAQ &rarr;</a></p>
+  </div>
+</section>
+
 
 </main>
 

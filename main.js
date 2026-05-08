@@ -147,10 +147,14 @@ initWebMcp();
     })));
 })();
 
-/* FAQ audience filter — tabs filter <details class="faq-item" data-faq-aud="..."> */
+/* FAQ audience filter — tabs filter <details class="faq-item" data-faq-aud="...">
+ * Also hides .faq-group-h section headers whose siblings are all hidden, so
+ * a category with zero matching items doesn't show an orphan heading.
+ */
 (function initFaqFilter() {
   const tabs = document.querySelectorAll('.faq-filter');
   const items = document.querySelectorAll('.faq-item');
+  const headers = document.querySelectorAll('.faq-group-h');
   if (!tabs.length || !items.length) return;
   function apply(aud) {
     tabs.forEach(t => {
@@ -162,6 +166,16 @@ initWebMcp();
       const auds = (it.dataset.faqAud || 'all').split(/\s+/);
       const show = aud === 'all' || auds.includes(aud) || auds.includes('all');
       it.classList.toggle('faq-hidden', !show);
+    });
+    // Hide a group header iff every following sibling .faq-item up to the next
+    // .faq-group-h is hidden.
+    headers.forEach(h => {
+      let n = h.nextElementSibling, anyVisible = false;
+      while (n && !n.classList.contains('faq-group-h')) {
+        if (n.classList.contains('faq-item') && !n.classList.contains('faq-hidden')) { anyVisible = true; break; }
+        n = n.nextElementSibling;
+      }
+      h.classList.toggle('faq-hidden', !anyVisible);
     });
   }
   tabs.forEach(t => t.addEventListener('click', () => apply(t.dataset.faqFilter)));
