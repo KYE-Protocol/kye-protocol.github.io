@@ -141,7 +141,14 @@
       <li><strong>How it ships:</strong> 50 v1.0 normative profiles, 69 JSON Schemas with 69 validated examples, 266 control mappings across 13 frameworks, three reference SDKs (TypeScript / Python / Go), 41 black-box conformance fixtures, vendor-neutral.</li>
       <li><strong>Where it fits:</strong> on top of your existing identity / authorization / audit stack &mdash; not instead of it. Keep Okta, SPIFFE, Cerbos, OPA, your SIEM. KYE<span class="tm">™</span> wires them into one open contract that produces a single decision and a single audit chain.</li>
       <li><strong>What it gives the board:</strong> defensible accountability for every AI-agent action. <strong>Authority Finality<span class="tm">™</span></strong>: replayable proof of who or what acted, on whose authority, within what limits, in what state, and with what audit trail.</li>
-      <li><strong>What it gives auditors:</strong> a Decision Map<span class="tm">™</span> per decision, an Evidence Graph<span class="tm">™</span> linking decisions to authority grants and capability manifests, a Blast Radius Map<span class="tm">™</span> for compromise impact, a Compliance Map<span class="tm">™</span> to framework controls.</li>
+      <li><strong>What it gives auditors:</strong>
+        <ul>
+          <li>Decision Map<span class="tm">™</span> per decision.</li>
+          <li>Evidence Graph<span class="tm">™</span> linking decisions to authority grants + capability manifests.</li>
+          <li>Blast Radius Map<span class="tm">™</span> for compromise impact.</li>
+          <li>Compliance Map<span class="tm">™</span> to framework controls.</li>
+        </ul>
+      </li>
     </ul>
   </div>
 </section>
@@ -154,7 +161,7 @@
       <li><strong>Audit prep: weeks &rarr; minutes.</strong> Auditors fetch a signed evidence pack from a URL. Verify with public keys. No interviews, no log archaeology, no spreadsheet reconciliation. KYE Compliance Mapping Rail<span class="tm">™</span> binds every runtime event to the control it satisfies.</li>
       <li><strong>Incident response: hours &rarr; milliseconds.</strong> Compromised credential? One stop signal cascades through every delegation, payment authority, capability grant, and active session. Before you revoke, see the Blast Radius Map<span class="tm">™</span> &mdash; what breaks, what stays safe, what needs migration.</li>
       <li><strong>Vendor diligence: months &rarr; afternoon.</strong> Every conformant gateway exports the same evidence-pack format. Run the 41-fixture conformance pack against any vendor stack &mdash; pass / fail in minutes, byte-for-byte the same as the reference Gateway.</li>
-      <li><strong>Regulator engagement: defensive &rarr; proactive.</strong> Hand the regulator a signed evidence pack mapped to their control framework (SOC 2, ISO 27001, PCI DSS 4.0, PSD3, DORA, NIS2, EU AI Act, ISO 42001, NIST AI RMF, NIST 800-207, NIST CSF, GDPR, FedRAMP) plus sector overlays. 13 horizontal frameworks, one evidence layer.</li>
+      <li><strong>Regulator engagement: defensive &rarr; proactive.</strong> Hand the regulator a signed evidence pack mapped to their control framework. 13 horizontal frameworks (SOC 2, ISO 27001, PCI DSS 4.0, PSD3, DORA, NIS2, EU AI Act, ISO 42001, NIST AI RMF, NIST 800-207, NIST CSF, GDPR, FedRAMP) plus sector overlays &mdash; one evidence layer.</li>
       <li><strong>Cross-vendor disputes: reconstructed &rarr; replayable.</strong> When two vendors disagree about who authorised what, you don&rsquo;t reconcile two log formats. You replay the same signed audit chain.</li>
       <li><strong>Board reporting: narrative &rarr; numbers.</strong> Every decision has a reason code from a fixed vocabulary. Roll up the numbers; report the deltas; explain the spikes.</li>
     </ul>
@@ -279,6 +286,7 @@
         <h3>Regulators</h3>
         <p class="why-pain">Six different vendors&rsquo; agent stacks, six different ways &ldquo;authorised&rdquo; is defined.</p>
         <p class="why-out">Every conformant KYE<span class="tm">™</span> gateway exports the <strong>same evidence pack format</strong>. One contract, every vendor.</p>
+        <p style="margin-top:8px;font-size:13.5px"><a href="regulators.html" style="color:var(--accent);text-decoration:underline">Deep dive: 266 control mappings + sample evidence pack &rarr;</a></p>
       </article>
     </div>
     <div class="persona-panel" id="persona-auditors" role="tabpanel" aria-labelledby="persona-tab-auditors">
@@ -286,6 +294,7 @@
         <h3>Auditors</h3>
         <p class="why-pain">Audit prep is reconstruction work: three weeks of interviews to prove an action was authorised.</p>
         <p class="why-out">KYE<span class="tm">™</span> evidence packs are signed, replayable, public-key-verifiable. Fetch a URL; verify offline; map to your controls. Audit cycle measured in days.</p>
+        <p style="margin-top:8px;font-size:13.5px"><a href="auditors.html" style="color:var(--accent);text-decoration:underline">Deep dive: EU AI Act 10 controls + Evidence Pack<span class="tm">™</span> Viewer &rarr;</a></p>
       </article>
     </div>
   </div>
@@ -336,7 +345,7 @@
     <h2 id="h-cmp" class="h-section">From AI governance to <span class="accent">sector-grade authority control</span>.</h2>
     <p class="lede">KYE<span class="tm">™</span> is the operational evidence and control layer beneath the governance frameworks your organisation is already accountable to. The <strong>KYE Compliance Mapping Rail<span class="tm">™</span></strong> binds each runtime control and signed evidence pack to the specific obligations every framework imposes.</p>
     <ul class="biz-list">
-      <li><strong>EU AI Act (Regulation (EU) 2024/1689)</strong> &mdash; ten controls (KYE-EUAIACT-001 through KYE-EUAIACT-010) covering entity accountability, AI system registry, risk classification, human-oversight gates, runtime authority decision logs, technical documentation evidence pack, corrective action trail, provider/deployer/operator role mapping, high-risk workflow profile, and post-market monitoring hooks.</li>
+      <li><strong>EU AI Act (Regulation (EU) 2024/1689)</strong> &mdash; ten controls (KYE-EUAIACT-001 through KYE-EUAIACT-010): entity accountability, AI system registry, risk classification, human-oversight gates, runtime authority decision logs, technical-documentation evidence pack, corrective-action trail, provider/deployer/operator role mapping, high-risk workflow profile, post-market monitoring hooks.</li>
       <li><strong>ISO/IEC 42001</strong> &mdash; AI management system inventory, responsibility, risk/impact, lifecycle controls, oversight logs.</li>
       <li><strong>NIST AI RMF</strong> &mdash; Govern / Map / Measure / Manage evidence around actors, risks, controls, decisions, lifecycle.</li>
       <li><span class="fwk-list" data-fwk-list>SOC 2 &middot; ISO 27001:2022 &middot; PCI DSS 4.0 &middot; PSD2/PSD3 &middot; DORA &middot; NIS2 &middot; HIPAA &middot; NIST 800-207</span> &mdash; evidence packs map to specific control ids on demand.</li>

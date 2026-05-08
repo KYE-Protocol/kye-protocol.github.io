@@ -82,7 +82,14 @@
       </details>
       <details class="faq-item" data-faq-aud="builder">
         <summary>What&rsquo;s the deployment topology?</summary>
-        <p>KYE Protocol<span class="tm">™</span> is a contract, not a service. Bank stacks deploy: (a) a vendor or in-house Gateway behind their existing edge, (b) the embedded PDP library where low-latency local decisions are needed, (c) the PEP middleware in their service mesh, (d) the signal bus subscribed to by their SIEM. The reference Gateway is a starter for dev/pilot; production deployments substitute a hardened build behind the same contract. Single-tenant or multi-tenant; on-prem, hybrid or SaaS.</p>
+        <p>KYE Protocol<span class="tm">™</span> is a contract, not a service. Bank stacks deploy:</p>
+        <ul>
+          <li>A vendor or in-house Gateway behind their existing edge.</li>
+          <li>The embedded PDP library where low-latency local decisions are needed.</li>
+          <li>The PEP middleware in their service mesh.</li>
+          <li>The Signal Bus<span class="tm">™</span> subscribed to by their SIEM.</li>
+        </ul>
+        <p>The reference Gateway is a starter for dev/pilot; production deployments substitute a hardened build behind the same contract. Single-tenant or multi-tenant; on-prem, hybrid, or SaaS.</p>
       </details>
       <details class="faq-item" data-faq-aud="builder buyer">
         <summary>Do we have to rewrite our existing IAM?</summary>
@@ -90,7 +97,8 @@
       </details>
       <details class="faq-item" data-faq-aud="builder">
         <summary>How does the Capability profile differ from existing tool-use frameworks (ReAct, MCP, function-calling)?</summary>
-        <p>MCP and function-calling describe <em>how</em> an agent invokes a tool. KYE-Capability describes <em>whether the agent is authorised to invoke this tool, on whose behalf, within what scope, with what obligations</em>. Capability covers skills, tools, MCP tools, functions, connectors, prompts, workflows, playbooks, runbooks, model_profiles, payment_actions, api_operations &mdash; each a first-class entity with its own URN, lifecycle, grant chain, audit trail, and verbs (allow / deny / require-approval / quarantine / supersede / revoke). Plug your existing MCP server in; KYE<span class="tm">™</span> gates each invocation against a capability grant.</p>
+        <p>MCP and function-calling describe <em>how</em> an agent invokes a tool. KYE-Capability describes <em>whether the agent is authorised to invoke this tool, on whose behalf, within what scope, with what obligations</em>.</p>
+        <p>Capability covers: skills, tools, MCP tools, functions, connectors, prompts, workflows, playbooks, runbooks, model_profiles, payment_actions, api_operations. Each is a first-class entity with its own URN, lifecycle, grant chain, audit trail, and verbs (allow / deny / require-approval / quarantine / supersede / revoke). Plug your existing MCP server in; KYE<span class="tm">™</span> gates each invocation against a capability grant.</p>
       </details>
       <details class="faq-item" data-faq-aud="builder auditor regulator">
         <summary>What happens when a credential is compromised?</summary>
@@ -98,7 +106,14 @@
       </details>
       <details class="faq-item" data-faq-aud="builder auditor">
         <summary>How does recovery / break-glass differ from admin reset?</summary>
-        <p>Admin reset is a black box: an admin clicks a button, you trust the audit log. KYE-Recovery is a contract: a request resource (<code>kye:rec:...</code>) records who asked, why, when, and which subject; a decision resource records the approver(s), rationale, and time; a signed proof artefact ties them together; break-glass grants are time-boxed and emit signals on issue, use, and expiry. Every step is part of the audit chain. Auditors replay the flow; they don&rsquo;t take the admin&rsquo;s word for it.</p>
+        <p>Admin reset is a black box: an admin clicks a button, you trust the audit log. KYE-Recovery is a contract:</p>
+        <ul>
+          <li>Request resource (<code>kye:rec:...</code>) records who asked, why, when, and which subject.</li>
+          <li>Decision resource records the approver(s), rationale, and time.</li>
+          <li>A signed proof artefact ties them together.</li>
+          <li>Break-glass grants are time-boxed and emit signals on issue, use, and expiry.</li>
+        </ul>
+        <p>Every step is part of the audit chain. Auditors replay the flow; they don&rsquo;t take the admin&rsquo;s word for it.</p>
       </details>
       <details class="faq-item" data-faq-aud="auditor regulator buyer">
         <summary>How does this map to the EU AI Act?</summary>

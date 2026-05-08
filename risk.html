@@ -111,7 +111,7 @@
         </header>
         <h3 class="risk-h">Recovery-channel abuse &middot; break-glass exploit</h3>
         <p class="risk-b"><strong>Threat:</strong> the recovery / break-glass profile becomes the path of least resistance; insiders abuse it; auditors lose visibility.</p>
-        <p class="risk-m"><strong>Mitigation:</strong> recovery is a contract not a black box (<code data-code="profile">kye-recovery-1.0</code>): every break-glass grant is a signed request + decision + proof artefact; auto-expiry; mandatory dual-control at L4 KYE Certified<span class="tm">™</span>; emits <code data-code="signal">break_glass_issued</code> + <code data-code="signal">break_glass_used</code> + <code data-code="signal">break_glass_expired</code> on the bus.</p>
+        <p class="risk-m"><strong>Mitigation:</strong> recovery is a contract, not a black box (<code data-code="profile">kye-recovery-1.0</code>). Every break-glass grant is a signed request + decision + proof artefact, auto-expires, and requires dual-control at L4 KYE Certified<span class="tm">™</span>. Bus emits <code data-code="signal">break_glass_issued</code> / <code data-code="signal">break_glass_used</code> / <code data-code="signal">break_glass_expired</code>.</p>
       </article>
 
       <article class="risk-card" data-sev="med">

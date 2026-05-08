@@ -138,7 +138,14 @@
       <li><strong>API-first.</strong> 193 OpenAPI operations across 87+ runtime endpoints across runtime, registry, taxonomy, metadata, and graph endpoints. <code>POST /v1/runtime/authorize</code> is the headline; <code>GET /v1/decisions/{id}/map</code> returns a Decision Map<span class="tm">™</span>.</li>
       <li><strong>SDK-first.</strong> TypeScript, Python, Go SDKs ship with schema types, local validators, decision clients, signing/verification helpers, policy adapters, audit emitters, evidence-pack builders, taxonomy resolvers, metadata classifiers, graph traversal clients, decision-map renderers.</li>
     </ol>
-    <p>Protocol-design corollaries that fall out of the 16 principles: <em>delegation is a graph, not a flag</em>; <em>scope must attenuate, not extend</em>; <em>stop signals cascade atomically</em>; <em>profiles, not forks</em>; <em>mechanism designs (decision evaluation, audit-record linking, signal propagation, scope attenuation, signing-suite construction, graph traversal) sit behind the patent track</em>.</p>
+    <p>Protocol-design corollaries that fall out of the 16 principles:</p>
+    <ul>
+      <li><em>Delegation is a graph, not a flag.</em></li>
+      <li><em>Scope must attenuate, not extend.</em></li>
+      <li><em>Revocation and quarantine signals fan out before the next request.</em></li>
+      <li><em>Profiles, not forks.</em></li>
+      <li><em>Mechanism designs sit behind the patent track</em> (decision evaluation, audit-record linking, signal propagation, scope attenuation, signing-suite construction, graph traversal).</li>
+    </ul>
 
     <h2 id="model">4 &middot; Conceptual model</h2>
     <p><strong>KYE<span class="tm">™</span> governs acting entities, principal entities, capability entities, resource entities, credential entities, and evidence artefacts</strong> &mdash; and keeps them strictly distinct. Payloads are <em>evidence artefacts</em>, never authority-bearing entities; the <strong>KYE<span class="tm">™</span> Payload Trust Profile<span class="tm">™</span></strong> binds signed payloads to entity authority, capability state, policy decisions, and replayable audit evidence.</p>
