@@ -264,10 +264,11 @@
 
 <section id="state-model" class="section technical-only" aria-labelledby="h-state-model">
         <span class="eyebrow">State model &middot; six dimensions</span>
-    <h2 id="h-state-model" class="h-section">An entity isn&rsquo;t one state. It&rsquo;s <span class="accent">six independent states</span>, all auditable.</h2>
+    <h2 id="h-state-model" class="h-section">An entity isn&rsquo;t one state. It&rsquo;s a <span class="accent">six-dimension state vector</span>, all auditable.</h2>
   <div class="section-body" id="state-model-body">
     <div class="container">
     <p class="lede">Most systems collapse identity, authority and risk into one boolean. KYE Protocol<span class="tm">™</span> keeps them separate so a single failure mode &mdash; expired credential, suspicious behaviour, lost key &mdash; changes the right dimension without nuking the rest.</p>
+    <p class="lede" style="margin-top:8px;font-size:14px;color:var(--text-muted,#6b7280)"><strong>Quick map:</strong> the state vector has <strong>6 dimensions</strong> below (each transitions independently). The <code>entity_state</code> dimension &mdash; the lifecycle of the actor itself &mdash; takes <strong>15 well-defined values</strong> (see the simulator below). The other five dimensions have smaller value sets shown on each card.</p>
     <div class="state-grid">
       <div class="state-card">
         <div class="state-h">entity_state</div>
@@ -325,7 +326,7 @@
 
 <section id="lifecycle" class="section technical-only" aria-labelledby="h-lifecycle">
         <span class="eyebrow">Lifecycle simulator</span>
-    <h2 id="h-lifecycle" class="h-section">Every entity has <span class="accent">15 well-defined states</span> &mdash; and only legal transitions.</h2>
+    <h2 id="h-lifecycle" class="h-section">The <code>entity_state</code> dimension takes <span class="accent">15 well-defined values</span> &mdash; and only legal transitions.</h2>
   <div class="section-body" id="lifecycle-body">
     <div class="container">
     <p class="lede">Click through them. Try an illegal move (the protocol blocks it). Stop, quarantine or revoke an entity and watch the cascade roll down to its delegations, payment authorities and resource grants.</p>

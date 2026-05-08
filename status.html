@@ -27,25 +27,65 @@
 
 <section id="top" class="hero">
   <div class="container hero-inner">
-    <span class="hero-pill"><span class="dot"></span> Status &middot; operational targets</span>
-    <h1 id="hero-title" style="margin-top:18px">SLA tiers, RTO / RPO, and incident posture &mdash; <span class="accent">in writing</span>.</h1>
-    <div role="status" style="margin-top:14px;padding:12px 16px;border-radius:8px;border:1px solid #B47200;background:color-mix(in srgb, #F4B400 10%, transparent);font-size:14px;line-height:1.5">
-      <strong style="color:#B47200">No measured uptime to publish yet.</strong> The numbers below are the contractual <em>targets</em> that any KYE<span class="tm">™</span>-bearing service is committed to operate under &mdash; not historical performance. Once a deployment runs in production for KYE Protocol<span class="tm">™</span>&nbsp;Ltd. or for a Customer choosing to publish their numbers, measured availability will appear here.
-    </div>
-    <p class="lede" style="margin-top:14px">This page documents the operational targets &mdash; availability tiers, recovery objectives per component, incident severity, and customer-notification cadence &mdash; that any KYE<span class="tm">™</span>-bearing service is expected to operate under.</p>
-    <div class="cn-quick" style="margin-top:18px">
-      <a href="#tiers"     class="cn-pill"><span class="ms">layers</span> SLA tiers</a>
+    <span class="hero-pill"><span class="dot"></span> Status &middot; what is and isn&rsquo;t live</span>
+    <h1 id="hero-title" style="margin-top:18px">Honest status &mdash; <span class="accent">spec, implementation, and the service that doesn&rsquo;t exist yet</span>.</h1>
+    <p class="lede">KYE Protocol<span class="tm">™</span> has two halves: an <strong>open contract</strong> (specs, schemas, OpenAPI, conformance pack) and a <strong>reference implementation</strong> (Gateway, SDKs, runtime libs). Both are real and verifiable today. A <strong>hosted service</strong> &mdash; the KYE Cloud Gateway<span class="tm">™</span> &mdash; is on the v1.1 commercial track and does not run today.</p>
+    <div class="cn-quick" style="margin-top:14px">
+      <a href="#today"     class="cn-pill"><span class="ms">check_circle</span> What&rsquo;s live today</a>
+      <a href="#not-today" class="cn-pill"><span class="ms">schedule</span> Not yet live</a>
+      <a href="#tiers"     class="cn-pill"><span class="ms">layers</span> SLA targets</a>
       <a href="#rto-rpo"   class="cn-pill"><span class="ms">restart_alt</span> RTO / RPO</a>
       <a href="#severity"  class="cn-pill"><span class="ms">priority_high</span> Severity</a>
       <a href="#notify"    class="cn-pill"><span class="ms">notifications</span> Notifications</a>
-      <a href="#channels"  class="cn-pill"><span class="ms">forum</span> Channels</a>
     </div>
   </div>
 </section>
 
+<section id="today" class="section" aria-labelledby="h-today">
+  <div class="container">
+    <span class="eyebrow">What&rsquo;s actually live and verifiable today</span>
+    <h2 id="h-today" class="h-section">The contract and the reference build &mdash; <span class="accent">measured, not aspirational</span>.</h2>
+    <div role="status" style="margin:14px 0 0;padding:14px 18px;border-radius:8px;border:1px solid #1A8754;background:color-mix(in srgb, #1A8754 8%, transparent);font-size:14px;line-height:1.55">
+      <strong style="color:#1A8754">These numbers are real.</strong> Run <code>npm test</code> at <code>github.com/KYE-Protocol/app</code> and <code>npx kye-conformance run</code> against the reference Gateway to reproduce them on your own machine.
+    </div>
+    <table class="cmp-table" style="margin-top:14px">
+      <thead><tr><th>Component</th><th>Status</th><th>Reproduce</th></tr></thead>
+      <tbody>
+        <tr><td>v1.0 contract (spec)</td><td><strong>frozen</strong> &middot; 50 normative profiles</td><td>see <code>private/specs/kye-*-v1.md</code></td></tr>
+        <tr><td>JSON Schemas</td><td><strong>69 / 69</strong> validate against examples</td><td><code>npm run test:schemas</code></td></tr>
+        <tr><td>OpenAPI</td><td><strong>193</strong> operations across Core / Payments / Extensions, redocly-clean</td><td><code>npm run lint:openapi</code></td></tr>
+        <tr><td>Conformance pack</td><td><strong>41 / 41</strong> black-box scenarios pass</td><td><code>npm run test:conformance</code></td></tr>
+        <tr><td>Reference Gateway</td><td><strong>67 / 67</strong> unit tests pass</td><td><code>cd private/runtime/gateway &amp;&amp; npm test</code></td></tr>
+        <tr><td>SDKs (TypeScript)</td><td>67 / 67 tests pass</td><td><code>cd private/sdks/typescript &amp;&amp; npm test</code></td></tr>
+        <tr><td>SDKs (Python)</td><td>51 passed, 2 skipped</td><td><code>cd private/sdks/python &amp;&amp; pytest -q</code></td></tr>
+        <tr><td>SDKs (Go)</td><td>core surface pass</td><td><code>cd private/sdks/go &amp;&amp; go test ./...</code></td></tr>
+        <tr><td>Control mappings</td><td><strong>266</strong> across 13 horizontal frameworks</td><td><code>private/specs/compliance/control-mappings.md</code></td></tr>
+        <tr><td>Trademark audit</td><td><strong>0 gaps</strong> across 51 pages × 38 marks</td><td><code>npm run test:trademarks</code></td></tr>
+        <tr><td>Patent-safety scan</td><td>clean (no positive-form mechanism in <code>public/</code>)</td><td><code>npm run test:patent-safety</code></td></tr>
+      </tbody>
+    </table>
+    <p class="lede" style="margin-top:14px;font-size:13.5px;color:var(--text-muted,#6b7280)">The <em>contract</em> is bank-grade and frozen. The <em>reference implementation</em> is pilot-grade &mdash; correctness-first, not throughput-tuned. Production deployments substitute a hardened build behind the same contract.</p>
+  </div>
+</section>
+
+<section id="not-today" class="section alt" aria-labelledby="h-not-today">
+  <div class="container">
+    <span class="eyebrow">What is NOT live today</span>
+    <h2 id="h-not-today" class="h-section">No hosted service. <span class="accent">No measured uptime.</span> No production deployments.</h2>
+    <ul class="biz-list" style="margin-top:14px">
+      <li><strong>Hosted KYE Cloud Gateway<span class="tm">™</span> service</strong> &mdash; not running. The reference Gateway runs on your machine via <code>docker run -p 4000:4000 ghcr.io/kye-protocol/gateway:v1.0</code>. The hosted commercial offering is on the v1.1 track.</li>
+      <li><strong>Live measured uptime / latency / throughput</strong> &mdash; none. The targets in the SLA tier table below are the <em>commitments</em> a KYE<span class="tm">™</span>-bearing service operates under once deployed; they are not historical performance.</li>
+      <li><strong>Tier-1 bank deployments</strong> &mdash; none yet. &ldquo;Tier-1 readiness hardening&rdquo; is the v1.0.x roadmap track (CI supply-chain, governance docs, Gateway runtime hardening, signing-suite construction) &mdash; not a present-tense claim. <a href="roadmap.html#wallet" style="color:var(--accent);text-decoration:underline">See roadmap &rarr;</a></li>
+      <li><strong>Public adopter logos / customer references</strong> &mdash; none yet. <em>References will land here when each Customer publishes their own.</em> See the engagement model.</li>
+      <li><strong>L3 KYE Conformant<span class="tm">™</span> / L4 KYE Certified<span class="tm">™</span> programmes</strong> &mdash; in development; open with v1.1. L1 KYE Self-Tested<span class="tm">™</span> + L2 KYE Self-Attested<span class="tm">™</span> available today.</li>
+      <li><strong>KYE Authority Wallet Pro<span class="tm">™</span></strong> (the production Wallet with real Gateway integration + push approvals) &mdash; v1.1 commercial track. The <a href="apps.html#wallet">Authority Wallet Demo<span class="tm">™</span></a> source is built; APK build pending Google Play Console access.</li>
+    </ul>
+  </div>
+</section>
+
 <section id="tiers" class="section" aria-labelledby="h-tiers">
-        <span class="eyebrow">Three customer tiers</span>
-    <h2 id="h-tiers" class="h-section">Availability commitments per tier.</h2>
+        <span class="eyebrow">SLA targets &middot; apply once a deployment is live</span>
+    <h2 id="h-tiers" class="h-section">Availability targets per tier <span class="accent">(future commitments)</span>.</h2>
   <div class="section-body"><div class="container">
     <table class="cmp-table" style="margin-top:14px">
       <thead><tr><th>Tier</th><th>Availability target</th><th>Eligibility</th><th>Service credit on miss</th></tr></thead>
