@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script>(function(){try{var s=localStorage.getItem("kye-theme");if(s==="dark"||s==="light"){document.documentElement.setAttribute("data-theme",s);}}catch(e){}})();</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KYE Protocol™ — Value · what KYE adds across people, value chain, lifecycle, safety</title>
+  <meta name="description" content="The added value of KYE Protocol™ across four lenses: people (end user, citizen, employee, agent, builder), value chain (buyer / vendor / merchant / auditor / regulator / SI / court), lifecycle (8 stages from provisioning to decommission), and safety (8 properties from pre-action enforcement to break-glass)." />
+  <meta name="keywords" content="KYE value, AI authority value chain, KYE lifecycle, KYE safety, AI agent accountability, replayable proof, cascade revocation, blast radius" />
+  <link rel="canonical" href="https://kye-protocol.github.io/value.html" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="KYE Protocol™ — Value across people, chain, lifecycle, safety" />
+  <meta property="og:description" content="Interactive view: who benefits, where it composes, when it engages, and what it prevents." />
+  <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
+  <meta property="og:url" content="https://kye-protocol.github.io/value.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css?v=1779290000" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://kye-protocol.github.io/"},{"@type":"ListItem","position":2,"name":"Value","item":"https://kye-protocol.github.io/value.html"}]}</script>
+  <style>
+    /* ============== Persona switcher ============== */
+    .vl-persona-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0; border-bottom: 1px solid color-mix(in srgb, var(--text-muted, #888) 22%, transparent); }
+    .vl-persona-tab { appearance: none; background: transparent; border: 0; padding: 10px 14px; font: inherit; font-size: 13.5px; color: var(--text-muted, #6b7280); cursor: pointer; border-radius: 8px 8px 0 0; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color .12s, border-color .12s, background .12s; }
+    .vl-persona-tab:hover { color: var(--text, #111); background: color-mix(in srgb, var(--accent, #1a8754) 6%, transparent); }
+    .vl-persona-tab[aria-selected="true"] { color: var(--accent, #1a8754); border-bottom-color: var(--accent, #1a8754); font-weight: 600; }
+    .vl-persona-panel { display: none; padding-top: 14px; }
+    .vl-persona-panel[data-active] { display: block; }
+    .vl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 720px) { .vl-grid { grid-template-columns: 1fr; } }
+    .vl-card { background: var(--paper, #fff); border-radius: 10px; padding: 16px; border: 1px solid color-mix(in srgb, var(--text-muted, #888) 18%, transparent); }
+    .vl-card h4 { margin: 0 0 6px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted, #6b7280); font-weight: 600; }
+    .vl-card p { margin: 0; font-size: 14px; line-height: 1.55; color: var(--text, #111); }
+
+    /* ============== Value-chain SVG diagram ============== */
+    .vc-toggle { display: inline-flex; gap: 0; border: 1px solid color-mix(in srgb, var(--text-muted, #888) 22%, transparent); border-radius: 8px; padding: 2px; margin: 12px 0; }
+    .vc-toggle-btn { appearance: none; background: transparent; border: 0; padding: 8px 16px; font: inherit; font-size: 13px; color: var(--text-muted, #6b7280); cursor: pointer; border-radius: 6px; }
+    .vc-toggle-btn[aria-selected="true"] { background: var(--accent, #1a8754); color: #fff; font-weight: 600; }
+    .vc-stage { background: var(--paper, #fff); border-radius: 12px; padding: 16px; border: 1px solid color-mix(in srgb, var(--text-muted, #888) 18%, transparent); }
+    .vc-svg { width: 100%; height: auto; max-height: 460px; display: block; }
+    .vc-node { cursor: pointer; transition: transform .15s; }
+    .vc-node:hover { transform: scale(1.04); transform-origin: center; }
+    .vc-node-rect { fill: var(--paper-2, #f1f5f9); stroke: color-mix(in srgb, var(--text-muted, #888) 28%, transparent); stroke-width: 1.5; transition: fill .15s, stroke .15s; }
+    .vc-node[data-active="true"] .vc-node-rect { fill: color-mix(in srgb, var(--accent, #1a8754) 18%, transparent); stroke: var(--accent, #1a8754); stroke-width: 2; }
+    .vc-node-label { font-size: 11.5px; font-family: var(--font-mono, ui-monospace, monospace); fill: var(--text, #111); pointer-events: none; }
+    .vc-edge { stroke: color-mix(in srgb, var(--text-muted, #888) 28%, transparent); stroke-width: 1; fill: none; transition: stroke .15s, stroke-width .15s; }
+    .vc-edge[data-active="true"] { stroke: var(--accent, #1a8754); stroke-width: 2; }
+    .vc-hub { fill: var(--accent, #1a8754); }
+    .vc-hub-label { font-size: 13px; font-weight: 700; fill: #fff; pointer-events: none; }
+    .vc-detail { background: var(--paper-2, #f1f5f9); border-radius: 10px; padding: 14px; margin-top: 12px; min-height: 80px; }
+    .vc-detail h4 { margin: 0 0 4px; font-size: 14px; }
+    .vc-detail .before { color: #C5221F; font-weight: 500; }
+    .vc-detail .after { color: var(--accent, #1a8754); font-weight: 500; }
+    .vc-detail dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 12px; margin: 6px 0 0; }
+    .vc-detail dt { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.4px; color: var(--text-muted, #6b7280); }
+    .vc-detail dd { margin: 0; font-size: 14px; line-height: 1.5; }
+
+    /* ============== Lifecycle stepper ============== */
+    .lc-steps { display: flex; gap: 0; overflow-x: auto; padding: 6px 0 16px; scrollbar-width: thin; }
+    .lc-step { flex: 0 0 auto; appearance: none; background: transparent; border: 0; padding: 12px 16px 16px; font: inherit; cursor: pointer; color: var(--text-muted, #6b7280); border-bottom: 3px solid color-mix(in srgb, var(--text-muted, #888) 22%, transparent); white-space: nowrap; }
+    .lc-step:hover { color: var(--text, #111); }
+    .lc-step[aria-selected="true"] { color: var(--accent, #1a8754); border-bottom-color: var(--accent, #1a8754); font-weight: 600; }
+    .lc-step-num { display: inline-block; font-family: var(--font-mono, ui-monospace, monospace); font-size: 11px; opacity: 0.7; }
+    .lc-step-name { display: block; font-size: 14px; }
+    .lc-detail { background: var(--paper, #fff); border-radius: 12px; padding: 18px; border: 1px solid color-mix(in srgb, var(--text-muted, #888) 18%, transparent); }
+    .lc-detail h3 { margin: 0 0 6px; font-size: 17px; }
+    .lc-detail .lc-prim { display: inline-block; background: color-mix(in srgb, var(--accent, #1a8754) 14%, transparent); color: var(--accent, #1a8754); font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; font-weight: 600; padding: 3px 10px; border-radius: 999px; margin-bottom: 8px; }
+    .lc-detail p { margin: 0; font-size: 14.5px; line-height: 1.6; }
+
+    /* ============== Safety property accordion ============== */
+    .sf-item { background: var(--paper, #fff); border-radius: 10px; border: 1px solid color-mix(in srgb, var(--text-muted, #888) 18%, transparent); margin-bottom: 8px; overflow: hidden; }
+    .sf-summary { display: flex; align-items: center; padding: 14px 16px; cursor: pointer; gap: 12px; list-style: none; }
+    .sf-summary::-webkit-details-marker { display: none; }
+    .sf-icon { font-size: 22px; color: var(--accent, #1a8754); flex-shrink: 0; }
+    .sf-name { flex: 1; font-weight: 600; font-size: 14.5px; }
+    .sf-chip { font-size: 11px; padding: 3px 10px; border-radius: 999px; background: color-mix(in srgb, var(--accent, #1a8754) 14%, transparent); color: var(--accent, #1a8754); font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; }
+    .sf-arrow { font-size: 20px; color: var(--text-muted, #6b7280); transition: transform .2s; }
+    .sf-item[open] .sf-arrow { transform: rotate(180deg); }
+    .sf-body { padding: 0 16px 16px; }
+    .sf-body .row { display: grid; grid-template-columns: max-content 1fr; gap: 6px 12px; padding: 8px 0; border-top: 1px solid color-mix(in srgb, var(--text-muted, #888) 14%, transparent); }
+    .sf-body .row dt { font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; color: var(--text-muted, #6b7280); align-self: start; padding-top: 2px; }
+    .sf-body .row.before dt { color: #C5221F; }
+    .sf-body .row.after  dt { color: var(--accent, #1a8754); }
+    .sf-body .row dd { margin: 0; font-size: 14px; line-height: 1.55; }
+  </style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="top-bar" role="banner" data-kye-header data-active="value"><!-- canonical chrome injected --></header>
+<main id="main" role="main">
+
+<section id="top" class="hero" aria-labelledby="hero-title">
+  <div class="container hero-inner">
+    <span class="hero-pill"><span class="dot"></span> Value &middot; people · value chain · lifecycle · safety</span>
+    <h1 id="hero-title" style="margin-top:18px">What KYE<span class="tm">™</span> <span class="accent">actually adds</span>.</h1>
+    <p class="lede">KYE Protocol<span class="tm">™</span> turns &ldquo;an AI agent acted&rdquo; into a signed, replayable, end-to-end record that <strong>the right people see in time</strong> &mdash; end user before approval, auditor on demand, court when needed &mdash; and that <strong>the wrong actions don&rsquo;t get to take</strong>: scope-out &rarr; deny before bytes move; compromise &rarr; cascade in milliseconds.</p>
+    <div class="cn-quick" style="margin-top:18px">
+      <a href="#people"      class="cn-pill"><span class="ms">groups</span> People</a>
+      <a href="#value-chain" class="cn-pill"><span class="ms">hub</span> Value chain</a>
+      <a href="#lifecycle"   class="cn-pill"><span class="ms">timeline</span> Lifecycle</a>
+      <a href="#safety"      class="cn-pill"><span class="ms">shield</span> Safety</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================================ PEOPLE ================================ -->
+<section id="people" class="section" aria-labelledby="h-people">
+  <div class="container">
+    <span class="eyebrow">1 &middot; To people</span>
+    <h2 id="h-people" class="h-section">Pick who you are. <span class="accent">See what KYE<span class="tm">™</span> delivers.</span></h2>
+
+    <div class="vl-persona-tabs" role="tablist" aria-label="Persona switcher">
+      <button class="vl-persona-tab" role="tab" aria-selected="true"  data-vl-tab="user">End user</button>
+      <button class="vl-persona-tab" role="tab" aria-selected="false" data-vl-tab="citizen">Citizen</button>
+      <button class="vl-persona-tab" role="tab" aria-selected="false" data-vl-tab="employee">Employee</button>
+      <button class="vl-persona-tab" role="tab" aria-selected="false" data-vl-tab="agent">Agent / model</button>
+      <button class="vl-persona-tab" role="tab" aria-selected="false" data-vl-tab="builder">Builder</button>
+    </div>
+
+    <div class="vl-persona-panel" id="vl-user" data-active>
+      <div class="vl-grid">
+        <div class="vl-card"><h4>You see</h4><p>Every AI agent that acts for you, with the exact scope &mdash; amount caps, merchants, time windows, payment instruments, expiry.</p></div>
+        <div class="vl-card"><h4>You control</h4><p>Revoke any agent in milliseconds. Cascade fires: capability disabled, downstream grants invalidated, signal emitted, evidence pack generated.</p></div>
+        <div class="vl-card"><h4>You approve</h4><p>Above-threshold actions hit your phone, not a vendor dashboard. The KYE Authority Wallet<span class="tm">™</span> is the consumer-facing surface.</p></div>
+        <div class="vl-card"><h4>You can prove</h4><p>If a transaction is disputed, the Evidence Pack<span class="tm">™</span> is signed and replayable end-to-end with public keys alone.</p></div>
+      </div>
+    </div>
+
+    <div class="vl-persona-panel" id="vl-citizen">
+      <div class="vl-grid">
+        <div class="vl-card"><h4>Replayable decision</h4><p>When an AI-assisted public-sector decision affects you &mdash; benefits, housing, healthcare, justice &mdash; you (or your advocate) get a signed Decision Map<span class="tm">™</span> that anyone can replay.</p></div>
+        <div class="vl-card"><h4>Right to appeal</h4><p>Appeals stop being a FOIA fishing expedition. The chain itself is the record: actor &middot; principal &middot; capability &middot; authority &middot; scope &middot; state &middot; policy &middot; decision &middot; audit &middot; evidence.</p></div>
+        <div class="vl-card"><h4>Provenance of consent</h4><p>The delegation chain back to a named human or business is the basis of the action. No &ldquo;the algorithm decided&rdquo; ambiguity.</p></div>
+        <div class="vl-card"><h4>Equal standing</h4><p>Same evidence-pack format whether the system serves a citizen of one country or another. One protocol, every public service.</p></div>
+      </div>
+    </div>
+
+    <div class="vl-persona-panel" id="vl-employee">
+      <div class="vl-grid">
+        <div class="vl-card"><h4>Bound, not blanket</h4><p>Your actions inside the workplace are bound to a <em>named</em> delegation, not to a broad RBAC role. You can&rsquo;t accidentally over-step.</p></div>
+        <div class="vl-card"><h4>Defensibly scoped</h4><p>If something goes wrong, the chain shows exactly what was authorised &mdash; and what wasn&rsquo;t. You aren&rsquo;t silently blamed for an action you didn&rsquo;t take.</p></div>
+        <div class="vl-card"><h4>Step-up when it matters</h4><p>High-risk actions hit a step-up gate: a signed approval object that becomes part of the audit chain.</p></div>
+        <div class="vl-card"><h4>Recovery without a black box</h4><p>Break-glass grants are time-boxed and signed. A reset isn&rsquo;t an admin clicking a button; it&rsquo;s a signed contract with an expiry.</p></div>
+      </div>
+    </div>
+
+    <div class="vl-persona-panel" id="vl-agent">
+      <div class="vl-grid">
+        <div class="vl-card"><h4>A clear surface</h4><p>You know the boundary you act within: capability, scope, state, time. Outside scope = a deny <em>before</em> bytes move.</p></div>
+        <div class="vl-card"><h4>Defence in depth</h4><p>Inside scope, the signed Decision Map<span class="tm">™</span> is your defence: it shows you were authorised when you acted.</p></div>
+        <div class="vl-card"><h4>Composability with MCP / SDKs</h4><p>KYE<span class="tm">™</span> composes with MCP, OpenAI Agents SDK, Vercel AI SDK, LangChain, Pydantic AI &mdash; doesn&rsquo;t replace them.</p></div>
+        <div class="vl-card"><h4>Quarantine, not erase</h4><p>If your behaviour is flagged you can be paused (quarantine state) without losing audit history &mdash; investigation possible without prejudice.</p></div>
+      </div>
+    </div>
+
+    <div class="vl-persona-panel" id="vl-builder">
+      <div class="vl-grid">
+        <div class="vl-card"><h4>One contract</h4><p><code>POST /v1/runtime/authorize</code> instead of bespoke gates per vendor. Three SDKs (TypeScript / Python / Go).</p></div>
+        <div class="vl-card"><h4>Schema-first everything</h4><p>69 JSON Schemas, 193 OpenAPI ops, 41 conformance fixtures. Every entity, decision, audit event, evidence pack &mdash; canonical.</p></div>
+        <div class="vl-card"><h4>Policy questions answered</h4><p>You don&rsquo;t need to invent a decision shape, a reason-code dictionary, or an audit format. KYE<span class="tm">™</span> has them.</p></div>
+        <div class="vl-card"><h4>Verifiable with public keys</h4><p>Webhook verifier, evidence-pack viewer, Decision Map<span class="tm">™</span> renderer &mdash; all ship.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================ VALUE CHAIN ================================ -->
+<section id="value-chain" class="section alt" aria-labelledby="h-vc">
+  <div class="container">
+    <span class="eyebrow">2 &middot; To the value chain</span>
+    <h2 id="h-vc" class="h-section">From <em>N&times;M</em> integrations to <span class="accent">N+M</span>.</h2>
+
+    <div class="vc-toggle" role="tablist" aria-label="Toggle before / after">
+      <button class="vc-toggle-btn" role="tab" aria-selected="true"  data-vc-mode="before">Before KYE<span class="tm">™</span></button>
+      <button class="vc-toggle-btn" role="tab" aria-selected="false" data-vc-mode="after">With KYE<span class="tm">™</span></button>
+    </div>
+
+    <div class="vc-stage">
+      <svg viewBox="0 0 800 460" class="vc-svg" id="vc-svg" aria-label="Value-chain diagram. Click any role to see what KYE adds for them.">
+        <!-- Edges drawn first so they sit behind the nodes -->
+        <g id="vc-edges-before"></g>
+        <g id="vc-edges-after"></g>
+
+        <!-- Hub (after only) -->
+        <g id="vc-hub" style="display:none">
+          <circle class="vc-hub" cx="400" cy="230" r="44" />
+          <text class="vc-hub-label" x="400" y="226" text-anchor="middle">KYE</text>
+          <text class="vc-hub-label" x="400" y="244" text-anchor="middle" style="font-size:10px;font-weight:500">Protocol™</text>
+        </g>
+
+        <!-- Roles. Left column = buyers / counterparties. Right column = vendors / verifiers. -->
+        <g id="vc-nodes">
+          <!-- Left: 4 buyer-side roles -->
+          <g class="vc-node" data-vc-role="buyer"      tabindex="0" role="button" aria-label="Buyer">
+            <rect class="vc-node-rect" x="40"  y="40"  width="200" height="48" rx="6"/>
+            <text class="vc-node-label" x="140" y="69" text-anchor="middle">Buyer (bank / health / agency)</text>
+          </g>
+          <g class="vc-node" data-vc-role="merchant"   tabindex="0" role="button" aria-label="Merchant">
+            <rect class="vc-node-rect" x="40"  y="140" width="200" height="48" rx="6"/>
+            <text class="vc-node-label" x="140" y="169" text-anchor="middle">Merchant / counterparty</text>
+          </g>
+          <g class="vc-node" data-vc-role="court"      tabindex="0" role="button" aria-label="Court / dispute panel">
+            <rect class="vc-node-rect" x="40"  y="240" width="200" height="48" rx="6"/>
+            <text class="vc-node-label" x="140" y="269" text-anchor="middle">Court / dispute panel</text>
+          </g>
+          <g class="vc-node" data-vc-role="si"         tabindex="0" role="button" aria-label="Systems integrator">
+            <rect class="vc-node-rect" x="40"  y="340" width="200" height="48" rx="6"/>
+            <text class="vc-node-label" x="140" y="369" text-anchor="middle">SI / consultancy</text>
+          </g>
+
+          <!-- Right: 4 vendor-side roles -->
+          <g class="vc-node" data-vc-role="vendor"     tabindex="0" role="button" aria-label="Vendor">
+            <rect class="vc-node-rect" x="560" y="40"  width="200" height="48" rx="6"/>
+            <text class="vc-node-label" x="660" y="69" text-anchor="middle">Vendor (Okta / SPIFFE / OPA)</text>
+          </g>
+          <g class="vc-node" data-vc-role="auditor"    tabindex="0" role="button" aria-label="Auditor">
+            <rect class="vc-node-rect" x="560" y="140" width="200" height="48" rx="6"/>
+            <text class="vc-node-label" x="660" y="169" text-anchor="middle">Auditor / 3PAO</text>
+          </g>
+          <g class="vc-node" data-vc-role="regulator"  tabindex="0" role="button" aria-label="Regulator">
+            <rect class="vc-node-rect" x="560" y="240" width="200" height="48" rx="6"/>
+            <text class="vc-node-label" x="660" y="269" text-anchor="middle">Regulator / supervisor</text>
+          </g>
+          <g class="vc-node" data-vc-role="builder"    tabindex="0" role="button" aria-label="Builder">
+            <rect class="vc-node-rect" x="560" y="340" width="200" height="48" rx="6"/>
+            <text class="vc-node-label" x="660" y="369" text-anchor="middle">Builder / developer</text>
+          </g>
+        </g>
+      </svg>
+
+      <div class="vc-detail" id="vc-detail" aria-live="polite">
+        <h4>Click a role for the before / after.</h4>
+        <p style="font-size:13px;color:var(--text-muted,#6b7280);margin-top:6px">Toggle the view above. Tap any role node in the diagram to see what changes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================ LIFECYCLE ================================ -->
+<section id="lifecycle" class="section" aria-labelledby="h-lc">
+  <div class="container">
+    <span class="eyebrow">3 &middot; Across the lifecycle</span>
+    <h2 id="h-lc" class="h-section">Eight stages. <span class="accent">Same six primitives at every one.</span></h2>
+    <p class="lede">KYE<span class="tm">™</span> attaches at every stage, not just at the gate. Click a stage to see what runs.</p>
+
+    <div class="lc-steps" role="tablist" aria-label="Lifecycle stages">
+      <button class="lc-step" role="tab" aria-selected="true"  data-lc="provision"><span class="lc-step-num">01</span><span class="lc-step-name">Provision</span></button>
+      <button class="lc-step" role="tab" aria-selected="false" data-lc="register"><span class="lc-step-num">02</span><span class="lc-step-name">Register</span></button>
+      <button class="lc-step" role="tab" aria-selected="false" data-lc="delegate"><span class="lc-step-num">03</span><span class="lc-step-name">Delegate</span></button>
+      <button class="lc-step" role="tab" aria-selected="false" data-lc="act"><span class="lc-step-num">04</span><span class="lc-step-name">Act</span></button>
+      <button class="lc-step" role="tab" aria-selected="false" data-lc="change"><span class="lc-step-num">05</span><span class="lc-step-name">Change</span></button>
+      <button class="lc-step" role="tab" aria-selected="false" data-lc="compromise"><span class="lc-step-num">06</span><span class="lc-step-name">Compromise</span></button>
+      <button class="lc-step" role="tab" aria-selected="false" data-lc="recover"><span class="lc-step-num">07</span><span class="lc-step-name">Recover</span></button>
+      <button class="lc-step" role="tab" aria-selected="false" data-lc="decommission"><span class="lc-step-num">08</span><span class="lc-step-name">Decommission</span></button>
+    </div>
+
+    <div class="lc-detail" id="lc-detail">
+      <span class="lc-prim" id="lc-prim">Identity primitive</span>
+      <h3 id="lc-h3">Provision</h3>
+      <p id="lc-p">Every entity (human, business, AI agent, service, model, tool, workflow) gets a stable URN from day 0. Same identity surface across humans and machines.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================================ SAFETY ================================ -->
+<section id="safety" class="section alt" aria-labelledby="h-sf">
+  <div class="container">
+    <span class="eyebrow">4 &middot; To safety</span>
+    <h2 id="h-sf" class="h-section">Eight properties that move the needle. <span class="accent">Tap to expand.</span></h2>
+
+    <details class="sf-item" open>
+      <summary class="sf-summary">
+        <span class="ms sf-icon">block</span>
+        <span class="sf-name">Pre-action enforcement</span>
+        <span class="sf-chip">Before, not after</span>
+        <span class="ms sf-arrow">expand_more</span>
+      </summary>
+      <div class="sf-body">
+        <dl class="row before"><dt>Without</dt><dd>Token has scope; runtime hopes the token-bearer is who they say. Verification is post-hoc.</dd></dl>
+        <dl class="row after"><dt>With KYE<span class="tm">™</span></dt><dd>Decision is checked against scope <strong>and</strong> state <strong>and</strong> policy <em>before</em> the action. The outcome is signed.</dd></dl>
+      </div>
+    </details>
+
+    <details class="sf-item">
+      <summary class="sf-summary">
+        <span class="ms sf-icon">bolt</span>
+        <span class="sf-name">Cascade revocation</span>
+        <span class="sf-chip">Milliseconds, not days</span>
+        <span class="ms sf-arrow">expand_more</span>
+      </summary>
+      <div class="sf-body">
+        <dl class="row before"><dt>Without</dt><dd>Compromise of one credential leaks for hours or days while downstream systems re-fetch tokens or reconverge.</dd></dl>
+        <dl class="row after"><dt>With KYE<span class="tm">™</span></dt><dd>One signal propagates through the trust graph; downstream grants invalidated before the next call.</dd></dl>
+      </div>
+    </details>
+
+    <details class="sf-item">
+      <summary class="sf-summary">
+        <span class="ms sf-icon">pause_circle</span>
+        <span class="sf-name">Quarantine without erase</span>
+        <span class="sf-chip">Investigate first</span>
+        <span class="ms sf-arrow">expand_more</span>
+      </summary>
+      <div class="sf-body">
+        <dl class="row before"><dt>Without</dt><dd>Often binary &mdash; revoke means lose history, don&rsquo;t revoke means leave the door open.</dd></dl>
+        <dl class="row after"><dt>With KYE<span class="tm">™</span></dt><dd>Quarantine is a state. The entity is paused for investigation while the audit chain stays intact.</dd></dl>
+      </div>
+    </details>
+
+    <details class="sf-item">
+      <summary class="sf-summary">
+        <span class="ms sf-icon">how_to_reg</span>
+        <span class="sf-name">Step-up &amp; human-in-loop</span>
+        <span class="sf-chip">First-class decision</span>
+        <span class="ms sf-arrow">expand_more</span>
+      </summary>
+      <div class="sf-body">
+        <dl class="row before"><dt>Without</dt><dd>Each app reinvents step-up flows; approval requests are app-private state.</dd></dl>
+        <dl class="row after"><dt>With KYE<span class="tm">™</span></dt><dd>First-class decision codes (<code>require_approval</code>, <code>require_step_up</code>, <code>require_human_review</code>). The approval request itself is a signed object in the chain.</dd></dl>
+      </div>
+    </details>
+
+    <details class="sf-item">
+      <summary class="sf-summary">
+        <span class="ms sf-icon">replay</span>
+        <span class="sf-name">Replayable accountability</span>
+        <span class="sf-chip">Public-key verifiable</span>
+        <span class="ms sf-arrow">expand_more</span>
+      </summary>
+      <div class="sf-body">
+        <dl class="row before"><dt>Without</dt><dd>Vendor-side log dump; narrative reconstruction; trust the vendor&rsquo;s account of what happened.</dd></dl>
+        <dl class="row after"><dt>With KYE<span class="tm">™</span></dt><dd>Public-key-verifiable replay from the principal down to the action. Audit, Decision Map<span class="tm">™</span>, Evidence Pack<span class="tm">™</span> are all signed.</dd></dl>
+      </div>
+    </details>
+
+    <details class="sf-item">
+      <summary class="sf-summary">
+        <span class="ms sf-icon">gavel</span>
+        <span class="sf-name">Dispute resolution</span>
+        <span class="sf-chip">Burden flips</span>
+        <span class="ms sf-arrow">expand_more</span>
+      </summary>
+      <div class="sf-body">
+        <dl class="row before"><dt>Without</dt><dd>The disputing party has to extract evidence from the operator. Vendor cooperation determines speed.</dd></dl>
+        <dl class="row after"><dt>With KYE<span class="tm">™</span></dt><dd>Evidence Pack<span class="tm">™</span> is the artefact, in a stable schema, signed. The chain can be verified offline by either side.</dd></dl>
+      </div>
+    </details>
+
+    <details class="sf-item">
+      <summary class="sf-summary">
+        <span class="ms sf-icon">key</span>
+        <span class="sf-name">Break-glass &amp; recovery</span>
+        <span class="sf-chip">Contract, not button</span>
+        <span class="ms sf-arrow">expand_more</span>
+      </summary>
+      <div class="sf-body">
+        <dl class="row before"><dt>Without</dt><dd>Black box: an admin clicks a button, you trust the audit log was right.</dd></dl>
+        <dl class="row after"><dt>With KYE<span class="tm">™</span></dt><dd>Recovery is itself a contract: signed request &rarr; signed decision &rarr; signed proof artefact &rarr; time-boxed grant &rarr; expiry signal. Every step is on the chain.</dd></dl>
+      </div>
+    </details>
+
+    <details class="sf-item">
+      <summary class="sf-summary">
+        <span class="ms sf-icon">explosion</span>
+        <span class="sf-name">Blast radius</span>
+        <span class="sf-chip">See, then revoke</span>
+        <span class="ms sf-arrow">expand_more</span>
+      </summary>
+      <div class="sf-body">
+        <dl class="row before"><dt>Without</dt><dd>&ldquo;What does that compromised credential touch?&rdquo; becomes an engineering investigation. Pull DAGs out of vendor docs.</dd></dl>
+        <dl class="row after"><dt>With KYE<span class="tm">™</span></dt><dd>Blast Radius Map<span class="tm">™</span>: graph of every capability, agent, payment, and decision affected &mdash; <em>before</em> you revoke. Pre-emit, helps operators choose the right action.</dd></dl>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ================================ SUMMARY + CTA ================================ -->
+<section class="section" aria-labelledby="h-sum">
+  <div class="container">
+    <h2 id="h-sum" class="h-section">In one line.</h2>
+    <p class="lede" style="font-size:18px;line-height:1.6"><strong>KYE<span class="tm">™</span> turns &ldquo;an AI agent acted&rdquo; into a signed, replayable, end-to-end record</strong> &mdash; one the right people see in time, and one the wrong actions don&rsquo;t get to take.</p>
+    <div class="hero-cta" style="margin-top:18px">
+      <a href="buyers.html#audiences" class="btn btn-primary"><span class="ms">groups_2</span> By role &rarr;</a>
+      <a href="sectors.html"           class="btn btn-secondary"><span class="ms">apartment</span> By sector &rarr;</a>
+      <a href="sandbox.html"           class="btn btn-ghost"><span class="ms">science</span> Try in your browser &rarr;</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected --></footer>
+<button id="scroll-top" class="scroll-top" type="button" aria-label="Scroll to top" data-kye-scroll-top><!-- svg injected --></button>
+<script type="module" src="main.js?v=1779220000"></script>
+<script>
+(function () {
+  // ---------- Persona switcher ----------
+  document.querySelectorAll('[data-vl-tab]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.vlTab;
+      document.querySelectorAll('.vl-persona-tab').forEach(t => t.setAttribute('aria-selected', t.dataset.vlTab === id ? 'true' : 'false'));
+      document.querySelectorAll('.vl-persona-panel').forEach(p => {
+        if (p.id === 'vl-' + id) p.setAttribute('data-active', '');
+        else p.removeAttribute('data-active');
+      });
+    });
+  });
+
+  // ---------- Value-chain SVG ----------
+  // Role-specific copy: { before, after, oldEdges, newEdges }.
+  // Edges encoded as 'role:role' pairs. Before mode draws an N×M lattice
+  // (every left × every right). After mode draws every node → hub.
+  const CHAIN = {
+    buyer: {
+      title: 'Buyer (bank / health / agency)',
+      before: 'Five identity vendors, three policy engines, fourteen audit logs. AI agents sit outside all of them.',
+      after:  'One open contract that wires the existing stack into a single decision and a single audit chain.',
+    },
+    vendor: {
+      title: 'Vendor (Okta / SPIFFE / OPA / Stripe)',
+      before: 'Re-explains its concept of "authorised" to every integrator. Repeated bespoke work.',
+      after:  'One canonical decision shape. KYE composes; doesn’t replace.',
+    },
+    merchant: {
+      title: 'Merchant / counterparty',
+      before: 'Trusts that the agent calling has authority — by inference, never by proof.',
+      after:  'Receives a signed proof that the agent was authorised by the named principal at the moment of payment.',
+    },
+    auditor: {
+      title: 'Auditor / 3PAO',
+      before: 'Per-vendor log archaeology. Three weeks of interviews to prove an action was authorised.',
+      after:  'Same Evidence Pack™ format across vendors. Fetch a URL · verify offline · map to controls · close the cycle in days.',
+    },
+    regulator: {
+      title: 'Regulator / supervisor',
+      before: 'Six vendors, six audit formats, six definitions of "authorised". Reverse-engineer each.',
+      after:  '266 control mappings across 13 frameworks. Same evidence-pack format from any conformant gateway.',
+    },
+    si: {
+      title: 'SI / consultancy / audit firm',
+      before: 'Custom integration per customer. Skills don’t carry between engagements.',
+      after:  'One conformance pack to learn. Same skills land across every customer.',
+    },
+    court: {
+      title: 'Court / dispute panel',
+      before: 'Guided narrative reconstruction. Admissibility argued via vendor cooperation.',
+      after:  'Public-key-verifiable replay. Admissibility argued on the chain itself.',
+    },
+    builder: {
+      title: 'Builder / developer',
+      before: 'Bespoke gates per vendor. Re-invent reason codes, decision shape, audit format per app.',
+      after:  'POST /v1/runtime/authorize. Three SDKs. Schemas + 41 conformance fixtures. Policy questions answered.',
+    },
+  };
+  const ROLES = Object.keys(CHAIN);
+  const LEFT_ROLES  = ['buyer', 'merchant', 'court', 'si'];
+  const RIGHT_ROLES = ['vendor', 'auditor', 'regulator', 'builder'];
+
+  function nodeCenter(role) {
+    const g = document.querySelector('[data-vc-role="' + role + '"] rect');
+    if (!g) return null;
+    const x = parseFloat(g.getAttribute('x')) + parseFloat(g.getAttribute('width')) / 2;
+    const y = parseFloat(g.getAttribute('y')) + parseFloat(g.getAttribute('height')) / 2;
+    return { x, y };
+  }
+  function svgNS(name, attrs) {
+    const el = document.createElementNS('http://www.w3.org/2000/svg', name);
+    for (const k in attrs) el.setAttribute(k, attrs[k]);
+    return el;
+  }
+  function buildEdges() {
+    const before = document.getElementById('vc-edges-before');
+    const after  = document.getElementById('vc-edges-after');
+    if (!before || !after) return;
+    before.innerHTML = ''; after.innerHTML = '';
+    // BEFORE: every left × every right (N×M criss-cross spaghetti).
+    LEFT_ROLES.forEach(l => {
+      RIGHT_ROLES.forEach(r => {
+        const a = nodeCenter(l), b = nodeCenter(r);
+        if (!a || !b) return;
+        const path = svgNS('path', {
+          class: 'vc-edge', 'data-vc-from': l, 'data-vc-to': r,
+          d: 'M ' + a.x + ' ' + a.y + ' L ' + b.x + ' ' + b.y,
+        });
+        before.appendChild(path);
+      });
+    });
+    // AFTER: every node connects to the central hub at (400, 230).
+    const hub = { x: 400, y: 230 };
+    ROLES.forEach(role => {
+      const c = nodeCenter(role);
+      if (!c) return;
+      const path = svgNS('path', {
+        class: 'vc-edge', 'data-vc-from': role, 'data-vc-to': 'hub',
+        d: 'M ' + c.x + ' ' + c.y + ' L ' + hub.x + ' ' + hub.y,
+      });
+      after.appendChild(path);
+    });
+  }
+  buildEdges();
+
+  let mode = 'before';
+  function setMode(m) {
+    mode = m;
+    document.querySelectorAll('[data-vc-mode]').forEach(b => b.setAttribute('aria-selected', b.dataset.vcMode === m ? 'true' : 'false'));
+    document.getElementById('vc-edges-before').style.display = m === 'before' ? '' : 'none';
+    document.getElementById('vc-edges-after').style.display  = m === 'after'  ? '' : 'none';
+    document.getElementById('vc-hub').style.display          = m === 'after'  ? '' : 'none';
+  }
+  document.querySelectorAll('[data-vc-mode]').forEach(b => b.addEventListener('click', () => setMode(b.dataset.vcMode)));
+
+  function showRole(role) {
+    document.querySelectorAll('.vc-node').forEach(n => n.setAttribute('data-active', n.dataset.vcRole === role ? 'true' : 'false'));
+    document.querySelectorAll('.vc-edge').forEach(e => {
+      const active = e.dataset.vcFrom === role || e.dataset.vcTo === role;
+      e.setAttribute('data-active', active ? 'true' : 'false');
+    });
+    const c = CHAIN[role];
+    if (!c) return;
+    const detail = document.getElementById('vc-detail');
+    detail.innerHTML =
+      '<h4>' + c.title + '</h4>' +
+      '<dl>' +
+      '  <dt class="before">Before</dt><dd>' + c.before + '</dd>' +
+      '  <dt class="after">With KYE™</dt><dd>' + c.after + '</dd>' +
+      '</dl>';
+  }
+  document.querySelectorAll('.vc-node').forEach(n => {
+    n.addEventListener('click', () => showRole(n.dataset.vcRole));
+    n.addEventListener('keypress', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showRole(n.dataset.vcRole); } });
+  });
+  // Sensible default: highlight the buyer.
+  showRole('buyer');
+
+  // ---------- Lifecycle stepper ----------
+  const LC = {
+    provision:    { primitive: 'Identity primitive',     title: 'Provision',     copy: 'Every entity (human, business, AI agent, service, model, tool, workflow) gets a stable URN from day 0. Same identity surface across humans and machines.' },
+    register:     { primitive: 'Capability primitive',   title: 'Register',      copy: 'Capabilities, payloads, taxonomies, profiles all register with canonical schemas. The graph knows what exists before delegation can attach to it.' },
+    delegate:     { primitive: 'Authority primitive',    title: 'Delegate',      copy: 'Authority is granted as a signed, attenuable, time-boxed object. Scope only narrows; never broadens. Every grant is on the chain.' },
+    act:          { primitive: 'Decision primitive',     title: 'Act',           copy: 'Every action goes through POST /v1/runtime/authorize. Bound to the delegation chain plus a signed Decision Map™ plus an Evidence Pack™.' },
+    change:       { primitive: 'State primitive',        title: 'Change',        copy: 'Scope changes, key rotations, profile updates flow through the state vector and the audit chain. Every delta is captured before the next decision.' },
+    compromise:   { primitive: 'Cascade primitive',      title: 'Compromise',    copy: 'When a credential is compromised, the cascade signal propagates through the trust graph in milliseconds. Downstream grants invalidate before the next call.' },
+    recover:      { primitive: 'Recovery primitive',     title: 'Recover',       copy: 'Recovery is a contract not a black box. Signed request → signed decision → signed proof artefact → time-boxed break-glass grant → expiry signal.' },
+    decommission: { primitive: 'Lifecycle primitive',    title: 'Decommission',  copy: 'Tombstone state. Downstream grants invalidated. Evidence retained. The graph still answers questions about the entity after it has stopped acting.' },
+  };
+  document.querySelectorAll('[data-lc]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.lc;
+      document.querySelectorAll('.lc-step').forEach(s => s.setAttribute('aria-selected', s.dataset.lc === id ? 'true' : 'false'));
+      const d = LC[id];
+      if (!d) return;
+      document.getElementById('lc-prim').textContent = d.primitive;
+      document.getElementById('lc-h3').textContent   = d.title;
+      document.getElementById('lc-p').textContent    = d.copy;
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -34,6 +34,7 @@ const NAV_ITEMS = [
   { id: 'home',                href: './',                       label: 'Home',                                              icon: 'home',                    color: '#1A8754', group: 'protocol' },
   { id: 'protocol',            href: 'protocol.html',            label: 'Protocol',                                          icon: 'architecture',            color: '#00ACC1', group: 'protocol' },
   { id: 'concepts',            href: 'concepts.html',            label: 'Concepts',                                          icon: 'category',                color: '#00ACC1', group: 'protocol' },
+  { id: 'value',               href: 'value.html',               label: 'Value',                                             icon: 'auto_graph',              color: '#1A8754', group: 'protocol' },
   { id: 'whitepaper',          href: 'whitepaper.html',          label: 'Whitepaper',                                        icon: 'menu_book',               color: '#00838F', group: 'protocol' },
 
   // Build — technical entry points for implementing against the protocol
@@ -176,6 +177,7 @@ const FOOTER_GROUPS = [
       { href: './',                label: 'Home' },
       { href: 'protocol.html',     label: 'Protocol' },
       { href: 'concepts.html',     label: 'Concepts' },
+      { href: 'value.html',        label: 'Value' },
       { href: 'vocabulary.html',   label: 'Vocabulary' },
       { href: 'glossary.html',     label: 'Glossary' },
       { href: 'whitepaper.html',   label: 'Whitepaper' },
