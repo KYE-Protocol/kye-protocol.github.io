@@ -4863,6 +4863,32 @@ pre code {
   padding: 14px 18px; border-radius: 12px;
 }
 .top-bar-drawer .tb-link .lbl { display: inline; }
+
+/* Mobile drawer: show group labels + dividers so the 32-item nav
+ * reads as 7 groups (Protocol / Build / Compliance / By role /
+ * By sector / Programme / Resources) instead of one long flat list.
+ * Desktop hides these elements ≤1100px; the drawer overrides. */
+.top-bar-drawer .tb-group-label {
+  display: block;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 16px 18px 6px;
+  margin: 0;
+}
+.top-bar-drawer .tb-divider {
+  display: block;
+  height: 1px;
+  background: var(--rule);
+  margin: 6px 14px;
+  border: 0;
+}
+/* The first divider (before the very first group label) is redundant
+ * — drop it. */
+.top-bar-drawer > .tb-divider:first-child { display: none; }
 .top-bar-drawer .tb-link .ms { font-size: 22px; }
 
 /* Hide the legacy mega-menu on pages we've upgraded */

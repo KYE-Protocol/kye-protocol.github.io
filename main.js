@@ -202,12 +202,18 @@ initWebMcp();
     btn.setAttribute('aria-expanded', 'true');
   }
 
-  // Populate drawer contents now that close() exists.
+  // Populate drawer contents now that close() exists. Clone every
+  // navigation node from the source nav — links AND group labels AND
+  // dividers — in document order so the drawer mirrors the desktop's
+  // grouped structure (Protocol / Build / Compliance / By role / By
+  // sector / Programme / Resources).
   if (!drawer.firstChild) {
-    const sourceLinks = document.querySelectorAll('.top-bar-nav .tb-link');
-    sourceLinks.forEach(a => {
-      const clone = a.cloneNode(true);
-      clone.addEventListener('click', close);
+    const sourceNodes = document.querySelectorAll(
+      '.top-bar-nav .tb-link, .top-bar-nav .tb-group-label, .top-bar-nav .tb-divider'
+    );
+    sourceNodes.forEach(n => {
+      const clone = n.cloneNode(true);
+      if (clone.classList.contains('tb-link')) clone.addEventListener('click', close);
       drawer.appendChild(clone);
     });
     const ghLink = document.createElement('a');
