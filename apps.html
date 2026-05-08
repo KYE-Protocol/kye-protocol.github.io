@@ -43,7 +43,26 @@
   </div>
 </section>
 
-<section id="payments" class="section" aria-labelledby="h-pay">
+<section id="wallet" class="section" aria-labelledby="h-wallet">
+        <span class="eyebrow">Mobile demo &middot; the user-facing showcase</span>
+    <h2 id="h-wallet" class="h-section">KYE Authority Wallet<span class="tm">™</span> &mdash; <span class="accent">control AI agents from your phone</span>.</h2>
+  <div class="section-body"><div class="container">
+    <p class="lede">An open-source Android / iOS demo (Expo / React Native, Apache 2.0) that turns the protocol into an experience. Create AI agents, grant scoped authority, approve / deny / revoke, inspect Decision Maps<span class="tm">™</span>, view Evidence Packs<span class="tm">™</span>. Synthetic data; simulated agent and payment flows.</p>
+    <ul class="biz-list" style="margin-top:14px">
+      <li><strong>Flagship scenario:</strong> <em>Let an AI shopping agent buy on my behalf, but only up to &pound;50, only from approved merchants, and require my approval above &pound;25.</em> The phone receives a request for &pound;34.99 and asks <strong>approve / deny / modify scope / revoke</strong>.</li>
+      <li><strong>Six screens:</strong> Home, Agent (with revoke + cascade demo), Approval, Decision Map<span class="tm">™</span>, Evidence Pack<span class="tm">™</span>, Developer mode (request / decision / evidence / webhook JSON + TS SDK snippet).</li>
+      <li><strong>Five demo scenarios shipped:</strong> agent-backed purchasing, travel booking, open-banking payment-prep, healthcare appointment booking, legal contract approval, security key rotation.</li>
+      <li><strong>Open vs closed:</strong> the demo is Apache 2.0. The production version &mdash; KYE Authority Wallet Pro<span class="tm">™</span> &mdash; ships real Gateway integration, enterprise approvals, push notifications, evidence archive (commercial). Banks and payment platforms get KYE Mobile Approval Gateway<span class="tm">™</span>.</li>
+    </ul>
+    <div class="hero-cta" style="margin-top:18px">
+      <a href="https://github.com/KYE-Protocol/app/tree/main/public/mobile/authority-wallet-demo" target="_blank" rel="noopener" class="btn btn-primary"><span class="ms">code</span> View source on GitHub &rarr;</a>
+      <a href="roadmap.html#wallet" class="btn btn-secondary"><span class="ms">schedule</span> Wallet roadmap &rarr;</a>
+    </div>
+    <p class="lede" style="margin-top:14px;font-size:13px;color:var(--text-muted,#6b7280);font-style:italic">Demo app uses synthetic data and simulated agent / payment flows. It does not process real payments or replace bank, wallet, legal, healthcare, or identity systems.</p>
+  </div></div>
+</section>
+
+<section id="payments" class="section alt" aria-labelledby="h-pay">
         <span class="eyebrow">Payments &amp; commerce &middot; 4 apps</span>
     <h2 id="h-pay" class="h-section">The agentic-payments stack.</h2>
   <div class="section-body"><div class="container">
@@ -91,7 +110,7 @@
   </div></div>
 </section>
 
-<section id="openfin" class="section alt" aria-labelledby="h-of">
+<section id="openfin" class="section" aria-labelledby="h-of">
         <span class="eyebrow">Open finance &middot; 3 apps</span>
     <h2 id="h-of" class="h-section">Authority Finality<span class="tm">™</span> for open finance APIs.</h2>
   <div class="section-body"><div class="container">

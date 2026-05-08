@@ -43,6 +43,7 @@ const NAV_ITEMS = [
 
   // Ecosystem — what's already built and available on top of the protocol
   { id: 'ecosystem',           href: 'ecosystem.html',           label: 'Ecosystem',                                         icon: 'hub',                     color: '#1A8754', group: 'ecosystem' },
+  { id: 'wallet',              href: 'apps.html#wallet',         label: 'Wallet',                                            icon: 'account_balance_wallet',  color: '#1A8754', group: 'ecosystem' },
   { id: 'mcp',                 href: 'mcp.html',                 label: 'MCP',                                               icon: 'smart_toy',               color: '#8E24AA', group: 'ecosystem' },
   { id: 'connectors',          href: 'connectors.html',          label: 'Connectors',                                        icon: 'extension',               color: '#FF6D00', group: 'ecosystem' },
   { id: 'connector-profiles',  href: 'connector-profiles.html',  label: 'Profiles',                                          icon: 'grid_view',               color: '#00ACC1', group: 'ecosystem' },
@@ -195,6 +196,7 @@ const FOOTER_GROUPS = [
     heading: 'Ecosystem',
     items: [
       { href: 'ecosystem.html',           label: 'Ecosystem Overview' },
+      { href: 'apps.html#wallet',         label: 'KYE Authority Wallet<span class="tm">™</span>' },
       { href: 'mcp.html',                 label: 'KYE MCP Server<span class="tm">™</span>' },
       { href: 'connectors.html',          label: 'KYE Connector Hub<span class="tm">™</span>' },
       { href: 'connector-profiles.html',  label: 'KYE Connector Profiles<span class="tm">™</span>' },
