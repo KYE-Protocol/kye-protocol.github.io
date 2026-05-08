@@ -125,6 +125,8 @@
 
     <div class="vl-persona-tabs" role="tablist" aria-label="Persona switcher">
       <button class="vl-persona-tab" role="tab" aria-selected="true"  data-vl-tab="user">End user</button>
+      <button class="vl-persona-tab" role="tab" aria-selected="false" data-vl-tab="business">Business</button>
+      <button class="vl-persona-tab" role="tab" aria-selected="false" data-vl-tab="agency">Public-sector agency</button>
       <button class="vl-persona-tab" role="tab" aria-selected="false" data-vl-tab="citizen">Citizen</button>
       <button class="vl-persona-tab" role="tab" aria-selected="false" data-vl-tab="employee">Employee</button>
       <button class="vl-persona-tab" role="tab" aria-selected="false" data-vl-tab="agent">Agent / model</button>
@@ -138,6 +140,24 @@
         <div class="vl-card"><h4>You control</h4><p>Revoke any agent in milliseconds. Cascade fires: capability disabled, downstream grants invalidated, signal emitted, evidence pack generated.</p></div>
         <div class="vl-card"><h4>You approve</h4><p>Above-threshold actions hit your phone, not a vendor dashboard. The KYE Authority Wallet<span class="tm">™</span> is the consumer-facing surface.</p></div>
         <div class="vl-card"><h4>You can prove</h4><p>If a transaction is disputed, the Evidence Pack<span class="tm">™</span> is signed and replayable end-to-end with public keys alone.</p></div>
+      </div>
+    </div>
+
+    <div class="vl-persona-panel" id="vl-business">
+      <div class="vl-grid">
+        <div class="vl-card"><h4>Agentic procurement, scoped</h4><p>Your AI shopping / sourcing agent acts under a signed authority grant: amount cap, merchant allowlist, category blocklist, time window, expiry. Above-threshold purchases require approval; below-threshold actions ship a signed Decision Map<span class="tm">™</span> per transaction.</p></div>
+        <div class="vl-card"><h4>Treasurer / CFO control</h4><p>Treasury authority is delegated, not blanket. Payment-authority chains map cleanly to KYE Treasury Profile<span class="tm">™</span> and KYE Payments Profile<span class="tm">™</span>. Reconciliation has the chain as evidence, not a vendor log dump.</p></div>
+        <div class="vl-card"><h4>Vendor risk &mdash; verifiable</h4><p>Every conformant gateway exports the same Evidence Pack<span class="tm">™</span> format. Run the 41-fixture conformance pack against any vendor stack &mdash; pass / fail in minutes, byte-for-byte the same as the reference Gateway.</p></div>
+        <div class="vl-card"><h4>Dispute at the line item</h4><p>When a counterparty disputes an agent purchase, hand them the Evidence Pack<span class="tm">™</span> for that transaction. Verifiable offline with public keys. SME founders &mdash; not just enterprises &mdash; get this surface.</p></div>
+      </div>
+    </div>
+
+    <div class="vl-persona-panel" id="vl-agency">
+      <div class="vl-grid">
+        <div class="vl-card"><h4>Agency-as-actor, not just regulator</h4><p>A ministry authorises a programme. The programme delegates to caseworkers. Caseworkers delegate to AI assistants. Every step is a signed delegation in the chain &mdash; <em>not</em> a role in an LDAP group.</p></div>
+        <div class="vl-card"><h4>Maps to sovereign profiles</h4><p>KYE Sovereign AI Profile<span class="tm">™</span>, KYE Public Sector Profile<span class="tm">™</span>, KYE Cross-Agency Delegation Profile<span class="tm">™</span>, KYE Government API Authority Profile<span class="tm">™</span> &mdash; the four profiles that turn agency decision flow into replayable evidence.</p></div>
+        <div class="vl-card"><h4>Cross-agency without LDAP merging</h4><p>Inter-agency delegations work via the Federation Profile. Trust domains stay sovereign; chains attenuate across them. No central directory required.</p></div>
+        <div class="vl-card"><h4>Citizen-impacting decisions, replayable</h4><p>For benefits / housing / healthcare / justice, the decision <em>and</em> the chain that authorised it are signed and replayable end-to-end. Public-sector accountability stops depending on operator cooperation.</p></div>
       </div>
     </div>
 
