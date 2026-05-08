@@ -11,7 +11,7 @@
  *
  * The connector list below is the public-reference set (samples +
  * planned managed connectors). Production registry data will be
- * surfaced via the live API on KYE Cloud™ once the registry opens.
+ * surfaced via the live API on KYE Cloud Gateway™ once the registry opens.
  */
 
 const CATEGORIES = {
@@ -48,7 +48,7 @@ const STATUS_BADGES = {
 };
 
 // Reference connector set. Real production registry data will be
-// served from the live API once KYE Cloud™ opens; this list is the
+// served from the live API once KYE Cloud Gateway™ opens; this list is the
 // public reference shape and demonstrates the manifest dictionary.
 const CONNECTORS = [
   // Payments & commerce

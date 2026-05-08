@@ -113,7 +113,7 @@
     {
       "name": "kye.report_compromise",
       "title": "Report compromise",
-      "description": "File a compromise report. Cascades atomic revocation across delegations, payment authorities, access rights, capability grants, break-glass grants.",
+      "description": "File a compromise report. Downstream-derived authorities (delegations, payment authorities, access rights, capability grants, break-glass grants) become unusable; cascade algorithm is part of the patent track and is not disclosed in this repository.",
       "inputSchema": {
         "type": "object",
         "required": ["subject_entity_id"],

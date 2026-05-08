@@ -56,9 +56,9 @@ const NAV_ITEMS = [
   { id: 'readiness',           href: 'readiness.html',           label: 'Readiness',                                         icon: 'checklist',               color: '#1A8754', group: 'compliance' },
 
   // Audience
-  { id: 'buyers',              href: 'buyers.html',              label: 'Buyers',                                            icon: 'business_center',         color: '#B47200', group: 'audience' },
-  { id: 'auditors',            href: 'auditors.html',            label: 'Auditors',                                          icon: 'verified_user',           color: '#009688', group: 'audience' },
-  { id: 'regulators',          href: 'regulators.html',          label: 'Regulators',                                        icon: 'gavel',                   color: '#8E24AA', group: 'audience' },
+  { id: 'buyers',              href: 'buyers.html#persona-board',     label: 'Buyers',                                       icon: 'business_center',         color: '#B47200', group: 'audience' },
+  { id: 'auditors',            href: 'buyers.html#persona-auditors',  label: 'Auditors',                                     icon: 'verified_user',           color: '#009688', group: 'audience' },
+  { id: 'regulators',          href: 'buyers.html#persona-regulators',label: 'Regulators',                                   icon: 'gavel',                   color: '#8E24AA', group: 'audience' },
 
   // Sector
   { id: 'sectors',             href: 'sectors.html',             label: 'Sectors',                                           icon: 'apartment',               color: '#5F6368', group: 'sector' },
@@ -75,6 +75,7 @@ const NAV_ITEMS = [
   { id: 'working-groups',      href: 'working-groups.html',      label: 'Working Groups',                                    icon: 'groups',                  color: '#00ACC1', group: 'programme' },
 
   // Resources
+  { id: 'sandbox',             href: 'sandbox.html',             label: 'Sandbox',                                           icon: 'science',                 color: '#1A8754', group: 'build' },
   { id: 'demos',               href: 'demos.html',               label: 'Demos',                                             icon: 'play_circle',             color: '#EA4335', group: 'resources' },
   { id: 'glossary',            href: 'glossary.html',            label: 'Glossary',                                          icon: 'book_2',                  color: '#5F6368', group: 'resources' },
 ];
@@ -90,7 +91,7 @@ const TM_NOTICE_FULL =
   'Blast Radius Map<span class="tm">™</span>, ' +
   'Compliance Map<span class="tm">™</span>, ' +
   'KYE Compliance Mapping Rail<span class="tm">™</span>, ' +
-  'KYE Cloud<span class="tm">™</span>, ' +
+  'KYE Cloud Gateway<span class="tm">™</span>, ' +
   'KYE Conformant<span class="tm">™</span>, ' +
   'KYE Certified<span class="tm">™</span>, ' +
   'KYE Self-Tested<span class="tm">™</span>, and ' +
@@ -181,7 +182,8 @@ const FOOTER_GROUPS = [
     heading: 'Build',
     items: [
       { href: 'build.html',               label: 'Build with KYE<span class="tm">™</span>' },
-      { href: 'developers.html',          label: 'Developer Quickstart' },
+      { href: 'developers.html',          label: 'Developer Portal' },
+      { href: 'sandbox.html',             label: 'Sandbox' },
       { href: 'protocol.html#signals',    label: 'KYE Signal Bus<span class="tm">™</span>' },
       { href: 'mcp.html',                 label: 'KYE MCP Server<span class="tm">™</span>' },
       { href: 'widgets.html',             label: 'Interactive Widgets' },
@@ -211,17 +213,28 @@ const FOOTER_GROUPS = [
     ],
   },
   {
-    heading: 'Audience',
+    heading: 'By role',
     items: [
-      { href: 'developers.html',       label: 'Developers' },
-      { href: 'buyers.html',           label: 'Buyers' },
-      { href: 'auditors.html',         label: 'Auditors' },
-      { href: 'regulators.html',       label: 'Regulators' },
-      { href: 'sectors.html',          label: 'Sectors' },
-      { href: 'usecases.html',         label: 'Use Cases' },
-      { href: 'sovereign-ai.html',     label: 'Sovereign AI' },
+      { href: 'developers.html',                  label: 'Developers' },
+      { href: 'buyers.html#persona-board',        label: 'Boards &amp; executives' },
+      { href: 'buyers.html#persona-cio',          label: 'CIO / CTO' },
+      { href: 'buyers.html#persona-risk',         label: 'Risk' },
+      { href: 'buyers.html#persona-compliance',   label: 'Compliance' },
+      { href: 'buyers.html#persona-legal',        label: 'Legal' },
+      { href: 'buyers.html#persona-auditors',     label: 'Auditors' },
+      { href: 'buyers.html#persona-regulators',   label: 'Regulators' },
+    ],
+  },
+  {
+    heading: 'Sectors',
+    items: [
+      { href: 'sectors.html',          label: 'All sectors' },
+      { href: 'usecases.html',         label: 'Use cases' },
       { href: 'open-banking.html',     label: 'Open Banking' },
       { href: 'agent-purchasing.html', label: 'Agent Purchasing' },
+      { href: 'sovereign-ai.html',     label: 'Sovereign AI' },
+      { href: 'buyers.html#persona-banks',     label: 'Banks &amp; payments' },
+      { href: 'buyers.html#persona-utilities', label: 'Critical infrastructure' },
     ],
   },
   {

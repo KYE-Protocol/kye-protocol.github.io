@@ -58,6 +58,7 @@
       <li id="attenuation"><strong>Attenuation</strong><span>The rule that a child authority's scope must be a subset (&supe;) of its parent's. The chain only narrows; it never broadens.</span></li>
       <li id="state"><strong>State</strong><span>The current lifecycle status of an entity / authority / payload &mdash; e.g., active, quarantined, suspended, revoked. The protocol enforces transitions.</span></li>
       <li id="authority-graph"><strong>Authority Graph<span class="tm">™</span></strong><span>The protocol's view of entities + delegations + authorities + capabilities + scopes as a typed graph. Every relationship is a typed edge.</span></li>
+      <li id="chain-of-authority"><strong>KYE Chain of Authority<span class="tm">™</span></strong><span>The structural artefact: the linked, attenuating delegation chain from root principal down to the actor. Each link is a signed delegation that attenuates the parent's scope and hash-links into the audit chain. The narrative parallel to chain-of-custody for documents. Authority Finality<span class="tm">™</span> is the *property*; KYE Chain of Authority<span class="tm">™</span> is the chain itself.</span></li>
     </dl>
   </div></div>
 </section>
@@ -74,7 +75,7 @@
       <li id="pdp"><strong>PDP &mdash; Policy Decision Point</strong><span>The component that evaluates the request against authorities + state + scope and returns a decision. Ships as the reference Gateway.</span></li>
       <li id="epdp"><strong>ePDP &mdash; Edge PDP</strong><span>A locally-cached, offline-capable PDP for the bank/merchant edge. Walks the chain, verifies signatures, returns a decision in &lt; 1 ms.</span></li>
       <li id="cascade"><strong>Cascade</strong><span>The propagation pattern applied when an upstream authority is revoked or quarantined; downstream-derived authorities become unusable before the originating request returns. Mechanism is part of the patent track.</span></li>
-      <li id="authority-finality"><strong>Authority Finality<span class="tm">™</span></strong><span>The protocol-level guarantee that a request's authority chain is verified before the action takes effect &mdash; not after. The technical and evidentiary foundation behind the entire protocol.</span></li>
+      <li id="authority-finality"><strong>Authority Finality<span class="tm">™</span></strong><span>The protocol-level *property* that a request's <a href="#chain-of-authority">KYE Chain of Authority<span class="tm">™</span></a> is provably terminal &mdash; verified end-to-end with public keys alone before the action takes effect, and replayable after. The technical and evidentiary foundation behind the entire protocol.</span></li>
     </dl>
   </div></div>
 </section>
@@ -85,7 +86,7 @@
   <div class="section-body"><div class="container">
     <dl class="what-def-gloss">
       <li id="audit-chain"><strong>Audit chain</strong><span>The append-only, hash-linked sequence of audit events the runtime emits. Every entity creation, delegation, authority grant, decision, and state transition lands here.</span></li>
-      <li id="evidence-pack"><strong>Evidence Pack</strong><span>A signed bundle of audit-chain entries + Decision Maps<span class="tm">™</span> + signatures + public-key set, replayable end-to-end with public keys alone. The artefact a regulator or auditor verifies.</span></li>
+      <li id="evidence-pack"><strong>Evidence Pack<span class="tm">™</span></strong><span>A signed bundle of audit-chain entries + Decision Maps<span class="tm">™</span> + signatures + public-key set, replayable end-to-end with public keys alone. The artefact a regulator or auditor verifies.</span></li>
       <li id="evidence-graph"><strong>Evidence Graph<span class="tm">™</span></strong><span>The graph view across multiple evidence packs &mdash; how decisions, authorities, and audit events relate. Used for incident reconstruction and dispute resolution.</span></li>
       <li id="blast-radius-map"><strong>Blast Radius Map<span class="tm">™</span></strong><span>The view of which downstream authorities and active sessions a single revocation or quarantine signal will reach. Pre-emit; helps operators choose the right action.</span></li>
       <li id="proof-bundle"><strong>Proof bundle</strong><span>The transport format for an evidence pack: signed JSON over JWS, or COSE-Sign for embedded contexts.</span></li>
@@ -116,7 +117,7 @@
     <h2 id="h-prog" class="h-section">Conformance, certification, partner ladder.</h2>
   <div class="section-body"><div class="container">
     <dl class="what-def-gloss">
-      <li id="conformance-pack"><strong>Conformance pack</strong><span>The 40 black-box fixtures any implementation runs to demonstrate spec compliance. Reproducible on a laptop; deterministic outputs.</span></li>
+      <li id="conformance-pack"><strong>Conformance pack</strong><span>The 41 black-box fixtures any implementation runs to demonstrate spec compliance. Reproducible on a laptop; deterministic outputs.</span></li>
       <li id="kye-self-tested"><strong>KYE Self-Tested<span class="tm">™</span></strong><span>L1 of the conformance ladder. You run the fixtures locally and self-declare results.</span></li>
       <li id="kye-self-attested"><strong>KYE Self-Attested<span class="tm">™</span></strong><span>L2. Signed self-attestation (Ed25519, JWS) bundled with fixture results.</span></li>
       <li id="kye-conformant"><strong>KYE Conformant<span class="tm">™</span></strong><span>L3. Programme-reviewed conformance report + badge + registry listing.</span></li>

@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script>(function(){try{var s=localStorage.getItem("kye-theme");if(s==="dark"||s==="light"){document.documentElement.setAttribute("data-theme",s);}}catch(e){}})();</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KYE Protocol™ — Sandbox · build an authorize call in your browser</title>
+  <meta name="description" content="In-browser KYE Protocol™ sandbox. Build an /v1/runtime/authorize request, see the assembled JSON, copy the curl, see a deterministic stub Decision Map™ response. No installation, no signup." />
+  <link rel="canonical" href="https://kye-protocol.github.io/sandbox.html" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="KYE Protocol™ — Sandbox" />
+  <meta property="og:description" content="Build an /v1/runtime/authorize call in your browser. No install, no signup. Deterministic stub response shows the Decision Map™ shape." />
+  <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
+  <meta property="og:url" content="https://kye-protocol.github.io/sandbox.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css?v=1779290000" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://kye-protocol.github.io/"},{"@type":"ListItem","position":2,"name":"Sandbox","item":"https://kye-protocol.github.io/sandbox.html"}]}</script>
+  <style>
+    .sb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 18px; }
+    @media (max-width: 880px) { .sb-grid { grid-template-columns: 1fr; } }
+    .sb-form { display: flex; flex-direction: column; gap: 12px; padding: 16px; border: 1px solid color-mix(in srgb, var(--text-muted, #888) 22%, transparent); border-radius: 10px; background: var(--bg-alt, transparent); }
+    .sb-form label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; font-weight: 600; }
+    .sb-form input, .sb-form select { padding: 8px 10px; border: 1px solid color-mix(in srgb, var(--text-muted, #888) 28%, transparent); border-radius: 6px; font: inherit; font-size: 13.5px; background: var(--bg, #fff); color: var(--text, #111); }
+    .sb-pre { margin: 0; padding: 14px 16px; background: #0e1116; color: #e6edf3; border-radius: 8px; font-size: 12.5px; line-height: 1.6; overflow-x: auto; white-space: pre; }
+    .sb-pre .k { color: #79c0ff; } .sb-pre .s { color: #a5d6ff; } .sb-pre .c { color: #8b949e; } .sb-pre .ok { color: #7ee787; } .sb-pre .warn { color: #f0883e; }
+    .sb-tabs { display: flex; gap: 6px; margin-bottom: 8px; }
+    .sb-tab { appearance: none; background: transparent; border: 0; padding: 6px 12px; font: inherit; font-size: 13px; color: var(--text-muted, #6b7280); border-radius: 6px; cursor: pointer; }
+    .sb-tab[aria-selected="true"] { background: var(--accent, #1a8754); color: #fff; }
+    .sb-tabpanel { display: none; }
+    .sb-tabpanel[data-active] { display: block; }
+    .sb-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .sb-copy { appearance: none; background: transparent; border: 1px solid color-mix(in srgb, var(--text-muted, #888) 28%, transparent); padding: 4px 10px; border-radius: 6px; font: inherit; font-size: 12px; color: var(--text-muted, #6b7280); cursor: pointer; }
+    .sb-copy:hover { background: color-mix(in srgb, var(--accent, #1a8754) 8%, transparent); color: var(--accent, #1a8754); }
+    .sb-note { font-size: 12.5px; color: var(--text-muted, #6b7280); margin: 8px 0 0; }
+  </style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="top-bar" role="banner" data-kye-header data-active="sandbox"><!-- canonical chrome injected --></header>
+<main id="main" role="main">
+
+<section id="top" class="hero" aria-labelledby="hero-title">
+  <div class="container hero-inner">
+    <span class="hero-pill"><span class="dot"></span> Sandbox &middot; build an authorize call &middot; no install</span>
+    <h1 id="hero-title" style="margin-top:18px">Build an <span class="accent">authorize</span> call in your browser.</h1>
+    <p class="lede">Pick the actor, principal, capability and scope. The page builds the request, shows the JSON, prints a curl you can copy, and displays a deterministic stub <strong>Decision Map<span class="tm">™</span></strong> response in the same shape the reference Gateway returns.</p>
+    <p class="lede" style="margin-top:6px;font-size:13.5px;color:var(--text-muted,#6b7280)"><em>This sandbox runs entirely in your browser. The response is a deterministic stub &mdash; for live authorize calls, run the reference Gateway locally (<code>docker run -p 4000:4000 ghcr.io/kye-protocol/gateway:v1.0</code>) and replace the URL.</em></p>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="h-sandbox">
+  <div class="container">
+    <h2 id="h-sandbox" class="h-section">Authorize playground.</h2>
+
+    <div class="sb-grid">
+      <form class="sb-form" id="sb-form" autocomplete="off">
+        <label>Actor entity URN
+          <input type="text" name="actor_id" value="kye:agent:bank-z.eu:retail:bot-01" />
+        </label>
+        <label>Principal (on-behalf-of)
+          <input type="text" name="principal_id" value="kye:business:bank-z.eu:corp:acme" />
+        </label>
+        <label>Action / capability
+          <select name="action">
+            <option>payment.initiate</option>
+            <option>document.render</option>
+            <option>data.read</option>
+            <option>capability.invoke</option>
+            <option>recovery.request</option>
+          </select>
+        </label>
+        <label>Scope &mdash; amount cap (EUR)
+          <input type="number" name="amount" value="420" min="0" />
+        </label>
+        <label>Scope &mdash; counterparty
+          <input type="text" name="counterparty" value="kye:merchant:lemonade-co" />
+        </label>
+        <label>Idempotency key
+          <input type="text" name="idem" value="sb-01J7ABC..." />
+        </label>
+        <label>Force decision (sandbox-only override)
+          <select name="force">
+            <option value="">auto (deterministic from inputs)</option>
+            <option value="allow_with_constraints">allow_with_constraints</option>
+            <option value="require_approval">require_approval</option>
+            <option value="deny">deny</option>
+          </select>
+        </label>
+      </form>
+
+      <div>
+        <div class="sb-tabs" role="tablist" aria-label="Sandbox view">
+          <button class="sb-tab" role="tab" aria-selected="true"  data-sb-tab="request">Request JSON</button>
+          <button class="sb-tab" role="tab" aria-selected="false" data-sb-tab="curl">curl</button>
+          <button class="sb-tab" role="tab" aria-selected="false" data-sb-tab="response">Decision Map<span class="tm">™</span></button>
+        </div>
+
+        <div class="sb-tabpanel" id="sb-panel-request" data-active>
+          <div class="sb-row" style="justify-content:flex-end;margin-bottom:6px"><button type="button" class="sb-copy" data-sb-copy="request">copy</button></div>
+          <pre class="sb-pre" id="sb-request"></pre>
+        </div>
+        <div class="sb-tabpanel" id="sb-panel-curl">
+          <div class="sb-row" style="justify-content:flex-end;margin-bottom:6px"><button type="button" class="sb-copy" data-sb-copy="curl">copy</button></div>
+          <pre class="sb-pre" id="sb-curl"></pre>
+        </div>
+        <div class="sb-tabpanel" id="sb-panel-response">
+          <div class="sb-row" style="justify-content:flex-end;margin-bottom:6px"><button type="button" class="sb-copy" data-sb-copy="response">copy</button></div>
+          <pre class="sb-pre" id="sb-response"></pre>
+        </div>
+      </div>
+    </div>
+
+    <p class="sb-note">Schema reference: <a href="https://kye-protocol.github.io/schemas/runtime-authorize-request.json" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">runtime-authorize-request.json</a> &middot; <a href="https://kye-protocol.github.io/schemas/policy-decision.json" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">policy-decision.json</a>.</p>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <h2 class="h-section">When you're ready to go live.</h2>
+    <ol class="biz-list" style="margin-top:14px">
+      <li><strong>Run the reference Gateway.</strong> <code>docker run --rm -p 4000:4000 ghcr.io/kye-protocol/gateway:v1.0</code>. POST to <code>http://localhost:4000/v1/runtime/authorize</code> with the same payload above &mdash; you'll get a real signed Decision Map<span class="tm">™</span> back.</li>
+      <li><strong>Run the conformance pack.</strong> 41 black-box scenarios, byte-for-byte the same as the reference Gateway. <a href="https://github.com/KYE-Protocol/conformance" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">github.com/KYE-Protocol/conformance</a></li>
+      <li><strong>Wire it into your stack.</strong> See the <a href="developers.html" style="color:var(--accent);text-decoration:underline">developer portal</a> for SDK quickstarts (TypeScript / Python / Go) and webhook verification.</li>
+    </ol>
+  </div>
+</section>
+
+</main>
+<footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected --></footer>
+<button id="scroll-top" class="scroll-top" type="button" aria-label="Scroll to top" data-kye-scroll-top><!-- svg injected --></button>
+<script type="module" src="main.js?v=1779220000"></script>
+<script>
+(function () {
+  const form = document.getElementById('sb-form');
+  if (!form) return;
+
+  // Deterministic decision derived from inputs
+  function derive(inputs) {
+    if (inputs.force) return inputs.force;
+    if (inputs.amount > 1000) return 'require_approval';
+    if (inputs.counterparty.includes('blocked')) return 'deny';
+    return 'allow_with_constraints';
+  }
+
+  function tagify(json) {
+    return json
+      .replace(/("[^"]+")(:)/g, '<span class="k">$1</span>$2')
+      .replace(/: ("[^"]*")/g, ': <span class="s">$1</span>')
+      .replace(/: (true|false|null)/g, ': <span class="warn">$1</span>')
+      .replace(/: (\d+)/g, ': <span class="ok">$1</span>');
+  }
+
+  function read() {
+    const fd = new FormData(form);
+    return {
+      actor_id:     fd.get('actor_id') || '',
+      principal_id: fd.get('principal_id') || '',
+      action:       fd.get('action') || '',
+      amount:       Number(fd.get('amount') || 0),
+      counterparty: fd.get('counterparty') || '',
+      idem:         fd.get('idem') || '',
+      force:        fd.get('force') || '',
+    };
+  }
+
+  function render() {
+    const v = read();
+    const decision = derive(v);
+    const decisionId = 'kye:decision:01HSANDBOX' + Math.random().toString(36).slice(2, 7).toUpperCase();
+    const reqObj = {
+      schema_version: 'kye.runtime_authorize_request.v1',
+      actor:               { entity_id: v.actor_id },
+      acting_on_behalf_of: { entity_id: v.principal_id },
+      action:              v.action,
+      scope: {
+        amount_cap: { value: v.amount, currency: 'EUR' },
+        counterparty: v.counterparty,
+      },
+      idempotency_key: v.idem,
+    };
+    const reqJson = JSON.stringify(reqObj, null, 2);
+    const curlCmd = [
+      'curl -X POST https://localhost:4000/v1/runtime/authorize \\',
+      "  -H 'content-type: application/json' \\",
+      "  -H 'idempotency-key: " + v.idem + "' \\",
+      "  -d '" + JSON.stringify(reqObj) + "'"
+    ].join('\n');
+
+    const respObj = {
+      schema_version: 'kye.policy_decision.v1',
+      policy_decision_id: decisionId,
+      decision: decision,
+      reasons: decision === 'allow_with_constraints'
+        ? ['delegation_active', 'scope_match', 'state_healthy']
+        : decision === 'require_approval'
+          ? ['amount_exceeds_threshold', 'approval_workflow_engaged']
+          : ['scope_violation', 'counterparty_blocked'],
+      obligations: decision === 'allow_with_constraints' ? ['audit.emit', 'evidence_pack.generate'] : [],
+      stop_conditions: ['actor.stop_signal', 'delegation.revoked', 'credential.compromised'],
+      decision_map_url: 'https://localhost:4000/v1/decisions/' + decisionId + '/map',
+      evidence_pack_url: 'https://localhost:4000/v1/evidence-packs/' + decisionId,
+      authority_chain: [
+        { delegation_id: 'kye:del:bank-z:01', from: v.principal_id, to: v.actor_id, capability_id: v.action },
+      ],
+      issued_at: new Date().toISOString(),
+      signature: { alg: 'ed25519', kid: 'kye:key:gw-01:2026Q2', value: 'b64.<truncated-in-sandbox>' },
+    };
+    const respJson = JSON.stringify(respObj, null, 2);
+
+    document.getElementById('sb-request').innerHTML  = tagify(reqJson);
+    document.getElementById('sb-curl').textContent   = curlCmd;
+    document.getElementById('sb-response').innerHTML = tagify(respJson);
+  }
+
+  form.addEventListener('input', render);
+  render();
+
+  // Tabs
+  document.querySelectorAll('[data-sb-tab]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.sbTab;
+      document.querySelectorAll('.sb-tab').forEach(t => t.setAttribute('aria-selected', t.dataset.sbTab === id ? 'true' : 'false'));
+      document.querySelectorAll('.sb-tabpanel').forEach(p => {
+        if (p.id === 'sb-panel-' + id) p.setAttribute('data-active', '');
+        else p.removeAttribute('data-active');
+      });
+    });
+  });
+
+  // Copy buttons
+  document.querySelectorAll('[data-sb-copy]').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const id = btn.dataset.sbCopy;
+      const el = document.getElementById('sb-' + id);
+      const text = el.innerText;
+      try { await navigator.clipboard.writeText(text); btn.textContent = 'copied'; setTimeout(() => btn.textContent = 'copy', 1200); }
+      catch { btn.textContent = 'copy failed'; }
+    });
+  });
+})();
+</script>
+</body>
+</html>

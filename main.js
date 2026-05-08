@@ -863,12 +863,13 @@ initWebMcp();
               <select id="kye-contact-topic" name="topic" required>
                 <option value="general">General enquiry</option>
                 <option value="adoption">Adoption &mdash; integrating KYE Protocol&#8482;</option>
-                <option value="sales">Speak to sales &mdash; KYE Cloud&#8482; / cost</option>
+                <option value="sales">Speak to sales &mdash; KYE Cloud Gateway&#8482; / pricing</option>
+                <option value="conformance">Conformance &amp; certification</option>
+                <option value="partnership">Partnership / pilot</option>
+                <option value="training">Training partner enquiry</option>
                 <option value="trademark">Trademark policy</option>
                 <option value="patent">Patent licensing</option>
-                <option value="conformance">Conformance &amp; certification</option>
                 <option value="security">Security advisory</option>
-                <option value="partnership">Partnership / pilot</option>
               </select>
             </div>
           </div>
@@ -950,4 +951,26 @@ initWebMcp();
     window.location.href = href;
     setTimeout(close, 200);
   });
+})();
+
+/* Persona tabs (buyers.html) — supports deep-link via #persona-<id> */
+(function () {
+  const tabs = document.querySelectorAll('[data-persona-tab]');
+  if (!tabs.length) return;
+  function activate(pid, opts) {
+    document.querySelectorAll('.persona-tab').forEach(t => t.setAttribute('aria-selected', t.dataset.personaTab === pid ? 'true' : 'false'));
+    document.querySelectorAll('.persona-panel').forEach(p => {
+      if (p.id === 'persona-' + pid) p.setAttribute('data-active', '');
+      else p.removeAttribute('data-active');
+    });
+    history.replaceState(null, '', '#persona-' + pid);
+    if (opts && opts.scroll) {
+      // Display:none panels can't be scroll targets, so scroll to the tab strip.
+      const strip = document.querySelector('.persona-tabs');
+      if (strip) strip.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+  tabs.forEach(t => t.addEventListener('click', () => activate(t.dataset.personaTab)));
+  const hash = (location.hash || '').replace(/^#persona-/, '');
+  if (hash && document.getElementById('persona-' + hash)) activate(hash, { scroll: true });
 })();

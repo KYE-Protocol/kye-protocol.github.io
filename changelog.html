@@ -45,9 +45,17 @@
     <h2 id="h-un" class="h-section">In flight.</h2>
   <div class="section-body"><div class="container">
     <ul class="biz-list">
-      <li><strong>Tier-1 readiness pass</strong> <em>(action: optional &mdash; turn on the new env vars to harden your deployment)</em> &mdash; CI supply-chain (dependency-review, gitleaks, signed-commit check, SBOM retention); governance templates (GDPR DPA, ROPA, DSR procedure, PCI scope, customer SLA, sub-processor inventory, BCDR tabletop); Gateway hardening middleware (auth, rate-limit, body-size, structured logging, JSONL + Postgres audit-chain adapters, receiver-side webhook verifier, COSE_Sign1 binary signing, OPA policy-engine adapter, Authority Graph™ traversal engine, HSM/KMS key-custody interface); SDK crypto + errors + retry across TS + Python + Go; CLI keystore + sign + verify-webhook.</li>
+      <li><strong>Tier-1 readiness pass</strong> <em>(optional &mdash; turn on the new env vars to harden your deployment)</em>:
+        <ul>
+          <li>CI supply-chain: dependency-review, gitleaks, signed-commit check, SBOM retention.</li>
+          <li>Governance templates: GDPR DPA, ROPA, DSR procedure, PCI scope, customer SLA, sub-processor inventory, BCDR tabletop.</li>
+          <li>Gateway hardening middleware: auth, rate-limit, body-size, structured logging, JSONL + Postgres audit-chain adapters, receiver-side webhook verifier, COSE_Sign1 binary signing, OPA policy-engine adapter, Authority Graph<span class="tm">™</span> traversal engine, HSM/KMS key-custody interface.</li>
+          <li>SDK crypto + errors + retry across TS + Python + Go.</li>
+          <li>CLI keystore + sign + verify-webhook.</li>
+        </ul>
+      </li>
       <li><strong>Sovereign AI build-out</strong> <em>(action: optional &mdash; only if you adopt the v1.1 preview profile)</em> &mdash; Sovereign AI Profile™ + 9 sub-profiles + 5 planned apps; <code data-code="path">sovereign-ai-authority.json</code> schema + example + conformance fixture + SDK types.</li>
-      <li><strong>Numeric ledger reconciled</strong> <em>(no action)</em> &mdash; site claims now match repo counts line-for-line: 50 v1.0 normative profiles, 40 conformance fixtures (40/40 pass), 69 JSON Schemas, 69 validated examples, 46 reference connectors (now served by GET /v1/connectors), 24 event families × 79 types, 266 control mappings across 13 frameworks.</li>
+      <li><strong>Numeric ledger reconciled</strong> <em>(no action)</em> &mdash; site claims now match repo counts line-for-line: 50 v1.0 normative profiles, 41 conformance fixtures (41/41 pass), 69 JSON Schemas, 69 validated examples, 50 reference connectors (now served by GET /v1/connectors), 24 event families × 79 types, 266 control mappings across 13 frameworks.</li>
       <li><strong>Trademark family unified</strong> <em>(no action)</em> &mdash; open-source / spec surface continues as Reference Gateway / Runtime Gateway / KYE-Gateway v1 without the &trade;; protected marks documented in <a href="legal.html#trademarks">legal.html</a>.</li>
     </ul>
   </div></div>
@@ -57,7 +65,7 @@
         <span class="eyebrow">v1.0.0 &middot; April 2026</span>
     <h2 id="h-v100" class="h-section">First frozen public release.</h2>
   <div class="section-body"><div class="container">
-    <p class="lede">The frozen v1.0 contract: 50 v1.0 normative profiles, 193 OpenAPI operations across 87+ runtime endpoints, 69 JSON Schemas with 69 validated examples, the reference Gateway, embedded PDP, PEP middleware, three SDKs (TypeScript / Python / Go), 40 conformance fixtures (40 / 40 pass), 266 compliance control mappings, all under Apache License 2.0.</p>
+    <p class="lede">The frozen v1.0 contract: 50 normative profiles, 193 OpenAPI operations, 69 JSON Schemas, three SDKs, 41 conformance fixtures (41/41 pass), 266 compliance control mappings. Apache License 2.0.</p>
     <h3 class="arch-tier-h" style="margin-top:18px">Highlights</h3>
     <ul class="biz-list">
       <li><strong>Apache License 2.0</strong> across the protocol-adoption layer (vocabulary, ID format, schemas, examples, SDKs, reference Gateway, conformance suite).</li>

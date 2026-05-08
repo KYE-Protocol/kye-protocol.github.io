@@ -1156,6 +1156,59 @@ body::before {
 .persona-card .pain { font-size: 13px; color: var(--text-dim); font-style: italic; }
 .persona-card p { margin: 0; font-size: 14px; color: var(--text-muted); line-height: 1.5; }
 
+/* === Persona tabs (buyers.html) === */
+.persona-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 18px 0 14px;
+  border-bottom: 1px solid color-mix(in srgb, var(--text-muted, #888) 22%, transparent);
+}
+.persona-tab {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 10px 14px;
+  font: inherit;
+  font-size: 13.5px;
+  color: var(--text-muted, #6b7280);
+  cursor: pointer;
+  border-radius: 8px 8px 0 0;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color .12s, border-color .12s, background .12s;
+}
+.persona-tab:hover { color: var(--text, #111); background: color-mix(in srgb, var(--accent, #1a8754) 6%, transparent); }
+.persona-tab[aria-selected="true"] { color: var(--accent, #1a8754); border-bottom-color: var(--accent, #1a8754); font-weight: 600; }
+.persona-panel { display: none; padding-top: 18px; }
+.persona-panel[data-active] { display: block; }
+.persona-panel .why-card { box-shadow: none; padding: 0; }
+
+/* === Protocol-page sticky TOC === */
+.protocol-toc {
+  position: sticky;
+  top: 56px;
+  z-index: 20;
+  background: color-mix(in srgb, var(--bg, #fff) 92%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid color-mix(in srgb, var(--text-muted, #888) 18%, transparent);
+  padding: 8px 0;
+}
+.protocol-toc > .container {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+.protocol-toc .cn-pill {
+  flex-shrink: 0;
+  font-size: 13px;
+  padding: 6px 12px;
+}
+@media (max-width: 720px) { .protocol-toc { top: 48px; } }
+
 /* === Star CTA (sticky) === */
 .star-cta {
   position: fixed; left: 24px; bottom: 24px; z-index: 60;

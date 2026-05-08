@@ -4,8 +4,8 @@
   <script>(function(){try{var s=localStorage.getItem("kye-theme");if(s==="dark"||s==="light"){document.documentElement.setAttribute("data-theme",s);}}catch(e){}})();</script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>KYE Protocol™ — For developers</title>
-  <meta name="description" content="Schemas, OpenAPI, three reference SDKs (TypeScript / Python / Go), reference Gateway, conformance pack — what to build with KYE Protocol™." />
+  <title>KYE Protocol™ — Developer portal</title>
+  <meta name="description" content="Developer portal for KYE Protocol™. Install in 60 seconds, hit /v1/runtime/authorize, verify a webhook, ship. Schemas, OpenAPI, three SDKs (TypeScript / Python / Go), reference Gateway, sandbox, conformance pack." />
   <link rel="canonical" href="https://kye-protocol.github.io/developers.html" />
   <meta name="robots" content="index, follow" />
   <meta property="og:type" content="article" />
@@ -28,19 +28,38 @@
 
 <section id="top" class="hero" aria-labelledby="hero-title">
   <div class="container hero-inner">
-    <span class="hero-pill"><span class="dot"></span> For developers &middot; engineers &amp; platform teams</span>
-    <h1 id="hero-title" style="margin-top:18px">Build <span class="accent">with the contract.</span></h1>
-    <p class="lede">Schema-first. Three SDKs. Reference Gateway. 40/40 conformance fixtures. Every entity, authority, decision, audit event, evidence pack, payload, taxonomy term, metadata binding, graph node &mdash; canonical JSON Schema you can implement against.</p>
+    <span class="hero-pill"><span class="dot"></span> Developer portal &middot; install, authorise, verify, ship</span>
+    <h1 id="hero-title" style="margin-top:18px">Install in <span class="accent">60 seconds</span>. Authorise in <span class="accent">five</span>.</h1>
+    <p class="lede">Schema-first. Three SDKs. Reference Gateway. 41/41 conformance fixtures. Every entity, authority, decision, audit event, evidence pack, payload, taxonomy term, metadata binding, graph node &mdash; canonical JSON Schema you can implement against.</p>
     <div class="cn-quick" style="margin-top:18px">
-      <a href="#approach"   class="cn-pill"><span class="ms">code</span> Approach</a>
-      <a href="#refimpl"    class="cn-pill"><span class="ms">extension</span> Reference impl</a>
+      <a href="#install"    class="cn-pill"><span class="ms">terminal</span> Install</a>
+      <a href="#quickstart" class="cn-pill"><span class="ms">play_arrow</span> Quickstart</a>
+      <a href="sandbox.html" class="cn-pill"><span class="ms">science</span> Sandbox</a>
+      <a href="#refimpl"    class="cn-pill"><span class="ms">extension</span> SDKs &amp; Gateway</a>
+      <a href="#webhooks"   class="cn-pill"><span class="ms">send</span> Webhooks</a>
       <a href="#principles" class="cn-pill"><span class="ms">architecture</span> 16 principles</a>
-      <a href="#webhooks"   class="cn-pill"><span class="ms">send</span> Subscribe to signals</a>
-      <a href="#quickstart" class="cn-pill"><span class="ms">play_arrow</span> 5-min quickstart</a>
+      <a href="#refs"       class="cn-pill"><span class="ms">menu_book</span> References</a>
     </div>
   </div>
 </section>
 
+
+<section id="install" class="section" aria-labelledby="h-install"><div class="container">
+  <span class="eyebrow">Install</span>
+  <h2 id="h-install" class="h-section">Pick a language. <span class="accent">One command.</span></h2>
+  <pre style="background:#0e1116;color:#e6edf3;padding:16px 18px;border-radius:8px;font-size:13.5px;line-height:1.7;overflow-x:auto"><span style="color:#8b949e"># TypeScript / Node</span>
+npm install @kye-protocol/sdk
+
+<span style="color:#8b949e"># Python</span>
+pip install kye-sdk
+
+<span style="color:#8b949e"># Go</span>
+go get github.com/KYE-Protocol/sdk-go
+
+<span style="color:#8b949e"># Run the reference Gateway locally (docker)</span>
+docker run --rm -p 4000:4000 ghcr.io/kye-protocol/gateway:v1.0</pre>
+  <p class="lede" style="margin-top:14px">Try it without installing anything &mdash; <a href="sandbox.html" style="color:var(--accent);text-decoration:underline">in-browser sandbox</a> sends real <code>/v1/runtime/authorize</code> calls to a hosted Gateway and shows the signed Decision Map<span class="tm">™</span>.</p>
+</div></section>
 
 <section id="approach" class="section alt" aria-labelledby="h-approach"><div class="container">
   <span class="eyebrow">Developers</span>
@@ -50,7 +69,7 @@
 
 <section id="refimpl" class="section" aria-labelledby="h-refimpl"><div class="container">
   <span class="eyebrow">Reference impl</span>
-  <h2 id="h-refimpl" class="h-section">Three SDKs. One reference Gateway. <span class="accent">40/40 conformance.</span></h2>
+  <h2 id="h-refimpl" class="h-section">Three SDKs. One reference Gateway. <span class="accent">41/41 conformance.</span></h2>
   <ul class="biz-list">
     <li><strong>TypeScript SDK</strong> &mdash; <a href="https://github.com/KYE-Protocol/sdk-typescript" target="_blank" rel="noopener"><code>github.com/KYE-Protocol/sdk-typescript</code></a> &mdash; schema types, local validators, decision client, signing helpers, evidence-pack builder, taxonomy resolver, metadata classifier, graph traversal client, decision-map renderer. <code>npm install @kye-protocol/sdk</code>.</li>
     <li><strong>Python SDK</strong> &mdash; <a href="https://github.com/KYE-Protocol/sdk-python" target="_blank" rel="noopener"><code>github.com/KYE-Protocol/sdk-python</code></a> &mdash; same surface, dataclass-based. <code>pip install kye-protocol</code>.</li>
@@ -184,6 +203,19 @@ curl -X POST https://gw.example/v1/runtime/authorize \
   </div>
   </div>
 </section>
+
+<section id="refs" class="section alt" aria-labelledby="h-refs"><div class="container">
+  <span class="eyebrow">References</span>
+  <h2 id="h-refs" class="h-section">Canonical artefacts you can implement against.</h2>
+  <div class="prim-grid" style="margin-top:14px">
+    <a href="https://github.com/KYE-Protocol/schemas" target="_blank" rel="noopener" class="prim-card"><span class="ms">schema</span><strong>JSON Schemas</strong><span>69 schemas, 2020-12. Every entity, authority, decision, audit event, payload artefact, taxonomy term, graph node.</span></a>
+    <a href="https://github.com/KYE-Protocol/openapi" target="_blank" rel="noopener" class="prim-card"><span class="ms">api</span><strong>OpenAPI</strong><span>193 ops across Core + Payments + Extensions. Code-gen targets, redocly-validated.</span></a>
+    <a href="https://github.com/KYE-Protocol/conformance" target="_blank" rel="noopener" class="prim-card"><span class="ms">workspace_premium</span><strong>Conformance pack</strong><span>41 black-box scenarios. The same pack tested the reference Gateway. Run against your Gateway; emit conformance-report.json.</span></a>
+    <a href="vocabulary.html" class="prim-card"><span class="ms">menu_book</span><strong>Vocabulary</strong><span>Entity types, capability kinds, decision codes, reason codes, signal types, taxonomies.</span></a>
+    <a href="protocol.html" class="prim-card"><span class="ms">architecture</span><strong>Protocol reference</strong><span>16 principles, state model, lifecycle, profile inventory, coverage matrix.</span></a>
+    <a href="changelog.html" class="prim-card"><span class="ms">history</span><strong>Changelog</strong><span>Dated release notes. v1.0 frozen April 2026; v1.1 preview profiles in flight.</span></a>
+  </div>
+</div></section>
 
 </main>
 

@@ -165,7 +165,7 @@
     <h2 id="h-audit-c" class="h-section"><span class="ms cn-h-icon">verified</span> Audit &mdash; signed evidence, public-key verifiable.</h2>
   <div class="section-body"><div class="container">
     <div class="cn-card">
-      <p class="cn-def"><strong>Definition.</strong> An append-only, hash-linked audit chain. Every authorise call, every state transition, every signal cascade emits a signed audit event. Bundles project to <strong>Evidence Packs</strong> &mdash; the artefact a regulator, court, auditor, or dispute panel verifies offline using public keys alone. No read-access to your runtime required.</p>
+      <p class="cn-def"><strong>Definition.</strong> An append-only, hash-linked audit chain. Every authorise call, every state transition, every signal cascade emits a signed audit event. Bundles project to <strong>Evidence Packs<span class="tm">™</span></strong> &mdash; the artefact a regulator, court, auditor, or dispute panel verifies offline using public keys alone. No read-access to your runtime required.</p>
       <dl class="cn-meta">
         <dt>Schema</dt><dd><code data-code="path">https://kye-protocol.github.io/schemas/audit-event.json</code> &middot; <code data-code="path">https://kye-protocol.github.io/schemas/evidence-pack.json</code> &middot; <code data-code="path">https://kye-protocol.github.io/schemas/proof-bundle.json</code></dd>
         <dt>Endpoints</dt><dd><code data-code="endpoint">POST /v1/audit/events</code> &middot; <code data-code="endpoint">GET /v1/proof-bundles/{id}</code> &middot; <code data-code="endpoint">GET /v1/decisions/{id}/map</code> &middot; <code data-code="endpoint">POST /v1/oscal/export</code></dd>
@@ -175,7 +175,7 @@
       <p class="cn-ex-h"><strong>Open-banking example.</strong></p>
       <ul class="cn-ex-list">
         <li>Every TPP&rarr;AI&rarr;ASPSP transaction emits the full chain to the audit log: consent granted, scope attenuated, payment intent, decision, rail confirmation, settlement.</li>
-        <li>30 days later, a complainant disputes the &euro;420 payment. The bank pulls the Evidence Pack; the regulator verifies the chain with the public keys it already holds for each party. No spreadsheets, no SQL.</li>
+        <li>30 days later, a complainant disputes the &euro;420 payment. The bank pulls the Evidence Pack<span class="tm">™</span>; the regulator verifies the chain with the public keys it already holds for each party. No spreadsheets, no SQL.</li>
       </ul>
     </div>
   </div></div>

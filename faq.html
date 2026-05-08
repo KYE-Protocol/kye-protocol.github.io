@@ -67,11 +67,18 @@
       </details>
       <details class="faq-item" data-faq-aud="buyer auditor">
         <summary>Is it production-ready?</summary>
-        <p>v1.0 ships <strong>50 v1.0 normative profiles</strong>, 193 OpenAPI operations (87+ runtime endpoints), 69 JSON Schemas with 69 validated example payloads, a reference Gateway (67/67 unit tests), an embedded PDP library, a PEP middleware, three SDKs (TypeScript, Python, Go), <strong>40 conformance fixtures</strong> (40/40 pass), and <strong>266 control mappings across 13 horizontal frameworks</strong> (SOC 2, ISO 27001:2022, PCI DSS 4.0, PSD2/PSD3, DORA, NIS2, EU AI Act, ISO 42001, NIST AI RMF, NIST 800-207, NIST CSF, GDPR, FedRAMP) plus sector overlays. Profile contract is bank-grade today; reference implementation is pilot-grade (correctness-first, not throughput-tuned). Apache 2.0.</p>
+        <p>v1.0 ships:</p>
+        <ul>
+          <li><strong>50 normative profiles</strong>, 193 OpenAPI operations across 87+ runtime endpoints, 69 JSON Schemas with 69 validated examples.</li>
+          <li>Reference Gateway (67/67 unit tests), embedded PDP library, PEP middleware, three SDKs (TypeScript / Python / Go).</li>
+          <li><strong>41 conformance fixtures</strong> (41/41 pass).</li>
+          <li><strong>266 control mappings across 13 horizontal frameworks</strong>: SOC 2, ISO 27001:2022, PCI DSS 4.0, PSD2/PSD3, DORA, NIS2, EU AI Act, ISO 42001, NIST AI RMF, NIST 800-207, NIST CSF, GDPR, FedRAMP &mdash; plus sector overlays.</li>
+        </ul>
+        <p>Profile contract is bank-grade today; reference implementation is pilot-grade (correctness-first, not throughput-tuned). Apache 2.0.</p>
       </details>
       <details class="faq-item" data-faq-aud="auditor buyer">
         <summary>How do I verify a vendor&rsquo;s claim of KYE Protocol<span class="tm">™</span> conformance?</summary>
-        <p>Run the 40-fixture black-box conformance pack against their Gateway. Fixtures speak only HTTP; no implementation internals required. The reporter emits machine-readable evidence (<code>conformance-report.json</code>) listing every passed and failed scenario. Pin the conformance pack version in your vendor contract; re-run on each release. The same pack tested the reference Gateway, so apples-to-apples is guaranteed.</p>
+        <p>Run the 41-fixture black-box conformance pack against their Gateway. Fixtures speak only HTTP; no implementation internals required. The reporter emits machine-readable evidence (<code>conformance-report.json</code>) listing every passed and failed scenario. Pin the conformance pack version in your vendor contract; re-run on each release. The same pack tested the reference Gateway, so apples-to-apples is guaranteed.</p>
       </details>
       <details class="faq-item" data-faq-aud="builder">
         <summary>What&rsquo;s the deployment topology?</summary>

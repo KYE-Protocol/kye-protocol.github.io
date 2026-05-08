@@ -71,7 +71,7 @@
       <li><span class="ob-step">3.</span> <strong>AI agent</strong> prepares a &euro;420 payment. The KYE<span class="tm">™</span> ePDP walks: agent &rarr; TPP &rarr; account holder. Every link is signed; every scope attenuates. The bank receives a payment intent with the full chain attached.</li>
       <li><span class="ob-step">4.</span> <strong>ASPSP</strong> verifies the chain offline using public keys; returns <code data-code="allow">allow_with_constraints</code>. Constraint: emit an SCA proof artefact + an audit-chain entry. <strong>Then</strong> the bank&rsquo;s normal issuer authorisation pipeline runs.</li>
       <li><span class="ob-step">5.</span> Holder revokes consent at T+30&nbsp;days. Cascade kills every authority + every downstream agent grant in &lt;&nbsp;1s. Stale-consent transactions become impossible &mdash; the next agent call gets <code data-code="deny">deny: authority_revoked</code>.</li>
-      <li><span class="ob-step">6.</span> 60 days later, a complainant disputes the &euro;420 payment. The bank pulls the Evidence Pack; the regulator verifies the full chain offline using the public keys it already holds for each party. No interview transcripts, no spreadsheets.</li>
+      <li><span class="ob-step">6.</span> 60 days later, a complainant disputes the &euro;420 payment. The bank pulls the Evidence Pack<span class="tm">™</span>; the regulator verifies the full chain offline using the public keys it already holds for each party. No interview transcripts, no spreadsheets.</li>
     </ol>
     </details>
   </div></div>
