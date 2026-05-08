@@ -36,16 +36,19 @@ const NAV_ITEMS = [
   { id: 'concepts',            href: 'concepts.html',            label: 'Concepts',                                          icon: 'category',                color: '#00ACC1', group: 'protocol' },
   { id: 'whitepaper',          href: 'whitepaper.html',          label: 'Whitepaper',                                        icon: 'menu_book',               color: '#00838F', group: 'protocol' },
 
-  // Build
+  // Build — technical entry points for implementing against the protocol
   { id: 'build',               href: 'build.html',               label: 'Build',                                             icon: 'construction',            color: '#1A8754', group: 'build' },
   { id: 'developers',          href: 'developers.html',          label: 'Developers',                                        icon: 'code',                    color: '#1A73E8', group: 'build' },
-  { id: 'mcp',                 href: 'mcp.html',                 label: 'MCP',                                               icon: 'smart_toy',               color: '#8E24AA', group: 'build' },
-  { id: 'ecosystem',           href: 'ecosystem.html',           label: 'Ecosystem',                                         icon: 'hub',                     color: '#1A8754', group: 'build' },
-  { id: 'connectors',          href: 'connectors.html',          label: 'Connectors',                                        icon: 'extension',               color: '#FF6D00', group: 'build' },
-  { id: 'connector-profiles',  href: 'connector-profiles.html',  label: 'Profiles',                                          icon: 'grid_view',               color: '#00ACC1', group: 'build' },
-  { id: 'apps',                href: 'apps.html',                label: 'Apps',                                              icon: 'apps',                    color: '#00838F', group: 'build' },
-  { id: 'plugins',             href: 'plugins.html',             label: 'Plugins',                                           icon: 'power',                   color: '#5F6368', group: 'build' },
-  { id: 'widgets',             href: 'widgets.html',             label: 'Widgets',                                           icon: 'widgets',                 color: '#1A8754', group: 'build' },
+  { id: 'sandbox',             href: 'sandbox.html',             label: 'Sandbox',                                           icon: 'science',                 color: '#1A8754', group: 'build' },
+
+  // Ecosystem — what's already built and available on top of the protocol
+  { id: 'ecosystem',           href: 'ecosystem.html',           label: 'Ecosystem',                                         icon: 'hub',                     color: '#1A8754', group: 'ecosystem' },
+  { id: 'mcp',                 href: 'mcp.html',                 label: 'MCP',                                               icon: 'smart_toy',               color: '#8E24AA', group: 'ecosystem' },
+  { id: 'connectors',          href: 'connectors.html',          label: 'Connectors',                                        icon: 'extension',               color: '#FF6D00', group: 'ecosystem' },
+  { id: 'connector-profiles',  href: 'connector-profiles.html',  label: 'Profiles',                                          icon: 'grid_view',               color: '#00ACC1', group: 'ecosystem' },
+  { id: 'apps',                href: 'apps.html',                label: 'Apps',                                              icon: 'apps',                    color: '#00838F', group: 'ecosystem' },
+  { id: 'plugins',             href: 'plugins.html',             label: 'Plugins',                                           icon: 'power',                   color: '#5F6368', group: 'ecosystem' },
+  { id: 'widgets',             href: 'widgets.html',             label: 'Widgets',                                           icon: 'widgets',                 color: '#1A8754', group: 'ecosystem' },
 
   // Compliance
   { id: 'compliance',          href: 'compliance.html',          label: 'Compliance',                                        icon: 'rule',                    color: '#1A73E8', group: 'compliance' },
@@ -55,12 +58,11 @@ const NAV_ITEMS = [
   { id: 'risk',                href: 'risk.html',                label: 'Risk',                                              icon: 'shield',                  color: '#C5221F', group: 'compliance' },
   { id: 'readiness',           href: 'readiness.html',           label: 'Readiness',                                         icon: 'checklist',               color: '#1A8754', group: 'compliance' },
 
-  // Audience
-  { id: 'buyers',              href: 'buyers.html#persona-board',     label: 'Buyers',                                       icon: 'business_center',         color: '#B47200', group: 'audience' },
-  { id: 'auditors',            href: 'buyers.html#persona-auditors',  label: 'Auditors',                                     icon: 'verified_user',           color: '#009688', group: 'audience' },
-  { id: 'regulators',          href: 'buyers.html#persona-regulators',label: 'Regulators',                                   icon: 'gavel',                   color: '#8E24AA', group: 'audience' },
+  // By role — single entry into the persona-tab hub on buyers.html.
+  // (Footer expands into per-persona deep-links; the top bar stays slim.)
+  { id: 'buyers',              href: 'buyers.html#audiences',    label: 'By role',                                           icon: 'groups_2',                color: '#B47200', group: 'audience' },
 
-  // Sector
+  // By sector
   { id: 'sectors',             href: 'sectors.html',             label: 'Sectors',                                           icon: 'apartment',               color: '#5F6368', group: 'sector' },
   { id: 'usecases',            href: 'usecases.html',            label: 'Use Cases',                                         icon: 'lightbulb',               color: '#F4B400', group: 'sector' },
   { id: 'sovereign-ai',        href: 'sovereign-ai.html',        label: 'Sovereign AI',                                      icon: 'public',                  color: '#1A73E8', group: 'sector' },
@@ -75,7 +77,6 @@ const NAV_ITEMS = [
   { id: 'working-groups',      href: 'working-groups.html',      label: 'Working Groups',                                    icon: 'groups',                  color: '#00ACC1', group: 'programme' },
 
   // Resources
-  { id: 'sandbox',             href: 'sandbox.html',             label: 'Sandbox',                                           icon: 'science',                 color: '#1A8754', group: 'build' },
   { id: 'demos',               href: 'demos.html',               label: 'Demos',                                             icon: 'play_circle',             color: '#EA4335', group: 'resources' },
   { id: 'glossary',            href: 'glossary.html',            label: 'Glossary',                                          icon: 'book_2',                  color: '#5F6368', group: 'resources' },
 ];
@@ -114,6 +115,7 @@ export function kyeBrand() {
 const GROUP_LABELS = {
   protocol:   'Protocol',
   build:      'Build',
+  ecosystem:  'Ecosystem',
   compliance: 'Compliance',
   audience:   'By role',
   sector:     'By sector',
@@ -185,20 +187,20 @@ const FOOTER_GROUPS = [
       { href: 'developers.html',          label: 'Developer Portal' },
       { href: 'sandbox.html',             label: 'Sandbox' },
       { href: 'protocol.html#signals',    label: 'KYE Signal Bus<span class="tm">™</span>' },
-      { href: 'mcp.html',                 label: 'KYE MCP Server<span class="tm">™</span>' },
-      { href: 'widgets.html',             label: 'Interactive Widgets' },
-      { href: 'demos.html',               label: 'Demos' },
       { href: 'integrations.html',        label: 'Integrations' },
+      { href: 'demos.html',               label: 'Demos' },
     ],
   },
   {
     heading: 'Ecosystem',
     items: [
       { href: 'ecosystem.html',           label: 'Ecosystem Overview' },
+      { href: 'mcp.html',                 label: 'KYE MCP Server<span class="tm">™</span>' },
       { href: 'connectors.html',          label: 'KYE Connector Hub<span class="tm">™</span>' },
       { href: 'connector-profiles.html',  label: 'KYE Connector Profiles<span class="tm">™</span>' },
       { href: 'apps.html',                label: 'KYE App Store<span class="tm">™</span>' },
       { href: 'plugins.html',             label: 'KYE Plugin Marketplace<span class="tm">™</span>' },
+      { href: 'widgets.html',             label: 'Interactive Widgets' },
     ],
   },
   {
