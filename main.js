@@ -958,19 +958,28 @@ initWebMcp();
   const tabs = document.querySelectorAll('[data-persona-tab]');
   if (!tabs.length) return;
   function activate(pid, opts) {
-    document.querySelectorAll('.persona-tab').forEach(t => t.setAttribute('aria-selected', t.dataset.personaTab === pid ? 'true' : 'false'));
+    let activeBtn = null;
+    document.querySelectorAll('.persona-tab').forEach(t => {
+      const sel = t.dataset.personaTab === pid;
+      t.setAttribute('aria-selected', sel ? 'true' : 'false');
+      if (sel) activeBtn = t;
+    });
     document.querySelectorAll('.persona-panel').forEach(p => {
       if (p.id === 'persona-' + pid) p.setAttribute('data-active', '');
       else p.removeAttribute('data-active');
     });
     history.replaceState(null, '', '#persona-' + pid);
-    if (opts && opts.scroll) {
-      // Display:none panels can't be scroll targets, so scroll to the tab strip.
+    // Always bring the active tab into view (matters on mobile where the
+    // tab strip is a horizontal-scroll row).
+    if (activeBtn && typeof activeBtn.scrollIntoView === 'function') {
+      activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+    if (opts && opts.scrollSection) {
       const strip = document.querySelector('.persona-tabs');
       if (strip) strip.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
   tabs.forEach(t => t.addEventListener('click', () => activate(t.dataset.personaTab)));
   const hash = (location.hash || '').replace(/^#persona-/, '');
-  if (hash && document.getElementById('persona-' + hash)) activate(hash, { scroll: true });
+  if (hash && document.getElementById('persona-' + hash)) activate(hash, { scrollSection: true });
 })();

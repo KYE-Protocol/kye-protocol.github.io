@@ -1160,7 +1160,7 @@ body::before {
 .persona-tabs {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 4px;
   margin: 18px 0 14px;
   border-bottom: 1px solid color-mix(in srgb, var(--text-muted, #888) 22%, transparent);
 }
@@ -1176,6 +1176,7 @@ body::before {
   border-radius: 8px 8px 0 0;
   border-bottom: 2px solid transparent;
   margin-bottom: -1px;
+  white-space: nowrap;
   transition: color .12s, border-color .12s, background .12s;
 }
 .persona-tab:hover { color: var(--text, #111); background: color-mix(in srgb, var(--accent, #1a8754) 6%, transparent); }
@@ -1183,6 +1184,25 @@ body::before {
 .persona-panel { display: none; padding-top: 18px; }
 .persona-panel[data-active] { display: block; }
 .persona-panel .why-card { box-shadow: none; padding: 0; }
+/* Mobile: collapse tabs into one horizontally-scrolling row instead of
+   a multi-row wrap. Stops the scattered look on phones. */
+@media (max-width: 720px) {
+  .persona-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 2px;
+  }
+  .persona-tab {
+    flex: 0 0 auto;
+    padding: 8px 12px;
+    font-size: 13px;
+    scroll-snap-align: start;
+  }
+  .persona-tab[aria-selected="true"] { scroll-snap-align: center; }
+}
 
 /* === Protocol-page sticky TOC === */
 .protocol-toc {
