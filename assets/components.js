@@ -53,6 +53,7 @@ const NAV_ITEMS = [
   { id: 'widgets',             href: 'widgets.html',             label: 'Widgets',                                           icon: 'widgets',                 color: '#1A8754', group: 'ecosystem' },
 
   // Compliance
+  { id: 'trust',               href: 'trust.html',               label: 'Trust',                                             icon: 'shield_check',            color: '#1A8754', group: 'compliance' },
   { id: 'compliance',          href: 'compliance.html',          label: 'Compliance',                                        icon: 'rule',                    color: '#1A73E8', group: 'compliance' },
   { id: 'frameworks',          href: 'frameworks.html',          label: 'Frameworks',                                        icon: 'fact_check',              color: '#1A73E8', group: 'compliance' },
   { id: 'oscal',               href: 'oscal.html',               label: 'OSCAL',                                             icon: 'integration_instructions',color: '#1A73E8', group: 'compliance' },
@@ -210,6 +211,7 @@ const FOOTER_GROUPS = [
   {
     heading: 'Compliance',
     items: [
+      { href: 'trust.html',           label: 'Trust Center' },
       { href: 'compliance.html',      label: 'Compliance' },
       { href: 'frameworks.html',      label: 'Frameworks' },
       { href: 'oscal.html',           label: 'OSCAL' },
