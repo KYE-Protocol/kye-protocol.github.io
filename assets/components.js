@@ -56,7 +56,7 @@ const NAV_ITEMS = [
   { id: 'compliance',          href: 'compliance.html',          label: 'Compliance',                                        icon: 'rule',                    color: '#1A73E8', group: 'compliance' },
   { id: 'frameworks',          href: 'frameworks.html',          label: 'Frameworks',                                        icon: 'fact_check',              color: '#1A73E8', group: 'compliance' },
   { id: 'oscal',               href: 'oscal.html',               label: 'OSCAL',                                             icon: 'integration_instructions',color: '#1A73E8', group: 'compliance' },
-  { id: 'compliance-card',     href: 'compliance-card.html',     label: 'Compliance Card',                                   icon: 'badge',                   color: '#009688', group: 'compliance' },
+  { id: 'compliance-card',     href: 'compliance-card.html',     label: 'Compliance card',                                   icon: 'badge',                   color: '#009688', group: 'compliance' },
   { id: 'risk',                href: 'risk.html',                label: 'Risk',                                              icon: 'shield',                  color: '#C5221F', group: 'compliance' },
   { id: 'readiness',           href: 'readiness.html',           label: 'Readiness',                                         icon: 'checklist',               color: '#1A8754', group: 'compliance' },
 
@@ -66,7 +66,7 @@ const NAV_ITEMS = [
 
   // By sector
   { id: 'sectors',             href: 'sectors.html',             label: 'Sectors',                                           icon: 'apartment',               color: '#5F6368', group: 'sector' },
-  { id: 'usecases',            href: 'usecases.html',            label: 'Use Cases',                                         icon: 'lightbulb',               color: '#F4B400', group: 'sector' },
+  { id: 'usecases',            href: 'usecases.html',            label: 'Use cases',                                         icon: 'lightbulb',               color: '#F4B400', group: 'sector' },
   { id: 'sovereign-ai',        href: 'sovereign-ai.html',        label: 'Sovereign AI',                                      icon: 'public',                  color: '#1A73E8', group: 'sector' },
   { id: 'open-banking',        href: 'open-banking.html',        label: 'Open Banking',                                      icon: 'payments',                color: '#FF6D00', group: 'sector' },
   { id: 'agent-purchasing',    href: 'agent-purchasing.html',    label: 'Agent Purchasing',                                  icon: 'credit_card',             color: '#F4B400', group: 'sector' },
@@ -76,7 +76,7 @@ const NAV_ITEMS = [
   { id: 'partners',            href: 'partners.html',            label: 'Partners',                                          icon: 'group_work',              color: '#1A8754', group: 'programme' },
   { id: 'certification',       href: 'certification.html',       label: 'Certification',                                     icon: 'workspace_premium',       color: '#B47200', group: 'programme' },
   { id: 'training',            href: 'training.html',            label: 'Training',                                          icon: 'school',                  color: '#1A73E8', group: 'programme' },
-  { id: 'working-groups',      href: 'working-groups.html',      label: 'Working Groups',                                    icon: 'groups',                  color: '#00ACC1', group: 'programme' },
+  { id: 'working-groups',      href: 'working-groups.html',      label: 'Working groups',                                    icon: 'groups',                  color: '#00ACC1', group: 'programme' },
 
   // Resources
   { id: 'demos',               href: 'demos.html',               label: 'Demos',                                             icon: 'play_circle',             color: '#EA4335', group: 'resources' },
@@ -187,7 +187,7 @@ const FOOTER_GROUPS = [
     heading: 'Build',
     items: [
       { href: 'build.html',               label: 'Build with KYE<span class="tm">™</span>' },
-      { href: 'developers.html',          label: 'Developer Portal' },
+      { href: 'developers.html',          label: 'Developer portal' },
       { href: 'sandbox.html',             label: 'Sandbox' },
       { href: 'protocol.html#signals',    label: 'KYE Signal Bus<span class="tm">™</span>' },
       { href: 'integrations.html',        label: 'Integrations' },
@@ -197,14 +197,14 @@ const FOOTER_GROUPS = [
   {
     heading: 'Ecosystem',
     items: [
-      { href: 'ecosystem.html',           label: 'Ecosystem Overview' },
+      { href: 'ecosystem.html',           label: 'Ecosystem overview' },
       { href: 'apps.html#wallet',         label: 'KYE Authority Wallet<span class="tm">™</span>' },
       { href: 'mcp.html',                 label: 'KYE MCP Server<span class="tm">™</span>' },
       { href: 'connectors.html',          label: 'KYE Connector Hub<span class="tm">™</span>' },
       { href: 'connector-profiles.html',  label: 'KYE Connector Profiles<span class="tm">™</span>' },
       { href: 'apps.html',                label: 'KYE App Store<span class="tm">™</span>' },
       { href: 'plugins.html',             label: 'KYE Plugin Marketplace<span class="tm">™</span>' },
-      { href: 'widgets.html',             label: 'Interactive Widgets' },
+      { href: 'widgets.html',             label: 'Interactive widgets' },
     ],
   },
   {
@@ -214,8 +214,8 @@ const FOOTER_GROUPS = [
       { href: 'frameworks.html',      label: 'Frameworks' },
       { href: 'oscal.html',           label: 'OSCAL' },
       { href: 'compliance-card.html', label: 'AI System Compliance Card<span class="tm">™</span>' },
-      { href: 'risk.html',            label: 'Risk &amp; Mitigation' },
-      { href: 'readiness.html',       label: 'Readiness Self-Test' },
+      { href: 'risk.html',            label: 'Risk &amp; mitigation' },
+      { href: 'readiness.html',       label: 'Readiness self-test' },
     ],
   },
   {
@@ -246,22 +246,22 @@ const FOOTER_GROUPS = [
   {
     heading: 'Programme',
     items: [
-      { href: 'engage.html',         label: 'Engagement Model' },
+      { href: 'engage.html',         label: 'Engagement model' },
       { href: 'partners.html',       label: 'Partners' },
       { href: 'certification.html',  label: 'Certification' },
       { href: 'training.html',       label: 'Training' },
-      { href: 'working-groups.html', label: 'Working Groups' },
+      { href: 'working-groups.html', label: 'Working groups' },
       { href: 'customers.html',      label: 'Customers' },
     ],
   },
   {
     heading: 'Resources',
     items: [
-      { href: 'docs.html',      label: 'Docs Hub' },
+      { href: 'docs.html',      label: 'Docs hub' },
       { href: 'faq.html',       label: 'FAQ' },
       { href: 'changelog.html', label: 'Changelog' },
       { href: 'roadmap.html',   label: 'Roadmap' },
-      { href: 'press.html',     label: 'Press Kit' },
+      { href: 'press.html',     label: 'Press kit' },
       { href: 'sitemap.html',   label: 'Sitemap' },
     ],
   },

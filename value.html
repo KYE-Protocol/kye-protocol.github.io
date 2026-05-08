@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>KYE Protocol™ — Value · what KYE adds across people, value chain, lifecycle, safety</title>
-  <meta name="description" content="The added value of KYE Protocol™ across four lenses: people (end user, citizen, employee, agent, builder), value chain (buyer / vendor / merchant / auditor / regulator / SI / court), lifecycle (8 stages from provisioning to decommission), and safety (8 properties from pre-action enforcement to break-glass)." />
+  <meta name="description" content="The added value of KYE Protocol™ across five lenses: people (end user, citizen, employee, agent, developer), value chain (buyer / vendor / merchant / auditor / regulator / SI / court / civil society), lifecycle (8 stages from provisioning to decommission), safety (8 properties from pre-action enforcement to break-glass), and society (transparency, anti-corruption, public accountability)." />
   <meta name="keywords" content="KYE value, AI authority value chain, KYE lifecycle, KYE safety, AI agent accountability, replayable proof, cascade revocation, blast radius" />
   <link rel="canonical" href="https://kye-protocol.github.io/value.html" />
   <meta name="robots" content="index, follow" />
@@ -33,28 +33,41 @@
     .vl-card h4 { margin: 0 0 6px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent, #1a8754); font-weight: 700; }
     .vl-card p { margin: 0; font-size: 14px; line-height: 1.55; color: var(--text, #111); }
 
-    /* ============== Value-chain SVG diagram ============== */
+    /* ============== Value-chain SVG diagram (radial, animated) ============== */
     .vc-toggle { display: inline-flex; gap: 0; border: 1px solid color-mix(in srgb, var(--text-muted, #888) 22%, transparent); border-radius: 8px; padding: 2px; margin: 12px 0; }
-    .vc-toggle-btn { appearance: none; background: transparent; border: 0; padding: 8px 16px; font: inherit; font-size: 13px; color: var(--text-muted, #6b7280); cursor: pointer; border-radius: 6px; }
+    .vc-toggle-btn { appearance: none; background: transparent; border: 0; padding: 8px 16px; font: inherit; font-size: 13px; color: var(--text-muted, #6b7280); cursor: pointer; border-radius: 6px; transition: background .2s, color .2s; }
     .vc-toggle-btn[aria-selected="true"] { background: var(--accent, #1a8754); color: #fff; font-weight: 600; }
     .vc-stage { background: var(--paper, #fff); border-radius: 12px; padding: 16px; border: 1px solid color-mix(in srgb, var(--text-muted, #888) 18%, transparent); }
-    .vc-svg { width: 100%; height: auto; max-height: 460px; display: block; }
-    .vc-node { cursor: pointer; transition: transform .15s; }
-    .vc-node:hover { transform: scale(1.04); transform-origin: center; }
-    .vc-node-rect { fill: var(--paper-2, #f1f5f9); stroke: color-mix(in srgb, var(--text-muted, #888) 28%, transparent); stroke-width: 1.5; transition: fill .15s, stroke .15s; }
-    .vc-node[data-active="true"] .vc-node-rect { fill: color-mix(in srgb, var(--accent, #1a8754) 18%, transparent); stroke: var(--accent, #1a8754); stroke-width: 2; }
-    .vc-node-label { font-size: 11.5px; font-family: var(--font-mono, ui-monospace, monospace); fill: var(--text, #111); pointer-events: none; }
-    .vc-edge { stroke: color-mix(in srgb, var(--text-muted, #888) 28%, transparent); stroke-width: 1; fill: none; transition: stroke .15s, stroke-width .15s; }
-    .vc-edge[data-active="true"] { stroke: var(--accent, #1a8754); stroke-width: 2; }
-    .vc-hub { fill: var(--accent, #1a8754); }
-    .vc-hub-label { font-size: 13px; font-weight: 700; fill: #fff; pointer-events: none; }
+    .vc-svg { width: 100%; height: auto; max-width: 760px; aspect-ratio: 800 / 540; margin: 0 auto; display: block; }
+    .vc-node { cursor: pointer; transition: transform .25s ease; transform-origin: center; }
+    .vc-node:hover { transform: scale(1.06); }
+    .vc-node-rect { fill: var(--paper-2, #f1f5f9); stroke: color-mix(in srgb, var(--text-muted, #888) 28%, transparent); stroke-width: 1.5; transition: fill .25s, stroke .25s, stroke-width .25s; }
+    .vc-node[data-active="true"] .vc-node-rect { fill: color-mix(in srgb, var(--accent, #1a8754) 22%, transparent); stroke: var(--accent, #1a8754); stroke-width: 2.5; }
+    .vc-node-label { font-size: 12.5px; font-weight: 600; font-family: var(--font, system-ui, sans-serif); fill: var(--text, #111); pointer-events: none; }
+    .vc-edge { stroke: color-mix(in srgb, var(--text-muted, #888) 26%, transparent); stroke-width: 1; fill: none; transition: stroke .25s, stroke-width .25s, opacity .35s; }
+    .vc-edge[data-active="true"] { stroke: var(--accent, #1a8754); stroke-width: 2.5; }
+    .vc-edges-group { transition: opacity .4s ease; }
+    .vc-edges-group[data-hidden="true"] { opacity: 0; pointer-events: none; }
+    .vc-hub-circle { fill: var(--accent, #1a8754); transition: r .4s ease, fill-opacity .4s ease; }
+    .vc-hub-pulse { fill: var(--accent, #1a8754); fill-opacity: 0; }
+    .vc-hub[data-mode="after"] .vc-hub-pulse { animation: vc-pulse 1.6s ease-out infinite; }
+    @keyframes vc-pulse { 0% { r: 44; fill-opacity: 0.45; } 100% { r: 78; fill-opacity: 0; } }
+    .vc-hub-label { font-size: 14px; font-weight: 700; fill: #fff; pointer-events: none; letter-spacing: 0.5px; }
+    .vc-hub[data-mode="before"] .vc-hub-circle { r: 0; }
+    .vc-hub[data-mode="before"] .vc-hub-label { opacity: 0; }
+    .vc-hub-label { transition: opacity .3s ease; }
     .vc-detail { background: var(--paper-2, #f1f5f9); border-radius: 10px; padding: 14px; margin-top: 12px; min-height: 80px; }
-    .vc-detail h4 { margin: 0 0 4px; font-size: 14px; }
-    .vc-detail .before { color: #C5221F; font-weight: 500; }
-    .vc-detail .after { color: var(--accent, #1a8754); font-weight: 500; }
-    .vc-detail dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 12px; margin: 6px 0 0; }
-    .vc-detail dt { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.4px; color: var(--text-muted, #6b7280); }
-    .vc-detail dd { margin: 0; font-size: 14px; line-height: 1.5; }
+    .vc-detail h4 { margin: 0 0 4px; font-size: 14.5px; color: var(--accent, #1a8754); }
+    .vc-detail dl { display: grid; grid-template-columns: max-content 1fr; gap: 6px 14px; margin: 8px 0 0; }
+    .vc-detail dt { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.5px; padding-top: 2px; }
+    .vc-detail dt.before { color: #C5221F; font-weight: 600; }
+    .vc-detail dt.after  { color: var(--accent, #1a8754); font-weight: 600; }
+    .vc-detail dd { margin: 0; font-size: 14px; line-height: 1.55; }
+    /* Mobile: shrink labels so they fit inside the rounded boxes when SVG scales down. */
+    @media (max-width: 600px) {
+      .vc-node-label { font-size: 10.5px; font-weight: 700; }
+      .vc-stage { padding: 10px; }
+    }
 
     /* ============== Lifecycle stepper ============== */
     .lc-steps { display: flex; gap: 0; overflow-x: auto; padding: 6px 0 16px; scrollbar-width: thin; }
@@ -115,7 +128,8 @@
       <button class="vl-persona-tab" role="tab" aria-selected="false" data-vl-tab="citizen">Citizen</button>
       <button class="vl-persona-tab" role="tab" aria-selected="false" data-vl-tab="employee">Employee</button>
       <button class="vl-persona-tab" role="tab" aria-selected="false" data-vl-tab="agent">Agent / model</button>
-      <button class="vl-persona-tab" role="tab" aria-selected="false" data-vl-tab="builder">Builder</button>
+      <button class="vl-persona-tab" role="tab" aria-selected="false" data-vl-tab="builder">Developer</button>
+      <button class="vl-persona-tab" role="tab" aria-selected="false" data-vl-tab="society">Civil society</button>
     </div>
 
     <div class="vl-persona-panel" id="vl-user" data-active>
@@ -130,7 +144,7 @@
     <div class="vl-persona-panel" id="vl-citizen">
       <div class="vl-grid">
         <div class="vl-card"><h4>Replayable decision</h4><p>When an AI-assisted public-sector decision affects you &mdash; benefits, housing, healthcare, justice &mdash; you (or your advocate) get a signed Decision Map<span class="tm">™</span> that anyone can replay.</p></div>
-        <div class="vl-card"><h4>Right to appeal</h4><p>Appeals stop being a FOIA fishing expedition. The chain itself is the record: actor &middot; principal &middot; capability &middot; authority &middot; scope &middot; state &middot; policy &middot; decision &middot; audit &middot; evidence.</p></div>
+        <div class="vl-card"><h4>Right to appeal</h4><p>Appeals stop being a paper-chase through Freedom-of-Information requests. The chain itself is the record: actor &middot; principal &middot; capability &middot; authority &middot; scope &middot; state &middot; policy &middot; decision &middot; audit &middot; evidence.</p></div>
         <div class="vl-card"><h4>Provenance of consent</h4><p>The delegation chain back to a named human or business is the basis of the action. No &ldquo;the algorithm decided&rdquo; ambiguity.</p></div>
         <div class="vl-card"><h4>Equal standing</h4><p>Same evidence-pack format whether the system serves a citizen of one country or another. One protocol, every public service.</p></div>
       </div>
@@ -162,6 +176,15 @@
         <div class="vl-card"><h4>Verifiable with public keys</h4><p>Webhook verifier, evidence-pack viewer, Decision Map<span class="tm">™</span> renderer &mdash; all ship.</p></div>
       </div>
     </div>
+
+    <div class="vl-persona-panel" id="vl-society">
+      <div class="vl-grid">
+        <div class="vl-card"><h4>Transparency by construction</h4><p>Public-key-verifiable evidence packs are the record &mdash; not vendor whitepapers. A journalist, NGO, or ombudsman verifies offline; no operator cooperation required.</p></div>
+        <div class="vl-card"><h4>Corruption resistance</h4><p>Every authority delegation is signed and time-boxed; revocation cascades. A &ldquo;quiet&rdquo; back-channel grant is detectable on the chain. Break-glass is itself a contract with an expiry.</p></div>
+        <div class="vl-card"><h4>Public-service accountability</h4><p>For citizen-impacting AI decisions (benefits, housing, healthcare, justice), the Evidence Pack<span class="tm">™</span> is the artefact a parliamentary committee or court can replay end-to-end.</p></div>
+        <div class="vl-card"><h4>Equality of access to evidence</h4><p>Same evidence-pack format whether the system serves one country or another. Civil society in lower-resourced jurisdictions gets the same forensic surface as in higher-resourced ones.</p></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -177,54 +200,57 @@
     </div>
 
     <div class="vc-stage">
-      <svg viewBox="0 0 800 460" class="vc-svg" id="vc-svg" aria-label="Value-chain diagram. Click any role to see what KYE adds for them.">
+      <svg viewBox="0 0 800 540" class="vc-svg" id="vc-svg" aria-label="Value-chain diagram. Click any role to see what KYE adds for them.">
         <!-- Edges drawn first so they sit behind the nodes -->
-        <g id="vc-edges-before"></g>
-        <g id="vc-edges-after"></g>
+        <g id="vc-edges-before" class="vc-edges-group"></g>
+        <g id="vc-edges-after"  class="vc-edges-group" data-hidden="true"></g>
 
-        <!-- Hub (after only) -->
-        <g id="vc-hub" style="display:none">
-          <circle class="vc-hub" cx="400" cy="230" r="44" />
-          <text class="vc-hub-label" x="400" y="226" text-anchor="middle">KYE</text>
-          <text class="vc-hub-label" x="400" y="244" text-anchor="middle" style="font-size:10px;font-weight:500">Protocol™</text>
+        <!-- Hub (radial centre; visible in 'after' mode, animated pulse) -->
+        <g id="vc-hub" data-mode="before">
+          <circle class="vc-hub-pulse"  cx="400" cy="270" r="44"/>
+          <circle class="vc-hub-circle" cx="400" cy="270" r="44"/>
+          <text class="vc-hub-label" x="400" y="266" text-anchor="middle">KYE<tspan style="font-size:11px;font-weight:600" dy="-3">™</tspan></text>
+          <text class="vc-hub-label" x="400" y="288" text-anchor="middle" style="font-size:10.5px;font-weight:500;letter-spacing:0.6px">Protocol</text>
         </g>
 
-        <!-- Roles. Left column = buyers / counterparties. Right column = vendors / verifiers. -->
+        <!-- 9 roles around the centre at 40° intervals. Coordinates pre-computed so
+             nothing collides on either desktop or scaled-down mobile. -->
         <g id="vc-nodes">
-          <!-- Left: 4 buyer-side roles -->
-          <g class="vc-node" data-vc-role="buyer"      tabindex="0" role="button" aria-label="Buyer">
-            <rect class="vc-node-rect" x="40"  y="40"  width="200" height="48" rx="6"/>
-            <text class="vc-node-label" x="140" y="69" text-anchor="middle">Buyer (bank / health / agency)</text>
+          <g class="vc-node" data-vc-role="buyer" tabindex="0" role="button" aria-label="Buyer">
+            <rect class="vc-node-rect" x="325" y="35"  width="150" height="40" rx="6"/>
+            <text class="vc-node-label" x="400" y="60" text-anchor="middle">Buyer</text>
           </g>
-          <g class="vc-node" data-vc-role="merchant"   tabindex="0" role="button" aria-label="Merchant">
-            <rect class="vc-node-rect" x="40"  y="140" width="200" height="48" rx="6"/>
-            <text class="vc-node-label" x="140" y="169" text-anchor="middle">Merchant / counterparty</text>
+          <g class="vc-node" data-vc-role="vendor" tabindex="0" role="button" aria-label="Vendor">
+            <rect class="vc-node-rect" x="490" y="80"  width="150" height="40" rx="6"/>
+            <text class="vc-node-label" x="565" y="105" text-anchor="middle">Vendor</text>
           </g>
-          <g class="vc-node" data-vc-role="court"      tabindex="0" role="button" aria-label="Court / dispute panel">
-            <rect class="vc-node-rect" x="40"  y="240" width="200" height="48" rx="6"/>
-            <text class="vc-node-label" x="140" y="269" text-anchor="middle">Court / dispute panel</text>
+          <g class="vc-node" data-vc-role="auditor" tabindex="0" role="button" aria-label="Auditor">
+            <rect class="vc-node-rect" x="615" y="195" width="150" height="40" rx="6"/>
+            <text class="vc-node-label" x="690" y="220" text-anchor="middle">Auditor</text>
           </g>
-          <g class="vc-node" data-vc-role="si"         tabindex="0" role="button" aria-label="Systems integrator">
-            <rect class="vc-node-rect" x="40"  y="340" width="200" height="48" rx="6"/>
-            <text class="vc-node-label" x="140" y="369" text-anchor="middle">SI / consultancy</text>
+          <g class="vc-node" data-vc-role="regulator" tabindex="0" role="button" aria-label="Regulator">
+            <rect class="vc-node-rect" x="615" y="335" width="150" height="40" rx="6"/>
+            <text class="vc-node-label" x="690" y="360" text-anchor="middle">Regulator</text>
           </g>
-
-          <!-- Right: 4 vendor-side roles -->
-          <g class="vc-node" data-vc-role="vendor"     tabindex="0" role="button" aria-label="Vendor">
-            <rect class="vc-node-rect" x="560" y="40"  width="200" height="48" rx="6"/>
-            <text class="vc-node-label" x="660" y="69" text-anchor="middle">Vendor (Okta / SPIFFE / OPA)</text>
+          <g class="vc-node" data-vc-role="court" tabindex="0" role="button" aria-label="Court / dispute panel">
+            <rect class="vc-node-rect" x="490" y="450" width="150" height="40" rx="6"/>
+            <text class="vc-node-label" x="565" y="475" text-anchor="middle">Court</text>
           </g>
-          <g class="vc-node" data-vc-role="auditor"    tabindex="0" role="button" aria-label="Auditor">
-            <rect class="vc-node-rect" x="560" y="140" width="200" height="48" rx="6"/>
-            <text class="vc-node-label" x="660" y="169" text-anchor="middle">Auditor / 3PAO</text>
+          <g class="vc-node" data-vc-role="society" tabindex="0" role="button" aria-label="Civil society / press">
+            <rect class="vc-node-rect" x="325" y="495" width="150" height="40" rx="6"/>
+            <text class="vc-node-label" x="400" y="520" text-anchor="middle">Civil society</text>
           </g>
-          <g class="vc-node" data-vc-role="regulator"  tabindex="0" role="button" aria-label="Regulator">
-            <rect class="vc-node-rect" x="560" y="240" width="200" height="48" rx="6"/>
-            <text class="vc-node-label" x="660" y="269" text-anchor="middle">Regulator / supervisor</text>
+          <g class="vc-node" data-vc-role="merchant" tabindex="0" role="button" aria-label="Merchant / counterparty">
+            <rect class="vc-node-rect" x="160" y="450" width="150" height="40" rx="6"/>
+            <text class="vc-node-label" x="235" y="475" text-anchor="middle">Merchant</text>
           </g>
-          <g class="vc-node" data-vc-role="builder"    tabindex="0" role="button" aria-label="Builder">
-            <rect class="vc-node-rect" x="560" y="340" width="200" height="48" rx="6"/>
-            <text class="vc-node-label" x="660" y="369" text-anchor="middle">Builder / developer</text>
+          <g class="vc-node" data-vc-role="si" tabindex="0" role="button" aria-label="Systems integrator">
+            <rect class="vc-node-rect" x="35"  y="335" width="150" height="40" rx="6"/>
+            <text class="vc-node-label" x="110" y="360" text-anchor="middle">SI / consultancy</text>
+          </g>
+          <g class="vc-node" data-vc-role="developer" tabindex="0" role="button" aria-label="Developer">
+            <rect class="vc-node-rect" x="35"  y="195" width="150" height="40" rx="6"/>
+            <text class="vc-node-label" x="110" y="220" text-anchor="middle">Developer</text>
           </g>
         </g>
       </svg>
@@ -406,10 +432,9 @@
     });
   });
 
-  // ---------- Value-chain SVG ----------
-  // Role-specific copy: { before, after, oldEdges, newEdges }.
-  // Edges encoded as 'role:role' pairs. Before mode draws an N×M lattice
-  // (every left × every right). After mode draws every node → hub.
+  // ---------- Value-chain SVG (radial, animated) ----------
+  // Role-specific copy. BEFORE renders every-pair lattice (the N×M
+  // spaghetti). AFTER renders every node → hub.
   const CHAIN = {
     buyer: {
       title: 'Buyer (bank / health / agency)',
@@ -419,7 +444,7 @@
     vendor: {
       title: 'Vendor (Okta / SPIFFE / OPA / Stripe)',
       before: 'Re-explains its concept of "authorised" to every integrator. Repeated bespoke work.',
-      after:  'One canonical decision shape. KYE composes; doesn’t replace.',
+      after:  'One canonical decision shape. KYE™ composes; doesn’t replace.',
     },
     merchant: {
       title: 'Merchant / counterparty',
@@ -437,7 +462,7 @@
       after:  '266 control mappings across 13 frameworks. Same evidence-pack format from any conformant gateway.',
     },
     si: {
-      title: 'SI / consultancy / audit firm',
+      title: 'SI / consultancy',
       before: 'Custom integration per customer. Skills don’t carry between engagements.',
       after:  'One conformance pack to learn. Same skills land across every customer.',
     },
@@ -446,21 +471,24 @@
       before: 'Guided narrative reconstruction. Admissibility argued via vendor cooperation.',
       after:  'Public-key-verifiable replay. Admissibility argued on the chain itself.',
     },
-    builder: {
-      title: 'Builder / developer',
+    society: {
+      title: 'Civil society / press / NGO',
+      before: 'Investigative journalism is a paper-chase through Freedom-of-Information requests; corruption hides in vendor-private logs.',
+      after:  'Evidence Pack™ is the artefact. Verifiable offline by anyone with the published JWKS — operator cooperation not required.',
+    },
+    developer: {
+      title: 'Developer',
       before: 'Bespoke gates per vendor. Re-invent reason codes, decision shape, audit format per app.',
-      after:  'POST /v1/runtime/authorize. Three SDKs. Schemas + 41 conformance fixtures. Policy questions answered.',
+      after:  'POST /v1/runtime/authorize. Three SDKs. 69 schemas + 41 conformance fixtures. Policy questions answered.',
     },
   };
   const ROLES = Object.keys(CHAIN);
-  const LEFT_ROLES  = ['buyer', 'merchant', 'court', 'si'];
-  const RIGHT_ROLES = ['vendor', 'auditor', 'regulator', 'builder'];
 
   function nodeCenter(role) {
-    const g = document.querySelector('[data-vc-role="' + role + '"] rect');
-    if (!g) return null;
-    const x = parseFloat(g.getAttribute('x')) + parseFloat(g.getAttribute('width')) / 2;
-    const y = parseFloat(g.getAttribute('y')) + parseFloat(g.getAttribute('height')) / 2;
+    const r = document.querySelector('[data-vc-role="' + role + '"] rect');
+    if (!r) return null;
+    const x = parseFloat(r.getAttribute('x')) + parseFloat(r.getAttribute('width')) / 2;
+    const y = parseFloat(r.getAttribute('y')) + parseFloat(r.getAttribute('height')) / 2;
     return { x, y };
   }
   function svgNS(name, attrs) {
@@ -468,31 +496,58 @@
     for (const k in attrs) el.setAttribute(k, attrs[k]);
     return el;
   }
+  // Edge endpoint computed at the perimeter of the rect, not its centre,
+  // so lines don't cut through boxes when they exit toward the hub.
+  function edgePoint(role, towardX, towardY) {
+    const r = document.querySelector('[data-vc-role="' + role + '"] rect');
+    if (!r) return null;
+    const x = parseFloat(r.getAttribute('x'));
+    const y = parseFloat(r.getAttribute('y'));
+    const w = parseFloat(r.getAttribute('width'));
+    const h = parseFloat(r.getAttribute('height'));
+    const cx = x + w / 2, cy = y + h / 2;
+    const dx = towardX - cx, dy = towardY - cy;
+    if (dx === 0 && dy === 0) return { x: cx, y: cy };
+    // Slab method: clip the centre→target ray to the rect.
+    const tx = dx === 0 ? Infinity : (w / 2) / Math.abs(dx);
+    const ty = dy === 0 ? Infinity : (h / 2) / Math.abs(dy);
+    const t = Math.min(tx, ty);
+    return { x: cx + dx * t, y: cy + dy * t };
+  }
+
   function buildEdges() {
     const before = document.getElementById('vc-edges-before');
     const after  = document.getElementById('vc-edges-after');
     if (!before || !after) return;
     before.innerHTML = ''; after.innerHTML = '';
-    // BEFORE: every left × every right (N×M criss-cross spaghetti).
-    LEFT_ROLES.forEach(l => {
-      RIGHT_ROLES.forEach(r => {
-        const a = nodeCenter(l), b = nodeCenter(r);
-        if (!a || !b) return;
+    // BEFORE: every pair of nodes (9C2 = 36 edges) — the chaos picture.
+    for (let i = 0; i < ROLES.length; i++) {
+      for (let j = i + 1; j < ROLES.length; j++) {
+        const a = nodeCenter(ROLES[i]), b = nodeCenter(ROLES[j]);
+        if (!a || !b) continue;
+        const ea = edgePoint(ROLES[i], b.x, b.y);
+        const eb = edgePoint(ROLES[j], a.x, a.y);
         const path = svgNS('path', {
-          class: 'vc-edge', 'data-vc-from': l, 'data-vc-to': r,
-          d: 'M ' + a.x + ' ' + a.y + ' L ' + b.x + ' ' + b.y,
+          class: 'vc-edge', 'data-vc-from': ROLES[i], 'data-vc-to': ROLES[j],
+          d: 'M ' + ea.x + ' ' + ea.y + ' L ' + eb.x + ' ' + eb.y,
+          'stroke-opacity': '0.55',
         });
         before.appendChild(path);
-      });
-    });
-    // AFTER: every node connects to the central hub at (400, 230).
-    const hub = { x: 400, y: 230 };
+      }
+    }
+    // AFTER: each node → hub at (400, 270). Endpoint exits at rect perimeter.
+    const hub = { x: 400, y: 270 }, hubR = 44;
     ROLES.forEach(role => {
-      const c = nodeCenter(role);
-      if (!c) return;
+      const ep = edgePoint(role, hub.x, hub.y);
+      if (!ep) return;
+      // Stop the edge at the hub circle perimeter, not its centre.
+      const dx = hub.x - ep.x, dy = hub.y - ep.y;
+      const dist = Math.hypot(dx, dy);
+      const hx = hub.x - (dx / dist) * hubR;
+      const hy = hub.y - (dy / dist) * hubR;
       const path = svgNS('path', {
         class: 'vc-edge', 'data-vc-from': role, 'data-vc-to': 'hub',
-        d: 'M ' + c.x + ' ' + c.y + ' L ' + hub.x + ' ' + hub.y,
+        d: 'M ' + ep.x + ' ' + ep.y + ' L ' + hx + ' ' + hy,
       });
       after.appendChild(path);
     });
@@ -503,9 +558,16 @@
   function setMode(m) {
     mode = m;
     document.querySelectorAll('[data-vc-mode]').forEach(b => b.setAttribute('aria-selected', b.dataset.vcMode === m ? 'true' : 'false'));
-    document.getElementById('vc-edges-before').style.display = m === 'before' ? '' : 'none';
-    document.getElementById('vc-edges-after').style.display  = m === 'after'  ? '' : 'none';
-    document.getElementById('vc-hub').style.display          = m === 'after'  ? '' : 'none';
+    const before = document.getElementById('vc-edges-before');
+    const after  = document.getElementById('vc-edges-after');
+    if (m === 'before') {
+      before.removeAttribute('data-hidden');
+      after.setAttribute('data-hidden', 'true');
+    } else {
+      before.setAttribute('data-hidden', 'true');
+      after.removeAttribute('data-hidden');
+    }
+    document.getElementById('vc-hub').setAttribute('data-mode', m);
   }
   document.querySelectorAll('[data-vc-mode]').forEach(b => b.addEventListener('click', () => setMode(b.dataset.vcMode)));
 
@@ -529,7 +591,6 @@
     n.addEventListener('click', () => showRole(n.dataset.vcRole));
     n.addEventListener('keypress', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showRole(n.dataset.vcRole); } });
   });
-  // Sensible default: highlight the buyer.
   showRole('buyer');
 
   // ---------- Lifecycle stepper ----------
