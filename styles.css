@@ -1586,7 +1586,7 @@ button, a, dt, dd, code, kbd, sup, .brand, .lede, .h-section, .eyebrow {
    We pin the glyph at 0.62em of the inheriting text and re-baseline so
    it sits at the cap-height. Works across H1 / H2 / lede / brand /
    cards consistently. */
-:root { --tm-em: 0.62em; --tm-rise: 0.28em; }
+:root { --tm-em: 0.72em; --tm-rise: 0.34em; }
 @supports (font-variant-position: super) {
   /* If the browser supports proper superscript variant, use it for ™ ®
      because it samples the glyph from the font's superscript table when

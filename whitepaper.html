@@ -66,6 +66,7 @@
       <li><a href="#contract">5 · Contract surface</a></li>
       <li><a href="#runtime">6 · Reference runtime</a></li>
       <li><a href="#profiles">7 · Sectoral profiles</a></li>
+      <li><a href="#continuity-discoverability">7.5 · Continuity &amp; Discoverability</a></li>
       <li><a href="#security">8 · Security &amp; threat model</a></li>
       <li><a href="#governance">9 · Governance</a></li>
       <li><a href="#roadmap">10 · Roadmap</a></li>
@@ -298,6 +299,18 @@
       <li><strong>Multi-region geo-replication + conflict resolution</strong> &mdash; <code>kye-federation-v1.md</code> §10: replication topology metadata, 6 conflict-resolution rules, 18-month key archival floor.</li>
       <li><strong>Vocabulary completeness</strong> &mdash; <code>public/vocabulary/payments-decision-codes.md</code>, <code>healthcare-break-glass-categories.md</code>, <code>signal-types.md</code>, <code>redaction-fields.md</code>.</li>
     </ul>
+
+    <h2 id="continuity-discoverability">7.5 &middot; Continuity &amp; Discoverability</h2>
+    <p>Two new normative profiles ship in v1.0 alongside the sectoral inventory above. Both extend Core: <strong>Continuity</strong> preserves <em>alignment</em> across the chain, <strong>Discoverability</strong> makes the chain <em>operational</em>.</p>
+
+    <h3 id="continuity-profile-wp">7.5.1 KYE Continuity Profile<span class="tm">™</span></h3>
+    <p>Where Core records <em>who acted, on whose authority, in what state, with what evidence</em>, KYE Continuity Profile<span class="tm">™</span> records whether the action <strong>remained continuous</strong> from intent to execution. It introduces three new dimensions on top of the seven Core records: <strong>intent</strong> (declared goal + constraints + declared_by), <strong>interpretation</strong> (interpreted goal + confidence + material_drift_detected), and <strong>incentive / pressure context</strong> (optimisation goal, commercial / affiliate / commission flags, urgency / coercion / social-engineering signals). Six normative objects: <code>KYEContinuityProfile</code>, <code>KYEContinuityContext</code>, <code>KYEIntentTrace</code>, <code>KYEContinuityDecision</code>, <code>KYEAgencyDriftEvent</code>, <code>KYEContinuityEvidencePack</code>. Decision values: <code>continuity_preserved</code> · <code>continuity_degraded</code> · <code>continuity_broken</code> · <code>require_human_review</code> · <code>require_reconfirmation</code> · <code>deny</code> · <code>quarantine</code>. Ten drift types (<code>intent_drift</code>, <code>authority_drift</code>, <code>scope_drift</code>, <code>state_drift</code>, <code>capability_drift</code>, <code>execution_drift</code>, <code>incentive_drift</code>, <code>oversight_drift</code>, <code>evidence_drift</code>, <code>delegation_drift</code>) each emit a signed <code>KYEAgencyDriftEvent</code> on KYE Signal Bus<span class="tm">™</span> and hash-chain into the audit ledger. Spec: <code>kye-continuity-v1.md</code>.</p>
+
+    <h3 id="discoverability-profile-wp">7.5.2 KYE Discoverability Profile<span class="tm">™</span></h3>
+    <p>Identity, authority, scope, state, decision, audit, evidence are what KYE<span class="tm">™</span> <em>records</em>. KYE Discoverability Profile<span class="tm">™</span> turns the recorded graph into a <strong>policy-filtered, audited, masked</strong> discovery surface. Six discovery types (entity, authority, capability, evidence, risk, ecosystem); six discovery modes (<code>private_tenant</code>, <code>workspace</code>, <code>cross_workspace</code>, <code>federated</code>, <code>public_registry</code>, <code>certification_registry</code>); seven normative objects (<code>KYEDiscoverabilityProfile</code>, <code>KYEDirectoryEntry</code>, <code>KYEDiscoveryQuery</code>, <code>KYEDiscoveryResult</code>, <code>KYEDiscoveryPolicy</code>, <code>KYEAuthorityPathDiscovery</code>, <code>KYEDiscoveryAuditEvent</code>). Every query is purpose-bound (<code>security_review</code>, <code>audit</code>, <code>incident_response</code>, <code>compliance</code>, <code>procurement_review</code>, <code>operations</code>, <code>investigation</code>), audit-required by default, and runs against an explicit <code>KYEDiscoveryPolicy</code> that declares allowed / masked / denied fields. The profile is explicit about what it never returns: raw credentials, private keys, secret_refs, personal data outside the requesting tenant, and patent-track mechanism content. Spec: <code>kye-discoverability-v1.md</code>.</p>
+
+    <h3 id="continuity-discoverability-positioning">7.5.3 Positioning</h3>
+    <p>The refined v1.0 thesis: <strong>KYE<span class="tm">™</span> makes delegated agency observable, governable, revocable, replayable &mdash; and now continuous and discoverable.</strong></p>
 
     <h2 id="security">8 &middot; Security &amp; threat model</h2>
     <p>The reference implementation defends against:</p>
