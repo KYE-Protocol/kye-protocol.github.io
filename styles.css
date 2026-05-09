@@ -1582,35 +1582,15 @@ button, a, dt, dd, code, kbd, sup, .brand, .lede, .h-section, .eyebrow {
    Audited 2026-05-05 (post-rebrand QA sweep).
    ============================================================ */
 
-/* TM / ® glyphs: never let them break alignment or grow out-of-band.
-   We pin the glyph at 0.62em of the inheriting text and re-baseline so
-   it sits at the cap-height. Works across H1 / H2 / lede / brand /
-   cards consistently. */
-:root { --tm-em: 0.85em; --tm-rise: 0.32em; }
-@supports (font-variant-position: super) {
-  /* If the browser supports proper superscript variant, use it for ™ ®
-     because it samples the glyph from the font's superscript table when
-     present. Falls back to the explicit tuning below. */
-}
+/* TM / ® glyph baseline + cosmetic rules. The token system itself
+   (--tm-em-* / --tm-rise-* / per-context bindings) lives in the
+   single :root block further down — this section only handles
+   cosmetic alignment helpers. */
 :where(h1, h2, h3, h4, h5, .lede, .what-def, .ps-h, .h-section, .brand,
        .hero-pill, .eyebrow, .nav-cta, .qs-tab, .footer-bottom,
        .ps-tag, .persona-card h3, .sector-card h3,
        .assurance-card .h)::after { content: ""; }
 .h-section, .lede, .what-def, .ps-h, h1, h2, h3, h4, h5 { font-variant-numeric: tabular-nums; }
-
-/* The pragmatic, font-agnostic fix: every literal ™ in display text
-   inherits font-size and is shifted to baseline-aware position. We
-   wrap it via CSS to avoid touching every HTML occurrence: define a
-   utility class .tm-glyph but also re-baseline the bare unicode glyph
-   in display contexts. */
-.tm, .reg {
-  font-family: inherit; font-weight: inherit; line-height: 1;
-  font-size: var(--tm-em); vertical-align: var(--tm-rise);
-  letter-spacing: 0; margin-left: 0.05em; margin-right: 0.02em;
-}
-/* Display-context override: scope ™ inside hero/h2 to a smaller relative size
-   so it doesn't tower over big-type sections. */
-.h-section, .lede, .what-def, .ps-h, h1, h2 { --tm-em: 0.52em; --tm-rise: 0.40em; }
 
 /* === WHAT card === */
 .what-card {
@@ -2540,23 +2520,58 @@ h4 { letter-spacing: -0.008em; font-weight: 600; }
    the mark sits visually like a Word-doc superscript.
    ============================================================ */
 :root {
-  --tm-em: 0.55em;       /* default body */
-  --tm-rise: 0.42em;     /* baseline rise */
-  --tm-letterspacing: 0; /* no extra tracking */
+  /* ============================================================
+     ™ / ® token system — single source of truth.
+     Five contexts, ratios calibrated so the mark renders at the
+     same *visual* size regardless of surrounding font size.
+
+       --tm-em-display  :  hero h1, section h2, lede, .h-section
+       --tm-em-h3       :  h3 / h4 / h5 (card headings)
+       --tm-em-body     :  default body text, paragraphs, list items
+       --tm-em-chrome   :  eyebrows, pills, tabs, buttons (small UI)
+       --tm-em-modal    :  contact modal + overlays (mid-weight)
+
+     The cascade below maps each context to one of these tokens; any
+     element NOT matched falls back to --tm-em-body via :root --tm-em.
+     ============================================================ */
+  --tm-em-display: 0.58em;   /* h1 / h2 / lede */
+  --tm-em-h3:      0.72em;   /* h3 / h4 / h5  */
+  --tm-em-body:    0.85em;   /* default body  */
+  --tm-em-chrome:  0.92em;   /* eyebrows + pills + buttons */
+  --tm-em-modal:   0.82em;   /* modals + dialogs */
+
+  --tm-rise-display: 0.46em;
+  --tm-rise-h3:      0.36em;
+  --tm-rise-body:    0.30em;
+  --tm-rise-chrome:  0.28em;
+  --tm-rise-modal:   0.32em;
+
+  /* Active values bound to context. Default = body. */
+  --tm-em:   var(--tm-em-body);
+  --tm-rise: var(--tm-rise-body);
+  --tm-letterspacing: 0;
 }
-/* Display heads (hero h1, section h2, lede): smaller mark, higher */
+/* Display heads */
 .h-section, .lede, .what-def, .ps-h, h1, h2, .hero h1, .wp-article h1 {
-  --tm-em: 0.40em; --tm-rise: 0.62em;
+  --tm-em:   var(--tm-em-display);
+  --tm-rise: var(--tm-rise-display);
 }
-/* h3 / h4 / h5 in cards: a touch smaller than body */
-h3, h4, h5, .ps-tag, .eyebrow {
-  --tm-em: 0.50em; --tm-rise: 0.50em;
+/* h3 / h4 / h5 (card heads, profile heads, accordion labels) */
+h3, h4, h5, .ps-tag {
+  --tm-em:   var(--tm-em-h3);
+  --tm-rise: var(--tm-rise-h3);
 }
-/* Mono context (eyebrow plate, hero pill, version pill, code in prose):
-   render the mark at mono-cap-height proportional. */
+/* Small chrome — eyebrows, pills, tabs, buttons */
 .eyebrow, .hero-pill, .version-pill, .deployed-pill, .compliance-pill,
-.qs-tab, .profile-tab, .prof-pill {
-  --tm-em: 0.62em; --tm-rise: 0.32em;
+.qs-tab, .profile-tab, .prof-pill, .cn-pill, .btn, .bd-head, .bd-chip,
+.wk-tab, .wk-panel-h, .layer-num + .ms {
+  --tm-em:   var(--tm-em-chrome);
+  --tm-rise: var(--tm-rise-chrome);
+}
+/* Contact modal + overlays */
+.contact-modal, .modal, .dialog, .kye-modal {
+  --tm-em:   var(--tm-em-modal);
+  --tm-rise: var(--tm-rise-modal);
 }
 /* The wrapping span itself uses font-size:inherit by default; explicit
    here so we can tune only the rise/scale via tokens. */
@@ -9989,9 +10004,9 @@ li > .fwk-list.sector-frameworks-badged {
   min-height: calc(15.5px * 1.3 * 2); /* always reserve 2 lines */
   /* Pin the trademark glyph token so ™ inside card titles matches
      the rest of the card chrome regardless of where the cascade
-     comes from. */
-  --tm-em: 0.55em;
-  --tm-rise: 0.42em;
+     comes from. Aligned with the chrome token. */
+  --tm-em: var(--tm-em-chrome);
+  --tm-rise: var(--tm-rise-chrome);
 }
 .prim-card span {
   font-size: 13px;
@@ -11026,45 +11041,69 @@ code[data-code="type"] {
       }
 
 
-      /* "Honest about the boundary" — chip-cloud does / does-not */
+      /* "Honest about the boundary" — green/red contrast cards.
+         No left-border-against-text. Each card has a coloured header
+         band with circular icon badge + eyebrow + title; body is a
+         tick/cross list. Mobile stacks single-column. */
       .bd-grid {
-        display:grid; grid-template-columns:1fr 1fr; gap:14px;
-        margin-top:14px;
+        display:grid; grid-template-columns:1fr 1fr; gap:18px;
+        margin-top:18px;
       }
-      .bd-col {
-        padding:16px 16px 18px;
-        border-radius:12px;
-        background:var(--paper,#fff);
+      .bd-card {
+        position:relative;
+        padding:0;
+        border-radius:16px;
+        overflow:hidden;
         border:1px solid color-mix(in srgb,var(--text,#111) 10%, transparent);
-      }
-      .bd-col--yes { background: color-mix(in srgb,#1A8754 5%, var(--paper,#fff)); border-color: color-mix(in srgb,#1A8754 22%, transparent); }
-      .bd-col--no  { background: color-mix(in srgb,#C5221F 4%, var(--paper,#fff)); border-color: color-mix(in srgb,#C5221F 22%, transparent); }
-      .bd-head {
-        display:inline-flex; align-items:center; gap:8px;
-        padding:6px 12px; border-radius:999px;
-        font-weight:700; font-size:13.5px; letter-spacing:0.02em;
-        margin-bottom:14px;
-      }
-      .bd-head .ms { font-size:18px !important; }
-      .bd-head--yes { background:#1A8754; color:#fff; }
-      .bd-head--no  { background:#C5221F; color:#fff; }
-      .bd-chips { display:flex; flex-wrap:wrap; gap:8px; }
-      .bd-chip {
-        display:inline-flex; align-items:center; gap:6px;
-        padding:7px 12px; border-radius:999px;
-        font-size:13px; line-height:1.35;
         background:var(--paper,#fff);
-        border:1px solid color-mix(in srgb,var(--text,#111) 14%, transparent);
-        color:var(--text,#111);
+        box-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 8px 24px -16px rgba(15,23,42,0.18);
+        transition: transform .18s ease, box-shadow .18s ease;
       }
-      .bd-chip em { font-style:normal; font-size:11.5px; color:var(--text-muted,#6b7280); margin-left:4px; }
-      .bd-chip--yes { border-color: color-mix(in srgb,#1A8754 35%, transparent); background: color-mix(in srgb,#1A8754 4%, var(--paper,#fff)); }
-      .bd-chip--no  { border-color: color-mix(in srgb,#C5221F 30%, transparent); background: color-mix(in srgb,#C5221F 3%, var(--paper,#fff)); }
-      [data-theme="dark"] .bd-col--yes { background: color-mix(in srgb,#1A8754 12%, transparent); }
-      [data-theme="dark"] .bd-col--no  { background: color-mix(in srgb,#C5221F 12%, transparent); }
-      [data-theme="dark"] .bd-chip { background: color-mix(in srgb,#fff 4%, transparent); color:#e5e7eb; }
-      @media (max-width:680px) {
-        .bd-grid { grid-template-columns:1fr; gap:12px; }
-        .bd-col  { padding:14px; }
-        .bd-chip { font-size:12.5px; padding:6px 10px; }
+      .bd-card:hover { transform: translateY(-2px); box-shadow: 0 1px 2px rgba(15,23,42,0.05), 0 14px 32px -18px rgba(15,23,42,0.28); }
+      .bd-card--yes { border-color: color-mix(in srgb,#1A8754 30%, transparent); }
+      .bd-card--no  { border-color: color-mix(in srgb,#C5221F 28%, transparent); }
+      .bd-card-head {
+        display:flex; align-items:center; gap:14px;
+        padding:18px 22px;
+        color:#fff;
+      }
+      .bd-card--yes .bd-card-head { background: linear-gradient(135deg,#1A8754 0%, #146e44 100%); }
+      .bd-card--no  .bd-card-head { background: linear-gradient(135deg,#C5221F 0%, #9b1814 100%); }
+      .bd-badge {
+        display:inline-flex; align-items:center; justify-content:center;
+        width:42px; height:42px; flex:0 0 42px;
+        border-radius:50%;
+        background: rgba(255,255,255,0.18);
+        border:1px solid rgba(255,255,255,0.28);
+      }
+      .bd-badge .ms { font-size:24px !important; color:#fff; line-height:1; }
+      .bd-card-eyebrow {
+        margin:0; font-size:11px; font-weight:600; letter-spacing:0.14em;
+        text-transform:uppercase; color: rgba(255,255,255,0.78);
+      }
+      .bd-card-title {
+        margin:2px 0 0; font-size:18px; font-weight:700; line-height:1.2; color:#fff;
+      }
+      .bd-list {
+        list-style:none; padding:14px 22px 20px; margin:0;
+        display:flex; flex-direction:column; gap:8px;
+      }
+      .bd-list li {
+        display:flex; align-items:flex-start; gap:10px;
+        font-size:14.5px; line-height:1.5; color:var(--text,#111);
+      }
+      .bd-list li em { font-style:normal; font-size:12px; color:var(--text-muted,#6b7280); margin-left:6px; }
+      .bd-tick, .bd-cross { font-size:18px !important; flex:0 0 auto; line-height:1.35; margin-top:1px; }
+      .bd-tick  { color:#1A8754; }
+      .bd-cross { color:#C5221F; }
+      [data-theme="dark"] .bd-card { background: color-mix(in srgb,#fff 3%, transparent); }
+      [data-theme="dark"] .bd-list li { color:#e5e7eb; }
+      @media (max-width:720px) {
+        .bd-grid { grid-template-columns:1fr; gap:14px; }
+        .bd-card-head { padding:16px 18px; gap:12px; }
+        .bd-badge { width:38px; height:38px; flex-basis:38px; }
+        .bd-badge .ms { font-size:22px !important; }
+        .bd-card-title { font-size:16.5px; }
+        .bd-list { padding:12px 18px 16px; }
+        .bd-list li { font-size:14px; }
       }
