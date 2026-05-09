@@ -36,6 +36,8 @@
       <a href="#evidence"  class="cn-pill"><span class="ms">verified</span> Evidence</a>
       <a href="#compliance" class="cn-pill"><span class="ms">rule</span> Compliance</a>
       <a href="#programme" class="cn-pill"><span class="ms">workspace_premium</span> Programme</a>
+      <a href="#continuity" class="cn-pill"><span class="ms">trending_up</span> Continuity</a>
+      <a href="#discovery"   class="cn-pill"><span class="ms">explore</span> Discoverability</a>
       <a href="#external"  class="cn-pill"><span class="ms">extension</span> External</a>
     </div>
   </div>
@@ -93,6 +95,46 @@
       <li id="payload-state"><strong>Payload state</strong><span>The lifecycle status of a single payload: signed, verified, replayed, tampered. Defined in <code data-code="path">public/vocabulary/payload-states.md</code>.</span></li>
       <li id="canonicalisation"><strong>Canonicalisation</strong><span>JCS (RFC 8785) canonical JSON form, used for hashing and signing. Ensures bit-exact reproducibility across implementations.</span></li>
       <li id="ed25519"><strong>Ed25519</strong><span>The default signing primitive across credentials and proof bundles. Specified by the spec; alternatives are enumerated, not extensible.</span></li>
+    </dl>
+  </div></div>
+</section>
+
+<section id="continuity" class="section alt" aria-labelledby="h-cont">
+        <span class="eyebrow">Continuity</span>
+    <h2 id="h-cont" class="h-section">Decision values, drift types, evidence pack.</h2>
+  <div class="section-body"><div class="container">
+    <p class="lede">Terms introduced by <a href="continuity.html">KYE Continuity Profile<span class="tm">™</span></a> (<code data-code="profile">kye-continuity-v1</code>). Names only; detection algorithms and scoring weights are part of the normative specification and the patent track and are not published.</p>
+    <dl class="what-def-gloss">
+      <li id="continuity-profile"><strong>KYE Continuity Profile<span class="tm">™</span></strong><span>The runtime profile that binds interpreted intent vs declared intent, multi-dimension authority state, pressure context, incentive context and oversight state into a signed pre-commit verdict at every decision point.</span></li>
+      <li id="authority-continuity"><strong>Authority Continuity<span class="tm">™</span></strong><span>The protocol-level <em>property</em> that an actor's authority at decision time matches the authority granted by its delegation chain &mdash; no scope drift, no state drift, no capability drift, no broken delegation.</span></li>
+      <li id="agency-continuity"><strong>Agency Continuity<span class="tm">™</span></strong><span>The protocol-level <em>property</em> that an actor's interpreted goal at decision time matches its declared intent, and that pressure / incentive / oversight context preserves principal agency.</span></li>
+      <li id="continuity-decision"><strong>Continuity decision values</strong><span>The standard set: <code data-code="allow">continuity_preserved</code>, <code data-code="approve">continuity_degraded</code>, <code data-code="deny">continuity_broken</code>. Companion <code data-code="field">continuity_score</code> is a numeric in <code data-code="field">[0, 1]</code>.</span></li>
+      <li id="drift-types"><strong>Drift types</strong><span>Ten named categories: <code data-code="field">intent_drift</code>, <code data-code="field">authority_drift</code>, <code data-code="field">scope_drift</code>, <code data-code="field">state_drift</code>, <code data-code="field">capability_drift</code>, <code data-code="field">execution_drift</code>, <code data-code="field">incentive_drift</code>, <code data-code="field">oversight_drift</code>, <code data-code="field">evidence_drift</code>, <code data-code="field">delegation_drift</code>. Detection rules are not published.</span></li>
+      <li id="continuity-decision-map"><strong>Continuity Decision Map<span class="tm">™</span></strong><span>The signed, replayable artefact bound to a single continuity decision. Same shape as the standard <a href="#decision-map">Decision Map<span class="tm">™</span></a>; carries the continuity inclusion set.</span></li>
+      <li id="continuity-evidence-pack"><strong>Continuity Evidence Pack<span class="tm">™</span></strong><span>A signed bundle composing intent + interpretation + 6-dimension state + pressure + incentive + decision + execution + drift events under deterministic canonical encoding. Hash-chain-bound to the audit chain.</span></li>
+      <li id="agency-drift-event"><strong>KYEAgencyDriftEvent</strong><span>One record per detected drift, signed and hash-chained into the audit ledger; surfaced as a <code data-code="field">kye.agency_drift.detected</code> signal on the KYE Signal Bus<span class="tm">™</span>.</span></li>
+      <li id="continuity-gateway"><strong>KYE Continuity Gateway<span class="tm">™</span></strong><span>Runtime extension to the reference Gateway adding the continuity decision surface + drift-event endpoints.</span></li>
+      <li id="agency-drift-monitor"><strong>KYE Agency Drift Monitor<span class="tm">™</span></strong><span>Drift detection + alerting surface (planned commercial layer).</span></li>
+    </dl>
+  </div></div>
+</section>
+
+<section id="discovery" class="section" aria-labelledby="h-disc">
+        <span class="eyebrow">Discoverability</span>
+    <h2 id="h-disc" class="h-section">Directory, path finder, risk discovery.</h2>
+  <div class="section-body"><div class="container">
+    <p class="lede">Terms introduced by <a href="discoverability.html">KYE Discoverability Profile<span class="tm">™</span></a> (<code data-code="profile">kye-discoverability-v1</code>). Names only; graph-traversal mechanisms and pruning rules are part of the patent track and are not published.</p>
+    <dl class="what-def-gloss">
+      <li id="discoverability-profile"><strong>KYE Discoverability Profile<span class="tm">™</span></strong><span>The runtime profile that turns a cryptographically-bound authority graph into a queryable surface, with role-and-purpose discovery policy, row-level masking, federation-trust traversal, and signed audit emission per query.</span></li>
+      <li id="discovery-modes"><strong>Discovery modes</strong><span>The standard set: <code data-code="field">directory_lookup</code>, <code data-code="field">path_finder</code>, <code data-code="field">graph_walk</code>, <code data-code="field">risk_discovery</code>, <code data-code="field">connector_discovery</code>, <code data-code="field">evidence_finder</code>.</span></li>
+      <li id="risk-discovery-types"><strong>Risk-discovery types</strong><span>Three non-mutating traversals: <code data-code="field">stale</code> (under-exercised authority), <code data-code="field">over_permissioned</code> (granted scope exceeds observed exercise), <code data-code="field">pre_revocation_blast_radius</code> (downstream set that would be quarantined if a target authority were revoked).</span></li>
+      <li id="authority-directory"><strong>KYE Authority Directory<span class="tm">™</span></strong><span>The directory index of cryptographically-bound authority records. The first-class object discoverability queries traverse.</span></li>
+      <li id="discovery-console"><strong>KYE Discovery Console<span class="tm">™</span></strong><span>The operator surface over the directory + path finder + risk discovery. Issues a signed audit event per query.</span></li>
+      <li id="authority-path-finder"><strong>KYE Authority Path Finder<span class="tm">™</span></strong><span>The path-resolution engine over the authority graph &mdash; given (principal, actor, capability), returns one or more delegation paths with edge-by-edge scope intersection.</span></li>
+      <li id="evidence-finder"><strong>KYE Evidence Finder<span class="tm">™</span></strong><span>The resolver over audit-event and evidence-pack indexes; returns the evidence pointers bound to a target decision.</span></li>
+      <li id="connector-discovery-hub"><strong>KYE Connector Discovery Hub<span class="tm">™</span></strong><span>The discovery surface for Connector Profile<span class="tm">™</span> implementations and their conformance state.</span></li>
+      <li id="discovery-policy"><strong>Discovery policy</strong><span>The selection rule on (role, purpose, requester-tenant, target-tenant) that determines which authority records appear in a result set and which fields are masked.</span></li>
+      <li id="federation-trust"><strong>Federation trust</strong><span>The cross-trust-domain trust signal that gates whether a discovery query may traverse an edge into another tenant's authority graph.</span></li>
     </dl>
   </div></div>
 </section>

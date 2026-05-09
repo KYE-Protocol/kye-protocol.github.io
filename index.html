@@ -356,45 +356,95 @@
   </div>
 </section>
 
+<section id="why" class="section" aria-labelledby="h-why">
+  <div class="container">
+    <span class="eyebrow">Why this exists</span>
+    <h2 id="h-why" class="h-section">AI-agent accountability is now a <span class="accent">board-level liability</span>.</h2>
+    <div class="vl-grid" style="grid-template-columns:1fr 1fr;gap:14px;margin-top:14px">
+      <div class="vl-card"><h4>The gap</h4><p>An AI agent calls five services with five different identities. Stop signals don&rsquo;t cross system boundaries. Auditors can&rsquo;t reconstruct what happened. Regulators (EU AI Act, DORA, NIS2, PSD3, ISO 42001, NIST AI RMF) want a <em>chain of authority</em> &mdash; not an OAuth token.</p></div>
+      <div class="vl-card"><h4>The contract</h4><p>One URN format. One delegation chain. One decision vocabulary. One cascading bus. One signed proof. The same answer in every system to <em>who acted, on whose behalf, with what authority, under what scope, with what evidence?</em></p></div>
+      <div class="vl-card"><h4>Three legs to stand on</h4><p>Regulatory tailwind &middot; composes with OAuth / SPIFFE / MCP / KYC / KYA &middot; implementable today on Apache 2.0 schemas + reference Gateway + 41-fixture conformance pack.</p></div>
+      <div class="vl-card"><h4>The metaphor</h4><p>KYE<span class="tm">™</span> produces the <strong>KYE Chain of Authority<span class="tm">™</span></strong> the way digital signatures produce chain-of-custody for documents. Courts already accept signed documents; KYE<span class="tm">™</span> gives them signed delegations.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="what" class="section alt" aria-labelledby="h-what">
+  <div class="container">
+    <span class="eyebrow">What it is</span>
+    <h2 id="h-what" class="h-section">In one sentence: <span class="accent">the open contract for who-acted-and-why.</span></h2>
+    <div class="what-card">
+      <div class="def-tag">Definition</div>
+      <p class="what-def">KYE Protocol<span class="tm">™</span> is the open <span class="accent">identity, authority, scope, state and audit</span> layer for every action a human, business, AI agent, service, model, tool or workflow takes &mdash; one URN, one delegation chain, one decision vocabulary, one cascading bus, one signed proof.</p>
+      <ul class="what-def-gloss">
+        <li><strong>Identity</strong> &mdash; <em>proves who you are.</em> Every actor (human, business, agent, service, model, tool, workflow) has one URN, verifiable across vendors.</li>
+        <li><strong>Authority</strong> &mdash; <em>proves what you&rsquo;re allowed to do.</em> A signed delegation chain back to a human or business; revocable in milliseconds, recursively.</li>
+        <li><strong>Scope</strong> &mdash; <em>proves the boundaries you operate within.</em> Action lists, environment, money limits, time windows, obligations &mdash; each enforced by the PDP.</li>
+        <li><strong>State</strong> &mdash; <em>proves the conditions right now.</em> Six independent dimensions: lifecycle, authority, delegation, credential, recovery, risk. Each transitions independently.</li>
+        <li><strong>Audit</strong> &mdash; <em>proves the full record forever.</em> Append-only chain, signed proof bundle, point-in-time replay; an external auditor verifies with public keys alone.</li>
+      </ul>
+      <p style="margin:14px 0 0;font-size:13.5px;color:var(--text-muted,#6b7280)">More: <a href="value.html" style="color:var(--accent);text-decoration:underline">why it exists / what it adds &rarr;</a> &middot; <a href="protocol.html" style="color:var(--accent);text-decoration:underline">technical reference &rarr;</a> &middot; <a href="whitepaper.html" style="color:var(--accent);text-decoration:underline">whitepaper &rarr;</a></p>
+    </div>
+  </div>
+</section>
+
 <!-- ================================ Where KYE™ fits ================================ -->
 <section id="where-kye-fits" class="section alt" aria-labelledby="h-where-kye">
   <div class="container">
     <span class="eyebrow">Where KYE<span class="tm">™</span> fits</span>
     <h2 id="h-where-kye" class="h-section">AI governance is <span class="accent">not one layer</span>.</h2>
-    <p class="lede">Compliance frameworks, governance architectures, authorisation models and runtime execution control are <em>related</em>, but they are not the same. KYE Protocol<span class="tm">™</span> sits where governance meets execution: the <strong>runtime authority and evidence layer</strong> that decides and proves whether a delegated action should happen.</p>
+    <p class="lede" style="max-width:760px">Compliance frameworks, governance architectures, authorisation models and runtime execution control are <em>related</em> but distinct. KYE Protocol<span class="tm">™</span> sits where governance meets execution: the <strong>runtime authority and evidence layer</strong> that decides and proves whether a delegated action should happen.</p>
 
-    <div class="vl-grid" style="grid-template-columns:1fr;gap:10px;margin-top:18px">
-      <div class="vl-card" data-layer="compliance" style="border-left:3px solid #6b7280">
-        <h4 style="color:#6b7280">Compliance frameworks</h4>
-        <p><strong>Question:</strong> What obligations must we meet?<br/>
-        <strong>Examples:</strong> EU AI Act &middot; ISO 42001 &middot; SOC 2 &middot; DORA &middot; GDPR &middot; NIS2 &middot; HIPAA &middot; PCI DSS.<br/>
-        <strong>KYE<span class="tm">™</span> role:</strong> produces runtime evidence packs and Compliance Map<span class="tm">™</span> mappings that frameworks consume. <em>Does not replace</em> the framework, the certifier, or the auditor.</p>
-      </div>
-      <div class="vl-card" data-layer="governance" style="border-left:3px solid #1A73E8">
-        <h4 style="color:#1A73E8">Governance architecture</h4>
-        <p><strong>Question:</strong> How is accountability organised?<br/>
-        <strong>Examples:</strong> AI governance board &middot; risk committees &middot; control libraries &middot; approval workflows &middot; model governance &middot; incident processes.<br/>
-        <strong>KYE<span class="tm">™</span> role:</strong> turns governance intent into runtime authority decisions and replayable evidence. <em>Does not replace</em> organisational governance.</p>
-      </div>
-      <div class="vl-card" data-layer="authz" style="border-left:3px solid #8E24AA">
-        <h4 style="color:#8E24AA">Authorisation model</h4>
-        <p><strong>Question:</strong> Who or what may be allowed?<br/>
-        <strong>Examples:</strong> IAM &middot; RBAC &middot; ABAC &middot; OAuth scopes &middot; PDP / PEP &middot; policy-as-code.<br/>
-        <strong>KYE<span class="tm">™</span> role:</strong> extends authorisation into delegated agency, capability scope, six-dimension state, Authority Continuity<span class="tm">™</span>, Discoverability, evidence and revocation. <em>Does not replace</em> IAM.</p>
-      </div>
-      <div class="vl-card" data-layer="runtime" style="border-left:3px solid #C5221F">
-        <h4 style="color:#C5221F">Runtime execution control</h4>
-        <p><strong>Question:</strong> Should this specific action happen now?<br/>
-        <strong>Examples:</strong> agent purchase &middot; payment initiation &middot; tool call &middot; data access &middot; contract signing &middot; clinical escalation &middot; infrastructure command.<br/>
-        <strong>KYE<span class="tm">™</span> role:</strong> decides, records, revokes and proves authority at the point of action. <em>Does not</em> process the underlying payment, clinical action or infrastructure command itself.</p>
-      </div>
-      <div class="vl-card" data-layer="kye" style="border-left:3px solid #1A8754; background:color-mix(in srgb,#1A8754 6%, transparent)">
-        <h4 style="color:#1A8754">KYE Protocol<span class="tm">™</span> &mdash; the runtime authority &amp; evidence layer</h4>
-        <p><strong>Identity</strong> &middot; <strong>Authority</strong> &middot; <strong>Scope</strong> &middot; <strong>State</strong> (6-dim) &middot; <strong>Decision</strong> &middot; <strong>Audit</strong> &middot; <strong>Evidence Pack<span class="tm">™</span></strong> &middot; <strong>Discoverability</strong> &middot; <strong>Continuity</strong>. Resolves who or what is acting, on behalf of whom, under what authority, in what state &mdash; then produces a signed Decision Map<span class="tm">™</span> + Evidence Pack<span class="tm">™</span> that any auditor or regulator verifies offline with public keys.</p>
-      </div>
+
+    <div class="wk-tabs" role="tablist" aria-label="Layer selector">
+      <button type="button" class="wk-tab" role="tab" aria-selected="true"  data-wk="compliance" data-color="grey"   id="wk-tab-compliance"><span class="wk-dot"></span>Compliance frameworks</button>
+      <button type="button" class="wk-tab" role="tab" aria-selected="false" data-wk="governance" data-color="blue"   id="wk-tab-governance"><span class="wk-dot"></span>Governance architecture</button>
+      <button type="button" class="wk-tab" role="tab" aria-selected="false" data-wk="authz"      data-color="purple" id="wk-tab-authz"><span class="wk-dot"></span>Authorisation model</button>
+      <button type="button" class="wk-tab" role="tab" aria-selected="false" data-wk="runtime"    data-color="red"    id="wk-tab-runtime"><span class="wk-dot"></span>Runtime execution control</button>
     </div>
 
-    <p class="lede" style="margin-top:18px;font-size:15px"><strong>Frameworks tell you what must be governed. KYE<span class="tm">™</span> controls and proves what actually happened at runtime.</strong></p>
+    <div class="wk-panel" data-active id="wk-panel-compliance" role="tabpanel" aria-labelledby="wk-tab-compliance">
+      <h3 class="wk-panel-h"><span class="wk-dot" style="background:#5f6b78"></span>Compliance frameworks</h3>
+      <p class="wk-q">Question: What obligations must we meet?</p>
+      <div class="wk-row"><strong>Examples:</strong></div>
+      <div class="wk-egs"><span>EU AI Act</span><span>ISO 42001</span><span>SOC 2</span><span>DORA</span><span>GDPR</span><span>NIS2</span><span>HIPAA</span><span>PCI DSS</span></div>
+      <p class="wk-row" style="margin-top:14px"><strong>KYE<span class="tm">™</span> role:</strong> produces runtime evidence packs and Compliance Map<span class="tm">™</span> mappings that frameworks consume.</p>
+      <p class="wk-row" style="color:var(--text-muted,#6b7280)"><strong>Does not:</strong> replace the framework, the certifier, or the auditor.</p>
+    </div>
+
+    <div class="wk-panel" id="wk-panel-governance" role="tabpanel" aria-labelledby="wk-tab-governance">
+      <h3 class="wk-panel-h"><span class="wk-dot" style="background:#1A73E8"></span>Governance architecture</h3>
+      <p class="wk-q">Question: How is accountability organised?</p>
+      <div class="wk-row"><strong>Examples:</strong></div>
+      <div class="wk-egs"><span>AI governance board</span><span>Risk committees</span><span>Control libraries</span><span>Approval workflows</span><span>Model governance</span><span>Incident processes</span></div>
+      <p class="wk-row" style="margin-top:14px"><strong>KYE<span class="tm">™</span> role:</strong> turns governance intent into runtime authority decisions and replayable evidence.</p>
+      <p class="wk-row" style="color:var(--text-muted,#6b7280)"><strong>Does not:</strong> replace organisational governance.</p>
+    </div>
+
+    <div class="wk-panel" id="wk-panel-authz" role="tabpanel" aria-labelledby="wk-tab-authz">
+      <h3 class="wk-panel-h"><span class="wk-dot" style="background:#8E24AA"></span>Authorisation model</h3>
+      <p class="wk-q">Question: Who or what may be allowed?</p>
+      <div class="wk-row"><strong>Examples:</strong></div>
+      <div class="wk-egs"><span>IAM</span><span>RBAC</span><span>ABAC</span><span>OAuth scopes</span><span>PDP / PEP</span><span>Policy-as-code</span></div>
+      <p class="wk-row" style="margin-top:14px"><strong>KYE<span class="tm">™</span> role:</strong> extends authorisation into delegated agency, capability scope, six-dimension state, Authority Continuity<span class="tm">™</span>, Discoverability, evidence and revocation.</p>
+      <p class="wk-row" style="color:var(--text-muted,#6b7280)"><strong>Does not:</strong> replace IAM.</p>
+    </div>
+
+    <div class="wk-panel" id="wk-panel-runtime" role="tabpanel" aria-labelledby="wk-tab-runtime">
+      <h3 class="wk-panel-h"><span class="wk-dot" style="background:#C5221F"></span>Runtime execution control</h3>
+      <p class="wk-q">Question: Should this specific action happen now?</p>
+      <div class="wk-row"><strong>Examples:</strong></div>
+      <div class="wk-egs"><span>Agent purchase</span><span>Payment initiation</span><span>Tool call</span><span>Data access</span><span>Contract signing</span><span>Clinical escalation</span><span>Infrastructure command</span></div>
+      <p class="wk-row" style="margin-top:14px"><strong>KYE<span class="tm">™</span> role:</strong> decides, records, revokes and proves authority at the point of action.</p>
+      <p class="wk-row" style="color:var(--text-muted,#6b7280)"><strong>Does not:</strong> process the underlying payment, clinical action or infrastructure command itself.</p>
+    </div>
+
+    <div class="wk-bridge">
+      <h3 class="wk-bridge-h"><span class="ms" aria-hidden="true">hub</span>KYE Protocol<span class="tm">™</span> &mdash; the runtime authority &amp; evidence bridge</h3>
+      <p><strong>Identity</strong> &middot; <strong>Authority</strong> &middot; <strong>Scope</strong> &middot; <strong>State</strong> (6-dim) &middot; <strong>Decision</strong> &middot; <strong>Audit</strong> &middot; <strong>Evidence Pack<span class="tm">™</span></strong> &middot; <strong>Discoverability</strong> &middot; <strong>Continuity</strong>. Resolves who or what is acting, on behalf of whom, under what authority, in what state &mdash; then produces a signed Decision Map<span class="tm">™</span> + Evidence Pack<span class="tm">™</span> any auditor or regulator verifies offline with public keys.</p>
+    </div>
+
+    <p class="wk-takeaway"><strong>Frameworks tell you what must be governed. KYE<span class="tm">™</span> controls and proves what actually happened at runtime.</strong></p>
 
     <div class="hero-cta" style="margin-top:14px">
       <a href="protocol.html" class="btn btn-secondary"><span class="ms">architecture</span> Protocol overview &rarr;</a>
@@ -402,6 +452,22 @@
       <a href="continuity.html" class="btn btn-secondary"><span class="ms">timeline</span> Continuity Profile<span class="tm">™</span></a>
       <a href="discoverability.html" class="btn btn-secondary"><span class="ms">search</span> Discoverability Profile<span class="tm">™</span></a>
     </div>
+
+    <script>
+      (function () {
+        var tabs = document.querySelectorAll('.wk-tab[data-wk]');
+        tabs.forEach(function (tab) {
+          tab.addEventListener('click', function () {
+            var key = tab.getAttribute('data-wk');
+            tabs.forEach(function (t) { t.setAttribute('aria-selected', t === tab ? 'true' : 'false'); });
+            document.querySelectorAll('.wk-panel').forEach(function (p) {
+              if (p.id === 'wk-panel-' + key) p.setAttribute('data-active', '');
+              else p.removeAttribute('data-active');
+            });
+          });
+        });
+      })();
+    </script>
   </div>
 </section>
 
@@ -459,38 +525,6 @@
           <li>Make a hosted KYE Cloud Gateway<span class="tm">™</span> SaaS available today (v1.1 commercial track)</li>
         </ul>
       </div>
-    </div>
-  </div>
-</section>
-
-<section id="why" class="section" aria-labelledby="h-why">
-  <div class="container">
-    <span class="eyebrow">Why this exists</span>
-    <h2 id="h-why" class="h-section">AI-agent accountability is now a <span class="accent">board-level liability</span>.</h2>
-    <div class="vl-grid" style="grid-template-columns:1fr 1fr;gap:14px;margin-top:14px">
-      <div class="vl-card"><h4>The gap</h4><p>An AI agent calls five services with five different identities. Stop signals don&rsquo;t cross system boundaries. Auditors can&rsquo;t reconstruct what happened. Regulators (EU AI Act, DORA, NIS2, PSD3, ISO 42001, NIST AI RMF) want a <em>chain of authority</em> &mdash; not an OAuth token.</p></div>
-      <div class="vl-card"><h4>The contract</h4><p>One URN format. One delegation chain. One decision vocabulary. One cascading bus. One signed proof. The same answer in every system to <em>who acted, on whose behalf, with what authority, under what scope, with what evidence?</em></p></div>
-      <div class="vl-card"><h4>Three legs to stand on</h4><p>Regulatory tailwind &middot; composes with OAuth / SPIFFE / MCP / KYC / KYA &middot; implementable today on Apache 2.0 schemas + reference Gateway + 41-fixture conformance pack.</p></div>
-      <div class="vl-card"><h4>The metaphor</h4><p>KYE<span class="tm">™</span> produces the <strong>KYE Chain of Authority<span class="tm">™</span></strong> the way digital signatures produce chain-of-custody for documents. Courts already accept signed documents; KYE<span class="tm">™</span> gives them signed delegations.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="what" class="section alt" aria-labelledby="h-what">
-  <div class="container">
-    <span class="eyebrow">What it is</span>
-    <h2 id="h-what" class="h-section">In one sentence: <span class="accent">the open contract for who-acted-and-why.</span></h2>
-    <div class="what-card">
-      <div class="def-tag">Definition</div>
-      <p class="what-def">KYE Protocol<span class="tm">™</span> is the open <span class="accent">identity, authority, scope, state and audit</span> layer for every action a human, business, AI agent, service, model, tool or workflow takes &mdash; one URN, one delegation chain, one decision vocabulary, one cascading bus, one signed proof.</p>
-      <ul class="what-def-gloss">
-        <li><strong>Identity</strong> &mdash; <em>proves who you are.</em> Every actor (human, business, agent, service, model, tool, workflow) has one URN, verifiable across vendors.</li>
-        <li><strong>Authority</strong> &mdash; <em>proves what you&rsquo;re allowed to do.</em> A signed delegation chain back to a human or business; revocable in milliseconds, recursively.</li>
-        <li><strong>Scope</strong> &mdash; <em>proves the boundaries you operate within.</em> Action lists, environment, money limits, time windows, obligations &mdash; each enforced by the PDP.</li>
-        <li><strong>State</strong> &mdash; <em>proves the conditions right now.</em> Six independent dimensions: lifecycle, authority, delegation, credential, recovery, risk. Each transitions independently.</li>
-        <li><strong>Audit</strong> &mdash; <em>proves the full record forever.</em> Append-only chain, signed proof bundle, point-in-time replay; an external auditor verifies with public keys alone.</li>
-      </ul>
-      <p style="margin:14px 0 0;font-size:13.5px;color:var(--text-muted,#6b7280)">More: <a href="value.html" style="color:var(--accent);text-decoration:underline">why it exists / what it adds &rarr;</a> &middot; <a href="protocol.html" style="color:var(--accent);text-decoration:underline">technical reference &rarr;</a> &middot; <a href="whitepaper.html" style="color:var(--accent);text-decoration:underline">whitepaper &rarr;</a></p>
     </div>
   </div>
 </section>

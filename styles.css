@@ -1586,7 +1586,7 @@ button, a, dt, dd, code, kbd, sup, .brand, .lede, .h-section, .eyebrow {
    We pin the glyph at 0.62em of the inheriting text and re-baseline so
    it sits at the cap-height. Works across H1 / H2 / lede / brand /
    cards consistently. */
-:root { --tm-em: 0.72em; --tm-rise: 0.34em; }
+:root { --tm-em: 0.85em; --tm-rise: 0.32em; }
 @supports (font-variant-position: super) {
   /* If the browser supports proper superscript variant, use it for ™ ®
      because it samples the glyph from the font's superscript table when
@@ -4413,8 +4413,65 @@ pre code {
 }
 
 /* ============================================================
-   Dark-mode contrast — universal pass.
-   Every container that was using a hardcoded light background or
+   .cmp-table — comparison / spec tables on landing pages.
+   Used on connector-profiles, build, status, integrations, etc.
+   No bespoke CSS existed before, so first-column <th> fell to the
+   browser default (bold) while <td> fell to body weight, producing
+   a visible font-weight + font-size mismatch on mobile when the
+   second column held <code>-styled entries. This block normalises
+   the typography across cells and forces horizontal scroll inside
+   a wrapper at narrow viewports rather than uneven cell shrink. */
+.cmp-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0;
+  font-size: 14px;
+  line-height: 1.55;
+}
+.cmp-table th,
+.cmp-table td {
+  padding: 10px 12px;
+  vertical-align: top;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 400;
+  border-top: 1px solid color-mix(in srgb, var(--text-muted, #888) 18%, transparent);
+}
+.cmp-table thead th {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--text-muted, #6b7280);
+  border-bottom: 1px solid color-mix(in srgb, var(--text-muted, #888) 28%, transparent);
+  border-top: 0;
+  padding-bottom: 8px;
+}
+/* First-column header rows ('row headers' inside <tbody>): keep
+   them visually distinct via colour but match the body font-size /
+   weight of <td> so the first column doesn't look 'larger'. */
+.cmp-table tbody th {
+  font-weight: 600;
+  color: var(--text, #111);
+  white-space: nowrap;
+}
+.cmp-table code {
+  font-size: 13px;
+  background: var(--paper-2, #f1f5f9);
+  padding: 2px 6px;
+  border-radius: 4px;
+  word-break: break-word;
+}
+@media (max-width: 720px) {
+  .cmp-table { font-size: 13px; min-width: 560px; }
+  .cmp-table th, .cmp-table td { padding: 8px 10px; }
+  .cmp-table code { font-size: 12px; }
+  /* Wrap any .cmp-table in a scroll container at narrow viewports
+     so the table stays internally consistent rather than uneven. */
+  .cmp-table-wrap, .container .cmp-table { overflow-x: auto; -webkit-overflow-scrolling: touch; display: block; }
+}
+
+
    light border in the legacy CSS is overridden here so dark mode
    meets WCAG AA contrast (4.5:1 body text, 3:1 large text).
    ============================================================ */
@@ -10858,3 +10915,61 @@ code[data-code="type"] {
     white-space: normal;
   }
 }
+
+/* ============================================================
+   Homepage "Where KYE™ fits" tabbed widget (index.html). Inline
+   styles previously injected mid-page; moved here for HTML validity. */
+      .wk-tabs { display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 0; }
+      .wk-tab {
+        appearance:none; cursor:pointer; font:inherit; font-size:13.5px; font-weight:600;
+        padding:10px 16px; border-radius:999px; border:1px solid color-mix(in srgb,var(--text-muted,#888) 28%, transparent);
+        background:var(--paper,#fff); color:var(--text-muted,#6b7280);
+        display:inline-flex; align-items:center; gap:8px;
+        transition:background .15s, color .15s, border-color .15s, transform .12s;
+      }
+      .wk-tab:hover { transform:translateY(-1px); }
+      .wk-tab .wk-dot { width:10px; height:10px; border-radius:50%; flex:0 0 auto; }
+      .wk-tab[aria-selected="true"] { color:#fff; border-color:transparent; box-shadow:0 2px 8px color-mix(in srgb,var(--text,#111) 12%, transparent); }
+      .wk-tab[data-color="grey"][aria-selected="true"]   { background:#5f6b78; }
+      .wk-tab[data-color="blue"][aria-selected="true"]   { background:#1A73E8; }
+      .wk-tab[data-color="purple"][aria-selected="true"] { background:#8E24AA; }
+      .wk-tab[data-color="red"][aria-selected="true"]    { background:#C5221F; }
+      .wk-tab[data-color="grey"]   .wk-dot { background:#5f6b78; }
+      .wk-tab[data-color="blue"]   .wk-dot { background:#1A73E8; }
+      .wk-tab[data-color="purple"] .wk-dot { background:#8E24AA; }
+      .wk-tab[data-color="red"]    .wk-dot { background:#C5221F; }
+
+      .wk-panel {
+        display:none; padding:22px 24px; margin-top:14px;
+        border-radius:12px;
+        border:1px solid color-mix(in srgb,var(--text-muted,#888) 18%, transparent);
+        background:var(--paper,#fff);
+        animation:wk-fade .25s ease;
+      }
+      .wk-panel[data-active] { display:block; }
+      @keyframes wk-fade { from { opacity:0; transform:translateY(4px); } to { opacity:1; transform:translateY(0); } }
+      .wk-panel-h { display:flex; align-items:center; gap:10px; margin:0 0 8px; font-size:18px; font-weight:700; }
+      .wk-panel-h .wk-dot { width:14px; height:14px; border-radius:50%; flex:0 0 auto; }
+      .wk-q { font-size:13.5px; color:var(--text-muted,#6b7280); margin:0 0 10px; text-transform:uppercase; letter-spacing:0.5px; font-weight:600; }
+      .wk-row { margin:8px 0; font-size:14.5px; line-height:1.6; }
+      .wk-row strong { color:var(--text,#111); }
+      .wk-egs { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
+      .wk-egs span { font-size:12.5px; padding:3px 10px; border-radius:999px; background:var(--paper-2,#f1f5f9); color:var(--text-muted,#4b5563); }
+
+      .wk-bridge {
+        margin-top:18px; padding:20px 22px; border-radius:12px;
+        border:1px solid color-mix(in srgb,#1A8754 30%, transparent);
+        background:color-mix(in srgb,#1A8754 8%, transparent);
+      }
+      .wk-bridge-h { font-size:17px; font-weight:700; color:#1A8754; margin:0 0 8px; display:flex; align-items:center; gap:8px; }
+      .wk-bridge p { margin:0; font-size:14.5px; line-height:1.6; }
+      .wk-takeaway { margin-top:18px; font-size:15.5px; line-height:1.5; }
+      .wk-takeaway strong { background:linear-gradient(transparent 60%, color-mix(in srgb,#1A8754 28%, transparent) 60%); padding:0 2px; }
+
+      @media (max-width:680px) {
+        .wk-tabs { gap:6px; }
+        .wk-tab { padding:8px 12px; font-size:12.5px; }
+        .wk-panel { padding:18px; }
+        .wk-bridge { padding:16px 18px; }
+      }
+
