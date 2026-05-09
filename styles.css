@@ -11025,3 +11025,46 @@ code[data-code="type"] {
         border-color: color-mix(in srgb, #fff 16%, transparent);
       }
 
+
+      /* "Honest about the boundary" — chip-cloud does / does-not */
+      .bd-grid {
+        display:grid; grid-template-columns:1fr 1fr; gap:14px;
+        margin-top:14px;
+      }
+      .bd-col {
+        padding:16px 16px 18px;
+        border-radius:12px;
+        background:var(--paper,#fff);
+        border:1px solid color-mix(in srgb,var(--text,#111) 10%, transparent);
+      }
+      .bd-col--yes { background: color-mix(in srgb,#1A8754 5%, var(--paper,#fff)); border-color: color-mix(in srgb,#1A8754 22%, transparent); }
+      .bd-col--no  { background: color-mix(in srgb,#C5221F 4%, var(--paper,#fff)); border-color: color-mix(in srgb,#C5221F 22%, transparent); }
+      .bd-head {
+        display:inline-flex; align-items:center; gap:8px;
+        padding:6px 12px; border-radius:999px;
+        font-weight:700; font-size:13.5px; letter-spacing:0.02em;
+        margin-bottom:14px;
+      }
+      .bd-head .ms { font-size:18px !important; }
+      .bd-head--yes { background:#1A8754; color:#fff; }
+      .bd-head--no  { background:#C5221F; color:#fff; }
+      .bd-chips { display:flex; flex-wrap:wrap; gap:8px; }
+      .bd-chip {
+        display:inline-flex; align-items:center; gap:6px;
+        padding:7px 12px; border-radius:999px;
+        font-size:13px; line-height:1.35;
+        background:var(--paper,#fff);
+        border:1px solid color-mix(in srgb,var(--text,#111) 14%, transparent);
+        color:var(--text,#111);
+      }
+      .bd-chip em { font-style:normal; font-size:11.5px; color:var(--text-muted,#6b7280); margin-left:4px; }
+      .bd-chip--yes { border-color: color-mix(in srgb,#1A8754 35%, transparent); background: color-mix(in srgb,#1A8754 4%, var(--paper,#fff)); }
+      .bd-chip--no  { border-color: color-mix(in srgb,#C5221F 30%, transparent); background: color-mix(in srgb,#C5221F 3%, var(--paper,#fff)); }
+      [data-theme="dark"] .bd-col--yes { background: color-mix(in srgb,#1A8754 12%, transparent); }
+      [data-theme="dark"] .bd-col--no  { background: color-mix(in srgb,#C5221F 12%, transparent); }
+      [data-theme="dark"] .bd-chip { background: color-mix(in srgb,#fff 4%, transparent); color:#e5e7eb; }
+      @media (max-width:680px) {
+        .bd-grid { grid-template-columns:1fr; gap:12px; }
+        .bd-col  { padding:14px; }
+        .bd-chip { font-size:12.5px; padding:6px 10px; }
+      }
