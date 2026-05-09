@@ -36,6 +36,8 @@ const NAV_ITEMS = [
   { id: 'concepts',            href: 'concepts.html',            label: 'Concepts',                                          icon: 'category',                color: '#00ACC1', group: 'protocol' },
   { id: 'continuity',          href: 'continuity.html',          label: 'Continuity',                                        icon: 'timeline',                color: '#1A8754', group: 'protocol' },
   { id: 'discoverability',     href: 'discoverability.html',     label: 'Discoverability',                                   icon: 'search',                  color: '#00ACC1', group: 'protocol' },
+  { id: 'ontology',            href: 'ontology.html',            label: 'Ontology',                                          icon: 'hub',                     color: '#1A8754', group: 'protocol' },
+  { id: 'operating-model',     href: 'operating-model.html',     label: 'Operating Model',                                   icon: 'route',                   color: '#00838F', group: 'protocol' },
   { id: 'value',               href: 'value.html',               label: 'Value',                                             icon: 'auto_graph',              color: '#1A8754', group: 'protocol' },
   { id: 'whitepaper',          href: 'whitepaper.html',          label: 'Whitepaper',                                        icon: 'menu_book',               color: '#00838F', group: 'protocol' },
 
@@ -226,6 +228,7 @@ const FOOTER_GROUPS = [
     items: [
       { href: 'sectors.html',             label: 'All profiles' },
       { href: 'usecases.html',            label: 'Use cases' },
+      { href: 'operating-model.html',     label: 'KYE Operating Model Profile<span class="tm">™</span>' },
       { href: 'ontology.html',            label: 'KYE Ontology Profile<span class="tm">™</span>' },
       { href: 'continuity.html',          label: 'KYE Continuity Profile<span class="tm">™</span>' },
       { href: 'discoverability.html',     label: 'KYE Discoverability Profile<span class="tm">™</span>' },

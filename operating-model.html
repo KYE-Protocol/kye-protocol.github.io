@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script>(function(){try{var s=localStorage.getItem("kye-theme");if(s==="dark"||s==="light"){document.documentElement.setAttribute("data-theme",s);}}catch(e){}})();</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KYE Protocol™ — Operating Model Profile · readiness to runtime control</title>
+  <meta name="description" content="KYE Operating Model Profile™ — the enterprise adoption layer of KYE™. From use-case intake to readiness, authority records, authority gates, commit boundaries, runtime decisions, evidence packs and revocation. Assess. Gate. Decide. Prove. Revoke. Replay." />
+  <link rel="canonical" href="https://kye-protocol.github.io/operating-model.html" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="KYE Operating Model Profile™ — readiness to runtime control" />
+  <meta property="og:description" content="KYE™ turns AI-governance operating models into runtime authority decisions and replayable evidence." />
+  <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
+  <meta property="og:url" content="https://kye-protocol.github.io/operating-model.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css?v=1779290000" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://kye-protocol.github.io/"},{"@type":"ListItem","position":2,"name":"Operating Model Profile","item":"https://kye-protocol.github.io/operating-model.html"}]}</script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="top-bar" role="banner" data-kye-header data-active="operating-model"><!-- canonical chrome injected --></header>
+<main id="main" role="main">
+
+<section id="top" class="hero" aria-labelledby="hero-title">
+  <div class="container hero-inner">
+    <span class="hero-pill"><span class="dot"></span> KYE Operating Model Profile<span class="tm">™</span> &middot; v1.0</span>
+    <h1 id="hero-title" style="margin-top:18px">From <span class="accent">readiness</span> to <span class="accent">runtime control</span>.</h1>
+    <p class="lede">Most AI-governance programmes stop at policies, committees, training or review documents. KYE<span class="tm">™</span> connects governance intent to runtime execution. <strong>Assess. Gate. Decide. Prove. Revoke. Replay.</strong></p>
+    <p class="lede" style="margin-top:6px"><strong>KYE Operating Model Profile<span class="tm">™</span></strong> turns AI-governance operating models into runtime authority decisions and replayable evidence &mdash; from use-case intake to controlled execution.</p>
+    <div class="cn-quick" style="margin-top:18px">
+      <a href="#journey"  class="cn-pill"><span class="ms">route</span> The 10-stage journey</a>
+      <a href="#gates"    class="cn-pill"><span class="ms">door_back</span> Authority Gates<span class="tm">™</span></a>
+      <a href="#commit"   class="cn-pill"><span class="ms">flaky</span> Commit Boundary<span class="tm">™</span></a>
+      <a href="#record"   class="cn-pill"><span class="ms">badge</span> Entity Authority Record<span class="tm">™</span></a>
+      <a href="#widgets"  class="cn-pill"><span class="ms">interactive_space</span> Try it</a>
+      <a href="#open-paid" class="cn-pill"><span class="ms">balance</span> Open / paid</a>
+    </div>
+  </div>
+</section>
+
+<section id="journey" class="section" aria-labelledby="h-journey">
+  <div class="container">
+    <span class="eyebrow">1 &middot; The 10-stage journey</span>
+    <h2 id="h-journey" class="h-section">Use-case intake &rarr; runtime decision &rarr; <span class="accent">replayable evidence</span>.</h2>
+    <p class="lede">Each stage emits a signed event onto KYE Signal Bus<span class="tm">™</span> and is recoverable from the audit ledger.</p>
+    <div class="journey-flow" role="list">
+      <div class="journey-step" role="listitem"><span class="journey-num">01</span><div><strong>Use Case Intake</strong><span><code>KYEUseCaseIntake</code> &mdash; actor type, expected actions, systems, data classes, external effects, commit actions.</span></div></div>
+      <div class="journey-step" role="listitem"><span class="journey-num">02</span><div><strong>Readiness Assessment</strong><span><code>KYEReadinessAssessment</code> &mdash; ten dimensions assessed, score in <code>[0,1]</code>, interpretation.</span></div></div>
+      <div class="journey-step" role="listitem"><span class="journey-num">03</span><div><strong>Risk Classification</strong><span>Risk tier (<code>low</code> / <code>medium</code> / <code>high</code> / <code>critical</code>) embedded in the assessment.</span></div></div>
+      <div class="journey-step" role="listitem"><span class="journey-num">04</span><div><strong>Map Authority</strong><span><code>KYEEntityAuthorityRecord</code> &mdash; living governance record per delegated actor.</span></div></div>
+      <div class="journey-step" role="listitem"><span class="journey-num">05</span><div><strong>Place Gates</strong><span><code>KYEAuthorityGate</code> records before high-impact capabilities.</span></div></div>
+      <div class="journey-step" role="listitem"><span class="journey-num">06</span><div><strong>Configure Runtime</strong><span><code>KYECommitBoundary</code> records bind recommendation &harr; committed action.</span></div></div>
+      <div class="journey-step" role="listitem"><span class="journey-num">07</span><div><strong>Execute</strong><span>Runtime <code>KYEPolicyDecision</code> at the decision endpoint.</span></div></div>
+      <div class="journey-step journey-step--accent" role="listitem"><span class="journey-num">08</span><div><strong>Evidence</strong><span><code>KYEAdoptionEvidencePack</code> &mdash; signed, hash-chained, offline-verifiable.</span></div></div>
+      <div class="journey-step" role="listitem"><span class="journey-num">09</span><div><strong>Review</strong><span><code>KYEReviewPath</code> &mdash; multi-step human-review chain with SLAs.</span></div></div>
+      <div class="journey-step" role="listitem"><span class="journey-num">10</span><div><strong>Improve</strong><span>Revisions to any of the above; full revision chain in the audit ledger.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="gates" class="section alt" aria-labelledby="h-gates">
+  <div class="container">
+    <span class="eyebrow">2 &middot; Authority Gates<span class="tm">™</span></span>
+    <h2 id="h-gates" class="h-section">Place runtime gates <span class="accent">before high-impact actions</span>.</h2>
+    <p class="lede">Authority Gates<span class="tm">™</span> define where an AI worker, workflow, API, model or tool must stop, check authority, request approval, deny execution, quarantine the action or generate evidence.</p>
+    <div class="prim-grid" style="margin-top:14px">
+      <div class="prim-card"><span class="ms">payments</span><strong>payment_execution</strong><span>Before a prepared payment becomes an executed payment.</span></div>
+      <div class="prim-card"><span class="ms">send</span><strong>external_message</strong><span>Before an outbound message leaves the tenant.</span></div>
+      <div class="prim-card"><span class="ms">draw</span><strong>contract_signature</strong><span>Before a contract / e-signature is sealed.</span></div>
+      <div class="prim-card"><span class="ms">medical_services</span><strong>clinical_action</strong><span>Before a clinical action is performed.</span></div>
+      <div class="prim-card"><span class="ms">terminal</span><strong>infrastructure_command</strong><span>Before an infrastructure command is issued.</span></div>
+      <div class="prim-card"><span class="ms">cloud_download</span><strong>data_export</strong><span>Before a data export leaves the tenant.</span></div>
+      <div class="prim-card"><span class="ms">key</span><strong>credential_rotation</strong><span>Before a credential is rotated.</span></div>
+      <div class="prim-card"><span class="ms">verified</span><strong>evidence_export</strong><span>Before an evidence pack is exported beyond the tenant.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="commit" class="section" aria-labelledby="h-commit">
+  <div class="container">
+    <span class="eyebrow">3 &middot; Commit Boundary<span class="tm">™</span></span>
+    <h2 id="h-commit" class="h-section">AI can recommend. <span class="accent">KYE<span class="tm">™</span> decides whether the action may commit.</span></h2>
+    <p class="lede">The commit boundary is the point where an AI suggestion, plan, draft or preparation becomes an external action with real-world effect.</p>
+    <div class="cb-grid">
+      <div class="cb-row"><span class="cb-before">draft email</span><span class="cb-arrow ms">arrow_forward</span><span class="cb-after">send email</span></div>
+      <div class="cb-row"><span class="cb-before">prepare payment</span><span class="cb-arrow ms">arrow_forward</span><span class="cb-after">execute payment</span></div>
+      <div class="cb-row"><span class="cb-before">recommend refund</span><span class="cb-arrow ms">arrow_forward</span><span class="cb-after">issue refund</span></div>
+      <div class="cb-row"><span class="cb-before">draft contract</span><span class="cb-arrow ms">arrow_forward</span><span class="cb-after">sign contract</span></div>
+      <div class="cb-row"><span class="cb-before">suggest clinical step</span><span class="cb-arrow ms">arrow_forward</span><span class="cb-after">perform clinical step</span></div>
+      <div class="cb-row"><span class="cb-before">plan infra change</span><span class="cb-arrow ms">arrow_forward</span><span class="cb-after">execute command</span></div>
+      <div class="cb-row"><span class="cb-before">recommend access grant</span><span class="cb-arrow ms">arrow_forward</span><span class="cb-after">issue access grant</span></div>
+      <div class="cb-row"><span class="cb-before">propose policy edit</span><span class="cb-arrow ms">arrow_forward</span><span class="cb-after">apply policy edit</span></div>
+    </div>
+    <p class="wk-takeaway" style="margin-top:18px"><strong>Separate recommendations from committed actions. KYE<span class="tm">™</span> checks authority before the action becomes real.</strong></p>
+  </div>
+</section>
+
+<section id="record" class="section alt" aria-labelledby="h-record">
+  <div class="container">
+    <span class="eyebrow">4 &middot; Entity Authority Record<span class="tm">™</span></span>
+    <h2 id="h-record" class="h-section">Every AI agent, workflow, model or tool gets <span class="accent">a governed authority record</span>.</h2>
+    <p class="lede">Owner. Purpose. Capabilities. Scope. State. Risk. Decisions. Evidence. Revocation status. One living record &mdash; signed, chain-bound, replayable.</p>
+    <div class="ear-card">
+      <div class="ear-head">
+        <span class="ms ear-icon">smart_toy</span>
+        <div>
+          <p class="ear-eyebrow">Entity Authority Record<span class="tm">™</span> &middot; preview</p>
+          <h3 class="ear-title">Finance Payment Preparation Agent</h3>
+        </div>
+        <span class="ear-pill ear-pill--pilot">pilot</span>
+      </div>
+      <dl class="ear-grid">
+        <div><dt>Owner</dt><dd>Finance Ops &middot; <code>kye:user:finance_owner_001</code></dd></div>
+        <div><dt>Risk tier</dt><dd><span class="ear-tag ear-tag--high">high</span></dd></div>
+        <div><dt>Approved capabilities</dt><dd><code>invoice.read</code>, <code>payment.prepare</code>, <code>supplier.notify</code></dd></div>
+        <div><dt>Prohibited capabilities</dt><dd><code>payment.execute</code>, <code>contract.sign</code>, <code>credential.rotate</code></dd></div>
+        <div><dt>Required gates</dt><dd><code>kye:gate:payment_execute</code>, <code>kye:gate:external_send</code></dd></div>
+        <div><dt>Commit boundaries</dt><dd><code>kye:commit-boundary:payment_execution</code></dd></div>
+        <div><dt>Evidence</dt><dd><span class="ear-tag ear-tag--ok">evidence_pack_available</span></dd></div>
+        <div><dt>Review due</dt><dd>30 days &middot; monthly cadence</dd></div>
+        <div><dt>Revocable</dt><dd>yes &middot; cascade required</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="schemas" class="section" aria-labelledby="h-schemas">
+  <div class="container">
+    <span class="eyebrow">5 &middot; Schemas (Apache 2.0, public mirror)</span>
+    <h2 id="h-schemas" class="h-section">Ten normative objects. <span class="accent">Validated in CI.</span></h2>
+    <ul class="biz-list" style="margin-top:8px">
+      <li><code><a href="https://kye-protocol.github.io/schemas/operating-model-profile.json">operating-model-profile.json</a></code> &mdash; profile manifest</li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/use-case-intake.json">use-case-intake.json</a></code> &mdash; stage 1 intake</li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/readiness-assessment.json">readiness-assessment.json</a></code> &mdash; stage 2 multi-dimension assessment</li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/entity-authority-record.json">entity-authority-record.json</a></code> &mdash; stage 4 living record per actor</li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/authority-gate.json">authority-gate.json</a></code> &mdash; stage 5 runtime gate</li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/commit-boundary.json">commit-boundary.json</a></code> &mdash; stage 6 recommendation &harr; commit boundary</li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/review-path.json">review-path.json</a></code> &mdash; stage 9 human-review chain</li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/training-record.json">training-record.json</a></code> &mdash; per-owner training + certification</li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/adoption-evidence-pack.json">adoption-evidence-pack.json</a></code> &mdash; stage 8 signed pack</li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/governed-catalog-entry.json">governed-catalog-entry.json</a></code> &mdash; discovery entry per governed entity</li>
+    </ul>
+    <p class="lede" style="margin-top:14px;font-size:13.5px;color:var(--text-muted,#6b7280)">Each stage emits a signed event onto KYE Signal Bus<span class="tm">™</span>. The runtime never relies on out-of-band webhooks &mdash; KYE<span class="tm">™</span> uses an authenticated, signed event bus with replay-resistant signatures.</p>
+  </div>
+</section>
+
+<section id="widgets" class="section alt" aria-labelledby="h-widgets">
+  <div class="container">
+    <span class="eyebrow">6 &middot; Try it &mdash; readiness checker</span>
+    <h2 id="h-widgets" class="h-section">Tell us about your AI worker. <span class="accent">We'll show what KYE<span class="tm">™</span> requires.</span></h2>
+    <p class="lede">Front-end illustration only &mdash; no data leaves the page. Real implementations call <code>POST /v1/readiness-assessments</code>.</p>
+    <form class="rd-form" id="rd-form" onsubmit="return false">
+      <label class="rd-row"><span>Actor type</span>
+        <select id="rd-actor">
+          <option value="ai_agent">ai_agent</option>
+          <option value="workflow">workflow</option>
+          <option value="service">service</option>
+          <option value="model">model</option>
+          <option value="tool">tool</option>
+          <option value="connector">connector</option>
+        </select>
+      </label>
+      <fieldset class="rd-row"><legend>Expected effects (tick all that apply)</legend>
+        <label><input type="checkbox" id="rd-payment"> Payment / financial</label>
+        <label><input type="checkbox" id="rd-clinical"> Clinical / health</label>
+        <label><input type="checkbox" id="rd-legal"> Legal / contract / signature</label>
+        <label><input type="checkbox" id="rd-infra"> Infrastructure command</label>
+        <label><input type="checkbox" id="rd-external"> External message / outbound</label>
+        <label><input type="checkbox" id="rd-data"> Data export / personal data</label>
+      </fieldset>
+      <label class="rd-row"><span>Autonomy level</span>
+        <select id="rd-autonomy">
+          <option value="advisory">advisory only (recommendation)</option>
+          <option value="prepare_only">prepare-only</option>
+          <option value="commit_with_approval">commit with approval</option>
+          <option value="autonomous">fully autonomous</option>
+        </select>
+      </label>
+      <button class="btn btn-primary" type="button" id="rd-go"><span class="ms">play_arrow</span> Show what KYE<span class="tm">™</span> requires</button>
+    </form>
+    <div class="rd-output" id="rd-output" hidden>
+      <h3 class="rd-h">Suggested KYE<span class="tm">™</span> requirements</h3>
+      <dl class="rd-result">
+        <div><dt>Risk tier</dt><dd id="rd-tier"></dd></div>
+        <div><dt>Required profiles</dt><dd id="rd-profiles"></dd></div>
+        <div><dt>Required Authority Gates<span class="tm">™</span></dt><dd id="rd-gates"></dd></div>
+        <div><dt>Required Commit Boundaries<span class="tm">™</span></dt><dd id="rd-cbs"></dd></div>
+        <div><dt>Required evidence</dt><dd id="rd-evidence"></dd></div>
+        <div><dt>Decision policy</dt><dd id="rd-policy"></dd></div>
+      </dl>
+      <p class="rd-note">Heuristic illustration. The real <code>POST /v1/readiness-assessments</code> applies the calibration values held in the operating-model engine.</p>
+    </div>
+  </div>
+</section>
+
+<section id="open-paid" class="section" aria-labelledby="h-paid">
+  <div class="container">
+    <span class="eyebrow">7 &middot; Open / paid boundary</span>
+    <h2 id="h-paid" class="h-section">The contracts are open. <span class="accent">The managed engine is paid.</span></h2>
+    <div class="bd-grid">
+      <article class="bd-card bd-card--yes" aria-label="Open under Apache 2.0">
+        <header class="bd-card-head">
+          <span class="bd-badge bd-badge--yes" aria-hidden="true"><span class="ms">check</span></span>
+          <div>
+            <p class="bd-card-eyebrow">Open under Apache 2.0</p>
+            <h3 class="bd-card-title">Open</h3>
+          </div>
+        </header>
+        <ul class="bd-list">
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>Operating Model Profile<span class="tm">™</span> schema</li>
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>Use-case intake + readiness assessment schemas</li>
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>Entity Authority Record<span class="tm">™</span> schema</li>
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>Authority Gate<span class="tm">™</span> + Commit Boundary<span class="tm">™</span> schemas</li>
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>Review path + training record schemas</li>
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>Adoption Evidence Pack<span class="tm">™</span> schema</li>
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>Governed catalogue entry schema</li>
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>Reason-code dictionary &middot; signal bus event names</li>
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>Sample payloads &middot; basic conformance fixtures</li>
+        </ul>
+      </article>
+      <article class="bd-card bd-card--no" aria-label="Commercial / patent track">
+        <header class="bd-card-head" style="background:linear-gradient(135deg,#5f6b78 0%, #3f4954 100%);">
+          <span class="bd-badge" style="background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.28);" aria-hidden="true"><span class="ms">workspace_premium</span></span>
+          <div>
+            <p class="bd-card-eyebrow">Commercial / patent track</p>
+            <h3 class="bd-card-title">Paid</h3>
+          </div>
+        </header>
+        <ul class="bd-list">
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>KYE AI Worker Readiness App<span class="tm">™</span></li>
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>KYE Authority Gate Designer<span class="tm">™</span></li>
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>KYE Commit Boundary Monitor<span class="tm">™</span></li>
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>KYE Governed Entity Catalog<span class="tm">™</span> Pro</li>
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>KYE Cloud Portal<span class="tm">™</span></li>
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>KYE Academy<span class="tm">™</span> &middot; training + certification</li>
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>Readiness scoring + risk tiering engines</li>
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>Side-effect classification + commit-boundary detection</li>
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>Sector-specific readiness packs &middot; BYOC / on-prem</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="next" class="section alt" aria-labelledby="h-next">
+  <div class="container">
+    <span class="eyebrow">Where to go next</span>
+    <h2 id="h-next" class="h-section">Adjacent reading.</h2>
+    <div class="hero-cta" style="margin-top:8px">
+      <a href="continuity.html" class="btn btn-secondary"><span class="ms">trending_up</span> Continuity Profile<span class="tm">™</span> &rarr;</a>
+      <a href="discoverability.html" class="btn btn-secondary"><span class="ms">explore</span> Discoverability Profile<span class="tm">™</span> &rarr;</a>
+      <a href="ontology.html" class="btn btn-secondary"><span class="ms">hub</span> Ontology Profile<span class="tm">™</span> &rarr;</a>
+      <a href="vocabulary.html" class="btn btn-secondary"><span class="ms">menu_book</span> Vocabulary &rarr;</a>
+      <a href="glossary.html#operating-model" class="btn btn-secondary"><span class="ms">menu_book</span> Glossary &mdash; operating-model entries</a>
+      <a href="whitepaper.html#sec-7-7" class="btn btn-secondary"><span class="ms">article</span> Whitepaper §7.7</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected --></footer>
+<button id="scroll-top" class="scroll-top" type="button" aria-label="Scroll to top" data-kye-scroll-top><!-- svg injected --></button>
+<script type="module" src="main.js?v=1779220000"></script>
+<script>
+  (function(){
+    var btn = document.getElementById('rd-go');
+    if (!btn) return;
+    function classify() {
+      var pay = document.getElementById('rd-payment').checked;
+      var clin = document.getElementById('rd-clinical').checked;
+      var leg = document.getElementById('rd-legal').checked;
+      var infra = document.getElementById('rd-infra').checked;
+      var ext = document.getElementById('rd-external').checked;
+      var dat = document.getElementById('rd-data').checked;
+      var auto = document.getElementById('rd-autonomy').value;
+
+      var tier = 'low';
+      var profiles = ['kye.core.v1', 'kye.authority.v1', 'kye.evidence.v1'];
+      var gates = [];
+      var cbs = [];
+      var evidence = ['authority_grant', 'state_snapshot', 'policy_decision'];
+      var policy = 'allow';
+
+      if (pay)   { tier = 'high';     gates.push('payment_execution'); cbs.push('payment.prepare → payment.execute'); profiles.push('kye.payment.v1'); evidence.push('decision_map', 'evidence_pack'); }
+      if (clin)  { tier = 'critical'; gates.push('clinical_action');   cbs.push('suggest → perform clinical step');    profiles.push('kye.health.v1'); evidence.push('decision_map', 'evidence_pack'); }
+      if (leg)   { tier = (tier === 'critical' ? tier : 'high'); gates.push('contract_signature'); cbs.push('draft contract → sign contract'); evidence.push('decision_map'); }
+      if (infra) { tier = (tier === 'critical' ? tier : 'high'); gates.push('infrastructure_command'); cbs.push('plan → execute command'); evidence.push('decision_map'); }
+      if (ext)   { gates.push('external_message');                     cbs.push('draft email → send email'); }
+      if (dat)   { tier = (tier === 'critical' || tier === 'high' ? tier : 'medium'); gates.push('data_export'); cbs.push('prepare export → release export'); profiles.push('kye.discoverability.v1'); }
+
+      if (auto === 'autonomous' && (pay || clin || leg || infra)) policy = 'require_approval (autonomous_execution_not_allowed)';
+      else if (auto === 'commit_with_approval' && tier !== 'low') policy = 'require_approval';
+      else if (auto === 'advisory') policy = 'allow (no commit boundary crossed)';
+      else if (gates.length > 0) policy = 'require_approval at gates';
+      else policy = 'allow';
+
+      profiles.push('kye.operating_model.v1');
+      profiles.push('kye.continuity.v1');
+
+      function fmt(arr) { return arr.length ? arr.map(function(x){ return '<code>' + x + '</code>'; }).join(' &middot; ') : '<em>none</em>'; }
+
+      document.getElementById('rd-tier').innerHTML        = '<code>' + tier + '</code>';
+      document.getElementById('rd-profiles').innerHTML    = fmt(profiles);
+      document.getElementById('rd-gates').innerHTML       = fmt(gates);
+      document.getElementById('rd-cbs').innerHTML         = fmt(cbs);
+      document.getElementById('rd-evidence').innerHTML    = fmt(evidence);
+      document.getElementById('rd-policy').innerHTML      = '<code>' + policy + '</code>';
+
+      document.getElementById('rd-output').hidden = false;
+      document.getElementById('rd-output').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    btn.addEventListener('click', classify);
+  })();
+</script>
+</body>
+</html>

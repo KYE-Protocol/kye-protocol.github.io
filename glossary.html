@@ -37,9 +37,10 @@
       <a href="#continuity"  class="cn-pill"><span class="layer-num">04</span><span class="ms">trending_up</span> Continuity</a>
       <a href="#discovery"   class="cn-pill"><span class="layer-num">05</span><span class="ms">explore</span> Discoverability</a>
       <a href="#ontology"    class="cn-pill"><span class="layer-num">06</span><span class="ms">hub</span> Ontology</a>
-      <a href="#compliance"  class="cn-pill"><span class="layer-num">07</span><span class="ms">rule</span> Compliance</a>
-      <a href="#programme"   class="cn-pill"><span class="layer-num">08</span><span class="ms">workspace_premium</span> Programme</a>
-      <a href="#external"    class="cn-pill"><span class="layer-num">09</span><span class="ms">extension</span> External</a>
+      <a href="#operating-model" class="cn-pill"><span class="layer-num">07</span><span class="ms">route</span> Operating Model</a>
+      <a href="#compliance"  class="cn-pill"><span class="layer-num">08</span><span class="ms">rule</span> Compliance</a>
+      <a href="#programme"   class="cn-pill"><span class="layer-num">09</span><span class="ms">workspace_premium</span> Programme</a>
+      <a href="#external"    class="cn-pill"><span class="layer-num">10</span><span class="ms">extension</span> External</a>
     </div>
   </div>
 </section>
@@ -163,8 +164,31 @@
   </div></div>
 </section>
 
-<section id="compliance" class="section" aria-labelledby="h-cmp">
-        <span class="eyebrow layer-eyebrow"><span class="layer-num">07</span><span class="ms layer-ms">rule</span>Compliance</span>
+<section id="operating-model" class="section" aria-labelledby="h-om">
+        <span class="eyebrow layer-eyebrow"><span class="layer-num">07</span><span class="ms layer-ms">route</span>Operating Model</span>
+    <h2 id="h-om" class="h-section">Adoption layer &mdash; from readiness to runtime control.</h2>
+  <div class="section-body"><div class="container">
+    <p class="lede">Terms introduced by <a href="operating-model.html">KYE Operating Model Profile<span class="tm">™</span></a> (<code data-code="profile">kye-operating-model-v1</code>). Names only; readiness scoring, risk tiering, side-effect classification, commit-boundary detection, authority-gate recommendation and runtime gate-enforcement internals are part of the patent track and are not published.</p>
+    <dl class="what-def-gloss">
+      <li id="operating-model-profile"><strong>KYE Operating Model Profile<span class="tm">™</span></strong><span>The enterprise adoption layer of KYE<span class="tm">™</span>. Defines the journey from use-case intake to runtime authority control plus the schemas, gates, review paths and evidence required at each stage.</span></li>
+      <li id="journey-stages"><strong>Journey stages</strong><span>Ten ordered stages: <code data-code="field">intake</code>, <code data-code="field">assess</code>, <code data-code="field">classify</code>, <code data-code="field">map_authority</code>, <code data-code="field">place_gates</code>, <code data-code="field">configure_runtime</code>, <code data-code="field">execute</code>, <code data-code="field">evidence</code>, <code data-code="field">review</code>, <code data-code="field">improve</code>.</span></li>
+      <li id="use-case-intake"><strong>Use-case intake</strong><span>Initial proposal for a delegated AI worker. Records actor type, expected actions, systems, data classes, external effects, commit actions and an initial risk assessment. Schema: <code data-code="path">use-case-intake.json</code>.</span></li>
+      <li id="readiness-assessment"><strong>Readiness assessment</strong><span>Multi-dimension assessment + readiness score in <code data-code="field">[0,1]</code> + required profiles, gates and evidence. Schema: <code data-code="path">readiness-assessment.json</code>.</span></li>
+      <li id="entity-authority-record"><strong>Entity Authority Record<span class="tm">™</span></strong><span>Living governance record per delegated actor &mdash; owner, accountable entity, purpose, lifecycle state, risk tier, approved + prohibited capabilities, authority grants, required gates, commit boundaries, current state, evidence, review, revocation. Schema: <code data-code="path">entity-authority-record.json</code>.</span></li>
+      <li id="authority-gates"><strong>KYE Authority Gates<span class="tm">™</span></strong><span>Runtime gate placed before high-impact delegated actions. Eight gate types: <code data-code="field">payment_execution</code>, <code data-code="field">external_message</code>, <code data-code="field">contract_signature</code>, <code data-code="field">clinical_action</code>, <code data-code="field">infrastructure_command</code>, <code data-code="field">data_export</code>, <code data-code="field">credential_rotation</code>, <code data-code="field">evidence_export</code>.</span></li>
+      <li id="commit-boundary"><strong>KYE Commit Boundary<span class="tm">™</span></strong><span>Separates recommendation from committed action. Examples: draft email vs send; prepare payment vs execute; recommend refund vs issue refund; draft contract vs sign contract.</span></li>
+      <li id="review-path"><strong>Review path</strong><span>Multi-step human-review chain with required role, decision options, optional condition and SLA per step. Schema: <code data-code="path">review-path.json</code>.</span></li>
+      <li id="adoption-evidence-pack"><strong>Adoption Evidence Pack<span class="tm">™</span></strong><span>Signed bundle composing intake + readiness + authority record + gates + commit boundaries + review paths + training + sample runtime decisions; hash-chained into the audit ledger. Schema: <code data-code="path">adoption-evidence-pack.json</code>.</span></li>
+      <li id="governed-catalog-entry"><strong>KYE Governed Entity Catalog<span class="tm">™</span> entry</strong><span>Discovery entry per governed entity &mdash; agent, model, tool, service, connector, app, plugin, profile or certified implementation.</span></li>
+      <li id="readiness-app"><strong>KYE AI Worker Readiness App<span class="tm">™</span></strong><span>Assess whether an AI worker is ready for pilot, controlled execution or production deployment. Planned commercial layer.</span></li>
+      <li id="cloud-portal"><strong>KYE Cloud Portal<span class="tm">™</span></strong><span>Enterprise dashboard tying use-cases, agents, gates, boundaries, decisions, evidence packs, training and certification together. Planned.</span></li>
+      <li id="academy"><strong>KYE Academy<span class="tm">™</span></strong><span>Training and certification track for KYE Operating Model Profile<span class="tm">™</span> owners and operators. Planned.</span></li>
+    </dl>
+  </div></div>
+</section>
+
+<section id="compliance" class="section alt" aria-labelledby="h-cmp">
+        <span class="eyebrow layer-eyebrow"><span class="layer-num">08</span><span class="ms layer-ms">rule</span>Compliance</span>
     <h2 id="h-cmp" class="h-section">Mapping rail, OSCAL, frameworks.</h2>
   <div class="section-body"><div class="container">
     <dl class="what-def-gloss">
@@ -178,8 +202,8 @@
   </div></div>
 </section>
 
-<section id="programme" class="section alt" aria-labelledby="h-prog">
-        <span class="eyebrow layer-eyebrow"><span class="layer-num">08</span><span class="ms layer-ms">workspace_premium</span>Programme</span>
+<section id="programme" class="section" aria-labelledby="h-prog">
+        <span class="eyebrow layer-eyebrow"><span class="layer-num">09</span><span class="ms layer-ms">workspace_premium</span>Programme</span>
     <h2 id="h-prog" class="h-section">Conformance, certification, partner ladder.</h2>
   <div class="section-body"><div class="container">
     <dl class="what-def-gloss">
@@ -194,8 +218,8 @@
   </div></div>
 </section>
 
-<section id="external" class="section" aria-labelledby="h-ext">
-        <span class="eyebrow layer-eyebrow"><span class="layer-num">09</span><span class="ms layer-ms">extension</span>External standards we compose with</span>
+<section id="external" class="section alt" aria-labelledby="h-ext">
+        <span class="eyebrow layer-eyebrow"><span class="layer-num">10</span><span class="ms layer-ms">extension</span>External standards we compose with</span>
     <h2 id="h-ext" class="h-section">For reference, not redefinition.</h2>
   <div class="section-body"><div class="container">
     <dl class="what-def-gloss">
