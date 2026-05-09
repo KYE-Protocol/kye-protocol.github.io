@@ -1,0 +1,13 @@
+{
+  "_note": "Public JWKS for verifying the KYE Protocol self-audit fixture artefacts published at /trust/self-audit/. The private half of this key signs the deterministic test-fixture run produced by `scripts/build-self-audit-snapshot.mjs`. Production self-audit runs (the live ones inside the KYE Reference Gateway) sign with a key whose private half lives in HSM/KMS — see /protocol#self-govern. Anyone can verify the fixture using the procedure documented at /trust/self-audit.html.",
+  "keys": [
+    {
+      "kty": "OKP",
+      "crv": "Ed25519",
+      "kid": "kye:key:self-audit-fixture-2026-05",
+      "alg": "EdDSA",
+      "use": "sig",
+      "x": "vEOg9wc9MYGigQQr0Xq17eFpheeC3oVVCL3NF_hma_E"
+    }
+  ]
+}

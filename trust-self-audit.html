@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script>(function(){try{var s=localStorage.getItem("kye-theme");if(s==="dark"||s==="light"){document.documentElement.setAttribute("data-theme",s);}}catch(e){}})();</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KYE Protocol™ — Self-audit fixture · publicly verifiable proof of mechanism</title>
+  <meta name="description" content="Signed JSON artefacts proving the KYE Reference Gateway™ governs and audits itself with its own primitives. Anyone can fetch + verify with the JWKS at /trust/self-audit-jwks.json. Zero credentials needed." />
+  <link rel="canonical" href="https://kye-protocol.github.io/trust-self-audit.html" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="KYE Protocol™ — Self-audit fixture · publicly verifiable" />
+  <meta property="og:description" content="Signed JSON artefacts proving the KYE Reference Gateway™ governs itself. Fetch, verify, replay." />
+  <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
+  <meta property="og:url" content="https://kye-protocol.github.io/trust-self-audit.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css?v=1779290000" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
+  <style>
+    .sa-pill { display:inline-flex; align-items:center; gap:6px; padding:3px 10px; border-radius:999px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.4px; background:color-mix(in srgb,#1A8754 14%, transparent); color:#1A8754; }
+    .sa-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:16px; }
+    @media (max-width:760px) { .sa-grid { grid-template-columns:1fr; } }
+    .sa-card { border:1px solid color-mix(in srgb,var(--text-muted,#888) 18%, transparent); border-radius:10px; padding:14px; background:var(--paper,#fff); }
+    .sa-card h3 { margin:0 0 6px; font-size:14.5px; }
+    .sa-card a code { font-size:12px; word-break:break-all; }
+    pre.sa-code { background:var(--paper-2,#f1f5f9); padding:12px 14px; border-radius:8px; overflow-x:auto; font-size:12.5px; line-height:1.55; }
+  </style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="top-bar" role="banner" data-kye-header data-active="trust"><!-- canonical chrome injected --></header>
+<main id="main" role="main">
+
+<section id="top" class="hero" aria-labelledby="hero-title">
+  <div class="container hero-inner">
+    <span class="hero-pill"><span class="dot"></span> Self-audit fixture &middot; publicly verifiable</span>
+    <h1 id="hero-title" style="margin-top:18px">A signed proof that the engine <span class="accent">governs and audits itself</span>.</h1>
+    <p class="lede">Three JSON artefacts &mdash; a self-audit run record, an engine-health snapshot and an audit-chain integrity check &mdash; signed with EdDSA over a canonical payload, verifiable by anyone using the published JWKS. The fixture is deterministic: the same inputs produce the same artefact, byte-for-byte. Production-grade self-audit runs (the live ones inside the KYE Reference Gateway<span class="tm">™</span>) sign with a key whose private half lives in HSM/KMS &mdash; <a href="protocol.html#self-govern" style="color:var(--accent);text-decoration:underline">see protocol &sect; self-govern</a>.</p>
+    <div class="cn-quick" style="margin-top:18px">
+      <a href="#what" class="cn-pill"><span class="ms">description</span> What is in the fixture</a>
+      <a href="#verify" class="cn-pill"><span class="ms">verified</span> Verify it yourself</a>
+      <a href="#what-this-proves" class="cn-pill"><span class="ms">gavel</span> What this proves</a>
+      <a href="#what-this-doesnt-prove" class="cn-pill"><span class="ms">balance</span> What it does NOT prove</a>
+    </div>
+  </div>
+</section>
+
+<section id="what" class="section" aria-labelledby="h-what">
+  <div class="container">
+    <span class="eyebrow">1 &middot; The three artefacts</span>
+    <h2 id="h-what" class="h-section">Three signed JSON files. <span class="accent">Fetch them.</span></h2>
+    <div class="sa-grid">
+      <div class="sa-card">
+        <span class="sa-pill"><span class="ms">science</span> run record</span>
+        <h3 style="margin-top:8px">self-audit-run.json</h3>
+        <p style="font-size:13.5px;margin:0 0 10px">Outcome of a canonical 17-area run over the protocol's reference state. <code>schema_version</code>, <code>self_audit_id</code>, <code>profiles_tested</code>, <code>summary.tests_*</code>, <code>findings</code>, <code>evidence_refs</code>.</p>
+        <a href="trust/self-audit/self-audit-run.json"><code>trust/self-audit/self-audit-run.json</code></a>
+      </div>
+      <div class="sa-card">
+        <span class="sa-pill"><span class="ms">monitor_heart</span> engine health</span>
+        <h3 style="margin-top:8px">engine-health.json</h3>
+        <p style="font-size:13.5px;margin:0 0 10px">Point-in-time snapshot of every engine: <code>schema_validator</code>, <code>dictionary_resolver</code>, <code>profile_resolver</code>, <code>registry_resolver</code>, <code>authority_engine</code>, <code>state_engine</code>, <code>policy_adapter</code>, <code>decision_engine</code>, <code>audit_engine</code>, <code>evidence_engine</code>, <code>graph_engine</code>, <code>webhook_engine</code>, <code>recovery_engine</code>.</p>
+        <a href="trust/self-audit/engine-health.json"><code>trust/self-audit/engine-health.json</code></a>
+      </div>
+      <div class="sa-card">
+        <span class="sa-pill"><span class="ms">link</span> chain integrity</span>
+        <h3 style="margin-top:8px">audit-integrity-check.json</h3>
+        <p style="font-size:13.5px;margin:0 0 10px">Hash-chain replay verification: events checked, orphan events, missing reason codes, missing evidence refs, overall result.</p>
+        <a href="trust/self-audit/audit-integrity-check.json"><code>trust/self-audit/audit-integrity-check.json</code></a>
+      </div>
+    </div>
+    <p class="lede" style="margin-top:14px;font-size:13.5px;color:var(--text-muted,#6b7280)"><strong>JWKS</strong> for verification: <a href="trust/self-audit-jwks.json"><code>trust/self-audit-jwks.json</code></a> &mdash; a single Ed25519 public key with kid <code>kye:key:self-audit-fixture-2026-05</code>.</p>
+  </div>
+</section>
+
+<section id="verify" class="section alt" aria-labelledby="h-verify">
+  <div class="container">
+    <span class="eyebrow">2 &middot; Verify it yourself</span>
+    <h2 id="h-verify" class="h-section">One command. <span class="accent">Zero credentials.</span></h2>
+    <p class="lede">The verifier is a 90-line Node script in the public repo. It fetches the three artefacts and the JWKS, recomputes the canonical payload (sorted keys, no whitespace), and verifies the EdDSA signature. Node 18+ only &mdash; no <code>npm install</code>.</p>
+    <h3 style="margin-top:18px;font-size:15px;text-transform:uppercase;letter-spacing:0.4px;color:var(--text-muted,#6b7280)">A &middot; Run the verifier (recommended)</h3>
+<pre class="sa-code"><code>curl -fsSL https://raw.githubusercontent.com/KYE-Protocol/app/main/scripts/verify-self-audit.mjs -o /tmp/verify-self-audit.mjs
+node /tmp/verify-self-audit.mjs
+
+# Expected output:
+#   Loaded JWKS — 1 key(s): kye:key:self-audit-fixture-2026-05
+#   ✓ self-audit-run.json  alg=EdDSA kid=kye:key:self-audit-fixture-2026-05
+#   ✓ engine-health.json  alg=EdDSA kid=kye:key:self-audit-fixture-2026-05
+#   ✓ audit-integrity-check.json  alg=EdDSA kid=kye:key:self-audit-fixture-2026-05
+#   All artefacts verified.</code></pre>
+    <h3 style="margin-top:18px;font-size:15px;text-transform:uppercase;letter-spacing:0.4px;color:var(--text-muted,#6b7280)">B &middot; Or: roll your own</h3>
+    <p class="lede" style="font-size:13.5px">For each artefact: parse JSON, extract <code>payload</code> and <code>signature</code>, canonicalise <code>payload</code> (sorted keys, no whitespace), base64url-decode <code>signature.sig</code>, look up <code>signature.kid</code> in <code>self-audit-jwks.json</code>, and verify EdDSA. The fixture is small enough (&lt; 4&nbsp;kB) that a Python or Go verifier is ~30 lines.</p>
+  </div>
+</section>
+
+<section id="what-this-proves" class="section" aria-labelledby="h-proves">
+  <div class="container">
+    <span class="eyebrow">3 &middot; What this proves</span>
+    <h2 id="h-proves" class="h-section">A real, working <span class="accent">self-audit pipeline</span>.</h2>
+    <ul class="biz-list" style="margin-top:8px">
+      <li><strong>The mechanism is implemented and reproducible.</strong> The same script that produces these fixtures runs in CI on every commit (<code>npm run test:self-audit-snapshot</code>); a regression in the schema, the audit-chain integrity check, or the engine-health snapshot would fail PR CI. Public visitors don't have to take our word for it.</li>
+      <li><strong>The signing path is real.</strong> EdDSA over canonical JSON, with a published JWKS, with a working verifier &mdash; not a mocked-up signature blob. The same construction is used by the live Reference Gateway<span class="tm">™</span> for webhook signing and self-audit run records.</li>
+      <li><strong>The schema is normative and stable.</strong> <code>kye.self_audit_run.v1</code>, <code>kye.engine_health.v1</code>, <code>kye.audit_integrity_check.v1</code>. Schema drift would break the verifier.</li>
+      <li><strong>The KYE<span class="tm">™</span>-on-KYE<span class="tm">™</span> wiring exists in code, not just slides.</strong> See <a href="protocol.html#self-govern" style="color:var(--accent);text-decoration:underline">protocol &sect; self-govern</a> &mdash; <code>POST /v1/self-audit:run</code> on the KYE Reference Gateway<span class="tm">™</span> emits the same shape this fixture uses.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="what-this-doesnt-prove" class="section alt" aria-labelledby="h-doesnt">
+  <div class="container">
+    <span class="eyebrow">4 &middot; What this does NOT prove</span>
+    <h2 id="h-doesnt" class="h-section">Honest about the boundary.</h2>
+    <ul class="biz-list" style="margin-top:8px">
+      <li><strong>This is not a live operational run.</strong> The fixture is a deterministic test snapshot &mdash; the same inputs every time, so anyone can reproduce it. Live production runs (real test counts, real findings, real timestamps) are part of the procurement pack delivered under NDA.</li>
+      <li><strong>The fixture-signing key is not the production signing key.</strong> The kid is <code>kye:key:self-audit-fixture-2026-05</code>; production self-audit runs in the live Reference Gateway<span class="tm">™</span> sign with a key whose private half lives in HSM/KMS &mdash; not on the public web.</li>
+      <li><strong>This is not a SOC 2 / ISO 27001 / FedRAMP attestation.</strong> Those require external bodies and live operational evidence. They're on the roadmap, not the present-tense claim. See <a href="engage.html#procurement-pack" style="color:var(--accent);text-decoration:underline">procurement pack</a> for the attestation roadmap.</li>
+      <li><strong>This does not expose any patent-track mechanism.</strong> Cascade revocation, audit-chain construction, attenuation propagation, signing-suite construction and lifecycle transition rules are intentional placeholders pre-filing &mdash; they live in <code>private/mechanisms/</code> and never appear in any of the three artefacts.</li>
+    </ul>
+    <div class="hero-cta" style="margin-top:18px">
+      <a href="protocol.html#self-govern" class="btn btn-primary"><span class="ms">verified_user</span> Protocol &sect; self-govern</a>
+      <a href="trust.html" class="btn btn-secondary"><span class="ms">gpp_good</span> Trust Center</a>
+      <a href="engage.html#procurement-pack" class="btn btn-secondary"><span class="ms">handshake</span> Procurement pack (NDA)</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected --></footer>
+<button class="scroll-top" data-kye-scroll-top type="button" aria-label="Scroll to top"></button>
+<script type="module" src="assets/components.js"></script>
+<script type="module" src="main.js"></script>
+</body>
+</html>

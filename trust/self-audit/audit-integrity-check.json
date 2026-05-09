@@ -1,0 +1,23 @@
+{
+  "payload": {
+    "schema_version": "kye.audit_integrity_check.v1",
+    "check_id": "kye:audit-check:kye-protocol:run_2026-05-09T00-00-00Z",
+    "period": {
+      "from": "2026-05-09T00:00:00Z",
+      "to": "2026-05-09T00:00:00Z"
+    },
+    "events_checked": 0,
+    "hash_chain_status": "valid",
+    "orphan_events": 0,
+    "missing_reason_codes": 0,
+    "missing_evidence_refs": 0,
+    "result": "passed",
+    "details": []
+  },
+  "signature": {
+    "alg": "EdDSA",
+    "kid": "kye:key:self-audit-fixture-2026-05",
+    "sig": "w9bFGtSmtds8Nc2-cVdCnTf7MIqCz8dSgLAGxbs_2ijjmr9KaYxZ6_fhRoWEnM61BxzqSqfFAibO_ttIwuyJDg",
+    "canonicalisation": "rfc8785-style/sorted-keys-no-ws"
+  }
+}

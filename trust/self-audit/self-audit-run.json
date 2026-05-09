@@ -1,0 +1,41 @@
+{
+  "payload": {
+    "schema_version": "kye.self_audit_run.v1",
+    "self_audit_id": "kye:self-audit:kye-protocol:run_2026-05-09T00-00-00Z",
+    "implementation_id": "kye:implementation:kye-protocol:reference-gateway",
+    "organisation_entity_id": "kye:org:kye-protocol",
+    "kye_core_version": "1.0.0",
+    "profiles_tested": [
+      "kye.core.v1",
+      "kye.authority.v1",
+      "kye.capability.v1",
+      "kye.evidence.v1",
+      "kye.graph.v1",
+      "kye.payments.v1",
+      "kye.signals.v1",
+      "kye.federation.v1",
+      "kye.attestation.v1",
+      "kye.recovery.v1"
+    ],
+    "started_at": "2026-05-09T00:00:00Z",
+    "completed_at": "2026-05-09T00:00:00Z",
+    "result": "passed",
+    "summary": {
+      "tests_total": 149,
+      "tests_passed": 149,
+      "tests_failed": 0,
+      "warnings": 0,
+      "critical_findings": 0
+    },
+    "findings": [],
+    "evidence_refs": [
+      "kye:evidence-pack:kye-protocol:run_2026-05-09T00-00-00Z"
+    ]
+  },
+  "signature": {
+    "alg": "EdDSA",
+    "kid": "kye:key:self-audit-fixture-2026-05",
+    "sig": "UA1X4LE4nTGX8v3tzqn4kx0lia_1e_7VQbRF_FhrPJUwqUJ8q_CVKN1FzqeGunO9LWnyU0ArFG2lMQ3WKtZTDQ",
+    "canonicalisation": "rfc8785-style/sorted-keys-no-ws"
+  }
+}

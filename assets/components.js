@@ -227,6 +227,7 @@ const FOOTER_GROUPS = [
     heading: 'Compliance',
     items: [
       { href: 'trust.html',           label: 'Trust Center' },
+      { href: 'trust-self-audit.html', label: 'Self-audit fixture (signed)' },
       { href: 'compliance.html',      label: 'Compliance' },
       { href: 'frameworks.html',      label: 'Frameworks' },
       { href: 'oscal.html',           label: 'OSCAL' },

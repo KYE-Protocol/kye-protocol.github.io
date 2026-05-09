@@ -1,0 +1,30 @@
+{
+  "payload": {
+    "schema_version": "kye.engine_health.v1",
+    "implementation_id": "kye:implementation:kye-protocol:reference-gateway",
+    "checked_at": "2026-05-09T00:00:00Z",
+    "status": "healthy",
+    "engines": {
+      "schema_validator": "healthy",
+      "dictionary_resolver": "healthy",
+      "profile_resolver": "healthy",
+      "registry_resolver": "healthy",
+      "authority_engine": "healthy",
+      "state_engine": "healthy",
+      "policy_adapter": "healthy",
+      "decision_engine": "healthy",
+      "audit_engine": "healthy",
+      "evidence_engine": "healthy",
+      "graph_engine": "healthy",
+      "webhook_engine": "healthy",
+      "recovery_engine": "healthy"
+    },
+    "warnings": []
+  },
+  "signature": {
+    "alg": "EdDSA",
+    "kid": "kye:key:self-audit-fixture-2026-05",
+    "sig": "CCGWdAwZwqSKTC6uWsvnvze_ErBoDmUcg2M-vcru4KG6YktWIVUo_J4_Kk7QjB6wPjiWfYdXUI1md-GFPBpUBQ",
+    "canonicalisation": "rfc8785-style/sorted-keys-no-ws"
+  }
+}
