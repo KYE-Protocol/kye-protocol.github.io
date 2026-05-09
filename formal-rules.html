@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script>(function(){try{var s=localStorage.getItem("kye-theme");if(s==="dark"||s==="light"){document.documentElement.setAttribute("data-theme",s);}}catch(e){}})();</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KYE Protocol™ — Formal Rules · rights, obligations, prohibitions, powers</title>
+  <meta name="description" content="KYE Formal Rules Profile™ — model permissions, obligations, prohibitions, powers, exceptions and governance meta-rules as machine-readable authority objects. KYE Gateway™ enforces them at runtime; the Obligation Ledger™ tracks them; the Rule Prover™ checks consistency; the Rule Compiler™ compiles them into runtime policy bindings." />
+  <link rel="canonical" href="https://kye-protocol.github.io/formal-rules.html" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="KYE Formal Rules Profile™ — rights, obligations, prohibitions, powers" />
+  <meta property="og:description" content="A rule should not only be written. It should be enforceable, discoverable, revocable, provable and replayable. KYE™ provides that layer." />
+  <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
+  <meta property="og:url" content="https://kye-protocol.github.io/formal-rules.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css?v=1779290000" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://kye-protocol.github.io/"},{"@type":"ListItem","position":2,"name":"Formal Rules Profile","item":"https://kye-protocol.github.io/formal-rules.html"}]}</script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="top-bar" role="banner" data-kye-header data-active="formal-rules"><!-- canonical chrome injected --></header>
+<main id="main" role="main">
+
+<section id="top" class="hero" aria-labelledby="hero-title">
+  <div class="container hero-inner">
+    <span class="hero-pill"><span class="dot"></span> KYE Formal Rules Profile<span class="tm">™</span> &middot; v1.0</span>
+    <h1 id="hero-title" style="margin-top:18px">Formal rules for <span class="accent">runtime authority</span>.</h1>
+    <p class="lede">A rule should not only be written. It should be <strong>enforceable</strong>, <strong>discoverable</strong>, <strong>revocable</strong>, <strong>provable</strong> and <strong>replayable</strong>. KYE Formal Rules Profile<span class="tm">™</span> models permissions, obligations, prohibitions, powers, exceptions and governance meta-rules as machine-readable authority objects.</p>
+    <p class="lede" style="margin-top:6px">KYE Gateway<span class="tm">™</span> enforces them at runtime, the Obligation Ledger<span class="tm">™</span> tracks them, the Rule Prover<span class="tm">™</span> checks consistency, and the Rule Compiler<span class="tm">™</span> compiles them into runtime policy bindings, authority gates, commit boundaries, signal events and evidence requirements.</p>
+    <div class="cn-quick" style="margin-top:18px">
+      <a href="#families" class="cn-pill"><span class="ms">category</span> 6 rule families</a>
+      <a href="#flow"     class="cn-pill"><span class="ms">arrow_forward</span> Rule → runtime</a>
+      <a href="#operators" class="cn-pill"><span class="ms">function</span> Operators</a>
+      <a href="#schemas"  class="cn-pill"><span class="ms">schema</span> Schemas</a>
+      <a href="#apps"     class="cn-pill"><span class="ms">apps</span> Apps</a>
+      <a href="#open-paid" class="cn-pill"><span class="ms">balance</span> Open / paid</a>
+    </div>
+  </div>
+</section>
+
+<section id="why" class="section" aria-labelledby="h-why">
+  <div class="container">
+    <span class="eyebrow">Why a new layer</span>
+    <h2 id="h-why" class="h-section">Authority is incomplete unless rights, obligations and powers are <span class="accent">explicit</span>.</h2>
+    <p class="lede">KYE<span class="tm">™</span> already records who acted, on whose behalf, under what authority, in what state, with what evidence. Formal Rules Profile<span class="tm">™</span> adds the normative dimension: <em>what may they do, what must they do, what must they not do, who may override, what evidence is required, and how conflicts are resolved.</em></p>
+    <p class="lede" style="margin-top:6px"><strong>Formal rules define the normative structure. KYE<span class="tm">™</span> operationalises it at runtime.</strong></p>
+  </div>
+</section>
+
+<section id="families" class="section alt" aria-labelledby="h-families">
+  <div class="container">
+    <span class="eyebrow">1 &middot; Six rule families</span>
+    <h2 id="h-families" class="h-section">Every rule declares <span class="accent">exactly one</span> family.</h2>
+    <div class="prim-grid" style="margin-top:14px">
+      <div class="prim-card"><span class="ms">check_circle</span><strong>permission &middot; <code>P</code></strong><span>Subject MAY perform the action under stated authority + scope + state.</span></div>
+      <div class="prim-card"><span class="ms">priority_high</span><strong>obligation &middot; <code>O</code></strong><span>Subject MUST perform the required action when the trigger condition applies.</span></div>
+      <div class="prim-card"><span class="ms">block</span><strong>prohibition &middot; <code>F</code></strong><span>Subject MUST NOT perform the prohibited action under stated conditions.</span></div>
+      <div class="prim-card"><span class="ms">key</span><strong>power &middot; <code>Pow</code></strong><span>Subject HAS authority to create, modify, revoke, waive or override a normative state.</span></div>
+      <div class="prim-card"><span class="ms">shield</span><strong>immunity &middot; <code>Imm</code></strong><span>Subject / state CANNOT be altered by the referenced actor or rule.</span></div>
+      <div class="prim-card"><span class="ms">flaky</span><strong>exception &middot; <code>Ex</code></strong><span>Rule is displaced or modified under enumerated exceptional conditions.</span></div>
+    </div>
+    <p class="lede" style="margin-top:14px;font-size:13.5px;color:var(--text-muted,#6b7280)">A seventh family <code>meta_governance</code> is recorded under <code>KYEGovernanceRule</code> and describes who may change rules, which rules dominate, and how conflicts resolve.</p>
+  </div>
+</section>
+
+<section id="flow" class="section" aria-labelledby="h-flow">
+  <div class="container">
+    <span class="eyebrow">2 &middot; From rule to runtime</span>
+    <h2 id="h-flow" class="h-section">Rule &rarr; gate &rarr; decision &rarr; <span class="accent">obligation lifecycle</span>.</h2>
+    <p class="lede">Each formal rule compiles into one or more coordinated runtime artefacts. The Rule Compiler<span class="tm">™</span> emits the bindings; the Gateway<span class="tm">™</span> enforces them; the Obligation Ledger<span class="tm">™</span> tracks every obligation through its lifecycle.</p>
+    <div class="journey-flow" role="list">
+      <div class="journey-step" role="listitem"><span class="journey-num">01</span><div><strong>Formal Rule</strong><span>Family + applies-to + condition + normative effect + violation effect + evidence requirements.</span></div></div>
+      <div class="journey-step" role="listitem"><span class="journey-num">02</span><div><strong>Permission / Obligation / Prohibition</strong><span>Standing rule resolved at decision time.</span></div></div>
+      <div class="journey-step" role="listitem"><span class="journey-num">03</span><div><strong>Authority Gate<span class="tm">™</span></strong><span>Compiled as a runtime gate before high-impact action.</span></div></div>
+      <div class="journey-step" role="listitem"><span class="journey-num">04</span><div><strong>Runtime Decision</strong><span>Allow / deny / prohibited / require_approval / quarantine / obligation_created.</span></div></div>
+      <div class="journey-step" role="listitem"><span class="journey-num">05</span><div><strong>Obligation Ledger<span class="tm">™</span></strong><span>Pending → satisfied / breached / waived / expired / disputed.</span></div></div>
+      <div class="journey-step" role="listitem"><span class="journey-num">06</span><div><strong>Decision Map<span class="tm">™</span></strong><span>Signed inputs → rules → outcome record.</span></div></div>
+      <div class="journey-step" role="listitem"><span class="journey-num">07</span><div><strong>Evidence Pack<span class="tm">™</span></strong><span>Hash-chained into the F2 audit chain.</span></div></div>
+      <div class="journey-step journey-step--accent" role="listitem"><span class="journey-num">08</span><div><strong>Replay / Audit / Review</strong><span>Offline-verifiable by any third party against the published JWKS.</span></div></div>
+    </div>
+    <p class="wk-takeaway" style="margin-top:18px"><strong>Rule:</strong> An agent may prepare a payment but must obtain approval before execution. <strong>Runtime:</strong> agent prepares payment → obligation created → agent requests execution → KYE<span class="tm">™</span> checks approval → no approval → deny + evidence pack. With approval → allow + obligation satisfied.</p>
+  </div>
+</section>
+
+<section id="operators" class="section alt" aria-labelledby="h-ops">
+  <div class="container">
+    <span class="eyebrow">3 &middot; Normative operators</span>
+    <h2 id="h-ops" class="h-section">Compact notation. <span class="accent">Plain meaning.</span></h2>
+    <table class="cmp-table">
+      <thead><tr><th>Operator</th><th>Family</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><th><code>P</code></th><td>permission</td><td>"may"</td></tr>
+        <tr><th><code>O</code></th><td>obligation</td><td>"must"</td></tr>
+        <tr><th><code>F</code></th><td>prohibition</td><td>"must not"</td></tr>
+        <tr><th><code>Pow</code></th><td>power</td><td>"has authority to"</td></tr>
+        <tr><th><code>Imm</code></th><td>immunity</td><td>"cannot be altered by"</td></tr>
+        <tr><th><code>Ex</code></th><td>exception</td><td>"displaced by, in conditions"</td></tr>
+      </tbody>
+    </table>
+    <p class="lede" style="margin-top:14px;font-size:13.5px;color:var(--text-muted,#6b7280)">KYE<span class="tm">™</span> does not commit to a specific deontic-logic syntax in the public surface. The operators above are the canonical product-friendly abbreviations recognised by the runtime engine.</p>
+  </div>
+</section>
+
+<section id="schemas" class="section" aria-labelledby="h-schemas">
+  <div class="container">
+    <span class="eyebrow">4 &middot; Schemas (Apache 2.0, public mirror)</span>
+    <h2 id="h-schemas" class="h-section">Eleven normative objects. <span class="accent">Validated in CI.</span></h2>
+    <ul class="biz-list" style="margin-top:8px">
+      <li><code><a href="https://kye-protocol.github.io/schemas/formal-rules-profile.json">formal-rules-profile.json</a></code> &mdash; profile manifest</li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/formal-rule.json">formal-rule.json</a></code> &mdash; one canonical rule (any family)</li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/permission.json">permission.json</a></code> &mdash; standing "may"</li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/obligation.json">obligation.json</a></code> &mdash; lifecycle "must"</li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/prohibition.json">prohibition.json</a></code> &mdash; standing "must not"</li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/power.json">power.json</a></code> &mdash; create / modify / revoke / waive / override</li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/exception.json">exception.json</a></code> &mdash; rule that displaces another rule</li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/governance-rule.json">governance-rule.json</a></code> &mdash; meta-rule on overrides</li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/rule-conflict.json">rule-conflict.json</a></code> &mdash; conflict + resolution</li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/rule-proof.json">rule-proof.json</a></code> &mdash; consistency proof from KYE Rule Prover<span class="tm">™</span></li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/obligation-state.json">obligation-state.json</a></code> &mdash; one state-transition record</li>
+    </ul>
+  </div>
+</section>
+
+<section id="apps" class="section alt" aria-labelledby="h-apps">
+  <div class="container">
+    <span class="eyebrow">5 &middot; Apps that compose this profile</span>
+    <h2 id="h-apps" class="h-section">Five planned apps. <span class="accent">Contracts open; engines paid.</span></h2>
+    <div class="prim-grid" style="margin-top:14px">
+      <div class="prim-card"><span class="ms">policy</span><strong>KYE Rights &amp; Obligations Engine<span class="tm">™</span></strong><span>Runtime engine evaluating permissions, obligations, prohibitions, powers, exceptions and governance rules.</span></div>
+      <div class="prim-card"><span class="ms">receipt_long</span><strong>KYE Obligation Ledger<span class="tm">™</span></strong><span>Append-only ledger of every obligation lifecycle, hash-chained into the audit ledger.</span></div>
+      <div class="prim-card"><span class="ms">fact_check</span><strong>KYE Rule Prover<span class="tm">™</span></strong><span>Pre-runtime consistency check &mdash; conflicts, unbounded obligations, missing satisfaction paths, circular delegation.</span></div>
+      <div class="prim-card"><span class="ms">memory</span><strong>KYE Rule Compiler<span class="tm">™</span></strong><span>Compiles formal rules into runtime PDP/PEP policies, authority gates, commit boundaries, signal events, conformance fixtures and evidence requirements.</span></div>
+      <div class="prim-card"><span class="ms">contract_edit</span><strong>KYE Contract-to-Authority Mapper<span class="tm">™</span></strong><span>Phase-2 &mdash; extracts permissions, obligations, prohibitions and powers from contracts, policies and mandates.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="open-paid" class="section" aria-labelledby="h-paid">
+  <div class="container">
+    <span class="eyebrow">6 &middot; Open / paid boundary</span>
+    <h2 id="h-paid" class="h-section">The contracts are open. <span class="accent">The reasoning engine is paid.</span></h2>
+    <div class="bd-grid">
+      <article class="bd-card bd-card--yes" aria-label="Open under Apache 2.0">
+        <header class="bd-card-head">
+          <span class="bd-badge bd-badge--yes" aria-hidden="true"><span class="ms">check</span></span>
+          <div>
+            <p class="bd-card-eyebrow">Open under Apache 2.0</p>
+            <h3 class="bd-card-title">Open</h3>
+          </div>
+        </header>
+        <ul class="bd-list">
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>Formal Rules Profile<span class="tm">™</span> schema</li>
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>11 object schemas (rule, permission, obligation, prohibition, power, exception, governance, conflict, proof, state)</li>
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>Normative operator dictionary (<code>P</code>, <code>O</code>, <code>F</code>, <code>Pow</code>, <code>Imm</code>, <code>Ex</code>)</li>
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>Reason-code dictionary (33 codes)</li>
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>Signal Bus<span class="tm">™</span> event names</li>
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>Sample rules &middot; sample proofs &middot; sample obligation ledger</li>
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>Basic conformance fixtures &middot; basic validator SDK</li>
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>JSON-LD mappings to KYE Ontology Profile<span class="tm">™</span></li>
+        </ul>
+      </article>
+      <article class="bd-card bd-card--no" aria-label="Commercial / patent track">
+        <header class="bd-card-head" style="background:linear-gradient(135deg,#5f6b78 0%, #3f4954 100%);">
+          <span class="bd-badge" style="background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.28);" aria-hidden="true"><span class="ms">workspace_premium</span></span>
+          <div>
+            <p class="bd-card-eyebrow">Commercial / patent track</p>
+            <h3 class="bd-card-title">Paid</h3>
+          </div>
+        </header>
+        <ul class="bd-list">
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>KYE Rights &amp; Obligations Engine<span class="tm">™</span></li>
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>KYE Obligation Ledger<span class="tm">™</span> Pro</li>
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>KYE Rule Prover<span class="tm">™</span></li>
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>KYE Rule Compiler<span class="tm">™</span></li>
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>KYE Contract-to-Authority Mapper<span class="tm">™</span></li>
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>Cross-profile rule reconciliation</li>
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>Sector rule packs (defence, public-sector, payments, health)</li>
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>BYOC / on-prem rule runtime</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="next" class="section alt" aria-labelledby="h-next">
+  <div class="container">
+    <span class="eyebrow">Where to go next</span>
+    <h2 id="h-next" class="h-section">Adjacent reading.</h2>
+    <div class="hero-cta" style="margin-top:8px">
+      <a href="operating-model.html" class="btn btn-secondary"><span class="ms">route</span> Operating Model<span class="tm">™</span></a>
+      <a href="assurance-card.html" class="btn btn-secondary"><span class="ms">badge</span> Assurance Card<span class="tm">™</span></a>
+      <a href="continuity.html" class="btn btn-secondary"><span class="ms">trending_up</span> Continuity<span class="tm">™</span></a>
+      <a href="ontology.html" class="btn btn-secondary"><span class="ms">hub</span> Ontology<span class="tm">™</span></a>
+      <a href="glossary.html#formal-rules" class="btn btn-secondary"><span class="ms">menu_book</span> Glossary &mdash; rules entries</a>
+      <a href="whitepaper.html#sec-7-9" class="btn btn-secondary"><span class="ms">article</span> Whitepaper §7.9</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected --></footer>
+<button id="scroll-top" class="scroll-top" type="button" aria-label="Scroll to top" data-kye-scroll-top><!-- svg injected --></button>
+<script type="module" src="main.js?v=1779220000"></script>
+</body>
+</html>

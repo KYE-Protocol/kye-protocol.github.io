@@ -39,9 +39,10 @@
       <a href="#ontology"    class="cn-pill"><span class="layer-num">06</span><span class="ms">hub</span> Ontology</a>
       <a href="#operating-model" class="cn-pill"><span class="layer-num">07</span><span class="ms">route</span> Operating Model</a>
       <a href="#assurance-card" class="cn-pill"><span class="layer-num">08</span><span class="ms">badge</span> Assurance</a>
-      <a href="#compliance"  class="cn-pill"><span class="layer-num">09</span><span class="ms">rule</span> Compliance</a>
-      <a href="#programme"   class="cn-pill"><span class="layer-num">10</span><span class="ms">workspace_premium</span> Programme</a>
-      <a href="#external"    class="cn-pill"><span class="layer-num">11</span><span class="ms">extension</span> External</a>
+      <a href="#formal-rules" class="cn-pill"><span class="layer-num">09</span><span class="ms">policy</span> Formal Rules</a>
+      <a href="#compliance"  class="cn-pill"><span class="layer-num">10</span><span class="ms">rule</span> Compliance</a>
+      <a href="#programme"   class="cn-pill"><span class="layer-num">11</span><span class="ms">workspace_premium</span> Programme</a>
+      <a href="#external"    class="cn-pill"><span class="layer-num">12</span><span class="ms">extension</span> External</a>
     </div>
   </div>
 </section>
@@ -213,8 +214,35 @@
   </div></div>
 </section>
 
-<section id="compliance" class="section" aria-labelledby="h-cmp">
-        <span class="eyebrow layer-eyebrow"><span class="layer-num">09</span><span class="ms layer-ms">rule</span>Compliance</span>
+<section id="formal-rules" class="section" aria-labelledby="h-fr">
+        <span class="eyebrow layer-eyebrow"><span class="layer-num">09</span><span class="ms layer-ms">policy</span>Formal Rules</span>
+    <h2 id="h-fr" class="h-section">Rights, obligations, prohibitions, powers &mdash; <span class="accent">enforceable.</span></h2>
+  <div class="section-body"><div class="container">
+    <p class="lede">Terms introduced by <a href="formal-rules.html">KYE Formal Rules Profile<span class="tm">™</span></a> (<code data-code="profile">kye-formal-rules-v1</code>). Names only; rule-conflict-detection algorithms, rule-proof internals, rule-compilation engine, contract-to-authority extraction and sector-rule-pack content are part of the patent track and are not published.</p>
+    <dl class="what-def-gloss">
+      <li id="formal-rules-profile"><strong>KYE Formal Rules Profile<span class="tm">™</span></strong><span>The rights, obligations and governance layer of KYE<span class="tm">™</span>. Models permissions, obligations, prohibitions, powers, exceptions and governance meta-rules as machine-readable authority objects. <em>A rule should not only be written. It should be enforceable, discoverable, revocable, provable and replayable.</em></span></li>
+      <li id="rule-families"><strong>Rule families</strong><span>Six families: <code data-code="allow">permission</code>, <code data-code="approve">obligation</code>, <code data-code="deny">prohibition</code>, <code data-code="field">power</code>, <code data-code="field">immunity</code>, <code data-code="field">exception</code>. Plus <code data-code="field">meta_governance</code> recorded under <code>KYEGovernanceRule</code>.</span></li>
+      <li id="normative-operators"><strong>Normative operators</strong><span>Compact operator notation: <code data-code="field">P</code> (may), <code data-code="field">O</code> (must), <code data-code="field">F</code> (must not), <code data-code="field">Pow</code> (has authority to), <code data-code="field">Imm</code> (cannot be altered by), <code data-code="field">Ex</code> (displaced by, in conditions).</span></li>
+      <li id="kye-permission"><strong>KYE<span class="tm">™</span> Permission</strong><span>Standing rule that an actor MAY perform a capability under defined scope + state. Schema: <code data-code="path">permission.json</code>.</span></li>
+      <li id="kye-obligation"><strong>KYE<span class="tm">™</span> Obligation</strong><span>Lifecycle object &mdash; actor MUST perform a required action by a deadline. States: <code data-code="field">pending</code> &middot; <code data-code="field">satisfied</code> &middot; <code data-code="field">breached</code> &middot; <code data-code="field">waived</code> &middot; <code data-code="field">expired</code> &middot; <code data-code="field">disputed</code> &middot; <code data-code="field">remediated</code> &middot; <code data-code="field">superseded</code>. Schema: <code data-code="path">obligation.json</code>.</span></li>
+      <li id="kye-prohibition"><strong>KYE<span class="tm">™</span> Prohibition</strong><span>Standing rule &mdash; actor MUST NOT perform the prohibited capability. <strong>Stronger than a runtime deny:</strong> a deny is "not allowed now"; a prohibition is "this class of action is forbidden under this authority model". Schema: <code data-code="path">prohibition.json</code>.</span></li>
+      <li id="kye-power"><strong>KYE<span class="tm">™</span> Power</strong><span>Authority to create, modify, revoke, waive or override a normative state. Powers govern what may be done to permissions, obligations, prohibitions and other authority objects. Schema: <code data-code="path">power.json</code>.</span></li>
+      <li id="kye-exception"><strong>KYE<span class="tm">™</span> Exception</strong><span>A rule that displaces or modifies another rule under enumerated exceptional conditions (incident response, business continuity, regulatory instruction). Carries time bounds, additional obligations and required approver roles. Schema: <code data-code="path">exception.json</code>.</span></li>
+      <li id="kye-governance-rule"><strong>KYE<span class="tm">™</span> Governance Rule</strong><span>Meta-rule on who may override which rules, under what conditions, with what evidence, and for how long. Schema: <code data-code="path">governance-rule.json</code>.</span></li>
+      <li id="kye-rule-conflict"><strong>KYE<span class="tm">™</span> Rule Conflict</strong><span>Detected conflict between two or more rules with the resolution strategy applied (e.g., specific overrides general, prohibition overrides permission). Schema: <code data-code="path">rule-conflict.json</code>.</span></li>
+      <li id="kye-rule-proof"><strong>KYE<span class="tm">™</span> Rule Proof</strong><span>Test result over a rule set checking enumerated consistency properties. Emitted by KYE Rule Prover<span class="tm">™</span>. Schema: <code data-code="path">rule-proof.json</code>.</span></li>
+      <li id="kye-obligation-state"><strong>KYE<span class="tm">™</span> Obligation State</strong><span>One state-transition record on a <code>KYEObligation</code>. Append-only; the chain of these records IS the obligation lifecycle. Schema: <code data-code="path">obligation-state.json</code>.</span></li>
+      <li id="kye-rights-obligations-engine"><strong>KYE Rights &amp; Obligations Engine<span class="tm">™</span></strong><span>Runtime engine that evaluates permissions, obligations, prohibitions, powers, exceptions and governance rules. Planned commercial layer.</span></li>
+      <li id="kye-obligation-ledger"><strong>KYE Obligation Ledger<span class="tm">™</span></strong><span>Append-only ledger tracking every obligation lifecycle, hash-chained into the audit ledger. Planned.</span></li>
+      <li id="kye-rule-prover"><strong>KYE Rule Prover<span class="tm">™</span></strong><span>Pre-runtime consistency checker for rule sets &mdash; conflicts, unbounded obligations, missing satisfaction paths, circular delegation, override gaps. Planned.</span></li>
+      <li id="kye-rule-compiler"><strong>KYE Rule Compiler<span class="tm">™</span></strong><span>Compiles formal KYE<span class="tm">™</span> rules into runtime PDP/PEP policies, authority gates, commit boundaries, signal events and evidence requirements. Planned.</span></li>
+      <li id="kye-contract-to-authority-mapper"><strong>KYE Contract-to-Authority Mapper<span class="tm">™</span></strong><span>Phase-2 &mdash; extracts permissions, obligations, prohibitions and powers from contracts, policies and mandates into KYE<span class="tm">™</span> formal rules.</span></li>
+    </dl>
+  </div></div>
+</section>
+
+<section id="compliance" class="section alt" aria-labelledby="h-cmp">
+        <span class="eyebrow layer-eyebrow"><span class="layer-num">10</span><span class="ms layer-ms">rule</span>Compliance</span>
     <h2 id="h-cmp" class="h-section">Mapping rail, OSCAL, frameworks.</h2>
   <div class="section-body"><div class="container">
     <dl class="what-def-gloss">
@@ -228,8 +256,8 @@
   </div></div>
 </section>
 
-<section id="programme" class="section alt" aria-labelledby="h-prog">
-        <span class="eyebrow layer-eyebrow"><span class="layer-num">10</span><span class="ms layer-ms">workspace_premium</span>Programme</span>
+<section id="programme" class="section" aria-labelledby="h-prog">
+        <span class="eyebrow layer-eyebrow"><span class="layer-num">11</span><span class="ms layer-ms">workspace_premium</span>Programme</span>
     <h2 id="h-prog" class="h-section">Conformance, certification, partner ladder.</h2>
   <div class="section-body"><div class="container">
     <dl class="what-def-gloss">
@@ -244,8 +272,8 @@
   </div></div>
 </section>
 
-<section id="external" class="section" aria-labelledby="h-ext">
-        <span class="eyebrow layer-eyebrow"><span class="layer-num">11</span><span class="ms layer-ms">extension</span>External standards we compose with</span>
+<section id="external" class="section alt" aria-labelledby="h-ext">
+        <span class="eyebrow layer-eyebrow"><span class="layer-num">12</span><span class="ms layer-ms">extension</span>External standards we compose with</span>
     <h2 id="h-ext" class="h-section">For reference, not redefinition.</h2>
   <div class="section-body"><div class="container">
     <dl class="what-def-gloss">
