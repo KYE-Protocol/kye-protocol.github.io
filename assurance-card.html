@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script>(function(){try{var s=localStorage.getItem("kye-theme");if(s==="dark"||s==="light"){document.documentElement.setAttribute("data-theme",s);}}catch(e){}})();</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KYE Protocol™ — Assurance Card Profile · system cards become executable</title>
+  <meta name="description" content="KYE Assurance Card Profile™ — turn KYE™ runtime evidence into a living lifecycle assurance record per delegated entity. Owner, intended use, authority model, human involvement, provenance, performance, evidence, review cycle, decommissioning. KYE makes assurance executable." />
+  <link rel="canonical" href="https://kye-protocol.github.io/assurance-card.html" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="KYE Assurance Card Profile™ — system cards become executable" />
+  <meta property="og:description" content="System cards say what should be assured. KYE™ proves what happened. KYE makes assurance executable." />
+  <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
+  <meta property="og:url" content="https://kye-protocol.github.io/assurance-card.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css?v=1779290000" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://kye-protocol.github.io/"},{"@type":"ListItem","position":2,"name":"Assurance Card Profile","item":"https://kye-protocol.github.io/assurance-card.html"}]}</script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="top-bar" role="banner" data-kye-header data-active="assurance-card"><!-- canonical chrome injected --></header>
+<main id="main" role="main">
+
+<section id="top" class="hero" aria-labelledby="hero-title">
+  <div class="container hero-inner">
+    <span class="hero-pill"><span class="dot"></span> KYE Assurance Card Profile<span class="tm">™</span> &middot; v1.0</span>
+    <h1 id="hero-title" style="margin-top:18px">From <span class="accent">system cards</span> to <span class="accent">runtime assurance</span>.</h1>
+    <p class="lede">System cards help organisations document AI risks, responsibilities, provenance, performance, security, limitations and review obligations. KYE<span class="tm">™</span> goes one layer deeper: it generates the runtime authority decisions, state checks, signed Signal Bus<span class="tm">™</span> events, Decision Maps<span class="tm">™</span> and Evidence Packs<span class="tm">™</span> that make assurance cards <strong>verifiable</strong>.</p>
+    <p class="lede" style="margin-top:6px"><strong>KYE Assurance Card Profile<span class="tm">™</span></strong> turns KYE<span class="tm">™</span> runtime evidence into a living assurance record for AI agents, models, tools, workflows, connectors and delegated systems. <strong>KYE<span class="tm">™</span> makes assurance executable.</strong></p>
+    <div class="cn-quick" style="margin-top:18px">
+      <a href="#lifecycle" class="cn-pill"><span class="ms">timeline</span> 8-stage lifecycle</a>
+      <a href="#card"      class="cn-pill"><span class="ms">badge</span> Live card preview</a>
+      <a href="#human"     class="cn-pill"><span class="ms">supervisor_account</span> Human Involvement Plan<span class="tm">™</span></a>
+      <a href="#provenance" class="cn-pill"><span class="ms">device_hub</span> Provenance &amp; supply chain</a>
+      <a href="#review"    class="cn-pill"><span class="ms">event_repeat</span> Review cycle</a>
+      <a href="#open-paid" class="cn-pill"><span class="ms">balance</span> Open / paid</a>
+    </div>
+  </div>
+</section>
+
+<section id="why" class="section" aria-labelledby="h-why">
+  <div class="container">
+    <span class="eyebrow">Why a new layer</span>
+    <h2 id="h-why" class="h-section">Model cards are <span class="accent">not enough</span>.</h2>
+    <p class="lede">Defence-grade AI assurance work (Alan Turing Institute / Accenture / UK MoD) makes the case directly: model cards are insufficient where models are integrated with platforms, where assumptions change and where multiple models interact. <strong>Agentic systems need more than model cards. They need authority cards, runtime decisions and evidence trails.</strong></p>
+    <p class="lede" style="margin-top:6px">KYE Assurance Card Profile<span class="tm">™</span> sits above the runtime KYE<span class="tm">™</span> stack. It turns the operating-model journey into a living lifecycle record, automates review-cycle triggering against the authority graph, and enforces the human-involvement plan as a runtime policy gate &mdash; not a documentation requirement.</p>
+  </div>
+</section>
+
+<section id="lifecycle" class="section alt" aria-labelledby="h-lc">
+  <div class="container">
+    <span class="eyebrow">1 &middot; 8-stage lifecycle</span>
+    <h2 id="h-lc" class="h-section">Design &rarr; pilot &rarr; deploy &rarr; <span class="accent">monitor &rarr; review &rarr; decommission</span>.</h2>
+    <p class="lede">Each stage emits a signed event onto KYE Signal Bus<span class="tm">™</span> and is recoverable from the audit ledger.</p>
+    <div class="journey-flow" role="list">
+      <div class="journey-step" role="listitem"><span class="journey-num">01</span><div><strong>Design</strong><span><code>KYEAssuranceCard</code> drafted; intended use, prohibited uses, owner, accountable entity declared.</span></div></div>
+      <div class="journey-step" role="listitem"><span class="journey-num">02</span><div><strong>Pilot</strong><span>Card moves to <code>pilot</code>. Operating-model adoption pack bound; runtime evidence begins flowing.</span></div></div>
+      <div class="journey-step" role="listitem"><span class="journey-num">03</span><div><strong>Deploy</strong><span>Status moves to <code>controlled_production</code> / <code>production</code>; cascade-revocation hooks armed.</span></div></div>
+      <div class="journey-step" role="listitem"><span class="journey-num">04</span><div><strong>Monitor</strong><span><code>KYEAssuranceReviewCycle</code> watches authority-graph + provenance + risk-state for triggers.</span></div></div>
+      <div class="journey-step" role="listitem"><span class="journey-num">05</span><div><strong>Incident review</strong><span>Trigger <code>incident</code> instantiates a review without operator intervention.</span></div></div>
+      <div class="journey-step" role="listitem"><span class="journey-num">06</span><div><strong>Scope-change review</strong><span>Trigger <code>scope_change</code> on capability / gate / commit-boundary updates.</span></div></div>
+      <div class="journey-step" role="listitem"><span class="journey-num">07</span><div><strong>Retention review</strong><span>Trigger <code>retention</code> on data / evidence retention windows.</span></div></div>
+      <div class="journey-step journey-step--accent" role="listitem"><span class="journey-num">08</span><div><strong>Decommission</strong><span><code>KYEDecommissioningPlan</code> orchestrates revoke &middot; quarantine &middot; rotate &middot; archive &middot; notify &middot; remove.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="card" class="section" aria-labelledby="h-card">
+  <div class="container">
+    <span class="eyebrow">2 &middot; Live assurance-card preview</span>
+    <h2 id="h-card" class="h-section">Owner. Authority. Human involvement. Provenance. <span class="accent">Evidence.</span></h2>
+    <p class="lede">Every claim on a KYE Assurance Card<span class="tm">™</span> resolves to a runtime artefact a third party can replay offline against a published JWKS.</p>
+    <div class="ear-card">
+      <div class="ear-head">
+        <span class="ms ear-icon">badge</span>
+        <div>
+          <p class="ear-eyebrow">KYE Assurance Card<span class="tm">™</span> &middot; preview</p>
+          <h3 class="ear-title">Finance Payment Preparation Agent</h3>
+        </div>
+        <span class="ear-pill ear-pill--pilot">pilot</span>
+      </div>
+      <dl class="ear-grid">
+        <div><dt>Owner</dt><dd>Finance Ops &middot; <code>kye:user:finance_owner_001</code></dd></div>
+        <div><dt>Accountable</dt><dd><code>kye:org:acme_ltd</code></dd></div>
+        <div><dt>Risk tier</dt><dd><span class="ear-tag ear-tag--high">high</span></dd></div>
+        <div><dt>Lifecycle</dt><dd>pilot &middot; design&rarr;deploy planned</dd></div>
+        <div><dt>Permitted uses</dt><dd><code>invoice.read</code>, <code>payment.prepare</code>, <code>supplier.notify</code></dd></div>
+        <div><dt>Prohibited uses</dt><dd><code>payment.execute</code>, <code>contract.sign</code>, <code>credential.rotate</code></dd></div>
+        <div><dt>Authority record</dt><dd><code>kye:authority-record:finance_agent_001</code></dd></div>
+        <div><dt>Required gates</dt><dd><code>payment_execute</code> &middot; <code>external_send</code></dd></div>
+        <div><dt>Commit boundaries</dt><dd><code>payment_execution</code></dd></div>
+        <div><dt>Human involvement</dt><dd>finance_manager &middot; pre-commit &middot; SLA 24h</dd></div>
+        <div><dt>Provenance</dt><dd><span class="ear-tag ear-tag--ok">verified</span> &middot; 2 tools, 1 dataset, 1 supplier</dd></div>
+        <div><dt>Evidence</dt><dd><span class="ear-tag ear-tag--ok">evidence_pack_available</span></dd></div>
+        <div><dt>Review</dt><dd>monthly &middot; next 30 days</dd></div>
+        <div><dt>Decommissioning</dt><dd>plan armed &middot; cascade <code>entity_and_descendants</code></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="human" class="section alt" aria-labelledby="h-human">
+  <div class="container">
+    <span class="eyebrow">3 &middot; KYE Human Involvement Plan<span class="tm">™</span></span>
+    <h2 id="h-human" class="h-section">Where authorised humans <span class="accent">must</span> review, approve, limit or override.</h2>
+    <p class="lede">Six involvement types &middot; nine lifecycle stages. Bypass attempts are denied at runtime and emit a signed <code>kye.human_involvement.bypass_denied</code> event.</p>
+    <div class="prim-grid" style="margin-top:14px">
+      <div class="prim-card"><span class="ms">visibility</span><strong>review</strong><span>Periodic review of an AI worker's behaviour and evidence.</span></div>
+      <div class="prim-card"><span class="ms">verified</span><strong>approve</strong><span>Required approval before commit-level action.</span></div>
+      <div class="prim-card"><span class="ms">block</span><strong>limit</strong><span>Constrain scope or output before execution.</span></div>
+      <div class="prim-card"><span class="ms">edit</span><strong>direct</strong><span>Provide direction or guardrails the AI worker must follow.</span></div>
+      <div class="prim-card"><span class="ms">policy</span><strong>influence</strong><span>Set policy or framing that shapes interpretation.</span></div>
+      <div class="prim-card"><span class="ms">flaky</span><strong>override</strong><span>Reverse or change a runtime decision after the fact.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="provenance" class="section" aria-labelledby="h-prov">
+  <div class="container">
+    <span class="eyebrow">4 &middot; Provenance &amp; supply chain</span>
+    <h2 id="h-prov" class="h-section">Models. Datasets. Tools. Suppliers. Licences. <span class="accent">Verified.</span></h2>
+    <p class="lede">Every dataset, model, tool, supplier, licence and hardware lineage referenced by an assurance card is bound as <code>KYEProvenanceEvidence</code>. Verification status: <code>verified</code> / <code>partially_verified</code> / <code>unverified</code> / <code>failed</code>. Verification failure emits a signed <code>kye.provenance.verification_failed</code> event onto Signal Bus<span class="tm">™</span>.</p>
+    <table class="cmp-table">
+      <thead><tr><th>Element</th><th>What is recorded</th><th>Verification methods</th></tr></thead>
+      <tbody>
+        <tr><th>Models</th><td>id, version, supplier, licence, checksum</td><td><code>self_attested</code> &middot; <code>third_party_attestation</code> &middot; <code>signed_evidence</code> &middot; <code>registry_check</code></td></tr>
+        <tr><th>Datasets</th><td>id, version, licence, checksum, data classes</td><td>same</td></tr>
+        <tr><th>Tools</th><td>id, version, supplier</td><td>same</td></tr>
+        <tr><th>Suppliers</th><td>id, verification flag, method</td><td>same</td></tr>
+        <tr><th>Licences</th><td>SPDX identifier or named licence</td><td>registry_check</td></tr>
+        <tr><th>Hardware</th><td>id, vendor, model, attestation ref</td><td>signed_evidence</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="review" class="section alt" aria-labelledby="h-rev">
+  <div class="container">
+    <span class="eyebrow">5 &middot; Review cycle (interactive)</span>
+    <h2 id="h-rev" class="h-section">Pick a trigger &mdash; <span class="accent">we'll show what it produces</span>.</h2>
+    <p class="lede">Front-end illustration only &mdash; no data leaves the page. Real implementations call <code>POST /v1/assurance-review-cycles/{cycle_id}:trigger</code>.</p>
+    <div class="rc-tabs" role="tablist" aria-label="Review trigger">
+      <button type="button" class="rc-tab" role="tab" aria-selected="true"  data-rc="scheduled" id="rc-tab-scheduled"><span class="ms">schedule</span>scheduled</button>
+      <button type="button" class="rc-tab" role="tab" aria-selected="false" data-rc="scope" id="rc-tab-scope"><span class="ms">tune</span>scope_change</button>
+      <button type="button" class="rc-tab" role="tab" aria-selected="false" data-rc="incident" id="rc-tab-incident"><span class="ms">priority_high</span>incident</button>
+      <button type="button" class="rc-tab" role="tab" aria-selected="false" data-rc="model" id="rc-tab-model"><span class="ms">model_training</span>model_update</button>
+      <button type="button" class="rc-tab" role="tab" aria-selected="false" data-rc="supplier" id="rc-tab-supplier"><span class="ms">domain</span>supplier_change</button>
+      <button type="button" class="rc-tab" role="tab" aria-selected="false" data-rc="licence" id="rc-tab-licence"><span class="ms">gavel</span>licence_change</button>
+      <button type="button" class="rc-tab" role="tab" aria-selected="false" data-rc="retention" id="rc-tab-retention"><span class="ms">history</span>retention</button>
+      <button type="button" class="rc-tab" role="tab" aria-selected="false" data-rc="decommission" id="rc-tab-decommission"><span class="ms">power_off</span>decommission</button>
+    </div>
+    <div class="mt-panel" data-active id="rc-panel-scheduled" role="tabpanel" aria-labelledby="rc-tab-scheduled">
+      <p class="mt-q">When does it fire?</p>
+      <p>On the cadence declared by <code>scheduled_frequency</code> (weekly / monthly / quarterly / annual).</p>
+      <p class="mt-rule"><strong>Reviewer roles:</strong> <code>ai_governance_lead</code>. <strong>Evidence captured:</strong> reviewer_identity, decision, reason_code, timestamp, state_snapshot, decision_map.</p>
+    </div>
+    <div class="mt-panel" id="rc-panel-scope" role="tabpanel" aria-labelledby="rc-tab-scope">
+      <p class="mt-q">When does it fire?</p>
+      <p>When the bound <code>KYEEntityAuthorityRecord</code> adds or removes a capability, or when the <code>KYEAuthorityGate</code> set changes membership.</p>
+      <p class="mt-rule"><strong>Reviewer roles:</strong> <code>ai_governance_lead</code> + <code>security_admin</code>. <strong>Evidence captured:</strong> scope_diff, decision_map, state_snapshot.</p>
+    </div>
+    <div class="mt-panel" id="rc-panel-incident" role="tabpanel" aria-labelledby="rc-tab-incident">
+      <p class="mt-q">When does it fire?</p>
+      <p>When an incident signal is recorded (<code>kye.compromise.reported</code>, <code>kye.agency_drift.detected</code>, etc.) for a descendant of the assurance-card subject.</p>
+      <p class="mt-rule"><strong>Reviewer roles:</strong> <code>security_admin</code> + <code>ai_governance_lead</code>. <strong>Outcome options:</strong> approve / deny / quarantine / escalate. <strong>SLA:</strong> 240 minutes.</p>
+    </div>
+    <div class="mt-panel" id="rc-panel-model" role="tabpanel" aria-labelledby="rc-tab-model">
+      <p class="mt-q">When does it fire?</p>
+      <p>When <code>KYEProvenanceEvidence.models[*].version</code> changes.</p>
+      <p class="mt-rule"><strong>Reviewer roles:</strong> <code>ai_governance_lead</code> + <code>data_steward</code>. <strong>Evidence captured:</strong> model_diff, evaluation_refs, performance_metrics.</p>
+    </div>
+    <div class="mt-panel" id="rc-panel-supplier" role="tabpanel" aria-labelledby="rc-tab-supplier">
+      <p class="mt-q">When does it fire?</p>
+      <p>When <code>KYEProvenanceEvidence.suppliers[*].verified</code> changes from <code>true</code> to <code>false</code>, or a new supplier is added.</p>
+      <p class="mt-rule"><strong>Reviewer roles:</strong> <code>procurement</code> + <code>security_admin</code>. <strong>Evidence captured:</strong> supplier_diff, verification_method, signed_evidence.</p>
+    </div>
+    <div class="mt-panel" id="rc-panel-licence" role="tabpanel" aria-labelledby="rc-tab-licence">
+      <p class="mt-q">When does it fire?</p>
+      <p>When a model / dataset / tool licence changes.</p>
+      <p class="mt-rule"><strong>Reviewer roles:</strong> <code>legal</code>. <strong>Evidence captured:</strong> licence_diff, registry_check.</p>
+    </div>
+    <div class="mt-panel" id="rc-panel-retention" role="tabpanel" aria-labelledby="rc-tab-retention">
+      <p class="mt-q">When does it fire?</p>
+      <p>When the data / evidence retention window approaches expiry.</p>
+      <p class="mt-rule"><strong>Reviewer roles:</strong> <code>data_steward</code> + <code>legal</code>. <strong>Outcome options:</strong> archive / extend / delete / decommission.</p>
+    </div>
+    <div class="mt-panel" id="rc-panel-decommission" role="tabpanel" aria-labelledby="rc-tab-decommission">
+      <p class="mt-q">When does it fire?</p>
+      <p>When the assurance card transitions to <code>deprecated</code> or <code>revoked</code>, or the bound <code>KYEDecommissioningPlan</code> is executed.</p>
+      <p class="mt-rule"><strong>Off-boarding:</strong> revoke_authority &rarr; quarantine_credentials &rarr; rotate_keys &rarr; archive_evidence &rarr; notify_owner &rarr; notify_supplier &rarr; update_catalog &rarr; remove_from_runtime. <strong>Cascade scope:</strong> per <code>cascade_revocation.scope</code>.</p>
+    </div>
+  </div>
+</section>
+
+<section id="schemas" class="section" aria-labelledby="h-schemas">
+  <div class="container">
+    <span class="eyebrow">6 &middot; Schemas (Apache 2.0, public mirror)</span>
+    <h2 id="h-schemas" class="h-section">Six normative objects. <span class="accent">Validated in CI.</span></h2>
+    <ul class="biz-list" style="margin-top:8px">
+      <li><code><a href="https://kye-protocol.github.io/schemas/assurance-card-profile.json">assurance-card-profile.json</a></code> &mdash; profile manifest</li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/assurance-card.json">assurance-card.json</a></code> &mdash; living lifecycle assurance record</li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/human-involvement-plan.json">human-involvement-plan.json</a></code> &mdash; KYE Human Involvement Plan<span class="tm">™</span></li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/provenance-evidence.json">provenance-evidence.json</a></code> &mdash; supply-chain + model / dataset / tool lineage</li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/assurance-review-cycle.json">assurance-review-cycle.json</a></code> &mdash; scheduled + event-triggered reviews</li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/decommissioning-plan.json">decommissioning-plan.json</a></code> &mdash; retention + off-boarding + cascade revocation</li>
+    </ul>
+  </div>
+</section>
+
+<section id="open-paid" class="section alt" aria-labelledby="h-paid">
+  <div class="container">
+    <span class="eyebrow">7 &middot; Open / paid boundary</span>
+    <h2 id="h-paid" class="h-section">The contracts are open. <span class="accent">The runtime assurance engine is paid.</span></h2>
+    <div class="bd-grid">
+      <article class="bd-card bd-card--yes" aria-label="Open under Apache 2.0">
+        <header class="bd-card-head">
+          <span class="bd-badge bd-badge--yes" aria-hidden="true"><span class="ms">check</span></span>
+          <div>
+            <p class="bd-card-eyebrow">Open under Apache 2.0</p>
+            <h3 class="bd-card-title">Open</h3>
+          </div>
+        </header>
+        <ul class="bd-list">
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>Assurance Card Profile<span class="tm">™</span> schema</li>
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>KYE Assurance Card<span class="tm">™</span> schema</li>
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>KYE Human Involvement Plan<span class="tm">™</span> schema</li>
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>Provenance Evidence schema</li>
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>Assurance Review Cycle schema</li>
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>Decommissioning Plan schema</li>
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>Reason-code dictionary &middot; Signal Bus<span class="tm">™</span> event names</li>
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>Sample assurance cards &middot; basic conformance fixtures</li>
+        </ul>
+      </article>
+      <article class="bd-card bd-card--no" aria-label="Commercial / patent track">
+        <header class="bd-card-head" style="background:linear-gradient(135deg,#5f6b78 0%, #3f4954 100%);">
+          <span class="bd-badge" style="background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.28);" aria-hidden="true"><span class="ms">workspace_premium</span></span>
+          <div>
+            <p class="bd-card-eyebrow">Commercial / patent track</p>
+            <h3 class="bd-card-title">Paid</h3>
+          </div>
+        </header>
+        <ul class="bd-list">
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>KYE Assurance Card Builder<span class="tm">™</span></li>
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>KYE Assurance Card Library<span class="tm">™</span></li>
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>KYE Human Involvement Planner<span class="tm">™</span></li>
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>KYE Provenance &amp; Supply Chain Evidence App<span class="tm">™</span></li>
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>KYE Assurance Review Scheduler<span class="tm">™</span></li>
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>KYE Governed Use Case Library<span class="tm">™</span></li>
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>Sector packs (defence, public-sector, payments, health)</li>
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>Runtime-evidence binding + review-automation engines</li>
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>BYOC / on-prem assurance deployment</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="next" class="section" aria-labelledby="h-next">
+  <div class="container">
+    <span class="eyebrow">Where to go next</span>
+    <h2 id="h-next" class="h-section">Adjacent reading.</h2>
+    <div class="hero-cta" style="margin-top:8px">
+      <a href="operating-model.html" class="btn btn-secondary"><span class="ms">route</span> Operating Model<span class="tm">™</span> &rarr;</a>
+      <a href="continuity.html" class="btn btn-secondary"><span class="ms">trending_up</span> Continuity<span class="tm">™</span> &rarr;</a>
+      <a href="discoverability.html" class="btn btn-secondary"><span class="ms">explore</span> Discoverability<span class="tm">™</span> &rarr;</a>
+      <a href="ontology.html" class="btn btn-secondary"><span class="ms">hub</span> Ontology<span class="tm">™</span> &rarr;</a>
+      <a href="glossary.html#assurance-card" class="btn btn-secondary"><span class="ms">menu_book</span> Glossary &mdash; assurance entries</a>
+      <a href="whitepaper.html#sec-7-8" class="btn btn-secondary"><span class="ms">article</span> Whitepaper §7.8</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected --></footer>
+<button id="scroll-top" class="scroll-top" type="button" aria-label="Scroll to top" data-kye-scroll-top><!-- svg injected --></button>
+<script type="module" src="main.js?v=1779220000"></script>
+<script>
+  (function(){
+    var tabs = document.querySelectorAll('.rc-tab[data-rc]');
+    if (!tabs.length) return;
+    function activate(key){
+      tabs.forEach(function(t){ t.setAttribute('aria-selected', t.getAttribute('data-rc') === key ? 'true' : 'false'); });
+      document.querySelectorAll('[id^="rc-panel-"]').forEach(function(p){
+        if (p.id === 'rc-panel-' + key) p.setAttribute('data-active', '');
+        else p.removeAttribute('data-active');
+      });
+    }
+    tabs.forEach(function(t){ t.addEventListener('click', function(){ activate(t.getAttribute('data-rc')); }); });
+  })();
+</script>
+</body>
+</html>

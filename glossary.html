@@ -38,9 +38,10 @@
       <a href="#discovery"   class="cn-pill"><span class="layer-num">05</span><span class="ms">explore</span> Discoverability</a>
       <a href="#ontology"    class="cn-pill"><span class="layer-num">06</span><span class="ms">hub</span> Ontology</a>
       <a href="#operating-model" class="cn-pill"><span class="layer-num">07</span><span class="ms">route</span> Operating Model</a>
-      <a href="#compliance"  class="cn-pill"><span class="layer-num">08</span><span class="ms">rule</span> Compliance</a>
-      <a href="#programme"   class="cn-pill"><span class="layer-num">09</span><span class="ms">workspace_premium</span> Programme</a>
-      <a href="#external"    class="cn-pill"><span class="layer-num">10</span><span class="ms">extension</span> External</a>
+      <a href="#assurance-card" class="cn-pill"><span class="layer-num">08</span><span class="ms">badge</span> Assurance</a>
+      <a href="#compliance"  class="cn-pill"><span class="layer-num">09</span><span class="ms">rule</span> Compliance</a>
+      <a href="#programme"   class="cn-pill"><span class="layer-num">10</span><span class="ms">workspace_premium</span> Programme</a>
+      <a href="#external"    class="cn-pill"><span class="layer-num">11</span><span class="ms">extension</span> External</a>
     </div>
   </div>
 </section>
@@ -187,8 +188,33 @@
   </div></div>
 </section>
 
-<section id="compliance" class="section alt" aria-labelledby="h-cmp">
-        <span class="eyebrow layer-eyebrow"><span class="layer-num">08</span><span class="ms layer-ms">rule</span>Compliance</span>
+<section id="assurance-card" class="section alt" aria-labelledby="h-ac">
+        <span class="eyebrow layer-eyebrow"><span class="layer-num">08</span><span class="ms layer-ms">badge</span>Assurance</span>
+    <h2 id="h-ac" class="h-section">Living lifecycle assurance &mdash; system cards become executable.</h2>
+  <div class="section-body"><div class="container">
+    <p class="lede">Terms introduced by <a href="assurance-card.html">KYE Assurance Card Profile<span class="tm">™</span></a> (<code data-code="profile">kye-assurance-card-v1</code>). Names only; assurance-card generation, runtime-evidence binding, review-automation, sector packs and use-case library recommendation algorithms are part of the patent track and are not published.</p>
+    <dl class="what-def-gloss">
+      <li id="assurance-card-profile"><strong>KYE Assurance Card Profile<span class="tm">™</span></strong><span>The lifecycle assurance layer of KYE<span class="tm">™</span>. Turns runtime evidence into a living assurance record per delegated entity. <em>System cards say what should be assured. KYE<span class="tm">™</span> proves what happened.</em></span></li>
+      <li id="assurance-card"><strong>KYE Assurance Card<span class="tm">™</span></strong><span>Living lifecycle record per delegated entity &mdash; owner, accountable entity, intended use, prohibited uses, authority model, human involvement, provenance, performance + limitations, evidence, review cycle, decommissioning. Schema: <code data-code="path">assurance-card.json</code>.</span></li>
+      <li id="assurance-lifecycle"><strong>Assurance lifecycle stages</strong><span>Eight stages: <code data-code="field">design</code>, <code data-code="field">pilot</code>, <code data-code="field">deploy</code>, <code data-code="field">monitor</code>, <code data-code="field">incident_review</code>, <code data-code="field">scope_change_review</code>, <code data-code="field">retention_review</code>, <code data-code="field">decommission</code>.</span></li>
+      <li id="human-involvement-plan"><strong>KYE Human Involvement Plan<span class="tm">™</span></strong><span>Schema-bound record of points where authorised humans must influence, direct, limit, approve, override or review an AI-enabled system. Bypass attempts denied at runtime + signed event emitted onto Signal Bus<span class="tm">™</span>.</span></li>
+      <li id="involvement-types"><strong>Human involvement types</strong><span>Six types: <code data-code="field">influence</code>, <code data-code="field">direct</code>, <code data-code="field">limit</code>, <code data-code="field">approve</code>, <code data-code="field">override</code>, <code data-code="field">review</code>.</span></li>
+      <li id="provenance-evidence"><strong>KYE<span class="tm">™</span> Provenance Evidence</strong><span>Provenance + supply-chain dimension &mdash; model / dataset / tool / hardware / supplier / licence references with verification status. Schema: <code data-code="path">provenance-evidence.json</code>.</span></li>
+      <li id="assurance-review-cycle"><strong>KYE Assurance Review Cycle<span class="tm">™</span></strong><span>Scheduled + event-triggered review windows. Ten triggers: <code data-code="field">scheduled</code>, <code data-code="field">scope_change</code>, <code data-code="field">new_capability</code>, <code data-code="field">incident</code>, <code data-code="field">risk_state_change</code>, <code data-code="field">model_update</code>, <code data-code="field">authority_change</code>, <code data-code="field">supplier_change</code>, <code data-code="field">licence_change</code>, <code data-code="field">retention</code>, <code data-code="field">decommission</code>.</span></li>
+      <li id="decommissioning-plan"><strong>KYE<span class="tm">™</span> Decommissioning Plan</strong><span>Retention windows, off-boarding step sequence, cascade-revocation scope, evidence-archival policy, post-execution verification. Schema: <code data-code="path">decommissioning-plan.json</code>.</span></li>
+      <li id="off-boarding-actions"><strong>Off-boarding actions</strong><span>Eight named actions: <code data-code="field">revoke_authority</code>, <code data-code="field">quarantine_credentials</code>, <code data-code="field">rotate_keys</code>, <code data-code="field">archive_evidence</code>, <code data-code="field">notify_owner</code>, <code data-code="field">notify_supplier</code>, <code data-code="field">update_catalog</code>, <code data-code="field">remove_from_runtime</code>.</span></li>
+      <li id="assurance-card-builder"><strong>KYE Assurance Card Builder<span class="tm">™</span></strong><span>Generate living assurance cards from KYE<span class="tm">™</span> runtime objects. Planned commercial layer.</span></li>
+      <li id="assurance-card-library"><strong>KYE Assurance Card Library<span class="tm">™</span></strong><span>Discoverable library of governed AI use cases + assurance patterns. Planned.</span></li>
+      <li id="human-involvement-planner"><strong>KYE Human Involvement Planner<span class="tm">™</span></strong><span>Define where authorised humans must review, approve, limit or override AI-enabled actions across the lifecycle. Planned.</span></li>
+      <li id="provenance-app"><strong>KYE Provenance &amp; Supply Chain Evidence App<span class="tm">™</span></strong><span>Track datasets, models, tools, suppliers, licences and hardware lineage as runtime-bound evidence. Planned.</span></li>
+      <li id="assurance-review-scheduler"><strong>KYE Assurance Review Scheduler<span class="tm">™</span></strong><span>Scheduled + event-triggered + scope-change + incident + retention + decommissioning review cycles. Planned.</span></li>
+      <li id="governed-use-case-library"><strong>KYE Governed Use Case Library<span class="tm">™</span></strong><span>Sector-curated library of governed AI use cases linking authority records, gates, commit boundaries, decisions, evidence packs and assurance cards. Planned.</span></li>
+    </dl>
+  </div></div>
+</section>
+
+<section id="compliance" class="section" aria-labelledby="h-cmp">
+        <span class="eyebrow layer-eyebrow"><span class="layer-num">09</span><span class="ms layer-ms">rule</span>Compliance</span>
     <h2 id="h-cmp" class="h-section">Mapping rail, OSCAL, frameworks.</h2>
   <div class="section-body"><div class="container">
     <dl class="what-def-gloss">
@@ -202,8 +228,8 @@
   </div></div>
 </section>
 
-<section id="programme" class="section" aria-labelledby="h-prog">
-        <span class="eyebrow layer-eyebrow"><span class="layer-num">09</span><span class="ms layer-ms">workspace_premium</span>Programme</span>
+<section id="programme" class="section alt" aria-labelledby="h-prog">
+        <span class="eyebrow layer-eyebrow"><span class="layer-num">10</span><span class="ms layer-ms">workspace_premium</span>Programme</span>
     <h2 id="h-prog" class="h-section">Conformance, certification, partner ladder.</h2>
   <div class="section-body"><div class="container">
     <dl class="what-def-gloss">
@@ -218,8 +244,8 @@
   </div></div>
 </section>
 
-<section id="external" class="section alt" aria-labelledby="h-ext">
-        <span class="eyebrow layer-eyebrow"><span class="layer-num">10</span><span class="ms layer-ms">extension</span>External standards we compose with</span>
+<section id="external" class="section" aria-labelledby="h-ext">
+        <span class="eyebrow layer-eyebrow"><span class="layer-num">11</span><span class="ms layer-ms">extension</span>External standards we compose with</span>
     <h2 id="h-ext" class="h-section">For reference, not redefinition.</h2>
   <div class="section-body"><div class="container">
     <dl class="what-def-gloss">

@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>KYE Protocol™ — Whitepaper v1.0 | Know Your Entity™</title>
-  <meta name="description" content="The KYE Protocol™ whitepaper: an open contract for identity, authority and audit across humans, businesses, AI agents, services, models and workflows. Unifies KYC, KYB and KYA. KYE Reference Gateway, 3 SDKs, 41 conformance fixtures, 266 control mappings, 54 v1.0 normative profiles." />
+  <meta name="description" content="The KYE Protocol™ whitepaper: an open contract for identity, authority and audit across humans, businesses, AI agents, services, models and workflows. Unifies KYC, KYB and KYA. KYE Reference Gateway, 3 SDKs, 41 conformance fixtures, 266 control mappings, 55 v1.0 normative profiles." />
   <link rel="canonical" href="https://kye-protocol.github.io/whitepaper.html" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
   <meta property="og:type" content="article" />
@@ -69,6 +69,7 @@
       <li><a href="#continuity-discoverability">7.5 · Continuity &amp; Discoverability</a></li>
       <li><a href="#sec-7-6">7.6 · Ontology &mdash; semantic authority</a></li>
       <li><a href="#sec-7-7">7.7 · Operating Model &mdash; readiness to runtime</a></li>
+      <li><a href="#sec-7-8">7.8 · Assurance Card &mdash; system cards become executable</a></li>
       <li><a href="#security">8 · Security &amp; threat model</a></li>
       <li><a href="#governance">9 · Governance</a></li>
       <li><a href="#roadmap">10 · Roadmap</a></li>
@@ -190,7 +191,7 @@
     <p>KYE Protocol<span class="tm">™</span> stands on <strong>16 protocol-core principles</strong> in three tiers (see &sect;3 above). Tier A &mdash; runtime governance &mdash; defines what KYE<span class="tm">™</span> <em>decides</em>: <em>authority-first, state-first, decision-first, policy-bound, evidence-first, audit-trail-first</em>. Tier B &mdash; protocol design &mdash; defines how KYE<span class="tm">™</span> <em>classifies and ships</em>: <em>schema-first, dictionary-first, taxonomy-first, metadata-first, graph-first, profile-first, registry-first, conformance-first</em>. Tier C &mdash; developer adoption &mdash; defines how KYE<span class="tm">™</span> <em>reaches developers</em>: <em>API-first, SDK-first</em>. Canonical JSON Schemas drive OpenAPI, SDK code generation, validators, documentation, and conformance fixtures. Shared dictionaries (entity types, states, decisions, reason codes, capability kinds, side-effect levels, data classes, signal types, taxonomies, graph types) make implementations interoperable. Versioned taxonomies (16 V1 canonical taxonomies) and a normative metadata model (labels, classifications, ownership, lineage, compliance) drive policy decisions at runtime. Profiles keep Core small while letting domain extensions (Capability, Recovery, Payments, Payload Trust, Taxonomy &amp; Metadata, Graph, Healthcare, EU AI Act, ISO 42001, sector overlays) compose without modifying it. Registries make every object resolvable. The runtime API is decisioning-led, with <code>POST /v1/runtime/authorize</code> as the headline endpoint and <code>GET /v1/decisions/{id}/map</code> returning a Decision Map<span class="tm">™</span> for every adjudication. SDKs in TypeScript, Python, and Go ship with schema types, signing/verification helpers, evidence-pack builders, taxonomy resolvers, metadata classifiers, graph traversal clients. Every adjudicated action produces a signed <code>evidence_pack</code> a regulator can verify with public keys alone. A 41-fixture black-box conformance pack tests vendor and reference implementations byte-for-byte the same.</p>
 
     <h2 id="contract">5 &middot; Contract surface</h2>
-    <p>v1.0 publishes <strong>193 OpenAPI operations</strong> across the Core + Payments specs (87+ runtime endpoints in the KYE Reference Gateway<span class="tm">™</span>), spanning resource families: Entities, Delegations, Scopes, Access Rights, Credentials, Attestations, Capabilities, Capability Grants, Runtime (authorize / invoke), KYE Signal Bus<span class="tm">™</span> (publish / subscribe / replay / webhook-endpoints / deliveries), Audit, Proof Bundles, Transparency, Federation, Recoveries, Break-Glass Grants, Compromise Reports, Keys, Conformance, plus the Payments families (Wallets, Payment Authorities, Payment Intents, Beneficiaries). <strong>97 JSON Schemas</strong> with absolute <code>$id</code> URIs at <code>https://kye-protocol.github.io/schemas/</code>; <strong>87 example payloads</strong> pinned to schemas and validated in CI. <strong>41 conformance fixtures</strong> assert deterministic behaviour under happy paths and edge cases.</p>
+    <p>v1.0 publishes <strong>193 OpenAPI operations</strong> across the Core + Payments specs (87+ runtime endpoints in the KYE Reference Gateway<span class="tm">™</span>), spanning resource families: Entities, Delegations, Scopes, Access Rights, Credentials, Attestations, Capabilities, Capability Grants, Runtime (authorize / invoke), KYE Signal Bus<span class="tm">™</span> (publish / subscribe / replay / webhook-endpoints / deliveries), Audit, Proof Bundles, Transparency, Federation, Recoveries, Break-Glass Grants, Compromise Reports, Keys, Conformance, plus the Payments families (Wallets, Payment Authorities, Payment Intents, Beneficiaries). <strong>103 JSON Schemas</strong> with absolute <code>$id</code> URIs at <code>https://kye-protocol.github.io/schemas/</code>; <strong>87 example payloads</strong> pinned to schemas and validated in CI. <strong>41 conformance fixtures</strong> assert deterministic behaviour under happy paths and edge cases.</p>
     <p>Every state-changing endpoint accepts an <code>Idempotency-Key</code> header and returns the original response on replay; conflicting bodies under the same key return HTTP 409. Every state-changing endpoint emits an audit event whose <code>correlation_id</code> matches the originating request.</p>
 
     <h2 id="runtime">6 &middot; Reference runtime</h2>
@@ -355,6 +356,30 @@
 
     <h3 id="om-positioning">7.7.6 Positioning</h3>
     <p><strong>Assess. Gate. Decide. Prove. Revoke. Replay. KYE<span class="tm">™</span> turns AI-governance operating models into runtime authority decisions and replayable evidence &mdash; from use-case intake to runtime execution. The operating-model contracts are open. The managed readiness, gate, commit-boundary and portal workflows are paid.</strong></p>
+
+    <h2 id="sec-7-8">7.8 &middot; Assurance Card &mdash; system cards become executable</h2>
+    <p>Defence-grade AI assurance work (Alan Turing Institute / Accenture / UK MoD) makes the case directly: model cards are insufficient where models are integrated with platforms, where assumptions change and where multiple models interact. Agentic systems need more than model cards &mdash; they need authority cards, runtime decisions and evidence trails. <strong>KYE Assurance Card Profile<span class="tm">™</span></strong> is the v1.0 lifecycle assurance layer that turns KYE<span class="tm">™</span> runtime evidence into a living assurance record per delegated entity.</p>
+
+    <h3 id="ac-lifecycle-wp">7.8.1 Eight lifecycle stages</h3>
+    <p>Every implementation enforces the eight stages and emits a signed event per stage onto KYE Signal Bus<span class="tm">™</span>: <code>design</code> → <code>pilot</code> → <code>deploy</code> → <code>monitor</code> → <code>incident_review</code> → <code>scope_change_review</code> → <code>retention_review</code> → <code>decommission</code>. Spec: <code>kye-assurance-card-v1.md</code>.</p>
+
+    <h3 id="ac-objects-wp">7.8.2 Six normative objects</h3>
+    <p>Profile descriptor + five living governance records: <code>KYEAssuranceCard</code>, <code>KYEHumanInvolvementPlan</code>, <code>KYEProvenanceEvidence</code>, <code>KYEAssuranceReviewCycle</code>, <code>KYEDecommissioningPlan</code>. Each record has a public JSON Schema mirrored under <code>public/examples/</code>.</p>
+
+    <h3 id="ac-human-wp">7.8.3 Human Involvement Plan™ as a runtime policy gate</h3>
+    <p>KYE Human Involvement Plan<span class="tm">™</span> defines points where authorised, suitably qualified humans MUST exercise judgement to <em>influence</em>, <em>direct</em>, <em>limit</em>, <em>approve</em>, <em>override</em> or <em>review</em> an AI-enabled system. The plan is enforced as a runtime policy gate: a commit-level action that would bypass an involvement point is denied with reason code <code>bypass_of_human_involvement_attempted</code> and a signed <code>kye.human_involvement.bypass_denied</code> event is emitted onto Signal Bus<span class="tm">™</span>. This converts human-involvement requirements from documentation into operational architecture.</p>
+
+    <h3 id="ac-provenance-wp">7.8.4 Provenance and supply-chain evidence</h3>
+    <p><code>KYEProvenanceEvidence</code> records model / dataset / tool / hardware / supplier / licence references with a verification status (<code>verified</code> / <code>partially_verified</code> / <code>unverified</code> / <code>failed</code>). Verification methods: <code>self_attested</code>, <code>third_party_attestation</code>, <code>signed_evidence</code>, <code>registry_check</code>. Verification failure emits <code>kye.provenance.verification_failed</code>; supplier and licence changes emit dedicated events that promote to a review trigger.</p>
+
+    <h3 id="ac-review-wp">7.8.5 Review cycle &mdash; ten triggers</h3>
+    <p><code>KYEAssuranceReviewCycle</code> watches the authority graph + provenance + risk-state for ten named triggers: <code>scheduled</code>, <code>scope_change</code>, <code>new_capability</code>, <code>incident</code>, <code>risk_state_change</code>, <code>model_update</code>, <code>authority_change</code>, <code>supplier_change</code>, <code>licence_change</code>, <code>retention</code>, <code>decommission</code>. Reviews instantiate without operator intervention; reviewer identity, decision, reason code and evidence are recorded per review and chain-bound into the audit ledger.</p>
+
+    <h3 id="ac-decommission-wp">7.8.6 Decommissioning</h3>
+    <p><code>KYEDecommissioningPlan</code> orchestrates retention windows + off-boarding step sequence (<code>revoke_authority</code> → <code>quarantine_credentials</code> → <code>rotate_keys</code> → <code>archive_evidence</code> → <code>notify_owner</code> → <code>notify_supplier</code> → <code>update_catalog</code> → <code>remove_from_runtime</code>) under a declared cascade-revocation scope (<code>entity_only</code> / <code>entity_and_descendants</code> / <code>tenant_wide</code>). The post-execution verification record is signed and chain-bound.</p>
+
+    <h3 id="ac-positioning">7.8.7 Positioning</h3>
+    <p><strong>System cards say what should be assured. KYE<span class="tm">™</span> proves what happened. KYE<span class="tm">™</span> makes assurance executable. The assurance-card contracts are open. The managed runtime assurance engine, sector packs and use-case library are paid.</strong></p>
 
     <h2 id="security">8 &middot; Security &amp; threat model</h2>
     <p>The reference implementation defends against:</p>

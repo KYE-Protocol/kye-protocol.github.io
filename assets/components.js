@@ -38,6 +38,7 @@ const NAV_ITEMS = [
   { id: 'discoverability',     href: 'discoverability.html',     label: 'Discoverability',                                   icon: 'search',                  color: '#00ACC1', group: 'protocol' },
   { id: 'ontology',            href: 'ontology.html',            label: 'Ontology',                                          icon: 'hub',                     color: '#1A8754', group: 'protocol' },
   { id: 'operating-model',     href: 'operating-model.html',     label: 'Operating Model',                                   icon: 'route',                   color: '#00838F', group: 'protocol' },
+  { id: 'assurance-card',      href: 'assurance-card.html',      label: 'Assurance Card',                                    icon: 'badge',                   color: '#1A8754', group: 'protocol' },
   { id: 'value',               href: 'value.html',               label: 'Value',                                             icon: 'auto_graph',              color: '#1A8754', group: 'protocol' },
   { id: 'whitepaper',          href: 'whitepaper.html',          label: 'Whitepaper',                                        icon: 'menu_book',               color: '#00838F', group: 'protocol' },
 
@@ -228,6 +229,7 @@ const FOOTER_GROUPS = [
     items: [
       { href: 'sectors.html',             label: 'All profiles' },
       { href: 'usecases.html',            label: 'Use cases' },
+      { href: 'assurance-card.html',      label: 'KYE Assurance Card Profile<span class="tm">™</span>' },
       { href: 'operating-model.html',     label: 'KYE Operating Model Profile<span class="tm">™</span>' },
       { href: 'ontology.html',            label: 'KYE Ontology Profile<span class="tm">™</span>' },
       { href: 'continuity.html',          label: 'KYE Continuity Profile<span class="tm">™</span>' },
