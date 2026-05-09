@@ -36,9 +36,10 @@
       <a href="#evidence"    class="cn-pill"><span class="layer-num">03</span><span class="ms">verified</span> Evidence</a>
       <a href="#continuity"  class="cn-pill"><span class="layer-num">04</span><span class="ms">trending_up</span> Continuity</a>
       <a href="#discovery"   class="cn-pill"><span class="layer-num">05</span><span class="ms">explore</span> Discoverability</a>
-      <a href="#compliance"  class="cn-pill"><span class="layer-num">06</span><span class="ms">rule</span> Compliance</a>
-      <a href="#programme"   class="cn-pill"><span class="layer-num">07</span><span class="ms">workspace_premium</span> Programme</a>
-      <a href="#external"    class="cn-pill"><span class="layer-num">08</span><span class="ms">extension</span> External</a>
+      <a href="#ontology"    class="cn-pill"><span class="layer-num">06</span><span class="ms">hub</span> Ontology</a>
+      <a href="#compliance"  class="cn-pill"><span class="layer-num">07</span><span class="ms">rule</span> Compliance</a>
+      <a href="#programme"   class="cn-pill"><span class="layer-num">08</span><span class="ms">workspace_premium</span> Programme</a>
+      <a href="#external"    class="cn-pill"><span class="layer-num">09</span><span class="ms">extension</span> External</a>
     </div>
   </div>
 </section>
@@ -139,8 +140,31 @@
   </div></div>
 </section>
 
-<section id="compliance" class="section alt" aria-labelledby="h-cmp">
-        <span class="eyebrow layer-eyebrow"><span class="layer-num">06</span><span class="ms layer-ms">rule</span>Compliance</span>
+<section id="ontology" class="section alt" aria-labelledby="h-ont">
+        <span class="eyebrow layer-eyebrow"><span class="layer-num">06</span><span class="ms layer-ms">hub</span>Ontology</span>
+    <h2 id="h-ont" class="h-section">Semantic layer &mdash; shared meaning, not just permission.</h2>
+  <div class="section-body"><div class="container">
+    <p class="lede">Terms introduced by <a href="ontology.html">KYE Ontology Profile<span class="tm">™</span></a> (<code data-code="profile">kye-ontology-v1</code>). Names only; semantic-resolution algorithms, false-equivalence detection heuristics, cross-profile reconciliation, tenant-overlay resolution and risk-weighted ontology traversal are part of the patent track and are not published.</p>
+    <dl class="what-def-gloss">
+      <li id="ontology-profile"><strong>KYE Ontology Profile<span class="tm">™</span></strong><span>The semantic layer of KYE<span class="tm">™</span>. Defines shared meaning of entities, authorities, capabilities, scopes, states, decisions, evidence, profiles, connectors and sectors. <em>Schemas make data valid; ontologies make data meaningful.</em></span></li>
+      <li id="ontology-domain"><strong>Ontology domain</strong><span>One of twelve domains every KYE<span class="tm">™</span> term must declare: <code data-code="field">entity</code>, <code data-code="field">authority</code>, <code data-code="field">capability</code>, <code data-code="field">scope</code>, <code data-code="field">state</code>, <code data-code="field">decision</code>, <code data-code="field">evidence</code>, <code data-code="field">continuity</code>, <code data-code="field">discoverability</code>, <code data-code="field">connector</code>, <code data-code="field">sector</code>, <code data-code="field">certification</code>.</span></li>
+      <li id="ontology-predicate"><strong>Predicate</strong><span>Stable predicate dictionary. New predicates require an RFC. Examples: <code data-code="field">grants</code>, <code data-code="field">requires</code>, <code data-code="field">constrains</code>, <code data-code="field">evidenced_by</code>, <code data-code="field">acts_on_behalf_of</code>, <code data-code="field">equivalent_to</code>, <code data-code="field">related_not_identical</code>, <code data-code="field">not_equivalent_to</code>.</span></li>
+      <li id="mapping-type"><strong>Mapping type</strong><span>Six explicit categories: <code data-code="allow">equivalent</code>, <code data-code="approve">related_not_identical</code>, <code data-code="deny">not_equivalent</code>, <code data-code="field">aliased_by</code>, <code data-code="field">subsumes</code>, <code data-code="field">subsumed_by</code>. A mapping of <code data-code="approve">related_not_identical</code> MUST list <code data-code="field">requires_additional_kye_objects</code>.</span></li>
+      <li id="ontology-term"><strong>KYE<span class="tm">™</span> ontology term</strong><span>One canonical term in the registry. Has domain, definition, preferred_name, aliases, related_terms, not_equivalent_to and profile_refs. Schema: <code data-code="path">ontology-term.json</code>.</span></li>
+      <li id="ontology-relationship"><strong>KYE<span class="tm">™</span> ontology relationship</strong><span>One predicate triple <code data-code="field">(subject, predicate, object)</code> with constraints + evidence requirements. Schema: <code data-code="path">ontology-relationship.json</code>.</span></li>
+      <li id="ontology-mapping"><strong>KYE<span class="tm">™</span> ontology mapping</strong><span>External-system → KYE<span class="tm">™</span> term mapping with <code data-code="field">mapping_type</code>, confidence, and (for <code data-code="approve">related_not_identical</code>) the list of companion KYE<span class="tm">™</span> objects required at runtime. Schema: <code data-code="path">ontology-mapping.json</code>.</span></li>
+      <li id="semantic-assertion"><strong>KYE<span class="tm">™</span> Semantic Assertion</strong><span>A signed record bound to a runtime decision listing every term, mapping and predicate consulted; hash-chained into the audit ledger; included in the Continuity Evidence Pack<span class="tm">™</span>. Schema: <code data-code="path">semantic-assertion.json</code>.</span></li>
+      <li id="ontology-registry"><strong>KYE Ontology Registry<span class="tm">™</span></strong><span>Managed registry for terms, relationships, mappings and semantic assertions. Planned commercial layer.</span></li>
+      <li id="semantic-authority-mapper"><strong>KYE Semantic Authority Mapper<span class="tm">™</span></strong><span>Maps OAuth scopes, IAM roles, payment mandates, legal delegations, healthcare consents, API permissions and sector terms into KYE<span class="tm">™</span> without losing meaning.</span></li>
+      <li id="semantic-graph"><strong>KYE Semantic Graph<span class="tm">™</span></strong><span>Graph view of the ontology + live instances; semantic-path search and risk-ranked traversal.</span></li>
+      <li id="ontology-conformance"><strong>KYE Ontology Conformance<span class="tm">™</span></strong><span>Conformance fixture suite + certification track for ontology-correct implementations.</span></li>
+      <li id="jsonld-context"><strong>JSON-LD context</strong><span>Recommended semantic-interoperability serialisation. Published at <code data-code="path">https://kye-protocol.github.io/schemas/jsonld-context.json</code>. KYE<span class="tm">™</span> is JSON-native at runtime and ontology-aware at the semantic layer.</span></li>
+    </dl>
+  </div></div>
+</section>
+
+<section id="compliance" class="section" aria-labelledby="h-cmp">
+        <span class="eyebrow layer-eyebrow"><span class="layer-num">07</span><span class="ms layer-ms">rule</span>Compliance</span>
     <h2 id="h-cmp" class="h-section">Mapping rail, OSCAL, frameworks.</h2>
   <div class="section-body"><div class="container">
     <dl class="what-def-gloss">
@@ -154,8 +178,8 @@
   </div></div>
 </section>
 
-<section id="programme" class="section" aria-labelledby="h-prog">
-        <span class="eyebrow layer-eyebrow"><span class="layer-num">07</span><span class="ms layer-ms">workspace_premium</span>Programme</span>
+<section id="programme" class="section alt" aria-labelledby="h-prog">
+        <span class="eyebrow layer-eyebrow"><span class="layer-num">08</span><span class="ms layer-ms">workspace_premium</span>Programme</span>
     <h2 id="h-prog" class="h-section">Conformance, certification, partner ladder.</h2>
   <div class="section-body"><div class="container">
     <dl class="what-def-gloss">
@@ -170,8 +194,8 @@
   </div></div>
 </section>
 
-<section id="external" class="section alt" aria-labelledby="h-ext">
-        <span class="eyebrow layer-eyebrow"><span class="layer-num">08</span><span class="ms layer-ms">extension</span>External standards we compose with</span>
+<section id="external" class="section" aria-labelledby="h-ext">
+        <span class="eyebrow layer-eyebrow"><span class="layer-num">09</span><span class="ms layer-ms">extension</span>External standards we compose with</span>
     <h2 id="h-ext" class="h-section">For reference, not redefinition.</h2>
   <div class="section-body"><div class="container">
     <dl class="what-def-gloss">

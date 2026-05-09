@@ -226,6 +226,7 @@ const FOOTER_GROUPS = [
     items: [
       { href: 'sectors.html',             label: 'All profiles' },
       { href: 'usecases.html',            label: 'Use cases' },
+      { href: 'ontology.html',            label: 'KYE Ontology Profile<span class="tm">™</span>' },
       { href: 'continuity.html',          label: 'KYE Continuity Profile<span class="tm">™</span>' },
       { href: 'discoverability.html',     label: 'KYE Discoverability Profile<span class="tm">™</span>' },
       { href: 'connectors.html',          label: 'KYE Connector Hub<span class="tm">™</span>' },
