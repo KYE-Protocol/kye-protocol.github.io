@@ -41,7 +41,7 @@
       <a href="#what" class="cn-pill"><span class="ms">description</span> What is in the fixture</a>
       <a href="#verify" class="cn-pill"><span class="ms">verified</span> Verify it yourself</a>
       <a href="#what-this-proves" class="cn-pill"><span class="ms">gavel</span> What this proves</a>
-      <a href="#what-this-doesnt-prove" class="cn-pill"><span class="ms">balance</span> What it does NOT prove</a>
+      <a href="#next" class="cn-pill"><span class="ms">arrow_forward</span> Where to go next</a>
     </div>
   </div>
 </section>
@@ -107,16 +107,11 @@ node /tmp/verify-self-audit.mjs
   </div>
 </section>
 
-<section id="what-this-doesnt-prove" class="section alt" aria-labelledby="h-doesnt">
+<section id="next" class="section alt" aria-labelledby="h-next">
   <div class="container">
-    <span class="eyebrow">4 &middot; What this does NOT prove</span>
-    <h2 id="h-doesnt" class="h-section">Honest about the boundary.</h2>
-    <ul class="biz-list" style="margin-top:8px">
-      <li><strong>This is not a live operational run.</strong> The fixture is a deterministic test snapshot &mdash; the same inputs every time, so anyone can reproduce it. Live production runs (real test counts, real findings, real timestamps) are part of the procurement pack delivered under NDA.</li>
-      <li><strong>The fixture-signing key is not the production signing key.</strong> The kid is <code>kye:key:self-audit-fixture-2026-05</code>; production self-audit runs in the live Reference Gateway<span class="tm">™</span> sign with a key whose private half lives in HSM/KMS &mdash; not on the public web.</li>
-      <li><strong>This is not a SOC 2 / ISO 27001 / FedRAMP attestation.</strong> Those require external bodies and live operational evidence. They're on the roadmap, not the present-tense claim. See <a href="engage.html#procurement-pack" style="color:var(--accent);text-decoration:underline">procurement pack</a> for the attestation roadmap.</li>
-      <li><strong>This does not expose any patent-track mechanism.</strong> Cascade revocation, audit-chain construction, attenuation propagation, signing-suite construction and lifecycle transition rules are intentional placeholders pre-filing &mdash; they live in <code>private/mechanisms/</code> and never appear in any of the three artefacts.</li>
-    </ul>
+    <span class="eyebrow">4 &middot; Where to go next</span>
+    <h2 id="h-next" class="h-section">For procurement, regulator and security teams.</h2>
+    <p class="lede">The reproducible fixture above proves the mechanism. Operational detail and the full hardening register are part of the procurement pack delivered to design partners under NDA.</p>
     <div class="hero-cta" style="margin-top:18px">
       <a href="protocol.html#self-govern" class="btn btn-primary"><span class="ms">verified_user</span> Protocol &sect; self-govern</a>
       <a href="trust.html" class="btn btn-secondary"><span class="ms">gpp_good</span> Trust Center</a>
