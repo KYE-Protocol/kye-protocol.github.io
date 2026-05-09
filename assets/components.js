@@ -198,11 +198,16 @@ export function kyeHeader({ active = '' } = {}) {
   </div>`;
 }
 
-// Footer column structure: 6 clean groups (Protocol · Build ·
-// Ecosystem · Compliance · Audience · Programme · Resources · Site).
-// Every trademark label uses the canonical "KYE …™" form with proper
-// <span class="tm">™</span> wrapping. No duplicates: each page lives
-// in exactly one group except trademark anchors that are deliberate.
+// Footer column structure: 9 clean groups
+//   Protocol · Profiles · Build · Ecosystem · Compliance · By role ·
+//   Programme · Resources · Site
+// Naming convention (zero inconsistency):
+//   - Trademarked names keep their canonical form with ™
+//     (e.g., "KYE Continuity Profile™", "AI System Compliance Card™").
+//   - Acronyms remain ALL-CAPS ("OSCAL", "FAQ", "AI", "MCP", "CIO").
+//   - Recognized-standard / proper-noun product names keep Title Case
+//     ("Open Banking", "Sovereign AI", "Agent Purchasing").
+//   - Every other label is sentence case (first word capitalised only).
 const FOOTER_GROUPS = [
   {
     heading: 'Protocol',
@@ -210,12 +215,24 @@ const FOOTER_GROUPS = [
       { href: './',                label: 'Home' },
       { href: 'protocol.html',     label: 'Protocol' },
       { href: 'concepts.html',     label: 'Concepts' },
-      { href: 'continuity.html',   label: 'KYE Continuity Profile<span class="tm">™</span>' },
-      { href: 'discoverability.html', label: 'KYE Discoverability Profile<span class="tm">™</span>' },
       { href: 'value.html',        label: 'Value' },
       { href: 'vocabulary.html',   label: 'Vocabulary' },
       { href: 'glossary.html',     label: 'Glossary' },
       { href: 'whitepaper.html',   label: 'Whitepaper' },
+    ],
+  },
+  {
+    heading: 'Profiles',
+    items: [
+      { href: 'sectors.html',             label: 'All profiles' },
+      { href: 'usecases.html',            label: 'Use cases' },
+      { href: 'continuity.html',          label: 'KYE Continuity Profile<span class="tm">™</span>' },
+      { href: 'discoverability.html',     label: 'KYE Discoverability Profile<span class="tm">™</span>' },
+      { href: 'connectors.html',          label: 'KYE Connector Hub<span class="tm">™</span>' },
+      { href: 'connector-profiles.html',  label: 'KYE Connector Profiles<span class="tm">™</span>' },
+      { href: 'open-banking.html',        label: 'Open Banking' },
+      { href: 'agent-purchasing.html',    label: 'Agent Purchasing' },
+      { href: 'sovereign-ai.html',        label: 'Sovereign AI' },
     ],
   },
   {
@@ -235,8 +252,6 @@ const FOOTER_GROUPS = [
       { href: 'ecosystem.html',           label: 'Ecosystem overview' },
       { href: 'apps.html#wallet',         label: 'KYE Authority Wallet<span class="tm">™</span>' },
       { href: 'mcp.html',                 label: 'KYE MCP Server<span class="tm">™</span>' },
-      { href: 'connectors.html',          label: 'KYE Connector Hub<span class="tm">™</span>' },
-      { href: 'connector-profiles.html',  label: 'KYE Connector Profiles<span class="tm">™</span>' },
       { href: 'apps.html',                label: 'KYE App Store<span class="tm">™</span>' },
       { href: 'plugins.html',             label: 'KYE Plugin Marketplace<span class="tm">™</span>' },
       { href: 'widgets.html',             label: 'Interactive widgets' },
@@ -245,7 +260,7 @@ const FOOTER_GROUPS = [
   {
     heading: 'Compliance',
     items: [
-      { href: 'trust.html',           label: 'Trust Center' },
+      { href: 'trust.html',           label: 'Trust center' },
       { href: 'trust-self-audit.html', label: 'Self-audit fixture (signed)' },
       { href: 'compliance.html',      label: 'Compliance' },
       { href: 'frameworks.html',      label: 'Frameworks' },
@@ -266,18 +281,8 @@ const FOOTER_GROUPS = [
       { href: 'buyers.html#persona-legal',        label: 'Legal teams' },
       { href: 'buyers.html#persona-auditors',     label: 'Auditors' },
       { href: 'buyers.html#persona-regulators',   label: 'Regulators' },
-    ],
-  },
-  {
-    heading: 'By sector',
-    items: [
-      { href: 'sectors.html',          label: 'All sectors' },
-      { href: 'usecases.html',         label: 'Use cases' },
-      { href: 'open-banking.html',     label: 'Open Banking' },
-      { href: 'agent-purchasing.html', label: 'Agent Purchasing' },
-      { href: 'sovereign-ai.html',     label: 'Sovereign AI' },
-      { href: 'buyers.html#persona-banks',     label: 'Banks &amp; payments' },
-      { href: 'buyers.html#persona-utilities', label: 'Critical infrastructure' },
+      { href: 'buyers.html#persona-banks',        label: 'Banks &amp; payments' },
+      { href: 'buyers.html#persona-utilities',    label: 'Critical infrastructure' },
     ],
   },
   {
