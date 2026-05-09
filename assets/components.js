@@ -34,6 +34,8 @@ const NAV_ITEMS = [
   { id: 'home',                href: './',                       label: 'Home',                                              icon: 'home',                    color: '#1A8754', group: 'protocol' },
   { id: 'protocol',            href: 'protocol.html',            label: 'Protocol',                                          icon: 'architecture',            color: '#00ACC1', group: 'protocol' },
   { id: 'concepts',            href: 'concepts.html',            label: 'Concepts',                                          icon: 'category',                color: '#00ACC1', group: 'protocol' },
+  { id: 'continuity',          href: 'continuity.html',          label: 'Continuity',                                        icon: 'timeline',                color: '#1A8754', group: 'protocol' },
+  { id: 'discoverability',     href: 'discoverability.html',     label: 'Discoverability',                                   icon: 'search',                  color: '#00ACC1', group: 'protocol' },
   { id: 'value',               href: 'value.html',               label: 'Value',                                             icon: 'auto_graph',              color: '#1A8754', group: 'protocol' },
   { id: 'whitepaper',          href: 'whitepaper.html',          label: 'Whitepaper',                                        icon: 'menu_book',               color: '#00838F', group: 'protocol' },
 
@@ -113,8 +115,23 @@ const TM_NOTICE_FULL =
   'KYE Connector Profiles<span class="tm">™</span>, ' +
   'KYE App Store<span class="tm">™</span>, ' +
   'KYE Plugin Marketplace<span class="tm">™</span>, ' +
-  'KYE MCP Server<span class="tm">™</span>, and ' +
-  'KYE Signal Bus<span class="tm">™</span> ' +
+  'KYE MCP Server<span class="tm">™</span>, ' +
+  'KYE Signal Bus<span class="tm">™</span>, ' +
+  'KYE Continuity Profile<span class="tm">™</span>, ' +
+  'Authority Continuity<span class="tm">™</span>, ' +
+  'Agency Continuity<span class="tm">™</span>, ' +
+  'Continuity Decision Map<span class="tm">™</span>, ' +
+  'Continuity Evidence Pack<span class="tm">™</span>, ' +
+  'Delegated Agency Graph<span class="tm">™</span>, ' +
+  'KYE Continuity Gateway<span class="tm">™</span>, ' +
+  'KYE Intent Trace App<span class="tm">™</span>, ' +
+  'KYE Agency Drift Monitor<span class="tm">™</span>, ' +
+  'KYE Discoverability Profile<span class="tm">™</span>, ' +
+  'KYE Authority Directory<span class="tm">™</span>, ' +
+  'KYE Discovery Console<span class="tm">™</span>, ' +
+  'KYE Authority Path Finder<span class="tm">™</span>, ' +
+  'KYE Evidence Finder<span class="tm">™</span>, and ' +
+  'KYE Connector Discovery Hub<span class="tm">™</span> ' +
   'are trademarks of the KYE Protocol<span class="tm">™</span> project.';
 
 export function kyeBrand() {
@@ -193,6 +210,8 @@ const FOOTER_GROUPS = [
       { href: './',                label: 'Home' },
       { href: 'protocol.html',     label: 'Protocol' },
       { href: 'concepts.html',     label: 'Concepts' },
+      { href: 'continuity.html',   label: 'KYE Continuity Profile<span class="tm">™</span>' },
+      { href: 'discoverability.html', label: 'KYE Discoverability Profile<span class="tm">™</span>' },
       { href: 'value.html',        label: 'Value' },
       { href: 'vocabulary.html',   label: 'Vocabulary' },
       { href: 'glossary.html',     label: 'Glossary' },

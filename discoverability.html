@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script>(function(){try{var s=localStorage.getItem("kye-theme");if(s==="dark"||s==="light"){document.documentElement.setAttribute("data-theme",s);}}catch(e){}})();</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KYE Protocol™ — Discoverability Profile · make delegated agency findable</title>
+  <meta name="description" content="KYE Discoverability Profile™ turns the authority graph into a policy-filtered discovery layer for entities, agents, capabilities, delegations, decisions, evidence packs, profiles, connectors and certified implementations. Every query is purpose-bound, audited, masked." />
+  <link rel="canonical" href="https://kye-protocol.github.io/discoverability.html" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="KYE Discoverability Profile™ — make delegated agency findable" />
+  <meta property="og:description" content="Find entities, agents, authorities, capabilities, delegations, evidence and certified implementations — without exposing sensitive data." />
+  <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
+  <meta property="og:url" content="https://kye-protocol.github.io/discoverability.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css?v=1779290000" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://kye-protocol.github.io/"},{"@type":"ListItem","position":2,"name":"Discoverability Profile","item":"https://kye-protocol.github.io/discoverability.html"}]}</script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="top-bar" role="banner" data-kye-header data-active="discoverability"><!-- canonical chrome injected --></header>
+<main id="main" role="main">
+
+<section id="top" class="hero" aria-labelledby="hero-title">
+  <div class="container hero-inner">
+    <span class="hero-pill"><span class="dot"></span> KYE Discoverability Profile<span class="tm">™</span> &middot; v1.0</span>
+    <h1 id="hero-title" style="margin-top:18px">Make delegated agency <span class="accent">findable</span>.</h1>
+    <p class="lede">It's not enough that KYE<span class="tm">™</span> records authority. KYE<span class="tm">™</span> must let authorised users, systems, auditors, regulators and runtime engines <strong>find</strong> the relevant authority chains, capabilities, entities, evidence packs, connectors and decisions. Discoverability is not public search &mdash; every query is <strong>purpose-bound</strong>, <strong>policy-filtered</strong>, <strong>audited</strong>, and <strong>masked</strong>.</p>
+    <div class="cn-quick" style="margin-top:18px">
+      <a href="#types" class="cn-pill"><span class="ms">category</span> Discovery types</a>
+      <a href="#modes" class="cn-pill"><span class="ms">layers</span> Six modes</a>
+      <a href="#schemas" class="cn-pill"><span class="ms">schema</span> Schemas</a>
+      <a href="#apps" class="cn-pill"><span class="ms">apps</span> Apps</a>
+      <a href="#open-paid" class="cn-pill"><span class="ms">balance</span> Open / paid boundary</a>
+    </div>
+  </div>
+</section>
+
+<section id="types" class="section" aria-labelledby="h-types">
+  <div class="container">
+    <span class="eyebrow">1 &middot; Six discovery types</span>
+    <h2 id="h-types" class="h-section">Find what exists, not what is sensitive.</h2>
+    <div class="prim-grid" style="margin-top:14px">
+      <div class="prim-card"><span class="ms">person</span><strong>Entity</strong><span>Find humans, organisations, agents, services, wallets, devices, models, tools, workflows.</span></div>
+      <div class="prim-card"><span class="ms">verified_user</span><strong>Authority</strong><span>Find grants, scopes, delegated chains, approval rules; expiring, stale, over-broad.</span></div>
+      <div class="prim-card"><span class="ms">extension</span><strong>Capability</strong><span>Find tools, skills, APIs, workflows, prompts, models, MCP servers; by side-effect.</span></div>
+      <div class="prim-card"><span class="ms">verified</span><strong>Evidence</strong><span>Find audit events, Decision Maps<span class="tm">™</span>, evidence packs, replay records.</span></div>
+      <div class="prim-card"><span class="ms">warning</span><strong>Risk</strong><span>Find high-risk chains, stale grants, compromised dependencies, blast radius.</span></div>
+      <div class="prim-card"><span class="ms">grid_view</span><strong>Ecosystem</strong><span>Find profiles, connectors, apps, plugins, certified implementations.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="modes" class="section alt" aria-labelledby="h-modes">
+  <div class="container">
+    <span class="eyebrow">2 &middot; Six modes, in increasing breadth</span>
+    <h2 id="h-modes" class="h-section">Every mode is <span class="accent">policy-filtered</span>.</h2>
+    <ul class="biz-list" style="margin-top:8px">
+      <li><strong>private_tenant</strong> &mdash; one customer's KYE<span class="tm">™</span> graph (&ldquo;all active agents in my tenant&rdquo;)</li>
+      <li><strong>workspace</strong> &mdash; one team / department / environment (&ldquo;production payment capabilities owned by Finance&rdquo;)</li>
+      <li><strong>cross_workspace</strong> &mdash; enterprise security / admin scope (&ldquo;all high-risk agents across business units&rdquo;)</li>
+      <li><strong>federated</strong> &mdash; trusted partner organisations (&ldquo;does this TPP / agent have a valid public authority assertion?&rdquo;)</li>
+      <li><strong>public_registry</strong> &mdash; public profiles / connectors / apps / badges (&ldquo;all KYE Payment Profile<span class="tm">™</span> conformant connectors&rdquo;)</li>
+      <li><strong>certification_registry</strong> &mdash; verified implementations (&ldquo;vendors with active KYE Authority Conformant<span class="tm">™</span> status&rdquo;)</li>
+    </ul>
+  </div>
+</section>
+
+<section id="schemas" class="section" aria-labelledby="h-schemas">
+  <div class="container">
+    <span class="eyebrow">3 &middot; Schemas (Apache 2.0, public mirror)</span>
+    <h2 id="h-schemas" class="h-section">Seven normative objects. <span class="accent">Validated in CI.</span></h2>
+    <ul class="biz-list" style="margin-top:8px">
+      <li><code><a href="https://kye-protocol.github.io/schemas/discoverability-profile.json">discoverability-profile.json</a></code> &mdash; profile manifest</li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/directory-entry.json">directory-entry.json</a></code> &mdash; canonical discoverable record</li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/discovery-query.json">discovery-query.json</a></code> &mdash; policy-bound query</li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/discovery-result.json">discovery-result.json</a></code> &mdash; masked, audited result</li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/discovery-policy.json">discovery-policy.json</a></code> &mdash; role + purpose binding</li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/authority-path-discovery.json">authority-path-discovery.json</a></code> &mdash; principal → actor traversal</li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/discovery-audit-event.json">discovery-audit-event.json</a></code> &mdash; hash-chained record per query</li>
+    </ul>
+    <p class="lede" style="margin-top:14px;font-size:13.5px;color:var(--text-muted,#6b7280)">Reproduce: <code>git clone https://github.com/KYE-Protocol/schemas &amp;&amp; cd schemas &amp;&amp; npm ci &amp;&amp; npm test</code></p>
+  </div>
+</section>
+
+<section id="apps" class="section alt" aria-labelledby="h-apps">
+  <div class="container">
+    <span class="eyebrow">4 &middot; Apps that compose this profile</span>
+    <h2 id="h-apps" class="h-section">Five planned apps.</h2>
+    <div class="prim-grid" style="margin-top:14px">
+      <div class="prim-card"><span class="ms">menu_book</span><strong>KYE Authority Directory<span class="tm">™</span></strong><span>Searchable directory of entities, agents, capabilities, grants and profiles.</span></div>
+      <div class="prim-card"><span class="ms">search</span><strong>KYE Discovery Console<span class="tm">™</span></strong><span>Enterprise search and investigation over the authority graph.</span></div>
+      <div class="prim-card"><span class="ms">account_tree</span><strong>KYE Authority Path Finder<span class="tm">™</span></strong><span>Principal → delegation → actor → capability traces.</span></div>
+      <div class="prim-card"><span class="ms">verified</span><strong>KYE Evidence Finder<span class="tm">™</span></strong><span>Search and verify evidence packs, decisions and audit events.</span></div>
+      <div class="prim-card"><span class="ms">grid_view</span><strong>KYE Connector Discovery Hub<span class="tm">™</span></strong><span>Find profiles, connectors, apps, plugins, certified implementations.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="open-paid" class="section" aria-labelledby="h-paid">
+  <div class="container">
+    <span class="eyebrow">5 &middot; Open / paid boundary</span>
+    <h2 id="h-paid" class="h-section">The contracts are open. <span class="accent">The discovery engine is paid.</span></h2>
+    <div class="sb-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:14px">
+      <div style="padding:16px;border:1px solid color-mix(in srgb,var(--text-muted,#888) 22%, transparent);border-radius:10px">
+        <h3 style="margin:0 0 8px;font-size:15px">Open under Apache 2.0</h3>
+        <ul style="margin:0;padding-left:18px;line-height:1.7;font-size:13.5px">
+          <li>All v1 schemas above</li>
+          <li>Reason-code dictionaries</li>
+          <li>Event / webhook schemas</li>
+          <li>Sample fixtures + examples</li>
+          <li>Conformance test vectors</li>
+          <li>Validator SDK</li>
+          <li>Sample local directory implementation</li>
+        </ul>
+      </div>
+      <div style="padding:16px;border:1px solid color-mix(in srgb,var(--text-muted,#888) 22%, transparent);border-radius:10px;background:color-mix(in srgb,var(--accent,#1a8754) 4%, transparent)">
+        <h3 style="margin:0 0 8px;font-size:15px">Proprietary (commercial licence)</h3>
+        <ul style="margin:0;padding-left:18px;line-height:1.7;font-size:13.5px">
+          <li>KYE Discovery Console<span class="tm">™</span> (managed)</li>
+          <li>Policy-filtered graph search engine</li>
+          <li>Semantic authority search</li>
+          <li>Risk-ranked discovery</li>
+          <li>Over-permissioning detection engine</li>
+          <li>Stale-authority detection heuristics</li>
+          <li>Cross-tenant masking engine</li>
+          <li>KYE Connector Discovery Hub<span class="tm">™</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="hero-cta" style="margin-top:18px">
+      <a href="engage.html#procurement-pack" class="btn btn-primary"><span class="ms">handshake</span> Request the procurement pack &rarr;</a>
+      <a href="continuity.html" class="btn btn-secondary"><span class="ms">timeline</span> Continuity Profile<span class="tm">™</span></a>
+      <a href="protocol.html" class="btn btn-secondary"><span class="ms">architecture</span> Protocol overview</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected --></footer>
+<button class="scroll-top" data-kye-scroll-top type="button" aria-label="Scroll to top"></button>
+<script type="module" src="assets/components.js"></script>
+<script type="module" src="main.js"></script>
+</body>
+</html>

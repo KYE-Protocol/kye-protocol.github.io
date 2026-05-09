@@ -139,7 +139,7 @@
       <li><span class="ob-step">4.</span> KYE<span class="tm">™</span> evaluates state, delegation, authority, and policy.</li>
       <li><span class="ob-step">5.</span> KYE<span class="tm">™</span> returns <code data-code="allow">allow_with_constraints</code> &middot; <code data-code="approve">require_approval</code> &middot; <code data-code="deny">deny</code> with reason (e.g. <code data-code="field">merchant_category_blocked</code>, <code data-code="field">amount_above_agent_threshold</code>).</li>
       <li><span class="ob-step">6.</span> Bank / payment stack continues with normal card-issuer authorisation.</li>
-      <li><span class="ob-step">7.</span> KYE<span class="tm">™</span> emits the audit event + Decision Map<span class="tm">™</span> + Evidence Pack to the audit chain.</li>
+      <li><span class="ob-step">7.</span> KYE<span class="tm">™</span> emits the audit event + Decision Map<span class="tm">™</span> + Evidence Pack<span class="tm">™</span> to the audit chain.</li>
     </ol>
     </details>
   </div></div>
@@ -175,7 +175,7 @@
       <li>receipt reference (if execute completed)</li>
       <li>full Decision Map<span class="tm">™</span></li>
     </ul>
-    <p class="lede" style="margin-top:14px">The Evidence Pack lets the bank later prove either: <em>&ldquo;the agent was allowed to do this specific purchase at this specific time under this specific authority&rdquo;</em> &mdash; or, equally importantly, <em>&ldquo;the agent was not allowed; the transaction should have been blocked or escalated.&rdquo;</em></p>
+    <p class="lede" style="margin-top:14px">The Evidence Pack<span class="tm">™</span> lets the bank later prove either: <em>&ldquo;the agent was allowed to do this specific purchase at this specific time under this specific authority&rdquo;</em> &mdash; or, equally importantly, <em>&ldquo;the agent was not allowed; the transaction should have been blocked or escalated.&rdquo;</em></p>
   </div></div>
 </section>
 
@@ -184,7 +184,7 @@
     <h2 id="h-wb" class="h-section">Eight teams that read this artefact.</h2>
   <div class="section-body"><div class="container">
     <ul class="who-bullets">
-      <li><strong>Agent-purchase disputes</strong> &mdash; complainant says the agent overstepped. Pull the Evidence Pack; replay offline.</li>
+      <li><strong>Agent-purchase disputes</strong> &mdash; complainant says the agent overstepped. Pull the Evidence Pack<span class="tm">™</span>; replay offline.</li>
       <li><strong>Chargebacks</strong> &mdash; merchant challenges a refund. The Decision Map<span class="tm">™</span> shows why the purchase was authorised in the first place.</li>
       <li><strong>Fraud investigation</strong> &mdash; SIU walks the chain agent &rarr; agent state &rarr; delegation &rarr; principal in seconds.</li>
       <li><strong>Consumer protection</strong> &mdash; regulator audits the merchant-allowlist + amount-cap behaviour against the holder&rsquo;s consent.</li>
