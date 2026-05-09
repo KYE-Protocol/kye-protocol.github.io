@@ -10973,3 +10973,55 @@ code[data-code="type"] {
         .wk-bridge { padding:16px 18px; }
       }
 
+
+      /* Layer system — number badge + icon (cross-page) */
+      .layer-num {
+        display:inline-flex; align-items:center; justify-content:center;
+        min-width:22px; height:20px; padding:0 6px;
+        border-radius:5px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size:11px; font-weight:700; letter-spacing:0.04em;
+        background: color-mix(in srgb, var(--text,#111) 7%, transparent);
+        color: var(--text,#111);
+        border: 1px solid color-mix(in srgb, var(--text,#111) 12%, transparent);
+        flex:0 0 auto;
+      }
+      .layer-num + .ms,
+      .layer-num + .layer-ms,
+      .layer-num + .wk-ms { margin-left:6px; }
+
+      /* Glossary: eyebrow with layer badge + symbol */
+      .layer-eyebrow {
+        display:inline-flex; align-items:center; gap:8px;
+        padding-left:0;
+      }
+      .layer-eyebrow .layer-num { letter-spacing:0.06em; }
+      .layer-ms { font-size:18px !important; line-height:1; opacity:0.85; }
+
+      /* Quick-jump pills with layer numbers */
+      .layer-quick .cn-pill { padding-left:8px; }
+      .layer-quick .cn-pill .layer-num { background: color-mix(in srgb, var(--text,#111) 6%, transparent); }
+
+      /* where-kye-fits tabs: layer-num adopts tab colour cue */
+      .wk-tab .layer-num {
+        background: color-mix(in srgb, var(--text,#111) 6%, transparent);
+        color: var(--text,#111);
+        border-color: color-mix(in srgb, var(--text,#111) 12%, transparent);
+      }
+      .wk-tab[aria-selected="true"] .layer-num {
+        background: rgba(255,255,255,0.18);
+        color:#fff;
+        border-color: rgba(255,255,255,0.30);
+      }
+      .wk-tab[aria-selected="true"] .wk-ms { color:#fff; }
+      .wk-ms { font-size:16px !important; line-height:1; }
+      .wk-panel-h .layer-num { background: color-mix(in srgb, var(--text,#111) 6%, transparent); }
+      .wk-panel-h .wk-ms { font-size:18px !important; opacity:0.85; }
+
+      /* Dark-mode adjustments */
+      [data-theme="dark"] .layer-num {
+        background: color-mix(in srgb, #fff 8%, transparent);
+        color: #e5e7eb;
+        border-color: color-mix(in srgb, #fff 16%, transparent);
+      }
+
