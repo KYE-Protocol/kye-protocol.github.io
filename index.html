@@ -356,6 +356,113 @@
   </div>
 </section>
 
+<!-- ================================ Where KYE™ fits ================================ -->
+<section id="where-kye-fits" class="section alt" aria-labelledby="h-where-kye">
+  <div class="container">
+    <span class="eyebrow">Where KYE<span class="tm">™</span> fits</span>
+    <h2 id="h-where-kye" class="h-section">AI governance is <span class="accent">not one layer</span>.</h2>
+    <p class="lede">Compliance frameworks, governance architectures, authorisation models and runtime execution control are <em>related</em>, but they are not the same. KYE Protocol<span class="tm">™</span> sits where governance meets execution: the <strong>runtime authority and evidence layer</strong> that decides and proves whether a delegated action should happen.</p>
+
+    <div class="vl-grid" style="grid-template-columns:1fr;gap:10px;margin-top:18px">
+      <div class="vl-card" data-layer="compliance" style="border-left:3px solid #6b7280">
+        <h4 style="color:#6b7280">Compliance frameworks</h4>
+        <p><strong>Question:</strong> What obligations must we meet?<br/>
+        <strong>Examples:</strong> EU AI Act &middot; ISO 42001 &middot; SOC 2 &middot; DORA &middot; GDPR &middot; NIS2 &middot; HIPAA &middot; PCI DSS.<br/>
+        <strong>KYE<span class="tm">™</span> role:</strong> produces runtime evidence packs and Compliance Map<span class="tm">™</span> mappings that frameworks consume. <em>Does not replace</em> the framework, the certifier, or the auditor.</p>
+      </div>
+      <div class="vl-card" data-layer="governance" style="border-left:3px solid #1A73E8">
+        <h4 style="color:#1A73E8">Governance architecture</h4>
+        <p><strong>Question:</strong> How is accountability organised?<br/>
+        <strong>Examples:</strong> AI governance board &middot; risk committees &middot; control libraries &middot; approval workflows &middot; model governance &middot; incident processes.<br/>
+        <strong>KYE<span class="tm">™</span> role:</strong> turns governance intent into runtime authority decisions and replayable evidence. <em>Does not replace</em> organisational governance.</p>
+      </div>
+      <div class="vl-card" data-layer="authz" style="border-left:3px solid #8E24AA">
+        <h4 style="color:#8E24AA">Authorisation model</h4>
+        <p><strong>Question:</strong> Who or what may be allowed?<br/>
+        <strong>Examples:</strong> IAM &middot; RBAC &middot; ABAC &middot; OAuth scopes &middot; PDP / PEP &middot; policy-as-code.<br/>
+        <strong>KYE<span class="tm">™</span> role:</strong> extends authorisation into delegated agency, capability scope, six-dimension state, Authority Continuity<span class="tm">™</span>, Discoverability, evidence and revocation. <em>Does not replace</em> IAM.</p>
+      </div>
+      <div class="vl-card" data-layer="runtime" style="border-left:3px solid #C5221F">
+        <h4 style="color:#C5221F">Runtime execution control</h4>
+        <p><strong>Question:</strong> Should this specific action happen now?<br/>
+        <strong>Examples:</strong> agent purchase &middot; payment initiation &middot; tool call &middot; data access &middot; contract signing &middot; clinical escalation &middot; infrastructure command.<br/>
+        <strong>KYE<span class="tm">™</span> role:</strong> decides, records, revokes and proves authority at the point of action. <em>Does not</em> process the underlying payment, clinical action or infrastructure command itself.</p>
+      </div>
+      <div class="vl-card" data-layer="kye" style="border-left:3px solid #1A8754; background:color-mix(in srgb,#1A8754 6%, transparent)">
+        <h4 style="color:#1A8754">KYE Protocol<span class="tm">™</span> &mdash; the runtime authority &amp; evidence layer</h4>
+        <p><strong>Identity</strong> &middot; <strong>Authority</strong> &middot; <strong>Scope</strong> &middot; <strong>State</strong> (6-dim) &middot; <strong>Decision</strong> &middot; <strong>Audit</strong> &middot; <strong>Evidence Pack<span class="tm">™</span></strong> &middot; <strong>Discoverability</strong> &middot; <strong>Continuity</strong>. Resolves who or what is acting, on behalf of whom, under what authority, in what state &mdash; then produces a signed Decision Map<span class="tm">™</span> + Evidence Pack<span class="tm">™</span> that any auditor or regulator verifies offline with public keys.</p>
+      </div>
+    </div>
+
+    <p class="lede" style="margin-top:18px;font-size:15px"><strong>Frameworks tell you what must be governed. KYE<span class="tm">™</span> controls and proves what actually happened at runtime.</strong></p>
+
+    <div class="hero-cta" style="margin-top:14px">
+      <a href="protocol.html" class="btn btn-secondary"><span class="ms">architecture</span> Protocol overview &rarr;</a>
+      <a href="value.html" class="btn btn-secondary"><span class="ms">auto_graph</span> Value &amp; layers &rarr;</a>
+      <a href="continuity.html" class="btn btn-secondary"><span class="ms">timeline</span> Continuity Profile<span class="tm">™</span></a>
+      <a href="discoverability.html" class="btn btn-secondary"><span class="ms">search</span> Discoverability Profile<span class="tm">™</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================================ Why IAM is not enough ================================ -->
+<section id="iam-not-enough" class="section" aria-labelledby="h-iam">
+  <div class="container">
+    <span class="eyebrow">IAM vs KYE<span class="tm">™</span></span>
+    <h2 id="h-iam" class="h-section">Why IAM is not enough for <span class="accent">agentic systems</span>.</h2>
+    <p class="lede">IAM answers <em>who logged in</em>. Agentic systems require a deeper runtime question: <em>what was actually acting through the chain?</em></p>
+    <div class="vl-grid" style="grid-template-columns:1fr 1fr;gap:14px;margin-top:14px">
+      <div class="vl-card" style="border-left:3px solid #8E24AA">
+        <h4 style="color:#8E24AA">IAM asks</h4>
+        <p>Who logged in? What permissions were assigned at issuance?</p>
+      </div>
+      <div class="vl-card" style="border-left:3px solid #1A8754; background:color-mix(in srgb,#1A8754 6%, transparent)">
+        <h4 style="color:#1A8754">KYE<span class="tm">™</span> asks</h4>
+        <p>Who or what acted? On behalf of whom? Through which delegation chain? Using which capability? Inside what scope? In what state? With what evidence? Was Authority Continuity<span class="tm">™</span> preserved? Can it be discovered and revoked?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================ KYE™ does / does not ================================ -->
+<section id="does-does-not" class="section alt" aria-labelledby="h-ddn">
+  <div class="container">
+    <span class="eyebrow">KYE<span class="tm">™</span> does &middot; does not</span>
+    <h2 id="h-ddn" class="h-section">Honest about the boundary.</h2>
+    <div class="vl-grid" style="grid-template-columns:1fr 1fr;gap:14px;margin-top:14px">
+      <div class="vl-card" style="border-left:3px solid #1A8754">
+        <h4 style="color:#1A8754">KYE<span class="tm">™</span> does</h4>
+        <ul class="biz-list" style="margin:0;font-size:14px;line-height:1.6">
+          <li>Resolve actor and principal</li>
+          <li>Map delegation chains</li>
+          <li>Check capability and scope at decision time</li>
+          <li>Evaluate the six-dimension state vector</li>
+          <li>Produce signed runtime decisions + Decision Map<span class="tm">™</span></li>
+          <li>Emit signed events on KYE Signal Bus<span class="tm">™</span></li>
+          <li>Cascade revocation through the authority graph</li>
+          <li>Generate Evidence Pack<span class="tm">™</span> bundles</li>
+          <li>Run policy-filtered, masked discovery (KYE Discoverability Profile<span class="tm">™</span>)</li>
+          <li>Preserve Authority Continuity<span class="tm">™</span> from intent to action</li>
+        </ul>
+      </div>
+      <div class="vl-card" style="border-left:3px solid #C5221F">
+        <h4 style="color:#C5221F">KYE<span class="tm">™</span> does not</h4>
+        <ul class="biz-list" style="margin:0;font-size:14px;line-height:1.6">
+          <li>Replace compliance frameworks</li>
+          <li>Replace legal advice</li>
+          <li>Replace external auditors</li>
+          <li>Replace IAM entirely</li>
+          <li>Replace payment rails</li>
+          <li>Replace model-governance platforms</li>
+          <li>Guarantee regulatory compliance by itself</li>
+          <li>Decide moral intent or consciousness</li>
+          <li>Make a hosted KYE Cloud Gateway<span class="tm">™</span> SaaS available today (v1.1 commercial track)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="why" class="section" aria-labelledby="h-why">
   <div class="container">
     <span class="eyebrow">Why this exists</span>
