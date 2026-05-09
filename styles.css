@@ -11089,11 +11089,16 @@ code[data-code="type"] {
         display:flex; flex-direction:column; gap:8px;
       }
       .bd-list li {
-        display:flex; align-items:flex-start; gap:10px;
+        position:relative;
+        display:block;
+        padding-left:28px;
         font-size:14.5px; line-height:1.5; color:var(--text,#111);
       }
-      .bd-list li em { font-style:normal; font-size:12px; color:var(--text-muted,#6b7280); margin-left:6px; }
-      .bd-tick, .bd-cross { font-size:18px !important; flex:0 0 auto; line-height:1.35; margin-top:1px; }
+      .bd-list li em { font-style:normal; font-size:12px; color:var(--text-muted,#6b7280); margin-left:4px; white-space:nowrap; }
+      .bd-tick, .bd-cross {
+        position:absolute; left:0; top:2px;
+        font-size:18px !important; line-height:1.35;
+      }
       .bd-tick  { color:#1A8754; }
       .bd-cross { color:#C5221F; }
       [data-theme="dark"] .bd-card { background: color-mix(in srgb,#fff 3%, transparent); }
