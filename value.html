@@ -113,6 +113,7 @@
       <a href="#value-chain" class="cn-pill"><span class="ms">hub</span> Value chain</a>
       <a href="#lifecycle"   class="cn-pill"><span class="ms">timeline</span> Lifecycle</a>
       <a href="#safety"      class="cn-pill"><span class="ms">shield</span> Safety</a>
+      <a href="#continuity-discoverability" class="cn-pill"><span class="ms">timeline</span> Continuity + Discoverability</a>
     </div>
   </div>
 </section>
@@ -418,6 +419,54 @@
         <dl class="row after"><dt>With KYE<span class="tm">™</span></dt><dd>Blast Radius Map<span class="tm">™</span>: graph of every capability, agent, payment, and decision affected &mdash; <em>before</em> you revoke. Pre-emit, helps operators choose the right action.</dd></dl>
       </div>
     </details>
+  </div>
+</section>
+
+<!-- ================================ 5. Continuity & Discoverability ================================ -->
+<section id="continuity-discoverability" class="section" aria-labelledby="h-cd">
+  <div class="container">
+    <span class="eyebrow">5 &middot; Beyond record, into alignment + operational</span>
+    <h2 id="h-cd" class="h-section">Continuity. <span class="accent">Discoverability.</span></h2>
+    <p class="lede">Identity, authority, scope, state, decision, audit, evidence are what KYE<span class="tm">™</span> <em>records</em>. The two newest profiles add the next layer: did the action <strong>remain aligned</strong> from intent to execution (Continuity), and can authorised teams <strong>find</strong> the chains, decisions, evidence and risk that matter (Discoverability).</p>
+
+    <div class="vl-grid" style="margin-top:18px">
+      <div class="vl-card">
+        <h4>KYE Continuity Profile<span class="tm">™</span></h4>
+        <p style="margin-bottom:10px"><em>Authority Continuity<span class="tm">™</span> &mdash; from intent to action, across every dimension.</em></p>
+        <ul class="biz-list" style="margin:0;font-size:14px;line-height:1.6">
+          <li><strong>Intent drift</strong> &mdash; agent reinterpreted the goal materially (subscription when the constraint said no subscription) &rarr; <code>require_human_review</code></li>
+          <li><strong>Incentive conflict</strong> &mdash; commercial / affiliate / commission optimisation conflicts with principal interest &rarr; <code>deny</code></li>
+          <li><strong>Pressure signal</strong> &mdash; principal under urgency / coercion / social engineering &rarr; <code>require_reconfirmation</code></li>
+          <li><strong>Oversight chain integrity</strong> &mdash; required human-in-the-loop missed &rarr; quarantine + signal on KYE Signal Bus<span class="tm">™</span></li>
+          <li><strong>Replayable proof</strong> &mdash; signed Continuity Evidence Pack<span class="tm">™</span> binds intent + interpretation + authority + state + decision + execution into one bundle</li>
+        </ul>
+        <p class="vl-want" style="margin-top:10px;font-size:13.5px"><a href="continuity.html" style="color:var(--accent);text-decoration:underline">Continuity Profile<span class="tm">™</span> &rarr;</a></p>
+      </div>
+
+      <div class="vl-card">
+        <h4>KYE Discoverability Profile<span class="tm">™</span></h4>
+        <p style="margin-bottom:10px"><em>Make delegated agency findable &mdash; without exposing sensitive data.</em></p>
+        <ul class="biz-list" style="margin:0;font-size:14px;line-height:1.6">
+          <li><strong>Find every agent that can move money</strong> &mdash; one query, masked + audited, purpose-bound</li>
+          <li><strong>Find authority grants expiring this week</strong> &mdash; before they go stale in production</li>
+          <li><strong>Find evidence for this disputed transaction</strong> &mdash; auditor / regulator / court reach for the pack directly</li>
+          <li><strong>Find blast radius for a compromised credential</strong> &mdash; before you revoke</li>
+          <li><strong>Find conformant vendors / connectors / certified implementations</strong> &mdash; procurement queries the public registry</li>
+        </ul>
+        <p class="vl-want" style="margin-top:10px;font-size:13.5px"><a href="discoverability.html" style="color:var(--accent);text-decoration:underline">Discoverability Profile<span class="tm">™</span> &rarr;</a></p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:18px">
+      <div class="card-tag">Per-persona</div>
+      <p class="card-sub" style="margin-top:8px;font-size:14px;line-height:1.7">
+        <strong>Risk officer:</strong> find every agent that can move money. Spot incentive drift before it hits production. Replayable continuity proof per decision.<br/>
+        <strong>Auditor:</strong> discovery query &rarr; evidence pack offline-verifiable with public keys; every decision carries a continuity status + score.<br/>
+        <strong>CISO / security admin:</strong> stale-authority + over-permissioning detection; blast-radius discovery; oversight-chain integrity alerts.<br/>
+        <strong>Procurement:</strong> certification registry + connector hub queries; KYE Conformant<span class="tm">™</span> / KYE Certified<span class="tm">™</span> filters.<br/>
+        <strong>Builder:</strong> find profiles, connectors, apps, plugins matching your sector. Run continuity-check fixtures locally.
+      </p>
+    </div>
   </div>
 </section>
 
