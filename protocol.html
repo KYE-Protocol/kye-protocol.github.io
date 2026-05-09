@@ -191,7 +191,7 @@
 </section>
 
 <section id="signals" class="section technical-only" aria-labelledby="h-signals">
-        <span class="eyebrow">Signed Signals &amp; Webhooks &middot; runtime, not registry</span>
+        <span class="eyebrow">KYE Signal Bus<span class="tm">™</span> &middot; runtime, not registry</span>
     <h2 id="h-signals" class="h-section">Every authority change, <span class="accent">delivered as a signed event</span>.</h2>
   <div class="section-body"><div class="container">
     <p class="lede">A registry is passive. KYE Protocol<span class="tm">™</span> is a <em>runtime authority layer</em> &mdash; when authority changes, downstream systems must know before the next request lands. The <strong>KYE Signal Bus<span class="tm">™</span></strong> emits signed, replayable events for every grant, revocation, state transition, decision, approval, recovery action and evidence-pack lifecycle. Subscribers verify with public keys alone, deduplicate by event id, and bind every signal back to the audit chain.</p>
@@ -518,7 +518,7 @@
         <div class="arch-num">4</div>
         <h3 class="arch-h">Policy-bound</h3>
         <p class="arch-b"><strong>Policy-bound, not policy-bloated.</strong> KYE<span class="tm">™</span> defines binding schema, decision result, obligations, reason codes, the PEP/PDP flow &mdash; not a new policy language. Integrate with the engines you already run: Cerbos, OPA, AWS Cedar, custom enterprise PDPs, IAM, API gateways, agent runtimes.</p>
-        <code class="arch-path">private/specs/policies/{rego,cerbos,cedar} &middot; policy-decision.json</code>
+        <code class="arch-path">policy bundles (rego / cerbos / cedar) &middot; policy-decision.json</code>
       </article>
 
       <article class="arch-card">
@@ -542,7 +542,7 @@
         <div class="arch-num">7</div>
         <h3 class="arch-h">Schema-first</h3>
         <p class="arch-b">Every entity, authority grant, delegation, scope, capability manifest, validation result, audit event, evidence pack, payload artefact, taxonomy term, metadata binding, and compliance mapping is a canonical JSON Schema 2020-12 with an absolute <code>$id</code> at <code>kye-protocol.github.io/schemas</code>. OpenAPI, SDKs, validators, docs, and conformance tests are derived from schemas &mdash; not hand-written.</p>
-        <code class="arch-path">private/specs/schemas/*.json &middot; 69 schemas &middot; 69 validated examples</code>
+        <code class="arch-path">KYE-Protocol/schemas &middot; 69 schemas &middot; 69 validated examples</code>
       </article>
 
       <article class="arch-card">
@@ -577,7 +577,7 @@
         <div class="arch-num">12</div>
         <h3 class="arch-h">Profile-first</h3>
         <p class="arch-b">Core stays small. Domain extensions live in profiles &mdash; Capability, Recovery, Healthcare, Payments, Payload Trust, Taxonomy &amp; Metadata, Graph, EU AI Act, ISO 42001, Defence, Energy, Manufacturing, and more. Profiles never modify Core; they add vocabulary, schemas, endpoints, and conformance fixtures. Adopt only what you need.</p>
-        <code class="arch-path">private/specs/kye-*-v1.md &middot; 41 profile docs</code>
+        <code class="arch-path">kye-*-v1 profile specs &middot; 50 v1.0 normative profiles</code>
       </article>
 
       <article class="arch-card">
@@ -608,7 +608,7 @@
         <div class="arch-num">16</div>
         <h3 class="arch-h">SDK-first</h3>
         <p class="arch-b">Developers should not implement protocol validation by hand. KYE<span class="tm">™</span> ships TypeScript, Python, and Go SDKs with schema types, local validators, decision clients, signing/verification helpers, policy adapters, audit emitters, capability-manifest builders, evidence-pack helpers, taxonomy resolvers, metadata classifiers, graph traversal clients, decision-map renderers.</p>
-        <code class="arch-path">private/sdks/{typescript,python,go} &middot; 41+28+pass tests</code>
+        <code class="arch-path">KYE-Protocol/sdk-{typescript,python,go} &middot; 67 + 51 + go-pass</code>
       </article>
     </div>
 

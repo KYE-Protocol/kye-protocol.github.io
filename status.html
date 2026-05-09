@@ -49,19 +49,20 @@
       <strong style="color:#1A8754">These numbers are real.</strong> Run <code>npm test</code> at <code>github.com/KYE-Protocol/app</code> and <code>npx kye-conformance run</code> against the reference Gateway to reproduce them on your own machine.
     </div>
     <table class="cmp-table" style="margin-top:14px">
-      <thead><tr><th>Component</th><th>Status</th><th>Reproduce</th></tr></thead>
+      <thead><tr><th>Component</th><th>Status</th><th>Reproduce (public mirror)</th></tr></thead>
       <tbody>
-        <tr><td>v1.0 contract (spec)</td><td><strong>frozen</strong> &middot; 50 normative profiles</td><td>see <code>private/specs/kye-*-v1.md</code></td></tr>
-        <tr><td>JSON Schemas</td><td><strong>69 / 69</strong> validate against examples</td><td><code>npm run test:schemas</code></td></tr>
-        <tr><td>OpenAPI</td><td><strong>193</strong> operations across Core / Payments / Extensions, redocly-clean</td><td><code>npm run lint:openapi</code></td></tr>
-        <tr><td>Conformance pack</td><td><strong>41 / 41</strong> black-box scenarios pass</td><td><code>npm run test:conformance</code></td></tr>
-        <tr><td>KYE Reference Gateway<span class="tm">™</span></td><td><strong>67 / 67</strong> unit tests pass</td><td><code>cd private/runtime/gateway &amp;&amp; npm test</code></td></tr>
-        <tr><td>SDKs (TypeScript)</td><td>67 / 67 tests pass</td><td><code>cd private/sdks/typescript &amp;&amp; npm test</code></td></tr>
-        <tr><td>SDKs (Python)</td><td>51 passed, 2 skipped</td><td><code>cd private/sdks/python &amp;&amp; pytest -q</code></td></tr>
-        <tr><td>SDKs (Go)</td><td>core surface pass</td><td><code>cd private/sdks/go &amp;&amp; go test ./...</code></td></tr>
-        <tr><td>Control mappings</td><td><strong>266</strong> across 13 horizontal frameworks</td><td><code>private/specs/compliance/control-mappings.md</code></td></tr>
-        <tr><td>Trademark audit</td><td><strong>0 gaps</strong> across 51 pages × 38 marks</td><td><code>npm run test:trademarks</code></td></tr>
-        <tr><td>Patent-safety scan</td><td>clean (no positive-form mechanism in <code>public/</code>)</td><td><code>npm run test:patent-safety</code></td></tr>
+        <tr><td>v1.0 contract (spec)</td><td><strong>frozen</strong> &middot; 50 v1.0 normative profiles</td><td>published in the public mirror repos</td></tr>
+        <tr><td>JSON Schemas</td><td><strong>69 / 69</strong> validate against examples</td><td><code>git clone https://github.com/KYE-Protocol/schemas &amp;&amp; cd schemas &amp;&amp; npm ci &amp;&amp; npm test</code></td></tr>
+        <tr><td>OpenAPI</td><td><strong>193</strong> operations across Core / Payments / Extensions, redocly-clean</td><td><code>git clone https://github.com/KYE-Protocol/openapi &amp;&amp; cd openapi &amp;&amp; npm ci &amp;&amp; npm run lint</code></td></tr>
+        <tr><td>Conformance pack</td><td><strong>41 / 41</strong> black-box scenarios pass</td><td><code>git clone https://github.com/KYE-Protocol/conformance &amp;&amp; cd conformance &amp;&amp; npm ci &amp;&amp; npm run run</code></td></tr>
+        <tr><td>KYE Reference Gateway<span class="tm">™</span></td><td><strong>201 / 201</strong> unit + integration tests pass</td><td>commercial reference implementation &mdash; <a href="engage.html#procurement-pack">procurement pack</a></td></tr>
+        <tr><td>SDK (TypeScript)</td><td><strong>67 / 67</strong> tests</td><td><code>git clone https://github.com/KYE-Protocol/sdk-typescript &amp;&amp; cd sdk-typescript &amp;&amp; npm ci &amp;&amp; npm test</code></td></tr>
+        <tr><td>SDK (Python)</td><td><strong>51 passed</strong>, 2 skipped (async/network)</td><td><code>git clone https://github.com/KYE-Protocol/sdk-python &amp;&amp; cd sdk-python &amp;&amp; python3 -m pip install -e . &amp;&amp; pytest -q</code></td></tr>
+        <tr><td>SDK (Go)</td><td>core surface pass</td><td><code>git clone https://github.com/KYE-Protocol/sdk-go &amp;&amp; cd sdk-go &amp;&amp; go test ./...</code></td></tr>
+        <tr><td>Control mappings</td><td><strong>266</strong> across 13 horizontal frameworks</td><td>published in the conformance mirror; full register in the procurement pack</td></tr>
+        <tr><td>Trademark audit</td><td><strong>0 gaps</strong> across 53 pages &times; 40 marks</td><td><code>node scripts/audit-trademarks.mjs</code></td></tr>
+        <tr><td>Patent-safety scan</td><td>clean (no positive-form mechanism in <code>public/</code>)</td><td><code>bash scripts/patent-safety-scan.sh</code></td></tr>
+        <tr><td>Consistency audit</td><td>0 drifts across 53 pages</td><td><code>node scripts/audit-consistency.mjs</code></td></tr>
       </tbody>
     </table>
     <p class="lede" style="margin-top:14px;font-size:13.5px;color:var(--text-muted,#6b7280)">The <em>contract</em> is bank-grade and frozen. The <em>reference implementation</em> is pilot-grade &mdash; correctness-first, not throughput-tuned. Production deployments substitute a hardened build behind the same contract.</p>
@@ -95,7 +96,7 @@
         <tr><th>Mission-critical</th><td>99.99% per calendar month</td><td>Direct-engagement deployments with named scope, dedicated capacity, quarterly drill cadence</td><td>20% &rarr; 75%</td></tr>
       </tbody>
     </table>
-    <p class="lede" style="margin-top:14px">These are the SLA tiers defined in the template at <code data-code="path">private/runbooks/customer-sla.md</code>. Once a deployment runs in production for KYE Protocol<span class="tm">™</span> Ltd., availability will be measured at the Customer&rsquo;s nearest region by a synthetic monitor and published here. <strong>No measured uptime to publish yet</strong> &mdash; these are the contractual targets, not historical performance.</p>
+    <p class="lede" style="margin-top:14px">These are the SLA tiers defined in the customer-SLA template that ships with the procurement pack under NDA. Once a deployment runs in production for KYE Protocol<span class="tm">™</span> Ltd., availability will be measured at the Customer&rsquo;s nearest region by a synthetic monitor and published here. <strong>No measured uptime to publish yet</strong> &mdash; these are the contractual targets, not historical performance.</p>
   </div></div>
 </section>
 
@@ -115,7 +116,7 @@
         <tr><td>Conformance reporting</td><td>3 (Standard)</td><td>24 h</td><td>24 h</td></tr>
       </tbody>
     </table>
-    <p class="lede" style="margin-top:14px">Quarterly tabletop + annual live failover exercise required by the disaster-recovery runbook. The most recent exercise is logged at <code data-code="path">private/runbooks/incidents/2026-05-07-bcdr-tabletop-q2.md</code>.</p>
+    <p class="lede" style="margin-top:14px">Quarterly tabletop + annual live failover exercise required by the disaster-recovery runbook (delivered with the procurement pack under NDA).</p>
   </div></div>
 </section>
 
@@ -132,7 +133,7 @@
         <tr><th>Sev-3</th><td>Cosmetic / minor</td><td>&le; 1 business day</td><td>Daily</td><td>Best effort</td></tr>
       </tbody>
     </table>
-    <p class="lede" style="margin-top:14px">Sev-0 and Sev-1 trigger the regulatory notification path defined in the incident-response runbook (DORA Art. 19, GDPR Art. 33, PSD2 Art. 96, HIPAA &sect;164.408). Source: <code data-code="path">private/runbooks/incident-response.md</code>.</p>
+    <p class="lede" style="margin-top:14px">Sev-0 and Sev-1 trigger the regulatory notification path defined in the incident-response runbook (DORA Art. 19, GDPR Art. 33, PSD2 Art. 96, HIPAA &sect;164.408). Full incident-response runbook is delivered with the procurement pack under NDA.</p>
   </div></div>
 </section>
 
@@ -144,7 +145,7 @@
       <li><strong>Initial declaration.</strong> Within the per-severity window above, the Comms lead posts to the public status page (this page, when live) and emails the named technical contacts on the Customer's account.</li>
       <li><strong>Status updates.</strong> Posted on the published cadence until resolution; every update carries a current state, an explicit ETA when known, and any required Customer action.</li>
       <li><strong>Resolution.</strong> Marked &ldquo;resolved&rdquo; when synthetic monitors return to within SLA bounds for the dwell window; a post-mortem is published within 14 days for Sev-0 / Sev-1 events.</li>
-      <li><strong>Service credits.</strong> Customers claim credits within 30 days of month-end per the SLA in <code data-code="path">private/runbooks/customer-sla.md</code> &sect;5; credit is applied to the next invoice.</li>
+      <li><strong>Service credits.</strong> Customers claim credits within 30 days of month-end per the SLA &sect;5 in the procurement pack; credit is applied to the next invoice.</li>
     </ul>
   </div></div>
 </section>
