@@ -303,6 +303,19 @@ const FOOTER_GROUPS = [
     ],
   },
   {
+    heading: 'The KYE™ stack',
+    items: [
+      { href: 'vocabulary.html',      label: '01 &middot; Dictionaries' },
+      { href: 'taxonomies.html',      label: '02 &middot; Taxonomies' },
+      { href: 'ontology.html',        label: '03 &middot; KYE Ontology Profile<span class="tm">™</span>' },
+      { href: 'schemas.html',         label: '04 &middot; Schemas' },
+      { href: 'knowledge-graph.html', label: '05 &middot; Knowledge graph' },
+      { href: 'policy-engine.html',   label: '06 &middot; Policy engine' },
+      { href: 'gateway.html',         label: '07 &middot; Runtime gateway' },
+      { href: 'evidence-pack.html',   label: '08 &middot; Evidence Pack<span class="tm">™</span>' },
+    ],
+  },
+  {
     heading: 'Resources',
     items: [
       { href: 'docs.html',      label: 'Docs hub' },
@@ -359,6 +372,41 @@ export function kyeScrollTop() {
   </svg>`;
 }
 
+// =================================================================
+// KYE Stack Stepper — canonical 8-step "you-are-here" indicator.
+// One source of truth: every page that maps to a stack step renders
+// the same stepper, with its step highlighted. Numbers, labels,
+// hrefs and icons come from this constant — never inlined per page.
+// =================================================================
+const KYE_STACK = [
+  { n: 1, key: 'vocabulary',      href: 'vocabulary.html',      label: 'Dictionaries',                    icon: 'menu_book',     blurb: 'Allowed terms. Stable names KYE™ recognises.' },
+  { n: 2, key: 'taxonomies',      href: 'taxonomies.html',      label: 'Taxonomies',                      icon: 'account_tree',  blurb: 'Parent / child classification of those names.' },
+  { n: 3, key: 'ontology',        href: 'ontology.html',        label: 'KYE Ontology Profile™',           icon: 'hub',           blurb: 'Semantic relationships — what they mean, what they require, what they are not.' },
+  { n: 4, key: 'schemas',         href: 'schemas.html',         label: 'Schemas (JSON Schema)',           icon: 'schema',        blurb: 'Runtime validation. Bytes on the wire.' },
+  { n: 5, key: 'knowledge-graph', href: 'knowledge-graph.html', label: 'Knowledge graph',                 icon: 'device_hub',    blurb: 'Live instances of entities, authorities, decisions.' },
+  { n: 6, key: 'policy-engine',   href: 'policy-engine.html',   label: 'Policy engine',                   icon: 'gavel',         blurb: 'Decisions over meaning + state.' },
+  { n: 7, key: 'gateway',         href: 'gateway.html',         label: 'Runtime gateway',                 icon: 'bolt',          blurb: 'Enforcement at the decision point.' },
+  { n: 8, key: 'evidence-pack',   href: 'evidence-pack.html',   label: 'Evidence Pack™',                  icon: 'verified',      blurb: 'Signed semantic artefact a regulator can replay offline.' },
+];
+
+export function kyeStackStepper(active = 0) {
+  const steps = KYE_STACK.map(s => {
+    const isActive = s.n === Number(active);
+    const ariaCurrent = isActive ? ' aria-current="step"' : '';
+    return `
+      <a href="${s.href}" class="kye-step${isActive ? ' kye-step--active' : ''}" data-step="${s.n}"${ariaCurrent}>
+        <span class="kye-step-num">${String(s.n).padStart(2, '0')}</span>
+        <span class="ms kye-step-icon" aria-hidden="true">${s.icon}</span>
+        <span class="kye-step-label">${s.label}</span>
+      </a>`;
+  }).join('');
+  return `
+  <nav class="kye-stepper" aria-label="KYE stack — 8 step navigation">
+    <p class="kye-stepper-title">The KYE<span class="tm">™</span> stack &middot; 8 steps</p>
+    <div class="kye-stepper-track" role="list">${steps}</div>
+  </nav>`;
+}
+
 export function mountKyeComponents() {
   // Auto-detect active nav from <body data-page="X"> or document.body.dataset
   const active = document.body?.dataset?.page || '';
@@ -376,6 +424,14 @@ export function mountKyeComponents() {
     if (!el.classList.contains('footer')) el.classList.add('footer');
     if (!el.getAttribute('role')) el.setAttribute('role', 'contentinfo');
     el.innerHTML = kyeFooter();
+  }
+
+  // KYE Stack Stepper — canonical 8-step "you-are-here" indicator.
+  // Pages opt in via <div data-kye-stepper="N"></div> where N is 1..8.
+  for (const el of document.querySelectorAll('[data-kye-stepper]')) {
+    const n = Number(el.dataset.kyeStepper) || 0;
+    if (!el.classList.contains('kye-stepper-host')) el.classList.add('kye-stepper-host');
+    el.innerHTML = kyeStackStepper(n);
   }
 
   // Scroll-to-top

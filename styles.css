@@ -11384,3 +11384,118 @@ code[data-code="type"] {
       [id^="rc-panel-"] .mt-rule { font-size:13.5px; color: var(--text,#111); border-top:1px solid color-mix(in srgb,#1A8754 18%, transparent); padding-top:10px; margin-top:14px; }
       [data-theme="dark"] [id^="rc-panel-"] { background: color-mix(in srgb,#1A8754 12%, transparent); }
       @media (max-width:680px) { .rc-tab { padding:8px 12px; font-size:12.5px; } }
+
+      /* =================================================================
+         KYE Stack Stepper — canonical 8-step "you-are-here" indicator.
+         One source of truth: rendered by kyeStackStepper() in
+         components.js, mounted on any page with <div data-kye-stepper="N">.
+         Active step lit green to match the existing top-bar nav active
+         state. Mobile: horizontally scrolls.
+         ================================================================= */
+      .kye-stepper-host { display:block; }
+      .kye-stepper {
+        margin: 0 auto 6px;
+        padding: 18px 0 8px;
+      }
+      .kye-stepper-title {
+        margin: 0 0 10px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--text-muted, #6b7280);
+        text-align: center;
+      }
+      .kye-stepper-track {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
+      }
+      .kye-step {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 12px 7px 8px;
+        border-radius: 999px;
+        text-decoration: none;
+        font-size: 12.5px;
+        font-weight: 600;
+        line-height: 1.2;
+        color: var(--text-muted, #6b7280);
+        background: var(--paper, #fff);
+        border: 1px solid color-mix(in srgb, var(--text, #111) 12%, transparent);
+        transition: background .15s, color .15s, border-color .15s, transform .12s, box-shadow .15s;
+      }
+      .kye-step:hover {
+        transform: translateY(-1px);
+        color: var(--text, #111);
+        border-color: color-mix(in srgb, var(--text, #111) 28%, transparent);
+      }
+      .kye-step-num {
+        display: inline-flex; align-items: center; justify-content: center;
+        min-width: 22px; height: 22px;
+        padding: 0 6px;
+        border-radius: 6px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        background: color-mix(in srgb, var(--text, #111) 8%, transparent);
+        color: var(--text, #111);
+      }
+      .kye-step-icon { font-size: 16px !important; opacity: 0.85; }
+      .kye-step-label { white-space: nowrap; }
+
+      /* Active state — green like the top-bar nav active state */
+      .kye-step--active {
+        background: #1A8754;
+        color: #fff;
+        border-color: transparent;
+        box-shadow: 0 2px 10px color-mix(in srgb, #1A8754 35%, transparent);
+      }
+      .kye-step--active .kye-step-num {
+        background: rgba(255, 255, 255, 0.22);
+        color: #fff;
+      }
+      .kye-step--active .kye-step-icon { opacity: 1; }
+
+      /* Connector dots between consecutive steps on desktop */
+      @media (min-width: 980px) {
+        .kye-stepper-track { gap: 4px; }
+        .kye-step + .kye-step::before {
+          content: "";
+          position: absolute;
+          left: -6px; top: 50%;
+          width: 6px; height: 1px;
+          background: color-mix(in srgb, var(--text, #111) 18%, transparent);
+        }
+      }
+
+      [data-theme="dark"] .kye-step {
+        background: color-mix(in srgb, #fff 4%, transparent);
+        color: var(--text-dim, #9ca3af);
+      }
+      [data-theme="dark"] .kye-step:hover { color: #e5e7eb; }
+      [data-theme="dark"] .kye-step-num {
+        background: color-mix(in srgb, #fff 10%, transparent);
+        color: #e5e7eb;
+      }
+
+      /* Mobile: horizontal scroll instead of wrap, sleeker */
+      @media (max-width: 720px) {
+        .kye-stepper { padding: 14px 0 6px; }
+        .kye-stepper-track {
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          padding: 4px 14px 8px;
+          margin: 0 -14px;
+          scrollbar-width: thin;
+          justify-content: flex-start;
+          scroll-snap-type: x proximity;
+        }
+        .kye-step { flex: 0 0 auto; scroll-snap-align: start; padding: 6px 10px 6px 6px; font-size: 12px; }
+        .kye-step-num { min-width: 20px; height: 20px; font-size: 10.5px; }
+        .kye-step-icon { font-size: 14px !important; }
+      }

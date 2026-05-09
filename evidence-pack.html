@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script>(function(){try{var s=localStorage.getItem("kye-theme");if(s==="dark"||s==="light"){document.documentElement.setAttribute("data-theme",s);}}catch(e){}})();</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KYE Protocol™ — Evidence Pack™ · step 8 of the KYE™ stack</title>
+  <meta name="description" content="KYE Evidence Pack™ — the signed, replayable bundle of audit-chain entries, Decision Maps™, signatures and public-key set that a regulator or auditor verifies offline. Step 8 of the canonical 8-step KYE™ stack. The artefact." />
+  <link rel="canonical" href="https://kye-protocol.github.io/evidence-pack.html" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="KYE Evidence Pack™ — step 8 of the KYE™ stack" />
+  <meta property="og:description" content="Signed semantic artefact a regulator can replay offline." />
+  <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
+  <meta property="og:url" content="https://kye-protocol.github.io/evidence-pack.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css?v=1779290000" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://kye-protocol.github.io/"},{"@type":"ListItem","position":2,"name":"Evidence Pack","item":"https://kye-protocol.github.io/evidence-pack.html"}]}</script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="top-bar" role="banner" data-kye-header data-active="evidence-pack"><!-- canonical chrome injected --></header>
+<div class="container"><div data-kye-stepper="8"></div></div>
+<main id="main" role="main">
+
+<section id="top" class="hero" aria-labelledby="hero-title">
+  <div class="container hero-inner">
+    <span class="hero-pill"><span class="dot"></span> Step 8 &middot; Evidence Pack<span class="tm">™</span></span>
+    <h1 id="hero-title" style="margin-top:18px">Signed semantic artefact a regulator can <span class="accent">replay offline</span>.</h1>
+    <p class="lede">Steps 1–7 produce names, hierarchy, meaning, contracts, state, decisions and enforcement. Step 8 is the artefact: a signed bundle that ties everything that happened to one decision into a single replayable record any third party can verify against the published JWKS without contacting the issuing system.</p>
+  </div>
+</section>
+
+<section id="what" class="section" aria-labelledby="h-what">
+  <div class="container">
+    <span class="eyebrow">1 &middot; What's inside</span>
+    <h2 id="h-what" class="h-section">Audit chain. Decision Maps<span class="tm">™</span>. Signatures. <span class="accent">JWKS.</span></h2>
+    <ul class="biz-list" style="margin-top:8px">
+      <li><strong>Audit-chain segment</strong> &mdash; the append-only hash-linked sequence covering the decision and its predecessors.</li>
+      <li><strong>Decision Map<span class="tm">™</span></strong> &mdash; signed inputs &rarr; rules &rarr; outcome record for the decision.</li>
+      <li><strong>Continuity inclusion-set</strong> (when the Continuity Profile<span class="tm">™</span> is in play) &mdash; intent + interpretation + 6-dim state + pressure + incentive + decision + execution + drift events under deterministic canonical encoding.</li>
+      <li><strong>Semantic Assertion</strong> (when the Ontology Profile<span class="tm">™</span> is in play) &mdash; every term, mapping and predicate consulted at decision time.</li>
+      <li><strong>Adoption Evidence Pack<span class="tm">™</span></strong> reference (when the Operating Model Profile<span class="tm">™</span> is in play) &mdash; intake + readiness + authority record + gates + commit boundaries + review paths + training.</li>
+      <li><strong>Provenance evidence</strong> reference (when the Assurance Card Profile<span class="tm">™</span> is in play) &mdash; model / dataset / tool / supplier / licence lineage.</li>
+      <li><strong>Signature</strong> &mdash; Ed25519 over the canonical-JSON serialisation; key id resolves against the published JWKS.</li>
+      <li><strong>Public-key set reference</strong> &mdash; the JWKS URL the verifier must trust to replay.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="why" class="section alt" aria-labelledby="h-why">
+  <div class="container">
+    <span class="eyebrow">2 &middot; Why one bundle, not seven</span>
+    <h2 id="h-why" class="h-section">A regulator should not need <span class="accent">seven systems</span>.</h2>
+    <p class="lede">The Evidence Pack<span class="tm">™</span> exists so an auditor, regulator, court, dispute reviewer or downstream tenant can <em>replay</em> a decision end-to-end with one bundle and one JWKS &mdash; not a seven-system tour. The same bundle is what an incident-response team replays for forensic reconstruction; what a compliance-mapping rail projects into framework-specific views (SOC&nbsp;2, ISO 27001, NIST AI RMF, EU AI Act, DORA, &hellip;); and what KYE Cloud Gateway<span class="tm">™</span> archives under retention.</p>
+  </div>
+</section>
+
+<section id="next" class="section" aria-labelledby="h-next">
+  <div class="container">
+    <span class="eyebrow">Where to go next</span>
+    <h2 id="h-next" class="h-section">Walk back through the stack &rarr;</h2>
+    <div class="hero-cta" style="margin-top:8px">
+      <a href="gateway.html" class="btn btn-secondary"><span class="ms">bolt</span> &larr; Step 7 &middot; Runtime gateway</a>
+      <a href="vocabulary.html" class="btn btn-secondary"><span class="ms">menu_book</span> Restart &middot; Step 1 &middot; Dictionaries</a>
+      <a href="whitepaper.html" class="btn btn-primary"><span class="ms">article</span> Read the whitepaper</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected --></footer>
+<button id="scroll-top" class="scroll-top" type="button" aria-label="Scroll to top" data-kye-scroll-top><!-- svg injected --></button>
+<script type="module" src="main.js?v=1779220000"></script>
+</body>
+</html>

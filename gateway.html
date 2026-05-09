@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script>(function(){try{var s=localStorage.getItem("kye-theme");if(s==="dark"||s==="light"){document.documentElement.setAttribute("data-theme",s);}}catch(e){}})();</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KYE Protocol™ — Runtime gateway · step 7 of the KYE™ stack</title>
+  <meta name="description" content="KYE Reference Gateway™ — the enforcement point that intercepts a candidate action, asks the policy engine for a verdict, and only lets the action commit when the signed Decision Map™ allows. Step 7 of the canonical 8-step KYE™ stack." />
+  <link rel="canonical" href="https://kye-protocol.github.io/gateway.html" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="KYE™ Runtime gateway — step 7 of the KYE™ stack" />
+  <meta property="og:description" content="Enforcement at the decision point. Reference Gateway docker image; Express middleware; edge-PDP for offline-capable enforcement." />
+  <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
+  <meta property="og:url" content="https://kye-protocol.github.io/gateway.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css?v=1779290000" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://kye-protocol.github.io/"},{"@type":"ListItem","position":2,"name":"Runtime gateway","item":"https://kye-protocol.github.io/gateway.html"}]}</script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="top-bar" role="banner" data-kye-header data-active="gateway"><!-- canonical chrome injected --></header>
+<div class="container"><div data-kye-stepper="7"></div></div>
+<main id="main" role="main">
+
+<section id="top" class="hero" aria-labelledby="hero-title">
+  <div class="container hero-inner">
+    <span class="hero-pill"><span class="dot"></span> Step 7 &middot; Runtime gateway</span>
+    <h1 id="hero-title" style="margin-top:18px">Enforcement at <span class="accent">the decision point</span>.</h1>
+    <p class="lede">Step 6 produces a signed verdict. Step 7 is the gateway that <em>enforces</em> it. The gateway intercepts a candidate action at the commit boundary, asks the policy engine for a decision, and only lets the action commit when the signed Decision Map<span class="tm">™</span> says <code>allow</code>.</p>
+  </div>
+</section>
+
+<section id="what" class="section" aria-labelledby="h-what">
+  <div class="container">
+    <span class="eyebrow">1 &middot; What it does</span>
+    <h2 id="h-what" class="h-section">Three reference deployments. <span class="accent">All open.</span></h2>
+    <div class="prim-grid" style="margin-top:14px">
+      <div class="prim-card"><span class="ms">dns</span><strong>KYE Reference Gateway<span class="tm">™</span></strong><span>Hosted PEP+PDP image. <code>docker run -p 4000:4000 ghcr.io/kye-protocol/gateway:v1.0</code>. Production hardening (auth, rate limit, body-size, structured logging, JSONL audit chain) opt-in via env vars.</span></div>
+      <div class="prim-card"><span class="ms">extension</span><strong>Express PEP middleware</strong><span>Node middleware that wraps any Express route with a KYE<span class="tm">™</span> authorize call. Drops into existing services without rewriting the action surface.</span></div>
+      <div class="prim-card"><span class="ms">offline_bolt</span><strong>ePDP &mdash; edge PDP</strong><span>Locally-cached, offline-capable PDP for the bank / merchant edge. Walks the chain, verifies signatures, returns a decision in &lt; 1 ms.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contract" class="section alt" aria-labelledby="h-c">
+  <div class="container">
+    <span class="eyebrow">2 &middot; The enforcement contract</span>
+    <h2 id="h-c" class="h-section">Three obligations. <span class="accent">Every commit-level action.</span></h2>
+    <ol class="biz-list" style="margin-top:8px">
+      <li><strong>Pre-commit decision</strong> &mdash; call <code>POST /v1/runtime/authorize</code>; do not commit unless the verdict is <code>allow</code> (or <code>allow_with_constraints</code> and constraints are satisfied).</li>
+      <li><strong>Audit chain emission</strong> &mdash; the gateway hash-links every decision into an append-only audit ledger; the verify endpoint detects breaks end-to-end.</li>
+      <li><strong>Signal Bus<span class="tm">™</span> publication</strong> &mdash; the gateway publishes signed events (<code>kye.decision.*</code>, <code>kye.signal.*</code>, profile-specific events) so downstream subscribers can react atomically.</li>
+    </ol>
+  </div>
+</section>
+
+<section id="next" class="section" aria-labelledby="h-next">
+  <div class="container">
+    <span class="eyebrow">Where to go next</span>
+    <h2 id="h-next" class="h-section">Continue the stack &rarr;</h2>
+    <div class="hero-cta" style="margin-top:8px">
+      <a href="policy-engine.html" class="btn btn-secondary"><span class="ms">gavel</span> &larr; Step 6 &middot; Policy engine</a>
+      <a href="evidence-pack.html" class="btn btn-primary"><span class="ms">verified</span> Step 8 &middot; Evidence Pack<span class="tm">™</span> &rarr;</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected --></footer>
+<button id="scroll-top" class="scroll-top" type="button" aria-label="Scroll to top" data-kye-scroll-top><!-- svg injected --></button>
+<script type="module" src="main.js?v=1779220000"></script>
+</body>
+</html>
