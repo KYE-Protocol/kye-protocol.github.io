@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script>(function(){try{var s=localStorage.getItem("kye-theme");if(s==="dark"||s==="light"){document.documentElement.setAttribute("data-theme",s);}}catch(e){}})();</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KYE Protocol™ — Action Admissibility · before authority, before commit</title>
+  <meta name="description" content="KYE Action Admissibility Profile™ — checks whether a proposed action is admissible into the authority pipeline before any authority, formal-rule or commit-boundary check runs. Six decision values, fifteen inadmissibility classes, signed admissibility decision + evidence hash-chained into the audit ledger." />
+  <link rel="canonical" href="https://kye-protocol.github.io/action-admissibility.html" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="KYE Action Admissibility Profile™ — before authority, before commit" />
+  <meta property="og:description" content="KYE™ does not only attribute delegated actions after they exist. It checks whether proposed actions are admissible before they enter the authority pipeline." />
+  <meta property="og:image" content="https://kye-protocol.github.io/og.svg" />
+  <meta property="og:url" content="https://kye-protocol.github.io/action-admissibility.html" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a8754'/%3E%3Cpath d='M14 14 L14 50 M14 32 L34 14 M14 32 L34 50 M40 14 L52 50 M52 14 L40 50' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css?v=1779290000" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://kye-protocol.github.io/"},{"@type":"ListItem","position":2,"name":"Action Admissibility","item":"https://kye-protocol.github.io/action-admissibility.html"}]}</script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<header class="top-bar" role="banner" data-kye-header data-active="action-admissibility"><!-- canonical chrome injected --></header>
+<main id="main" role="main">
+
+<section id="top" class="hero" aria-labelledby="hero-title">
+  <div class="container hero-inner">
+    <span class="hero-pill"><span class="dot"></span> KYE Action Admissibility Profile<span class="tm">™</span> &middot; v1.0</span>
+    <h1 id="hero-title" style="margin-top:18px">Before <span class="accent">attribution</span>, before <span class="accent">authority</span>: admissibility.</h1>
+    <p class="lede">Attribution proves who or what acted. Authority proves whether they were allowed. But agentic systems need one layer earlier: <strong>whether a proposed action should be admitted into the system at all.</strong></p>
+    <p class="lede" style="margin-top:6px">KYE Action Admissibility Profile<span class="tm">™</span> checks proposed actions <em>before</em> they become actionable requests. It evaluates intent, source, data validity, policy boundaries, prohibited action classes, risk state, continuity, formal rules and evidence requirements before the action reaches runtime authority decisioning.</p>
+    <div class="cn-quick" style="margin-top:18px">
+      <a href="#why"      class="cn-pill"><span class="ms">priority_high</span> Why upstream</a>
+      <a href="#flow"     class="cn-pill"><span class="ms">arrow_forward</span> The pipeline</a>
+      <a href="#decisions" class="cn-pill"><span class="ms">balance</span> 6 decisions</a>
+      <a href="#classes"  class="cn-pill"><span class="ms">block</span> 15 classes</a>
+      <a href="#schemas"  class="cn-pill"><span class="ms">schema</span> Schemas</a>
+      <a href="#open-paid" class="cn-pill"><span class="ms">balance</span> Open / paid</a>
+    </div>
+  </div>
+</section>
+
+<section id="why" class="section" aria-labelledby="h-why">
+  <div class="container">
+    <span class="eyebrow">Why a new layer &middot; upstream of authority</span>
+    <h2 id="h-why" class="h-section">Attribution alone is <span class="accent">late</span>.</h2>
+    <p class="lede">If an AI agent forms a harmful, unlawful, out-of-scope, coercive, misleading or structurally invalid action, the organisation may already carry risk even if the action is later denied. Even when KYE<span class="tm">™</span> says <code>deny</code>, you may still need to explain:</p>
+    <ul class="biz-list" style="columns:2;column-gap:24px;margin-top:8px">
+      <li>Why was this action even allowed to form?</li>
+      <li>Why did the agent reach that proposal?</li>
+      <li>Which signal, prompt, policy, tool or incentive shaped it?</li>
+      <li>Was the proposal admissible before authority was checked?</li>
+    </ul>
+    <p class="lede" style="margin-top:14px"><strong>KYE<span class="tm">™</span> does not only attribute delegated actions after they exist. It checks whether proposed actions are admissible before they enter the authority pipeline, then decides, proves, revokes and replays what happens next.</strong></p>
+  </div>
+</section>
+
+<section id="flow" class="section alt" aria-labelledby="h-flow">
+  <div class="container">
+    <span class="eyebrow">1 &middot; The full pipeline</span>
+    <h2 id="h-flow" class="h-section">Signal &rarr; intent &rarr; proposal &rarr; <span class="accent">admission</span> &rarr; authority &rarr; commit &rarr; evidence.</h2>
+    <p class="lede">Admission decides whether the action may enter the pipeline. Authority decides whether it may proceed. Commit decides whether it may become real. Evidence proves what happened.</p>
+    <div class="journey-flow" role="list">
+      <div class="journey-step" role="listitem"><span class="journey-num">01</span><div><strong>Signal</strong><span>User / system / agent input.</span></div></div>
+      <div class="journey-step" role="listitem"><span class="journey-num">02</span><div><strong>Intent</strong><span>Declared goal + constraints.</span></div></div>
+      <div class="journey-step" role="listitem"><span class="journey-num">03</span><div><strong>Interpretation</strong><span>Agent reading of the goal (Continuity Profile<span class="tm">™</span>).</span></div></div>
+      <div class="journey-step" role="listitem"><span class="journey-num">04</span><div><strong>Proposed Action</strong><span><code>KYEProposedAction</code> &mdash; origin, capability, target, preconditions, risk flags.</span></div></div>
+      <div class="journey-step journey-step--accent" role="listitem"><span class="journey-num">05</span><div><strong>KYE Admission Gate<span class="tm">™</span></strong><span>This profile. Signed admit / reject / clarify / review / quarantine.</span></div></div>
+      <div class="journey-step" role="listitem"><span class="journey-num">06</span><div><strong>Authority Decision</strong><span>KYE Gateway<span class="tm">™</span> (only if admitted).</span></div></div>
+      <div class="journey-step" role="listitem"><span class="journey-num">07</span><div><strong>Formal-Rules Evaluation</strong><span>Permissions / obligations / prohibitions / powers.</span></div></div>
+      <div class="journey-step" role="listitem"><span class="journey-num">08</span><div><strong>Commit Boundary<span class="tm">™</span></strong><span>Recommendation &harr; committed action.</span></div></div>
+      <div class="journey-step" role="listitem"><span class="journey-num">09</span><div><strong>Execution</strong><span>The action becomes real.</span></div></div>
+      <div class="journey-step" role="listitem"><span class="journey-num">10</span><div><strong>Attribution &amp; Evidence</strong><span>Decision Map<span class="tm">™</span> + Evidence Pack<span class="tm">™</span>; replay-capable.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="decisions" class="section" aria-labelledby="h-dec">
+  <div class="container">
+    <span class="eyebrow">2 &middot; Six admissibility decision values</span>
+    <h2 id="h-dec" class="h-section">Admit. Reject. Clarify. Review. Quarantine. Route.</h2>
+    <div class="prim-grid" style="margin-top:14px">
+      <div class="prim-card"><span class="ms">check_circle</span><strong><code>admit</code></strong><span>Admissible. Route onward to authority decisioning.</span></div>
+      <div class="prim-card"><span class="ms">cancel</span><strong><code>reject</code></strong><span>Structurally invalid or prohibited. Do not enter pipeline.</span></div>
+      <div class="prim-card"><span class="ms">help</span><strong><code>require_clarification</code></strong><span>Intent ambiguous. Request principal clarification first.</span></div>
+      <div class="prim-card"><span class="ms">supervisor_account</span><strong><code>require_human_review</code></strong><span>Admissible only after human reviewer admits.</span></div>
+      <div class="prim-card"><span class="ms">pause_circle</span><strong><code>quarantine</code></strong><span>Pattern matches a watched class. Freeze and escalate.</span></div>
+      <div class="prim-card"><span class="ms">arrow_forward</span><strong><code>route_to_authority_check</code></strong><span>Synonym for admit &mdash; explicit routing instruction.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="classes" class="section alt" aria-labelledby="h-cls">
+  <div class="container">
+    <span class="eyebrow">3 &middot; Fifteen inadmissibility classes</span>
+    <h2 id="h-cls" class="h-section">What admission <span class="accent">actively detects</span>.</h2>
+    <ul class="biz-list" style="columns:2;column-gap:24px;margin-top:8px">
+      <li><strong>invalid_intent</strong> &mdash; declared intent structurally invalid</li>
+      <li><strong>ambiguous_intent</strong> &mdash; intent / interpretation drift exceeds threshold</li>
+      <li><strong>out_of_scope_proposal</strong> &mdash; outside authority record's declared scope</li>
+      <li><strong>prohibited_action_class</strong> &mdash; matches a prohibited class for this actor / sector</li>
+      <li><strong>disallowed_data_source</strong> &mdash; source of input data disallowed by policy</li>
+      <li><strong>inadmissible_evidence</strong> &mdash; required evidence references missing or untrusted</li>
+      <li><strong>unsafe_tool_path</strong> &mdash; proposed tool path matches an unsafe pattern</li>
+      <li><strong>coercion_signal</strong> &mdash; pressure / coercion signal detected upstream</li>
+      <li><strong>incentive_conflict</strong> &mdash; agent incentive conflicts with declared intent</li>
+      <li><strong>continuity_break</strong> &mdash; continuity drift detected upstream</li>
+      <li><strong>policy_ineligible_action</strong> &mdash; ineligible under the active policy set</li>
+      <li><strong>missing_authority_context</strong> &mdash; no resolvable authority context</li>
+      <li><strong>missing_principal</strong> &mdash; no principal entity resolves</li>
+      <li><strong>missing_accountable_owner</strong> &mdash; no accountable owner resolves</li>
+      <li><strong>unsupported_jurisdiction</strong> &mdash; no supported jurisdiction binding</li>
+    </ul>
+  </div>
+</section>
+
+<section id="schemas" class="section" aria-labelledby="h-schemas">
+  <div class="container">
+    <span class="eyebrow">4 &middot; Schemas (Apache 2.0, public mirror)</span>
+    <h2 id="h-schemas" class="h-section">Five normative objects. <span class="accent">Validated in CI.</span></h2>
+    <ul class="biz-list" style="margin-top:8px">
+      <li><code><a href="https://kye-protocol.github.io/schemas/action-admissibility-profile.json">action-admissibility-profile.json</a></code> &mdash; profile manifest</li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/proposed-action.json">proposed-action.json</a></code> &mdash; the candidate action submitted for admission</li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/admission-gate.json">admission-gate.json</a></code> &mdash; pre-admission gate; UPSTREAM of authority gates</li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/admissibility-decision.json">admissibility-decision.json</a></code> &mdash; signed verdict + checked dimensions + next step</li>
+      <li><code><a href="https://kye-protocol.github.io/schemas/admissibility-evidence.json">admissibility-evidence.json</a></code> &mdash; hash-chained inputs + signals consulted</li>
+    </ul>
+  </div>
+</section>
+
+<section id="open-paid" class="section alt" aria-labelledby="h-paid">
+  <div class="container">
+    <span class="eyebrow">5 &middot; Open / paid boundary</span>
+    <h2 id="h-paid" class="h-section">The contracts are open. <span class="accent">The Admissibility Engine<span class="tm">™</span> is paid.</span></h2>
+    <div class="bd-grid">
+      <article class="bd-card bd-card--yes" aria-label="Open under Apache 2.0">
+        <header class="bd-card-head">
+          <span class="bd-badge bd-badge--yes" aria-hidden="true"><span class="ms">check</span></span>
+          <div>
+            <p class="bd-card-eyebrow">Open under Apache 2.0</p>
+            <h3 class="bd-card-title">Open</h3>
+          </div>
+        </header>
+        <ul class="bd-list">
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>Action Admissibility Profile<span class="tm">™</span> schema</li>
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>4 object schemas (proposed action, admission gate, admissibility decision, admissibility evidence)</li>
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>Decision-value enumeration (6 values)</li>
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>Inadmissibility class names (15 classes)</li>
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>Reason-code dictionary (20 codes)</li>
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>Signal Bus<span class="tm">™</span> event names</li>
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>Sample proposed actions + decisions</li>
+          <li><span class="ms bd-tick" aria-hidden="true">check_circle</span>Basic conformance fixtures &middot; basic validator SDK</li>
+        </ul>
+      </article>
+      <article class="bd-card bd-card--no" aria-label="Commercial / patent track">
+        <header class="bd-card-head" style="background:linear-gradient(135deg,#5f6b78 0%, #3f4954 100%);">
+          <span class="bd-badge" style="background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.28);" aria-hidden="true"><span class="ms">workspace_premium</span></span>
+          <div>
+            <p class="bd-card-eyebrow">Commercial / patent track</p>
+            <h3 class="bd-card-title">Paid</h3>
+          </div>
+        </header>
+        <ul class="bd-list">
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>KYE Admissibility Engine<span class="tm">™</span></li>
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>KYE Admission Gate<span class="tm">™</span> runtime</li>
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>Inadmissible-action detection</li>
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>Pre-action risk scoring</li>
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>Prohibited-action-class detection</li>
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>Intent-ambiguity detection</li>
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>Source / data admissibility checks</li>
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>Agent-proposal quarantine</li>
+          <li><span class="ms bd-tick" style="color:#5f6b78" aria-hidden="true">workspace_premium</span>Sector admission packs (banking, healthcare, public-sector, defence)</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="next" class="section" aria-labelledby="h-next">
+  <div class="container">
+    <span class="eyebrow">Where to go next</span>
+    <h2 id="h-next" class="h-section">Adjacent reading.</h2>
+    <div class="hero-cta" style="margin-top:8px">
+      <a href="formal-rules.html" class="btn btn-secondary"><span class="ms">policy</span> Formal Rules<span class="tm">™</span></a>
+      <a href="continuity.html" class="btn btn-secondary"><span class="ms">trending_up</span> Continuity<span class="tm">™</span></a>
+      <a href="operating-model.html" class="btn btn-secondary"><span class="ms">route</span> Operating Model<span class="tm">™</span></a>
+      <a href="ontology.html" class="btn btn-secondary"><span class="ms">hub</span> Ontology<span class="tm">™</span></a>
+      <a href="glossary.html#action-admissibility" class="btn btn-secondary"><span class="ms">menu_book</span> Glossary &mdash; admissibility entries</a>
+      <a href="whitepaper.html#sec-7-10" class="btn btn-secondary"><span class="ms">article</span> Whitepaper §7.10</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="footer" role="contentinfo" data-kye-footer><!-- canonical chrome injected --></footer>
+<button id="scroll-top" class="scroll-top" type="button" aria-label="Scroll to top" data-kye-scroll-top><!-- svg injected --></button>
+<script type="module" src="main.js?v=1779220000"></script>
+</body>
+</html>

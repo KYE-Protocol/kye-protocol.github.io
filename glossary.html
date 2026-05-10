@@ -40,9 +40,10 @@
       <a href="#operating-model" class="cn-pill"><span class="layer-num">07</span><span class="ms">route</span> Operating Model</a>
       <a href="#assurance-card" class="cn-pill"><span class="layer-num">08</span><span class="ms">badge</span> Assurance</a>
       <a href="#formal-rules" class="cn-pill"><span class="layer-num">09</span><span class="ms">policy</span> Formal Rules</a>
-      <a href="#compliance"  class="cn-pill"><span class="layer-num">10</span><span class="ms">rule</span> Compliance</a>
-      <a href="#programme"   class="cn-pill"><span class="layer-num">11</span><span class="ms">workspace_premium</span> Programme</a>
-      <a href="#external"    class="cn-pill"><span class="layer-num">12</span><span class="ms">extension</span> External</a>
+      <a href="#action-admissibility" class="cn-pill"><span class="layer-num">10</span><span class="ms">fact_check</span> Admissibility</a>
+      <a href="#compliance"  class="cn-pill"><span class="layer-num">11</span><span class="ms">rule</span> Compliance</a>
+      <a href="#programme"   class="cn-pill"><span class="layer-num">12</span><span class="ms">workspace_premium</span> Programme</a>
+      <a href="#external"    class="cn-pill"><span class="layer-num">13</span><span class="ms">extension</span> External</a>
     </div>
   </div>
 </section>
@@ -241,8 +242,27 @@
   </div></div>
 </section>
 
-<section id="compliance" class="section alt" aria-labelledby="h-cmp">
-        <span class="eyebrow layer-eyebrow"><span class="layer-num">10</span><span class="ms layer-ms">rule</span>Compliance</span>
+<section id="action-admissibility" class="section alt" aria-labelledby="h-aa">
+        <span class="eyebrow layer-eyebrow"><span class="layer-num">10</span><span class="ms layer-ms">fact_check</span>Admissibility</span>
+    <h2 id="h-aa" class="h-section">Pre-action layer &mdash; <span class="accent">before</span> authority.</h2>
+  <div class="section-body"><div class="container">
+    <p class="lede">Terms introduced by <a href="action-admissibility.html">KYE Action Admissibility Profile<span class="tm">™</span></a> (<code data-code="profile">kye-action-admissibility-v1</code>). Names only; admissibility-scoring algorithm, prohibited-action-class detection heuristics, intent-ambiguity detection, source / data admissibility decision rules, agent-proposal quarantine triggers and sector admission packs are part of the patent track and are not published.</p>
+    <dl class="what-def-gloss">
+      <li id="action-admissibility-profile"><strong>KYE Action Admissibility Profile<span class="tm">™</span></strong><span>The upstream pre-action layer of KYE<span class="tm">™</span>. Checks whether a proposed action is admissible into the authority pipeline before any authority, formal-rule or commit-boundary check runs. <em>Attribution alone is late.</em></span></li>
+      <li id="kye-proposed-action"><strong>KYE<span class="tm">™</span> Proposed Action</strong><span>The candidate action submitted to KYE Admission Gate<span class="tm">™</span> for admissibility check before any authority decisioning. Carries origin, intent refs, requested capability, target resource, preconditions and risk flags. Schema: <code data-code="path">proposed-action.json</code>.</span></li>
+      <li id="kye-admission-gate"><strong>KYE Admission Gate<span class="tm">™</span></strong><span>Pre-admission gate placed UPSTREAM of authority gates. Declares applicable scopes, decision policy, required checks, evidence requirements and signal events.</span></li>
+      <li id="admissibility-decisions"><strong>Admissibility decision values</strong><span>Six values: <code data-code="allow">admit</code>, <code data-code="deny">reject</code>, <code data-code="approve">require_clarification</code>, <code data-code="approve">require_human_review</code>, <code data-code="deny">quarantine</code>, <code data-code="allow">route_to_authority_check</code>.</span></li>
+      <li id="inadmissibility-classes"><strong>Inadmissibility classes</strong><span>Fifteen classes the engine actively detects: <code data-code="field">invalid_intent</code>, <code data-code="field">ambiguous_intent</code>, <code data-code="field">out_of_scope_proposal</code>, <code data-code="field">prohibited_action_class</code>, <code data-code="field">disallowed_data_source</code>, <code data-code="field">inadmissible_evidence</code>, <code data-code="field">unsafe_tool_path</code>, <code data-code="field">coercion_signal</code>, <code data-code="field">incentive_conflict</code>, <code data-code="field">continuity_break</code>, <code data-code="field">policy_ineligible_action</code>, <code data-code="field">missing_authority_context</code>, <code data-code="field">missing_principal</code>, <code data-code="field">missing_accountable_owner</code>, <code data-code="field">unsupported_jurisdiction</code>.</span></li>
+      <li id="kye-admissibility-decision"><strong>KYE<span class="tm">™</span> Admissibility Decision</strong><span>Signed verdict for a proposed action with checked dimensions, next-step routing, obligations and reference to the admissibility-evidence record. Schema: <code data-code="path">admissibility-decision.json</code>.</span></li>
+      <li id="kye-admissibility-evidence"><strong>KYE<span class="tm">™</span> Admissibility Evidence</strong><span>Hash-chained record of the inputs and signals consulted at admission time; offline-verifiable against the published JWKS. Schema: <code data-code="path">admissibility-evidence.json</code>.</span></li>
+      <li id="kye-admissibility-engine"><strong>KYE Admissibility Engine<span class="tm">™</span></strong><span>Runtime engine performing the admission check across intent, source, data, policy and rule dimensions. Planned commercial layer.</span></li>
+      <li id="kye-pre-action-filter"><strong>KYE Pre-Action Filter<span class="tm">™</span></strong><span>Product-friendly synonym for the admission surface in marketing copy.</span></li>
+    </dl>
+  </div></div>
+</section>
+
+<section id="compliance" class="section" aria-labelledby="h-cmp">
+        <span class="eyebrow layer-eyebrow"><span class="layer-num">11</span><span class="ms layer-ms">rule</span>Compliance</span>
     <h2 id="h-cmp" class="h-section">Mapping rail, OSCAL, frameworks.</h2>
   <div class="section-body"><div class="container">
     <dl class="what-def-gloss">
@@ -256,8 +276,8 @@
   </div></div>
 </section>
 
-<section id="programme" class="section" aria-labelledby="h-prog">
-        <span class="eyebrow layer-eyebrow"><span class="layer-num">11</span><span class="ms layer-ms">workspace_premium</span>Programme</span>
+<section id="programme" class="section alt" aria-labelledby="h-prog">
+        <span class="eyebrow layer-eyebrow"><span class="layer-num">12</span><span class="ms layer-ms">workspace_premium</span>Programme</span>
     <h2 id="h-prog" class="h-section">Conformance, certification, partner ladder.</h2>
   <div class="section-body"><div class="container">
     <dl class="what-def-gloss">
@@ -272,8 +292,8 @@
   </div></div>
 </section>
 
-<section id="external" class="section alt" aria-labelledby="h-ext">
-        <span class="eyebrow layer-eyebrow"><span class="layer-num">12</span><span class="ms layer-ms">extension</span>External standards we compose with</span>
+<section id="external" class="section" aria-labelledby="h-ext">
+        <span class="eyebrow layer-eyebrow"><span class="layer-num">13</span><span class="ms layer-ms">extension</span>External standards we compose with</span>
     <h2 id="h-ext" class="h-section">For reference, not redefinition.</h2>
   <div class="section-body"><div class="container">
     <dl class="what-def-gloss">

@@ -37,6 +37,7 @@ const NAV_ITEMS = [
   { id: 'continuity',          href: 'continuity.html',          label: 'Continuity',                                        icon: 'timeline',                color: '#1A8754', group: 'protocol' },
   { id: 'discoverability',     href: 'discoverability.html',     label: 'Discoverability',                                   icon: 'search',                  color: '#00ACC1', group: 'protocol' },
   { id: 'ontology',            href: 'ontology.html',            label: 'Ontology',                                          icon: 'hub',                     color: '#1A8754', group: 'protocol' },
+  { id: 'action-admissibility',href: 'action-admissibility.html',label: 'Admissibility',                                     icon: 'fact_check',              color: '#B47200', group: 'protocol' },
   { id: 'formal-rules',        href: 'formal-rules.html',        label: 'Formal Rules',                                      icon: 'policy',                  color: '#B47200', group: 'protocol' },
   { id: 'operating-model',     href: 'operating-model.html',     label: 'Operating Model',                                   icon: 'route',                   color: '#00838F', group: 'protocol' },
   { id: 'assurance-card',      href: 'assurance-card.html',      label: 'Assurance Card',                                    icon: 'badge',                   color: '#1A8754', group: 'protocol' },
@@ -230,6 +231,7 @@ const FOOTER_GROUPS = [
     items: [
       { href: 'sectors.html',             label: 'All profiles' },
       { href: 'usecases.html',            label: 'Use cases' },
+      { href: 'action-admissibility.html', label: 'KYE Action Admissibility Profile<span class="tm">™</span>' },
       { href: 'assurance-card.html',      label: 'KYE Assurance Card Profile<span class="tm">™</span>' },
       { href: 'operating-model.html',     label: 'KYE Operating Model Profile<span class="tm">™</span>' },
       { href: 'formal-rules.html',        label: 'KYE Formal Rules Profile<span class="tm">™</span>' },
@@ -315,6 +317,31 @@ const FOOTER_GROUPS = [
       { href: 'policy-engine.html',   label: '06 &middot; Policy engine' },
       { href: 'gateway.html',         label: '07 &middot; Runtime gateway' },
       { href: 'evidence-pack.html',   label: '08 &middot; Evidence Pack<span class="tm">™</span>' },
+    ],
+  },
+  {
+    heading: 'Open contracts (Apache-2.0)',
+    items: [
+      { href: 'vocabulary.html',          label: 'Dictionaries' },
+      { href: 'taxonomies.html',          label: 'Taxonomies' },
+      { href: 'schemas.html',             label: 'Schemas (119)' },
+      { href: 'evidence-pack.html',       label: 'Evidence Pack<span class="tm">™</span> spec' },
+      { href: 'whitepaper.html',          label: 'Whitepaper' },
+      { href: 'developers.html',          label: 'SDKs (TypeScript / Python / Go)' },
+      { href: 'certification.html',       label: 'Conformance fixtures' },
+    ],
+  },
+  {
+    heading: 'Paid runtime',
+    items: [
+      { href: 'gateway.html',             label: 'KYE Gateway<span class="tm">™</span>' },
+      { href: 'policy-engine.html',       label: 'KYE Decision Engine<span class="tm">™</span>' },
+      { href: 'continuity.html#open-paid', label: 'KYE Continuity Engine<span class="tm">™</span>' },
+      { href: 'discoverability.html#open-paid', label: 'KYE Discovery Engine<span class="tm">™</span>' },
+      { href: 'ontology.html#open-paid',  label: 'KYE Ontology Engine<span class="tm">™</span>' },
+      { href: 'formal-rules.html#open-paid', label: 'KYE Rights &amp; Obligations Engine<span class="tm">™</span>' },
+      { href: 'action-admissibility.html#open-paid', label: 'KYE Admissibility Engine<span class="tm">™</span>' },
+      { href: 'engage.html#procurement-pack', label: 'Procurement pack' },
     ],
   },
   {
